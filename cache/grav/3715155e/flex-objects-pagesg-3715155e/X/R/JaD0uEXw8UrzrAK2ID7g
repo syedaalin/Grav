@@ -1,0 +1,318 @@
+1767670921
+02.online-courses__SLASH__04.History
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:22:"online-courses/history";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:0:{}s:11:"frontmatter";s:0:"";s:8:"markdown";s:8764:"<style>
+  /* --- GLOBAL STYLES --- */
+  :root {
+    --primary: #008080; /* Teal/Islamic Green */
+    --accent: #D4AF37; /* Gold */
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #f9f9f9;
+    --white: #ffffff;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  }
+
+  .animate-entry {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Hidden initially */
+    animation-delay: 0.2s;
+  }
+  
+  .animate-delay-1 { animation-delay: 0.4s; }
+  .animate-delay-2 { animation-delay: 0.6s; }
+
+  /* --- COMPONENTS --- */
+  .section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid transparent;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-top: 3px solid var(--accent);
+  }
+
+  /* --- HERO SECTION --- */
+  .hero-box {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+  }
+
+  .btn-cta {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    display: inline-block;
+    transition: background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+  }
+
+  .btn-cta:hover {
+    background-color: #b5952f;
+    color: #fff;
+  }
+
+  /* --- GRID LAYOUTS --- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+  }
+
+  /* --- PRICING TABLES --- */
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pricing-table th {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px;
+    text-align: left;
+  }
+
+  .pricing-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .pricing-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pricing-table tr:hover {
+    background-color: #f1fcfc;
+  }
+
+  /* --- FAQ --- */
+  details {
+    background: var(--white);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  summary {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none; /* Hide default triangle */
+    position: relative;
+  }
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  details[open] summary::after {
+    content: '-';
+  }
+
+  details[open] summary {
+    border-bottom: 1px solid #eee;
+    color: var(--primary);
+  }
+
+  .faq-content {
+    padding: 15px;
+    color: var(--text-light);
+  }
+
+</style>
+
+<div class="hero-box animate-entry">
+  <h1 class="hero-title">Learn History Online</h1>
+  <p class="hero-subtitle">Dive into the inspiring stories of faith, sacrifice, and wisdom from the lives of the Ahlul Bayt (AS).</p>
+  <a href="#enroll" class="btn-cta">Start Your Journey Now</a>
+</div>
+
+<div class="section-container">
+
+  <div class="animate-entry animate-delay-1" style="text-align: center; margin-bottom: 50px;">
+    <h2>Discover Islamic History</h2>
+    <p>Explore, reflect, and connect with the past to enrich your present. Let timeless lessons guide and uplift you in your spiritual journey.</p>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+  <h2 style="text-align:center; color: var(--primary);">What You’ll Learn</h2>
+  <div class="grid-3 animate-entry animate-delay-2">
+    <div class="card">
+      <h3>Divine Guidance</h3>
+      <p>Discover how the lives of the Prophet (SAW) and Ahlul Bayt (AS) provide timeless lessons in faith, justice, and perseverance.</p>
+    </div>
+    <div class="card">
+      <h3>Strength in Faith (Iman)</h3>
+      <p>Deepen your connection with Allah (SWT) by understanding the sacrifices of those who upheld truth against oppression.</p>
+    </div>
+    <div class="card">
+      <h3>Practical Lessons</h3>
+      <p>Learn how Islamic history equips you with wisdom to face modern challenges with patience (Sabr) and trust (Tawakkul).</p>
+    </div>
+  </div>
+
+  <br><br>
+
+  <h2 style="text-align:center; color: var(--primary);">Why Choose to Learn History Online?</h2>
+  <div class="grid-2 animate-entry">
+    <div class="card">
+      <strong>Try Before You Commit</strong><br>
+      Join our free 3-day trial – fall in love with learning, risk-free.
+    </div>
+    <div class="card">
+      <strong>Learn When You Can</strong><br>
+      Night owl or early bird? Our classes adapt to your schedule.
+    </div>
+    <div class="card">
+      <strong>Truth You Can Trust</strong><br>
+      Straight from Quran and Ahlul Bayt (AS) - no compromises.
+    </div>
+    <div class="card">
+      <strong>WhatsApp Convenience</strong><br>
+      From booking to questions - everything happens through simple messages.
+    </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+  <div id="enroll">
+    <h2 style="text-align:center; color: var(--primary);">Affordable Plans</h2>
+    
+    <h3>🇵🇰 National Students (PKR)</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Study Plan</th>
+          <th>Frequency</th>
+          <th>Monthly Classes</th>
+          <th>Total (PKR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Basic</td><td>1 Day / Week</td><td>4</td><td><strong>2,000</strong></td></tr>
+        <tr><td>Standard</td><td>2 Days / Week</td><td>8</td><td><strong>4,000</strong></td></tr>
+        <tr><td>Intensive</td><td>3 Days / Week</td><td>12</td><td><strong>6,000</strong></td></tr>
+        <tr><td>Advanced</td><td>4 Days / Week</td><td>16</td><td><strong>8,000</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>🌍 International Students (USD)</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Study Plan</th>
+          <th>Frequency</th>
+          <th>Monthly Classes</th>
+          <th>Total (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Basic</td><td>1 Day / Week</td><td>4</td><td><strong>4,000</strong></td></tr>
+        <tr><td>Standard</td><td>2 Days / Week</td><td>8</td><td><strong>8,000</strong></td></tr>
+        <tr><td>Intensive</td><td>3 Days / Week</td><td>12</td><td><strong>12,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <div class="hero-box" style="margin-top: 50px; background: linear-gradient(135deg, #2c5364 0%, #203a43 100%);">
+    <h2 style="color:white;">Ready to Explore?</h2>
+    <p style="color:#ddd;">Join thousands of seekers on a journey through the golden eras of Islam.</p>
+    <a href="#join" class="btn-cta">Start Your Journey Now</a>
+    <br><br>
+    <p style="font-size: 0.9rem;">
+      <strong>Email:</strong> info@aabtaab.com | <strong>Phone:</strong> +92 302 2452000
+    </p>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+  
+  <details>
+    <summary>What will I learn in this course?</summary>
+    <div class="faq-content">You’ll explore key events, personalities, and movements in Islamic history from a clear Shia perspective.</div>
+  </details>
+
+  <details>
+    <summary>Is this course suitable for beginners?</summary>
+    <div class="faq-content">Yes, it’s perfect for all levels. The content is structured to be clear and engaging.</div>
+  </details>
+
+  <details>
+    <summary>Do I need any special books?</summary>
+    <div class="faq-content">No extra materials are required. All content is provided within the platform.</div>
+  </details>
+
+</div>";}s:7:"storage";a:6:{s:3:"key";s:22:"online-courses/history";s:11:"storage_key";s:28:"02.online-courses/04.History";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1767636900;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1767234434;}}s:8:"checksum";s:32:"590216a5066cf078a93e4d2bf6bdff8d";}}

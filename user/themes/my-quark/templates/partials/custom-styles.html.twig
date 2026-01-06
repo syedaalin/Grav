@@ -1,0 +1,222 @@
+<style>
+/* ==========================================================================
+   DYNAMIC THEME VARIABLES (Generated from Admin Config)
+   2026 Standards: OKLCH Colors, Self-Hosted Fonts, Modern CSS
+   ========================================================================== */
+
+/* SELF-HOSTED FONTS (GDPR Compliant - Rule 5.1) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-300-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-600-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-700-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    /* =======================================================================
+       1. OKLCH BRAND PALETTE (2026 Standard - Rule 3.1)
+       Perceptually uniform color space for accurate lightness manipulation
+       ======================================================================= */
+    
+    /* Original Hex values for fallback */
+    --brand-primary-hex: {{ theme_var('brand_primary')|default('#3b4252') }};
+    --brand-secondary-hex: {{ theme_var('brand_secondary')|default('#88c0d0') }};
+    --brand-accent-hex: {{ theme_var('brand_accent')|default('#bf616a') }};
+    
+    /* OKLCH Conversions (Primary color system) */
+    /* #3b4252 → oklch(32.5% 0.025 255) */
+    /* #88c0d0 → oklch(76% 0.065 220) */
+    /* #bf616a → oklch(58% 0.14 20) */
+    --brand-primary: oklch(32.5% 0.025 255);
+    --brand-secondary: oklch(76% 0.065 220);
+    --brand-accent: oklch(58% 0.14 20);
+    
+    /* Derived colors using OKLCH lightness manipulation */
+    --brand-primary-light: oklch(42.5% 0.025 255);
+    --brand-primary-dark: oklch(22.5% 0.025 255);
+    --brand-secondary-light: oklch(86% 0.065 220);
+    --brand-accent-hover: oklch(68% 0.14 20);
+    
+    /* 2. FOOTER COLORS (OKLCH) */
+    --footer-bg: oklch(8% 0.005 250);
+    --footer-text: oklch(100% 0 0);
+    --footer-accent: oklch(75% 0.12 85);
+    --footer-muted: oklch(70% 0.01 250);
+    --footer-danger: oklch(55% 0.2 25);
+    
+    /* 3. UI SURFACE COLORS */
+    --bg-body: oklch(93% 0.01 250);
+    --bg-card: oklch(100% 0 0);
+    --text-main: oklch(25% 0.02 250);
+    --text-muted: oklch(50% 0.02 250);
+    
+    /* 4. SHAPES & UI */
+    --radius-main: {{ theme_var('radius_main')|default('12px') }};
+    --glass-opacity: {{ theme_var('glass_opacity')|default(0.85) }};
+    
+    /* BACKGROUND TEXTURE (2026 ADAPTIVE) */
+    {% set tex = theme_var('background_texture')|default('none') %}
+    {% set op = theme_var('texture_opacity')|default(0.05) %}
+    {% set tex_col = theme_var('texture_color')|default('#000000') %}
+    {% set tex_col_encoded = tex_col|replace({'#': '%23'}) %}
+    
+    /* Modern Alpha-Mixing for Gradients */
+    {% set mix_col = "color-mix(in srgb, " ~ tex_col ~ ", transparent " ~ ((1 - op) * 100)|round ~ "%)" %}
+    
+    {% if tex == 'noise' %}
+        --bg-pattern: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='{{ tex_col_encoded }}' opacity='{{ op }}' type='matrix'/%3E%3C/svg%3E");
+        --bg-size: 100% 100%;
+        --bg-fixed: fixed;
+    {% elseif tex == 'plus' %}
+        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='evenodd'%3E%3Cpath d='M20 3a1 1 0 0 1 1 1v15h15a1 1 0 1 1 0 2H21v15a1 1 0 1 1-2 0V21H4a1 1 0 1 1 0-2h15V4a1 1 0 0 1 1-1z'/%3E%3C/g%3E%3C/svg%3E");
+        --bg-size: 40px 40px;
+    {% elseif tex == 'cross' %}
+        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='evenodd'%3E%3Cpath d='M20 18.59l14.15-14.15 1.41 1.41L21.41 20l14.15 14.15-1.41 1.41L20 21.41 5.85 35.56 4.44 34.15 18.59 20 4.44 5.85 5.85 4.44z'/%3E%3C/g%3E%3C/svg%3E");
+        --bg-size: 40px 40px;
+    {% elseif tex == 'circle' %}
+        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 37a17 17 0 1 0 0-34 17 17 0 0 0 0 34zm0-2a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='nonzero'/%3E%3C/svg%3E");
+        --bg-size: 50px 50px;
+    {% elseif tex == 'triangle' %}
+        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5l15 26H5z' stroke='{{ tex_col_encoded }}' stroke-opacity='{{ op }}' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+        --bg-size: 40px 40px;
+    {% elseif tex == 'dots' %}
+        --bg-pattern: radial-gradient({{ mix_col }} 1px, transparent 1px);
+        --bg-size: 20px 20px;
+    {% elseif tex == 'grid' %}
+        --bg-pattern: linear-gradient({{ mix_col }} 1px, transparent 1px), linear-gradient(90deg, {{ mix_col }} 1px, transparent 1px);
+        --bg-size: 30px 30px;
+    {% elseif tex == 'lines' %}
+        --bg-pattern: repeating-linear-gradient(45deg, {{ mix_col }}, {{ mix_col }} 1px, transparent 1px, transparent 10px);
+        --bg-size: 20px 20px;
+    {% elseif tex == 'mesh' %}
+        --bg-pattern: 
+            radial-gradient(at 0% 0%, color-mix(in oklch, var(--brand-primary), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%), 
+            radial-gradient(at 50% 0%, color-mix(in oklch, var(--brand-secondary), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%), 
+            radial-gradient(at 100% 0%, color-mix(in oklch, var(--brand-accent), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%);
+        --bg-size: 100% 100%;
+        --bg-fixed: fixed;
+    {% else %}
+        --bg-pattern: none;
+        --bg-size: auto;
+    {% endif %}
+    
+    /* ANIMATION & EFFECTS */
+    {% if theme_var('texture_animate') %}
+        --bg-anim: bgBreathing 30s ease-in-out infinite alternate;
+    {% else %}
+        --bg-anim: none;
+    {% endif %}
+    
+    {% if theme_var('vignette_overlay') %}
+        --vignette-display: block;
+    {% else %}
+        --vignette-display: none;
+    {% endif %}
+    
+    /* 5. LAYOUT & SPACING */
+    --site-width: {{ theme_var('container_width')|default(1200) }}px;
+    --space-unit: {{ theme_var('spacing_scale')|default(1.0) }}rem; 
+    
+    /* 6. LOGO */
+    --logo-h-desktop: {{ theme_var('logo_height')|default(48) }}px;
+    --logo-h-mobile: {{ theme_var('logo_height_mobile')|default(32) }}px;
+    
+    /* 7. TYPOGRAPHY (Calculated) */
+    --font-base: {{ theme_var('font_size_base')|default(16) }}px;
+    --type-scale: {{ theme_var('heading_scale')|default(1.2) }};
+    
+    --heading-3: calc(var(--font-base) * var(--type-scale) * var(--type-scale));
+    --heading-2: calc(var(--font-base) * var(--type-scale) * var(--type-scale) * var(--type-scale));
+    --heading-1: calc(var(--font-base) * var(--type-scale) * var(--type-scale) * var(--type-scale) * var(--type-scale));
+}
+
+/* =======================================================================
+   TYPOGRAPHY (2026 Standard - Rule 3.2)
+   ======================================================================= */
+body { 
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important; 
+    font-size: var(--font-base);
+}
+
+/* Modern Text Wrapping (Rule 3.2) */
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p, li, td {
+    text-wrap: pretty;
+}
+
+{% if theme_var('font_header') %}
+h1, h2, h3, h4, h5, h6, .footer-heading, .brand-text {
+    font-family: '{{ theme_var('font_header') }}', system-ui, sans-serif !important;
+}
+{% endif %}
+
+/* =======================================================================
+   DARK MODE SUPPORT (OKLCH-based)
+   ======================================================================= */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: oklch(15% 0.01 250);
+        --bg-card: oklch(22% 0.01 250);
+        --text-main: oklch(90% 0.01 250);
+        --text-muted: oklch(65% 0.01 250);
+        --glass-bg: oklch(22% 0.01 250 / var(--glass-opacity, 0.85));
+    }
+    
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-main);
+    }
+    
+    .course-card,
+    .service-card,
+    .quote-box,
+    .popular-course-card {
+        background: var(--bg-card);
+        border-color: oklch(100% 0 0 / 0.1);
+    }
+    
+    .quote-box p,
+    .course-info span {
+        color: var(--text-muted);
+    }
+    
+    #header {
+        background: var(--glass-bg) !important;
+        border-bottom: 1px solid oklch(100% 0 0 / 0.1);
+    }
+}
+</style>
+
+{# NO EXTERNAL FONT LOADING - Fonts are self-hosted via @font-face above (GDPR Compliant) #}

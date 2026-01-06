@@ -1,0 +1,4 @@
+[27-Nov-2025 06:44:53 UTC] PHP Warning:  Constant PASSWORD_DEFAULT already defined in /home/daarulqurannet/public_html/syed/update_pass.php on line 17
+[18-Dec-2025 08:08:13 UTC] PHP Warning:  Constant PASSWORD_DEFAULT already defined in /home/daarulqurannet/public_html/syed/update_pass.php on line 17
+[18-Dec-2025 08:08:43 UTC] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[18-Dec-2025 08:08:43 UTC] PHP Fatal error:  Failed opening required '/home/daarulqurannet/public_html/syed/update_pass.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in Unknown on line 0

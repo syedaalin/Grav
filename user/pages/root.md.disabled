@@ -1,0 +1,15 @@
+---
+routable:
+    - false
+    - false
+    - false
+permissions:
+    inherit: true
+login:
+    visibility_requires_access: true
+access:
+    site: true
+seo:
+    noindex: false
+---
+

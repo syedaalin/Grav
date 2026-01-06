@@ -1,0 +1,9 @@
+version: '1.2'
+timestamp: 1767659879
+count: 1
+index:
+  ahmed:
+    storage_key: ahmed
+    storage_timestamp: 1767659879
+    key: ahmed
+    email: syedaalin@gmail.com

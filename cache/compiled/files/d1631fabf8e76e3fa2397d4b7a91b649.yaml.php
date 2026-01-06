@@ -1,0 +1,399 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/Users/syedaalin/Documents/Grav/user/themes/my-quark/blueprints.yaml',
+    'modified' => 1767670176,
+    'size' => 10227,
+    'data' => [
+        'name' => 'My Quark',
+        'version' => '0.4.0',
+        'description' => 'Fully dynamic child theme of Quark (2026 Edition)',
+        'icon' => 'empire',
+        'author' => [
+            'name' => 'Aabtaab',
+            'email' => 'info@aabtaab.com'
+        ],
+        'homepage' => 'https://github.com/getgrav/grav-theme-quark',
+        'demo' => 'http://demo.getgrav.org/quark-skeleton',
+        'keywords' => 'quark, theme, core, modern, fast, responsive, html5, css3',
+        'bugs' => 'https://github.com/getgrav/grav-theme-quark/issues',
+        'license' => 'MIT',
+        'dependencies' => [
+            0 => [
+                'name' => 'grav',
+                'version' => '>=1.6.0'
+            ],
+            1 => [
+                'name' => 'quark',
+                'version' => '>=2.0.0'
+            ]
+        ],
+        'form' => [
+            'validation' => 'loose',
+            'fields' => [
+                'appearance_tab' => [
+                    'type' => 'tab',
+                    'title' => 'Global Design',
+                    'fields' => [
+                        'colors_section' => [
+                            'type' => 'section',
+                            'title' => 'Brand Palette',
+                            'underline' => true
+                        ],
+                        'brand_primary' => [
+                            'type' => 'color',
+                            'label' => 'Primary Color',
+                            'default' => '#3b4252',
+                            'help' => 'Main brand color.',
+                            'validate' => [
+                                'check' => true
+                            ]
+                        ],
+                        'brand_secondary' => [
+                            'type' => 'color',
+                            'label' => 'Secondary Color',
+                            'default' => '#88c0d0',
+                            'help' => 'Action color (links, buttons).'
+                        ],
+                        'brand_accent' => [
+                            'type' => 'color',
+                            'label' => 'Accent Color',
+                            'default' => '#bf616a',
+                            'help' => 'Highlights and alerts.'
+                        ],
+                        'bg_section' => [
+                            'type' => 'section',
+                            'title' => 'Background Styling',
+                            'underline' => true
+                        ],
+                        'background_texture' => [
+                            'type' => 'select',
+                            'label' => 'Texture Pattern',
+                            'default' => 'none',
+                            'options' => [
+                                'none' => 'None (Solid Color)',
+                                'noise' => 'Film Grain (Premium Noise)',
+                                'optgroup.symbols' => 'Geometric Symbols',
+                                'plus' => 'Plus Grid (+)',
+                                'cross' => 'Cross Pattern (x)',
+                                'circle' => 'Hollow Circles (o)',
+                                'triangle' => 'Triangles (∆)',
+                                'optgroup.patterns' => 'Standard Patterns',
+                                'dots' => 'Micro-Dots (Clean)',
+                                'grid' => 'Graph Paper (Technical)',
+                                'lines' => 'Diagonal Lines (Modern)',
+                                'mesh' => 'Aurora Mesh (Gradient)'
+                            ],
+                            'help' => 'Applies a lightweight pattern over the background color.'
+                        ],
+                        'texture_color' => [
+                            'type' => 'color',
+                            'label' => 'Pattern Color',
+                            'default' => '#000000',
+                            'help' => 'Use Black for light themes, White for dark themes, or Brand Color for tint.'
+                        ],
+                        'texture_opacity' => [
+                            'type' => 'range',
+                            'label' => 'Texture Intensity',
+                            'default' => 0.05,
+                            'min' => 0.01,
+                            'max' => 0.2,
+                            'step' => 0.01,
+                            'help' => 'Keep low (0.03 - 0.08) for a subtle effect.'
+                        ],
+                        'texture_animate' => [
+                            'type' => 'toggle',
+                            'label' => 'Animate Texture',
+                            'default' => 0,
+                            'help' => 'Adds a slow breathing/movement effect to the pattern.',
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ],
+                        'vignette_overlay' => [
+                            'type' => 'toggle',
+                            'label' => 'Vignette Overlay',
+                            'default' => 0,
+                            'help' => 'Darkens the edges of the screen to focus attention.',
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ],
+                        'typo_section' => [
+                            'type' => 'section',
+                            'title' => 'Typography System',
+                            'underline' => true
+                        ],
+                        'font_primary' => [
+                            'type' => 'select',
+                            'label' => 'Body Font',
+                            'default' => 'Outfit',
+                            'options' => [
+                                'optgroup.sans' => 'Sans Serif',
+                                'Outfit' => 'Outfit',
+                                'Roboto' => 'Roboto',
+                                'Open Sans' => 'Open Sans',
+                                'Inter' => 'Inter',
+                                'Lato' => 'Lato',
+                                'Montserrat' => 'Montserrat',
+                                'Poppins' => 'Poppins',
+                                'optgroup.serif' => 'Serif',
+                                'Merriweather' => 'Merriweather',
+                                'Playfair Display' => 'Playfair Display',
+                                'Lora' => 'Lora'
+                            ]
+                        ],
+                        'font_header' => [
+                            'type' => 'select',
+                            'label' => 'Heading Font (Optional)',
+                            'default' => '',
+                            'options' => [
+                                '' => 'Use Body Font',
+                                'optgroup.display' => 'Display',
+                                'Bebas Neue' => 'Bebas Neue',
+                                'Lobster' => 'Lobster',
+                                'optgroup.serif' => 'Serif',
+                                'Playfair Display' => 'Playfair Display',
+                                'Merriweather' => 'Merriweather'
+                            ]
+                        ],
+                        'font_size_base' => [
+                            'type' => 'range',
+                            'label' => 'Base Size (px)',
+                            'default' => 16,
+                            'min' => 12,
+                            'max' => 20,
+                            'step' => 1,
+                            'append' => 'px'
+                        ],
+                        'heading_scale' => [
+                            'type' => 'range',
+                            'label' => 'Type Scale',
+                            'default' => 1.2,
+                            'min' => 1.0,
+                            'max' => 1.5,
+                            'step' => 0.05,
+                            'append' => 'x'
+                        ],
+                        'ui_section' => [
+                            'type' => 'section',
+                            'title' => 'Shapes & UI Effects',
+                            'underline' => true
+                        ],
+                        'radius_main' => [
+                            'type' => 'select',
+                            'label' => 'Global Corner Style',
+                            'default' => '12px',
+                            'options' => [
+                                '0px' => 'Sharp (Square)',
+                                '6px' => 'Tight (6px)',
+                                '12px' => 'Soft (12px)',
+                                '20px' => 'Modern (20px)',
+                                '32px' => 'Friendly (32px)',
+                                '999px' => 'Full / Pill (Circular)'
+                            ]
+                        ],
+                        'glass_opacity' => [
+                            'type' => 'range',
+                            'label' => 'Glass Effect Strength',
+                            'default' => 0.85,
+                            'min' => 0.1,
+                            'max' => 1.0,
+                            'step' => 0.05,
+                            'help' => 'Lower value = more transparent headers/cards.'
+                        ],
+                        'layout_section' => [
+                            'type' => 'section',
+                            'title' => 'Layout & Spacing',
+                            'underline' => true
+                        ],
+                        'container_width' => [
+                            'type' => 'range',
+                            'label' => 'Max Content Width',
+                            'default' => 1200,
+                            'min' => 800,
+                            'max' => 1600,
+                            'step' => 50,
+                            'append' => 'px'
+                        ],
+                        'spacing_scale' => [
+                            'type' => 'range',
+                            'label' => 'Spacing Density',
+                            'default' => 1.0,
+                            'min' => 0.5,
+                            'max' => 2.0,
+                            'step' => 0.1,
+                            'append' => 'x',
+                            'help' => 'Adjusts whitespace globally (0.8 = Compact, 1.5 = Spacious).'
+                        ]
+                    ]
+                ],
+                'header_tab' => [
+                    'type' => 'tab',
+                    'title' => 'Header',
+                    'fields' => [
+                        'header_section' => [
+                            'type' => 'section',
+                            'title' => 'Identity & Navigation',
+                            'underline' => true
+                        ],
+                        'brand_text' => [
+                            'type' => 'text',
+                            'label' => 'Brand Name (Text)',
+                            'placeholder' => 'My Website'
+                        ],
+                        'brand_text_show' => [
+                            'type' => 'toggle',
+                            'label' => 'Show Brand Name',
+                            'default' => 0,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ],
+                        'logo' => [
+                            'type' => 'file',
+                            'label' => 'Logo Image',
+                            'destination' => 'theme://images/logo',
+                            'multiple' => false,
+                            'accept' => [
+                                0 => 'image/*'
+                            ]
+                        ],
+                        'logo_height' => [
+                            'type' => 'range',
+                            'label' => 'Logo Height (Desktop)',
+                            'default' => 48,
+                            'min' => 20,
+                            'max' => 100,
+                            'step' => 2,
+                            'append' => 'px'
+                        ],
+                        'logo_height_mobile' => [
+                            'type' => 'range',
+                            'label' => 'Logo Height (Mobile)',
+                            'default' => 32,
+                            'min' => 20,
+                            'max' => 80,
+                            'step' => 2,
+                            'append' => 'px'
+                        ],
+                        'behavior_section' => [
+                            'type' => 'section',
+                            'title' => 'Behavior',
+                            'underline' => true
+                        ],
+                        'header-fixed' => [
+                            'type' => 'toggle',
+                            'label' => 'THEME_QUARK.ADMIN.HEADER_FIXED',
+                            'default' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ]
+                    ]
+                ],
+                'footer_tab' => [
+                    'type' => 'tab',
+                    'title' => 'Footer',
+                    'fields' => [
+                        'footer_style_section' => [
+                            'type' => 'section',
+                            'title' => 'Styling',
+                            'underline' => true
+                        ],
+                        'footer_bg' => [
+                            'type' => 'color',
+                            'label' => 'Background Color',
+                            'default' => '#0f0f10'
+                        ],
+                        'footer_text' => [
+                            'type' => 'color',
+                            'label' => 'Text Color',
+                            'default' => '#ffffff'
+                        ],
+                        'footer_accent' => [
+                            'type' => 'color',
+                            'label' => 'Accent / Link Color',
+                            'default' => '#d4af37'
+                        ],
+                        'contact_section' => [
+                            'type' => 'section',
+                            'title' => 'Contact Info',
+                            'underline' => true
+                        ],
+                        'contact_address' => [
+                            'type' => 'text',
+                            'label' => 'Address',
+                            'default' => 'R-591 Block 20 F B Area Karachi.'
+                        ],
+                        'contact_email' => [
+                            'type' => 'email',
+                            'label' => 'Email',
+                            'default' => 'edu.aabtaab@gmail.com'
+                        ],
+                        'contact_phone' => [
+                            'type' => 'text',
+                            'label' => 'Phone',
+                            'default' => '+92 302 245 2000'
+                        ],
+                        'social_section' => [
+                            'type' => 'section',
+                            'title' => 'Social Media',
+                            'underline' => true
+                        ],
+                        'social_text' => [
+                            'type' => 'toggle',
+                            'label' => 'Show Text Labels',
+                            'default' => 0,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ],
+                        'social_links' => [
+                            'type' => 'list',
+                            'label' => 'Accounts',
+                            'fields' => [
+                                '.network' => [
+                                    'type' => 'select',
+                                    'label' => 'Network',
+                                    'options' => [
+                                        'facebook' => 'Facebook',
+                                        'instagram' => 'Instagram',
+                                        'youtube' => 'YouTube',
+                                        'twitter' => 'X (formerly Twitter)',
+                                        'linkedin' => 'LinkedIn',
+                                        'googlemaps' => 'Google Maps'
+                                    ]
+                                ],
+                                '.url' => [
+                                    'type' => 'text',
+                                    'label' => 'URL'
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                'configuration_tab' => [
+                    'type' => 'tab',
+                    'title' => 'Advanced',
+                    'fields' => [
+                        'production-mode' => [
+                            'type' => 'toggle',
+                            'label' => 'Production Mode',
+                            'default' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                0 => 'PLUGIN_ADMIN.DISABLED'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+];

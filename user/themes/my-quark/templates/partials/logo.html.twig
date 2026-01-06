@@ -1,0 +1,14 @@
+{% set logo = theme_var('logo') %}
+{% set brand = theme_var('brand_text')|default(site.title) %}
+{% set show_text = theme_var('brand_text_show') %}
+
+<a href="{{ home_url }}" class="navbar-brand mr-10" style="display: flex; align-items: center; gap: 12px;">
+    {% if logo %}
+      {% set logo_file = (logo|first).name %}
+      <img src="{{ url('theme://images/logo/' ~ logo_file)  }}" alt="{{ brand }}" />
+    {% endif %}
+
+    {% if show_text or not logo %}
+      <span class="brand-text">{{ brand }}</span>
+    {% endif %}
+</a>

@@ -1,0 +1,87 @@
+{# JSON-LD Structured Data for SEO #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "{{ site.title|e('html') }}",
+  "description": "{{ site.metadata.description|default('Accessible and affordable Shia Islamic online courses and religious services')|e('html') }}",
+  "url": "{{ uri.rootUrl(true) }}",
+  "logo": "{{ url('theme://images/logo/' ~ theme_var('logo'), true) }}",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "{{ theme_var('contact_phone')|default('+92 302 245 2000') }}",
+    "email": "{{ theme_var('contact_email')|default('edu.aabtaab@gmail.com') }}",
+    "contactType": "Customer Service",
+    "availableLanguage": ["English", "Urdu"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ theme_var('contact_address')|default('Address not set') }}"
+  },
+  "sameAs": [
+    {% set social = theme_var('social_links') %}
+    {% if social %}
+      {% for item in social %}
+        "{{ item.url }}"{% if not loop.last %},{% endif %}
+      {% endfor %}
+    {% endif %}
+  ]
+}
+</script>
+
+{% if page.template == 'courses' %}
+{# Course Listing Schema #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ page.title|e('html') }}",
+  "description": "{{ page.metadata.description|e('html') }}",
+  "itemListElement": [
+    {% set courses = page.children %}
+    {% for course in courses %}
+    {
+      "@type": "Course",
+      "name": "{{ course.title|e('html') }}",
+      "description": "{{ course.header.short_description|e('html') }}",
+      "provider": {
+        "@type": "Organization",
+        "name": "{{ site.title|e('html') }}"
+      }{% if course.header.instructor %},
+      "instructor": {
+        "@type": "Person",
+        "name": "{{ course.header.instructor|e('html') }}"
+      }{% endif %}{% if course.header.duration %},
+      "timeRequired": "{{ course.header.duration|e('html') }}"{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% if page.header.instructor %}
+{# Individual Course Schema #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "{{ page.title|e('html') }}",
+  "description": "{{ page.header.short_description|e('html') }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "{{ site.title|e('html') }}",
+    "url": "{{ uri.rootUrl(true) }}"
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "{{ page.header.instructor|e('html') }}"
+  }{% if page.header.duration %},
+  "timeRequired": "{{ page.header.duration|e('html') }}"{% endif %}{% if page.header.level %},
+  "educationalLevel": "{{ page.header.level|e('html') }}"{% endif %},
+  "inLanguage": "en",
+  "courseMode": "online",
+  "availableLanguage": ["English", "Urdu"]
+}
+</script>
+{% endif %}
