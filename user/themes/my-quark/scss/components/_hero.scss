@@ -1,0 +1,70 @@
+/* Hero Builder Styles (2026) */
+.hero-builder {
+    position: relative;
+    padding: var(--space-unit) 0;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    color: var(--text-inverse, #fff);
+    overflow: hidden;
+
+    &.hero-immersive {
+        min-height: 100vh;
+    }
+
+    &.hero-split {
+        /* Container Query Logic would go here for finding split point */
+        @container (min-width: 900px) {
+            .hero-content {
+                max-width: 50%;
+                text-align: left;
+            }
+        }
+    }
+    
+    &.hero-minimal {
+        min-height: 250px;
+        background: var(--brand-primary, #3b4252);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: var(--overlay-opacity, 0.3);
+    z-index: 1;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    
+    h1 { margin-bottom: 0.5rem; }
+    p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem; }
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    .hero-split & {
+        justify-content: flex-start;
+    }
+}

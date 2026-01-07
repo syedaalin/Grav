@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1767673996,
-    'checksum' => '429bf93aab7c791673d8b6b97918b184',
+    'timestamp' => 1767759312,
+    'checksum' => 'aedc2829ac428f58b1cb3668d5286656',
     'files' => [
         'system/blueprints/config' => [
             'backups' => [
@@ -39,6 +39,10 @@ return [
                 'file' => 'user/plugins/markdown-notices/blueprints.yaml',
                 'modified' => 1762876910
             ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/blueprints.yaml',
+                'modified' => 1707084214
+            ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/blueprints.yaml',
                 'modified' => 1766923054
@@ -50,6 +54,10 @@ return [
             'plugins/relatedpages' => [
                 'file' => 'user/plugins/relatedpages/blueprints.yaml',
                 'modified' => 1691710516
+            ],
+            'plugins/simplesearch' => [
+                'file' => 'user/plugins/simplesearch/blueprints.yaml',
+                'modified' => 1661506352
             ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
@@ -63,9 +71,21 @@ return [
                 'file' => 'user/plugins/problems/blueprints.yaml',
                 'modified' => 1762876910
             ],
+            'plugins/feed' => [
+                'file' => 'user/plugins/feed/blueprints.yaml',
+                'modified' => 1695707474
+            ],
+            'plugins/seo' => [
+                'file' => 'user/plugins/seo/blueprints.yaml',
+                'modified' => 1536888544
+            ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/blueprints.yaml',
                 'modified' => 1762876910
+            ],
+            'plugins/breadcrumbs' => [
+                'file' => 'user/plugins/breadcrumbs/blueprints.yaml',
+                'modified' => 1658743204
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/blueprints.yaml',
@@ -83,7 +103,7 @@ return [
             ],
             'themes/my-quark' => [
                 'file' => 'user/themes/my-quark/blueprints.yaml',
-                'modified' => 1767670176
+                'modified' => 1767738989
             ]
         ]
     ],
@@ -3214,6 +3234,55 @@ return [
                 'name' => 'plugins.markdown-notices.level_classes',
                 'validation' => 'strict'
             ],
+            'plugins.pagination' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.pagination.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.pagination.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.pagination.delta' => [
+                'type' => 'number',
+                'size' => 'x-small',
+                'label' => 'PLUGIN_PAGINATION.DELTA',
+                'default' => 0,
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 0
+                ],
+                'name' => 'plugins.pagination.delta',
+                'validation' => 'strict'
+            ],
+            'plugins.pagination.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_PAGINATION.BUILTIN_CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.pagination.built_in_css',
+                'validation' => 'strict'
+            ],
             'plugins.form' => [
                 'type' => '_root',
                 'form_field' => false,
@@ -4032,6 +4101,211 @@ return [
                 'value_only' => true,
                 'name' => 'plugins.relatedpages.taxonomy_match.taxonomy_content.score_scale',
                 'validation' => 'loose'
+            ],
+            'plugins.simplesearch' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.simplesearch.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.simplesearch.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.search_content' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_CONTENT',
+                'default' => 'rendered',
+                'options' => [
+                    'rendered' => 'PLUGIN_SIMPLESEARCH.RENDERED_CONTENT',
+                    'raw' => 'PLUGIN_SIMPLESEARCH.RAW_CONTENT'
+                ],
+                'name' => 'plugins.simplesearch.search_content',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_SIMPLESEARCH.BUILTIN_CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.simplesearch.built_in_css',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.built_in_js' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_SIMPLESEARCH.BUILTIN_JS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.simplesearch.built_in_js',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.display_button' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_SIMPLESEARCH.DISPLAY_SEARCH_BUTTON',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.simplesearch.display_button',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.ignore_accented_characters' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_SIMPLESEARCH.IGNORE_ACCENDED_CHARACTERS',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.simplesearch.ignore_accented_characters',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.min_query_length' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'PLUGIN_SIMPLESEARCH.MIN_QUERY_LENGTH',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 0
+                ],
+                'name' => 'plugins.simplesearch.min_query_length',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.route' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_PAGE_ROUTE',
+                'default' => '/random',
+                'name' => 'plugins.simplesearch.route',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.searchable_types' => [
+                'type' => 'checkboxes',
+                'label' => 'PLUGIN_SIMPLESEARCH.SEARCHABLE_TYPES',
+                'description' => 'PLUGIN_SIMPLESEARCH.SEARCHABLE_TYPES_DESCRIPTION',
+                'options' => [
+                    'title' => 'Title',
+                    'content' => 'Content',
+                    'header' => 'Header',
+                    'taxonomy' => 'Taxonomy'
+                ],
+                'use' => 'keys',
+                'name' => 'plugins.simplesearch.searchable_types',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.header_keys_ignored' => [
+                'type' => 'selectize',
+                'size' => 'large',
+                'label' => 'PLUGIN_SIMPLESEARCH.HEADER_KEYS_IGNORED',
+                'classes' => 'fancy',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.simplesearch.header_keys_ignored',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.template' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_PAGE_TEMPLATE',
+                'default' => 'simplesearch_results',
+                'name' => 'plugins.simplesearch.template',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.filters' => [
+                'type' => '_parent',
+                'name' => 'plugins.simplesearch.filters',
+                'form_field' => false
+            ],
+            'plugins.simplesearch.filters.category' => [
+                'type' => 'selectize',
+                'label' => 'PLUGIN_SIMPLESEARCH.CATEGORY_FILTER',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.simplesearch.filters.category',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.filter_combinator' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'PLUGIN_SIMPLESEARCH.FILTER_COMBINATOR',
+                'default' => 'and',
+                'options' => [
+                    'and' => 'PLUGIN_SIMPLESEARCH.AND_COMBINATOR',
+                    'or' => 'PLUGIN_SIMPLESEARCH.OR_COMBINATOR'
+                ],
+                'name' => 'plugins.simplesearch.filter_combinator',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.order' => [
+                'type' => '_parent',
+                'name' => 'plugins.simplesearch.order',
+                'form_field' => false
+            ],
+            'plugins.simplesearch.order.by' => [
+                'type' => 'select',
+                'size' => 'long',
+                'classes' => 'fancy',
+                'label' => 'PLUGIN_ADMIN.DEFAULT_ORDERING',
+                'options' => [
+                    'default' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_DEFAULT',
+                    'folder' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_FOLDER',
+                    'title' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_TITLE',
+                    'date' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_DATE'
+                ],
+                'name' => 'plugins.simplesearch.order.by',
+                'validation' => 'strict'
+            ],
+            'plugins.simplesearch.order.dir' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.DEFAULT_ORDER_DIRECTION',
+                'highlight' => 'asc',
+                'default' => 'desc',
+                'options' => [
+                    'asc' => 'PLUGIN_ADMIN.ASCENDING',
+                    'desc' => 'PLUGIN_ADMIN.DESCENDING'
+                ],
+                'name' => 'plugins.simplesearch.order.dir',
+                'validation' => 'strict'
             ],
             'plugins.admin' => [
                 'type' => '_root',
@@ -5362,6 +5636,285 @@ return [
                 'name' => 'plugins.problems.built_in_css',
                 'validation' => 'strict'
             ],
+            'plugins.feed' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.feed.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.feed.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.limit' => [
+                'type' => 'range',
+                'label' => 'Feed count',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 10,
+                    'max' => 1000
+                ],
+                'name' => 'plugins.feed.limit',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'name' => 'plugins.feed.title',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.description' => [
+                'type' => 'textarea',
+                'label' => 'Description',
+                'name' => 'plugins.feed.description',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.length' => [
+                'type' => 'range',
+                'label' => 'Feed Length (0 for full-text feed)',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 0,
+                    'max' => 10000
+                ],
+                'name' => 'plugins.feed.length',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.enable_json_feed' => [
+                'type' => 'toggle',
+                'label' => 'JSON feed support',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.feed.enable_json_feed',
+                'validation' => 'strict'
+            ],
+            'plugins.feed.show_last_modified' => [
+                'type' => 'toggle',
+                'label' => 'Show last modified date',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.feed.show_last_modified',
+                'validation' => 'strict'
+            ],
+            'plugins.seo' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.seo.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.facebookid' => [
+                'type' => 'text',
+                'label' => 'Facebook App ID',
+                'name' => 'plugins.seo.facebookid',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.twitterid' => [
+                'type' => 'text',
+                'label' => 'Twitter ID',
+                'name' => 'plugins.seo.twitterid',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.twitter_default' => [
+                'type' => 'toggle',
+                'label' => 'On page creation, enable twitter metadata?',
+                'default' => 1,
+                'highlight' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'plugins.seo.twitter_default',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.facebook_default' => [
+                'type' => 'toggle',
+                'label' => 'On page creation, enable facebook metadata?',
+                'default' => 1,
+                'highlight' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'plugins.seo.facebook_default',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.article' => [
+                'type' => 'toggle',
+                'label' => 'Enable Article Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.article',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.event' => [
+                'type' => 'toggle',
+                'label' => 'Enable Event Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.event',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.restaurant' => [
+                'type' => 'toggle',
+                'label' => 'Enable Restaurant Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.restaurant',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.musicevent' => [
+                'type' => 'toggle',
+                'label' => 'Enable Music Event Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.musicevent',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.customjson' => [
+                'type' => 'toggle',
+                'label' => 'Enable Custom Json Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.customjson',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.person' => [
+                'type' => 'toggle',
+                'label' => 'Enable Person Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.person',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.organization' => [
+                'type' => 'toggle',
+                'label' => 'Enable Organization Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.organization',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.musicalbum' => [
+                'type' => 'toggle',
+                'label' => 'Enable Music Album Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.musicalbum',
+                'validation' => 'strict'
+            ],
+            'plugins.seo.product' => [
+                'type' => 'toggle',
+                'label' => 'Enable Product Microdata',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.seo.product',
+                'validation' => 'strict'
+            ],
             'plugins.error' => [
                 'type' => '_root',
                 'form_field' => false,
@@ -5395,6 +5948,119 @@ return [
                 'label' => 'PLUGIN_ERROR.ROUTE_404',
                 'default' => '/error',
                 'name' => 'plugins.error.routes.404',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.breadcrumbs.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.show_all' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_BREADCRUMBS.SHOW_WITH_ONE_ITEM',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.show_all',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_BREADCRUMBS.BUILTIN_CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.built_in_css',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.include_home' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_BREADCRUMBS.INCLUDE_HOME',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.include_home',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.include_current' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_BREADCRUMBS.INCLUDE_CURRENT_PAGE',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.include_current',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.icon_home' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGIN_BREADCRUMBS.ICON_HOME',
+                'default' => '',
+                'name' => 'plugins.breadcrumbs.icon_home',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.icon_divider_classes' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGIN_BREADCRUMBS.ICON_DIVIDER_CLASSES',
+                'default' => 'fa fa-angle-right',
+                'name' => 'plugins.breadcrumbs.icon_divider_classes',
+                'validation' => 'strict'
+            ],
+            'plugins.breadcrumbs.link_trailing' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_BREADCRUMBS.LINK_TRAILING',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.breadcrumbs.link_trailing',
                 'validation' => 'strict'
             ],
             'plugins.login' => [
@@ -6271,91 +6937,59 @@ return [
                     'validation' => 'loose'
                 ]
             ],
-            'themes.my-quark.brand_primary' => [
+            'themes.my-quark.token_color_primary' => [
                 'type' => 'color',
                 'label' => 'Primary Color',
                 'default' => '#3b4252',
                 'validate' => [
                     'check' => true
                 ],
-                'name' => 'themes.my-quark.brand_primary',
+                'name' => 'themes.my-quark.token_color_primary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_secondary' => [
+            'themes.my-quark.token_color_secondary' => [
                 'type' => 'color',
                 'label' => 'Secondary Color',
                 'default' => '#88c0d0',
-                'name' => 'themes.my-quark.brand_secondary',
+                'name' => 'themes.my-quark.token_color_secondary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_accent' => [
+            'themes.my-quark.token_color_accent' => [
                 'type' => 'color',
                 'label' => 'Accent Color',
                 'default' => '#bf616a',
-                'name' => 'themes.my-quark.brand_accent',
+                'name' => 'themes.my-quark.token_color_accent',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_texture' => [
-                'type' => 'select',
-                'label' => 'Texture Pattern',
-                'default' => 'none',
-                'options' => [
-                    'none' => 'None (Solid Color)',
-                    'noise' => 'Film Grain (Premium Noise)',
-                    'optgroup.symbols' => 'Geometric Symbols',
-                    'plus' => 'Plus Grid (+)',
-                    'cross' => 'Cross Pattern (x)',
-                    'circle' => 'Hollow Circles (o)',
-                    'triangle' => 'Triangles (∆)',
-                    'optgroup.patterns' => 'Standard Patterns',
-                    'dots' => 'Micro-Dots (Clean)',
-                    'grid' => 'Graph Paper (Technical)',
-                    'lines' => 'Diagonal Lines (Modern)',
-                    'mesh' => 'Aurora Mesh (Gradient)'
-                ],
-                'name' => 'themes.my-quark.background_texture',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.texture_color' => [
+            'themes.my-quark.token_color_bg_body' => [
                 'type' => 'color',
-                'label' => 'Pattern Color',
-                'default' => '#000000',
-                'name' => 'themes.my-quark.texture_color',
+                'label' => 'Body Background',
+                'default' => '#eceff4',
+                'name' => 'themes.my-quark.token_color_bg_body',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.texture_opacity' => [
-                'type' => 'range',
-                'label' => 'Texture Intensity',
-                'default' => 0.05,
-                'min' => 0.01,
-                'max' => 0.2,
-                'step' => 0.01,
-                'name' => 'themes.my-quark.texture_opacity',
+            'themes.my-quark.token_color_bg_card' => [
+                'type' => 'color',
+                'label' => 'Card / Surface Background',
+                'default' => '#ffffff',
+                'name' => 'themes.my-quark.token_color_bg_card',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.texture_animate' => [
-                'type' => 'toggle',
-                'label' => 'Animate Texture',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.texture_animate',
+            'themes.my-quark.token_color_text_main' => [
+                'type' => 'color',
+                'label' => 'High Contrast Text',
+                'default' => '#2e3440',
+                'name' => 'themes.my-quark.token_color_text_main',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.vignette_overlay' => [
-                'type' => 'toggle',
-                'label' => 'Vignette Overlay',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.vignette_overlay',
+            'themes.my-quark.token_color_text_muted' => [
+                'type' => 'color',
+                'label' => 'Low Contrast Text',
+                'default' => '#4c566a',
+                'name' => 'themes.my-quark.token_color_text_muted',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.font_primary' => [
+            'themes.my-quark.token_font_body' => [
                 'type' => 'select',
                 'label' => 'Body Font',
                 'default' => 'Outfit',
@@ -6373,15 +7007,15 @@ return [
                     'Playfair Display' => 'Playfair Display',
                     'Lora' => 'Lora'
                 ],
-                'name' => 'themes.my-quark.font_primary',
+                'name' => 'themes.my-quark.token_font_body',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.font_header' => [
+            'themes.my-quark.token_font_header' => [
                 'type' => 'select',
-                'label' => 'Heading Font (Optional)',
-                'default' => '',
+                'label' => 'Header Font',
+                'default' => 'Outfit',
                 'options' => [
-                    '' => 'Use Body Font',
+                    'Outfit' => 'Outfit (Default)',
                     'optgroup.display' => 'Display',
                     'Bebas Neue' => 'Bebas Neue',
                     'Lobster' => 'Lobster',
@@ -6389,34 +7023,120 @@ return [
                     'Playfair Display' => 'Playfair Display',
                     'Merriweather' => 'Merriweather'
                 ],
-                'name' => 'themes.my-quark.font_header',
+                'name' => 'themes.my-quark.token_font_header',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.font_size_base' => [
+            'themes.my-quark.token_typo_fluid' => [
+                'type' => 'toggle',
+                'label' => 'Fluid Scaling (Clamp)',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.token_typo_fluid',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_typo_min_size' => [
                 'type' => 'range',
-                'label' => 'Base Size (px)',
+                'label' => 'Min Font Size (Mobile)',
                 'default' => 16,
-                'min' => 12,
-                'max' => 20,
-                'step' => 1,
+                'min' => 14,
+                'max' => 18,
+                'step' => 0.5,
                 'append' => 'px',
-                'name' => 'themes.my-quark.font_size_base',
+                'name' => 'themes.my-quark.token_typo_min_size',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.heading_scale' => [
+            'themes.my-quark.token_typo_max_size' => [
                 'type' => 'range',
-                'label' => 'Type Scale',
+                'label' => 'Max Font Size (Desktop)',
+                'default' => 18,
+                'min' => 16,
+                'max' => 24,
+                'step' => 0.5,
+                'append' => 'px',
+                'name' => 'themes.my-quark.token_typo_max_size',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_typo_scale' => [
+                'type' => 'range',
+                'label' => 'Type Scale Factor',
+                'default' => 1.25,
+                'min' => 1.067,
+                'max' => 1.618,
+                'step' => 0.001,
+                'append' => 'x',
+                'name' => 'themes.my-quark.token_typo_scale',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_typo_lh_body' => [
+                'type' => 'range',
+                'label' => 'Body Line Height',
+                'default' => 1.6,
+                'min' => 1.4,
+                'max' => 2.0,
+                'step' => 0.05,
+                'name' => 'themes.my-quark.token_typo_lh_body',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_typo_lh_heading' => [
+                'type' => 'range',
+                'label' => 'Heading Line Height',
                 'default' => 1.2,
                 'min' => 1.0,
-                'max' => 1.5,
+                'max' => 1.4,
                 'step' => 0.05,
-                'append' => 'x',
-                'name' => 'themes.my-quark.heading_scale',
+                'name' => 'themes.my-quark.token_typo_lh_heading',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.radius_main' => [
+            'themes.my-quark.token_typo_ls_heading' => [
+                'type' => 'range',
+                'label' => 'Heading Tracking',
+                'default' => -0.02,
+                'min' => -0.1,
+                'max' => 0.1,
+                'step' => 0.01,
+                'append' => 'em',
+                'name' => 'themes.my-quark.token_typo_ls_heading',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_typo_measure' => [
+                'type' => 'range',
+                'label' => 'Max Line Measure',
+                'default' => 65,
+                'min' => 45,
+                'max' => 85,
+                'step' => 1,
+                'append' => 'ch',
+                'name' => 'themes.my-quark.token_typo_measure',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_layout_width' => [
+                'type' => 'range',
+                'label' => 'Website Max Width',
+                'default' => 1200,
+                'min' => 800,
+                'max' => 1600,
+                'step' => 50,
+                'append' => 'px',
+                'name' => 'themes.my-quark.token_layout_width',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.token_layout_spacing' => [
+                'type' => 'range',
+                'label' => 'Spacing Multiplier',
+                'default' => 1.0,
+                'min' => 0.5,
+                'max' => 2.0,
+                'step' => 0.1,
+                'append' => 'x',
+                'name' => 'themes.my-quark.token_layout_spacing',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.physic_radius_main' => [
                 'type' => 'select',
-                'label' => 'Global Corner Style',
+                'label' => 'Corner Roundness',
                 'default' => '12px',
                 'options' => [
                     '0px' => 'Sharp (Square)',
@@ -6426,39 +7146,99 @@ return [
                     '32px' => 'Friendly (32px)',
                     '999px' => 'Full / Pill (Circular)'
                 ],
-                'name' => 'themes.my-quark.radius_main',
+                'name' => 'themes.my-quark.physic_radius_main',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.glass_opacity' => [
+            'themes.my-quark.physic_neo_strength' => [
                 'type' => 'range',
-                'label' => 'Glass Effect Strength',
+                'label' => 'Soft 3D Depth (Neomorphism)',
+                'default' => 0,
+                'min' => 0,
+                'max' => 1.0,
+                'step' => 0.1,
+                'name' => 'themes.my-quark.physic_neo_strength',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.physic_neo_lightSource' => [
+                'type' => 'select',
+                'label' => 'Global Light Source',
+                'default' => 'top-left',
+                'options' => [
+                    'top-left' => 'Top Left (Northeast)',
+                    'top-right' => 'Top Right (Northwest)',
+                    'top' => 'Overhead (Zenith)'
+                ],
+                'name' => 'themes.my-quark.physic_neo_lightSource',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.physic_glass_opacity' => [
+                'type' => 'range',
+                'label' => 'Glass Transparency',
                 'default' => 0.85,
                 'min' => 0.1,
                 'max' => 1.0,
                 'step' => 0.05,
-                'name' => 'themes.my-quark.glass_opacity',
+                'name' => 'themes.my-quark.physic_glass_opacity',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.container_width' => [
+            'themes.my-quark.physic_glass_blur' => [
                 'type' => 'range',
-                'label' => 'Max Content Width',
-                'default' => 1200,
-                'min' => 800,
-                'max' => 1600,
-                'step' => 50,
+                'label' => 'Glass Blur Intensity',
+                'default' => 20,
+                'min' => 0,
+                'max' => 50,
+                'step' => 1,
                 'append' => 'px',
-                'name' => 'themes.my-quark.container_width',
+                'name' => 'themes.my-quark.physic_glass_blur',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.spacing_scale' => [
-                'type' => 'range',
-                'label' => 'Spacing Density',
-                'default' => 1.0,
-                'min' => 0.5,
-                'max' => 2.0,
-                'step' => 0.1,
-                'append' => 'x',
-                'name' => 'themes.my-quark.spacing_scale',
+            'themes.my-quark.physic_vignette_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Vignette Effect (Dark Edges)',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.physic_vignette_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.physic_eco_mode' => [
+                'type' => 'toggle',
+                'label' => 'Force Eco Mode (Saves Energy)',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.physic_eco_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.physic_focus_mode' => [
+                'type' => 'toggle',
+                'label' => 'Cognitive Focus Mode',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.physic_focus_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.logo' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Website Logo (Desktop, Mobile, Favicon)',
+                'destination' => 'theme://images/logo',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.my-quark.logo',
                 'validation' => 'loose'
             ],
             'themes.my-quark.brand_text' => [
@@ -6469,7 +7249,7 @@ return [
             ],
             'themes.my-quark.brand_text_show' => [
                 'type' => 'toggle',
-                'label' => 'Show Brand Name',
+                'label' => 'Show Brand Text with Logo',
                 'default' => 0,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
@@ -6478,112 +7258,28 @@ return [
                 'name' => 'themes.my-quark.brand_text_show',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.logo' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Logo Image',
-                'destination' => 'theme://images/logo',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.my-quark.logo',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.logo_height' => [
-                'type' => 'range',
-                'label' => 'Logo Height (Desktop)',
-                'default' => 48,
-                'min' => 20,
-                'max' => 100,
-                'step' => 2,
-                'append' => 'px',
-                'name' => 'themes.my-quark.logo_height',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.logo_height_mobile' => [
-                'type' => 'range',
-                'label' => 'Logo Height (Mobile)',
-                'default' => 32,
-                'min' => 20,
-                'max' => 80,
-                'step' => 2,
-                'append' => 'px',
-                'name' => 'themes.my-quark.logo_height_mobile',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.header-fixed' => [
-                'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.HEADER_FIXED',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.header-fixed',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.footer_bg' => [
-                'type' => 'color',
-                'label' => 'Background Color',
-                'default' => '#0f0f10',
-                'name' => 'themes.my-quark.footer_bg',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.footer_text' => [
-                'type' => 'color',
-                'label' => 'Text Color',
-                'default' => '#ffffff',
-                'name' => 'themes.my-quark.footer_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.footer_accent' => [
-                'type' => 'color',
-                'label' => 'Accent / Link Color',
-                'default' => '#d4af37',
-                'name' => 'themes.my-quark.footer_accent',
-                'validation' => 'loose'
-            ],
             'themes.my-quark.contact_address' => [
                 'type' => 'text',
                 'label' => 'Address',
-                'default' => 'R-591 Block 20 F B Area Karachi.',
                 'name' => 'themes.my-quark.contact_address',
                 'validation' => 'loose'
             ],
             'themes.my-quark.contact_email' => [
-                'type' => 'email',
-                'label' => 'Email',
-                'default' => 'edu.aabtaab@gmail.com',
+                'type' => 'text',
+                'label' => 'Email Address',
                 'name' => 'themes.my-quark.contact_email',
                 'validation' => 'loose'
             ],
             'themes.my-quark.contact_phone' => [
                 'type' => 'text',
-                'label' => 'Phone',
-                'default' => '+92 302 245 2000',
+                'label' => 'Phone Number',
                 'name' => 'themes.my-quark.contact_phone',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.social_text' => [
-                'type' => 'toggle',
-                'label' => 'Show Text Labels',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.social_text',
                 'validation' => 'loose'
             ],
             'themes.my-quark.social_links' => [
                 'array' => true,
                 'type' => 'list',
-                'label' => 'Accounts',
+                'label' => 'Social Profiles',
                 'name' => 'themes.my-quark.social_links',
                 'validation' => 'loose'
             ],
@@ -6597,10 +7293,11 @@ return [
                 'label' => 'Network',
                 'options' => [
                     'facebook' => 'Facebook',
+                    'twitter' => 'Twitter (X)',
                     'instagram' => 'Instagram',
-                    'youtube' => 'YouTube',
-                    'twitter' => 'X (formerly Twitter)',
                     'linkedin' => 'LinkedIn',
+                    'youtube' => 'YouTube',
+                    'github' => 'GitHub',
                     'googlemaps' => 'Google Maps'
                 ],
                 'name' => 'themes.my-quark.social_links.*.network',
@@ -6608,19 +7305,654 @@ return [
             ],
             'themes.my-quark.social_links.*.url' => [
                 'type' => 'text',
-                'label' => 'URL',
+                'label' => 'Profile URL',
                 'name' => 'themes.my-quark.social_links.*.url',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.production-mode' => [
+            'themes.my-quark.agent_header_fixed' => [
                 'type' => 'toggle',
-                'label' => 'Production Mode',
+                'label' => 'Sticky Header',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.production-mode',
+                'name' => 'themes.my-quark.agent_header_fixed',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_animated' => [
+                'type' => 'toggle',
+                'label' => 'Shrinking Header',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.agent_header_animated',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_dark' => [
+                'type' => 'toggle',
+                'label' => 'Dark Header Mode',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.agent_header_dark',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_transparent' => [
+                'type' => 'toggle',
+                'label' => 'Transparent Header',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.agent_header_transparent',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Header Menu Items',
+                'btnLabel' => 'Add Menu Item',
+                'name' => 'themes.my-quark.agent_header_structure',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.agent_header_structure.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.agent_header_structure.*.label' => [
+                'type' => 'text',
+                'label' => 'Label',
+                'validate' => [
+                    'required' => true
+                ],
+                'name' => 'themes.my-quark.agent_header_structure.*.label',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.url' => [
+                'type' => 'text',
+                'label' => 'URL / Route',
+                'name' => 'themes.my-quark.agent_header_structure.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.type' => [
+                'type' => 'select',
+                'label' => 'Link Type',
+                'default' => 'link',
+                'options' => [
+                    'link' => 'Standard Link',
+                    'mega' => 'Mega Menu',
+                    'heading' => 'Heading',
+                    'button' => 'Button',
+                    'logo' => 'Logo'
+                ],
+                'name' => 'themes.my-quark.agent_header_structure.*.type',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.mx_context' => [
+                'type' => 'text',
+                'label' => 'AI Description',
+                'name' => 'themes.my-quark.agent_header_structure.*.mx_context',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.design_token' => [
+                'type' => 'select',
+                'label' => 'Style',
+                'default' => 'default',
+                'options' => [
+                    'default' => 'Neutral',
+                    'primary' => 'Core Primary',
+                    'accent' => 'High Accent',
+                    'glass' => 'Refractive'
+                ],
+                'name' => 'themes.my-quark.agent_header_structure.*.design_token',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.children' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Sub-Menu Items',
+                'name' => 'themes.my-quark.agent_header_structure.*.children',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.children.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.agent_header_structure.*.children.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.agent_header_structure.*.children.*.label' => [
+                'type' => 'text',
+                'label' => 'Label',
+                'name' => 'themes.my-quark.agent_header_structure.*.children.*.label',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.children.*.url' => [
+                'type' => 'text',
+                'label' => 'URL',
+                'name' => 'themes.my-quark.agent_header_structure.*.children.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_header_structure.*.children.*.mx_context' => [
+                'type' => 'text',
+                'label' => 'AI Context',
+                'name' => 'themes.my-quark.agent_header_structure.*.children.*.mx_context',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Menu Tree',
+                'name' => 'themes.my-quark.agent_nav_nodes',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.agent_nav_nodes.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.agent_nav_nodes.*.title' => [
+                'type' => 'text',
+                'label' => 'Node Title',
+                'name' => 'themes.my-quark.agent_nav_nodes.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.type' => [
+                'type' => 'select',
+                'label' => 'Menu Type',
+                'default' => 'link',
+                'options' => [
+                    'link' => 'Standard Link',
+                    'smart' => 'Dynamic Collection',
+                    'folder' => 'Dropdown Folder'
+                ],
+                'name' => 'themes.my-quark.agent_nav_nodes.*.type',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.url' => [
+                'type' => 'text',
+                'label' => 'URI',
+                'name' => 'themes.my-quark.agent_nav_nodes.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.collection_source' => [
+                'type' => 'select',
+                'label' => 'Page Source',
+                'default' => '@root.descendants',
+                'options' => [
+                    '@root.descendants' => 'Global Manifest',
+                    '@self.children' => 'Local Siblings',
+                    '@self.descendants' => 'Local Descendants'
+                ],
+                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_source',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.collection_type' => [
+                'type' => 'select',
+                'label' => 'Taxonomy Filter',
+                'default' => 'all',
+                'options' => [
+                    'all' => 'Unfiltered',
+                    'tag' => 'Tag Metadata',
+                    'category' => 'Category Metadata',
+                    'type' => 'Class Metadata'
+                ],
+                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_type',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.collection_value' => [
+                'type' => 'text',
+                'label' => 'Filter Constant',
+                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_value',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_nav_nodes.*.collection_limit' => [
+                'type' => 'number',
+                'label' => 'Limit',
+                'default' => 5,
+                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_limit',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Footer Widgets',
+                'name' => 'themes.my-quark.agent_footer_widgets',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.agent_footer_widgets.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.agent_footer_widgets.*.width' => [
+                'type' => 'select',
+                'label' => 'Column Width',
+                'default' => 'col-4',
+                'options' => [
+                    'col-3' => '25% (3/12)',
+                    'col-4' => '33% (4/12)',
+                    'col-6' => '50% (6/12)',
+                    'col-12' => '100% (Full)'
+                ],
+                'name' => 'themes.my-quark.agent_footer_widgets.*.width',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*.type' => [
+                'type' => 'select',
+                'label' => 'Widget Type',
+                'options' => [
+                    'branding' => 'Website Branding',
+                    'menu' => 'Navigation Menu',
+                    'contact' => 'Contact Info',
+                    'social' => 'Social Media Links',
+                    'newsletter' => 'Newsletter Signup',
+                    'html' => 'Custom HTML'
+                ],
+                'name' => 'themes.my-quark.agent_footer_widgets.*.type',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*.title' => [
+                'type' => 'text',
+                'label' => 'Widget Title',
+                'name' => 'themes.my-quark.agent_footer_widgets.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*.content' => [
+                'type' => 'textarea',
+                'label' => 'Raw Content',
+                'name' => 'themes.my-quark.agent_footer_widgets.*.content',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*.ai_badge' => [
+                'type' => 'toggle',
+                'label' => 'Show AI Badge',
+                'default' => 0,
+                'name' => 'themes.my-quark.agent_footer_widgets.*.ai_badge',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_widgets.*.animation' => [
+                'type' => 'select',
+                'label' => 'Animation',
+                'default' => 'fadeUp',
+                'options' => [
+                    'none' => 'None',
+                    'fadeUp' => 'Fade Up',
+                    'fadeDown' => 'Fade Down',
+                    'slideLeft' => 'Slide Left',
+                    'slideRight' => 'Slide Right',
+                    'zoomIn' => 'Zoom In'
+                ],
+                'name' => 'themes.my-quark.agent_footer_widgets.*.animation',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_color_bg' => [
+                'type' => 'color',
+                'label' => 'Atmosphere Background',
+                'default' => '#0f0f10',
+                'name' => 'themes.my-quark.agent_footer_color_bg',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_color_text' => [
+                'type' => 'color',
+                'label' => 'Contrast Text',
+                'default' => '#ffffff',
+                'name' => 'themes.my-quark.agent_footer_color_text',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_color_accent' => [
+                'type' => 'color',
+                'label' => 'High Focus Token',
+                'default' => '#d4af37',
+                'name' => 'themes.my-quark.agent_footer_color_accent',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_sticky' => [
+                'type' => 'toggle',
+                'label' => 'Positional Stickiness',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.agent_footer_sticky',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_legal_copy' => [
+                'type' => 'textarea',
+                'label' => 'Governance Rights',
+                'default' => '&copy; 2026 Semantic OS. All rights reserved.',
+                'name' => 'themes.my-quark.agent_footer_legal_copy',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_footer_legal_credits' => [
+                'type' => 'text',
+                'label' => 'Origin Credits',
+                'default' => 'Architected by Antigravity',
+                'name' => 'themes.my-quark.agent_footer_legal_credits',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_mode' => [
+                'type' => 'toggle',
+                'label' => 'Background Style',
+                'default' => 0,
+                'highlight' => 1,
+                'options' => [
+                    0 => 'Solid',
+                    1 => 'Gradient',
+                    2 => 'Image',
+                    3 => 'Mesh',
+                    4 => 'Pattern'
+                ],
+                'validate' => [
+                    'type' => 'int'
+                ],
+                'name' => 'themes.my-quark.agent_env_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_solid_col' => [
+                'type' => 'color',
+                'label' => 'Background Color',
+                'default' => '#ffffff',
+                'name' => 'themes.my-quark.agent_env_solid_col',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_grad_type' => [
+                'type' => 'select',
+                'label' => 'Vector Type',
+                'default' => 'linear',
+                'options' => [
+                    'linear' => 'Directional',
+                    'radial' => 'Spherical'
+                ],
+                'name' => 'themes.my-quark.agent_env_grad_type',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_grad_angle' => [
+                'type' => 'range',
+                'label' => 'Projection Angle',
+                'default' => 135,
+                'min' => 0,
+                'max' => 360,
+                'step' => 5,
+                'append' => 'deg',
+                'name' => 'themes.my-quark.agent_env_grad_angle',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_grad_start' => [
+                'type' => 'color',
+                'label' => 'Start Color',
+                'default' => '#3b4252',
+                'name' => 'themes.my-quark.agent_env_grad_start',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_grad_end' => [
+                'type' => 'color',
+                'label' => 'End Color',
+                'default' => '#88c0d0',
+                'name' => 'themes.my-quark.agent_env_grad_end',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Select Image',
+                'destination' => 'theme://images/backgrounds',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.my-quark.agent_env_img',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img_pos' => [
+                'type' => 'select',
+                'label' => 'Focal Point',
+                'default' => 'center center',
+                'options' => [
+                    'center center' => 'Equator',
+                    'top center' => 'Zenith',
+                    'bottom center' => 'Nadir'
+                ],
+                'name' => 'themes.my-quark.agent_env_img_pos',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img_size' => [
+                'type' => 'select',
+                'label' => 'Geometric Scale',
+                'default' => 'cover',
+                'options' => [
+                    'cover' => 'Full Stretch',
+                    'contain' => 'Preserve Aspect',
+                    'auto' => 'True Scale'
+                ],
+                'name' => 'themes.my-quark.agent_env_img_size',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img_attach' => [
+                'type' => 'select',
+                'label' => 'Motion Protocol',
+                'default' => 'fixed',
+                'options' => [
+                    'fixed' => 'Spatial Parallax',
+                    'scroll' => 'Standard Fluid'
+                ],
+                'name' => 'themes.my-quark.agent_env_img_attach',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img_overlay' => [
+                'type' => 'color',
+                'label' => 'Tint Layer',
+                'default' => '#000000',
+                'name' => 'themes.my-quark.agent_env_img_overlay',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_img_op' => [
+                'type' => 'range',
+                'label' => 'Layer Depth',
+                'default' => 0.3,
+                'min' => 0,
+                'max' => 1,
+                'step' => 0.1,
+                'name' => 'themes.my-quark.agent_env_img_op',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_mesh_1' => [
+                'type' => 'color',
+                'label' => 'Mesh Color 1',
+                'default' => '#3b4252',
+                'name' => 'themes.my-quark.agent_env_mesh_1',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_mesh_2' => [
+                'type' => 'color',
+                'label' => 'Mesh Color 2',
+                'default' => '#bf616a',
+                'name' => 'themes.my-quark.agent_env_mesh_2',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_mesh_3' => [
+                'type' => 'color',
+                'label' => 'Mesh Color 3',
+                'default' => '#88c0d0',
+                'name' => 'themes.my-quark.agent_env_mesh_3',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_mesh_speed' => [
+                'type' => 'range',
+                'label' => 'Animation Speed',
+                'default' => 20,
+                'min' => 5,
+                'max' => 60,
+                'step' => 5,
+                'name' => 'themes.my-quark.agent_env_mesh_speed',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_tex' => [
+                'type' => 'select',
+                'label' => 'Mathematical Pattern',
+                'default' => 'none',
+                'options' => [
+                    'none' => 'Null',
+                    'noise' => 'Perlin Noise',
+                    'dots' => 'Point Grid',
+                    'grid' => 'Cartesian',
+                    'lines' => 'Linear Segments'
+                ],
+                'name' => 'themes.my-quark.agent_env_tex',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_tex_col' => [
+                'type' => 'color',
+                'label' => 'Trace Color',
+                'default' => '#000000',
+                'name' => 'themes.my-quark.agent_env_tex_col',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_env_tex_op' => [
+                'type' => 'range',
+                'label' => 'Trace Intensity',
+                'default' => 0.05,
+                'min' => 0.01,
+                'max' => 0.2,
+                'step' => 0.01,
+                'name' => 'themes.my-quark.agent_env_tex_op',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_logo' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Website Logo',
+                'destination' => 'theme://images/logo',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.my-quark.agent_identity_logo',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_brandName' => [
+                'type' => 'text',
+                'label' => 'Website Name',
+                'name' => 'themes.my-quark.agent_identity_brandName',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_showText' => [
+                'type' => 'toggle',
+                'label' => 'Display Semantic Identifier',
+                'default' => 0,
+                'options' => [
+                    1 => 'ENABLED',
+                    0 => 'DISABLED'
+                ],
+                'name' => 'themes.my-quark.agent_identity_showText',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_address' => [
+                'type' => 'text',
+                'label' => 'Address',
+                'name' => 'themes.my-quark.agent_identity_address',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_email' => [
+                'type' => 'text',
+                'label' => 'Email Address',
+                'name' => 'themes.my-quark.agent_identity_email',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_phone' => [
+                'type' => 'text',
+                'label' => 'Phone Number',
+                'name' => 'themes.my-quark.agent_identity_phone',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_social' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Social Media Links',
+                'name' => 'themes.my-quark.agent_identity_social',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_social.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.agent_identity_social.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.agent_identity_social.*.network' => [
+                'type' => 'select',
+                'label' => 'Platform',
+                'options' => [
+                    'facebook' => 'FB',
+                    'twitter' => 'X',
+                    'instagram' => 'IG',
+                    'linkedin' => 'LI',
+                    'youtube' => 'YT',
+                    'github' => 'GH',
+                    'googlemaps' => 'Maps'
+                ],
+                'name' => 'themes.my-quark.agent_identity_social.*.network',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_identity_social.*.url' => [
+                'type' => 'text',
+                'label' => 'Destination URI',
+                'name' => 'themes.my-quark.agent_identity_social.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_gov_production' => [
+                'type' => 'toggle',
+                'label' => 'Optimal Asset Compression',
+                'default' => 1,
+                'options' => [
+                    1 => 'PRODUCTION',
+                    0 => 'DEVELOPMENT'
+                ],
+                'name' => 'themes.my-quark.agent_gov_production',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_gov_gridSize' => [
+                'type' => 'select',
+                'label' => 'Layout Grid Class',
+                'default' => 'grid-xl',
+                'options' => [
+                    'grid-lg' => 'Large',
+                    'grid-xl' => 'Extra Large'
+                ],
+                'name' => 'themes.my-quark.agent_gov_gridSize',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_gov_ecoDefault' => [
+                'type' => 'toggle',
+                'label' => 'Force Lower Complexity (Eco)',
+                'default' => 0,
+                'name' => 'themes.my-quark.agent_gov_ecoDefault',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_gov_privacyShield' => [
+                'type' => 'toggle',
+                'label' => 'Enhanced Privacy Sovereignty',
+                'default' => 1,
+                'name' => 'themes.my-quark.agent_gov_privacyShield',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.agent_gov_haptics' => [
+                'type' => 'toggle',
+                'label' => 'Tactile Pulse (Haptics)',
+                'default' => 0,
+                'name' => 'themes.my-quark.agent_gov_haptics',
                 'validation' => 'loose'
             ]
         ],
@@ -6972,6 +8304,11 @@ return [
                     'base_classes' => 'plugins.markdown-notices.base_classes',
                     'level_classes' => 'plugins.markdown-notices.level_classes'
                 ],
+                'pagination' => [
+                    'enabled' => 'plugins.pagination.enabled',
+                    'delta' => 'plugins.pagination.delta',
+                    'built_in_css' => 'plugins.pagination.built_in_css'
+                ],
                 'form' => [
                     'enabled' => 'plugins.form.enabled',
                     'debug' => 'plugins.form.debug',
@@ -7062,6 +8399,27 @@ return [
                     ],
                     'content_match' => [
                         'process' => 'plugins.relatedpages.content_match.process'
+                    ]
+                ],
+                'simplesearch' => [
+                    'enabled' => 'plugins.simplesearch.enabled',
+                    'search_content' => 'plugins.simplesearch.search_content',
+                    'built_in_css' => 'plugins.simplesearch.built_in_css',
+                    'built_in_js' => 'plugins.simplesearch.built_in_js',
+                    'display_button' => 'plugins.simplesearch.display_button',
+                    'ignore_accented_characters' => 'plugins.simplesearch.ignore_accented_characters',
+                    'min_query_length' => 'plugins.simplesearch.min_query_length',
+                    'route' => 'plugins.simplesearch.route',
+                    'searchable_types' => 'plugins.simplesearch.searchable_types',
+                    'header_keys_ignored' => 'plugins.simplesearch.header_keys_ignored',
+                    'template' => 'plugins.simplesearch.template',
+                    'filters' => [
+                        'category' => 'plugins.simplesearch.filters.category'
+                    ],
+                    'filter_combinator' => 'plugins.simplesearch.filter_combinator',
+                    'order' => [
+                        'by' => 'plugins.simplesearch.order.by',
+                        'dir' => 'plugins.simplesearch.order.dir'
                     ]
                 ],
                 'admin' => [
@@ -7212,11 +8570,46 @@ return [
                     'enabled' => 'plugins.problems.enabled',
                     'built_in_css' => 'plugins.problems.built_in_css'
                 ],
+                'feed' => [
+                    'enabled' => 'plugins.feed.enabled',
+                    'limit' => 'plugins.feed.limit',
+                    'title' => 'plugins.feed.title',
+                    'description' => 'plugins.feed.description',
+                    'length' => 'plugins.feed.length',
+                    'enable_json_feed' => 'plugins.feed.enable_json_feed',
+                    'show_last_modified' => 'plugins.feed.show_last_modified'
+                ],
+                'seo' => [
+                    'enabled' => 'plugins.seo.enabled',
+                    'facebookid' => 'plugins.seo.facebookid',
+                    'twitterid' => 'plugins.seo.twitterid',
+                    'twitter_default' => 'plugins.seo.twitter_default',
+                    'facebook_default' => 'plugins.seo.facebook_default',
+                    'article' => 'plugins.seo.article',
+                    'event' => 'plugins.seo.event',
+                    'restaurant' => 'plugins.seo.restaurant',
+                    'musicevent' => 'plugins.seo.musicevent',
+                    'customjson' => 'plugins.seo.customjson',
+                    'person' => 'plugins.seo.person',
+                    'organization' => 'plugins.seo.organization',
+                    'musicalbum' => 'plugins.seo.musicalbum',
+                    'product' => 'plugins.seo.product'
+                ],
                 'error' => [
                     'enabled' => 'plugins.error.enabled',
                     'routes' => [
                         404 => 'plugins.error.routes.404'
                     ]
+                ],
+                'breadcrumbs' => [
+                    'enabled' => 'plugins.breadcrumbs.enabled',
+                    'show_all' => 'plugins.breadcrumbs.show_all',
+                    'built_in_css' => 'plugins.breadcrumbs.built_in_css',
+                    'include_home' => 'plugins.breadcrumbs.include_home',
+                    'include_current' => 'plugins.breadcrumbs.include_current',
+                    'icon_home' => 'plugins.breadcrumbs.icon_home',
+                    'icon_divider_classes' => 'plugins.breadcrumbs.icon_divider_classes',
+                    'link_trailing' => 'plugins.breadcrumbs.link_trailing'
                 ],
                 'login' => [
                     'enabled' => 'plugins.login.enabled',
@@ -7312,42 +8705,128 @@ return [
                     ]
                 ],
                 'my-quark' => [
-                    'brand_primary' => 'themes.my-quark.brand_primary',
-                    'brand_secondary' => 'themes.my-quark.brand_secondary',
-                    'brand_accent' => 'themes.my-quark.brand_accent',
-                    'background_texture' => 'themes.my-quark.background_texture',
-                    'texture_color' => 'themes.my-quark.texture_color',
-                    'texture_opacity' => 'themes.my-quark.texture_opacity',
-                    'texture_animate' => 'themes.my-quark.texture_animate',
-                    'vignette_overlay' => 'themes.my-quark.vignette_overlay',
-                    'font_primary' => 'themes.my-quark.font_primary',
-                    'font_header' => 'themes.my-quark.font_header',
-                    'font_size_base' => 'themes.my-quark.font_size_base',
-                    'heading_scale' => 'themes.my-quark.heading_scale',
-                    'radius_main' => 'themes.my-quark.radius_main',
-                    'glass_opacity' => 'themes.my-quark.glass_opacity',
-                    'container_width' => 'themes.my-quark.container_width',
-                    'spacing_scale' => 'themes.my-quark.spacing_scale',
+                    'token_color_primary' => 'themes.my-quark.token_color_primary',
+                    'token_color_secondary' => 'themes.my-quark.token_color_secondary',
+                    'token_color_accent' => 'themes.my-quark.token_color_accent',
+                    'token_color_bg_body' => 'themes.my-quark.token_color_bg_body',
+                    'token_color_bg_card' => 'themes.my-quark.token_color_bg_card',
+                    'token_color_text_main' => 'themes.my-quark.token_color_text_main',
+                    'token_color_text_muted' => 'themes.my-quark.token_color_text_muted',
+                    'token_font_body' => 'themes.my-quark.token_font_body',
+                    'token_font_header' => 'themes.my-quark.token_font_header',
+                    'token_typo_fluid' => 'themes.my-quark.token_typo_fluid',
+                    'token_typo_min_size' => 'themes.my-quark.token_typo_min_size',
+                    'token_typo_max_size' => 'themes.my-quark.token_typo_max_size',
+                    'token_typo_scale' => 'themes.my-quark.token_typo_scale',
+                    'token_typo_lh_body' => 'themes.my-quark.token_typo_lh_body',
+                    'token_typo_lh_heading' => 'themes.my-quark.token_typo_lh_heading',
+                    'token_typo_ls_heading' => 'themes.my-quark.token_typo_ls_heading',
+                    'token_typo_measure' => 'themes.my-quark.token_typo_measure',
+                    'token_layout_width' => 'themes.my-quark.token_layout_width',
+                    'token_layout_spacing' => 'themes.my-quark.token_layout_spacing',
+                    'physic_radius_main' => 'themes.my-quark.physic_radius_main',
+                    'physic_neo_strength' => 'themes.my-quark.physic_neo_strength',
+                    'physic_neo_lightSource' => 'themes.my-quark.physic_neo_lightSource',
+                    'physic_glass_opacity' => 'themes.my-quark.physic_glass_opacity',
+                    'physic_glass_blur' => 'themes.my-quark.physic_glass_blur',
+                    'physic_vignette_enabled' => 'themes.my-quark.physic_vignette_enabled',
+                    'physic_eco_mode' => 'themes.my-quark.physic_eco_mode',
+                    'physic_focus_mode' => 'themes.my-quark.physic_focus_mode',
+                    'logo' => 'themes.my-quark.logo',
                     'brand_text' => 'themes.my-quark.brand_text',
                     'brand_text_show' => 'themes.my-quark.brand_text_show',
-                    'logo' => 'themes.my-quark.logo',
-                    'logo_height' => 'themes.my-quark.logo_height',
-                    'logo_height_mobile' => 'themes.my-quark.logo_height_mobile',
-                    'header-fixed' => 'themes.my-quark.header-fixed',
-                    'footer_bg' => 'themes.my-quark.footer_bg',
-                    'footer_text' => 'themes.my-quark.footer_text',
-                    'footer_accent' => 'themes.my-quark.footer_accent',
                     'contact_address' => 'themes.my-quark.contact_address',
                     'contact_email' => 'themes.my-quark.contact_email',
                     'contact_phone' => 'themes.my-quark.contact_phone',
-                    'social_text' => 'themes.my-quark.social_text',
                     'social_links' => [
                         '*' => [
                             'network' => 'themes.my-quark.social_links.*.network',
                             'url' => 'themes.my-quark.social_links.*.url'
                         ]
                     ],
-                    'production-mode' => 'themes.my-quark.production-mode'
+                    'agent_header_fixed' => 'themes.my-quark.agent_header_fixed',
+                    'agent_header_animated' => 'themes.my-quark.agent_header_animated',
+                    'agent_header_dark' => 'themes.my-quark.agent_header_dark',
+                    'agent_header_transparent' => 'themes.my-quark.agent_header_transparent',
+                    'agent_header_structure' => [
+                        '*' => [
+                            'label' => 'themes.my-quark.agent_header_structure.*.label',
+                            'url' => 'themes.my-quark.agent_header_structure.*.url',
+                            'type' => 'themes.my-quark.agent_header_structure.*.type',
+                            'mx_context' => 'themes.my-quark.agent_header_structure.*.mx_context',
+                            'design_token' => 'themes.my-quark.agent_header_structure.*.design_token',
+                            'children' => [
+                                '*' => [
+                                    'label' => 'themes.my-quark.agent_header_structure.*.children.*.label',
+                                    'url' => 'themes.my-quark.agent_header_structure.*.children.*.url',
+                                    'mx_context' => 'themes.my-quark.agent_header_structure.*.children.*.mx_context'
+                                ]
+                            ]
+                        ]
+                    ],
+                    'agent_nav_nodes' => [
+                        '*' => [
+                            'title' => 'themes.my-quark.agent_nav_nodes.*.title',
+                            'type' => 'themes.my-quark.agent_nav_nodes.*.type',
+                            'url' => 'themes.my-quark.agent_nav_nodes.*.url',
+                            'collection_source' => 'themes.my-quark.agent_nav_nodes.*.collection_source',
+                            'collection_type' => 'themes.my-quark.agent_nav_nodes.*.collection_type',
+                            'collection_value' => 'themes.my-quark.agent_nav_nodes.*.collection_value',
+                            'collection_limit' => 'themes.my-quark.agent_nav_nodes.*.collection_limit'
+                        ]
+                    ],
+                    'agent_footer_widgets' => [
+                        '*' => [
+                            'width' => 'themes.my-quark.agent_footer_widgets.*.width',
+                            'type' => 'themes.my-quark.agent_footer_widgets.*.type',
+                            'title' => 'themes.my-quark.agent_footer_widgets.*.title',
+                            'content' => 'themes.my-quark.agent_footer_widgets.*.content',
+                            'ai_badge' => 'themes.my-quark.agent_footer_widgets.*.ai_badge',
+                            'animation' => 'themes.my-quark.agent_footer_widgets.*.animation'
+                        ]
+                    ],
+                    'agent_footer_color_bg' => 'themes.my-quark.agent_footer_color_bg',
+                    'agent_footer_color_text' => 'themes.my-quark.agent_footer_color_text',
+                    'agent_footer_color_accent' => 'themes.my-quark.agent_footer_color_accent',
+                    'agent_footer_sticky' => 'themes.my-quark.agent_footer_sticky',
+                    'agent_footer_legal_copy' => 'themes.my-quark.agent_footer_legal_copy',
+                    'agent_footer_legal_credits' => 'themes.my-quark.agent_footer_legal_credits',
+                    'agent_env_mode' => 'themes.my-quark.agent_env_mode',
+                    'agent_env_solid_col' => 'themes.my-quark.agent_env_solid_col',
+                    'agent_env_grad_type' => 'themes.my-quark.agent_env_grad_type',
+                    'agent_env_grad_angle' => 'themes.my-quark.agent_env_grad_angle',
+                    'agent_env_grad_start' => 'themes.my-quark.agent_env_grad_start',
+                    'agent_env_grad_end' => 'themes.my-quark.agent_env_grad_end',
+                    'agent_env_img' => 'themes.my-quark.agent_env_img',
+                    'agent_env_img_pos' => 'themes.my-quark.agent_env_img_pos',
+                    'agent_env_img_size' => 'themes.my-quark.agent_env_img_size',
+                    'agent_env_img_attach' => 'themes.my-quark.agent_env_img_attach',
+                    'agent_env_img_overlay' => 'themes.my-quark.agent_env_img_overlay',
+                    'agent_env_img_op' => 'themes.my-quark.agent_env_img_op',
+                    'agent_env_mesh_1' => 'themes.my-quark.agent_env_mesh_1',
+                    'agent_env_mesh_2' => 'themes.my-quark.agent_env_mesh_2',
+                    'agent_env_mesh_3' => 'themes.my-quark.agent_env_mesh_3',
+                    'agent_env_mesh_speed' => 'themes.my-quark.agent_env_mesh_speed',
+                    'agent_env_tex' => 'themes.my-quark.agent_env_tex',
+                    'agent_env_tex_col' => 'themes.my-quark.agent_env_tex_col',
+                    'agent_env_tex_op' => 'themes.my-quark.agent_env_tex_op',
+                    'agent_identity_logo' => 'themes.my-quark.agent_identity_logo',
+                    'agent_identity_brandName' => 'themes.my-quark.agent_identity_brandName',
+                    'agent_identity_showText' => 'themes.my-quark.agent_identity_showText',
+                    'agent_identity_address' => 'themes.my-quark.agent_identity_address',
+                    'agent_identity_email' => 'themes.my-quark.agent_identity_email',
+                    'agent_identity_phone' => 'themes.my-quark.agent_identity_phone',
+                    'agent_identity_social' => [
+                        '*' => [
+                            'network' => 'themes.my-quark.agent_identity_social.*.network',
+                            'url' => 'themes.my-quark.agent_identity_social.*.url'
+                        ]
+                    ],
+                    'agent_gov_production' => 'themes.my-quark.agent_gov_production',
+                    'agent_gov_gridSize' => 'themes.my-quark.agent_gov_gridSize',
+                    'agent_gov_ecoDefault' => 'themes.my-quark.agent_gov_ecoDefault',
+                    'agent_gov_privacyShield' => 'themes.my-quark.agent_gov_privacyShield',
+                    'agent_gov_haptics' => 'themes.my-quark.agent_gov_haptics'
                 ]
             ]
         ],

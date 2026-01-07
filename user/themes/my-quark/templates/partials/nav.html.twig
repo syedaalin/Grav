@@ -1,0 +1,29 @@
+{% import 'macros/nav.html.twig' as nav_macros %}
+
+<nav class="main-nav" aria-label="Main Navigation" role="navigation">
+  <ul class="nav-list" role="menubar">
+    {{ nav_macros.loop(items, 1) }}
+  </ul>
+</nav>
+
+{# JSON-LD Injection for Agents (remains the same) #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Main Navigation",
+  "url": "{{ base_url }}",
+  "hasPart": [
+    {% for item in items %}
+    {
+      "@type": "WebPage",
+      "name": "{{ item.label }}",
+      "url": "{{ base_url }}{{ item.url }}",
+      "description": "{{ item.mx_context|default(item.label) }}"
+    }{{ not loop.last ? ',' : '' }}
+    {% endfor %}
+  ]
+}
+</script>
+
+

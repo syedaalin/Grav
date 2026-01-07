@@ -5,11 +5,11 @@
         {{ content|raw }}
     </div>
 
-    <div class="course-grid">
+    <div class="course-grid" role="list">
         {% set courses = page.children %}
         
         {% for course in courses %}
-            <div class="course-card">
+            <div class="course-card" role="listitem">
                 {% if course.media.images|first %}
                     {% set image = course.media.images|first %}
                     {{ image.cropZoom(800,500).html('', course.title, 'course-thumbnail')|raw }}
@@ -19,15 +19,15 @@
                     <h2>{{ course.title }}</h2>
         
                     {% if course.header.instructor or course.header.duration or course.header.level %}
-                    <div class="course-meta" style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <div class="course-meta">
                         {% if course.header.instructor %}
-                        <span style="margin-right: 10px;"><i class="fa fa-user"></i> {{ course.header.instructor }}</span>
+                        <span class="course-meta-item"><i class="fa fa-user"></i> {{ course.header.instructor }}</span>
                         {% endif %}
                         {% if course.header.duration %}
-                        <span style="margin-right: 10px;"><i class="fa fa-clock-o"></i> {{ course.header.duration }}</span>
+                        <span class="course-meta-item"><i class="fa fa-clock-o"></i> {{ course.header.duration }}</span>
                         {% endif %}
                         {% if course.header.level %}
-                        <span><i class="fa fa-signal"></i> {{ course.header.level }}</span>
+                        <span class="course-meta-item"><i class="fa fa-signal"></i> {{ course.header.level }}</span>
                         {% endif %}
                     </div>
                     {% endif %}
@@ -37,15 +37,14 @@
                     </div>
         
                     <div class="course-actions">
-                        <a href="{{ course.url }}" class="btn btn-primary">View Details</a>
+                        <a href="{{ course.url }}" class="btn btn-primary" data-agent-action="view_course">{{ 'THEME_MY_QUARK.VIEW_DETAILS'|t }}</a>
                     </div>
                 </div>
             </div>
-        {% run %}
         {% endfor %}
 
         {% if courses|length == 0 %}
-            <p class="no-courses">No courses available at the moment. Please check back soon!</p>
+            <p class="no-courses">{{ 'THEME_MY_QUARK.NO_COURSES'|t }}</p>
         {% endif %}
     </div>
 {% endblock %}

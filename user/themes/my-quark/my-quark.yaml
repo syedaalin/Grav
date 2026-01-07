@@ -6,3 +6,8 @@ streams:
        '':
          - user/themes/my-quark
          - user/themes/quark
+
+# 2026 Design Token Defaults
+glass_blur: 20
+neomorphism_strength: 0
+neomorphism_light: 'top-left'

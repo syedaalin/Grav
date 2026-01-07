@@ -56,7 +56,7 @@ class __TwigTemplate_f6154cce00372e11ce412a0299dccb73 extends Template
         $macros = $this->macros;
         // line 4
         yield "  ";
-        yield from $this->load("forms/fields/tab/tab.html.twig", 4, 874293760)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 4), "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "fields", [], "any", false, false, false, 4)]));
+        yield from $this->load("forms/fields/tab/tab.html.twig", 4, 1874540211)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 4), "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "fields", [], "any", false, false, false, 4)]));
         yield from [];
     }
 
@@ -92,7 +92,7 @@ class __TwigTemplate_f6154cce00372e11ce412a0299dccb73 extends Template
 
 
 /* forms/fields/tab/tab.html.twig */
-class __TwigTemplate_f6154cce00372e11ce412a0299dccb73___874293760 extends Template
+class __TwigTemplate_f6154cce00372e11ce412a0299dccb73___1874540211 extends Template
 {
     private Source $source;
     /**

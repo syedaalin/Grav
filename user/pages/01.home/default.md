@@ -95,13 +95,13 @@ cache_enable: true
       "The believer's shade on the Day of Resurrection will be his charity"
     </p>
     <br>
-    <a href="#" class="hero-btn" style="background: #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">❤️ GIVE TODAY</a>
+    <a href="/donate" class="hero-btn btn-donate-hero">❤️ GIVE TODAY</a>
   </div>
 
   <!-- COURSES -->
   <div class="animate-load delay-3">
     <h2 class="section-heading">Popular Courses 📚</h2>
-    <p style="text-align: center; margin-bottom: 30px;">Pick A Course To Get Started</p>
+    <p class="text-center-mb">Pick A Course To Get Started</p>
     
     <div class="grid-container grid-container--wide">
       

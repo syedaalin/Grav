@@ -1,76 +1,15 @@
 <footer class="aabtaab-footer">
     <div class="footer-container">
         
-        <div class="footer-col">
-            <h3 class="footer-heading">{{ site.title }}</h3>
-            <p class="footer-tagline">Faith. Knowledge. Access.</p>
-            <div class="social-section">
-                <p><strong>Social Media</strong></p>
-                <div class="social-icons {{ theme_var('social_text') ? '' : 'icons-only' }}">
-                    {% for item in theme_var('social_links') %}
-                        {% set network = item.network %}
-                        {% set icon = network %}
-                        {% set label = network|capitalize %}
-                        
-                        {# Custom Mappings #}
-                        {% if network == 'googlemaps' %}
-                            {% set icon = 'map-marker' %}
-                            {% set label = 'Google Maps' %}
-                        {% elseif network == 'twitter' %}
-                            {% set label = 'X' %}
-                        {% endif %}
-
-                        <a href="{{ item.url }}" target="_blank" class="social-btn" rel="noopener noreferrer" aria-label="{{ label }}">
-                            <i class="fa fa-{{ icon }}"></i> {% if theme_var('social_text') %}{{ label }}{% endif %}
-                        </a>
-                    {% endfor %}
-                    
-                    {% if not theme_var('social_links') %}
-                        <!-- Default/Fallback Social Links if none configured -->
-                        <a href="#" class="social-btn"><i class="fa fa-facebook"></i> {% if theme_var('social_text') %}Facebook{% endif %}</a>
-                        <a href="#" class="social-btn"><i class="fa fa-twitter"></i> {% if theme_var('social_text') %}X{% endif %}</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-col">
-            <h3 class="footer-heading">Contact Us</h3>
-            <ul class="contact-list">
-                <li>
-                    <span class="icon" aria-hidden="true">📍</span> 
-                    <span>{{ theme_var('contact_address')|default('Address not set') }}</span>
-                </li>
-                <li>
-                    <span class="icon" aria-hidden="true">✉️</span> 
-                    <a href="mailto:{{ theme_var('contact_email') }}">{{ theme_var('contact_email')|default('email@example.com') }}</a>
-                </li>
-                <li>
-                    <span class="icon" aria-hidden="true">📞</span> 
-                    <a href="tel:{{ theme_var('contact_phone') }}">{{ theme_var('contact_phone')|default('+00 000 0000') }}</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3 class="footer-heading">Newsletter</h3>
-            <p>Subscribe to get the latest updates.</p>
-            <form class="footer-form" action="#">
-                <label for="newsletter-email" class="sr-only">Your Email Address</label>
-                <input type="email" id="newsletter-email" placeholder="Your Email Address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <div class="donate-wrapper">
-                <a href="/donate" class="donate-btn">Donate Now</a>
-            </div>
-        </div>
+        {# Footer Builder Area #}
+        {% include 'partials/footer-builder.html.twig' %}
 
     </div>
 
     <div class="footer-bottom">
         <div class="bottom-content">
-            <p>Developed By: <strong>{{ site.author.name }}</strong></p>
-            <p>&copy; {{ "now"|date("Y") }} <strong>{{ site.title }}</strong>. All rights reserved.</p>
+            <div class="copyright">{{ theme_var('agent_footer_legal_copy')|raw }}</div>
+            <div class="credits">{{ theme_var('agent_footer_legal_credits')|raw }}</div>
         </div>
     </div>
 </footer>

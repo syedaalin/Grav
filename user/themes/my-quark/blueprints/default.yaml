@@ -1,0 +1,12 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero_tab:
+          type: tab
+          title: "Hero"
+          import@: 
+            type: partials/hero
+            file: hero.yaml

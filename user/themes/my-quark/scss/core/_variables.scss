@@ -1,0 +1,6 @@
+// SCSS Variables (Compile Time)
+// Note: Most variables should be CSS Custom Properties (Runtime) in custom-styles.html.twig
+// Use this for breakpoints or mixins that need SASS.
+
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;

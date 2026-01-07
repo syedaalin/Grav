@@ -1,0 +1,26 @@
+# user/config/navigation.yaml
+main_menu:
+  - title: "Home"
+    type: "static_node"
+    route: "/"
+  - title: "Latest News"
+    type: "smart_node"
+    route: "/blog"
+    collection:
+      items: '@root.descendants'
+      filter:
+        type: 'blog'
+      order:
+        by: date
+        dir: desc
+      limit: 5
+  - title: "Services"
+    type: "static_node"
+    route: "/services"
+    children:
+      - title: "Consulting"
+        type: "static_node"
+        route: "/services/consulting"
+      - title: "Development"
+        type: "static_node"
+        route: "/services/development"

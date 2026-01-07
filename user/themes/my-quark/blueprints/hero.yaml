@@ -1,0 +1,90 @@
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        hero_tab:
+          type: tab
+          title: Hero Builder
+          fields:
+            header.hero_enabled:
+              type: toggle
+              label: Enable Hero
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            header.hero_style:
+              type: select
+              label: Hero Style
+              default: 'standard'
+              options:
+                standard: 'Standard (Center)'
+                split: 'Split (Text Left / Image Right)'
+                immersive: 'Immersive (Full Screen)'
+                minimal: 'Minimal (Text Only)'
+
+            header.hero_content_section:
+              type: section
+              title: Content
+              underline: true
+
+            header.hero_title:
+               type: text
+               label: Hero Title (H1)
+               placeholder: 'Use page title if empty'
+            
+            header.hero_subtitle:
+               type: textarea
+               label: Subtitle / Lead Text
+               rows: 2
+
+            header.hero_buttons:
+               type: list
+               label: CTA Buttons
+               fields:
+                 .text:
+                   type: text
+                   label: Button Text
+                 .url:
+                   type: text
+                   label: URL
+                 .class:
+                   type: select
+                   label: Style
+                   default: 'btn-primary'
+                   options:
+                     btn-primary: Primary
+                     btn-secondary: Secondary
+                     btn-link: Link (Ghost)
+
+            header.hero_media_section:
+              type: section
+              title: Visuals
+              underline: true
+
+            header.hero_image:
+              type: filepicker
+              label: Hero Image
+              preview_images: true
+              accept:
+                - image/*
+
+            header.hero_video:
+               type: filepicker
+               label: Video Background (MP4)
+               accept:
+                 - video/*
+            
+            header.hero_overlay_opacity:
+               type: range
+               label: Overlay Opacity
+               default: 0.3
+               min: 0
+               max: 1
+               step: 0.1

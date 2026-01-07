@@ -2,11 +2,11 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledJsonFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/data/flex/indexes/pages.json',
-    'modified' => 1767673995,
+    'modified' => 1767719399,
     'size' => 4566,
     'data' => [
         'version' => '1.5',
-        'timestamp' => 1767673995,
+        'timestamp' => 1767719399,
         'count' => 17,
         'index' => [
             '' => [
@@ -51,13 +51,13 @@ return [
                 'key' => 'home',
                 'storage_key' => '01.home',
                 'template' => 'default',
-                'storage_timestamp' => 1767673498,
+                'storage_timestamp' => 1767675113,
                 'markdown' => [
                     '' => [
-                        'default' => 1767673498
+                        'default' => 1767675113
                     ]
                 ],
-                'checksum' => 'c3e9d86dc01d906bbee2344e951b5032'
+                'checksum' => '2c915909b66402831fce85c3e88b9ebd'
             ],
             '02.online-courses' => [
                 'key' => 'online-courses',

@@ -1,0 +1,19 @@
+<section class="section hero {{ page.header.hero_classes }}" style="background-image: url({{ page.media[page.header.hero_image].url }})">
+    <div class="container">
+        <div class="hero-content">
+            <h1>{{ page.title }}</h1>
+            {{ content|raw }}
+            
+            {# 
+               2026 STANDARD: LCP OPTIMIZATION 
+               If this image is the hero background (via CSS), we preload it.
+               If it's an <img> tag, we use fetchpriority="high".
+            #}
+            
+            {% if page.header.hero_image %}
+                {% set hero_img = page.media[page.header.hero_image] %}
+                <link rel="preload" as="image" href="{{ hero_img.url }}" fetchpriority="high">
+            {% endif %}
+        </div>
+    </div>
+</section>

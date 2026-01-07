@@ -39,11 +39,11 @@ class __TwigTemplate_a30df2595985d025a61e56affe7b9321 extends Template
     {
         $macros = $this->macros;
         // line 1
-        $context["logo"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "logo");
+        $context["logo"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "agent_identity_logo");
         // line 2
-        $context["brand"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "brand_text"), CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 2));
+        $context["brand"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "agent_identity_brandName"), CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 2));
         // line 3
-        $context["show_text"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "brand_text_show");
+        $context["show_text"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "agent_identity_showText");
         // line 4
         yield "
 <a href=\"";
@@ -61,7 +61,7 @@ class __TwigTemplate_a30df2595985d025a61e56affe7b9321 extends Template
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc(("theme://images/logo/" . ($context["logo_file"] ?? null))), "html", null, true);
             yield "\" alt=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["brand"] ?? null), "html", null, true);
-            yield "\" />
+            yield "\" fetchpriority=\"high\" />
     ";
         }
         // line 10

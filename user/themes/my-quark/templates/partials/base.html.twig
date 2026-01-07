@@ -1,6 +1,14 @@
-{% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer']) %}
-{% set grid_size = theme_var('grid-size') %}
-{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% set body_classes = [
+    theme_var('agent_header_fixed') ? 'header-fixed' : '',
+    theme_var('agent_header_animated') ? 'header-animated' : '',
+    theme_var('agent_header_dark') ? 'header-dark' : '',
+    theme_var('agent_header_transparent') ? 'header-transparent' : '',
+    theme_var('agent_footer_sticky') ? 'sticky-footer' : '',
+    theme_var('physic_eco_mode') ? 'eco-mode' : '',
+    theme_var('physic_focus_mode') ? 'focus-mode' : ''
+]|join(' ')|trim %}
+{% set grid_size = theme_var('agent_gov_gridSize') %}
+{% set compress = theme_var('agent_gov_production') ? '.min.css' : '.css' %}
 {% use 'blocks/base.html.twig' %}
 <!DOCTYPE html>
 <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
@@ -12,10 +20,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'partials/metadata.html.twig' %}
-    {% include 'partials/custom-styles.html.twig' %}
     {% include 'partials/structured-data.html.twig' %}
 
-    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    {% set favicon = theme_var('agent_identity_logo') ? theme_var('agent_identity_logo')|first : null %}
+    {% if favicon %}
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo/' ~ favicon.name) }}" />
+    {% endif %}
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 {% endblock head %}
 
@@ -29,53 +39,74 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% do assets.addJs('jquery', 101) %}
-    {% do assets.addJs('theme://js/jquery.treemenu.js', {group:'bottom'}) %}
-    {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
     {% do assets.addJs('theme://js/email-deobfuscate.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/builder-features.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/theme-core.js', {group:'bottom'}) %}
 {% endblock %}
 
 {% block assets deferred %}
     {{ assets.css()|raw }}
     {{ assets.js()|raw }}
 {% endblock %}
+{% include 'partials/custom-styles.html.twig' %}
+
+{# =========================================================================
+   MODERN WEB FEATURES: Polyfills & Progressive Enhancement
+   ========================================================================= #}
+<script>
+// Anchor Positioning Polyfill (2026 Standard)
+if (!CSS.supports('anchor-name', '--test')) {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@oddbird/css-anchor-positioning';
+    script.async = true;
+    document.head.appendChild(script);
+    console.log('Gravity: Loading Anchor Positioning polyfill');
+}
+
+// View Transitions API (2026 Progressive Enhancement)
+if ('startViewTransition' in document) {
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.href && !link.target && link.origin === location.origin && !link.href.includes('#')) {
+           e.preventDefault();
+            document.startViewTransition(() => {
+                window.location.href = link.href;
+            });
+        }
+    });
+    console.log('Gravity: View Transitions API Active');
+}
+</script>
 </head>
-<body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+<body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}" data-haptics="{{ theme_var('agent_gov_haptics')|default('false') }}">
     <a href="#start" class="skip-to-content">Skip to main content</a>
     <div id="page-wrapper">
     {% block header %}
         <section id="header" class="section">
             <section class="container {{ grid_size }}">
-                <nav class="navbar">
-                    <section class="navbar-section logo">
-                        {% include 'partials/logo.html.twig' %}
-                    </section>
-                    <section class="navbar-section desktop-menu">
-
-                        <nav class="dropmenu animated">
-                        {% block header_navigation %}
-                            {% include 'partials/navigation.html.twig' %}
-                        {% endblock %}
-                        </nav>
-
-                        {% if config.plugins.login.enabled and grav.user.username %}
-                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' ignore missing %}</span>
-                        {% endif %}
-
-                    </section>
+                <nav class="navbar" role="navigation" aria-label="Primary navigation">
+                    {% include 'partials/header-builder.html.twig' %}
                 </nav>
             </section>
         </section>
         <div class="mobile-menu">
-            <div class="button_container" id="toggle">
+            <button 
+                class="button_container" 
+                id="toggle"
+                aria-label="Toggle mobile navigation menu"
+                aria-expanded="false"
+                aria-controls="overlay"
+                type="button">
                 <span class="top"></span>
                 <span class="middle"></span>
                 <span class="bottom"></span>
-            </div>
+            </button>
         </div>
     {% endblock %}
 
-    {% block hero %}{% endblock %}
+    {% block hero %}
+        {% include 'partials/hero-builder.html.twig' %}
+    {% endblock %}
 
         <section id="start">
         {% block body %}
@@ -102,7 +133,7 @@
             <div class="mobile-logo">
                 {% include 'partials/logo.html.twig' with {mobile: true} %}
             </div>
-            <nav class="overlay-menu">
+            <nav class="overlay-menu" role="navigation" aria-label="Mobile navigation">
                 {% include 'partials/navigation.html.twig' with {tree: true} %}
             </nav>
         </div>
@@ -111,6 +142,7 @@
 
 {% block bottom %}
     {{ assets.js('bottom')|raw }}
+    <script src="{{ url('theme://js/navigation.js') }}" defer></script>
 {% endblock %}
 
 </body>

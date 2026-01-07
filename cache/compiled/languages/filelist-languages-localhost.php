@@ -3,18 +3,23 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'languages',
     'environment' => 'localhost',
-    'timestamp' => 1767670274,
+    'timestamp' => 1767759312,
     'directories' => [
         '/Users/syedaalin/Documents/Grav/system/languages' => 1767660594,
-        '/Users/syedaalin/Documents/Grav/user/plugins' => 1767663065,
+        '/Users/syedaalin/Documents/Grav/user/plugins' => 1767731301,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/pagination' => 1767731299,
         '/Users/syedaalin/Documents/Grav/user/plugins/form' => 1767660593,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects' => 1767663065,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages' => 1767636900,
+        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch' => 1767731298,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin' => 1767663061,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap' => 1767636900,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/feed' => 1767731297,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo' => 1767731295,
         '/Users/syedaalin/Documents/Grav/user/plugins/error' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs' => 1767731301,
         '/Users/syedaalin/Documents/Grav/user/plugins/login' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592
     ],
@@ -68,11 +73,14 @@ return [
         '/Users/syedaalin/Documents/Grav/system/languages/zh-cn.yaml' => 1767661386,
         '/Users/syedaalin/Documents/Grav/system/languages/zh-tw.yaml' => 1767661386,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices/languages.yaml' => 1762876910,
+        '/Users/syedaalin/Documents/Grav/user/plugins/pagination/languages.yaml' => 1707084214,
         '/Users/syedaalin/Documents/Grav/user/plugins/form/languages.yaml' => 1766923054,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages/languages.yaml' => 1691710516,
+        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch/languages.yaml' => 1661506352,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap/languages.yaml' => 1718603524,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems/languages.yaml' => 1762876910,
         '/Users/syedaalin/Documents/Grav/user/plugins/error/languages.yaml' => 1762876910,
+        '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs/languages.yaml' => 1658743204,
         '/Users/syedaalin/Documents/Grav/user/plugins/email/languages.yaml' => 1765351098,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects/languages/de.yaml' => 1764496350,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects/languages/en.yaml' => 1764496350,
@@ -132,6 +140,9 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/admin/languages/zh.yaml' => 1766978626,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin/languages/zh-cn.yaml' => 1766978626,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin/languages/zh-tw.yaml' => 1766978626,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo/languages/en.yaml' => 1767731465,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo/languages/nl.yaml' => 1767731806,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo/languages/ro.yaml' => 1767731824,
         '/Users/syedaalin/Documents/Grav/user/plugins/login/languages/de.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/login/languages/en.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/login/languages/es.yaml' => 1762876912,
@@ -346,6 +357,10 @@ return [
                 'file' => 'user/plugins/markdown-notices/languages.yaml',
                 'modified' => 1762876910
             ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/languages.yaml',
+                'modified' => 1707084214
+            ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/languages.yaml',
                 'modified' => 1766923054
@@ -353,6 +368,10 @@ return [
             'plugins/relatedpages' => [
                 'file' => 'user/plugins/relatedpages/languages.yaml',
                 'modified' => 1691710516
+            ],
+            'plugins/simplesearch' => [
+                'file' => 'user/plugins/simplesearch/languages.yaml',
+                'modified' => 1661506352
             ],
             'plugins/sitemap' => [
                 'file' => 'user/plugins/sitemap/languages.yaml',
@@ -365,6 +384,10 @@ return [
             'plugins/error' => [
                 'file' => 'user/plugins/error/languages.yaml',
                 'modified' => 1762876910
+            ],
+            'plugins/breadcrumbs' => [
+                'file' => 'user/plugins/breadcrumbs/languages.yaml',
+                'modified' => 1658743204
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/languages.yaml',
@@ -605,6 +628,20 @@ return [
             'zh-tw' => [
                 'file' => 'user/plugins/admin/languages/zh-tw.yaml',
                 'modified' => 1766978626
+            ]
+        ],
+        'user/plugins/seo/languages' => [
+            'en' => [
+                'file' => 'user/plugins/seo/languages/en.yaml',
+                'modified' => 1767731465
+            ],
+            'nl' => [
+                'file' => 'user/plugins/seo/languages/nl.yaml',
+                'modified' => 1767731806
+            ],
+            'ro' => [
+                'file' => 'user/plugins/seo/languages/ro.yaml',
+                'modified' => 1767731824
             ]
         ],
         'user/plugins/login/languages' => [

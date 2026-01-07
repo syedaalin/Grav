@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/themes/my-quark.yaml',
-    'modified' => 1767670427,
-    'size' => 2077,
+    'modified' => 1767759269,
+    'size' => 2011,
     'data' => [
         'streams' => [
             'schemes' => [
@@ -18,36 +18,22 @@ return [
                 ]
             ]
         ],
+        'physic_glass_blur' => 20,
+        'physic_neo_strength' => 0.5,
+        'physic_neo_lightSource' => 'top-left',
         'enabled' => true,
+        'haptic_feedback' => true,
         'production-mode' => '1',
         'grid-size' => 'grid-xl',
         'header-fixed' => '1',
         'header-animated' => '1',
-        'header-dark' => false,
-        'header-transparent' => false,
-        'sticky-footer' => true,
+        'header-dark' => '0',
+        'header-transparent' => '0',
+        'sticky-footer' => '1',
         'blog-page' => '/blog',
         'spectre' => [
-            'exp' => true,
-            'icons' => true
-        ],
-        'custom_logo' => [
-            'user/themes/quark/images/logo/aabtaab-logo.webp' => [
-                'name' => 'aabtaab-logo.webp',
-                'full_path' => 'aabtaab-logo.webp',
-                'type' => 'image/webp',
-                'size' => 56746,
-                'path' => 'user/themes/quark/images/logo/aabtaab-logo.webp'
-            ]
-        ],
-        'custom_logo_mobile' => [
-            'user/themes/quark/images/logo/aabtaab-logo.webp' => [
-                'name' => 'aabtaab-logo.webp',
-                'full_path' => 'aabtaab-logo.webp',
-                'type' => 'image/webp',
-                'size' => 56746,
-                'path' => 'user/themes/quark/images/logo/aabtaab-logo.webp'
-            ]
+            'exp' => '1',
+            'icons' => '1'
         ],
         'dropdown' => [
             'enabled' => true
@@ -55,7 +41,7 @@ return [
         'brand_primary' => '#3b4252',
         'brand_secondary' => '#88c0d0',
         'brand_accent' => '#bf616a',
-        'radius_main' => '12px',
+        'physic_radius_main' => '12px',
         'font_family' => 'Outfit',
         'footer_bg' => '#0f0f10',
         'footer_text' => '#ffffff',
@@ -92,15 +78,6 @@ return [
         'heading_scale' => 1.2,
         'logo_height' => 48,
         'logo_height_mobile' => 32,
-        'logo' => [
-            'user/themes/my-quark/images/logo/aabtaab-logo.webp' => [
-                'name' => 'aabtaab-logo.webp',
-                'full_path' => 'aabtaab-logo.webp',
-                'type' => 'image/webp',
-                'size' => 56746,
-                'path' => 'user/themes/my-quark/images/logo/aabtaab-logo.webp'
-            ]
-        ],
         'brand_text' => 'Aabtaab',
         'brand_text_show' => '1',
         'background_texture' => 'none',
@@ -110,6 +87,33 @@ return [
         'spacing_scale' => 1,
         'texture_animate' => '1',
         'vignette_overlay' => '1',
-        'texture_color' => '#93573e'
+        'texture_color' => '#93573e',
+        'header_builder' => [
+            0 => [
+                'type' => 'logo',
+                'text' => 'aabtaab',
+                'link' => NULL,
+                'logo_height' => 24,
+                'logo_height_mobile' => 18,
+                'visibility' => 'all',
+                'classes' => NULL,
+                'animation' => 'zoomIn',
+                'animation_delay' => '0',
+                'haptic_feedback' => '1',
+                'focus_hide' => '0'
+            ]
+        ],
+        'footer_builder' => [
+            0 => [
+                'width' => 'col-4',
+                'type' => 'branding',
+                'title' => 'Aabtaab',
+                'content' => NULL,
+                'animation' => 'fadeUp'
+            ]
+        ],
+        'footer_copyright' => '&copy; 2026 Your Company. All rights reserved.',
+        'footer_credits' => 'Designed by Antigravity',
+        'footer_links_title' => 'Links'
     ]
 ];

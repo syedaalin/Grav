@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/pages/01.home/default.md',
-    'modified' => 1767673498,
-    'size' => 5409,
+    'modified' => 1767675113,
+    'size' => 5504,
     'data' => [
         'header' => [
             'title' => 'Home',
@@ -44,7 +44,7 @@ cache_enable: true',
           <div class="card-title">Niyabat Ziyarat</div>
           <p>Have a representative perform Ziarat on your behalf at holy shrines with sincerity and devotion.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/niyabat-ziyarat" class="card-link">View Details →</a>
       </div>
 
       <div class="service-card">
@@ -53,7 +53,7 @@ cache_enable: true',
           <div class="card-title">Zakat</div>
           <p>Purify your wealth through our Zakat services, ensuring accurate distribution to rightful recipients.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/zakat" class="card-link">View Details →</a>
       </div>
 
       <div class="service-card">
@@ -62,7 +62,7 @@ cache_enable: true',
           <div class="card-title">Khums</div>
           <p>Easily fulfill the obligation of paying Khums with proper calculation and Shariah compliance.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/khums" class="card-link">View Details →</a>
       </div>
 
       <div class="service-card">
@@ -71,7 +71,7 @@ cache_enable: true',
           <div class="card-title">Ijarah</div>
           <p>Hire someone to perform religious duties (prayers/fasts) on behalf of your departed loved ones.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/ijarah" class="card-link">View Details →</a>
       </div>
 
       <div class="service-card">
@@ -80,7 +80,7 @@ cache_enable: true',
           <div class="card-title">Expiation</div>
           <p>Make up for missed fasts or broken oaths through properly guided expiation services.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/expiation" class="card-link">View Details →</a>
       </div>
 
       <div class="service-card">
@@ -89,7 +89,7 @@ cache_enable: true',
           <div class="card-title">Sacrifice</div>
           <p>Sadqah, Expiation or Aqiqah Qurbani on your behalf with complete adherence to Islamic principles.</p>
         </div>
-        <a href="#" class="card-link">View Details →</a>
+        <a href="/services/sacrifice" class="card-link">View Details →</a>
       </div>
 
     </div>
@@ -108,15 +108,15 @@ cache_enable: true',
       "The believer\'s shade on the Day of Resurrection will be his charity"
     </p>
     <br>
-    <a href="#" class="hero-btn" style="background: #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">❤️ GIVE TODAY</a>
+    <a href="/donate" class="hero-btn btn-donate-hero">❤️ GIVE TODAY</a>
   </div>
 
   <!-- COURSES -->
   <div class="animate-load delay-3">
     <h2 class="section-heading">Popular Courses 📚</h2>
-    <p style="text-align: center; margin-bottom: 30px;">Pick A Course To Get Started</p>
+    <p class="text-center-mb">Pick A Course To Get Started</p>
     
-    <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+    <div class="grid-container grid-container--wide">
       
       <div class="popular-course-card">
         <div class="course-icon">💡</div>
@@ -124,7 +124,7 @@ cache_enable: true',
           <strong>Ethics (Akhlaq)</strong><br>
           <span>Path to Moral Perfection</span>
         </div>
-        <a href="#" class="course-btn">Enroll</a>
+        <a href="/online-courses/ethics" class="course-btn">Enroll</a>
       </div>
 
       <div class="popular-course-card">
@@ -133,7 +133,7 @@ cache_enable: true',
           <strong>Islamic History</strong><br>
           <span>Master the Narrative</span>
         </div>
-        <a href="#" class="course-btn">Enroll</a>
+        <a href="/online-courses/history" class="course-btn">Enroll</a>
       </div>
 
       <div class="popular-course-card">
@@ -142,7 +142,7 @@ cache_enable: true',
           <strong>Jurisprudence (Fiqh)</strong><br>
           <span>Foundations of Law</span>
         </div>
-        <a href="#" class="course-btn">Enroll</a>
+        <a href="/online-courses/jurisprudence" class="course-btn">Enroll</a>
       </div>
 
       <div class="popular-course-card">
@@ -151,7 +151,7 @@ cache_enable: true',
           <strong>Nahjul Balagha</strong><br>
           <span>Book of Eloquence</span>
         </div>
-        <a href="#" class="course-btn">Enroll</a>
+        <a href="/online-courses/nahjul-balagha" class="course-btn">Enroll</a>
       </div>
 
       <div class="popular-course-card">
@@ -160,7 +160,7 @@ cache_enable: true',
           <strong>Quran</strong><br>
           <span>Arabic & Tajweed</span>
         </div>
-        <a href="#" class="course-btn">Enroll</a>
+        <a href="/online-courses/quran" class="course-btn">Enroll</a>
       </div>
 
     </div>

@@ -1,0 +1,41 @@
+/* =======================================================================
+   INTRINSIC GRID SYSTEM (2026 Standard)
+   Replaces 12-column global grid with Container Query Implementation
+   ======================================================================= */
+
+.container, 
+.col-12, .col-6, .col-4, .col-3 {
+    container-type: inline-size;
+    container-name: grid-item;
+}
+
+/* Base Grid (Mobile-First / Narrow) */
+.columns {
+    display: grid;
+    gap: var(--space-unit);
+    grid-template-columns: 1fr;
+}
+
+/* Tablet (Container > 600px) */
+@container (min-width: 600px) {
+    .columns.col-2-md { grid-template-columns: repeat(2, 1fr); }
+    .columns.col-3-md { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop (Container > 900px) */
+@container (min-width: 900px) {
+    .columns { grid-template-columns: repeat(12, 1fr); }
+    
+    .col-3 { grid-column: span 3; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+}
+
+/* Intrinsic Adaptability (Smart Wrapping) */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-unit);
+}

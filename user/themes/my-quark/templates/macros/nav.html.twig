@@ -1,0 +1,41 @@
+{% macro loop(items, level) %}
+  {% import _self as macros %}
+  {% for item in items %}
+    {% set has_children = item.children|length > 0 %}
+    {% set is_mega = item.type == 'mega' %}
+    {% set active_class = (item.url == uri.route) ? 'active' : '' %}
+    
+    <li class="nav-item {{ active_class }} {{ has_children ? 'has-children' : '' }} {{ is_mega ? 'is-mega' : '' }}" 
+        role="none" 
+        data-mx-context="{{ item.mx_context|e }}"
+        data-design-token="{{ item.design_token|default('default') }}">
+      
+      {% if item.type == 'heading' %}
+        <span class="nav-heading">{{ item.label }}</span>
+      {% elseif item.type == 'logo' %}
+        <a href="{{ base_url == '' ? '/' : base_url }}" class="nav-brand" aria-label="{{ site.title }}">
+          {% include 'partials/logo.html.twig' %}
+        </a>
+      {% elseif item.type == 'button' %}
+         <a href="{{ item.url }}" class="btn btn-primary {{ item.design_token == 'accent' ? 'btn-accent' : '' }}">
+           {{ item.label }}
+         </a>
+      {% else %}
+        <a href="{{ item.url }}" class="nav-link" role="menuitem" {{ has_children ? 'aria-haspopup="true" aria-expanded="false"' : '' }}>
+          {{ item.label }}
+          {% if has_children %}
+            <span class="dropdown-icon">▼</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% if has_children %}
+         <div class="dropdown-menu level-{{ level }}">
+           <ul role="menu">
+             {{ macros.loop(item.children, level + 1) }}
+           </ul>
+         </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+{% endmacro %}

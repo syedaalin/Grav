@@ -5,41 +5,53 @@
    ========================================================================== */
 
 /* SELF-HOSTED FONTS (GDPR Compliant - Rule 5.1) */
-@font-face {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-300-normal.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+{% set font_primary = theme_var('token_font_body')|default('Outfit') %}
+{% set font_primary_file = font_primary|replace({' ': ''}) %}
 
+{# Primary Font #}
 @font-face {
-    font-family: 'Outfit';
+    font-family: '{{ font_primary }}';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url('{{ url("theme://fonts/" ~ font_primary_file ~ "-400.woff2") }}') format('woff2');
 }
-
 @font-face {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-600-normal.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-    font-family: 'Outfit';
+    font-family: '{{ font_primary }}';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-700-normal.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url('{{ url("theme://fonts/" ~ font_primary_file ~ "-700.woff2") }}') format('woff2');
 }
+
+{# Header Font (if different) #}
+{% set font_header = theme_var('token_font_header')|default('Outfit') %}
+{% if font_header != font_primary and font_header != '' %}
+    {% set font_header_file = font_header|replace({' ': ''}) %}
+    @font-face {
+        font-family: '{{ font_header }}';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('{{ url("theme://fonts/" ~ font_header_file ~ "-700.woff2") }}') format('woff2');
+    }
+{% endif %}
+
+   ======================================================================= */
+/* 
+   Fluid Typography Logic (2026 Standard)
+   Uses clamp() for smooth scaling between viewport widths (320px - 1200px)
+*/
+{% set min_size = theme_var('token_typo_min_size')|default(16) %}
+{% set max_size = theme_var('token_typo_max_size')|default(18) %}
+{% set scale = theme_var('token_typo_scale')|default(1.25) %}
+{% set fluid_enabled = theme_var('token_typo_fluid') %}
+
+{# Linear Interpolation Slope (y = mx + c) #}
+{# slope = (max_size - min_size) / (max_width - min_width) #}
+{# 1200 - 320 = 880 #}
+{% set slope = (max_size - min_size) / 880 %}
+{% set intercept = min_size - (slope * 320) %}
 
 :root {
     /* =======================================================================
@@ -48,99 +60,171 @@
        ======================================================================= */
     
     /* Original Hex values for fallback */
-    --brand-primary-hex: {{ theme_var('brand_primary')|default('#3b4252') }};
-    --brand-secondary-hex: {{ theme_var('brand_secondary')|default('#88c0d0') }};
-    --brand-accent-hex: {{ theme_var('brand_accent')|default('#bf616a') }};
+    {% set p_hex = theme_var('token_color_primary')|default('#3b4252') %}
+    {% set s_hex = theme_var('token_color_secondary')|default('#88c0d0') %}
+    {% set a_hex = theme_var('token_color_accent')|default('#bf616a') %}
+    
+    --brand-primary-hex: {{ (p_hex|iterable ? p_hex|first : p_hex)|e('html') }};
+    --brand-secondary-hex: {{ (s_hex|iterable ? s_hex|first : s_hex)|e('html') }};
+    --brand-accent-hex: {{ (a_hex|iterable ? a_hex|first : a_hex)|e('html') }};
     
     /* OKLCH Conversions (Primary color system) */
-    /* #3b4252 → oklch(32.5% 0.025 255) */
-    /* #88c0d0 → oklch(76% 0.065 220) */
-    /* #bf616a → oklch(58% 0.14 20) */
-    --brand-primary: oklch(32.5% 0.025 255);
-    --brand-secondary: oklch(76% 0.065 220);
-    --brand-accent: oklch(58% 0.14 20);
+    /* We use the hex values from Admin and allow CSS to handle OKLCH if needed via color-mix or relative syntax */
+    --brand-primary: {{ p_hex }};
+    --brand-secondary: {{ s_hex }};
+    --brand-accent: {{ a_hex }};
     
-    /* Derived colors using OKLCH lightness manipulation */
-    --brand-primary-light: oklch(42.5% 0.025 255);
-    --brand-primary-dark: oklch(22.5% 0.025 255);
-    --brand-secondary-light: oklch(86% 0.065 220);
-    --brand-accent-hover: oklch(68% 0.14 20);
+    /* Derived colors using CSS relative color syntax (2026 Standard) */
+    --brand-primary-light: oklch(from var(--brand-primary) calc(l + 0.1) c h);
+    --brand-primary-dark: oklch(from var(--brand-primary) calc(l - 0.1) c h);
+    --brand-secondary-light: oklch(from var(--brand-secondary) calc(l + 0.1) c h);
+    --brand-accent-hover: oklch(from var(--brand-accent) calc(l + 0.1) c h);
     
-    /* 2. FOOTER COLORS (OKLCH) */
-    --footer-bg: oklch(8% 0.005 250);
-    --footer-text: oklch(100% 0 0);
-    --footer-accent: oklch(75% 0.12 85);
-    --footer-muted: oklch(70% 0.01 250);
-    --footer-danger: oklch(55% 0.2 25);
+    /* 2. FOOTER COLORS */
+    --footer-bg: {{ theme_var('agent_footer_color_bg')|default('#0f0f10') }};
+    --footer-text: {{ theme_var('agent_footer_color_text')|default('#ffffff') }};
+    --footer-accent: {{ theme_var('agent_footer_color_accent')|default('#d4af37') }};
+    --footer-muted: oklch(from var(--footer-text) l c h / 0.7);
+    --footer-danger: oklch(55% 0.2 25); {# Keep as safety default or link to a danger variable if added #}
     
     /* 3. UI SURFACE COLORS */
-    --bg-body: oklch(93% 0.01 250);
-    --bg-card: oklch(100% 0 0);
-    --text-main: oklch(25% 0.02 250);
-    --text-muted: oklch(50% 0.02 250);
+    --bg-body: {{ theme_var('token_color_bg_body')|default('#eceff4') }};
+    --bg-card: {{ theme_var('token_color_bg_card')|default('#ffffff') }};
+    --text-main: {{ theme_var('token_color_text_main')|default('#2e3440') }};
+    --text-muted: {{ theme_var('token_color_text_muted')|default('#4c566a') }};
     
     /* 4. SHAPES & UI */
-    --radius-main: {{ theme_var('radius_main')|default('12px') }};
-    --glass-opacity: {{ theme_var('glass_opacity')|default(0.85) }};
+    --radius-main: {{ theme_var('physic_radius_main')|default('12px') }};
+    --glass-opacity: {{ theme_var('physic_glass_opacity')|default(0.85) }};
+    --glass-blur: blur({{ theme_var('physic_glass_blur')|default(20) }}px) saturate(180%);
+
+    /* Neomorphism System (2026) */
+    {% set neo_strength = theme_var('physic_neo_strength')|default(0) %}
+    {% set neo_light = theme_var('physic_neo_lightSource')|default('top-left') %}
     
-    /* BACKGROUND TEXTURE (2026 ADAPTIVE) */
-    {% set tex = theme_var('background_texture')|default('none') %}
-    {% set op = theme_var('texture_opacity')|default(0.05) %}
-    {% set tex_col = theme_var('texture_color')|default('#000000') %}
-    {% set tex_col_encoded = tex_col|replace({'#': '%23'}) %}
-    
-    /* Modern Alpha-Mixing for Gradients */
-    {% set mix_col = "color-mix(in srgb, " ~ tex_col ~ ", transparent " ~ ((1 - op) * 100)|round ~ "%)" %}
-    
-    {% if tex == 'noise' %}
-        --bg-pattern: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='{{ tex_col_encoded }}' opacity='{{ op }}' type='matrix'/%3E%3C/svg%3E");
-        --bg-size: 100% 100%;
-        --bg-fixed: fixed;
-    {% elseif tex == 'plus' %}
-        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='evenodd'%3E%3Cpath d='M20 3a1 1 0 0 1 1 1v15h15a1 1 0 1 1 0 2H21v15a1 1 0 1 1-2 0V21H4a1 1 0 1 1 0-2h15V4a1 1 0 0 1 1-1z'/%3E%3C/g%3E%3C/svg%3E");
-        --bg-size: 40px 40px;
-    {% elseif tex == 'cross' %}
-        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='evenodd'%3E%3Cpath d='M20 18.59l14.15-14.15 1.41 1.41L21.41 20l14.15 14.15-1.41 1.41L20 21.41 5.85 35.56 4.44 34.15 18.59 20 4.44 5.85 5.85 4.44z'/%3E%3C/g%3E%3C/svg%3E");
-        --bg-size: 40px 40px;
-    {% elseif tex == 'circle' %}
-        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 37a17 17 0 1 0 0-34 17 17 0 0 0 0 34zm0-2a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' fill='{{ tex_col_encoded }}' fill-opacity='{{ op }}' fill-rule='nonzero'/%3E%3C/svg%3E");
-        --bg-size: 50px 50px;
-    {% elseif tex == 'triangle' %}
-        --bg-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5l15 26H5z' stroke='{{ tex_col_encoded }}' stroke-opacity='{{ op }}' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-        --bg-size: 40px 40px;
-    {% elseif tex == 'dots' %}
-        --bg-pattern: radial-gradient({{ mix_col }} 1px, transparent 1px);
-        --bg-size: 20px 20px;
-    {% elseif tex == 'grid' %}
-        --bg-pattern: linear-gradient({{ mix_col }} 1px, transparent 1px), linear-gradient(90deg, {{ mix_col }} 1px, transparent 1px);
-        --bg-size: 30px 30px;
-    {% elseif tex == 'lines' %}
-        --bg-pattern: repeating-linear-gradient(45deg, {{ mix_col }}, {{ mix_col }} 1px, transparent 1px, transparent 10px);
-        --bg-size: 20px 20px;
-    {% elseif tex == 'mesh' %}
-        --bg-pattern: 
-            radial-gradient(at 0% 0%, color-mix(in oklch, var(--brand-primary), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%), 
-            radial-gradient(at 50% 0%, color-mix(in oklch, var(--brand-secondary), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%), 
-            radial-gradient(at 100% 0%, color-mix(in oklch, var(--brand-accent), transparent {{ (1 - op*2) * 100 }}%) 0, transparent 50%);
-        --bg-size: 100% 100%;
-        --bg-fixed: fixed;
+    {% if neo_strength > 0 %}
+        --neo-dist: {{ neo_strength * 6 }}px;
+        --neo-blur: {{ neo_strength * 12 }}px;
+        --neo-op-dark: {{ neo_strength * 0.15 }};
+        --neo-op-light: {{ neo_strength * 0.8 }};
+        
+        {% if neo_light == 'top-left' %}
+            --neo-shadow: var(--neo-dist) var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                          calc(var(--neo-dist) * -1) calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+            --neo-shadow-inset: inset var(--neo-dist) var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                                inset calc(var(--neo-dist) * -1) calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+        {% elseif neo_light == 'top-right' %}
+            --neo-shadow: calc(var(--neo-dist) * -1) var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                          var(--neo-dist) calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+            --neo-shadow-inset: inset calc(var(--neo-dist) * -1) var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                                inset var(--neo-dist) calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+        {% else %}
+            --neo-shadow: 0 var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                          0 calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+            --neo-shadow-inset: inset 0 var(--neo-dist) var(--neo-blur) oklch(0% 0 0 / var(--neo-op-dark)), 
+                                inset 0 calc(var(--neo-dist) * -1) var(--neo-blur) oklch(100% 0 0 / var(--neo-op-light));
+        {% endif %}
     {% else %}
-        --bg-pattern: none;
-        --bg-size: auto;
+        --neo-shadow: 0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1);
+        --neo-shadow-inset: inset 0 2px 4px 0 oklch(0% 0 0 / 0.06);
     {% endif %}
     
-    /* ANIMATION & EFFECTS */
-    {% if theme_var('texture_animate') %}
-        --bg-anim: bgBreathing 30s ease-in-out infinite alternate;
-    {% else %}
+    /* BACKGROUND BUILDER 2026 (Dynamic Modes) */
+    {% set bg_mode = theme_var('agent_env_mode')|default(0) %}
+    
+    {% if bg_mode == 0 %}
+        /* Mode: Solid Color (Default) */
+        {% set s_col = theme_var('agent_env_solid_col')|default('#ffffff') %}
+        --bg-pattern: linear-gradient({{ s_col }}, {{ s_col }});
+        --bg-size: auto;
+        --bg-fixed: scroll;
+        --bg-anim: none;
+
+    {% elseif bg_mode == 1 %}
+        /* Mode: Gradient */
+        {% set g_type = theme_var('agent_env_grad_type')|default('linear') %}
+        {% set g_angle = theme_var('agent_env_grad_angle')|default(135) %}
+        {% set g_start = theme_var('agent_env_grad_start')|default('#3b4252') %}
+        {% set g_end = theme_var('agent_env_grad_end')|default('#88c0d0') %}
+        
+        {% if g_type == 'linear' %}
+            --bg-pattern: linear-gradient({{ g_angle }}deg, {{ g_start }}, {{ g_end }});
+        {% else %}
+            --bg-pattern: radial-gradient(circle at center, {{ g_start }}, {{ g_end }});
+        {% endif %}
+        --bg-size: 100% 100%;
+        --bg-fixed: fixed;
+        --bg-anim: none;
+
+    {% elseif bg_mode == 2 %}
+        /* Mode: Background Image */
+        {% set bg_img = theme_var('agent_env_img') ? url('theme://images/backgrounds/' ~ theme_var('agent_env_img').name) : '' %}
+        {% set bg_pos = theme_var('agent_env_img_pos')|default('center center') %}
+        {% set bg_size = theme_var('agent_env_img_size')|default('cover') %}
+        {% set bg_attach = theme_var('agent_env_img_attach')|default('fixed') %}
+        {% set ov_col = theme_var('agent_env_img_overlay')|default('#000000') %}
+        {% set ov_op = theme_var('agent_env_img_op')|default(0.3) %}
+        
+        /* Image with Overlay using Linear-Gradient Trick */
+        {% if bg_img %}
+            --bg-pattern: linear-gradient(color-mix(in srgb, {{ ov_col }}, transparent {{ (1 - ov_op) * 100 }}%), color-mix(in srgb, {{ ov_col }}, transparent {{ (1 - ov_op) * 100 }}%)), url('{{ bg_img }}');
+        {% else %}
+            --bg-pattern: none; 
+        {% endif %}
+        
+        --bg-size: {{ bg_size }};
+        --bg-position: {{ bg_pos }};
+        --bg-fixed: {{ bg_attach }};
+        --bg-anim: none;
+
+    {% elseif bg_mode == 3 %}
+        /* Mode: Aurora Mesh (Animated) */
+        {% set m_c1 = theme_var('agent_env_mesh_1')|default('#3b4252') %}
+        {% set m_c2 = theme_var('agent_env_mesh_2')|default('#bf616a') %}
+        {% set m_c3 = theme_var('agent_env_mesh_3')|default('#88c0d0') %}
+        {% set m_speed = theme_var('agent_env_mesh_speed')|default(20) %}
+
+        --bg-pattern: 
+            radial-gradient(at 0% 0%, {{ m_c1 }} 0px, transparent 50%),
+            radial-gradient(at 100% 0%, {{ m_c2 }} 0px, transparent 50%),
+            radial-gradient(at 100% 100%, {{ m_c3 }} 0px, transparent 50%),
+            radial-gradient(at 0% 100%, {{ m_c1 }} 0px, transparent 50%);
+        --bg-size: 200% 200%;
+        --bg-fixed: fixed;
+        --bg-anim: auroraMesh {{ m_speed }}s ease infinite alternate;
+
+    {% elseif bg_mode == 4 %}
+        /* Mode: Legacy Pattern */
+        {% set tex = theme_var('agent_env_tex')|default('none') %}
+        {% set op = theme_var('agent_env_tex_op')|default(0.05) %}
+        {% set tex_col = theme_var('agent_env_tex_col')|default('#000000') %}
+        {% set tex_col_encoded = tex_col|replace({'#': '%23'}) %}
+        {% set mix_col = "color-mix(in srgb, " ~ tex_col ~ ", transparent " ~ ((1 - op) * 100)|round ~ "%)" %}
+
+        {% if tex == 'noise' %}
+            --bg-pattern: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='{{ tex_col_encoded }}' opacity='{{ op }}' type='matrix'/%3E%3C/svg%3E");
+            --bg-size: 100% 100%;
+        {% elseif tex == 'dots' %}
+            --bg-pattern: radial-gradient({{ mix_col }} 1px, transparent 1px);
+            --bg-size: 20px 20px;
+        {% elseif tex == 'grid' %}
+            --bg-pattern: linear-gradient({{ mix_col }} 1px, transparent 1px), linear-gradient(90deg, {{ mix_col }} 1px, transparent 1px);
+            --bg-size: 30px 30px;
+        {% else %}
+             --bg-pattern: none;
+             --bg-size: auto;
+        {% endif %}
+        --bg-fixed: scroll;
         --bg-anim: none;
     {% endif %}
-    
-    {% if theme_var('vignette_overlay') %}
+
+    {% if theme_var('physic_vignette_enabled') %}
         --vignette-display: block;
     {% else %}
         --vignette-display: none;
     {% endif %}
+    
+
     
     /* 5. LAYOUT & SPACING */
     --site-width: {{ theme_var('container_width')|default(1200) }}px;
@@ -150,37 +234,106 @@
     --logo-h-desktop: {{ theme_var('logo_height')|default(48) }}px;
     --logo-h-mobile: {{ theme_var('logo_height_mobile')|default(32) }}px;
     
-    /* 7. TYPOGRAPHY (Calculated) */
-    --font-base: {{ theme_var('font_size_base')|default(16) }}px;
-    --type-scale: {{ theme_var('heading_scale')|default(1.2) }};
+    /* 7. FLUID TYPOGRAPHY VARIABLES */
+    {% if fluid_enabled %}
+        /* min + (max-min) * ((100vw - 320px) / (1200 - 320)) simplified */
+        --font-base: clamp({{ min_size }}px, {{ intercept|number_format(4) }}px + {{ (slope * 100)|number_format(4) }}vw, {{ max_size }}px);
+    {% else %}
+        --font-base: {{ min_size }}px;
+    {% endif %}
+
+    --scale-ratio: {{ scale }};
     
-    --heading-3: calc(var(--font-base) * var(--type-scale) * var(--type-scale));
-    --heading-2: calc(var(--font-base) * var(--type-scale) * var(--type-scale) * var(--type-scale));
-    --heading-1: calc(var(--font-base) * var(--type-scale) * var(--type-scale) * var(--type-scale) * var(--type-scale));
+    /* Micro-Typography */
+    --line-height-body: {{ theme_var('token_typo_lh_body')|default(1.6) }};
+    --line-height-heading: {{ theme_var('token_typo_lh_heading')|default(1.2) }};
+    --tracking-heading: {{ theme_var('token_typo_ls_heading')|default(-0.02) }}em;
+    --measure: {{ theme_var('token_typo_measure')|default(65) }}ch;
+
+    --heading-3: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio));
+    --heading-2: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio));
+    --heading-1: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio));
+}
+
+/* =======================================================================
+   REDUCED MOTION (Accessibility & Sustainability)
+   ======================================================================= */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --bg-anim: none !important;
+        --vignette-display: none !important;
+        scroll-behavior: auto !important;
+    }
+    
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /* =======================================================================
    TYPOGRAPHY (2026 Standard - Rule 3.2)
    ======================================================================= */
 body { 
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important; 
+    font-family: '{{ theme_var('token_font_body')|default('Outfit') }}', system-ui, -apple-system, sans-serif !important; 
     font-size: var(--font-base);
+    line-height: var(--line-height-body);
 }
 
-/* Modern Text Wrapping (Rule 3.2) */
 h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
+    font-family: '{{ theme_var('token_font_header')|default(theme_var('token_font_body'))|default('Outfit') }}', system-ui;
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
 }
 
-p, li, td {
-    text-wrap: pretty;
+/* Modular Scale */
+h6 { font-size: var(--font-base); }
+h5 { font-size: calc(var(--font-base) * var(--scale-ratio)); }
+h4 { font-size: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio)); }
+h3 { font-size: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio)); }
+h2 { font-size: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio)); }
+h1 { font-size: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio)); }
+
+p, li, article {
+    max-width: var(--measure);
 }
 
-{% if theme_var('font_header') %}
-h1, h2, h3, h4, h5, h6, .footer-heading, .brand-text {
-    font-family: '{{ theme_var('font_header') }}', system-ui, sans-serif !important;
+/* =======================================================================
+   MODERN CSS 2026 FEATURES
+   ======================================================================= */
+
+/* Text Wrapping (2026 Standard - Rule 3.2) */
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance; /* Prevents orphans in headings */
 }
-{% endif %}
+
+p, li {
+    text-wrap: pretty; /* Optimizes paragraph line breaks */
+}
+
+/* Performance Optimization */
+.footer-builder-row,
+.cognitive-nav__sublist,
+.course-grid,
+.service-grid {
+    content-visibility: auto; /* Virtualizes off-screen content */
+    contain-intrinsic-size: auto 500px; /* Estimated height for layout calculations */
+}
+
+/* Sticky Header Accessibility */
+html {
+    scroll-padding-top: 100px; /* Prevents content from hiding under fixed header */
+}
+
+/* Focus Outline Enhancement (WCAG 3.0) */
+*:focus-visible {
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
 
 /* =======================================================================
    DARK MODE SUPPORT (OKLCH-based)
@@ -217,6 +370,89 @@ h1, h2, h3, h4, h5, h6, .footer-heading, .brand-text {
         border-bottom: 1px solid oklch(100% 0 0 / 0.1);
     }
 }
+/* FIX: Logo Constraints for Semantic Markup (CLS Prevention) */
+.navbar-brand img, .nav-brand img {
+    height: var(--logo-h-mobile);
+    width: auto;
+    /* Prevent layout shift by reserving space */
+    aspect-ratio: auto;
+}
+@media (min-width: 840px) {
+    .navbar-brand img, .nav-brand img {
+        height: var(--logo-h-desktop);
+    }
+}
+/* Aurora Mesh Animation */
+@keyframes auroraMesh {
+    0% { background-position: 0% 50%; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    50% { background-position: 100% 50%; border-radius: 60% 40% 30% 70% / 60% 50% 40% 50%; }
+    100% { background-position: 0% 50%; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+}
+/* =======================================================================
+   UI EFFECTS OVERRIDES (Applying Global Settings)
+   ======================================================================= */
+.glass-panel, 
+#header, 
+.service-card, 
+.course-card, 
+.quote-box, 
+.hero-banner, 
+.popular-course-card,
+.social-btn,
+.btn-primary,
+.btn-secondary {
+    box-shadow: var(--neo-shadow) !important;
+}
+
+#header, .glass-panel, .course-card {
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    box-shadow: var(--neo-shadow-inset) !important;
+}
+
+/* Ensure glass background uses dynamic opacity */
+:root {
+    --glass-bg: oklch(100% 0 0 / var(--glass-opacity, 0.85));
+}
+
+/* =======================================================================
+   ADAPTIVE UX PROTOCOLS (Sentient Rule 1.2 & 3.3)
+   ======================================================================= */
+
+/* 1. RADICAL SUSTAINABILITY (ECO MODE) */
+body.eco-mode {
+    --bg-anim: none !important;
+    --glass-blur: blur(0px) !important;
+    --neo-shadow: 0 2px 4px oklch(0% 0 0 / 0.1) !important;
+    --neo-shadow-inset: none !important;
+}
+body.eco-mode .aurora-mesh, 
+body.eco-mode .hero-video, 
+body.eco-mode .animated-blob {
+    display: none !important;
+}
+
+/* 2. COGNITIVE FOCUS MODE */
+body.focus-mode {
+    --vignette-display: none !important;
+    --glass-opacity: 1 !important;
+    --bg-pattern: none !important;
+    background-color: var(--bg-body) !important;
+}
+body.focus-mode .hero-banner,
+body.focus-mode .side-widgets,
+body.focus-mode .decorative-divider {
+    display: none !important;
+}
+body.focus-mode article, 
+body.focus-mode p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
 </style>
 
 {# NO EXTERNAL FONT LOADING - Fonts are self-hosted via @font-face above (GDPR Compliant) #}

@@ -1,0 +1,334 @@
+/* =======================================================================
+   MODERN CSS 2026 FEATURES - Advanced Layout & Positioning
+   ======================================================================= */
+
+/* =======================================================================
+   CSS SUBGRID FOR MEGA MENUS (2026 Standard)
+   ======================================================================= */
+
+.navbar-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Apply subgrid to mega menu dropdowns for perfect alignment */
+.mega-menu-dropdown {
+    display: grid;
+    grid-template-columns: subgrid; /* Inherit parent grid */
+    grid-template-rows: subgrid;
+    grid-column: 1 / -1; /* Span all columns */
+    gap: 1rem;
+    
+    padding: 2rem;
+    background: var(--glass-bg, rgba(255, 255, 255, 0.95));
+    backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-main);
+    box-shadow: var(--neo-shadow);
+}
+
+/* Each mega menu column aligns to parent grid rows */
+.mega-menu-column {
+    display: grid;
+    grid-template-rows: subgrid;
+    gap: 0.5rem;
+}
+
+.mega-menu-column h3 {
+    grid-row: 1; /* All headers align to row 1 */
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.mega-menu-column ul {
+    grid-row: 2; /* All lists start at row 2 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* =======================================================================
+   CONTAINER QUERIES (2026 Standard - Rule 1.1)
+   Intrinsic Design: Components adapt to container size, not viewport
+   ======================================================================= */
+
+/* Define containers for major layout areas */
+.footer-builder-row,
+.header-builder-container,
+.cognitive-nav,
+.widget,
+.footer-col,
+.hero-builder,
+.sidebar,
+.main-content {
+    container-type: inline-size;
+    container-name: component;
+}
+
+/* Footer Column Responsive Behavior */
+@container component (max-width: 400px) {
+    .footer-col {
+        /* Stack all content vertically in narrow containers */
+        .footer-menu,
+        .contact-list,
+        .social-icons {
+            display: block;
+            width: 100%;
+        }
+        
+        .social-icons {
+            justify-content: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .footer-form {
+            flex-direction: column;
+            
+            input,
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@container component (min-width: 401px) and (max-width: 600px) {
+    .footer-col {
+        /* Optimize spacing for medium containers */
+        font-size: 0.95em;
+        
+        .footer-heading {
+            font-size: 1.1em;
+        }
+    }
+}
+
+/* Widget Adaptivity */
+@container component (max-width: 500px) {
+    .widget {
+        padding: 1rem;
+        
+        /* Simplify widget layouts in narrow contexts */
+        .widget-content {
+            display: block;
+        }
+        
+        /* Stack horizontally laid-out elements */
+        .widget-stats,
+        .widget-actions {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}
+
+/* Navigation Menu Responsive Behavior */
+@container component (max-width: 600px) {
+    .cognitive-nav__list {
+        /* Switch to accordion-style navigation */
+        flex-direction: column;
+        
+        .cognitive-nav__item {
+            width: 100%;
+            border-bottom: 1px solid var(--border-color, rgba(0,0,0,0.1));
+        }
+        
+        .cognitive-nav__sublist {
+            position: static;
+            opacity: 1;
+            transform: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .cognitive-nav__item:hover .cognitive-nav__sublist,
+        .cognitive-nav__item:focus-within .cognitive-nav__sublist {
+            max-height: 500px;
+        }
+    }
+}
+
+/* Hero Builder Adaptivity */
+@container component (max-width: 700px) {
+    .hero-builder {
+        min-height: 50vh; /* Reduce height on small containers */
+        
+        .hero-title {
+            font-size: clamp(1.5rem, 5cqi, 3rem); /* Container Query Inline units */
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 3cqi, 1.25rem);
+        }
+        
+        .hero-actions {
+            flex-direction: column;
+            gap: 0.75rem;
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+/* Sidebar Widget Cards */
+@container component (max-width: 300px) {
+    .course-card,
+    .service-card,
+    .popular-course-card {
+        /* Simplify card layouts in very narrow containers */
+        .card-image {
+            height: 120px; /* Reduce image height */
+        }
+        
+        .card-title {
+            font-size: 1rem;
+        }
+        
+        .card-meta {
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+    }
+}
+
+/* =======================================================================
+   CSS ANCHOR POSITIONING (2026 Standard) - Replaces Popper.js
+   ======================================================================= */
+
+/* Define anchor relationship */
+.nav-item-with-dropdown {
+    anchor-name: --nav-dropdown-anchor;
+    position: relative;
+}
+
+.dropdown-menu {
+    /* Position relative to the anchor */
+    position: absolute;
+    position-anchor: --nav-dropdown-anchor;
+    
+    /* Default position: below the trigger */
+    top: anchor(bottom);
+    left: anchor(left);
+    
+    /* Prevent overflow with fallback positions */
+    position-try-options: --bottom-left, --bottom-right, --top-left;
+    
+    min-width: 200px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Fallback positioning strategies */
+@position-try --bottom-left {
+    top: anchor(bottom);
+    left: anchor(left);
+}
+
+@position-try --bottom-right {
+    top: anchor(bottom);
+    right: anchor(right);
+}
+
+@position-try --top-left {
+    bottom: anchor(top);
+    left: anchor(left);
+}
+
+/* Show dropdown on hover/focus */
+.nav-item-with-dropdown:hover .dropdown-menu,
+.nav-item-with-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Fallback for browsers without anchor positioning support */
+@supports not (position-anchor: --nav-dropdown-anchor) {
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}
+
+/* =======================================================================
+   SCROLL-DRIVEN ANIMATIONS (2026 Standard) - Header Shrink
+   ======================================================================= */
+
+@supports (animation-timeline: scroll()) {
+    #header {
+        animation: header-shrink linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 200px;
+    }
+    
+    @keyframes header-shrink {
+        to {
+            padding: 0.5rem 0;
+            font-size: 0.9em;
+        }
+    }
+}
+
+/* =======================================================================
+   ARIA & ACCESSIBILITY ENHANCEMENTS
+   ======================================================================= */
+
+/* Icon-only buttons need larger touch targets */
+.social-btn,
+button[aria-label]:not(:has(span:not(.icon))) {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure proper contrast for link focus states */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+/* =======================================================================
+   PERFORMANCE: WILL-CHANGE & CONTAIN
+   ======================================================================= */
+
+/* Optimize animated elements */
+.mobile-menu,
+.overlay,
+.dropdown-menu,
+.modal {
+    will-change: transform, opacity;
+    contain: layout style paint;
+}
+
+/* When not animating, remove will-change to save memory */
+body:not(.menu-active) .mobile-menu,
+.nav-item-with-dropdown:not(:hover) .dropdown-menu {
+    will-change: auto;
+}
+
+/* =======================================================================
+   REDUCED MOTION OVERRIDES
+   ======================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .dropdown-menu,
+    .mobile-menu {
+        transition-duration: 0.01ms !important;
+    }
+    
+    @supports (animation-timeline: scroll()) {
+        #header {
+            animation: none !important;
+        }
+    }
+}
