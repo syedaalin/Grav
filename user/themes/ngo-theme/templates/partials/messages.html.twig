@@ -1,0 +1,39 @@
+{% set type_mapping = {'info':'success', 'error': 'error', 'warning': 'warning', 'success': 'success'} %}
+{% set icon_mapping = {'info':'shield-alt', 'error':'exclamation-triangle', 'warning':'radiation', 'success':'check-double'} %}
+
+{% if grav.messages.all %}
+    <div id="messages" class="space-y-6 mb-20 @container animate-in fade-in slide-in-from-top-8 duration-700" role="status" aria-live="polite" aria-label="System Messages">
+    {% for message in grav.messages.fetch %}
+
+        {% set scope = message.scope|e %}
+        {% set type = type_mapping[scope]|default('info') %}
+        
+        {# Map types to Tailwind colors using theme tokens #}
+        {% set color_classes = {
+            'success': 'bg-brand-success/10 text-brand-success border-brand-success/30 shadow-brand-success/5',
+            'error': 'bg-brand-error/10 text-brand-error border-brand-error/30 shadow-brand-error/5',
+            'warning': 'bg-brand-warning/10 text-brand-warning border-brand-warning/30 shadow-brand-warning/5',
+            'info': 'bg-brand-primary/10 text-brand-primary border-brand-primary/30 shadow-brand-primary/5'
+        } %}
+        
+        {% set icon = icon_mapping[scope]|default('info-circle') %}
+
+        <div class="px-12 py-10 rounded-[4rem] bg-surface-sunken/40 backdrop-blur-3xl border {{ color_classes[type]|default(color_classes['info']) }} flex items-center gap-12 shadow-3xl transition-all duration-1000 hover:scale-[1.02] hover:-rotate-1 relative overflow-hidden group" role="alert">
+            {# Animated Background Accent #}
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shimmer_3s_infinite] pointer-events-none" aria-hidden="true"></div>
+
+            <div class="w-16 h-16 shrink-0 rounded-[1.5rem] bg-surface-default/80 flex items-center justify-center shadow-xl shadow-black/5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700" aria-hidden="true">
+                <span class="la la-{{ icon }} text-4xl"></span>
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+                <span class="text-[9px] font-black uppercase tracking-[0.4em] mb-1 opacity-40" aria-hidden="true">System Notification ({{ scope|upper }})</span>
+                <div class="text-xl font-black leading-tight tracking-tightest">{{ message.message|raw }}</div>
+            </div>
+            
+            <button onclick="this.parentElement.remove()" class="w-10 h-10 rounded-full hover:bg-black/5 flex items-center justify-center transition-all active:scale-90 group/close" aria-label="Dismiss notification">
+                <span class="la la-times text-2xl opacity-20 group-hover/close:opacity-100 transition-opacity" aria-hidden="true"></span>
+            </button>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}

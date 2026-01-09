@@ -1,0 +1,81 @@
+1768524630
+g-33167a3d%255B7420e3907e41d98c8d7ab7513c1d14ea%255D%255B1%255D
+a:2:{s:7:"content";s:7147:"<section class="testimonials-modular py-32 bg-[var(--color-brand-bg)] @container overflow-hidden">
+    <div class="container mx-auto px-6 max-w-[var(--spacing-container)]">
+                <header class="mb-20 text-center @lg:text-left">
+            <span class="text-xs font-black uppercase tracking-[0.4em] text-[var(--color-brand-primary)] animate-in slide-in-from-left duration-700">Success Stories</span>
+            <h2 class="text-[var(--text-h2)] font-black text-[var(--color-brand-dark)] tracking-tighter leading-tightest">
+                What Our Students Say 💬
+            </h2>
+        </header>
+        
+        <div class="testimonial-carousel flex gap-10 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-12 cursor-grab active:cursor-grabbing">
+                                        <div class="testimonial-card shrink-0 w-[85vw] @md:w-[500px] snap-center p-12 bg-white/60 backdrop-blur-3xl border border-white/20 rounded-[3rem] shadow-xl hover:shadow-4xl hover:border-[var(--color-brand-primary)]/20 transition-all duration-700 group">
+                    <div class="space-y-8 h-full flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex gap-1 text-[var(--color-brand-primary)] opacity-60">
+                                <span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span>                            </div>
+                            <blockquote class="text-[var(--color-brand-dark)] text-xl @md:text-2xl font-medium leading-relaxed tracking-tight">
+                                "Aabtaab transformed my understanding of Fiqh. The scholars are patient, knowledgeable, and truly care about each student&#039;s progress."
+                            </blockquote>
+                        </div>
+                        
+                        <div class="pt-8 border-t border-[var(--color-brand-dark)]/5 flex items-center gap-5">
+                            <div class="w-14 h-14 bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
+                                F
+                            </div>
+                            <div>
+                                <cite class="not-italic block font-black text-[var(--color-brand-dark)] text-lg tracking-tight">Fatima A.</cite>
+                                <span class="block text-xs text-[var(--color-brand-dark)]/40 font-bold uppercase tracking-widest mt-1">Student, UK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="testimonial-card shrink-0 w-[85vw] @md:w-[500px] snap-center p-12 bg-white/60 backdrop-blur-3xl border border-white/20 rounded-[3rem] shadow-xl hover:shadow-4xl hover:border-[var(--color-brand-primary)]/20 transition-all duration-700 group">
+                    <div class="space-y-8 h-full flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex gap-1 text-[var(--color-brand-primary)] opacity-60">
+                                <span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span>                            </div>
+                            <blockquote class="text-[var(--color-brand-dark)] text-xl @md:text-2xl font-medium leading-relaxed tracking-tight">
+                                "The Niyabat Ziyarat service gave me peace of mind. Receiving video proof of the Ziyarat at Imam Hussain&#039;s shrine was deeply moving."
+                            </blockquote>
+                        </div>
+                        
+                        <div class="pt-8 border-t border-[var(--color-brand-dark)]/5 flex items-center gap-5">
+                            <div class="w-14 h-14 bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
+                                A
+                            </div>
+                            <div>
+                                <cite class="not-italic block font-black text-[var(--color-brand-dark)] text-lg tracking-tight">Ali R.</cite>
+                                <span class="block text-xs text-[var(--color-brand-dark)]/40 font-bold uppercase tracking-widest mt-1">Donor, Canada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="testimonial-card shrink-0 w-[85vw] @md:w-[500px] snap-center p-12 bg-white/60 backdrop-blur-3xl border border-white/20 rounded-[3rem] shadow-xl hover:shadow-4xl hover:border-[var(--color-brand-primary)]/20 transition-all duration-700 group">
+                    <div class="space-y-8 h-full flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex gap-1 text-[var(--color-brand-primary)] opacity-60">
+                                <span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span><span class="la la-star text-xl"></span>                            </div>
+                            <blockquote class="text-[var(--color-brand-dark)] text-xl @md:text-2xl font-medium leading-relaxed tracking-tight">
+                                "As a working professional, the flexible schedule allowed me to complete the Quran Tajweed course at my own pace. Highly recommended!"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="pt-8 border-t border-[var(--color-brand-dark)]/5 flex items-center gap-5">
+                            <div class="w-14 h-14 bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
+                                Z
+                            </div>
+                            <div>
+                                <cite class="not-italic block font-black text-[var(--color-brand-dark)] text-lg tracking-tight">Zahra M.</cite>
+                                <span class="block text-xs text-[var(--color-brand-dark)]/40 font-bold uppercase tracking-widest mt-1">Student, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+                        <div class="shrink-0 w-6"></div>
+        </div>
+    </div>
+</section>
+";s:12:"content_meta";N;}

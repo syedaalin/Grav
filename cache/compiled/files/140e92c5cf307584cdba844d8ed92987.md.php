@@ -2,13 +2,24 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/pages/02.online-courses/03.Ethics/default.md',
-    'modified' => 1767233982,
-    'size' => 3571,
+    'modified' => 1767812843,
+    'size' => 3989,
     'data' => [
         'header' => [
-            
+            'title' => 'Ethics (Akhlaq)',
+            'metadata' => [
+                'description' => 'Learn the path to moral perfection through our online Islamic Ethics (Akhlaq) course, based on teachings of the Ahl al-Bayt (AS).'
+            ],
+            'ai_augmented' => true,
+            'ai_reasoning' => 'Spiritual development framework derived from Nahjul Balagha and Sahifa Sajjadiya, structured for transformative moral growth.',
+            'hero_classes' => 'parallax overlay-dark-gradient hero-medium'
         ],
-        'frontmatter' => '',
+        'frontmatter' => 'title: Ethics (Akhlaq)
+metadata:
+    description: \'Learn the path to moral perfection through our online Islamic Ethics (Akhlaq) course, based on teachings of the Ahl al-Bayt (AS).\'
+ai_augmented: true
+ai_reasoning: \'Spiritual development framework derived from Nahjul Balagha and Sahifa Sajjadiya, structured for transformative moral growth.\'
+hero_classes: \'parallax overlay-dark-gradient hero-medium\'',
         'markdown' => '<div align="center">
 
 

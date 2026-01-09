@@ -1,0 +1,228 @@
+1768514334
+g-fc832def%255B6498cf7a8de6d6e2b1e4bcce78062929%255D%255B1%255D
+a:2:{s:7:"content";s:9203:"<div class="page-container">
+
+  <!-- HERO -->
+  <div class="hero-banner animate-load">
+    <div class="hero-content">
+      <h1>Join 10,000+ Students Learning Authentic Shia Islam</h1>
+      <p>
+        Study Quran, Fiqh, and Islamic sciences with certified scholars from the holy cities of Qom and Najaf. 
+        Flexible schedules. Lifetime access. Transform your understanding of Islam.
+      </p>
+      <a href="#services" class="btn btn-lg btn-primary squishy">EXPLORE COURSES & SERVICES</a>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar animate-load delay-1">
+    <div class="trust-item">
+      <strong>10,000+</strong>
+      <span>Students Worldwide</span>
+    </div>
+    <div class="trust-item">
+      <strong>50+</strong>
+      <span>Certified Scholars</span>
+    </div>
+    <div class="trust-item">
+      <strong>4.9/5</strong>
+      <span>Student Rating</span>
+    </div>
+    <div class="trust-item">
+      <strong>15+</strong>
+      <span>Years Experience</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" class="animate-load delay-2">
+    <h2 class="section-heading">Our Services 🤲</h2>
+    <p class="section-subtitle">Authentic Islamic services with verified scholars and complete transparency</p>
+    <div class="card-grid">
+
+      <article class="card" aria-labelledby="service-ziyarat">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Mosque">🕌</span>
+          <h3 id="service-ziyarat">Niyabat Ziyarat</h3>
+        </div>
+        <div class="card-body">
+          <p>Can't visit the holy shrines? Our trusted representatives perform Ziyarat on your behalf at Imam Hussain (AS), Imam Ali (AS), and other sacred sites—with video proof and personalized duas.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Verified Representatives</span>
+            <span class="badge">📹 Video Documentation</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/niyabat-ziyarat" class="btn btn-primary squishy">View Details & Book →</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="service-zakat">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Wheat">🌾</span>
+          <h3 id="service-zakat">Zakat Calculator</h3>
+        </div>
+        <div class="card-body">
+          <p>Calculate your Zakat obligation accurately according to Ayatollah Sistani's rulings. We ensure 100% of your Zakat reaches verified recipients in Iraq, Pakistan, and beyond.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Shariah Compliant</span>
+            <span class="badge">💯 100% Distribution</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/zakat" class="btn btn-primary squishy">Calculate Zakat Now →</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="service-khums">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Balance Scale">⚖️</span>
+          <h3 id="service-khums">Khums</h3>
+        </div>
+        <div class="card-body">
+          <p>Fulfill your Khums obligation with confidence. Our calculator follows the rulings of Grand Ayatollahs, ensuring accurate calculation and proper distribution to Sayyids and religious institutions.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Marja-Approved</span>
+            <span class="badge">📊 Easy Calculator</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/khums" class="btn btn-primary squishy">Calculate Khums →</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="service-ijarah">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Candle">🕯️</span>
+          <h3 id="service-ijarah">Ijarah (Qadha Services)</h3>
+        </div>
+        <div class="card-body">
+          <p>Honor your departed loved ones by hiring qualified individuals to perform missed prayers and fasts on their behalf. Bring peace to their souls and yours.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Qualified Performers</span>
+            <span class="badge">🤲 Compassionate Service</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/ijarah" class="btn btn-primary squishy">Learn More →</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="service-expiation">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Shield">🛡️</span>
+          <h3 id="service-expiation">Kaffarah (Expiation)</h3>
+        </div>
+        <div class="card-body">
+          <p>Make amends for broken oaths, missed fasts, or other obligations through properly guided expiation. We handle feeding the poor or fasting on your behalf according to Islamic law.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Fiqh Compliant</span>
+            <span class="badge">📋 Guided Process</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/expiation" class="btn btn-primary squishy">View Details →</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="service-sacrifice">
+        <div class="card-header">
+          <span class="icon-box" role="img" aria-label="Sheep">🐑</span>
+          <h3 id="service-sacrifice">Qurbani (Sacrifice)</h3>
+        </div>
+        <div class="card-body">
+          <p>Perform Sadqah, Kaffarah, or Aqiqah sacrifice with complete adherence to Islamic principles. Fresh meat distributed to the needy in your name with photo documentation.</p>
+          <div class="service-meta">
+            <span class="badge">✓ Halal Certified</span>
+            <span class="badge">📸 Photo Proof</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/services/sacrifice" class="btn btn-primary squishy">Book Qurbani →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-box animate-load delay-3">
+    <strong>Hadith of the Day</strong>
+    <h3>Prophet Muhammad (SAWW)</h3>
+
+    <div class="arabic-text" lang="ar" dir="rtl">
+      ظِلُّ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ صَدَقَتُهُ
+    </div>
+
+    <p>
+      "The shade of the believer on the Day of Resurrection will be his charity."
+    </p>
+    <cite class="hadith-reference">— Sahih al-Bukhari, Book 24, Hadith 11</cite>
+    <br>
+    <a href="/donate" class="btn btn-primary squishy">❤️ SUPPORT OUR MISSION</a>
+  </div>
+
+  <!-- COURSES -->
+  <div class="animate-load delay-4">
+    <h2 class="section-heading">Popular Courses 📚</h2>
+    <p class="section-subtitle">Learn from certified scholars with flexible schedules and lifetime access</p>
+
+      </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonial-section animate-load delay-5">
+    <h2 class="section-heading">What Our Students Say 💬</h2>
+    <div class="testimonial-grid">
+      <blockquote class="testimonial">
+        <p>"Aabtaab transformed my understanding of Fiqh. The scholars are patient, knowledgeable, and truly care about each student's progress."</p>
+        <cite>— Fatima A., London, UK</cite>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </blockquote>
+
+      <blockquote class="testimonial">
+        <p>"The Niyabat Ziyarat service gave me peace of mind. Receiving video proof of the Ziyarat at Imam Hussain's shrine was deeply moving."</p>
+        <cite>— Ali R., Toronto, Canada</cite>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </blockquote>
+
+      <blockquote class="testimonial">
+        <p>"As a working professional, the flexible schedule allowed me to complete the Quran Tajweed course at my own pace. Highly recommended!"</p>
+        <cite>— Zahra M., Dubai, UAE</cite>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- MARJA ENDORSEMENT -->
+  <div class="marja-endorsement animate-load delay-6">
+    <h3>Following the Rulings of Leading Maraji</h3>
+    <p>
+      Our courses and services adhere to the fatwas of:
+      <strong>Ayatollah Sistani</strong> | <strong>Ayatollah Khamenei</strong> | <strong>Ayatollah Makarem Shirazi</strong>
+    </p>
+  </div>
+
+</div>
+<!-- Schema Markup for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Aabtaab",
+  "description": "Online Shia Islamic education platform offering Quran, Fiqh, and Islamic courses with certified scholars",
+  "url": "https://aabtaab.com",
+  "logo": "https://aabtaab.com/images/logo.png",
+  "courseMode": "online",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "10000"
+  },
+  "offers": {
+    "@type": "Offer",
+    "category": "Islamic Education",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>";s:12:"content_meta";N;}

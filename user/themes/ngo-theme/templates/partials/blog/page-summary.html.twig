@@ -1,0 +1,8 @@
+<div class="p-summary e-content prose prose-xl prose-brand-dark max-w-none">
+    {% if page.summary != page.content %}
+        {{ page.summary|raw }}
+    {% else %}
+        {{ page.content|raw }}
+    {% endif %}
+</div>
+

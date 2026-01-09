@@ -1,0 +1,31 @@
+{% extends "forms/field.html.twig" %}
+
+{% set originalValue = value %}
+{% set value = (value is null ? field.default : value) %}
+
+{% block input %}
+    <div class="space-y-3 @container" role="radiogroup" aria-labelledby="{{ field.id|default(field.name) }}-label">
+    {% for key, text in field.options %}
+        {% set id = field.id|default(field.name) ~ '-' ~ key %}
+
+        <div class="radio {{ field.wrapper_classes }}">
+            <label class="group inline-flex items-center gap-4 cursor-pointer select-none" for="{{ id|e }}">
+                <div class="relative flex items-center justify-center">
+                    <input type="radio"
+                           value="{{ key|e }}"
+                           id="{{ id|e }}"
+                           name="{{ (scope ~ field.name)|fieldName }}"
+                           class="peer appearance-none w-6 h-6 rounded-full bg-white border-2 border-brand-primary/20 checked:border-brand-primary transition-all duration-300 shadow-sm hover:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/10"
+                           {% if key == value %}checked="checked" {% endif %}
+                           {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
+                           {% if required %}required="required" aria-required="true"{% endif %}
+                           {% if field.help %}aria-describedby="{{ id|e }}-help"{% endif %}
+                    />
+                    <div class="absolute w-2.5 h-2.5 rounded-full bg-brand-primary scale-0 peer-checked:scale-100 transition-transform duration-300 pointer-events-none" aria-hidden="true"></div>
+                </div>
+                <span class="text-sm font-black text-brand-dark/80 group-hover:text-brand-primary transition-colors tracking-tight">{{ text|t|raw }}</span>
+            </label>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+1767901581
+02.online-courses__SLASH__04.History
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:22:"online-courses/history";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:7:{s:5:"title";s:15:"Islamic History";s:4:"menu";s:7:"History";s:8:"metadata";a:1:{s:11:"description";s:144:"Explore Islamic history from the time of Prophet Muhammad (SAWW) to the present, with focus on Shia perspective and the role of Ahlul Bayt (AS).";}s:12:"ai_augmented";b:1;s:12:"ai_reasoning";s:132:"Critical historical survey spanning Prophetic era to modern times, specifically highlighting the stewardship of the Ahlul Bayt (AS).";s:12:"hero_classes";s:41:"parallax overlay-dark-gradient hero-large";s:6:"header";a:4:{s:17:"short_description";s:128:"Journey through Islamic civilization and discover the profound contributions of Ahlul Bayt (AS) to Islamic thought and practice.";s:10:"instructor";s:15:"Dr. Hasan Rizvi";s:8:"duration";s:8:"16 weeks";s:5:"level";s:24:"Beginner to Intermediate";}}s:11:"frontmatter";s:687:"title: Islamic History
+menu: History
+metadata:
+    description: 'Explore Islamic history from the time of Prophet Muhammad (SAWW) to the present, with focus on Shia perspective and the role of Ahlul Bayt (AS).'
+ai_augmented: true
+ai_reasoning: 'Critical historical survey spanning Prophetic era to modern times, specifically highlighting the stewardship of the Ahlul Bayt (AS).'
+hero_classes: 'parallax overlay-dark-gradient hero-large'
+header:
+    short_description: Journey through Islamic civilization and discover the profound contributions of Ahlul Bayt (AS) to Islamic thought and practice.
+    instructor: Dr. Hasan Rizvi
+    duration: 16 weeks
+    level: Beginner to Intermediate";s:8:"markdown";s:1938:"## Course Overview
+
+Delve into the rich tapestry of Islamic history from a Shia perspective, exploring events from the life of Prophet Muhammad (SAWW) through the Imams of Ahlul Bayt (AS) to contemporary times. This course provides critical historical context for understanding Islamic tradition and the development of Shia thought.
+
+### What You'll Learn
+
+- **The Prophetic Era**
+  - Life and mission of Prophet Muhammad (SAWW)
+  - Early Muslim community in Mecca and Medina
+  - Key battles and treaties
+  - The Prophet's final sermon and Ghadir Khum
+
+- **The Era of the Twelve Imams (AS)**
+  - Lives and teachings of each Imam
+  - Political and social contexts of their times
+  - Major events (Saqifa, Karbala, etc.)
+  - Development of Shia jurisprudence and theology
+
+- **Islamic Civilization**
+  - Golden Age of Islamic scholarship
+  - Contributions to science, philosophy, and arts
+  - Major dynasties and their impact
+  - Interaction with other civilizations
+
+- **Modern Islamic History**
+  - Colonial period and its effects
+  - Islamic revival movements
+  - Contemporary Shia communities worldwide
+  - Current challenges and opportunities
+
+### Course Structure
+
+Each module includes:
+- Video lectures with historical maps and timelines
+- Primary source readings (translated)
+- Discussion forums for student interaction
+- Weekly quizzes and assignments
+- Monthly essay submissions
+
+### Learning Outcomes
+
+By the end of this course, students will:
+- Understand the historical development of Islam from a Shia perspective
+- Recognize the role of Ahlul Bayt (AS) in preserving Islamic teachings
+- Analyze historical events critically using primary and secondary sources
+- Connect historical events to contemporary issues
+- Appreciate the rich scholarly tradition of Shia Islam
+
+### Enrollment
+
+[Contact us](/contact) to register for the next session starting in Muharram.
+
+**Email:** edu.aabtaab@gmail.com  
+**Phone:** +92 302 245 2000";}s:7:"storage";a:6:{s:3:"key";s:22:"online-courses/history";s:11:"storage_key";s:28:"02.online-courses/04.History";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1767812864;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1767812864;}}s:8:"checksum";s:32:"f4c0c51da4f1f9c55310e6e88d404fc8";}}

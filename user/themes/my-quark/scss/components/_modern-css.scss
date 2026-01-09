@@ -317,6 +317,75 @@ body:not(.menu-active) .mobile-menu,
 }
 
 /* =======================================================================
+   FOLDABLE DEVICE SUPPORT (2026 Standard - Rule 4.2)
+   Device Posture Awareness: Adapt to Book, Tent, and Tabletop modes
+   ======================================================================= */
+
+/* Book Mode: Two-column layout when device is folded vertically */
+@media (horizontal-viewport-segments: 2) {
+    body {
+        display: grid;
+        grid-template-columns: env(viewport-segment-width 0 0) env(viewport-segment-width 1 0);
+        gap: var(--space-lg);
+    }
+    
+    /* Header spans both screens */
+    #header {
+        grid-column: 1 / -1;
+        padding-left: env(viewport-segment-left 0 0);
+        padding-right: env(viewport-segment-right 1 0);
+    }
+    
+    /* Navigation on left screen */
+    .sidebar,
+    .navigation-panel {
+        grid-column: 1;
+    }
+    
+    /* Content on right screen */
+    #body-wrapper,
+    .main-content {
+        grid-column: 2;
+    }
+    
+    /* Footer spans both screens */
+    .aabtaab-footer {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Tabletop Mode: Horizontal fold (laptop-like) */
+@media (vertical-viewport-segments: 2) {
+    .page-container {
+        display: grid;
+        grid-template-rows: env(viewport-segment-height 0 0) env(viewport-segment-height 1 0);
+    }
+    
+    /* Content on top screen */
+    .hero-builder,
+    #body-wrapper {
+        grid-row: 1;
+    }
+    
+    /* Controls/navigation on bottom screen */
+    .page-controls,
+    .footer-content {
+        grid-row: 2;
+        position: sticky;
+        bottom: 0;
+    }
+}
+
+/* Prevent content from being obscured by hinge */
+.critical-content,
+.form-fields,
+.cta-buttons {
+    /* Avoid placing important content in hinge area */
+    margin-left: max(var(--space-md), env(viewport-segment-left 0 0));
+    margin-right: max(var(--space-md), env(viewport-segment-right 0 0));
+}
+
+/* =======================================================================
    REDUCED MOTION OVERRIDES
    ======================================================================= */
 

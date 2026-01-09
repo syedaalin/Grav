@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/pages/02.online-courses/04.History/default.md',
-    'modified' => 1767673674,
-    'size' => 2474,
+    'modified' => 1767812864,
+    'size' => 2703,
     'data' => [
         'header' => [
             'title' => 'Islamic History',
@@ -11,6 +11,9 @@ return [
             'metadata' => [
                 'description' => 'Explore Islamic history from the time of Prophet Muhammad (SAWW) to the present, with focus on Shia perspective and the role of Ahlul Bayt (AS).'
             ],
+            'ai_augmented' => true,
+            'ai_reasoning' => 'Critical historical survey spanning Prophetic era to modern times, specifically highlighting the stewardship of the Ahlul Bayt (AS).',
+            'hero_classes' => 'parallax overlay-dark-gradient hero-large',
             'header' => [
                 'short_description' => 'Journey through Islamic civilization and discover the profound contributions of Ahlul Bayt (AS) to Islamic thought and practice.',
                 'instructor' => 'Dr. Hasan Rizvi',
@@ -22,6 +25,9 @@ return [
 menu: History
 metadata:
     description: \'Explore Islamic history from the time of Prophet Muhammad (SAWW) to the present, with focus on Shia perspective and the role of Ahlul Bayt (AS).\'
+ai_augmented: true
+ai_reasoning: \'Critical historical survey spanning Prophetic era to modern times, specifically highlighting the stewardship of the Ahlul Bayt (AS).\'
+hero_classes: \'parallax overlay-dark-gradient hero-large\'
 header:
     short_description: Journey through Islamic civilization and discover the profound contributions of Ahlul Bayt (AS) to Islamic thought and practice.
     instructor: Dr. Hasan Rizvi

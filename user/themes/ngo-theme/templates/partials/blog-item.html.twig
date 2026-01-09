@@ -1,0 +1,58 @@
+{% set ai_disclosure_enabled = theme_config.ai_disclosure is defined ? theme_config.ai_disclosure : true %}
+<article class="h-entry relative {% if page.header.ai_augmented and ai_disclosure_enabled %} ai-generated{% endif %} @container" aria-labelledby="post-title">
+
+{% if not hero_image_name %}
+    <header class="mb-20 space-y-10 animate-in fade-in slide-in-from-top-8 duration-1000">
+        {% include 'partials/blog/title.html.twig' with {title_id: 'post-title', title_level: 'h1', classes: 'text-6xl @lg:text-7xl font-black font-heading text-brand-dark tracking-tightest leading-tight'} %}
+        {% if page.header.subtitle %}
+            <p class="text-3xl @lg:text-brand-dark/50 font-medium leading-relaxed tracking-tight max-w-4xl">{{ page.header.subtitle }}</p>
+        {% endif %}
+        <div class="flex flex-wrap items-center gap-10 py-10 border-y border-brand-primary/10" role="contentinfo" aria-label="Post Metadata">
+            {% include 'partials/blog/date.html.twig' %}
+            {% include 'partials/blog/taxonomy.html.twig' %}
+        </div>
+    </header>
+{% endif %}
+    <div class="e-content prose prose-2xl prose-slate max-w-none text-brand-dark leading-[1.9] font-medium selection:bg-brand-primary/20 animate-in fade-in duration-1000">
+        {% if page.header.ai_augmented and ai_disclosure_enabled %}
+            {% include 'partials/ai-block.html.twig' with {
+                'ai_generated': true,
+                'content': page.content,
+                'show_reasoning': page.header.ai_show_reasoning,
+                'reasoning': page.header.ai_reasoning
+            } %}
+        {% else %}
+            {{ page.content|raw }}
+        {% endif %}
+    </div>
+
+    {% if page.header.continue_link is same as(true) and config.plugins.comments.enabled %}
+        <section class="mt-32 pt-20 border-t border-brand-primary/10" aria-labelledby="comments-heading">
+            <h2 id="comments-heading" class="sr-only">Comments</h2>
+            {% include 'partials/comments.html.twig' %}
+        </section>
+    {% endif %}
+</article>
+
+{# Author/Scholar Bio Section #}
+<aside class="mt-32 animate-in fade-in slide-in-from-bottom-12 duration-1000" aria-label="About the Author">
+    {% include 'components/author-bio.html.twig' %}
+</aside>
+
+<nav class="flex flex-col @md:flex-row items-center justify-between gap-10 mt-24 p-12 bg-surface-sunken/40 backdrop-blur-3xl rounded-[4rem] border border-brand-primary/10 shadow-3xl shadow-black/5 animate-in fade-in duration-1000" aria-label="Post navigation">
+    {% if not page.isLast %}
+            <a class="group inline-flex items-center gap-6 px-12 py-6 bg-surface-sunken text-brand-dark font-black rounded-2xl hover:bg-brand-primary hover:text-white transition-all shadow-xl shadow-black/5 active:scale-90 border border-brand-primary/5" href="{{ page.prevSibling.url }}" aria-label="Previous Post: {{ page.prevSibling.title }}">
+                <span class="la la-arrow-left text-2xl transition-transform group-hover:-translate-x-3" aria-hidden="true"></span>
+                <span class="uppercase tracking-widest text-xs font-black">{{ 'MY_2ND_THEME.BLOG.ITEM.PREV_POST'|t }}</span>
+            </a>
+    {% else %}
+        <div class="hidden @md:block" aria-hidden="true"></div>
+    {% endif %}
+
+    {% if not page.isFirst %}
+        <a class="group inline-flex items-center gap-6 px-12 py-6 bg-surface-sunken text-brand-dark font-black rounded-2xl hover:bg-brand-primary hover:text-white transition-all shadow-xl shadow-black/5 active:scale-90 border border-brand-primary/5" href="{{ page.nextSibling.url }}" aria-label="Next Post: {{ page.nextSibling.title }}">
+            <span class="uppercase tracking-widest text-xs font-black">{{ 'MY_2ND_THEME.BLOG.ITEM.NEXT_POST'|t }}</span>
+            <span class="la la-arrow-right text-2xl transition-transform group-hover:translate-x-3" aria-hidden="true"></span>
+        </a>
+    {% endif %}
+</nav>

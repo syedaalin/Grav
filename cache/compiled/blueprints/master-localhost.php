@@ -1,9 +1,15 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1767759312,
-    'checksum' => 'aedc2829ac428f58b1cb3668d5286656',
+    'timestamp' => 1767918860,
+    'checksum' => '96c57cf4a9a1f48af6f617c9476b1836',
     'files' => [
+        'user/plugins/admin/blueprints/config' => [
+            'media' => [
+                'file' => 'user/plugins/admin/blueprints/config/media.yaml',
+                'modified' => 1766978626
+            ]
+        ],
         'system/blueprints/config' => [
             'backups' => [
                 'file' => 'system/blueprints/config/backups.yaml',
@@ -97,18 +103,76 @@ return [
             ]
         ],
         'user/themes' => [
+            'themes/ngo-theme' => [
+                'file' => 'user/themes/ngo-theme/blueprints.yaml',
+                'modified' => 1767918684
+            ],
             'themes/quark' => [
                 'file' => 'user/themes/quark/blueprints.yaml',
                 'modified' => 1764386856
             ],
             'themes/my-quark' => [
                 'file' => 'user/themes/my-quark/blueprints.yaml',
-                'modified' => 1767738989
+                'modified' => 1767809409
             ]
         ]
     ],
     'data' => [
         'items' => [
+            'media' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'loose'
+                ]
+            ],
+            'media.types' => [
+                'array' => true,
+                'name' => 'media.types',
+                'type' => 'list',
+                'label' => 'PLUGIN_ADMIN.MEDIA_TYPES',
+                'style' => 'vertical',
+                'key' => 'extension',
+                'controls' => 'both',
+                'collapsed' => true,
+                'validation' => 'loose'
+            ],
+            'media.types.*' => [
+                'type' => '_parent',
+                'name' => 'media.types.*',
+                'form_field' => false
+            ],
+            'media.types.*.type' => [
+                'type' => 'text',
+                'label' => 'PLUGIN_ADMIN.TYPE',
+                'name' => 'media.types.*.type',
+                'validation' => 'loose'
+            ],
+            'media.types.*.thumb' => [
+                'type' => 'text',
+                'label' => 'PLUGIN_ADMIN.THUMB',
+                'name' => 'media.types.*.thumb',
+                'validation' => 'loose'
+            ],
+            'media.types.*.mime' => [
+                'type' => 'text',
+                'label' => 'PLUGIN_ADMIN.MIME_TYPE',
+                'validate' => [
+                    'type' => 'lower'
+                ],
+                'name' => 'media.types.*.mime',
+                'validation' => 'loose'
+            ],
+            'media.types.*.image' => [
+                'type' => 'textarea',
+                'yaml' => true,
+                'label' => 'PLUGIN_ADMIN.IMAGE_OPTIONS',
+                'validate' => [
+                    'type' => 'yaml'
+                ],
+                'name' => 'media.types.*.image',
+                'validation' => 'loose'
+            ],
             'backups' => [
                 'type' => '_root',
                 'form_field' => false,
@@ -272,13 +336,6 @@ return [
                 ],
                 'name' => 'backups.profiles.*.schedule_environment',
                 'validation' => 'loose'
-            ],
-            'media' => [
-                'type' => '_root',
-                'form_field' => false,
-                'form' => [
-                    'validation' => 'loose'
-                ]
             ],
             'scheduler' => [
                 'type' => '_root',
@@ -6736,7 +6793,7 @@ return [
                 'name' => 'plugins.email.debug',
                 'validation' => 'loose'
             ],
-            'themes.quark' => [
+            'themes.ngo-theme' => [
                 'type' => '_root',
                 'form_field' => false,
                 'form' => [
@@ -6747,6 +6804,1031 @@ return [
                 'type' => '_parent',
                 'name' => 'themes',
                 'form_field' => false
+            ],
+            'themes.ngo-theme.production-mode' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.PRODUCTION_MODE',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.production-mode',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.grid-size' => [
+                'type' => 'select',
+                'label' => 'THEME_NGO.ADMIN.GRID_SIZE',
+                'size' => 'small',
+                'options' => [
+                    '' => 'THEME_NGO.ADMIN.GRID_SIZE_NONE',
+                    'grid-xl' => 'THEME_NGO.ADMIN.GRID_SIZE_EXTRA_LARGE',
+                    'grid-lg' => 'THEME_NGO.ADMIN.GRID_SIZE_LARGE',
+                    'grid-md' => 'THEME_NGO.ADMIN.GRID_SIZE_MEDIUM'
+                ],
+                'name' => 'themes.ngo-theme.grid-size',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.search_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Search',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.search_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.sustainability_score' => [
+                'type' => 'text',
+                'label' => 'THEME_NGO.ADMIN.SUSTAINABILITY_SCORE',
+                'size' => 'x-small',
+                'default' => 'A+',
+                'name' => 'themes.ngo-theme.sustainability_score',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.co2_per_view' => [
+                'type' => 'text',
+                'label' => 'THEME_NGO.ADMIN.CO2_PER_VIEW',
+                'size' => 'x-small',
+                'default' => '0.3g',
+                'name' => 'themes.ngo-theme.co2_per_view',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.ai_disclosure' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.AI_DISCLOSURE',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.ai_disclosure',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.ai_assistant' => [
+                'type' => 'toggle',
+                'label' => 'AI Assistant',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.ai_assistant',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.doodle_engine' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.DOODLE_ENGINE',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.doodle_engine',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.eco_mode' => [
+                'type' => 'toggle',
+                'label' => 'Sustainability Mode',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.eco_mode',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.focus_mode' => [
+                'type' => 'toggle',
+                'label' => 'Neurodivergent Focus Mode',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.focus_mode',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.custom_logo' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'THEME_NGO.ADMIN.CUSTOM_LOGO',
+                'size' => 'large',
+                'destination' => 'theme://images/logo',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.ngo-theme.custom_logo',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.header-fixed' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.HEADER_FIXED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.header-fixed',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.header-animated' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.HEADER_ANIMATED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.header-animated',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.header-dark' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.HEADER_DARK',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.header-dark',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.header-transparent' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.HEADER_TRANSPARENT',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.header-transparent',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.utility_hijri_toggle' => [
+                'type' => 'toggle',
+                'label' => 'Show Hijri Date',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.utility_hijri_toggle',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.utility_prayer_toggle' => [
+                'type' => 'toggle',
+                'label' => 'Show Prayer Times',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.utility_prayer_toggle',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.utility_prayer_city' => [
+                'type' => 'text',
+                'label' => 'Default City for Prayer Times',
+                'default' => 'Karachi',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.utility_prayer_city',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.utility_language_toggle' => [
+                'type' => 'toggle',
+                'label' => 'Show Language Switcher',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.utility_language_toggle',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.utility_accessibility_toggle' => [
+                'type' => 'toggle',
+                'label' => 'Show Accessibility Tools',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.utility_accessibility_toggle',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.mega_menu_structure' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Menu Columns',
+                'name' => 'themes.ngo-theme.mega_menu_structure',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.mega_menu_structure.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.mega_menu_structure.*.title' => [
+                'type' => 'text',
+                'label' => 'Column Title',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.mega_menu_structure.*.links' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Links',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*.links',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.mega_menu_structure.*.links.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.mega_menu_structure.*.links.*.text' => [
+                'type' => 'text',
+                'label' => 'Link Text',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*.text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.mega_menu_structure.*.links.*.url' => [
+                'type' => 'text',
+                'label' => 'URL',
+                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable CTA Button',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.enabled',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.text' => [
+                'type' => 'text',
+                'label' => 'Button Text',
+                'default' => 'Student Login',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.url' => [
+                'type' => 'url',
+                'label' => 'Button URL',
+                'default' => 'https://moodle.aabtaab.com',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.icon' => [
+                'type' => 'text',
+                'label' => 'Button Icon',
+                'default' => 'graduation-cap',
+                'name' => 'themes.ngo-theme.icon',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.external' => [
+                'type' => 'toggle',
+                'label' => 'Open in New Tab',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.external',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_video_url' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Hero Background Video',
+                'destination' => 'theme://images/hero',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'video/*'
+                ],
+                'name' => 'themes.ngo-theme.hero_video_url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_glass_opacity' => [
+                'type' => 'range',
+                'label' => 'Glass Overlay Opacity',
+                'default' => 60,
+                'min' => 0,
+                'max' => 100,
+                'append' => '%',
+                'name' => 'themes.ngo-theme.hero_glass_opacity',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_primary_cta_text' => [
+                'type' => 'text',
+                'label' => 'Primary CTA Text',
+                'default' => 'Explore Services',
+                'name' => 'themes.ngo-theme.hero_primary_cta_text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_primary_cta_link' => [
+                'type' => 'text',
+                'label' => 'Primary CTA Link',
+                'default' => '/services',
+                'name' => 'themes.ngo-theme.hero_primary_cta_link',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_secondary_cta_text' => [
+                'type' => 'text',
+                'label' => 'Secondary CTA Text',
+                'default' => 'Support Our Mission',
+                'name' => 'themes.ngo-theme.hero_secondary_cta_text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hero_secondary_cta_link' => [
+                'type' => 'text',
+                'label' => 'Secondary CTA Link',
+                'default' => '/donate',
+                'name' => 'themes.ngo-theme.hero_secondary_cta_link',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.inspiration_text' => [
+                'type' => 'text',
+                'label' => 'Inspiration Text',
+                'default' => '"Indeed, with hardship [will be] ease."',
+                'size' => 'large',
+                'name' => 'themes.ngo-theme.inspiration_text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.inspiration_source' => [
+                'type' => 'text',
+                'label' => 'Inspiration Source',
+                'default' => 'Quran 94:6',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.inspiration_source',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.services_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Service Cards',
+                'name' => 'themes.ngo-theme.services_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.services_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.services_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.services_list.*.icon' => [
+                'type' => 'text',
+                'label' => 'Icon (Line Awesome)',
+                'name' => 'themes.ngo-theme.services_list.*.icon',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.services_list.*.title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'name' => 'themes.ngo-theme.services_list.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.services_list.*.description' => [
+                'type' => 'textarea',
+                'label' => 'Description',
+                'name' => 'themes.ngo-theme.services_list.*.description',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.services_list.*.link' => [
+                'type' => 'text',
+                'label' => 'Link URL',
+                'name' => 'themes.ngo-theme.services_list.*.link',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Upcoming Events',
+                'name' => 'themes.ngo-theme.events_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.events_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.events_list.*.title' => [
+                'type' => 'text',
+                'label' => 'Event Title',
+                'name' => 'themes.ngo-theme.events_list.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list.*.date' => [
+                'type' => 'datetime',
+                'label' => 'Date & Time',
+                'name' => 'themes.ngo-theme.events_list.*.date',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list.*.location' => [
+                'type' => 'text',
+                'label' => 'Location',
+                'name' => 'themes.ngo-theme.events_list.*.location',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list.*.url' => [
+                'type' => 'text',
+                'label' => 'Event Link/Registration',
+                'name' => 'themes.ngo-theme.events_list.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.events_list.*.type' => [
+                'type' => 'text',
+                'label' => 'Event Type',
+                'default' => 'Seminar',
+                'name' => 'themes.ngo-theme.events_list.*.type',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Active Projects (Timeline)',
+                'name' => 'themes.ngo-theme.project_timeline_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.project_timeline_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.project_timeline_list.*.title' => [
+                'type' => 'text',
+                'label' => 'Project Title',
+                'name' => 'themes.ngo-theme.project_timeline_list.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*.description' => [
+                'type' => 'textarea',
+                'label' => 'Short Description',
+                'name' => 'themes.ngo-theme.project_timeline_list.*.description',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*.goal' => [
+                'type' => 'text',
+                'label' => 'Funding Goal (e.g. $10k)',
+                'name' => 'themes.ngo-theme.project_timeline_list.*.goal',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*.raised' => [
+                'type' => 'text',
+                'label' => 'Amount Raised (e.g. $7.5k)',
+                'name' => 'themes.ngo-theme.project_timeline_list.*.raised',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*.percent' => [
+                'type' => 'range',
+                'label' => 'Completion %',
+                'min' => 0,
+                'max' => 100,
+                'default' => 0,
+                'append' => '%',
+                'name' => 'themes.ngo-theme.project_timeline_list.*.percent',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.project_timeline_list.*.status' => [
+                'type' => 'select',
+                'label' => 'Status',
+                'options' => [
+                    'active' => 'Active',
+                    'completed' => 'Completed',
+                    'planning' => 'Planning'
+                ],
+                'name' => 'themes.ngo-theme.project_timeline_list.*.status',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.khums_rate' => [
+                'type' => 'number',
+                'label' => 'Khums Rate (%)',
+                'default' => 20,
+                'size' => 'x-small',
+                'name' => 'themes.ngo-theme.khums_rate',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.khums_currency' => [
+                'type' => 'text',
+                'label' => 'Currency Symbol',
+                'default' => '$',
+                'size' => 'x-small',
+                'name' => 'themes.ngo-theme.khums_currency',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.prayer_times_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Prayer Times',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.prayer_times_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.prayer_api_key' => [
+                'type' => 'text',
+                'label' => 'Aladhan API Key (Optional)',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.prayer_api_key',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.hijri_adjustment' => [
+                'type' => 'number',
+                'label' => 'Hijri Date Adjustment',
+                'default' => 0,
+                'size' => 'x-small',
+                'name' => 'themes.ngo-theme.hijri_adjustment',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.trust_signals_images' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Trust Badges (Payment/SSL)',
+                'name' => 'themes.ngo-theme.trust_signals_images',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.trust_signals_images.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.trust_signals_images.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.trust_signals_images.*.name' => [
+                'type' => 'text',
+                'label' => 'Name',
+                'name' => 'themes.ngo-theme.trust_signals_images.*.name',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.trust_signals_images.*.image' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Badge Image',
+                'destination' => 'theme://images/badges',
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.ngo-theme.trust_signals_images.*.image',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.trust_signals_images.*.url' => [
+                'type' => 'text',
+                'label' => 'Link (optional)',
+                'name' => 'themes.ngo-theme.trust_signals_images.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.student_login_title' => [
+                'type' => 'text',
+                'label' => 'Student Login Title',
+                'default' => 'Student Login',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.student_login_title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.student_login_description' => [
+                'type' => 'text',
+                'label' => 'Student Login Description',
+                'default' => 'Access your Moodle courses and dashboard.',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.student_login_description',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.student_login_button_text' => [
+                'type' => 'text',
+                'label' => 'Student Login Button Text',
+                'default' => 'Sign In to Portal',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.student_login_button_text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.featured_courses_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Featured Courses',
+                'name' => 'themes.ngo-theme.featured_courses_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.featured_courses_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.featured_courses_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.featured_courses_list.*.title' => [
+                'type' => 'text',
+                'label' => 'Course Title',
+                'name' => 'themes.ngo-theme.featured_courses_list.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.featured_courses_list.*.instructor' => [
+                'type' => 'text',
+                'label' => 'Instructor Name',
+                'name' => 'themes.ngo-theme.featured_courses_list.*.instructor',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.featured_courses_list.*.image' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Course Thumbnail',
+                'destination' => 'theme://images/courses',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.ngo-theme.featured_courses_list.*.image',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.featured_courses_list.*.url' => [
+                'type' => 'text',
+                'label' => 'Course Link',
+                'default' => '#',
+                'name' => 'themes.ngo-theme.featured_courses_list.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Product Highlights',
+                'name' => 'themes.ngo-theme.products_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.products_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.products_list.*.title' => [
+                'type' => 'text',
+                'label' => 'Product Title',
+                'name' => 'themes.ngo-theme.products_list.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list.*.price' => [
+                'type' => 'text',
+                'label' => 'Price',
+                'name' => 'themes.ngo-theme.products_list.*.price',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list.*.type' => [
+                'type' => 'select',
+                'label' => 'Type',
+                'options' => [
+                    'physical' => 'Physical',
+                    'digital' => 'Digital'
+                ],
+                'name' => 'themes.ngo-theme.products_list.*.type',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list.*.image' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Product Image',
+                'destination' => 'theme://images/products',
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.ngo-theme.products_list.*.image',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.products_list.*.url' => [
+                'type' => 'text',
+                'label' => 'Product Link',
+                'default' => '#',
+                'name' => 'themes.ngo-theme.products_list.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.sticky-footer' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NGO.ADMIN.STICKY_FOOTER',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.sticky-footer',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_about_title' => [
+                'type' => 'text',
+                'label' => 'Footer About Title',
+                'size' => 'medium',
+                'default' => 'About Our Mission',
+                'name' => 'themes.ngo-theme.footer_about_title',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_mission' => [
+                'type' => 'textarea',
+                'label' => 'Footer Mission Statement',
+                'size' => 'medium',
+                'default' => 'Faith. Knowledge. Access.',
+                'name' => 'themes.ngo-theme.footer_mission',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.contact_address' => [
+                'type' => 'textarea',
+                'label' => 'Contact Address',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.contact_address',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.contact_email' => [
+                'type' => 'email',
+                'label' => 'Contact Email',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.contact_email',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.contact_phone' => [
+                'type' => 'text',
+                'label' => 'Contact Phone',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.contact_phone',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.contact_whatsapp' => [
+                'type' => 'text',
+                'label' => 'WhatsApp Number',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.contact_whatsapp',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.social_links' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Social Media Links',
+                'name' => 'themes.ngo-theme.social_links',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.social_links.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.social_links.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.social_links.*.network' => [
+                'type' => 'select',
+                'label' => 'Network',
+                'options' => [
+                    'facebook' => 'Facebook',
+                    'twitter' => 'Twitter',
+                    'instagram' => 'Instagram',
+                    'linkedin' => 'LinkedIn',
+                    'youtube' => 'YouTube',
+                    'whatsapp' => 'WhatsApp'
+                ],
+                'name' => 'themes.ngo-theme.social_links.*.network',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.social_links.*.url' => [
+                'type' => 'url',
+                'label' => 'URL',
+                'name' => 'themes.ngo-theme.social_links.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_links' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Footer Quick Links',
+                'name' => 'themes.ngo-theme.footer_links',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_links.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.footer_links.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.footer_links.*.text' => [
+                'type' => 'text',
+                'label' => 'Link Text',
+                'name' => 'themes.ngo-theme.footer_links.*.text',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_links.*.url' => [
+                'type' => 'text',
+                'label' => 'Link URL',
+                'name' => 'themes.ngo-theme.footer_links.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.footer_links.*.icon' => [
+                'type' => 'text',
+                'label' => 'Icon (optional)',
+                'name' => 'themes.ngo-theme.footer_links.*.icon',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.newsletter_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Newsletter Signup',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.ngo-theme.newsletter_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.newsletter_action' => [
+                'type' => 'url',
+                'label' => 'Newsletter Form Action',
+                'size' => 'medium',
+                'name' => 'themes.ngo-theme.newsletter_action',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.blog-page' => [
+                'type' => 'text',
+                'label' => 'THEME_NGO.ADMIN.BLOG_PAGE',
+                'size' => 'medium',
+                'default' => '/blog',
+                'name' => 'themes.ngo-theme.blog-page',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Testimonials',
+                'name' => 'themes.ngo-theme.testimonials_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.testimonials_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.testimonials_list.*.name' => [
+                'type' => 'text',
+                'label' => 'Name',
+                'name' => 'themes.ngo-theme.testimonials_list.*.name',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list.*.role' => [
+                'type' => 'text',
+                'label' => 'Role (e.g. Student, Donor)',
+                'name' => 'themes.ngo-theme.testimonials_list.*.role',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list.*.quote' => [
+                'type' => 'textarea',
+                'label' => 'Quote',
+                'name' => 'themes.ngo-theme.testimonials_list.*.quote',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list.*.image' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Photo',
+                'destination' => 'theme://images/testimonials',
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.ngo-theme.testimonials_list.*.image',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.testimonials_list.*.video_url' => [
+                'type' => 'text',
+                'label' => 'Video URL (optional)',
+                'name' => 'themes.ngo-theme.testimonials_list.*.video_url',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.faq_list' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Common Q&A',
+                'name' => 'themes.ngo-theme.faq_list',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.faq_list.*' => [
+                'type' => '_parent',
+                'name' => 'themes.ngo-theme.faq_list.*',
+                'form_field' => false
+            ],
+            'themes.ngo-theme.faq_list.*.q' => [
+                'type' => 'text',
+                'label' => 'Question',
+                'name' => 'themes.ngo-theme.faq_list.*.q',
+                'validation' => 'loose'
+            ],
+            'themes.ngo-theme.faq_list.*.a' => [
+                'type' => 'textarea',
+                'label' => 'Answer',
+                'name' => 'themes.ngo-theme.faq_list.*.a',
+                'validation' => 'loose'
+            ],
+            'themes.quark' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'loose'
+                ]
             ],
             'themes.quark.production-mode' => [
                 'type' => 'toggle',
@@ -6937,59 +8019,59 @@ return [
                     'validation' => 'loose'
                 ]
             ],
-            'themes.my-quark.token_color_primary' => [
+            'themes.my-quark.color_primary' => [
                 'type' => 'color',
                 'label' => 'Primary Color',
                 'default' => '#3b4252',
                 'validate' => [
-                    'check' => true
+                    'required' => true
                 ],
-                'name' => 'themes.my-quark.token_color_primary',
+                'name' => 'themes.my-quark.color_primary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_secondary' => [
+            'themes.my-quark.color_secondary' => [
                 'type' => 'color',
                 'label' => 'Secondary Color',
                 'default' => '#88c0d0',
-                'name' => 'themes.my-quark.token_color_secondary',
+                'name' => 'themes.my-quark.color_secondary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_accent' => [
+            'themes.my-quark.color_accent' => [
                 'type' => 'color',
                 'label' => 'Accent Color',
                 'default' => '#bf616a',
-                'name' => 'themes.my-quark.token_color_accent',
+                'name' => 'themes.my-quark.color_accent',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_bg_body' => [
+            'themes.my-quark.color_background_body' => [
                 'type' => 'color',
                 'label' => 'Body Background',
                 'default' => '#eceff4',
-                'name' => 'themes.my-quark.token_color_bg_body',
+                'name' => 'themes.my-quark.color_background_body',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_bg_card' => [
+            'themes.my-quark.color_background_card' => [
                 'type' => 'color',
-                'label' => 'Card / Surface Background',
+                'label' => 'Card Background',
                 'default' => '#ffffff',
-                'name' => 'themes.my-quark.token_color_bg_card',
+                'name' => 'themes.my-quark.color_background_card',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_text_main' => [
+            'themes.my-quark.color_text_primary' => [
                 'type' => 'color',
-                'label' => 'High Contrast Text',
+                'label' => 'Primary Text',
                 'default' => '#2e3440',
-                'name' => 'themes.my-quark.token_color_text_main',
+                'name' => 'themes.my-quark.color_text_primary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_color_text_muted' => [
+            'themes.my-quark.color_text_secondary' => [
                 'type' => 'color',
-                'label' => 'Low Contrast Text',
+                'label' => 'Secondary Text',
                 'default' => '#4c566a',
-                'name' => 'themes.my-quark.token_color_text_muted',
+                'name' => 'themes.my-quark.color_text_secondary',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_font_body' => [
+            'themes.my-quark.typography_font_body' => [
                 'type' => 'select',
                 'label' => 'Body Font',
                 'default' => 'Outfit',
@@ -7007,12 +8089,12 @@ return [
                     'Playfair Display' => 'Playfair Display',
                     'Lora' => 'Lora'
                 ],
-                'name' => 'themes.my-quark.token_font_body',
+                'name' => 'themes.my-quark.typography_font_body',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_font_header' => [
+            'themes.my-quark.typography_font_headings' => [
                 'type' => 'select',
-                'label' => 'Header Font',
+                'label' => 'Headings Font',
                 'default' => 'Outfit',
                 'options' => [
                     'Outfit' => 'Outfit (Default)',
@@ -7023,231 +8105,220 @@ return [
                     'Playfair Display' => 'Playfair Display',
                     'Merriweather' => 'Merriweather'
                 ],
-                'name' => 'themes.my-quark.token_font_header',
+                'name' => 'themes.my-quark.typography_font_headings',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_fluid' => [
+            'themes.my-quark.typography_fluid_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Fluid Scaling (Clamp)',
+                'label' => 'Enable Fluid Scaling',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.token_typo_fluid',
+                'name' => 'themes.my-quark.typography_fluid_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_min_size' => [
+            'themes.my-quark.typography_size_min' => [
                 'type' => 'range',
-                'label' => 'Min Font Size (Mobile)',
+                'label' => 'Minimum Font Size (Mobile)',
                 'default' => 16,
                 'min' => 14,
                 'max' => 18,
                 'step' => 0.5,
                 'append' => 'px',
-                'name' => 'themes.my-quark.token_typo_min_size',
+                'name' => 'themes.my-quark.typography_size_min',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_max_size' => [
+            'themes.my-quark.typography_size_max' => [
                 'type' => 'range',
-                'label' => 'Max Font Size (Desktop)',
+                'label' => 'Maximum Font Size (Desktop)',
                 'default' => 18,
                 'min' => 16,
                 'max' => 24,
                 'step' => 0.5,
                 'append' => 'px',
-                'name' => 'themes.my-quark.token_typo_max_size',
+                'name' => 'themes.my-quark.typography_size_max',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_scale' => [
+            'themes.my-quark.typography_scale_ratio' => [
                 'type' => 'range',
-                'label' => 'Type Scale Factor',
+                'label' => 'Type Scale Ratio',
                 'default' => 1.25,
                 'min' => 1.067,
                 'max' => 1.618,
                 'step' => 0.001,
                 'append' => 'x',
-                'name' => 'themes.my-quark.token_typo_scale',
+                'name' => 'themes.my-quark.typography_scale_ratio',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_lh_body' => [
+            'themes.my-quark.typography_line_height_body' => [
                 'type' => 'range',
                 'label' => 'Body Line Height',
                 'default' => 1.6,
                 'min' => 1.4,
                 'max' => 2.0,
                 'step' => 0.05,
-                'name' => 'themes.my-quark.token_typo_lh_body',
+                'name' => 'themes.my-quark.typography_line_height_body',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_lh_heading' => [
+            'themes.my-quark.typography_line_height_headings' => [
                 'type' => 'range',
-                'label' => 'Heading Line Height',
+                'label' => 'Headings Line Height',
                 'default' => 1.2,
                 'min' => 1.0,
                 'max' => 1.4,
                 'step' => 0.05,
-                'name' => 'themes.my-quark.token_typo_lh_heading',
+                'name' => 'themes.my-quark.typography_line_height_headings',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_ls_heading' => [
+            'themes.my-quark.typography_letter_spacing_headings' => [
                 'type' => 'range',
-                'label' => 'Heading Tracking',
+                'label' => 'Headings Letter Spacing',
                 'default' => -0.02,
                 'min' => -0.1,
                 'max' => 0.1,
                 'step' => 0.01,
                 'append' => 'em',
-                'name' => 'themes.my-quark.token_typo_ls_heading',
+                'name' => 'themes.my-quark.typography_letter_spacing_headings',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_typo_measure' => [
+            'themes.my-quark.typography_max_measure' => [
                 'type' => 'range',
-                'label' => 'Max Line Measure',
+                'label' => 'Maximum Line Length',
                 'default' => 65,
                 'min' => 45,
                 'max' => 85,
                 'step' => 1,
                 'append' => 'ch',
-                'name' => 'themes.my-quark.token_typo_measure',
+                'name' => 'themes.my-quark.typography_max_measure',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_layout_width' => [
+            'themes.my-quark.layout_container_width' => [
                 'type' => 'range',
-                'label' => 'Website Max Width',
+                'label' => 'Container Max Width',
                 'default' => 1200,
                 'min' => 800,
                 'max' => 1600,
                 'step' => 50,
                 'append' => 'px',
-                'name' => 'themes.my-quark.token_layout_width',
+                'name' => 'themes.my-quark.layout_container_width',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.token_layout_spacing' => [
+            'themes.my-quark.layout_spacing_scale' => [
                 'type' => 'range',
-                'label' => 'Spacing Multiplier',
+                'label' => 'Spacing Scale',
                 'default' => 1.0,
                 'min' => 0.5,
                 'max' => 2.0,
                 'step' => 0.1,
                 'append' => 'x',
-                'name' => 'themes.my-quark.token_layout_spacing',
+                'name' => 'themes.my-quark.layout_spacing_scale',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_radius_main' => [
+            'themes.my-quark.layout_grid_size' => [
                 'type' => 'select',
-                'label' => 'Corner Roundness',
+                'label' => 'Grid System',
+                'default' => 'grid-xl',
+                'options' => [
+                    'grid-lg' => 'Large Grid',
+                    'grid-xl' => 'Extra Large Grid'
+                ],
+                'name' => 'themes.my-quark.layout_grid_size',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.radius_corners' => [
+                'type' => 'select',
+                'label' => 'Border Radius',
                 'default' => '12px',
                 'options' => [
-                    '0px' => 'Sharp (Square)',
-                    '6px' => 'Tight (6px)',
-                    '12px' => 'Soft (12px)',
-                    '20px' => 'Modern (20px)',
-                    '32px' => 'Friendly (32px)',
-                    '999px' => 'Full / Pill (Circular)'
+                    '0px' => 'Sharp (0px)',
+                    '6px' => 'Subtle (6px)',
+                    '12px' => 'Moderate (12px)',
+                    '20px' => 'Rounded (20px)',
+                    '32px' => 'Soft (32px)',
+                    '999px' => 'Pill (Fully Rounded)'
                 ],
-                'name' => 'themes.my-quark.physic_radius_main',
+                'name' => 'themes.my-quark.radius_corners',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_neo_strength' => [
+            'themes.my-quark.shadow_neomorphism_strength' => [
                 'type' => 'range',
-                'label' => 'Soft 3D Depth (Neomorphism)',
+                'label' => 'Neomorphism Intensity',
                 'default' => 0,
                 'min' => 0,
                 'max' => 1.0,
                 'step' => 0.1,
-                'name' => 'themes.my-quark.physic_neo_strength',
+                'name' => 'themes.my-quark.shadow_neomorphism_strength',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_neo_lightSource' => [
+            'themes.my-quark.shadow_neomorphism_light_source' => [
                 'type' => 'select',
-                'label' => 'Global Light Source',
+                'label' => 'Light Source Direction',
                 'default' => 'top-left',
                 'options' => [
-                    'top-left' => 'Top Left (Northeast)',
-                    'top-right' => 'Top Right (Northwest)',
-                    'top' => 'Overhead (Zenith)'
+                    'top-left' => 'Top Left',
+                    'top-right' => 'Top Right',
+                    'top' => 'Top (Overhead)'
                 ],
-                'name' => 'themes.my-quark.physic_neo_lightSource',
+                'name' => 'themes.my-quark.shadow_neomorphism_light_source',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_glass_opacity' => [
+            'themes.my-quark.glass_opacity' => [
                 'type' => 'range',
                 'label' => 'Glass Transparency',
                 'default' => 0.85,
                 'min' => 0.1,
                 'max' => 1.0,
                 'step' => 0.05,
-                'name' => 'themes.my-quark.physic_glass_opacity',
+                'name' => 'themes.my-quark.glass_opacity',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_glass_blur' => [
+            'themes.my-quark.glass_blur' => [
                 'type' => 'range',
-                'label' => 'Glass Blur Intensity',
+                'label' => 'Background Blur',
                 'default' => 20,
                 'min' => 0,
                 'max' => 50,
                 'step' => 1,
                 'append' => 'px',
-                'name' => 'themes.my-quark.physic_glass_blur',
+                'name' => 'themes.my-quark.glass_blur',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_vignette_enabled' => [
+            'themes.my-quark.effect_vignette_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Vignette Effect (Dark Edges)',
+                'label' => 'Enable Vignette',
                 'default' => 0,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.physic_vignette_enabled',
+                'name' => 'themes.my-quark.effect_vignette_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.physic_eco_mode' => [
-                'type' => 'toggle',
-                'label' => 'Force Eco Mode (Saves Energy)',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.physic_eco_mode',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.physic_focus_mode' => [
-                'type' => 'toggle',
-                'label' => 'Cognitive Focus Mode',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.physic_focus_mode',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.logo' => [
+            'themes.my-quark.brand_logo' => [
                 'array' => true,
                 'media_field' => true,
                 'validate' => [
                     'type' => 'ignore'
                 ],
                 'type' => 'file',
-                'label' => 'Website Logo (Desktop, Mobile, Favicon)',
+                'label' => 'Website Logo',
                 'destination' => 'theme://images/logo',
                 'multiple' => false,
                 'accept' => [
                     0 => 'image/*'
                 ],
-                'name' => 'themes.my-quark.logo',
+                'name' => 'themes.my-quark.brand_logo',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_text' => [
+            'themes.my-quark.brand_name' => [
                 'type' => 'text',
-                'label' => 'Brand Name (Text)',
-                'name' => 'themes.my-quark.brand_text',
+                'label' => 'Brand Name',
+                'name' => 'themes.my-quark.brand_name',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_text_show' => [
+            'themes.my-quark.brand_show_text' => [
                 'type' => 'toggle',
                 'label' => 'Show Brand Text with Logo',
                 'default' => 0,
@@ -7255,7 +8326,7 @@ return [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.brand_text_show',
+                'name' => 'themes.my-quark.brand_show_text',
                 'validation' => 'loose'
             ],
             'themes.my-quark.contact_address' => [
@@ -7309,650 +8380,746 @@ return [
                 'name' => 'themes.my-quark.social_links.*.url',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_header_fixed' => [
+            'themes.my-quark.home_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Sticky Header',
+                'label' => 'Enable Dynamic Homepage',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.agent_header_fixed',
+                'name' => 'themes.my-quark.home_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_header_animated' => [
-                'type' => 'toggle',
-                'label' => 'Shrinking Header',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.agent_header_animated',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_dark' => [
-                'type' => 'toggle',
-                'label' => 'Dark Header Mode',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.agent_header_dark',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_transparent' => [
-                'type' => 'toggle',
-                'label' => 'Transparent Header',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.agent_header_transparent',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Header Menu Items',
-                'btnLabel' => 'Add Menu Item',
-                'name' => 'themes.my-quark.agent_header_structure',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.agent_header_structure.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.agent_header_structure.*.label' => [
+            'themes.my-quark.home_hero_title' => [
                 'type' => 'text',
-                'label' => 'Label',
-                'validate' => [
-                    'required' => true
-                ],
-                'name' => 'themes.my-quark.agent_header_structure.*.label',
+                'label' => 'Hero Title',
+                'default' => 'Learn Quran, Fiqh & More From Shia Scholars.',
+                'name' => 'themes.my-quark.home_hero_title',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_header_structure.*.url' => [
-                'type' => 'text',
-                'label' => 'URL / Route',
-                'name' => 'themes.my-quark.agent_header_structure.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.type' => [
-                'type' => 'select',
-                'label' => 'Link Type',
-                'default' => 'link',
-                'options' => [
-                    'link' => 'Standard Link',
-                    'mega' => 'Mega Menu',
-                    'heading' => 'Heading',
-                    'button' => 'Button',
-                    'logo' => 'Logo'
-                ],
-                'name' => 'themes.my-quark.agent_header_structure.*.type',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.mx_context' => [
-                'type' => 'text',
-                'label' => 'AI Description',
-                'name' => 'themes.my-quark.agent_header_structure.*.mx_context',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.design_token' => [
-                'type' => 'select',
-                'label' => 'Style',
-                'default' => 'default',
-                'options' => [
-                    'default' => 'Neutral',
-                    'primary' => 'Core Primary',
-                    'accent' => 'High Accent',
-                    'glass' => 'Refractive'
-                ],
-                'name' => 'themes.my-quark.agent_header_structure.*.design_token',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.children' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Sub-Menu Items',
-                'name' => 'themes.my-quark.agent_header_structure.*.children',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.children.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.agent_header_structure.*.children.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.agent_header_structure.*.children.*.label' => [
-                'type' => 'text',
-                'label' => 'Label',
-                'name' => 'themes.my-quark.agent_header_structure.*.children.*.label',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.children.*.url' => [
-                'type' => 'text',
-                'label' => 'URL',
-                'name' => 'themes.my-quark.agent_header_structure.*.children.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_header_structure.*.children.*.mx_context' => [
-                'type' => 'text',
-                'label' => 'AI Context',
-                'name' => 'themes.my-quark.agent_header_structure.*.children.*.mx_context',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Menu Tree',
-                'name' => 'themes.my-quark.agent_nav_nodes',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.agent_nav_nodes.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.agent_nav_nodes.*.title' => [
-                'type' => 'text',
-                'label' => 'Node Title',
-                'name' => 'themes.my-quark.agent_nav_nodes.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.type' => [
-                'type' => 'select',
-                'label' => 'Menu Type',
-                'default' => 'link',
-                'options' => [
-                    'link' => 'Standard Link',
-                    'smart' => 'Dynamic Collection',
-                    'folder' => 'Dropdown Folder'
-                ],
-                'name' => 'themes.my-quark.agent_nav_nodes.*.type',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.url' => [
-                'type' => 'text',
-                'label' => 'URI',
-                'name' => 'themes.my-quark.agent_nav_nodes.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.collection_source' => [
-                'type' => 'select',
-                'label' => 'Page Source',
-                'default' => '@root.descendants',
-                'options' => [
-                    '@root.descendants' => 'Global Manifest',
-                    '@self.children' => 'Local Siblings',
-                    '@self.descendants' => 'Local Descendants'
-                ],
-                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_source',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.collection_type' => [
-                'type' => 'select',
-                'label' => 'Taxonomy Filter',
-                'default' => 'all',
-                'options' => [
-                    'all' => 'Unfiltered',
-                    'tag' => 'Tag Metadata',
-                    'category' => 'Category Metadata',
-                    'type' => 'Class Metadata'
-                ],
-                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_type',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.collection_value' => [
-                'type' => 'text',
-                'label' => 'Filter Constant',
-                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_value',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_nav_nodes.*.collection_limit' => [
-                'type' => 'number',
-                'label' => 'Limit',
-                'default' => 5,
-                'name' => 'themes.my-quark.agent_nav_nodes.*.collection_limit',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_widgets' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Footer Widgets',
-                'name' => 'themes.my-quark.agent_footer_widgets',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_widgets.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.agent_footer_widgets.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.agent_footer_widgets.*.width' => [
-                'type' => 'select',
-                'label' => 'Column Width',
-                'default' => 'col-4',
-                'options' => [
-                    'col-3' => '25% (3/12)',
-                    'col-4' => '33% (4/12)',
-                    'col-6' => '50% (6/12)',
-                    'col-12' => '100% (Full)'
-                ],
-                'name' => 'themes.my-quark.agent_footer_widgets.*.width',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_widgets.*.type' => [
-                'type' => 'select',
-                'label' => 'Widget Type',
-                'options' => [
-                    'branding' => 'Website Branding',
-                    'menu' => 'Navigation Menu',
-                    'contact' => 'Contact Info',
-                    'social' => 'Social Media Links',
-                    'newsletter' => 'Newsletter Signup',
-                    'html' => 'Custom HTML'
-                ],
-                'name' => 'themes.my-quark.agent_footer_widgets.*.type',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_widgets.*.title' => [
-                'type' => 'text',
-                'label' => 'Widget Title',
-                'name' => 'themes.my-quark.agent_footer_widgets.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_widgets.*.content' => [
+            'themes.my-quark.home_hero_description' => [
                 'type' => 'textarea',
-                'label' => 'Raw Content',
-                'name' => 'themes.my-quark.agent_footer_widgets.*.content',
+                'label' => 'Hero Description',
+                'default' => 'At Aabtaab, we bring accessible and affordable Shia Islamic education to everyone no matter where you are in the world.',
+                'name' => 'themes.my-quark.home_hero_description',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_widgets.*.ai_badge' => [
-                'type' => 'toggle',
-                'label' => 'Show AI Badge',
-                'default' => 0,
-                'name' => 'themes.my-quark.agent_footer_widgets.*.ai_badge',
+            'themes.my-quark.home_hero_btn_text' => [
+                'type' => 'text',
+                'label' => 'Primary Button Text',
+                'default' => 'VIEW ALL SERVICES',
+                'name' => 'themes.my-quark.home_hero_btn_text',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_widgets.*.animation' => [
+            'themes.my-quark.home_hero_btn_url' => [
+                'type' => 'text',
+                'label' => 'Primary Button URL',
+                'default' => '#services',
+                'name' => 'themes.my-quark.home_hero_btn_url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services_title' => [
+                'type' => 'text',
+                'label' => 'Section Title',
+                'default' => 'Our Services 🤲',
+                'name' => 'themes.my-quark.home_services_title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Services List',
+                'name' => 'themes.my-quark.home_services',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.home_services.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.home_services.*.icon' => [
+                'type' => 'text',
+                'label' => 'Icon (Emoji/Text)',
+                'name' => 'themes.my-quark.home_services.*.icon',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services.*.title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'name' => 'themes.my-quark.home_services.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services.*.description' => [
+                'type' => 'textarea',
+                'label' => 'Description',
+                'name' => 'themes.my-quark.home_services.*.description',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services.*.url' => [
+                'type' => 'text',
+                'label' => 'Link URL',
+                'name' => 'themes.my-quark.home_services.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_services.*.btn_text' => [
+                'type' => 'text',
+                'label' => 'Button Text',
+                'default' => 'View Details →',
+                'name' => 'themes.my-quark.home_services.*.btn_text',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_title' => [
+                'type' => 'text',
+                'label' => 'Section Title',
+                'default' => 'Quote of the Day',
+                'name' => 'themes.my-quark.home_quote_title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_author' => [
+                'type' => 'text',
+                'label' => 'Author',
+                'default' => 'Prophet Muhammad (SAWW)',
+                'name' => 'themes.my-quark.home_quote_author',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_arabic' => [
+                'type' => 'textarea',
+                'label' => 'Arabic Text',
+                'default' => 'ظِلُّ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ صَدَقَتُهُ',
+                'name' => 'themes.my-quark.home_quote_arabic',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_english' => [
+                'type' => 'textarea',
+                'label' => 'English Translation',
+                'default' => '"The believer\'s shade on the Day of Resurrection will be his charity"',
+                'name' => 'themes.my-quark.home_quote_english',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_btn_text' => [
+                'type' => 'text',
+                'label' => 'CTA Button Text',
+                'default' => '❤️ GIVE TODAY',
+                'name' => 'themes.my-quark.home_quote_btn_text',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_quote_btn_url' => [
+                'type' => 'text',
+                'label' => 'CTA Button URL',
+                'default' => '/donate',
+                'name' => 'themes.my-quark.home_quote_btn_url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses_title' => [
+                'type' => 'text',
+                'label' => 'Section Title',
+                'default' => 'Popular Courses 📚',
+                'name' => 'themes.my-quark.home_courses_title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses_subtitle' => [
+                'type' => 'text',
+                'label' => 'Subtitle',
+                'default' => 'Pick A Course To Get Started',
+                'name' => 'themes.my-quark.home_courses_subtitle',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Courses List',
+                'name' => 'themes.my-quark.home_courses',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses.*' => [
+                'type' => '_parent',
+                'name' => 'themes.my-quark.home_courses.*',
+                'form_field' => false
+            ],
+            'themes.my-quark.home_courses.*.icon' => [
+                'type' => 'text',
+                'label' => 'Icon',
+                'name' => 'themes.my-quark.home_courses.*.icon',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses.*.title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'name' => 'themes.my-quark.home_courses.*.title',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses.*.subtitle' => [
+                'type' => 'text',
+                'label' => 'Subtitle',
+                'name' => 'themes.my-quark.home_courses.*.subtitle',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.home_courses.*.url' => [
+                'type' => 'text',
+                'label' => 'Enroll URL',
+                'name' => 'themes.my-quark.home_courses.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.hero_default_style' => [
                 'type' => 'select',
-                'label' => 'Animation',
-                'default' => 'fadeUp',
+                'label' => 'Default Style',
+                'default' => 'standard',
                 'options' => [
-                    'none' => 'None',
-                    'fadeUp' => 'Fade Up',
-                    'fadeDown' => 'Fade Down',
-                    'slideLeft' => 'Slide Left',
-                    'slideRight' => 'Slide Right',
-                    'zoomIn' => 'Zoom In'
+                    'standard' => 'Standard (Centered)',
+                    'split' => 'Split (Text Left / Image Right)',
+                    'immersive' => 'Immersive (Full Screen)',
+                    'minimal' => 'Minimal (Text Only)'
                 ],
-                'name' => 'themes.my-quark.agent_footer_widgets.*.animation',
+                'name' => 'themes.my-quark.hero_default_style',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_color_bg' => [
-                'type' => 'color',
-                'label' => 'Atmosphere Background',
-                'default' => '#0f0f10',
-                'name' => 'themes.my-quark.agent_footer_color_bg',
+            'themes.my-quark.hero_default_overlay' => [
+                'type' => 'range',
+                'label' => 'Default Overlay Opacity',
+                'default' => 0.3,
+                'min' => 0,
+                'max' => 1,
+                'step' => 0.1,
+                'name' => 'themes.my-quark.hero_default_overlay',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_color_text' => [
-                'type' => 'color',
-                'label' => 'Contrast Text',
-                'default' => '#ffffff',
-                'name' => 'themes.my-quark.agent_footer_color_text',
+            'themes.my-quark.hero_default_button_style' => [
+                'type' => 'select',
+                'label' => 'Default CTA Button Style',
+                'default' => 'primary',
+                'options' => [
+                    'primary' => 'Primary',
+                    'secondary' => 'Secondary',
+                    'accent' => 'Accent',
+                    'ghost' => 'Ghost'
+                ],
+                'name' => 'themes.my-quark.hero_default_button_style',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_color_accent' => [
-                'type' => 'color',
-                'label' => 'High Focus Token',
-                'default' => '#d4af37',
-                'name' => 'themes.my-quark.agent_footer_color_accent',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_sticky' => [
+            'themes.my-quark.hero_enable_animations' => [
                 'type' => 'toggle',
-                'label' => 'Positional Stickiness',
+                'label' => 'Enable Animations',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.agent_footer_sticky',
+                'name' => 'themes.my-quark.hero_enable_animations',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_footer_legal_copy' => [
-                'type' => 'textarea',
-                'label' => 'Governance Rights',
-                'default' => '&copy; 2026 Semantic OS. All rights reserved.',
-                'name' => 'themes.my-quark.agent_footer_legal_copy',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_footer_legal_credits' => [
-                'type' => 'text',
-                'label' => 'Origin Credits',
-                'default' => 'Architected by Antigravity',
-                'name' => 'themes.my-quark.agent_footer_legal_credits',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_env_mode' => [
+            'themes.my-quark.background_mode' => [
                 'type' => 'toggle',
-                'label' => 'Background Style',
+                'label' => 'Background Type',
                 'default' => 0,
                 'highlight' => 1,
                 'options' => [
-                    0 => 'Solid',
+                    0 => 'Solid Color',
                     1 => 'Gradient',
                     2 => 'Image',
-                    3 => 'Mesh',
+                    3 => 'Animated Mesh',
                     4 => 'Pattern'
                 ],
                 'validate' => [
                     'type' => 'int'
                 ],
-                'name' => 'themes.my-quark.agent_env_mode',
+                'name' => 'themes.my-quark.background_mode',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_solid_col' => [
+            'themes.my-quark.background_solid_color' => [
                 'type' => 'color',
                 'label' => 'Background Color',
                 'default' => '#ffffff',
-                'name' => 'themes.my-quark.agent_env_solid_col',
+                'name' => 'themes.my-quark.background_solid_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_grad_type' => [
+            'themes.my-quark.background_gradient_type' => [
                 'type' => 'select',
-                'label' => 'Vector Type',
+                'label' => 'Gradient Type',
                 'default' => 'linear',
                 'options' => [
-                    'linear' => 'Directional',
-                    'radial' => 'Spherical'
+                    'linear' => 'Linear',
+                    'radial' => 'Radial'
                 ],
-                'name' => 'themes.my-quark.agent_env_grad_type',
+                'name' => 'themes.my-quark.background_gradient_type',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_grad_angle' => [
+            'themes.my-quark.background_gradient_angle' => [
                 'type' => 'range',
-                'label' => 'Projection Angle',
+                'label' => 'Angle',
                 'default' => 135,
                 'min' => 0,
                 'max' => 360,
                 'step' => 5,
                 'append' => 'deg',
-                'name' => 'themes.my-quark.agent_env_grad_angle',
+                'name' => 'themes.my-quark.background_gradient_angle',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_grad_start' => [
+            'themes.my-quark.background_gradient_start' => [
                 'type' => 'color',
                 'label' => 'Start Color',
                 'default' => '#3b4252',
-                'name' => 'themes.my-quark.agent_env_grad_start',
+                'name' => 'themes.my-quark.background_gradient_start',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_grad_end' => [
+            'themes.my-quark.background_gradient_end' => [
                 'type' => 'color',
                 'label' => 'End Color',
                 'default' => '#88c0d0',
-                'name' => 'themes.my-quark.agent_env_grad_end',
+                'name' => 'themes.my-quark.background_gradient_end',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img' => [
+            'themes.my-quark.background_image' => [
                 'array' => true,
                 'media_field' => true,
                 'validate' => [
                     'type' => 'ignore'
                 ],
                 'type' => 'file',
-                'label' => 'Select Image',
+                'label' => 'Background Image',
                 'destination' => 'theme://images/backgrounds',
                 'multiple' => false,
                 'accept' => [
                     0 => 'image/*'
                 ],
-                'name' => 'themes.my-quark.agent_env_img',
+                'name' => 'themes.my-quark.background_image',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img_pos' => [
+            'themes.my-quark.background_image_position' => [
                 'type' => 'select',
-                'label' => 'Focal Point',
+                'label' => 'Position',
                 'default' => 'center center',
                 'options' => [
-                    'center center' => 'Equator',
-                    'top center' => 'Zenith',
-                    'bottom center' => 'Nadir'
+                    'center center' => 'Center',
+                    'top center' => 'Top',
+                    'bottom center' => 'Bottom'
                 ],
-                'name' => 'themes.my-quark.agent_env_img_pos',
+                'name' => 'themes.my-quark.background_image_position',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img_size' => [
+            'themes.my-quark.background_image_size' => [
                 'type' => 'select',
-                'label' => 'Geometric Scale',
+                'label' => 'Size',
                 'default' => 'cover',
                 'options' => [
-                    'cover' => 'Full Stretch',
-                    'contain' => 'Preserve Aspect',
-                    'auto' => 'True Scale'
+                    'cover' => 'Cover (Fill)',
+                    'contain' => 'Contain (Fit)',
+                    'auto' => 'Original Size'
                 ],
-                'name' => 'themes.my-quark.agent_env_img_size',
+                'name' => 'themes.my-quark.background_image_size',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img_attach' => [
+            'themes.my-quark.background_image_attachment' => [
                 'type' => 'select',
-                'label' => 'Motion Protocol',
+                'label' => 'Scroll Behavior',
                 'default' => 'fixed',
                 'options' => [
-                    'fixed' => 'Spatial Parallax',
-                    'scroll' => 'Standard Fluid'
+                    'fixed' => 'Fixed (Parallax)',
+                    'scroll' => 'Scroll (Normal)'
                 ],
-                'name' => 'themes.my-quark.agent_env_img_attach',
+                'name' => 'themes.my-quark.background_image_attachment',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img_overlay' => [
+            'themes.my-quark.background_image_overlay' => [
                 'type' => 'color',
-                'label' => 'Tint Layer',
+                'label' => 'Overlay Color',
                 'default' => '#000000',
-                'name' => 'themes.my-quark.agent_env_img_overlay',
+                'name' => 'themes.my-quark.background_image_overlay',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_img_op' => [
+            'themes.my-quark.background_image_overlay_opacity' => [
                 'type' => 'range',
-                'label' => 'Layer Depth',
+                'label' => 'Overlay Opacity',
                 'default' => 0.3,
                 'min' => 0,
                 'max' => 1,
                 'step' => 0.1,
-                'name' => 'themes.my-quark.agent_env_img_op',
+                'name' => 'themes.my-quark.background_image_overlay_opacity',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_mesh_1' => [
+            'themes.my-quark.background_mesh_color1' => [
                 'type' => 'color',
                 'label' => 'Mesh Color 1',
                 'default' => '#3b4252',
-                'name' => 'themes.my-quark.agent_env_mesh_1',
+                'name' => 'themes.my-quark.background_mesh_color1',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_mesh_2' => [
+            'themes.my-quark.background_mesh_color2' => [
                 'type' => 'color',
                 'label' => 'Mesh Color 2',
                 'default' => '#bf616a',
-                'name' => 'themes.my-quark.agent_env_mesh_2',
+                'name' => 'themes.my-quark.background_mesh_color2',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_mesh_3' => [
+            'themes.my-quark.background_mesh_color3' => [
                 'type' => 'color',
                 'label' => 'Mesh Color 3',
                 'default' => '#88c0d0',
-                'name' => 'themes.my-quark.agent_env_mesh_3',
+                'name' => 'themes.my-quark.background_mesh_color3',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_mesh_speed' => [
+            'themes.my-quark.background_mesh_speed' => [
                 'type' => 'range',
                 'label' => 'Animation Speed',
                 'default' => 20,
                 'min' => 5,
                 'max' => 60,
                 'step' => 5,
-                'name' => 'themes.my-quark.agent_env_mesh_speed',
+                'name' => 'themes.my-quark.background_mesh_speed',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_tex' => [
+            'themes.my-quark.background_pattern_type' => [
                 'type' => 'select',
-                'label' => 'Mathematical Pattern',
+                'label' => 'Pattern Type',
                 'default' => 'none',
                 'options' => [
-                    'none' => 'Null',
+                    'none' => 'None',
                     'noise' => 'Perlin Noise',
-                    'dots' => 'Point Grid',
-                    'grid' => 'Cartesian',
-                    'lines' => 'Linear Segments'
+                    'dots' => 'Dots',
+                    'grid' => 'Grid Lines',
+                    'lines' => 'Diagonal Lines'
                 ],
-                'name' => 'themes.my-quark.agent_env_tex',
+                'name' => 'themes.my-quark.background_pattern_type',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_tex_col' => [
+            'themes.my-quark.background_pattern_color' => [
                 'type' => 'color',
-                'label' => 'Trace Color',
+                'label' => 'Pattern Color',
                 'default' => '#000000',
-                'name' => 'themes.my-quark.agent_env_tex_col',
+                'name' => 'themes.my-quark.background_pattern_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_env_tex_op' => [
+            'themes.my-quark.background_pattern_opacity' => [
                 'type' => 'range',
-                'label' => 'Trace Intensity',
+                'label' => 'Pattern Opacity',
                 'default' => 0.05,
                 'min' => 0.01,
                 'max' => 0.2,
                 'step' => 0.01,
-                'name' => 'themes.my-quark.agent_env_tex_op',
+                'name' => 'themes.my-quark.background_pattern_opacity',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_identity_logo' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
+            'themes.my-quark.button_default_variant' => [
+                'type' => 'select',
+                'label' => 'Default Style',
+                'default' => 'primary',
+                'options' => [
+                    'primary' => 'Primary (Brand Color)',
+                    'secondary' => 'Secondary (Neutral)',
+                    'accent' => 'Accent (Highlight)',
+                    'ghost' => 'Ghost (Transparent)',
+                    'glass' => 'Glass (Glassmorphic)'
                 ],
-                'type' => 'file',
-                'label' => 'Website Logo',
-                'destination' => 'theme://images/logo',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
+                'name' => 'themes.my-quark.button_default_variant',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.button_default_size' => [
+                'type' => 'select',
+                'label' => 'Default Size',
+                'default' => 'md',
+                'options' => [
+                    'sm' => 'Small',
+                    'md' => 'Medium',
+                    'lg' => 'Large'
                 ],
-                'name' => 'themes.my-quark.agent_identity_logo',
+                'name' => 'themes.my-quark.button_default_size',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_identity_brandName' => [
-                'type' => 'text',
-                'label' => 'Website Name',
-                'name' => 'themes.my-quark.agent_identity_brandName',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_identity_showText' => [
+            'themes.my-quark.button_haptic_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Display Semantic Identifier',
+                'label' => 'Enable Haptic Feedback',
                 'default' => 0,
                 'options' => [
-                    1 => 'ENABLED',
-                    0 => 'DISABLED'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.agent_identity_showText',
+                'name' => 'themes.my-quark.button_haptic_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_identity_address' => [
-                'type' => 'text',
-                'label' => 'Address',
-                'name' => 'themes.my-quark.agent_identity_address',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_identity_email' => [
-                'type' => 'text',
-                'label' => 'Email Address',
-                'name' => 'themes.my-quark.agent_identity_email',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_identity_phone' => [
-                'type' => 'text',
-                'label' => 'Phone Number',
-                'name' => 'themes.my-quark.agent_identity_phone',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_identity_social' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Social Media Links',
-                'name' => 'themes.my-quark.agent_identity_social',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_identity_social.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.agent_identity_social.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.agent_identity_social.*.network' => [
+            'themes.my-quark.card_default_variant' => [
                 'type' => 'select',
-                'label' => 'Platform',
+                'label' => 'Default Style',
+                'default' => 'default',
                 'options' => [
-                    'facebook' => 'FB',
-                    'twitter' => 'X',
-                    'instagram' => 'IG',
-                    'linkedin' => 'LI',
-                    'youtube' => 'YT',
-                    'github' => 'GH',
-                    'googlemaps' => 'Maps'
+                    'default' => 'Default (Solid)',
+                    'glass' => 'Glass (Translucent)',
+                    'neo' => 'Neomorphic (Soft 3D)',
+                    'accent' => 'Accent (Highlighted)'
                 ],
-                'name' => 'themes.my-quark.agent_identity_social.*.network',
+                'name' => 'themes.my-quark.card_default_variant',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_identity_social.*.url' => [
-                'type' => 'text',
-                'label' => 'Destination URI',
-                'name' => 'themes.my-quark.agent_identity_social.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_gov_production' => [
+            'themes.my-quark.card_shadow_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Optimal Asset Compression',
+                'label' => 'Enable Shadows',
                 'default' => 1,
                 'options' => [
-                    1 => 'PRODUCTION',
-                    0 => 'DEVELOPMENT'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.agent_gov_production',
+                'name' => 'themes.my-quark.card_shadow_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_gov_gridSize' => [
-                'type' => 'select',
-                'label' => 'Layout Grid Class',
-                'default' => 'grid-xl',
-                'options' => [
-                    'grid-lg' => 'Large',
-                    'grid-xl' => 'Extra Large'
-                ],
-                'name' => 'themes.my-quark.agent_gov_gridSize',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_gov_ecoDefault' => [
+            'themes.my-quark.card_image_lazy_load' => [
                 'type' => 'toggle',
-                'label' => 'Force Lower Complexity (Eco)',
-                'default' => 0,
-                'name' => 'themes.my-quark.agent_gov_ecoDefault',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.agent_gov_privacyShield' => [
-                'type' => 'toggle',
-                'label' => 'Enhanced Privacy Sovereignty',
+                'label' => 'Lazy Load Images',
                 'default' => 1,
-                'name' => 'themes.my-quark.agent_gov_privacyShield',
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.card_image_lazy_load',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.agent_gov_haptics' => [
+            'themes.my-quark.form_required_symbol' => [
+                'type' => 'text',
+                'label' => 'Required Field Symbol',
+                'default' => '*',
+                'name' => 'themes.my-quark.form_required_symbol',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.form_validation_style' => [
+                'type' => 'select',
+                'label' => 'Validation Display',
+                'default' => 'inline',
+                'options' => [
+                    'inline' => 'Inline (Below Field)',
+                    'tooltip' => 'Tooltip (On Hover)',
+                    'summary' => 'Summary (Top of Form)'
+                ],
+                'name' => 'themes.my-quark.form_validation_style',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.form_focus_highlight' => [
                 'type' => 'toggle',
-                'label' => 'Tactile Pulse (Haptics)',
+                'label' => 'Focus Highlight',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.form_focus_highlight',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.image_default_loading' => [
+                'type' => 'select',
+                'label' => 'Loading Strategy',
+                'default' => 'lazy',
+                'options' => [
+                    'eager' => 'Eager (Immediate)',
+                    'lazy' => 'Lazy (Deferred)'
+                ],
+                'name' => 'themes.my-quark.image_default_loading',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.image_default_quality' => [
+                'type' => 'range',
+                'label' => 'Image Quality',
+                'default' => 85,
+                'min' => 60,
+                'max' => 100,
+                'step' => 5,
+                'append' => '%',
+                'name' => 'themes.my-quark.image_default_quality',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.image_caption_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Show Captions',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.image_caption_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.image_responsive' => [
+                'type' => 'toggle',
+                'label' => 'Responsive Images',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.image_responsive',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.meta_show_author' => [
+                'type' => 'toggle',
+                'label' => 'Show Author',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.meta_show_author',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.meta_show_date' => [
+                'type' => 'toggle',
+                'label' => 'Show Publish Date',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.meta_show_date',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.meta_date_format' => [
+                'type' => 'text',
+                'label' => 'Date Format',
+                'default' => 'F d, Y',
+                'name' => 'themes.my-quark.meta_date_format',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.meta_show_reading_time' => [
+                'type' => 'toggle',
+                'label' => 'Show Reading Time',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.meta_show_reading_time',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.meta_separator' => [
+                'type' => 'text',
+                'label' => 'Separator Character',
+                'default' => '•',
+                'name' => 'themes.my-quark.meta_separator',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.animations_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Animations',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.animations_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.animations_respect_reduced_motion' => [
+                'type' => 'toggle',
+                'label' => 'Respect Reduced Motion',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.animations_respect_reduced_motion',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.accessibility_skip_link_text' => [
+                'type' => 'text',
+                'label' => 'Skip to Content Text',
+                'default' => 'THEME_MY_QUARK.SKIP_TO_CONTENT',
+                'name' => 'themes.my-quark.accessibility_skip_link_text',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.accessibility_mobile_menu_label' => [
+                'type' => 'text',
+                'label' => 'Mobile Menu Label',
+                'default' => 'THEME_MY_QUARK.TOGGLE_MOBILE_MENU',
+                'name' => 'themes.my-quark.accessibility_mobile_menu_label',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.accessibility_focus_mode' => [
+                'type' => 'toggle',
+                'label' => 'Focus Mode',
                 'default' => 0,
-                'name' => 'themes.my-quark.agent_gov_haptics',
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.accessibility_focus_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.sustainability_eco_mode' => [
+                'type' => 'toggle',
+                'label' => 'Force Eco Mode',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.sustainability_eco_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.sustainability_score' => [
+                'type' => 'text',
+                'label' => 'Sustainability Score',
+                'default' => 'A+',
+                'name' => 'themes.my-quark.sustainability_score',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.co2_per_view' => [
+                'type' => 'text',
+                'label' => 'CO2 per View',
+                'default' => '0.2g',
+                'name' => 'themes.my-quark.co2_per_view',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.ai_augmentation_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable AI Enhancements',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.ai_augmentation_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.advanced_haptics' => [
+                'type' => 'toggle',
+                'label' => 'Global Haptic Feedback',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.advanced_haptics',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.performance_production_mode' => [
+                'type' => 'toggle',
+                'label' => 'Production Mode',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.performance_production_mode',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.privacy_shield_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Privacy Shield',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'name' => 'themes.my-quark.privacy_shield_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.localization_newsletter_placeholder' => [
+                'type' => 'text',
+                'label' => 'Newsletter Email Placeholder',
+                'default' => 'THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER',
+                'name' => 'themes.my-quark.localization_newsletter_placeholder',
+                'validation' => 'loose'
+            ],
+            'themes.my-quark.localization_newsletter_button' => [
+                'type' => 'text',
+                'label' => 'Newsletter Button Text',
+                'default' => 'THEME_MY_QUARK.NEWSLETTER_BUTTON',
+                'name' => 'themes.my-quark.localization_newsletter_button',
                 'validation' => 'loose'
             ]
         ],
@@ -7960,6 +9127,16 @@ return [
             
         ],
         'nested' => [
+            'media' => [
+                'types' => [
+                    '*' => [
+                        'type' => 'media.types.*.type',
+                        'thumb' => 'media.types.*.thumb',
+                        'mime' => 'media.types.*.mime',
+                        'image' => 'media.types.*.image'
+                    ]
+                ]
+            ],
             'backups' => [
                 'history' => 'backups.history',
                 'purge' => [
@@ -7980,7 +9157,6 @@ return [
                     ]
                 ]
             ],
-            'media' => 'media',
             'scheduler' => [
                 'status' => 'scheduler.status',
                 'custom_jobs' => [
@@ -8688,6 +9864,149 @@ return [
                 ]
             ],
             'themes' => [
+                'ngo-theme' => [
+                    'production-mode' => 'themes.ngo-theme.production-mode',
+                    'grid-size' => 'themes.ngo-theme.grid-size',
+                    'search_enabled' => 'themes.ngo-theme.search_enabled',
+                    'sustainability_score' => 'themes.ngo-theme.sustainability_score',
+                    'co2_per_view' => 'themes.ngo-theme.co2_per_view',
+                    'ai_disclosure' => 'themes.ngo-theme.ai_disclosure',
+                    'ai_assistant' => 'themes.ngo-theme.ai_assistant',
+                    'doodle_engine' => 'themes.ngo-theme.doodle_engine',
+                    'eco_mode' => 'themes.ngo-theme.eco_mode',
+                    'focus_mode' => 'themes.ngo-theme.focus_mode',
+                    'custom_logo' => 'themes.ngo-theme.custom_logo',
+                    'header-fixed' => 'themes.ngo-theme.header-fixed',
+                    'header-animated' => 'themes.ngo-theme.header-animated',
+                    'header-dark' => 'themes.ngo-theme.header-dark',
+                    'header-transparent' => 'themes.ngo-theme.header-transparent',
+                    'utility_hijri_toggle' => 'themes.ngo-theme.utility_hijri_toggle',
+                    'utility_prayer_toggle' => 'themes.ngo-theme.utility_prayer_toggle',
+                    'utility_prayer_city' => 'themes.ngo-theme.utility_prayer_city',
+                    'utility_language_toggle' => 'themes.ngo-theme.utility_language_toggle',
+                    'utility_accessibility_toggle' => 'themes.ngo-theme.utility_accessibility_toggle',
+                    'mega_menu_structure' => [
+                        '*' => [
+                            'title' => 'themes.ngo-theme.mega_menu_structure.*.title',
+                            'links' => [
+                                '*' => [
+                                    'text' => 'themes.ngo-theme.mega_menu_structure.*.links.*.text',
+                                    'url' => 'themes.ngo-theme.mega_menu_structure.*.links.*.url'
+                                ]
+                            ]
+                        ]
+                    ],
+                    'enabled' => 'themes.ngo-theme.enabled',
+                    'text' => 'themes.ngo-theme.text',
+                    'url' => 'themes.ngo-theme.url',
+                    'icon' => 'themes.ngo-theme.icon',
+                    'external' => 'themes.ngo-theme.external',
+                    'hero_video_url' => 'themes.ngo-theme.hero_video_url',
+                    'hero_glass_opacity' => 'themes.ngo-theme.hero_glass_opacity',
+                    'hero_primary_cta_text' => 'themes.ngo-theme.hero_primary_cta_text',
+                    'hero_primary_cta_link' => 'themes.ngo-theme.hero_primary_cta_link',
+                    'hero_secondary_cta_text' => 'themes.ngo-theme.hero_secondary_cta_text',
+                    'hero_secondary_cta_link' => 'themes.ngo-theme.hero_secondary_cta_link',
+                    'inspiration_text' => 'themes.ngo-theme.inspiration_text',
+                    'inspiration_source' => 'themes.ngo-theme.inspiration_source',
+                    'services_list' => [
+                        '*' => [
+                            'icon' => 'themes.ngo-theme.services_list.*.icon',
+                            'title' => 'themes.ngo-theme.services_list.*.title',
+                            'description' => 'themes.ngo-theme.services_list.*.description',
+                            'link' => 'themes.ngo-theme.services_list.*.link'
+                        ]
+                    ],
+                    'events_list' => [
+                        '*' => [
+                            'title' => 'themes.ngo-theme.events_list.*.title',
+                            'date' => 'themes.ngo-theme.events_list.*.date',
+                            'location' => 'themes.ngo-theme.events_list.*.location',
+                            'url' => 'themes.ngo-theme.events_list.*.url',
+                            'type' => 'themes.ngo-theme.events_list.*.type'
+                        ]
+                    ],
+                    'project_timeline_list' => [
+                        '*' => [
+                            'title' => 'themes.ngo-theme.project_timeline_list.*.title',
+                            'description' => 'themes.ngo-theme.project_timeline_list.*.description',
+                            'goal' => 'themes.ngo-theme.project_timeline_list.*.goal',
+                            'raised' => 'themes.ngo-theme.project_timeline_list.*.raised',
+                            'percent' => 'themes.ngo-theme.project_timeline_list.*.percent',
+                            'status' => 'themes.ngo-theme.project_timeline_list.*.status'
+                        ]
+                    ],
+                    'khums_rate' => 'themes.ngo-theme.khums_rate',
+                    'khums_currency' => 'themes.ngo-theme.khums_currency',
+                    'prayer_times_enabled' => 'themes.ngo-theme.prayer_times_enabled',
+                    'prayer_api_key' => 'themes.ngo-theme.prayer_api_key',
+                    'hijri_adjustment' => 'themes.ngo-theme.hijri_adjustment',
+                    'trust_signals_images' => [
+                        '*' => [
+                            'name' => 'themes.ngo-theme.trust_signals_images.*.name',
+                            'image' => 'themes.ngo-theme.trust_signals_images.*.image',
+                            'url' => 'themes.ngo-theme.trust_signals_images.*.url'
+                        ]
+                    ],
+                    'student_login_title' => 'themes.ngo-theme.student_login_title',
+                    'student_login_description' => 'themes.ngo-theme.student_login_description',
+                    'student_login_button_text' => 'themes.ngo-theme.student_login_button_text',
+                    'featured_courses_list' => [
+                        '*' => [
+                            'title' => 'themes.ngo-theme.featured_courses_list.*.title',
+                            'instructor' => 'themes.ngo-theme.featured_courses_list.*.instructor',
+                            'image' => 'themes.ngo-theme.featured_courses_list.*.image',
+                            'url' => 'themes.ngo-theme.featured_courses_list.*.url'
+                        ]
+                    ],
+                    'products_list' => [
+                        '*' => [
+                            'title' => 'themes.ngo-theme.products_list.*.title',
+                            'price' => 'themes.ngo-theme.products_list.*.price',
+                            'type' => 'themes.ngo-theme.products_list.*.type',
+                            'image' => 'themes.ngo-theme.products_list.*.image',
+                            'url' => 'themes.ngo-theme.products_list.*.url'
+                        ]
+                    ],
+                    'sticky-footer' => 'themes.ngo-theme.sticky-footer',
+                    'footer_about_title' => 'themes.ngo-theme.footer_about_title',
+                    'footer_mission' => 'themes.ngo-theme.footer_mission',
+                    'contact_address' => 'themes.ngo-theme.contact_address',
+                    'contact_email' => 'themes.ngo-theme.contact_email',
+                    'contact_phone' => 'themes.ngo-theme.contact_phone',
+                    'contact_whatsapp' => 'themes.ngo-theme.contact_whatsapp',
+                    'social_links' => [
+                        '*' => [
+                            'network' => 'themes.ngo-theme.social_links.*.network',
+                            'url' => 'themes.ngo-theme.social_links.*.url'
+                        ]
+                    ],
+                    'footer_links' => [
+                        '*' => [
+                            'text' => 'themes.ngo-theme.footer_links.*.text',
+                            'url' => 'themes.ngo-theme.footer_links.*.url',
+                            'icon' => 'themes.ngo-theme.footer_links.*.icon'
+                        ]
+                    ],
+                    'newsletter_enabled' => 'themes.ngo-theme.newsletter_enabled',
+                    'newsletter_action' => 'themes.ngo-theme.newsletter_action',
+                    'blog-page' => 'themes.ngo-theme.blog-page',
+                    'testimonials_list' => [
+                        '*' => [
+                            'name' => 'themes.ngo-theme.testimonials_list.*.name',
+                            'role' => 'themes.ngo-theme.testimonials_list.*.role',
+                            'quote' => 'themes.ngo-theme.testimonials_list.*.quote',
+                            'image' => 'themes.ngo-theme.testimonials_list.*.image',
+                            'video_url' => 'themes.ngo-theme.testimonials_list.*.video_url'
+                        ]
+                    ],
+                    'faq_list' => [
+                        '*' => [
+                            'q' => 'themes.ngo-theme.faq_list.*.q',
+                            'a' => 'themes.ngo-theme.faq_list.*.a'
+                        ]
+                    ]
+                ],
                 'quark' => [
                     'production-mode' => 'themes.quark.production-mode',
                     'grid-size' => 'themes.quark.grid-size',
@@ -8705,36 +10024,35 @@ return [
                     ]
                 ],
                 'my-quark' => [
-                    'token_color_primary' => 'themes.my-quark.token_color_primary',
-                    'token_color_secondary' => 'themes.my-quark.token_color_secondary',
-                    'token_color_accent' => 'themes.my-quark.token_color_accent',
-                    'token_color_bg_body' => 'themes.my-quark.token_color_bg_body',
-                    'token_color_bg_card' => 'themes.my-quark.token_color_bg_card',
-                    'token_color_text_main' => 'themes.my-quark.token_color_text_main',
-                    'token_color_text_muted' => 'themes.my-quark.token_color_text_muted',
-                    'token_font_body' => 'themes.my-quark.token_font_body',
-                    'token_font_header' => 'themes.my-quark.token_font_header',
-                    'token_typo_fluid' => 'themes.my-quark.token_typo_fluid',
-                    'token_typo_min_size' => 'themes.my-quark.token_typo_min_size',
-                    'token_typo_max_size' => 'themes.my-quark.token_typo_max_size',
-                    'token_typo_scale' => 'themes.my-quark.token_typo_scale',
-                    'token_typo_lh_body' => 'themes.my-quark.token_typo_lh_body',
-                    'token_typo_lh_heading' => 'themes.my-quark.token_typo_lh_heading',
-                    'token_typo_ls_heading' => 'themes.my-quark.token_typo_ls_heading',
-                    'token_typo_measure' => 'themes.my-quark.token_typo_measure',
-                    'token_layout_width' => 'themes.my-quark.token_layout_width',
-                    'token_layout_spacing' => 'themes.my-quark.token_layout_spacing',
-                    'physic_radius_main' => 'themes.my-quark.physic_radius_main',
-                    'physic_neo_strength' => 'themes.my-quark.physic_neo_strength',
-                    'physic_neo_lightSource' => 'themes.my-quark.physic_neo_lightSource',
-                    'physic_glass_opacity' => 'themes.my-quark.physic_glass_opacity',
-                    'physic_glass_blur' => 'themes.my-quark.physic_glass_blur',
-                    'physic_vignette_enabled' => 'themes.my-quark.physic_vignette_enabled',
-                    'physic_eco_mode' => 'themes.my-quark.physic_eco_mode',
-                    'physic_focus_mode' => 'themes.my-quark.physic_focus_mode',
-                    'logo' => 'themes.my-quark.logo',
-                    'brand_text' => 'themes.my-quark.brand_text',
-                    'brand_text_show' => 'themes.my-quark.brand_text_show',
+                    'color_primary' => 'themes.my-quark.color_primary',
+                    'color_secondary' => 'themes.my-quark.color_secondary',
+                    'color_accent' => 'themes.my-quark.color_accent',
+                    'color_background_body' => 'themes.my-quark.color_background_body',
+                    'color_background_card' => 'themes.my-quark.color_background_card',
+                    'color_text_primary' => 'themes.my-quark.color_text_primary',
+                    'color_text_secondary' => 'themes.my-quark.color_text_secondary',
+                    'typography_font_body' => 'themes.my-quark.typography_font_body',
+                    'typography_font_headings' => 'themes.my-quark.typography_font_headings',
+                    'typography_fluid_enabled' => 'themes.my-quark.typography_fluid_enabled',
+                    'typography_size_min' => 'themes.my-quark.typography_size_min',
+                    'typography_size_max' => 'themes.my-quark.typography_size_max',
+                    'typography_scale_ratio' => 'themes.my-quark.typography_scale_ratio',
+                    'typography_line_height_body' => 'themes.my-quark.typography_line_height_body',
+                    'typography_line_height_headings' => 'themes.my-quark.typography_line_height_headings',
+                    'typography_letter_spacing_headings' => 'themes.my-quark.typography_letter_spacing_headings',
+                    'typography_max_measure' => 'themes.my-quark.typography_max_measure',
+                    'layout_container_width' => 'themes.my-quark.layout_container_width',
+                    'layout_spacing_scale' => 'themes.my-quark.layout_spacing_scale',
+                    'layout_grid_size' => 'themes.my-quark.layout_grid_size',
+                    'radius_corners' => 'themes.my-quark.radius_corners',
+                    'shadow_neomorphism_strength' => 'themes.my-quark.shadow_neomorphism_strength',
+                    'shadow_neomorphism_light_source' => 'themes.my-quark.shadow_neomorphism_light_source',
+                    'glass_opacity' => 'themes.my-quark.glass_opacity',
+                    'glass_blur' => 'themes.my-quark.glass_blur',
+                    'effect_vignette_enabled' => 'themes.my-quark.effect_vignette_enabled',
+                    'brand_logo' => 'themes.my-quark.brand_logo',
+                    'brand_name' => 'themes.my-quark.brand_name',
+                    'brand_show_text' => 'themes.my-quark.brand_show_text',
                     'contact_address' => 'themes.my-quark.contact_address',
                     'contact_email' => 'themes.my-quark.contact_email',
                     'contact_phone' => 'themes.my-quark.contact_phone',
@@ -8744,89 +10062,92 @@ return [
                             'url' => 'themes.my-quark.social_links.*.url'
                         ]
                     ],
-                    'agent_header_fixed' => 'themes.my-quark.agent_header_fixed',
-                    'agent_header_animated' => 'themes.my-quark.agent_header_animated',
-                    'agent_header_dark' => 'themes.my-quark.agent_header_dark',
-                    'agent_header_transparent' => 'themes.my-quark.agent_header_transparent',
-                    'agent_header_structure' => [
+                    'home_enabled' => 'themes.my-quark.home_enabled',
+                    'home_hero_title' => 'themes.my-quark.home_hero_title',
+                    'home_hero_description' => 'themes.my-quark.home_hero_description',
+                    'home_hero_btn_text' => 'themes.my-quark.home_hero_btn_text',
+                    'home_hero_btn_url' => 'themes.my-quark.home_hero_btn_url',
+                    'home_services_title' => 'themes.my-quark.home_services_title',
+                    'home_services' => [
                         '*' => [
-                            'label' => 'themes.my-quark.agent_header_structure.*.label',
-                            'url' => 'themes.my-quark.agent_header_structure.*.url',
-                            'type' => 'themes.my-quark.agent_header_structure.*.type',
-                            'mx_context' => 'themes.my-quark.agent_header_structure.*.mx_context',
-                            'design_token' => 'themes.my-quark.agent_header_structure.*.design_token',
-                            'children' => [
-                                '*' => [
-                                    'label' => 'themes.my-quark.agent_header_structure.*.children.*.label',
-                                    'url' => 'themes.my-quark.agent_header_structure.*.children.*.url',
-                                    'mx_context' => 'themes.my-quark.agent_header_structure.*.children.*.mx_context'
-                                ]
-                            ]
+                            'icon' => 'themes.my-quark.home_services.*.icon',
+                            'title' => 'themes.my-quark.home_services.*.title',
+                            'description' => 'themes.my-quark.home_services.*.description',
+                            'url' => 'themes.my-quark.home_services.*.url',
+                            'btn_text' => 'themes.my-quark.home_services.*.btn_text'
                         ]
                     ],
-                    'agent_nav_nodes' => [
+                    'home_quote_title' => 'themes.my-quark.home_quote_title',
+                    'home_quote_author' => 'themes.my-quark.home_quote_author',
+                    'home_quote_arabic' => 'themes.my-quark.home_quote_arabic',
+                    'home_quote_english' => 'themes.my-quark.home_quote_english',
+                    'home_quote_btn_text' => 'themes.my-quark.home_quote_btn_text',
+                    'home_quote_btn_url' => 'themes.my-quark.home_quote_btn_url',
+                    'home_courses_title' => 'themes.my-quark.home_courses_title',
+                    'home_courses_subtitle' => 'themes.my-quark.home_courses_subtitle',
+                    'home_courses' => [
                         '*' => [
-                            'title' => 'themes.my-quark.agent_nav_nodes.*.title',
-                            'type' => 'themes.my-quark.agent_nav_nodes.*.type',
-                            'url' => 'themes.my-quark.agent_nav_nodes.*.url',
-                            'collection_source' => 'themes.my-quark.agent_nav_nodes.*.collection_source',
-                            'collection_type' => 'themes.my-quark.agent_nav_nodes.*.collection_type',
-                            'collection_value' => 'themes.my-quark.agent_nav_nodes.*.collection_value',
-                            'collection_limit' => 'themes.my-quark.agent_nav_nodes.*.collection_limit'
+                            'icon' => 'themes.my-quark.home_courses.*.icon',
+                            'title' => 'themes.my-quark.home_courses.*.title',
+                            'subtitle' => 'themes.my-quark.home_courses.*.subtitle',
+                            'url' => 'themes.my-quark.home_courses.*.url'
                         ]
                     ],
-                    'agent_footer_widgets' => [
-                        '*' => [
-                            'width' => 'themes.my-quark.agent_footer_widgets.*.width',
-                            'type' => 'themes.my-quark.agent_footer_widgets.*.type',
-                            'title' => 'themes.my-quark.agent_footer_widgets.*.title',
-                            'content' => 'themes.my-quark.agent_footer_widgets.*.content',
-                            'ai_badge' => 'themes.my-quark.agent_footer_widgets.*.ai_badge',
-                            'animation' => 'themes.my-quark.agent_footer_widgets.*.animation'
-                        ]
-                    ],
-                    'agent_footer_color_bg' => 'themes.my-quark.agent_footer_color_bg',
-                    'agent_footer_color_text' => 'themes.my-quark.agent_footer_color_text',
-                    'agent_footer_color_accent' => 'themes.my-quark.agent_footer_color_accent',
-                    'agent_footer_sticky' => 'themes.my-quark.agent_footer_sticky',
-                    'agent_footer_legal_copy' => 'themes.my-quark.agent_footer_legal_copy',
-                    'agent_footer_legal_credits' => 'themes.my-quark.agent_footer_legal_credits',
-                    'agent_env_mode' => 'themes.my-quark.agent_env_mode',
-                    'agent_env_solid_col' => 'themes.my-quark.agent_env_solid_col',
-                    'agent_env_grad_type' => 'themes.my-quark.agent_env_grad_type',
-                    'agent_env_grad_angle' => 'themes.my-quark.agent_env_grad_angle',
-                    'agent_env_grad_start' => 'themes.my-quark.agent_env_grad_start',
-                    'agent_env_grad_end' => 'themes.my-quark.agent_env_grad_end',
-                    'agent_env_img' => 'themes.my-quark.agent_env_img',
-                    'agent_env_img_pos' => 'themes.my-quark.agent_env_img_pos',
-                    'agent_env_img_size' => 'themes.my-quark.agent_env_img_size',
-                    'agent_env_img_attach' => 'themes.my-quark.agent_env_img_attach',
-                    'agent_env_img_overlay' => 'themes.my-quark.agent_env_img_overlay',
-                    'agent_env_img_op' => 'themes.my-quark.agent_env_img_op',
-                    'agent_env_mesh_1' => 'themes.my-quark.agent_env_mesh_1',
-                    'agent_env_mesh_2' => 'themes.my-quark.agent_env_mesh_2',
-                    'agent_env_mesh_3' => 'themes.my-quark.agent_env_mesh_3',
-                    'agent_env_mesh_speed' => 'themes.my-quark.agent_env_mesh_speed',
-                    'agent_env_tex' => 'themes.my-quark.agent_env_tex',
-                    'agent_env_tex_col' => 'themes.my-quark.agent_env_tex_col',
-                    'agent_env_tex_op' => 'themes.my-quark.agent_env_tex_op',
-                    'agent_identity_logo' => 'themes.my-quark.agent_identity_logo',
-                    'agent_identity_brandName' => 'themes.my-quark.agent_identity_brandName',
-                    'agent_identity_showText' => 'themes.my-quark.agent_identity_showText',
-                    'agent_identity_address' => 'themes.my-quark.agent_identity_address',
-                    'agent_identity_email' => 'themes.my-quark.agent_identity_email',
-                    'agent_identity_phone' => 'themes.my-quark.agent_identity_phone',
-                    'agent_identity_social' => [
-                        '*' => [
-                            'network' => 'themes.my-quark.agent_identity_social.*.network',
-                            'url' => 'themes.my-quark.agent_identity_social.*.url'
-                        ]
-                    ],
-                    'agent_gov_production' => 'themes.my-quark.agent_gov_production',
-                    'agent_gov_gridSize' => 'themes.my-quark.agent_gov_gridSize',
-                    'agent_gov_ecoDefault' => 'themes.my-quark.agent_gov_ecoDefault',
-                    'agent_gov_privacyShield' => 'themes.my-quark.agent_gov_privacyShield',
-                    'agent_gov_haptics' => 'themes.my-quark.agent_gov_haptics'
+                    'hero_default_style' => 'themes.my-quark.hero_default_style',
+                    'hero_default_overlay' => 'themes.my-quark.hero_default_overlay',
+                    'hero_default_button_style' => 'themes.my-quark.hero_default_button_style',
+                    'hero_enable_animations' => 'themes.my-quark.hero_enable_animations',
+                    'background_mode' => 'themes.my-quark.background_mode',
+                    'background_solid_color' => 'themes.my-quark.background_solid_color',
+                    'background_gradient_type' => 'themes.my-quark.background_gradient_type',
+                    'background_gradient_angle' => 'themes.my-quark.background_gradient_angle',
+                    'background_gradient_start' => 'themes.my-quark.background_gradient_start',
+                    'background_gradient_end' => 'themes.my-quark.background_gradient_end',
+                    'background_image' => 'themes.my-quark.background_image',
+                    'background_image_position' => 'themes.my-quark.background_image_position',
+                    'background_image_size' => 'themes.my-quark.background_image_size',
+                    'background_image_attachment' => 'themes.my-quark.background_image_attachment',
+                    'background_image_overlay' => 'themes.my-quark.background_image_overlay',
+                    'background_image_overlay_opacity' => 'themes.my-quark.background_image_overlay_opacity',
+                    'background_mesh_color1' => 'themes.my-quark.background_mesh_color1',
+                    'background_mesh_color2' => 'themes.my-quark.background_mesh_color2',
+                    'background_mesh_color3' => 'themes.my-quark.background_mesh_color3',
+                    'background_mesh_speed' => 'themes.my-quark.background_mesh_speed',
+                    'background_pattern_type' => 'themes.my-quark.background_pattern_type',
+                    'background_pattern_color' => 'themes.my-quark.background_pattern_color',
+                    'background_pattern_opacity' => 'themes.my-quark.background_pattern_opacity',
+                    'button_default_variant' => 'themes.my-quark.button_default_variant',
+                    'button_default_size' => 'themes.my-quark.button_default_size',
+                    'button_haptic_enabled' => 'themes.my-quark.button_haptic_enabled',
+                    'card_default_variant' => 'themes.my-quark.card_default_variant',
+                    'card_shadow_enabled' => 'themes.my-quark.card_shadow_enabled',
+                    'card_image_lazy_load' => 'themes.my-quark.card_image_lazy_load',
+                    'form_required_symbol' => 'themes.my-quark.form_required_symbol',
+                    'form_validation_style' => 'themes.my-quark.form_validation_style',
+                    'form_focus_highlight' => 'themes.my-quark.form_focus_highlight',
+                    'image_default_loading' => 'themes.my-quark.image_default_loading',
+                    'image_default_quality' => 'themes.my-quark.image_default_quality',
+                    'image_caption_enabled' => 'themes.my-quark.image_caption_enabled',
+                    'image_responsive' => 'themes.my-quark.image_responsive',
+                    'meta_show_author' => 'themes.my-quark.meta_show_author',
+                    'meta_show_date' => 'themes.my-quark.meta_show_date',
+                    'meta_date_format' => 'themes.my-quark.meta_date_format',
+                    'meta_show_reading_time' => 'themes.my-quark.meta_show_reading_time',
+                    'meta_separator' => 'themes.my-quark.meta_separator',
+                    'animations_enabled' => 'themes.my-quark.animations_enabled',
+                    'animations_respect_reduced_motion' => 'themes.my-quark.animations_respect_reduced_motion',
+                    'accessibility_skip_link_text' => 'themes.my-quark.accessibility_skip_link_text',
+                    'accessibility_mobile_menu_label' => 'themes.my-quark.accessibility_mobile_menu_label',
+                    'accessibility_focus_mode' => 'themes.my-quark.accessibility_focus_mode',
+                    'sustainability_eco_mode' => 'themes.my-quark.sustainability_eco_mode',
+                    'sustainability_score' => 'themes.my-quark.sustainability_score',
+                    'co2_per_view' => 'themes.my-quark.co2_per_view',
+                    'ai_augmentation_enabled' => 'themes.my-quark.ai_augmentation_enabled',
+                    'advanced_haptics' => 'themes.my-quark.advanced_haptics',
+                    'performance_production_mode' => 'themes.my-quark.performance_production_mode',
+                    'privacy_shield_enabled' => 'themes.my-quark.privacy_shield_enabled',
+                    'localization_newsletter_placeholder' => 'themes.my-quark.localization_newsletter_placeholder',
+                    'localization_newsletter_button' => 'themes.my-quark.localization_newsletter_button'
                 ]
             ]
         ],

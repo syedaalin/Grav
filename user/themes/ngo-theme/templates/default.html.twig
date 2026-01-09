@@ -1,0 +1,22 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    <div id="body-wrapper" class="py-32 bg-brand-bg min-h-[70svh] @container">
+        <article class="container mx-auto px-6 max-w-5xl animate-in fade-in duration-1000" aria-labelledby="page-title">
+            <h1 id="page-title" class="sr-only">{{ page.title }}</h1>
+            <div class="prose prose-2xl prose-slate max-w-none text-brand-dark leading-[1.8] font-medium selection:bg-brand-primary/20">
+                {% set ai_disclosure_enabled = config.theme.ai_disclosure is defined ? config.theme.ai_disclosure : true %}
+                {% if page.header.ai_augmented and ai_disclosure_enabled %}
+                    {% include 'partials/ai-block.html.twig' with {
+                        'ai_generated': true,
+                        'content': page.content,
+                        'show_reasoning': true,
+                        'reasoning': page.header.ai_reasoning
+                    } %}
+                {% else %}
+                    {{ page.content|raw }}
+                {% endif %}
+            </div>
+        </article>
+    </div>
+{% endblock %}

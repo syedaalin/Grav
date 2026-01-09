@@ -3,6 +3,9 @@ title: Quran
 menu: Quran
 metadata:
     description: 'Learn Quranic Arabic, Tajweed, and memorization techniques with qualified instructors in our interactive online Quran course.'
+ai_augmented: true
+ai_reasoning: 'Interactive learning roadmap for Quranic mastery, integrating Tajweed precision with deep Tafsir insights.'
+hero_classes: 'parallax overlay-dark-gradient hero-large'
 header:
     short_description: Master Quranic recitation with proper Tajweed rules and deepen your understanding through authentic Tafsir.
     instructor: Qari Muhammad Ali

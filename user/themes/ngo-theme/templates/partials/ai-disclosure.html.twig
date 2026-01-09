@@ -1,0 +1,70 @@
+{# AI Disclosure Badge - 2026 EU AI Act Compliance (Rule 7.1) #}
+{# Displays when AI-generated content is present on the page #}
+
+{% if theme_var('ai_disclosure') %}
+<aside class="fixed bottom-8 right-8 z-50 max-w-sm bg-white/40 backdrop-blur-2xl border border-brand-primary/10 p-6 rounded-[2rem] shadow-2xl transition-all duration-500 hover:-translate-y-1 group" role="complementary" aria-label="AI Content Disclosure">
+    <div class="flex items-start gap-5">
+        <div class="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-2xl flex items-center justify-center shadow-lg shadow-brand-primary/20 rotate-6 group-hover:rotate-0 transition-transform duration-500" aria-hidden="true">
+            <span class="la la-robot text-2xl"></span>
+        </div>
+        <div class="flex-1 min-w-0">
+            <strong class="block text-sm font-black text-brand-dark tracking-tight">AI-Assisted Content</strong>
+            <p class="text-xs text-brand-dark/60 mt-1 font-medium leading-relaxed">This page includes elements enhanced by artificial intelligence.</p>
+        </div>
+        <button class="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-primary/5 text-brand-primary hover:bg-brand-primary hover:text-white transition-all active:scale-90 ai-disclosure-toggle" 
+                aria-label="Toggle Details" 
+                aria-expanded="false"
+                aria-controls="ai-transparency-details"
+                title="Learn more about AI usage">
+            <span class="la la-info-circle text-xl" aria-hidden="true"></span>
+        </button>
+    </div>
+    
+    <div id="ai-transparency-details" class="ai-disclosure-details hidden mt-6 pt-6 border-t border-brand-primary/5 text-[13px] text-brand-dark/70 leading-relaxed font-medium">
+        <h4 class="font-black uppercase tracking-wider text-brand-primary text-[10px] mb-3">Transparency Notice</h4>
+        <p class="mb-3">In compliance with the EU AI Act (2026), we disclose that:</p>
+        <ul class="space-y-2 mb-4" role="list">
+            <li class="flex items-start gap-2" role="listitem">
+                <span class="la la-check-circle text-brand-primary mt-0.5" aria-hidden="true"></span>
+                <span>Content may be generated using Large Language Models (LLMs)</span>
+            </li>
+            <li class="flex items-start gap-2" role="listitem">
+                <span class="la la-check-circle text-brand-primary mt-0.5" aria-hidden="true"></span>
+                <span>All AI outputs are reviewed by human scholars</span>
+            </li>
+            <li class="flex items-start gap-2" role="listitem">
+                <span class="la la-check-circle text-brand-primary mt-0.5" aria-hidden="true"></span>
+                <span>Critical data is verified against primary sources</span>
+            </li>
+        </ul>
+        <div class="p-3 bg-brand-primary/5 rounded-xl border border-brand-primary/5">
+            <p class="text-[11px] leading-snug">
+                For questions about our AI governance, please <a href="/contact" class="font-black text-brand-primary hover:underline decoration-2">contact our ethics board</a>.
+            </p>
+        </div>
+    </div>
+</aside>
+
+<script>
+// Toggle AI disclosure details
+(function() {
+    const toggle = document.querySelector('.ai-disclosure-toggle');
+    const details = document.querySelector('.ai-disclosure-details');
+    
+    if (toggle && details) {
+        toggle.addEventListener('click', () => {
+            const isHidden = details.classList.contains('hidden');
+            if (isHidden) {
+                details.classList.remove('hidden');
+                toggle.setAttribute('aria-expanded', 'true');
+                toggle.innerHTML = '<span class="la la-times text-xl" aria-hidden="true"></span>';
+            } else {
+                details.classList.add('hidden');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.innerHTML = '<span class="la la-info-circle text-xl" aria-hidden="true"></span>';
+            }
+        });
+    }
+})();
+</script>
+{% endif %}

@@ -1,3 +1,11 @@
+---
+title: Ethics (Akhlaq)
+metadata:
+    description: 'Learn the path to moral perfection through our online Islamic Ethics (Akhlaq) course, based on teachings of the Ahl al-Bayt (AS).'
+ai_augmented: true
+ai_reasoning: 'Spiritual development framework derived from Nahjul Balagha and Sahifa Sajjadiya, structured for transformative moral growth.'
+hero_classes: 'parallax overlay-dark-gradient hero-medium'
+---
 <div align="center">
 
 

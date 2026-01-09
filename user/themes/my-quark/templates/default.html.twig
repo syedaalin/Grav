@@ -1,0 +1,81 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{% if theme_config.home_enabled %}
+
+<div class="page-container">
+
+  <!-- HERO -->
+  <div class="hero-banner animate-load">
+    <div class="hero-content">
+      <h1>{{ theme_config.home_hero_title }}</h1>
+      <p>{{ theme_config.home_hero_description|nl2br }}</p>
+      <a href="{{ theme_config.home_hero_btn_url }}" class="btn btn--primary">{{ theme_config.home_hero_btn_text }}</a>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" class="animate-load delay-1">
+    <h2 class="section-heading">{{ theme_config.home_services_title }}</h2>
+    <div class="grid-container">
+      
+      {% for service in theme_config.home_services %}
+      <div class="service-card">
+        <div>
+          <span class="icon-box">{{ service.icon }}</span>
+          <div class="card-title">{{ service.title }}</div>
+          <p>{{ service.description }}</p>
+        </div>
+        <a href="{{ service.url }}" class="btn btn--text">{{ service.btn_text }}</a>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-box animate-load delay-2">
+    <strong>{{ theme_config.home_quote_title }}</strong>
+    <h3>{{ theme_config.home_quote_author }}</h3>
+    
+    <div class="arabic-text">
+      {{ theme_config.home_quote_arabic }}
+    </div>
+    
+    <p>
+      {{ theme_config.home_quote_english }}
+    </p>
+    <br>
+    <a href="{{ theme_config.home_quote_btn_url }}" class="btn btn--primary btn--danger">{{ theme_config.home_quote_btn_text }}</a>
+  </div>
+
+  <!-- COURSES -->
+  <div class="animate-load delay-3">
+    <h2 class="section-heading">{{ theme_config.home_courses_title }}</h2>
+    <p class="text-center-mb">{{ theme_config.home_courses_subtitle }}</p>
+    
+    <div class="grid-container grid-container--wide">
+      
+      {% for course in theme_config.home_courses %}
+      <div class="popular-course-card">
+        <div class="course-icon">{{ course.icon }}</div>
+        <div class="course-info">
+          <strong>{{ course.title }}</strong><br>
+          <span>{{ course.subtitle }}</span>
+        </div>
+        <a href="{{ course.url }}" class="btn btn--compact">Enroll</a>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+
+{% else %}
+    {# Fallback to Markdown Content #}
+    {{ page.content|raw }}
+{% endif %}
+
+{% endblock %}

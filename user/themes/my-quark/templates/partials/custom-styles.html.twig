@@ -55,45 +55,29 @@
 
 :root {
     /* =======================================================================
-       1. OKLCH BRAND PALETTE (2026 Standard - Rule 3.1)
+       1. COLOR SYSTEM (OKLCH 2026 Standard + Hex Fallback)
        Perceptually uniform color space for accurate lightness manipulation
        ======================================================================= */
     
-    /* Original Hex values for fallback */
+    /* Brand Colors - Hex Fallback */
     {% set p_hex = theme_var('token_color_primary')|default('#3b4252') %}
     {% set s_hex = theme_var('token_color_secondary')|default('#88c0d0') %}
     {% set a_hex = theme_var('token_color_accent')|default('#bf616a') %}
     
-    --brand-primary-hex: {{ (p_hex|iterable ? p_hex|first : p_hex)|e('html') }};
-    --brand-secondary-hex: {{ (s_hex|iterable ? s_hex|first : s_hex)|e('html') }};
-    --brand-accent-hex: {{ (a_hex|iterable ? a_hex|first : a_hex)|e('html') }};
+    --brand-primary: {{ (p_hex|iterable ? p_hex|first : p_hex)|e('html') }};
+    --brand-secondary: {{ (s_hex|iterable ? s_hex|first : s_hex)|e('html') }};
+    --brand-accent: {{ (a_hex|iterable ? a_hex|first : a_hex)|e('html') }};
     
-    /* OKLCH Conversions (Primary color system) */
-    /* We use the hex values from Admin and allow CSS to handle OKLCH if needed via color-mix or relative syntax */
-    --brand-primary: {{ p_hex }};
-    --brand-secondary: {{ s_hex }};
-    --brand-accent: {{ a_hex }};
-    
-    /* Derived colors using CSS relative color syntax (2026 Standard) */
-    --brand-primary-light: oklch(from var(--brand-primary) calc(l + 0.1) c h);
-    --brand-primary-dark: oklch(from var(--brand-primary) calc(l - 0.1) c h);
-    --brand-secondary-light: oklch(from var(--brand-secondary) calc(l + 0.1) c h);
-    --brand-accent-hover: oklch(from var(--brand-accent) calc(l + 0.1) c h);
-    
-    /* 2. FOOTER COLORS */
-    --footer-bg: {{ theme_var('agent_footer_color_bg')|default('#0f0f10') }};
-    --footer-text: {{ theme_var('agent_footer_color_text')|default('#ffffff') }};
-    --footer-accent: {{ theme_var('agent_footer_color_accent')|default('#d4af37') }};
-    --footer-muted: oklch(from var(--footer-text) l c h / 0.7);
-    --footer-danger: oklch(55% 0.2 25); {# Keep as safety default or link to a danger variable if added #}
-    
-    /* 3. UI SURFACE COLORS */
+    /* Surface Colors - Hex Fallback */
     --bg-body: {{ theme_var('token_color_bg_body')|default('#eceff4') }};
     --bg-card: {{ theme_var('token_color_bg_card')|default('#ffffff') }};
     --text-main: {{ theme_var('token_color_text_main')|default('#2e3440') }};
     --text-muted: {{ theme_var('token_color_text_muted')|default('#4c566a') }};
     
-    /* 4. SHAPES & UI */
+
+
+    
+    /* 2. SHAPES & UI */
     --radius-main: {{ theme_var('physic_radius_main')|default('12px') }};
     --glass-opacity: {{ theme_var('physic_glass_opacity')|default(0.85) }};
     --glass-blur: blur({{ theme_var('physic_glass_blur')|default(20) }}px) saturate(180%);
@@ -226,15 +210,15 @@
     
 
     
-    /* 5. LAYOUT & SPACING */
+    /* 3. LAYOUT & SPACING */
     --site-width: {{ theme_var('container_width')|default(1200) }}px;
     --space-unit: {{ theme_var('spacing_scale')|default(1.0) }}rem; 
     
-    /* 6. LOGO */
+    /* 4. LOGO */
     --logo-h-desktop: {{ theme_var('logo_height')|default(48) }}px;
     --logo-h-mobile: {{ theme_var('logo_height_mobile')|default(32) }}px;
     
-    /* 7. FLUID TYPOGRAPHY VARIABLES */
+    /* 5. FLUID TYPOGRAPHY VARIABLES */
     {% if fluid_enabled %}
         /* min + (max-min) * ((100vw - 320px) / (1200 - 320)) simplified */
         --font-base: clamp({{ min_size }}px, {{ intercept|number_format(4) }}px + {{ (slope * 100)|number_format(4) }}vw, {{ max_size }}px);
@@ -253,6 +237,42 @@
     --heading-3: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio));
     --heading-2: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio));
     --heading-1: calc(var(--font-base) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio));
+}
+
+/* =======================================================================
+   OKLCH UPGRADE (Progressive Enhancement for Modern Browsers)
+   Chrome 111+, Safari 15.4+, Firefox 113+ (~95% browser coverage)
+   ======================================================================= */
+@supports (color: oklch(0 0 0)) {
+    :root {
+        /* Upgrade to OKLCH for perceptual uniformity */
+        --brand-primary: oklch(0.34 0.02 257);      /* Dark blue-gray */
+        --brand-secondary: oklch(0.75 0.08 211);    /* Light cyan */
+        --brand-accent: oklch(0.59 0.12 17);        /* Muted red */
+        
+        --bg-body: oklch(0.94 0.01 257);            /* Very light gray */
+        --bg-card: oklch(1.0 0 0);                  /* Pure white */
+        --text-main: oklch(0.29 0.02 257);          /* Dark gray (APCA Lc ~80) */
+        --text-muted: oklch(0.43 0.03 257);         /* Medium gray (APCA Lc ~65) */
+        
+
+        
+        /* Auto-generated palette variants using relative color syntax */
+        --brand-primary-light: oklch(from var(--brand-primary) calc(l + 0.15) c h);
+        --brand-primary-dark: oklch(from var(--brand-primary) calc(l - 0.1) c h);
+        --brand-primary-vivid: oklch(from var(--brand-primary) l calc(c * 1.5) h);
+        --brand-primary-muted: oklch(from var(--brand-primary) l calc(c * 0.5) h);
+        --brand-primary-alpha: oklch(from var(--brand-primary) l c h / 0.8);
+        
+        --brand-secondary-light: oklch(from var(--brand-secondary) calc(l + 0.1) c h);
+        --brand-secondary-dark: oklch(from var(--brand-secondary) calc(l - 0.1) c h);
+        
+        --brand-accent-hover: oklch(from var(--brand-accent) calc(l + 0.1) c h);
+        --brand-accent-active: oklch(from var(--brand-accent) calc(l - 0.1) c h);
+        
+
+        --glass-bg: oklch(from var(--bg-card) l c h / var(--glass-opacity, 0.85));
+    }
 }
 
 /* =======================================================================
@@ -315,7 +335,6 @@ p, li {
 }
 
 /* Performance Optimization */
-.footer-builder-row,
 .cognitive-nav__sublist,
 .course-grid,
 .service-grid {
@@ -323,10 +342,7 @@ p, li {
     contain-intrinsic-size: auto 500px; /* Estimated height for layout calculations */
 }
 
-/* Sticky Header Accessibility */
-html {
-    scroll-padding-top: 100px; /* Prevents content from hiding under fixed header */
-}
+
 
 /* Focus Outline Enhancement (WCAG 3.0) */
 *:focus-visible {
@@ -365,23 +381,10 @@ html {
         color: var(--text-muted);
     }
     
-    #header {
-        background: var(--glass-bg) !important;
-        border-bottom: 1px solid oklch(100% 0 0 / 0.1);
-    }
+
 }
 /* FIX: Logo Constraints for Semantic Markup (CLS Prevention) */
-.navbar-brand img, .nav-brand img {
-    height: var(--logo-h-mobile);
-    width: auto;
-    /* Prevent layout shift by reserving space */
-    aspect-ratio: auto;
-}
-@media (min-width: 840px) {
-    .navbar-brand img, .nav-brand img {
-        height: var(--logo-h-desktop);
-    }
-}
+
 /* Aurora Mesh Animation */
 @keyframes auroraMesh {
     0% { background-position: 0% 50%; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
@@ -392,7 +395,6 @@ html {
    UI EFFECTS OVERRIDES (Applying Global Settings)
    ======================================================================= */
 .glass-panel, 
-#header, 
 .service-card, 
 .course-card, 
 .quote-box, 
@@ -404,7 +406,7 @@ html {
     box-shadow: var(--neo-shadow) !important;
 }
 
-#header, .glass-panel, .course-card {
+.glass-panel, .course-card {
     backdrop-filter: var(--glass-blur) !important;
     -webkit-backdrop-filter: var(--glass-blur) !important;
 }
@@ -451,6 +453,18 @@ body.focus-mode article,
 body.focus-mode p {
     font-size: 1.1em;
     line-height: 1.8;
+}
+
+/* 3. BIONIC READING (Neuro-Inclusion - Rule 3.2) */
+.bionic-bold {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Reduce weight slightly in focus mode for optimal readability */
+body.focus-mode .bionic-bold {
+    font-weight: 500;
+    opacity: 0.95;
 }
 
 </style>

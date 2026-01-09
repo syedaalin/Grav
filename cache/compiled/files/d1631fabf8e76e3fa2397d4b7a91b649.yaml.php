@@ -2,12 +2,12 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/my-quark/blueprints.yaml',
-    'modified' => 1767738989,
-    'size' => 32463,
+    'modified' => 1767809409,
+    'size' => 46679,
     'data' => [
         'name' => 'My Quark',
-        'version' => '0.5.2',
-        'description' => 'Fully dynamic child theme of Quark (2026 Edition)',
+        'version' => '0.5.3',
+        'description' => 'Fully dynamic child theme of Quark (2026 Edition - Reorganized)',
         'icon' => 'empire',
         'author' => [
             'name' => 'Aabtaab',
@@ -15,7 +15,7 @@ return [
         ],
         'homepage' => 'https://github.com/getgrav/grav-theme-quark',
         'demo' => 'http://demo.getgrav.org/quark-skeleton',
-        'keywords' => 'quark, theme, core, modern, fast, responsive, html5, css3',
+        'keywords' => 'quark, theme, core, modern, fast, responsive, html5, css3, 2026',
         'bugs' => 'https://github.com/getgrav/grav-theme-quark/issues',
         'license' => 'MIT',
         'dependencies' => [
@@ -35,71 +35,96 @@ return [
                     'type' => 'tabs',
                     'active' => 1,
                     'fields' => [
-                        'core_design_tab' => [
+                        'design_system_tab' => [
                             'type' => 'tab',
-                            'title' => 'BRAND & DESIGN',
+                            'title' => 'Design System',
                             'fields' => [
-                                'core_inner_tabs' => [
+                                'design_system_info' => [
+                                    'type' => 'section',
+                                    'title' => 'Foundation Layer',
+                                    'underline' => true,
+                                    'text' => 'Configure atomic design tokens that form the foundation of your site\'s visual design. These settings cascade throughout all components and features.'
+                                ],
+                                'design_system_tabs' => [
                                     'type' => 'tabs',
                                     'active' => 1,
                                     'fields' => [
-                                        'colors_tab' => [
+                                        'colors_subtab' => [
                                             'type' => 'tab',
                                             'title' => 'Colors',
                                             'fields' => [
-                                                'token_color_primary' => [
+                                                'brand_colors_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Brand Colors',
+                                                    'underline' => true
+                                                ],
+                                                'color_primary' => [
                                                     'type' => 'color',
                                                     'label' => 'Primary Color',
                                                     'default' => '#3b4252',
-                                                    'help' => 'Main brand identity color.',
+                                                    'help' => 'Main brand identity color used for primary actions and emphasis',
                                                     'validate' => [
-                                                        'check' => true
+                                                        'required' => true
                                                     ]
                                                 ],
-                                                'token_color_secondary' => [
+                                                'color_secondary' => [
                                                     'type' => 'color',
                                                     'label' => 'Secondary Color',
                                                     'default' => '#88c0d0',
-                                                    'help' => 'Secondary color for interactive elements.'
+                                                    'help' => 'Secondary color for interactive elements and accents'
                                                 ],
-                                                'token_color_accent' => [
+                                                'color_accent' => [
                                                     'type' => 'color',
                                                     'label' => 'Accent Color',
                                                     'default' => '#bf616a',
-                                                    'help' => 'Highlight and alerts color.'
+                                                    'help' => 'Highlight color for calls-to-action and important alerts'
                                                 ],
-                                                'surface_section' => [
+                                                'surface_colors_section' => [
                                                     'type' => 'section',
-                                                    'title' => 'Surface & UI Colors',
+                                                    'title' => 'Surface Colors',
                                                     'underline' => true
                                                 ],
-                                                'token_color_bg_body' => [
+                                                'color_background_body' => [
                                                     'type' => 'color',
                                                     'label' => 'Body Background',
-                                                    'default' => '#eceff4'
+                                                    'default' => '#eceff4',
+                                                    'help' => 'Main page background color'
                                                 ],
-                                                'token_color_bg_card' => [
+                                                'color_background_card' => [
                                                     'type' => 'color',
-                                                    'label' => 'Card / Surface Background',
-                                                    'default' => '#ffffff'
+                                                    'label' => 'Card Background',
+                                                    'default' => '#ffffff',
+                                                    'help' => 'Background color for cards and elevated surfaces'
                                                 ],
-                                                'token_color_text_main' => [
-                                                    'type' => 'color',
-                                                    'label' => 'High Contrast Text',
-                                                    'default' => '#2e3440'
+                                                'text_colors_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Text Colors',
+                                                    'underline' => true
                                                 ],
-                                                'token_color_text_muted' => [
+                                                'color_text_primary' => [
                                                     'type' => 'color',
-                                                    'label' => 'Low Contrast Text',
-                                                    'default' => '#4c566a'
+                                                    'label' => 'Primary Text',
+                                                    'default' => '#2e3440',
+                                                    'help' => 'High contrast text color for body content (WCAG AAA)'
+                                                ],
+                                                'color_text_secondary' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Secondary Text',
+                                                    'default' => '#4c566a',
+                                                    'help' => 'Lower contrast text for supporting content'
                                                 ]
                                             ]
                                         ],
-                                        'typo_tab' => [
+                                        'typography_subtab' => [
                                             'type' => 'tab',
                                             'title' => 'Typography',
                                             'fields' => [
-                                                'token_font_body' => [
+                                                'font_families_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Font Families',
+                                                    'underline' => true
+                                                ],
+                                                'typography_font_body' => [
                                                     'type' => 'select',
                                                     'label' => 'Body Font',
                                                     'default' => 'Outfit',
@@ -116,11 +141,12 @@ return [
                                                         'Merriweather' => 'Merriweather',
                                                         'Playfair Display' => 'Playfair Display',
                                                         'Lora' => 'Lora'
-                                                    ]
+                                                    ],
+                                                    'help' => 'Font family for body text and paragraphs'
                                                 ],
-                                                'token_font_header' => [
+                                                'typography_font_headings' => [
                                                     'type' => 'select',
-                                                    'label' => 'Header Font',
+                                                    'label' => 'Headings Font',
                                                     'default' => 'Outfit',
                                                     'options' => [
                                                         'Outfit' => 'Outfit (Default)',
@@ -130,211 +156,227 @@ return [
                                                         'optgroup.serif' => 'Serif',
                                                         'Playfair Display' => 'Playfair Display',
                                                         'Merriweather' => 'Merriweather'
-                                                    ]
+                                                    ],
+                                                    'help' => 'Font family for headings (h1-h6)'
                                                 ],
-                                                'token_typo_fluid' => [
+                                                'fluid_typography_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Fluid Typography (Responsive Scaling)',
+                                                    'underline' => true
+                                                ],
+                                                'typography_fluid_enabled' => [
                                                     'type' => 'toggle',
-                                                    'label' => 'Fluid Scaling (Clamp)',
+                                                    'label' => 'Enable Fluid Scaling',
                                                     'default' => 1,
-                                                    'help' => 'Enables mathematical scaling between responsive viewports.',
+                                                    'help' => 'Uses CSS clamp() for smooth font scaling between viewport sizes',
                                                     'options' => [
                                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                                         0 => 'PLUGIN_ADMIN.DISABLED'
                                                     ]
                                                 ],
-                                                'token_typo_min_size' => [
+                                                'typography_size_min' => [
                                                     'type' => 'range',
-                                                    'label' => 'Min Font Size (Mobile)',
+                                                    'label' => 'Minimum Font Size (Mobile)',
                                                     'default' => 16,
                                                     'min' => 14,
                                                     'max' => 18,
                                                     'step' => 0.5,
-                                                    'append' => 'px'
+                                                    'append' => 'px',
+                                                    'help' => 'Base font size on smallest screens'
                                                 ],
-                                                'token_typo_max_size' => [
+                                                'typography_size_max' => [
                                                     'type' => 'range',
-                                                    'label' => 'Max Font Size (Desktop)',
+                                                    'label' => 'Maximum Font Size (Desktop)',
                                                     'default' => 18,
                                                     'min' => 16,
                                                     'max' => 24,
                                                     'step' => 0.5,
-                                                    'append' => 'px'
+                                                    'append' => 'px',
+                                                    'help' => 'Base font size on largest screens'
                                                 ],
-                                                'token_typo_scale' => [
+                                                'typography_scale_ratio' => [
                                                     'type' => 'range',
-                                                    'label' => 'Type Scale Factor',
+                                                    'label' => 'Type Scale Ratio',
                                                     'default' => 1.25,
                                                     'min' => 1.067,
                                                     'max' => 1.618,
                                                     'step' => 0.001,
-                                                    'append' => 'x'
+                                                    'append' => 'x',
+                                                    'help' => 'Multiplier for heading sizes (1.25 = Major Third, 1.618 = Golden Ratio)'
                                                 ],
-                                                'token_typo_lh_body' => [
+                                                'line_heights_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Line Heights & Spacing',
+                                                    'underline' => true
+                                                ],
+                                                'typography_line_height_body' => [
                                                     'type' => 'range',
                                                     'label' => 'Body Line Height',
                                                     'default' => 1.6,
                                                     'min' => 1.4,
                                                     'max' => 2.0,
-                                                    'step' => 0.05
+                                                    'step' => 0.05,
+                                                    'help' => 'Line height for paragraphs (1.6 recommended for readability)'
                                                 ],
-                                                'token_typo_lh_heading' => [
+                                                'typography_line_height_headings' => [
                                                     'type' => 'range',
-                                                    'label' => 'Heading Line Height',
+                                                    'label' => 'Headings Line Height',
                                                     'default' => 1.2,
                                                     'min' => 1.0,
                                                     'max' => 1.4,
-                                                    'step' => 0.05
+                                                    'step' => 0.05,
+                                                    'help' => 'Tighter line height for headings'
                                                 ],
-                                                'token_typo_ls_heading' => [
+                                                'typography_letter_spacing_headings' => [
                                                     'type' => 'range',
-                                                    'label' => 'Heading Tracking',
+                                                    'label' => 'Headings Letter Spacing',
                                                     'default' => -0.02,
                                                     'min' => -0.1,
                                                     'max' => 0.1,
                                                     'step' => 0.01,
-                                                    'append' => 'em'
+                                                    'append' => 'em',
+                                                    'help' => 'Tracking adjustment for headings (negative = tighter)'
                                                 ],
-                                                'token_typo_measure' => [
+                                                'typography_max_measure' => [
                                                     'type' => 'range',
-                                                    'label' => 'Max Line Measure',
+                                                    'label' => 'Maximum Line Length',
                                                     'default' => 65,
                                                     'min' => 45,
                                                     'max' => 85,
                                                     'step' => 1,
                                                     'append' => 'ch',
-                                                    'help' => 'Optimal readable line length.'
+                                                    'help' => 'Optimal readable line length in characters (45-75 recommended)'
                                                 ]
                                             ]
                                         ],
-                                        'layout_tab' => [
+                                        'spacing_subtab' => [
                                             'type' => 'tab',
-                                            'title' => 'Layout & Width',
+                                            'title' => 'Spacing & Layout',
                                             'fields' => [
-                                                'token_layout_width' => [
+                                                'layout_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Layout Configuration',
+                                                    'underline' => true
+                                                ],
+                                                'layout_container_width' => [
                                                     'type' => 'range',
-                                                    'label' => 'Website Max Width',
+                                                    'label' => 'Container Max Width',
                                                     'default' => 1200,
                                                     'min' => 800,
                                                     'max' => 1600,
                                                     'step' => 50,
-                                                    'append' => 'px'
+                                                    'append' => 'px',
+                                                    'help' => 'Maximum width for content containers'
                                                 ],
-                                                'token_layout_spacing' => [
+                                                'layout_spacing_scale' => [
                                                     'type' => 'range',
-                                                    'label' => 'Spacing Multiplier',
+                                                    'label' => 'Spacing Scale',
                                                     'default' => 1.0,
                                                     'min' => 0.5,
                                                     'max' => 2.0,
                                                     'step' => 0.1,
                                                     'append' => 'x',
-                                                    'help' => 'Global density constant.'
+                                                    'help' => 'Global spacing multiplier for padding and margins'
+                                                ],
+                                                'grid_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Grid System',
+                                                    'underline' => true
+                                                ],
+                                                'layout_grid_size' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Grid System',
+                                                    'default' => 'grid-xl',
+                                                    'options' => [
+                                                        'grid-lg' => 'Large Grid',
+                                                        'grid-xl' => 'Extra Large Grid'
+                                                    ],
+                                                    'help' => 'Base grid system for layout calculations'
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ],
-                        'core_physics_tab' => [
-                            'type' => 'tab',
-                            'title' => 'EFFECTS & UX',
-                            'fields' => [
-                                'physics_inner_tabs' => [
-                                    'type' => 'tabs',
-                                    'active' => 1,
-                                    'fields' => [
-                                        'tactile_tab' => [
+                                        ],
+                                        'visual_effects_subtab' => [
                                             'type' => 'tab',
-                                            'title' => 'Shapes & Shadows',
+                                            'title' => 'Visual Effects',
                                             'fields' => [
-                                                'physic_radius_main' => [
+                                                'shapes_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Shapes & Corners',
+                                                    'underline' => true
+                                                ],
+                                                'radius_corners' => [
                                                     'type' => 'select',
-                                                    'label' => 'Corner Roundness',
+                                                    'label' => 'Border Radius',
                                                     'default' => '12px',
                                                     'options' => [
-                                                        '0px' => 'Sharp (Square)',
-                                                        '6px' => 'Tight (6px)',
-                                                        '12px' => 'Soft (12px)',
-                                                        '20px' => 'Modern (20px)',
-                                                        '32px' => 'Friendly (32px)',
-                                                        '999px' => 'Full / Pill (Circular)'
-                                                    ]
+                                                        '0px' => 'Sharp (0px)',
+                                                        '6px' => 'Subtle (6px)',
+                                                        '12px' => 'Moderate (12px)',
+                                                        '20px' => 'Rounded (20px)',
+                                                        '32px' => 'Soft (32px)',
+                                                        '999px' => 'Pill (Fully Rounded)'
+                                                    ],
+                                                    'help' => 'Global border radius for buttons, cards, and containers'
                                                 ],
-                                                'physic_neo_strength' => [
+                                                'shadows_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Shadows & Depth',
+                                                    'underline' => true
+                                                ],
+                                                'shadow_neomorphism_strength' => [
                                                     'type' => 'range',
-                                                    'label' => 'Soft 3D Depth (Neomorphism)',
+                                                    'label' => 'Neomorphism Intensity',
                                                     'default' => 0,
                                                     'min' => 0,
                                                     'max' => 1.0,
                                                     'step' => 0.1,
-                                                    'help' => 'Intensity of soft shadow/highlight logic (0 = Flat).'
+                                                    'help' => 'Soft 3D shadow effect strength (0 = flat, 1 = pronounced)'
                                                 ],
-                                                'physic_neo_lightSource' => [
+                                                'shadow_neomorphism_light_source' => [
                                                     'type' => 'select',
-                                                    'label' => 'Global Light Source',
+                                                    'label' => 'Light Source Direction',
                                                     'default' => 'top-left',
                                                     'options' => [
-                                                        'top-left' => 'Top Left (Northeast)',
-                                                        'top-right' => 'Top Right (Northwest)',
-                                                        'top' => 'Overhead (Zenith)'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'atmosphere_tab' => [
-                                            'type' => 'tab',
-                                            'title' => 'Atmospheric',
-                                            'fields' => [
-                                                'physic_glass_opacity' => [
+                                                        'top-left' => 'Top Left',
+                                                        'top-right' => 'Top Right',
+                                                        'top' => 'Top (Overhead)'
+                                                    ],
+                                                    'help' => 'Direction of virtual light for shadow calculations'
+                                                ],
+                                                'glass_effects_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Glassmorphism',
+                                                    'underline' => true
+                                                ],
+                                                'glass_opacity' => [
                                                     'type' => 'range',
                                                     'label' => 'Glass Transparency',
                                                     'default' => 0.85,
                                                     'min' => 0.1,
                                                     'max' => 1.0,
                                                     'step' => 0.05,
-                                                    'help' => 'Transparency constant for glass panels.'
+                                                    'help' => 'Opacity for glass effect surfaces (lower = more transparent)'
                                                 ],
-                                                'physic_glass_blur' => [
+                                                'glass_blur' => [
                                                     'type' => 'range',
-                                                    'label' => 'Glass Blur Intensity',
+                                                    'label' => 'Background Blur',
                                                     'default' => 20,
                                                     'min' => 0,
                                                     'max' => 50,
                                                     'step' => 1,
                                                     'append' => 'px',
-                                                    'help' => 'Backdrop blur intensity.'
+                                                    'help' => 'Backdrop blur intensity (0 = no blur, 50 = heavy blur)'
                                                 ],
-                                                'physic_vignette_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Vignette Effect (Dark Edges)',
-                                                    'default' => 0,
-                                                    'help' => 'Subtle edge darkening for focus containment.',
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'adaptive_tab' => [
-                                            'type' => 'tab',
-                                            'title' => 'Adaptive UX',
-                                            'fields' => [
-                                                'physic_eco_mode' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Force Eco Mode (Saves Energy)',
-                                                    'default' => 0,
-                                                    'help' => 'Disables animations and reduces complexity to save energy.',
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
+                                                'atmospheric_effects_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Atmospheric Effects',
+                                                    'underline' => true
                                                 ],
-                                                'physic_focus_mode' => [
+                                                'effect_vignette_enabled' => [
                                                     'type' => 'toggle',
-                                                    'label' => 'Cognitive Focus Mode',
+                                                    'label' => 'Enable Vignette',
                                                     'default' => 0,
-                                                    'help' => 'Strips decorative elements for a clean reading experience.',
+                                                    'help' => 'Subtle darkening at edges to draw focus to center',
                                                     'options' => [
                                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                                         0 => 'PLUGIN_ADMIN.DISABLED'
@@ -346,37 +388,45 @@ return [
                                 ]
                             ]
                         ],
-                        'branding_tab' => [
+                        'brand_identity_tab' => [
                             'type' => 'tab',
-                            'title' => 'Branding',
+                            'title' => 'Brand Identity',
                             'fields' => [
+                                'brand_identity_info' => [
+                                    'type' => 'section',
+                                    'title' => 'Brand & Contact Information',
+                                    'underline' => true,
+                                    'text' => 'Configure your brand identity, logo, contact details, and social media profiles.'
+                                ],
                                 'logo_section' => [
                                     'type' => 'section',
-                                    'title' => 'Logo Configuration',
+                                    'title' => 'Logo',
                                     'underline' => true
                                 ],
-                                'logo' => [
+                                'brand_logo' => [
                                     'type' => 'file',
-                                    'label' => 'Website Logo (Desktop, Mobile, Favicon)',
+                                    'label' => 'Website Logo',
                                     'destination' => 'theme://images/logo',
                                     'multiple' => false,
                                     'accept' => [
                                         0 => 'image/*'
-                                    ]
+                                    ],
+                                    'help' => 'Your site logo (SVG recommended for scalability)'
                                 ],
-                                'brand_text' => [
+                                'brand_name' => [
                                     'type' => 'text',
-                                    'label' => 'Brand Name (Text)',
-                                    'help' => 'Displayed if logo is missing or "Show Brand Text" is enabled.'
+                                    'label' => 'Brand Name',
+                                    'help' => 'Displayed if logo is missing or alongside logo'
                                 ],
-                                'brand_text_show' => [
+                                'brand_show_text' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Brand Text with Logo',
                                     'default' => 0,
                                     'options' => [
                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                         0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ]
+                                    ],
+                                    'help' => 'Display brand name text alongside logo'
                                 ],
                                 'contact_section' => [
                                     'type' => 'section',
@@ -385,24 +435,28 @@ return [
                                 ],
                                 'contact_address' => [
                                     'type' => 'text',
-                                    'label' => 'Address'
+                                    'label' => 'Address',
+                                    'help' => 'Physical address or location'
                                 ],
                                 'contact_email' => [
                                     'type' => 'text',
-                                    'label' => 'Email Address'
+                                    'label' => 'Email Address',
+                                    'help' => 'Contact email address'
                                 ],
                                 'contact_phone' => [
                                     'type' => 'text',
-                                    'label' => 'Phone Number'
+                                    'label' => 'Phone Number',
+                                    'help' => 'Contact phone number'
                                 ],
-                                'footer_social_section' => [
+                                'social_section' => [
                                     'type' => 'section',
-                                    'title' => 'Social Networks',
+                                    'title' => 'Social Media Links',
                                     'underline' => true
                                 ],
                                 'social_links' => [
                                     'type' => 'list',
                                     'label' => 'Social Profiles',
+                                    'help' => 'Define social media profiles',
                                     'fields' => [
                                         '.network' => [
                                             'type' => 'select',
@@ -425,619 +479,921 @@ return [
                                 ]
                             ]
                         ],
-                        'agentic_components_tab' => [
+                        'homepage_tab' => [
                             'type' => 'tab',
-                            'title' => 'BUILDERS & COMPONENTS',
+                            'title' => 'Homepage',
                             'fields' => [
-                                'agentic_inner_tabs' => [
-                                    'type' => 'tabs',
-                                    'active' => 1,
-                                    'fields' => [
-                                        'header_architect' => [
-                                            'type' => 'tab',
-                                            'title' => 'Header Builder',
-                                            'fields' => [
-                                                'header_options' => [
-                                                    'type' => 'section',
-                                                    'title' => 'Header Options',
-                                                    'underline' => true
-                                                ],
-                                                'agent_header_fixed' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Sticky Header',
-                                                    'default' => 1,
-                                                    'help' => 'Maintains vertical anchor during scroll.',
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ],
-                                                'agent_header_animated' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Shrinking Header',
-                                                    'default' => 1,
-                                                    'help' => 'Interpolates scale based on depth.',
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ],
-                                                'agent_header_dark' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Dark Header Mode',
-                                                    'default' => 0,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ],
-                                                'agent_header_transparent' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Transparent Header',
-                                                    'default' => 0,
-                                                    'help' => 'Inherits environment background in Hero context.',
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ],
-                                                'header_builder_area' => [
-                                                    'type' => 'section',
-                                                    'title' => 'Menu Structure',
-                                                    'underline' => true
-                                                ],
-                                                'agent_header_structure' => [
-                                                    'type' => 'list',
-                                                    'label' => 'Header Menu Items',
-                                                    'btnLabel' => 'Add Menu Item',
-                                                    'fields' => [
-                                                        '.label' => [
-                                                            'type' => 'text',
-                                                            'label' => 'Label',
-                                                            'validate' => [
-                                                                'required' => true
-                                                            ]
-                                                        ],
-                                                        '.url' => [
-                                                            'type' => 'text',
-                                                            'label' => 'URL / Route'
-                                                        ],
-                                                        '.type' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Link Type',
-                                                            'default' => 'link',
-                                                            'options' => [
-                                                                'link' => 'Standard Link',
-                                                                'mega' => 'Mega Menu',
-                                                                'heading' => 'Heading',
-                                                                'button' => 'Button',
-                                                                'logo' => 'Logo'
-                                                            ]
-                                                        ],
-                                                        '.mx_context' => [
-                                                            'type' => 'text',
-                                                            'label' => 'AI Description',
-                                                            'help' => 'Description for autonomous retrieval systems.'
-                                                        ],
-                                                        '.design_token' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Style',
-                                                            'default' => 'default',
-                                                            'options' => [
-                                                                'default' => 'Neutral',
-                                                                'primary' => 'Core Primary',
-                                                                'accent' => 'High Accent',
-                                                                'glass' => 'Refractive'
-                                                            ]
-                                                        ],
-                                                        '.children' => [
-                                                            'type' => 'list',
-                                                            'label' => 'Sub-Menu Items',
-                                                            'fields' => [
-                                                                '.label' => [
-                                                                    'type' => 'text',
-                                                                    'label' => 'Label'
-                                                                ],
-                                                                '.url' => [
-                                                                    'type' => 'text',
-                                                                    'label' => 'URL'
-                                                                ],
-                                                                '.mx_context' => [
-                                                                    'type' => 'text',
-                                                                    'label' => 'AI Context'
-                                                                ]
-                                                            ]
-                                                        ]
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'nav_intelligence' => [
-                                            'type' => 'tab',
-                                            'title' => 'Navigation Menu',
-                                            'fields' => [
-                                                'agent_nav_nodes' => [
-                                                    'type' => 'list',
-                                                    'label' => 'Menu Tree',
-                                                    'fields' => [
-                                                        '.title' => [
-                                                            'type' => 'text',
-                                                            'label' => 'Node Title'
-                                                        ],
-                                                        '.type' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Menu Type',
-                                                            'default' => 'link',
-                                                            'options' => [
-                                                                'link' => 'Standard Link',
-                                                                'smart' => 'Dynamic Collection',
-                                                                'folder' => 'Dropdown Folder'
-                                                            ]
-                                                        ],
-                                                        '.url' => [
-                                                            'type' => 'text',
-                                                            'label' => 'URI'
-                                                        ],
-                                                        '.collection_source' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Page Source',
-                                                            'default' => '@root.descendants',
-                                                            'options' => [
-                                                                '@root.descendants' => 'Global Manifest',
-                                                                '@self.children' => 'Local Siblings',
-                                                                '@self.descendants' => 'Local Descendants'
-                                                            ]
-                                                        ],
-                                                        '.collection_type' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Taxonomy Filter',
-                                                            'default' => 'all',
-                                                            'options' => [
-                                                                'all' => 'Unfiltered',
-                                                                'tag' => 'Tag Metadata',
-                                                                'category' => 'Category Metadata',
-                                                                'type' => 'Class Metadata'
-                                                            ]
-                                                        ],
-                                                        '.collection_value' => [
-                                                            'type' => 'text',
-                                                            'label' => 'Filter Constant'
-                                                        ],
-                                                        '.collection_limit' => [
-                                                            'type' => 'number',
-                                                            'label' => 'Limit',
-                                                            'default' => 5
-                                                        ]
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'footer_assembly' => [
-                                            'type' => 'tab',
-                                            'title' => 'Footer Builder',
-                                            'fields' => [
-                                                'agent_footer_widgets' => [
-                                                    'type' => 'list',
-                                                    'label' => 'Footer Widgets',
-                                                    'fields' => [
-                                                        '.width' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Column Width',
-                                                            'default' => 'col-4',
-                                                            'options' => [
-                                                                'col-3' => '25% (3/12)',
-                                                                'col-4' => '33% (4/12)',
-                                                                'col-6' => '50% (6/12)',
-                                                                'col-12' => '100% (Full)'
-                                                            ]
-                                                        ],
-                                                        '.type' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Widget Type',
-                                                            'options' => [
-                                                                'branding' => 'Website Branding',
-                                                                'menu' => 'Navigation Menu',
-                                                                'contact' => 'Contact Info',
-                                                                'social' => 'Social Media Links',
-                                                                'newsletter' => 'Newsletter Signup',
-                                                                'html' => 'Custom HTML'
-                                                            ]
-                                                        ],
-                                                        '.title' => [
-                                                            'type' => 'text',
-                                                            'label' => 'Widget Title'
-                                                        ],
-                                                        '.help' => [
-                                                            'type' => 'display',
-                                                            'content' => '<strong>Note:</strong> Select \'Social Networks\' to display the icons defined in the <em>GLOBAL IDENTITY</em> tab.'
-                                                        ],
-                                                        '.content' => [
-                                                            'type' => 'textarea',
-                                                            'label' => 'Raw Content'
-                                                        ],
-                                                        '.ai_badge' => [
-                                                            'type' => 'toggle',
-                                                            'label' => 'Show AI Badge',
-                                                            'default' => 0
-                                                        ],
-                                                        '.animation' => [
-                                                            'type' => 'select',
-                                                            'label' => 'Animation',
-                                                            'default' => 'fadeUp',
-                                                            'options' => [
-                                                                'none' => 'None',
-                                                                'fadeUp' => 'Fade Up',
-                                                                'fadeDown' => 'Fade Down',
-                                                                'slideLeft' => 'Slide Left',
-                                                                'slideRight' => 'Slide Right',
-                                                                'zoomIn' => 'Zoom In'
-                                                            ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                'footer_dna' => [
-                                                    'type' => 'section',
-                                                    'title' => 'Footer Design',
-                                                    'underline' => true
-                                                ],
-                                                'agent_footer_color_bg' => [
-                                                    'type' => 'color',
-                                                    'label' => 'Atmosphere Background',
-                                                    'default' => '#0f0f10'
-                                                ],
-                                                'agent_footer_color_text' => [
-                                                    'type' => 'color',
-                                                    'label' => 'Contrast Text',
-                                                    'default' => '#ffffff'
-                                                ],
-                                                'agent_footer_color_accent' => [
-                                                    'type' => 'color',
-                                                    'label' => 'High Focus Token',
-                                                    'default' => '#d4af37'
-                                                ],
-                                                'agent_footer_sticky' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Positional Stickiness',
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ]
-                                                ],
-                                                'agent_footer_legal_copy' => [
-                                                    'type' => 'textarea',
-                                                    'label' => 'Governance Rights',
-                                                    'default' => '&copy; 2026 Semantic OS. All rights reserved.'
-                                                ],
-                                                'agent_footer_legal_credits' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Origin Credits',
-                                                    'default' => 'Architected by Antigravity'
-                                                ]
-                                            ]
-                                        ],
-                                        'environment_engine' => [
-                                            'type' => 'tab',
-                                            'title' => 'Background Builder',
-                                            'fields' => [
-                                                'agent_env_mode' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'Background Style',
-                                                    'default' => 0,
-                                                    'highlight' => 1,
-                                                    'options' => [
-                                                        0 => 'Solid',
-                                                        1 => 'Gradient',
-                                                        2 => 'Image',
-                                                        3 => 'Mesh',
-                                                        4 => 'Pattern'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'int'
-                                                    ]
-                                                ],
-                                                'agent_env_tabs' => [
-                                                    'type' => 'tabs',
-                                                    'active' => 1,
-                                                    'fields' => [
-                                                        'solid_tab' => [
-                                                            'type' => 'tab',
-                                                            'title' => 'Solid Hue',
-                                                            'fields' => [
-                                                                'agent_env_solid_col' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Background Color',
-                                                                    'default' => '#ffffff'
-                                                                ]
-                                                            ]
-                                                        ],
-                                                        'gradient_tab' => [
-                                                            'type' => 'tab',
-                                                            'title' => 'Linear Blend',
-                                                            'fields' => [
-                                                                'agent_env_grad_type' => [
-                                                                    'type' => 'select',
-                                                                    'label' => 'Vector Type',
-                                                                    'default' => 'linear',
-                                                                    'options' => [
-                                                                        'linear' => 'Directional',
-                                                                        'radial' => 'Spherical'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_grad_angle' => [
-                                                                    'type' => 'range',
-                                                                    'label' => 'Projection Angle',
-                                                                    'default' => 135,
-                                                                    'min' => 0,
-                                                                    'max' => 360,
-                                                                    'step' => 5,
-                                                                    'append' => 'deg'
-                                                                ],
-                                                                'agent_env_grad_start' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Start Color',
-                                                                    'default' => '#3b4252'
-                                                                ],
-                                                                'agent_env_grad_end' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'End Color',
-                                                                    'default' => '#88c0d0'
-                                                                ]
-                                                            ]
-                                                        ],
-                                                        'image_tab' => [
-                                                            'type' => 'tab',
-                                                            'title' => 'Background Image',
-                                                            'fields' => [
-                                                                'agent_env_img' => [
-                                                                    'type' => 'file',
-                                                                    'label' => 'Select Image',
-                                                                    'destination' => 'theme://images/backgrounds',
-                                                                    'multiple' => false,
-                                                                    'accept' => [
-                                                                        0 => 'image/*'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_img_pos' => [
-                                                                    'type' => 'select',
-                                                                    'label' => 'Focal Point',
-                                                                    'default' => 'center center',
-                                                                    'options' => [
-                                                                        'center center' => 'Equator',
-                                                                        'top center' => 'Zenith',
-                                                                        'bottom center' => 'Nadir'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_img_size' => [
-                                                                    'type' => 'select',
-                                                                    'label' => 'Geometric Scale',
-                                                                    'default' => 'cover',
-                                                                    'options' => [
-                                                                        'cover' => 'Full Stretch',
-                                                                        'contain' => 'Preserve Aspect',
-                                                                        'auto' => 'True Scale'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_img_attach' => [
-                                                                    'type' => 'select',
-                                                                    'label' => 'Motion Protocol',
-                                                                    'default' => 'fixed',
-                                                                    'options' => [
-                                                                        'fixed' => 'Spatial Parallax',
-                                                                        'scroll' => 'Standard Fluid'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_img_overlay' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Tint Layer',
-                                                                    'default' => '#000000'
-                                                                ],
-                                                                'agent_env_img_op' => [
-                                                                    'type' => 'range',
-                                                                    'label' => 'Layer Depth',
-                                                                    'default' => 0.3,
-                                                                    'min' => 0,
-                                                                    'max' => 1,
-                                                                    'step' => 0.1
-                                                                ]
-                                                            ]
-                                                        ],
-                                                        'mesh_tab' => [
-                                                            'type' => 'tab',
-                                                            'title' => 'Animated Mesh',
-                                                            'fields' => [
-                                                                'agent_env_mesh_1' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Mesh Color 1',
-                                                                    'default' => '#3b4252'
-                                                                ],
-                                                                'agent_env_mesh_2' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Mesh Color 2',
-                                                                    'default' => '#bf616a'
-                                                                ],
-                                                                'agent_env_mesh_3' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Mesh Color 3',
-                                                                    'default' => '#88c0d0'
-                                                                ],
-                                                                'agent_env_mesh_speed' => [
-                                                                    'type' => 'range',
-                                                                    'label' => 'Animation Speed',
-                                                                    'default' => 20,
-                                                                    'min' => 5,
-                                                                    'max' => 60,
-                                                                    'step' => 5
-                                                                ]
-                                                            ]
-                                                        ],
-                                                        'pattern_tab' => [
-                                                            'type' => 'tab',
-                                                            'title' => 'Semantic Texture',
-                                                            'fields' => [
-                                                                'agent_env_tex' => [
-                                                                    'type' => 'select',
-                                                                    'label' => 'Mathematical Pattern',
-                                                                    'default' => 'none',
-                                                                    'options' => [
-                                                                        'none' => 'Null',
-                                                                        'noise' => 'Perlin Noise',
-                                                                        'dots' => 'Point Grid',
-                                                                        'grid' => 'Cartesian',
-                                                                        'lines' => 'Linear Segments'
-                                                                    ]
-                                                                ],
-                                                                'agent_env_tex_col' => [
-                                                                    'type' => 'color',
-                                                                    'label' => 'Trace Color',
-                                                                    'default' => '#000000'
-                                                                ],
-                                                                'agent_env_tex_op' => [
-                                                                    'type' => 'range',
-                                                                    'label' => 'Trace Intensity',
-                                                                    'default' => 0.05,
-                                                                    'min' => 0.01,
-                                                                    'max' => 0.2,
-                                                                    'step' => 0.01
-                                                                ]
-                                                            ]
-                                                        ]
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ],
-                        'global_identity_tab' => [
-                            'type' => 'tab',
-                            'title' => 'BRAND IDENTITY',
-                            'fields' => [
-                                'identity_section' => [
+                                'homepage_info' => [
                                     'type' => 'section',
-                                    'title' => 'Branding',
-                                    'underline' => true
+                                    'title' => 'Homepage Configuration',
+                                    'underline' => true,
+                                    'text' => 'Manage the content sections of your homepage directly from here.'
                                 ],
-                                'agent_identity_logo' => [
-                                    'type' => 'file',
-                                    'label' => 'Website Logo',
-                                    'destination' => 'theme://images/logo',
-                                    'multiple' => false,
-                                    'accept' => [
-                                        0 => 'image/*'
-                                    ]
-                                ],
-                                'agent_identity_brandName' => [
-                                    'type' => 'text',
-                                    'label' => 'Website Name'
-                                ],
-                                'agent_identity_showText' => [
+                                'home_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'Display Semantic Identifier',
-                                    'default' => 0,
+                                    'label' => 'Enable Dynamic Homepage',
+                                    'default' => 1,
+                                    'help' => 'Switch between this dynamic content and the default Markdown content',
                                     'options' => [
-                                        1 => 'ENABLED',
-                                        0 => 'DISABLED'
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
                                     ]
                                 ],
-                                'contact_manifest' => [
+                                'home_hero_section' => [
                                     'type' => 'section',
-                                    'title' => 'Contact Information',
+                                    'title' => 'Hero Section',
                                     'underline' => true
                                 ],
-                                'agent_identity_address' => [
+                                'home_hero_title' => [
                                     'type' => 'text',
-                                    'label' => 'Address'
+                                    'label' => 'Hero Title',
+                                    'default' => 'Learn Quran, Fiqh & More From Shia Scholars.'
                                 ],
-                                'agent_identity_email' => [
+                                'home_hero_description' => [
+                                    'type' => 'textarea',
+                                    'label' => 'Hero Description',
+                                    'default' => 'At Aabtaab, we bring accessible and affordable Shia Islamic education to everyone no matter where you are in the world.'
+                                ],
+                                'home_hero_btn_text' => [
                                     'type' => 'text',
-                                    'label' => 'Email Address'
+                                    'label' => 'Primary Button Text',
+                                    'default' => 'VIEW ALL SERVICES'
                                 ],
-                                'agent_identity_phone' => [
+                                'home_hero_btn_url' => [
                                     'type' => 'text',
-                                    'label' => 'Phone Number'
+                                    'label' => 'Primary Button URL',
+                                    'default' => '#services'
                                 ],
-                                'social_topology' => [
+                                'home_services_section' => [
                                     'type' => 'section',
-                                    'title' => 'Social Media',
+                                    'title' => 'Services Section',
                                     'underline' => true
                                 ],
-                                'agent_identity_social' => [
+                                'home_services_title' => [
+                                    'type' => 'text',
+                                    'label' => 'Section Title',
+                                    'default' => 'Our Services 🤲'
+                                ],
+                                'home_services' => [
                                     'type' => 'list',
-                                    'label' => 'Social Media Links',
-                                    'help' => 'Define your networks here to use them in Footer or Header builders.',
+                                    'label' => 'Services List',
                                     'fields' => [
-                                        '.network' => [
-                                            'type' => 'select',
-                                            'label' => 'Platform',
-                                            'options' => [
-                                                'facebook' => 'FB',
-                                                'twitter' => 'X',
-                                                'instagram' => 'IG',
-                                                'linkedin' => 'LI',
-                                                'youtube' => 'YT',
-                                                'github' => 'GH',
-                                                'googlemaps' => 'Maps'
-                                            ]
+                                        '.icon' => [
+                                            'type' => 'text',
+                                            'label' => 'Icon (Emoji/Text)'
+                                        ],
+                                        '.title' => [
+                                            'type' => 'text',
+                                            'label' => 'Title'
+                                        ],
+                                        '.description' => [
+                                            'type' => 'textarea',
+                                            'label' => 'Description'
                                         ],
                                         '.url' => [
                                             'type' => 'text',
-                                            'label' => 'Destination URI'
+                                            'label' => 'Link URL'
+                                        ],
+                                        '.btn_text' => [
+                                            'type' => 'text',
+                                            'label' => 'Button Text',
+                                            'default' => 'View Details →'
+                                        ]
+                                    ]
+                                ],
+                                'home_quote_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Quote Section',
+                                    'underline' => true
+                                ],
+                                'home_quote_title' => [
+                                    'type' => 'text',
+                                    'label' => 'Section Title',
+                                    'default' => 'Quote of the Day'
+                                ],
+                                'home_quote_author' => [
+                                    'type' => 'text',
+                                    'label' => 'Author',
+                                    'default' => 'Prophet Muhammad (SAWW)'
+                                ],
+                                'home_quote_arabic' => [
+                                    'type' => 'textarea',
+                                    'label' => 'Arabic Text',
+                                    'default' => 'ظِلُّ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ صَدَقَتُهُ'
+                                ],
+                                'home_quote_english' => [
+                                    'type' => 'textarea',
+                                    'label' => 'English Translation',
+                                    'default' => '"The believer\'s shade on the Day of Resurrection will be his charity"'
+                                ],
+                                'home_quote_btn_text' => [
+                                    'type' => 'text',
+                                    'label' => 'CTA Button Text',
+                                    'default' => '❤️ GIVE TODAY'
+                                ],
+                                'home_quote_btn_url' => [
+                                    'type' => 'text',
+                                    'label' => 'CTA Button URL',
+                                    'default' => '/donate'
+                                ],
+                                'home_courses_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Courses Section',
+                                    'underline' => true
+                                ],
+                                'home_courses_title' => [
+                                    'type' => 'text',
+                                    'label' => 'Section Title',
+                                    'default' => 'Popular Courses 📚'
+                                ],
+                                'home_courses_subtitle' => [
+                                    'type' => 'text',
+                                    'label' => 'Subtitle',
+                                    'default' => 'Pick A Course To Get Started'
+                                ],
+                                'home_courses' => [
+                                    'type' => 'list',
+                                    'label' => 'Courses List',
+                                    'fields' => [
+                                        '.icon' => [
+                                            'type' => 'text',
+                                            'label' => 'Icon'
+                                        ],
+                                        '.title' => [
+                                            'type' => 'text',
+                                            'label' => 'Title'
+                                        ],
+                                        '.subtitle' => [
+                                            'type' => 'text',
+                                            'label' => 'Subtitle'
+                                        ],
+                                        '.url' => [
+                                            'type' => 'text',
+                                            'label' => 'Enroll URL'
                                         ]
                                     ]
                                 ]
                             ]
                         ],
-                        'governance_tab' => [
+                        'hero_tab' => [
                             'type' => 'tab',
-                            'title' => 'SITE GOVERNANCE',
+                            'title' => 'Hero',
                             'fields' => [
-                                'performance_section' => [
+                                'hero_info' => [
                                     'type' => 'section',
-                                    'title' => 'Performance Pipelines',
+                                    'title' => 'Hero Section Defaults',
+                                    'underline' => true,
+                                    'text' => 'Theme-level defaults for hero sections. Individual pages can override these settings.'
+                                ],
+                                'hero_defaults_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Hero Defaults',
                                     'underline' => true
                                 ],
-                                'agent_gov_production' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Optimal Asset Compression',
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PRODUCTION',
-                                        0 => 'DEVELOPMENT'
-                                    ]
-                                ],
-                                'agent_gov_gridSize' => [
+                                'hero_default_style' => [
                                     'type' => 'select',
-                                    'label' => 'Layout Grid Class',
-                                    'default' => 'grid-xl',
+                                    'label' => 'Default Style',
+                                    'default' => 'standard',
                                     'options' => [
-                                        'grid-lg' => 'Large',
-                                        'grid-xl' => 'Extra Large'
-                                    ]
+                                        'standard' => 'Standard (Centered)',
+                                        'split' => 'Split (Text Left / Image Right)',
+                                        'immersive' => 'Immersive (Full Screen)',
+                                        'minimal' => 'Minimal (Text Only)'
+                                    ],
+                                    'help' => 'Default layout style for hero sections'
                                 ],
-                                'accessibility_section' => [
+                                'hero_default_overlay' => [
+                                    'type' => 'range',
+                                    'label' => 'Default Overlay Opacity',
+                                    'default' => 0.3,
+                                    'min' => 0,
+                                    'max' => 1,
+                                    'step' => 0.1,
+                                    'help' => 'Background overlay darkness (0 = transparent, 1 = opaque)'
+                                ],
+                                'hero_default_button_style' => [
+                                    'type' => 'select',
+                                    'label' => 'Default CTA Button Style',
+                                    'default' => 'primary',
+                                    'options' => [
+                                        'primary' => 'Primary',
+                                        'secondary' => 'Secondary',
+                                        'accent' => 'Accent',
+                                        'ghost' => 'Ghost'
+                                    ],
+                                    'help' => 'Default style for hero call-to-action buttons'
+                                ],
+                                'hero_enable_animations' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Enable Animations',
+                                    'default' => 1,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'help' => 'Animate hero content on page load'
+                                ]
+                            ]
+                        ],
+                        'backgrounds_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Backgrounds',
+                            'fields' => [
+                                'backgrounds_info' => [
                                     'type' => 'section',
-                                    'title' => 'Sustainability & Guidelines',
+                                    'title' => 'Background Configuration',
+                                    'underline' => true,
+                                    'text' => 'Configure page backgrounds with solid colors, gradients, images, animated meshes, or patterns.'
+                                ],
+                                'background_mode_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Background Style',
                                     'underline' => true
                                 ],
-                                'agent_gov_ecoDefault' => [
+                                'background_mode' => [
                                     'type' => 'toggle',
-                                    'label' => 'Force Lower Complexity (Eco)',
+                                    'label' => 'Background Type',
                                     'default' => 0,
-                                    'help' => 'Forces the eco-mode protocol globally.'
+                                    'highlight' => 1,
+                                    'options' => [
+                                        0 => 'Solid Color',
+                                        1 => 'Gradient',
+                                        2 => 'Image',
+                                        3 => 'Animated Mesh',
+                                        4 => 'Pattern'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'int'
+                                    ],
+                                    'help' => 'Choose your page background style'
                                 ],
-                                'agent_gov_privacyShield' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enhanced Privacy Sovereignty',
-                                    'default' => 1,
-                                    'help' => 'Strips third-party trackers and enforces locally-hosted logic.'
+                                'background_options_tabs' => [
+                                    'type' => 'tabs',
+                                    'active' => 1,
+                                    'fields' => [
+                                        'solid_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Solid',
+                                            'fields' => [
+                                                'background_solid_color' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Background Color',
+                                                    'default' => '#ffffff',
+                                                    'help' => 'Solid color background'
+                                                ]
+                                            ]
+                                        ],
+                                        'gradient_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Gradient',
+                                            'fields' => [
+                                                'background_gradient_type' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Gradient Type',
+                                                    'default' => 'linear',
+                                                    'options' => [
+                                                        'linear' => 'Linear',
+                                                        'radial' => 'Radial'
+                                                    ],
+                                                    'help' => 'Type of gradient'
+                                                ],
+                                                'background_gradient_angle' => [
+                                                    'type' => 'range',
+                                                    'label' => 'Angle',
+                                                    'default' => 135,
+                                                    'min' => 0,
+                                                    'max' => 360,
+                                                    'step' => 5,
+                                                    'append' => 'deg',
+                                                    'help' => 'Gradient direction (linear only)'
+                                                ],
+                                                'background_gradient_start' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Start Color',
+                                                    'default' => '#3b4252'
+                                                ],
+                                                'background_gradient_end' => [
+                                                    'type' => 'color',
+                                                    'label' => 'End Color',
+                                                    'default' => '#88c0d0'
+                                                ]
+                                            ]
+                                        ],
+                                        'image_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Image',
+                                            'fields' => [
+                                                'background_image' => [
+                                                    'type' => 'file',
+                                                    'label' => 'Background Image',
+                                                    'destination' => 'theme://images/backgrounds',
+                                                    'multiple' => false,
+                                                    'accept' => [
+                                                        0 => 'image/*'
+                                                    ]
+                                                ],
+                                                'background_image_position' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Position',
+                                                    'default' => 'center center',
+                                                    'options' => [
+                                                        'center center' => 'Center',
+                                                        'top center' => 'Top',
+                                                        'bottom center' => 'Bottom'
+                                                    ],
+                                                    'help' => 'Image focal point'
+                                                ],
+                                                'background_image_size' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Size',
+                                                    'default' => 'cover',
+                                                    'options' => [
+                                                        'cover' => 'Cover (Fill)',
+                                                        'contain' => 'Contain (Fit)',
+                                                        'auto' => 'Original Size'
+                                                    ],
+                                                    'help' => 'How image fills space'
+                                                ],
+                                                'background_image_attachment' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Scroll Behavior',
+                                                    'default' => 'fixed',
+                                                    'options' => [
+                                                        'fixed' => 'Fixed (Parallax)',
+                                                        'scroll' => 'Scroll (Normal)'
+                                                    ],
+                                                    'help' => 'Image movement on scroll'
+                                                ],
+                                                'background_image_overlay' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Overlay Color',
+                                                    'default' => '#000000',
+                                                    'help' => 'Tint overlay color'
+                                                ],
+                                                'background_image_overlay_opacity' => [
+                                                    'type' => 'range',
+                                                    'label' => 'Overlay Opacity',
+                                                    'default' => 0.3,
+                                                    'min' => 0,
+                                                    'max' => 1,
+                                                    'step' => 0.1,
+                                                    'help' => 'Overlay darkness'
+                                                ]
+                                            ]
+                                        ],
+                                        'mesh_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Animated Mesh',
+                                            'fields' => [
+                                                'background_mesh_color1' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Mesh Color 1',
+                                                    'default' => '#3b4252'
+                                                ],
+                                                'background_mesh_color2' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Mesh Color 2',
+                                                    'default' => '#bf616a'
+                                                ],
+                                                'background_mesh_color3' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Mesh Color 3',
+                                                    'default' => '#88c0d0'
+                                                ],
+                                                'background_mesh_speed' => [
+                                                    'type' => 'range',
+                                                    'label' => 'Animation Speed',
+                                                    'default' => 20,
+                                                    'min' => 5,
+                                                    'max' => 60,
+                                                    'step' => 5,
+                                                    'help' => 'Speed of mesh animation'
+                                                ]
+                                            ]
+                                        ],
+                                        'pattern_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Pattern',
+                                            'fields' => [
+                                                'background_pattern_type' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Pattern Type',
+                                                    'default' => 'none',
+                                                    'options' => [
+                                                        'none' => 'None',
+                                                        'noise' => 'Perlin Noise',
+                                                        'dots' => 'Dots',
+                                                        'grid' => 'Grid Lines',
+                                                        'lines' => 'Diagonal Lines'
+                                                    ],
+                                                    'help' => 'Mathematical pattern overlay'
+                                                ],
+                                                'background_pattern_color' => [
+                                                    'type' => 'color',
+                                                    'label' => 'Pattern Color',
+                                                    'default' => '#000000'
+                                                ],
+                                                'background_pattern_opacity' => [
+                                                    'type' => 'range',
+                                                    'label' => 'Pattern Opacity',
+                                                    'default' => 0.05,
+                                                    'min' => 0.01,
+                                                    'max' => 0.2,
+                                                    'step' => 0.01,
+                                                    'help' => 'Pattern visibility'
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ],
+                        'components_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Components',
+                            'fields' => [
+                                'components_info' => [
+                                    'type' => 'section',
+                                    'title' => 'Component Defaults',
+                                    'underline' => true,
+                                    'text' => 'Configure default styles and behaviors for reusable components. These settings apply site-wide but can be overridden at the page or component level.'
                                 ],
-                                'agent_gov_haptics' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Tactile Pulse (Haptics)',
-                                    'default' => 0,
-                                    'help' => 'Global haptic feedback for user interactions.'
+                                'components_tabs' => [
+                                    'type' => 'tabs',
+                                    'active' => 1,
+                                    'fields' => [
+                                        'buttons_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Buttons',
+                                            'fields' => [
+                                                'button_defaults_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Button Configuration',
+                                                    'underline' => true
+                                                ],
+                                                'button_default_variant' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Default Style',
+                                                    'default' => 'primary',
+                                                    'options' => [
+                                                        'primary' => 'Primary (Brand Color)',
+                                                        'secondary' => 'Secondary (Neutral)',
+                                                        'accent' => 'Accent (Highlight)',
+                                                        'ghost' => 'Ghost (Transparent)',
+                                                        'glass' => 'Glass (Glassmorphic)'
+                                                    ],
+                                                    'help' => 'Default visual style when not explicitly specified'
+                                                ],
+                                                'button_default_size' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Default Size',
+                                                    'default' => 'md',
+                                                    'options' => [
+                                                        'sm' => 'Small',
+                                                        'md' => 'Medium',
+                                                        'lg' => 'Large'
+                                                    ],
+                                                    'help' => 'Default button size (all meet 44x44px minimum touch target)'
+                                                ],
+                                                'button_haptic_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Enable Haptic Feedback',
+                                                    'default' => 0,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Vibration feedback on supported touch devices'
+                                                ]
+                                            ]
+                                        ],
+                                        'cards_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Cards',
+                                            'fields' => [
+                                                'card_defaults_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Card Configuration',
+                                                    'underline' => true
+                                                ],
+                                                'card_default_variant' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Default Style',
+                                                    'default' => 'default',
+                                                    'options' => [
+                                                        'default' => 'Default (Solid)',
+                                                        'glass' => 'Glass (Translucent)',
+                                                        'neo' => 'Neomorphic (Soft 3D)',
+                                                        'accent' => 'Accent (Highlighted)'
+                                                    ],
+                                                    'help' => 'Default card visual style'
+                                                ],
+                                                'card_shadow_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Enable Shadows',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Add depth with box-shadow'
+                                                ],
+                                                'card_image_lazy_load' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Lazy Load Images',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Defer image loading until visible'
+                                                ]
+                                            ]
+                                        ],
+                                        'forms_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Forms',
+                                            'fields' => [
+                                                'form_defaults_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Form Configuration',
+                                                    'underline' => true
+                                                ],
+                                                'form_required_symbol' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Required Field Symbol',
+                                                    'default' => '*',
+                                                    'help' => 'Symbol displayed next to required field labels'
+                                                ],
+                                                'form_validation_style' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Validation Display',
+                                                    'default' => 'inline',
+                                                    'options' => [
+                                                        'inline' => 'Inline (Below Field)',
+                                                        'tooltip' => 'Tooltip (On Hover)',
+                                                        'summary' => 'Summary (Top of Form)'
+                                                    ],
+                                                    'help' => 'How validation messages are displayed'
+                                                ],
+                                                'form_focus_highlight' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Focus Highlight',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Visual highlight when fields receive focus'
+                                                ]
+                                            ]
+                                        ],
+                                        'images_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Images',
+                                            'fields' => [
+                                                'image_defaults_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Image Configuration',
+                                                    'underline' => true
+                                                ],
+                                                'image_default_loading' => [
+                                                    'type' => 'select',
+                                                    'label' => 'Loading Strategy',
+                                                    'default' => 'lazy',
+                                                    'options' => [
+                                                        'eager' => 'Eager (Immediate)',
+                                                        'lazy' => 'Lazy (Deferred)'
+                                                    ],
+                                                    'help' => 'Use eager for above-fold images, lazy for below-fold'
+                                                ],
+                                                'image_default_quality' => [
+                                                    'type' => 'range',
+                                                    'label' => 'Image Quality',
+                                                    'default' => 85,
+                                                    'min' => 60,
+                                                    'max' => 100,
+                                                    'step' => 5,
+                                                    'append' => '%',
+                                                    'help' => 'Compression quality for processed images'
+                                                ],
+                                                'image_caption_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Show Captions',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Display captions below images when alt text provided'
+                                                ],
+                                                'image_responsive' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Responsive Images',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Generate srcset for multiple device resolutions'
+                                                ]
+                                            ]
+                                        ],
+                                        'meta_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Meta Info',
+                                            'fields' => [
+                                                'meta_defaults_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Meta Information Display',
+                                                    'underline' => true
+                                                ],
+                                                'meta_show_author' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Show Author',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Display author name in article metadata'
+                                                ],
+                                                'meta_show_date' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Show Publish Date',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Display publish date in article metadata'
+                                                ],
+                                                'meta_date_format' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Date Format',
+                                                    'default' => 'F d, Y',
+                                                    'help' => 'PHP date format string (e.g., "F d, Y" produces "January 07, 2026")'
+                                                ],
+                                                'meta_show_reading_time' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Show Reading Time',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Calculate and display estimated reading time'
+                                                ],
+                                                'meta_separator' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Separator Character',
+                                                    'default' => '•',
+                                                    'help' => 'Character used between meta items (e.g., "author • date")'
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ],
+                        'experience_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Experience',
+                            'fields' => [
+                                'experience_info' => [
+                                    'type' => 'section',
+                                    'title' => 'User Experience',
+                                    'underline' => true,
+                                    'text' => 'Configure animations, accessibility features, and adaptive behaviors that enhance the user experience.'
+                                ],
+                                'experience_tabs' => [
+                                    'type' => 'tabs',
+                                    'active' => 1,
+                                    'fields' => [
+                                        'animations_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Animations',
+                                            'fields' => [
+                                                'animations_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Motion & Animation',
+                                                    'underline' => true
+                                                ],
+                                                'animations_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Enable Animations',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Global animation toggle (respects prefers-reduced-motion)'
+                                                ],
+                                                'animations_respect_reduced_motion' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Respect Reduced Motion',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Disable animations for users who prefer reduced motion'
+                                                ]
+                                            ]
+                                        ],
+                                        'accessibility_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Accessibility',
+                                            'fields' => [
+                                                'accessibility_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Accessibility Features',
+                                                    'underline' => true
+                                                ],
+                                                'accessibility_skip_link_text' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Skip to Content Text',
+                                                    'default' => 'THEME_MY_QUARK.SKIP_TO_CONTENT',
+                                                    'help' => 'Screen reader text for skip navigation link'
+                                                ],
+                                                'accessibility_mobile_menu_label' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Mobile Menu Label',
+                                                    'default' => 'THEME_MY_QUARK.TOGGLE_MOBILE_MENU',
+                                                    'help' => 'ARIA label for mobile menu button'
+                                                ],
+                                                'accessibility_focus_mode' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Focus Mode',
+                                                    'default' => 0,
+                                                    'help' => 'Reduce decorative elements for better focus',
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'sustainability_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Sustainability',
+                                            'fields' => [
+                                                'sustainability_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Eco-Friendly Features',
+                                                    'underline' => true
+                                                ],
+                                                'sustainability_eco_mode' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Force Eco Mode',
+                                                    'default' => 0,
+                                                    'help' => 'Disable animations and reduce complexity to save energy',
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ]
+                                                ],
+                                                'sustainability_score' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Sustainability Score',
+                                                    'default' => 'A+',
+                                                    'help' => 'The estimated sustainability grade (e.g., A+, B)'
+                                                ],
+                                                'co2_per_view' => [
+                                                    'type' => 'text',
+                                                    'label' => 'CO2 per View',
+                                                    'default' => '0.2g',
+                                                    'help' => 'Estimated grams of CO2 emitted per page view'
+                                                ]
+                                            ]
+                                        ],
+                                        'ai_augmentation_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'AI Augmentation',
+                                            'fields' => [
+                                                'ai_augmentation_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Agentic Collaboration',
+                                                    'underline' => true
+                                                ],
+                                                'ai_augmentation_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Enable AI Enhancements',
+                                                    'default' => 1,
+                                                    'help' => 'Allow AI-generated content blocks and disclosures',
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'advanced_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Advanced',
+                                            'fields' => [
+                                                'advanced_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Experimental Features',
+                                                    'underline' => true
+                                                ],
+                                                'advanced_haptics' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Global Haptic Feedback',
+                                                    'default' => 0,
+                                                    'help' => 'Enable vibration feedback for all interactive elements',
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ],
+                        'configuration_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Configuration',
+                            'fields' => [
+                                'configuration_info' => [
+                                    'type' => 'section',
+                                    'title' => 'System Configuration',
+                                    'underline' => true,
+                                    'text' => 'Technical settings for performance, privacy, and localization.'
+                                ],
+                                'configuration_tabs' => [
+                                    'type' => 'tabs',
+                                    'active' => 1,
+                                    'fields' => [
+                                        'performance_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Performance',
+                                            'fields' => [
+                                                'performance_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Performance Optimization',
+                                                    'underline' => true
+                                                ],
+                                                'performance_production_mode' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Production Mode',
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'help' => 'Enable asset compression and optimization'
+                                                ]
+                                            ]
+                                        ],
+                                        'privacy_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Privacy',
+                                            'fields' => [
+                                                'privacy_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'Privacy & Security',
+                                                    'underline' => true
+                                                ],
+                                                'privacy_shield_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => 'Privacy Shield',
+                                                    'default' => 1,
+                                                    'help' => 'Block third-party trackers and use local-only resources',
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'localization_subtab' => [
+                                            'type' => 'tab',
+                                            'title' => 'Localization',
+                                            'fields' => [
+                                                'localization_section' => [
+                                                    'type' => 'section',
+                                                    'title' => 'UI Text Strings',
+                                                    'underline' => true,
+                                                    'text' => 'Override default UI text. Use language keys for multilingual support.'
+                                                ],
+                                                'localization_newsletter_placeholder' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Newsletter Email Placeholder',
+                                                    'default' => 'THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER',
+                                                    'help' => 'Placeholder text for newsletter email input'
+                                                ],
+                                                'localization_newsletter_button' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Newsletter Button Text',
+                                                    'default' => 'THEME_MY_QUARK.NEWSLETTER_BUTTON',
+                                                    'help' => 'Submit button text for newsletter forms'
+                                                ]
+                                            ]
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]

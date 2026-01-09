@@ -1,0 +1,51 @@
+{% extends "forms/field.html.twig" %}
+
+{% set originalValue = value %}
+{% set value = (value is null ? field.default : value) %}
+{% if field.use == 'keys' and field.default %}
+    {% set value = field.default|merge(value) %}
+{% endif %}
+
+{% block global_attributes %}
+    {{ parent() }}
+    data-grav-keys="{{ field.use == 'keys' ? 'true' : 'false' }}"
+    data-grav-field-name="{{ (scope ~ field.name)|fieldName }}"
+{% endblock %}
+
+{% block input %}
+    <div class="space-y-3 @container" role="group" aria-labelledby="{{ field.id|default(field.name) }}-label">
+    {% for key, text in field.options %}
+
+        {% set id = field.id|default(field.name) ~ '-' ~ key %}
+        {% set name = field.use == 'keys' ? key : id %}
+        {% set val = field.use == 'keys' ? '1' : key %}
+        {% set checked = (field.use == 'keys' ? value[key] : key in value) %}
+        {% set help = (key in field.help_options|keys ? field.help_options[key] : false) %}
+
+        <div class="checkboxes {{ field.wrapper_classes }}">
+            <label class="group inline-flex items-center gap-5 cursor-pointer select-none" for="{{ id|e }}">
+                <div class="relative flex items-center justify-center transition-transform duration-300 active:scale-90">
+                    <input type="checkbox"
+                           id="{{ id|e }}"
+                           value="{{ val|e }}"
+                           name="{{ (scope ~ field.name)|fieldName ~ '[' ~ name ~ ']' }}"
+                           {% if checked %}checked="checked"{% endif %}
+                           class="peer appearance-none w-7 h-7 rounded-xl bg-white border-2 border-brand-primary/20 checked:bg-brand-primary checked:border-brand-primary transition-all duration-500 shadow-sm hover:border-brand-primary/50 focus:ring-8 focus:ring-brand-primary/10 focus:outline-none"
+                           {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
+                           aria-checked="{% if checked %}true{% else %}false{% endif %}"
+                    >
+                    <span class="la la-check absolute text-brand-bg scale-0 peer-checked:scale-100 transition-all duration-500 font-black pointer-events-none text-lg" aria-hidden="true"></span>
+                </div>
+                
+                <span class="text-lg font-black text-brand-dark/70 group-hover:text-brand-primary transition-colors tracking-tightest">
+                    {% if help %}
+                        <span class="hint--bottom" data-hint="{{ help|t|e('html_attr') }}">{{ text|t|e }}</span>
+                    {% else %}
+                        {{ text|t|e }}
+                    {% endif %}
+                </span>
+            </label>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

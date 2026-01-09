@@ -1,0 +1,28 @@
+{
+  "name": "ngo-theme",
+  "version": "1.0.0",
+  "homepage": "https://getgrav.org",
+  "author": "Antigravity",
+  "description": "Premium Grav CMS Theme for Non-Profit Organizations (2026 Standard)",
+  "main": "css/input.css",
+  "license": "MIT",
+  "keywords": [
+    "grav",
+    "theme",
+    "tailwind",
+    "ngo",
+    "2026",
+    "oxide"
+  ],
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^4.1.18"
+  },
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./css/input.css -o ./css/build.css --watch",
+    "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/build.css --minify",
+    "test": "echo \"No tests specified\""
+  }
+}

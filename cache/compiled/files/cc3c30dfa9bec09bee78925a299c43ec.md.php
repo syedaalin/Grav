@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/pages/02.online-courses/01.Quran/default.md',
-    'modified' => 1767673637,
-    'size' => 2229,
+    'modified' => 1767812850,
+    'size' => 2432,
     'data' => [
         'header' => [
             'title' => 'Quran',
@@ -11,6 +11,9 @@ return [
             'metadata' => [
                 'description' => 'Learn Quranic Arabic, Tajweed, and memorization techniques with qualified instructors in our interactive online Quran course.'
             ],
+            'ai_augmented' => true,
+            'ai_reasoning' => 'Interactive learning roadmap for Quranic mastery, integrating Tajweed precision with deep Tafsir insights.',
+            'hero_classes' => 'parallax overlay-dark-gradient hero-large',
             'header' => [
                 'short_description' => 'Master Quranic recitation with proper Tajweed rules and deepen your understanding through authentic Tafsir.',
                 'instructor' => 'Qari Muhammad Ali',
@@ -22,6 +25,9 @@ return [
 menu: Quran
 metadata:
     description: \'Learn Quranic Arabic, Tajweed, and memorization techniques with qualified instructors in our interactive online Quran course.\'
+ai_augmented: true
+ai_reasoning: \'Interactive learning roadmap for Quranic mastery, integrating Tajweed precision with deep Tafsir insights.\'
+hero_classes: \'parallax overlay-dark-gradient hero-large\'
 header:
     short_description: Master Quranic recitation with proper Tajweed rules and deepen your understanding through authentic Tafsir.
     instructor: Qari Muhammad Ali

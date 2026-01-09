@@ -12,7 +12,8 @@ class MyQuark extends Theme
             'onAdminTwigTemplatePaths' => ['onAdminTwigTemplatePaths', 0],
             'onAssetsInitialized' => ['onAssetsInitialized', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-            'onAdminAfterSave' => ['onAdminAfterSave', 0]
+            'onAdminAfterSave' => ['onAdminAfterSave', 0],
+            'onPageInitialized' => ['onPageInitialized', 0]
         ];
     }
 
@@ -30,12 +31,7 @@ class MyQuark extends Theme
             // Logic to check if we are on the Theme Configuration page
             $uri = $this->grav['uri'];
             if (strpos($uri->path(), 'themes/my-quark') !== false) {
-                 // Inject Builder Assets
-                 $this->grav['assets']->addJs('theme://js/admin/footer-builder.js', ['type' => 'module']);
-                 $this->grav['assets']->addCss('theme://js/admin/footer-builder.css');
-                 
-                 $this->grav['assets']->addJs('theme://js/admin/navigation-builder.js', ['type' => 'module']);
-                 $this->grav['assets']->addCss('theme://js/admin/navigation-builder.css');
+                 // Builder Assets Removed
             }
         }
     }
@@ -63,6 +59,50 @@ class MyQuark extends Theme
 
         foreach ($fonts as $font) {
             $this->downloadGoogleFont($font);
+        }
+    }
+
+    /**
+     * Generate and apply Content Security Policy headers (2026 Security Standard)
+     * Rule 5.1: CSP Management - prevents XSS attacks
+     */
+    public function onPageInitialized()
+    {
+        // Skip CSP in admin panel
+        if ($this->isAdmin()) {
+            return;
+        }
+
+        // Get CSP configuration from theme settings
+        $config = $this->config->get('themes.my-quark');
+        $cspEnabled = $config['security_csp_enabled'] ?? true;
+
+        if (!$cspEnabled) {
+            return;
+        }
+
+        // Build CSP directives
+        $csp = [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' https://unpkg.com", // Anchor Positioning polyfill
+            "style-src 'self' 'unsafe-inline'", // Inline styles for theme customization
+            "img-src 'self' data: https:",
+            "font-src 'self' data:",
+            "connect-src 'self'",
+            "frame-ancestors 'self'",
+            "base-uri 'self'",
+            "form-action 'self'"
+        ];
+
+        $cspHeader = implode('; ', $csp);
+        
+        // Only send headers if not already sent
+        if (!headers_sent()) {
+            header("Content-Security-Policy: " . $cspHeader);
+            // Also send X-Content-Type-Options for additional security
+            header("X-Content-Type-Options: nosniff");
+            header("X-Frame-Options: SAMEORIGIN");
+            header("Referrer-Policy: strict-origin-when-cross-origin");
         }
     }
 

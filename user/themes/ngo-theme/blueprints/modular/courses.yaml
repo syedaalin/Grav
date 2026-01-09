@@ -1,0 +1,61 @@
+title: Courses Module
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+             header.title:
+              type: text
+              label: Section Title
+              default: 'Featured Scholar Courses'
+            
+             content:
+              type: editor
+              label: Description
+
+             header.hide_demo:
+                type: toggle
+                label: Hide Demo Content
+                default: 0
+                options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+            
+             header.button_text:
+                type: text
+                label: Button Text
+                default: 'View All Courses'
+             header.button_url:
+                type: text
+                label: Button URL
+
+             header.courses:
+              type: list
+              label: Featured Courses
+              fields:
+                .image:
+                  type: file
+                  label: Course Image
+                  destination: 'self@'
+                  multiple: false
+                  limit: 1
+                .title:
+                  type: text
+                  label: Course Title
+                .instructor:
+                  type: text
+                  label: Instructor Name
+                .link:
+                  type: text
+                  label: Course Link
+                  default: '#'

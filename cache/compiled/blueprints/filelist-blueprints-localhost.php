@@ -3,8 +3,9 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'blueprints',
     'environment' => 'localhost',
-    'timestamp' => 1767759311,
+    'timestamp' => 1767918860,
     'directories' => [
+        '/Users/syedaalin/Documents/Grav/user/plugins/admin/blueprints/config' => 1767663061,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config' => 1767660594,
         '/Users/syedaalin/Documents/Grav/user/plugins' => 1767731301,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
@@ -22,11 +23,13 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs' => 1767731301,
         '/Users/syedaalin/Documents/Grav/user/plugins/login' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592,
-        '/Users/syedaalin/Documents/Grav/user/themes' => 1767664230,
+        '/Users/syedaalin/Documents/Grav/user/themes' => 1767814868,
+        '/Users/syedaalin/Documents/Grav/user/themes/ngo-theme' => 1767917760,
         '/Users/syedaalin/Documents/Grav/user/themes/quark' => 1767660593,
-        '/Users/syedaalin/Documents/Grav/user/themes/my-quark' => 1767730294
+        '/Users/syedaalin/Documents/Grav/user/themes/my-quark' => 1767801703
     ],
     'file_mtimes' => [
+        '/Users/syedaalin/Documents/Grav/user/plugins/admin/blueprints/config/media.yaml' => 1766978626,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/backups.yaml' => 1767661386,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/media.yaml' => 1767661386,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/scheduler.yaml' => 1767661386,
@@ -49,10 +52,17 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs/blueprints.yaml' => 1658743204,
         '/Users/syedaalin/Documents/Grav/user/plugins/login/blueprints.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/email/blueprints.yaml' => 1765351098,
+        '/Users/syedaalin/Documents/Grav/user/themes/ngo-theme/blueprints.yaml' => 1767918684,
         '/Users/syedaalin/Documents/Grav/user/themes/quark/blueprints.yaml' => 1764386856,
-        '/Users/syedaalin/Documents/Grav/user/themes/my-quark/blueprints.yaml' => 1767738989
+        '/Users/syedaalin/Documents/Grav/user/themes/my-quark/blueprints.yaml' => 1767809409
     ],
     'files' => [
+        'user/plugins/admin/blueprints/config' => [
+            'media' => [
+                'file' => 'user/plugins/admin/blueprints/config/media.yaml',
+                'modified' => 1766978626
+            ]
+        ],
         'system/blueprints/config' => [
             'backups' => [
                 'file' => 'system/blueprints/config/backups.yaml',
@@ -146,13 +156,17 @@ return [
             ]
         ],
         'user/themes' => [
+            'themes/ngo-theme' => [
+                'file' => 'user/themes/ngo-theme/blueprints.yaml',
+                'modified' => 1767918684
+            ],
             'themes/quark' => [
                 'file' => 'user/themes/quark/blueprints.yaml',
                 'modified' => 1764386856
             ],
             'themes/my-quark' => [
                 'file' => 'user/themes/my-quark/blueprints.yaml',
-                'modified' => 1767738989
+                'modified' => 1767809409
             ]
         ]
     ]

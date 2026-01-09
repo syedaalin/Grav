@@ -1,0 +1,27 @@
+{# Sidebar Partial #}
+<div class="space-y-12">
+    {% include 'partials/simplesearch_searchbox.html.twig' %}
+    
+    {% if config.plugins.random.enabled %}
+    <div class="p-8 rounded-[2rem] bg-surface-sunken border border-transparent hover:border-glass-border transition-colors @container">
+        <h4 class="text-xl font-black font-heading text-brand-dark mb-6">Random Wisdom</h4>
+        <a href="{{ base_url }}/random" class="inline-flex items-center gap-3 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-full font-bold uppercase tracking-wider text-xs hover:bg-brand-primary hover:text-white transition-all min-h-[44px]">
+            <i class="la la-dice"></i> Surprise Me
+        </a>
+    </div>
+    {% endif %}
+
+    {% if config.plugins.taxonomylist.enabled %}
+    <div class="p-8 rounded-[2rem] bg-surface-sunken border border-transparent hover:border-glass-border transition-colors @container">
+        <h4 class="text-xl font-black font-heading text-brand-dark mb-6">Explore Topics</h4>
+        {% include 'partials/taxonomylist.html.twig' with {'taxonomy': 'tag'} %}
+    </div>
+    {% endif %}
+    
+    {% if config.plugins.archives.enabled %}
+    <div class="p-8 rounded-[2rem] bg-surface-sunken border border-transparent hover:border-glass-border transition-colors @container">
+        <h4 class="text-xl font-black font-heading text-brand-dark mb-6">Archives</h4>
+        {% include 'partials/archives.html.twig' %}
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,6 @@
+1767924727
+03.services
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:8:"services";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:12:"Our Services";s:4:"menu";s:8:"Services";s:7:"content";a:1:{s:5:"items";s:13:"@self.modular";}}s:11:"frontmatter";s:72:"title: 'Our Services'
+menu: Services
+content:
+    items: '@self.modular'";s:8:"markdown";s:0:"";}s:7:"storage";a:7:{s:3:"key";s:8:"services";s:11:"storage_key";s:11:"03.services";s:8:"template";s:7:"modular";s:17:"storage_timestamp";i:1767919558;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"modular";i:1767919556;}}s:8:"children";a:1:{s:5:"_list";b:0;}s:8:"checksum";s:32:"8861ccc6007c79336c61476cdd9c3e9d";}}

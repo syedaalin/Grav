@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/pages/02.online-courses/05.Jurisprudence/default.md',
-    'modified' => 1767673693,
-    'size' => 2709,
+    'modified' => 1767812872,
+    'size' => 2940,
     'data' => [
         'header' => [
             'title' => 'Jurisprudence (Fiqh)',
@@ -11,6 +11,9 @@ return [
             'metadata' => [
                 'description' => 'Study Islamic jurisprudence (Fiqh) from a Shia perspective, covering worship, transactions, and contemporary issues with practical applications.'
             ],
+            'ai_augmented' => true,
+            'ai_reasoning' => 'Comprehensive legal framework analysis covering Ibadat and Muamalat, updated with contemporary Shariah responses to modern challenges.',
+            'hero_classes' => 'parallax overlay-dark-gradient hero-large',
             'header' => [
                 'short_description' => 'Master the foundations of Shia Islamic law and learn to apply jurisprudence principles to modern life situations.',
                 'instructor' => 'Sheikh Ali Hussain',
@@ -22,6 +25,9 @@ return [
 menu: Fiqh
 metadata:
     description: \'Study Islamic jurisprudence (Fiqh) from a Shia perspective, covering worship, transactions, and contemporary issues with practical applications.\'
+ai_augmented: true
+ai_reasoning: \'Comprehensive legal framework analysis covering Ibadat and Muamalat, updated with contemporary Shariah responses to modern challenges.\'
+hero_classes: \'parallax overlay-dark-gradient hero-large\'
 header:
     short_description: Master the foundations of Shia Islamic law and learn to apply jurisprudence principles to modern life situations.
     instructor: Sheikh Ali Hussain

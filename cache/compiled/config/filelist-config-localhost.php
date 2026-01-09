@@ -3,10 +3,10 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'config',
     'environment' => 'localhost',
-    'timestamp' => 1767759312,
+    'timestamp' => 1767924126,
     'directories' => [
-        '/Users/syedaalin/Documents/Grav/user/localhost/config' => 1767733546,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1767759312,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config' => 1767807560,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1767924126,
         '/Users/syedaalin/Documents/Grav/user/config' => 1767728456,
         '/Users/syedaalin/Documents/Grav/user/config/plugins' => 1767662677,
         '/Users/syedaalin/Documents/Grav/user/config/themes' => 1767732358,
@@ -27,20 +27,24 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs' => 1767731301,
         '/Users/syedaalin/Documents/Grav/user/plugins/login' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592,
-        '/Users/syedaalin/Documents/Grav/user/themes' => 1767664230,
+        '/Users/syedaalin/Documents/Grav/user/themes' => 1767814868,
+        '/Users/syedaalin/Documents/Grav/user/themes/ngo-theme' => 1767917760,
         '/Users/syedaalin/Documents/Grav/user/themes/quark' => 1767660593,
-        '/Users/syedaalin/Documents/Grav/user/themes/my-quark' => 1767730294
+        '/Users/syedaalin/Documents/Grav/user/themes/my-quark' => 1767801703
     ],
     'file_mtimes' => [
         '/Users/syedaalin/Documents/Grav/user/localhost/config/security.yaml' => 1767733546,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/my-quark.yaml' => 1767759312,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/system.yaml' => 1767814929,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/my-quark.yaml' => 1767790452,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/ngo-theme.yaml' => 1767924126,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/quark.yaml' => 1767807405,
         '/Users/syedaalin/Documents/Grav/user/config/media.yaml' => 1764207892,
         '/Users/syedaalin/Documents/Grav/user/config/navigation.yaml' => 1767728456,
         '/Users/syedaalin/Documents/Grav/user/config/plugins/shortcodes.yaml' => 1767662677,
         '/Users/syedaalin/Documents/Grav/user/config/plugins/webp.yaml' => 1767661584,
         '/Users/syedaalin/Documents/Grav/user/config/security.yaml' => 1764207892,
-        '/Users/syedaalin/Documents/Grav/user/config/site.yaml' => 1764287214,
-        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1767759271,
+        '/Users/syedaalin/Documents/Grav/user/config/site.yaml' => 1767813071,
+        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1767822661,
         '/Users/syedaalin/Documents/Grav/user/config/themes/agency.yaml' => 1764296560,
         '/Users/syedaalin/Documents/Grav/user/config/themes/akazie-forest.yaml' => 1764384828,
         '/Users/syedaalin/Documents/Grav/user/config/themes/cardstack.yaml' => 1764293604,
@@ -71,8 +75,9 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs/breadcrumbs.yaml' => 1658743204,
         '/Users/syedaalin/Documents/Grav/user/plugins/login/login.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/email/email.yaml' => 1765351098,
+        '/Users/syedaalin/Documents/Grav/user/themes/ngo-theme/ngo-theme.yaml' => 1767917806,
         '/Users/syedaalin/Documents/Grav/user/themes/quark/quark.yaml' => 1764386856,
-        '/Users/syedaalin/Documents/Grav/user/themes/my-quark/my-quark.yaml' => 1767728328
+        '/Users/syedaalin/Documents/Grav/user/themes/my-quark/my-quark.yaml' => 1767809389
     ],
     'files' => [
         'user/localhost/config' => [
@@ -80,9 +85,21 @@ return [
                 'file' => 'user/localhost/config/security.yaml',
                 'modified' => 1767733546
             ],
+            'system' => [
+                'file' => 'user/localhost/config/system.yaml',
+                'modified' => 1767814929
+            ],
             'themes/my-quark' => [
                 'file' => 'user/localhost/config/themes/my-quark.yaml',
-                'modified' => 1767759312
+                'modified' => 1767790452
+            ],
+            'themes/ngo-theme' => [
+                'file' => 'user/localhost/config/themes/ngo-theme.yaml',
+                'modified' => 1767924126
+            ],
+            'themes/quark' => [
+                'file' => 'user/localhost/config/themes/quark.yaml',
+                'modified' => 1767807405
             ]
         ],
         'user/config' => [
@@ -108,11 +125,11 @@ return [
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1764287214
+                'modified' => 1767813071
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1767759271
+                'modified' => 1767822661
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -240,13 +257,17 @@ return [
             ]
         ],
         'user/themes' => [
+            'themes/ngo-theme' => [
+                'file' => 'user/themes/ngo-theme/ngo-theme.yaml',
+                'modified' => 1767917806
+            ],
             'themes/quark' => [
                 'file' => 'user/themes/quark/quark.yaml',
                 'modified' => 1764386856
             ],
             'themes/my-quark' => [
                 'file' => 'user/themes/my-quark/my-quark.yaml',
-                'modified' => 1767728328
+                'modified' => 1767809389
             ]
         ]
     ]

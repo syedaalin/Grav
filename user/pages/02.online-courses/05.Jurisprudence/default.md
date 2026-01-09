@@ -3,6 +3,9 @@ title: Jurisprudence (Fiqh)
 menu: Fiqh
 metadata:
     description: 'Study Islamic jurisprudence (Fiqh) from a Shia perspective, covering worship, transactions, and contemporary issues with practical applications.'
+ai_augmented: true
+ai_reasoning: 'Comprehensive legal framework analysis covering Ibadat and Muamalat, updated with contemporary Shariah responses to modern challenges.'
+hero_classes: 'parallax overlay-dark-gradient hero-large'
 header:
     short_description: Master the foundations of Shia Islamic law and learn to apply jurisprudence principles to modern life situations.
     instructor: Sheikh Ali Hussain

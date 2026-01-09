@@ -1,0 +1,377 @@
+/* ==========================================================================
+   BUTTON COMPONENTS (2026 Edition)
+   
+   Button variants with design tokens, haptic feedback, accessibility
+   ========================================================================== */
+
+@import '../tokens/design-tokens';
+
+/* Base Button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-xs;
+    
+    padding: $space-sm $space-lg;
+    border: none;
+    border-radius: var(--radius-main);
+    
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.2;
+    
+    cursor: pointer;
+    transition: all $transition-base;
+    
+    /* Minimum touch target (2026 Standard) */
+    min-width: 44px;
+    min-height: 44px;
+    
+    /* Prevent text selection */
+    user-select: none;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--neo-shadow);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    &:focus-visible {
+        outline: 3px solid var(--brand-accent);
+        outline-offset: 2px;
+    }
+    
+    /* Icon styling */
+    i {
+        font-size: 1.1em;
+    }
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: $space-xs $space-md;
+    font-size: 0.875em;
+}
+
+.btn-md {
+    padding: $space-sm $space-lg;
+    font-size: 1em;
+}
+
+.btn-lg {
+    padding: $space-md $space-xl;
+    font-size: 1.125em;
+}
+
+/* Button Variants */
+.btn-primary {
+    background: var(--brand-primary);
+    color: white;
+    
+    &:hover {
+        background: var(--brand-primary-dark);
+    }
+}
+
+.btn-secondary {
+    background: var(--brand-secondary);
+    color: white;
+    
+    &:hover {
+        background: var(--brand-secondary-light);
+    }
+}
+
+.btn-accent {
+    background: var(--brand-accent);
+    color: white;
+    
+    &:hover {
+        background: var(--brand-accent-hover);
+    }
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid currentColor;
+    
+    &:hover {
+        background: var(--brand-primary);
+        color: white;
+        border-color: var(--brand-primary);
+    }
+}
+
+.btn-glass {
+    background: var(--glass-bg);
+    color: var(--text-main);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    
+    &:hover {
+        background: var(--brand-primary);
+        color: white;
+    }
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    
+    &:hover {
+        transform: none !important;
+    }
+}
+
+/* ==========================================================================
+   SOCIAL LINKS COMPONENT
+   ========================================================================== */
+
+.social-links {
+    display: flex;
+    gap: $space-sm;
+    
+    &--horizontal {
+        flex-direction: row;
+    }
+    
+    &--vertical {
+        flex-direction: column;
+    }
+    
+    &--grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+    }
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    min-width: 44px;
+    min-height: 44px;
+    padding: $space-sm;
+    
+    border-radius: $radius-pill;
+    background: var(--bg-card);
+    color: var(--text-main);
+    text-decoration: none;
+    
+    transition: all $transition-base;
+    
+    &:hover {
+        background: var(--brand-primary);
+        color: white;
+        transform: scale(1.1) translateY(-2px);
+    }
+    
+    &:focus-visible {
+        outline: 3px solid var(--brand-accent);
+        outline-offset: 2px;
+    }
+    
+    i {
+        font-size: 1.25em;
+    }
+}
+
+/* Social network colors (optional) */
+.social-btn--facebook:hover { background: #1877f2; }
+.social-btn--twitter:hover,
+.social-btn--x:hover { background: #000000; }
+.social-btn--instagram:hover { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.social-btn--linkedin:hover { background: #0077b5; }
+.social-btn--youtube:hover { background: #ff0000; }
+.social-btn--github:hover { background: #333; }
+
+/* Size variants */
+.social-links--sm .social-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding: $space-xs;
+    
+    i { font-size: 1em; }
+}
+
+.social-links--lg .social-btn {
+    min-width: 56px;
+    min-height: 56px;
+    padding: $space-md;
+    
+    i { font-size: 1.5em; }
+}
+
+/* With labels */
+.social-label {
+    margin-left: $space-xs;
+    font-size: 0.875em;
+}
+
+/* ==========================================================================
+   CONTACT INFO COMPONENT
+   ========================================================================== */
+
+.contact-info {
+    &--list {
+        display: flex;
+        flex-direction: column;
+        gap: $space-md;
+    }
+    
+    &--inline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $space-lg;
+        align-items: center;
+    }
+    
+    &--card {
+        display: grid;
+        gap: $space-md;
+        padding: $space-lg;
+        background: var(--bg-card);
+        border-radius: var(--radius-main);
+        box-shadow: var(--neo-shadow);
+    }
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+}
+
+.contact-icon {
+    color: var(--brand-primary);
+    font-size: 1.25em;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    color: var(--text-main);
+    text-decoration: none;
+    
+    &:hover {
+        color: var(--brand-primary);
+        text-decoration: underline;
+    }
+}
+
+/* ==========================================================================
+   CARD COMPONENT
+   ========================================================================== */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-main);
+    overflow: hidden;
+    transition: all $transition-base;
+    
+    &--shadow {
+        box-shadow: var(--neo-shadow);
+    }
+    
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-xl;
+    }
+}
+
+.card--default {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card--glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.card--neo {
+    background: var(--bg-body);
+    box-shadow: var(--neo-shadow);
+    
+    &:hover {
+        box-shadow: var(--neo-shadow);
+    }
+}
+
+.card--accent {
+    background: var(--brand-accent);
+    color: white;
+    
+    .card-title {
+        color: white;
+    }
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-slow;
+    }
+    
+    .card:hover & img {
+        transform: scale(1.05);
+    }
+}
+
+.card-body {
+    padding: $space-lg;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    margin: 0 0 $space-sm;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card-content {
+    flex: 1;
+    margin-bottom: $space-md;
+    color: var(--text-muted);
+    
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Container query for cards */
+@container component (max-width: 400px) {
+    .card-image {
+        height: 150px;
+    }
+    
+    .card-body {
+        padding: $space-md;
+    }
+    
+    .card-title {
+        font-size: 1.125em;
+    }
+}

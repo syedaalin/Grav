@@ -9,38 +9,57 @@
         {% set courses = page.children %}
         
         {% for course in courses %}
-            <div class="course-card" role="listitem">
-                {% if course.media.images|first %}
-                    {% set image = course.media.images|first %}
-                    {{ image.cropZoom(800,500).html('', course.title, 'course-thumbnail')|raw }}
-                {% endif %}
-        
-                <div class="course-content">
-                    <h2>{{ course.title }}</h2>
-        
-                    {% if course.header.instructor or course.header.duration or course.header.level %}
-                    <div class="course-meta">
-                        {% if course.header.instructor %}
-                        <span class="course-meta-item"><i class="fa fa-user"></i> {{ course.header.instructor }}</span>
-                        {% endif %}
-                        {% if course.header.duration %}
-                        <span class="course-meta-item"><i class="fa fa-clock-o"></i> {{ course.header.duration }}</span>
-                        {% endif %}
-                        {% if course.header.level %}
-                        <span class="course-meta-item"><i class="fa fa-signal"></i> {{ course.header.level }}</span>
-                        {% endif %}
-                    </div>
+            {# Use Card Component for consistent styling #}
+            {% embed 'components/molecules/card.html.twig' with {
+                variant: 'default',
+                class: 'course-card'
+            } %}
+                {% block content %}
+                    {% if course.media.images|first %}
+                        {% set image = course.media.images|first %}
+                        <div class="card-image">
+                            {{ image.cropZoom(800,500).html('', course.title, 'course-thumbnail')|raw }}
+                        </div>
                     {% endif %}
-        
-                    <div class="course-description">
-                        {{ course.header.short_description|default(course.summary|striptags|slice(0, 180) ~ '...') }}
+            
+                    <div class="course-content">
+                        <h2>{{ course.title }}</h2>
+            
+                        {# Use Meta Info Component #}
+                        {% if course.header.instructor or course.header.duration or course.header.level %}
+                            {% set meta_items = [] %}
+                            {% if course.header.instructor %}
+                                {% set meta_items = meta_items|merge([{icon: 'fa-user', text: course.header.instructor}]) %}
+                            {% endif %}
+                            {% if course.header.duration %}
+                                {% set meta_items = meta_items|merge([{icon: 'fa-clock-o', text: course.header.duration}]) %}
+                            {% endif %}
+                            {% if course.header.level %}
+                                {% set meta_items = meta_items|merge([{icon: 'fa-signal', text: course.header.level}]) %}
+                            {% endif %}
+                            
+                            {% include 'components/molecules/meta-info.html.twig' with {
+                                items: meta_items,
+                                class: 'course-meta'
+                            } %}
+                        {% endif %}
+            
+                        <div class="course-description">
+                            {{ course.header.short_description|default(course.summary|striptags|slice(0, 180) ~ '...') }}
+                        </div>
                     </div>
-        
-                    <div class="course-actions">
-                        <a href="{{ course.url }}" class="btn btn-primary" data-agent-action="view_course">{{ 'THEME_MY_QUARK.VIEW_DETAILS'|t }}</a>
-                    </div>
-                </div>
-            </div>
+                {% endblock %}
+                
+                {% block actions %}
+                    {# Use Button Component #}
+                    {% include 'components/atoms/button.html.twig' with {
+                        text: 'THEME_MY_QUARK.VIEW_DETAILS'|t,
+                        url: course.url,
+                        variant: 'primary',
+                        attrs: {'data-agent-action': 'view_course'}
+                    } %}
+                {% endblock %}
+            {% endembed %}
         {% endfor %}
 
         {% if courses|length == 0 %}

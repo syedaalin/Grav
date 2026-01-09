@@ -1,0 +1,13 @@
+<section class="trust-signals py-12 border-t border-brand-dark/5 bg-brand-bg [content-visibility:auto]">
+    <div class="container mx-auto px-6 max-w-container flex flex-wrap justify-center gap-12 grayscale hover:grayscale-0 transition-all duration-700">
+        {% set signals = config.theme.trust_signals|default([{'icon':'shield-alt', 'text':'Secure SSL'}, {'icon':'credit-card', 'text':'Verified Payments'}]) %}
+        {% for signal in signals %}
+            <div class="flex items-center gap-4 opacity-60 hover:opacity-100 transition-opacity">
+                <span class="la la-{{ signal.icon }} text-3xl text-brand-primary"></span>
+                <span class="text-xs font-black uppercase tracking-widest text-brand-dark">{{ signal.text }}</span>
+            </div>
+        {% else %}
+             <span class="text-xs uppercase tracking-widest font-bold text-brand-gray">Secure SSL Payments</span>
+        {% endfor %}
+    </div>
+</section>

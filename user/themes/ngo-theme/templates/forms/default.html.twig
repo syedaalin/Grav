@@ -1,0 +1,94 @@
+{% if form is null %}
+    {% set form = grav.session.getFlashObject('form') %}
+{% endif %}
+
+{% include 'partials/form-messages.html.twig' %}
+
+{% set scope = scope ?: 'data.' %}
+{% set multipart = '' %}
+{% set method = form.method|upper|default('POST') %}
+{% set client_side_validation = form.client_side_validation is not null ? form.client_side_validation : config.plugins.form.client_side_validation|default(true) %}
+{% set inline_errors = form.inline_errors is not null ? form.inline_errors : config.plugins.form.inline_errors(false) %}
+
+{% for field in form.fields %}
+    {% if (method == 'POST' and field.type == 'file') %}
+        {% set multipart = ' enctype="multipart/form-data"' %}
+    {% endif %}
+{% endfor %}
+
+{% set action = form.action ? form.action : page.url %}
+{% if (action == base_url_relative) %}
+    {% set action = base_url_relative ~ '/' ~ page.slug %}
+{% endif %}
+
+{% if form.keep_alive %}
+    {% if form.keep_alive starts with '0' %}
+        {% set keep_alive = form.keep_alive %}
+    {% else %}
+        {% set keep_alive = form.keep_alive / 60 %}
+    {% endif %}
+{% endif %}
+
+<form name="{{ form.name }}"
+      action="{{ action | trim('/', 'right') }}"
+      method="{{ method }}"{{ multipart }}
+      {% if form.id %}id="{{ form.id }}"{% endif %}
+      {% block form_classes %}
+      class="{{ form_outer_classes }} space-y-8 @container"
+      {% endblock %}
+      {% if form.novalidate %}novalidate{% endif %}
+      {% if keep_alive %}data-grav-keepalive="true" data-grav-keepalive-interval="{{ keep_alive }}"{% endif %}
+      aria-label="{{ form.name|title }} Form"
+>
+
+  {% block inner_markup_fields_start %}{% endblock %}
+
+  <div class="grid grid-cols-1 gap-8">
+  {% for field in form.fields %}
+    {% set value = form.value(field.name) %}
+    {% if field.type == 'section' %}
+        <div class="col-span-full" role="group" aria-labelledby="field-{{ field.name }}-heading">
+            {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+        </div>
+    {% else %}
+        {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+    {% endif %}
+  {% endfor %}
+  </div>
+
+  {% include "forms/fields/formname/formname.html.twig" %}
+
+  {% block inner_markup_fields_end %}{% endblock %}
+
+  {% block inner_markup_buttons_start %}{% endblock %}
+
+  <div class="flex flex-col @sm:flex-row items-center justify-end gap-6 mt-12 pt-10 border-t border-brand-primary/10">
+  {% for button in form.buttons %}
+      {% if button.outerclasses is defined %}<div class="{{ button.outerclasses }} w-full @sm:w-auto">{% endif %}
+          {% if button.url %}
+              <a href="{{ button.url starts with 'http' ? button.url : url(button.url) }}" class="block w-full @sm:w-auto" aria-label="{{ button.value|t|default('Next') }}">
+          {% endif %}
+          <button
+                {% if button.id %}id="{{ button.id }}"{% endif %}
+                {% block button_classes %}
+                class="w-full @sm:w-auto inline-flex items-center justify-center px-12 py-5 bg-brand-primary text-white font-black rounded-3xl shadow-2xl shadow-brand-primary/20 hover:bg-brand-secondary hover:shadow-brand-secondary/30 hover:-translate-y-1 transition-all duration-500 active:scale-95 group/submit focus:outline-none focus:ring-8 focus:ring-brand-primary/20 {{ button.classes }}"
+                {% endblock %}
+                {% if button.disabled %}disabled="disabled"{% endif %}
+                type="{{ button.type|default('submit') }}"
+            >
+                {% if button.icon %}
+                    <span class="la la-{{ button.icon }} text-2xl mr-4 transition-transform group-hover/submit:rotate-12 group-hover/submit:scale-120" aria-hidden="true"></span>
+                {% endif %}
+                <span class="uppercase tracking-[0.25em] text-xs font-black">{{ button.value|t|default('Submit') }}</span>
+          </button>
+          {% if button.url %}
+              </a>
+          {% endif %}
+      {% if button.outerclasses is defined %}</div>{% endif %}
+  {% endfor %}
+  </div>
+
+  {% block inner_markup_buttons_end %}{% endblock %}
+
+  {{ nonce_field(form.getNonceAction() ?? 'form', 'form-nonce')|raw }}
+</form>

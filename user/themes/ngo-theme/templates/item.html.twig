@@ -1,0 +1,52 @@
+{% extends 'partials/base.html.twig' %}
+{% set blog = page.find(header_var('blog_url')|defined(theme_var('blog-page'))) %}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
+{% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
+{% set hero_image_name = page.header.hero_image %}
+
+{% block hero %}
+    {% if hero_image_name %}
+        {% set hero_image = page.media[hero_image_name] %}
+        {% set content %}
+            <header class="space-y-10 @container">
+                <h1 class="text-6xl @lg:text-7xl font-black leading-tight tracking-tightest text-brand-dark dark:text-white drop-shadow-2xl">{{ page.title }}</h1>
+                {% if page.header.subtitle %}
+                    <p class="text-2xl @lg:text-3xl text-brand-dark/80 dark:text-white/80 font-medium tracking-tight leading-relaxed max-w-4xl drop-shadow-lg">{{ page.header.subtitle }}</p>
+                {% endif %}
+                <div class="flex flex-wrap items-center gap-10 pt-10 border-t border-brand-dark/10 dark:border-white/10 uppercase tracking-[0.2em] text-[10px] font-black" role="contentinfo" aria-label="Post Metadata">
+                    {% include 'partials/blog/date.html.twig' %}
+                    {% include 'partials/blog/taxonomy.html.twig' %}
+                </div>
+            </header>
+        {% endset %}
+        {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div id="body-wrapper" class="py-32 bg-brand-bg min-h-[70svh] @container">
+        <div class="container mx-auto px-6 max-w-container">
+
+            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+                <nav class="mb-20" aria-label="Breadcrumb">
+                    {% include 'partials/breadcrumbs.html.twig' %}
+                </nav>
+            {% endif %}
+
+            {% embed 'partials/layout.html.twig' %}
+                {% block item %}
+                    <div class="animate-in fade-in slide-in-from-bottom-12 duration-1000">
+                        {% include 'partials/blog-item.html.twig' %}
+                    </div>
+                {% endblock %}
+                {% block sidebar %}
+                    <aside class="space-y-16 animate-in fade-in slide-in-from-right-12 duration-1000" aria-label="Sidebar">
+                        {% include 'partials/sidebar.html.twig' %}
+                    </aside>
+                {% endblock %}
+            {% endembed %}
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{#
+/**
+ * FORM INPUT COMPONENT
+ * 
+ * Reusable form input with label, validation, and accessibility
+ * 
+ * @param string type        - Input type (text, email, password, etc.)
+ * @param string name        - Input name attribute
+ * @param string label       - Label text
+ * @param string placeholder - Placeholder text
+ * @param boolean required   - Required field (default: false)
+ * @param string value       - Default value
+ * @param string class       - Additional CSS classes
+ * @param string help        - Help text below input
+ * @param object attrs       - Additional HTML attributes
+ * 
+ * Usage:
+ * {% include 'components/form-input.html.twig' with {
+ *     type: 'email',
+ *     name: 'email',
+ *     label: 'Email Address',
+ *     required: true
+ * } %}
+ */
+#}
+
+{% set type = type|default('text') %}
+{% set name = name|default('field') %}
+{% set label = label|default('') %}
+{% set placeholder = placeholder|default('') %}
+{% set required = required|default(false) %}
+{% set value = value|default('') %}
+{% set class = class|default('') %}
+{% set help = help|default('') %}
+{% set attrs = attrs|default({}) %}
+
+{% set input_id = name ~ '-' ~ random() %}
+
+<div class="form-group {{ class }}">
+    {% if label %}
+        <label for="{{ input_id }}" class="form-label">
+            {{ label }}
+            {% if required %}<span class="required" aria-label="required">{{ theme_config.form_required_symbol|default('*') }}</span>{% endif %}
+        </label>
+    {% endif %}
+    
+    <input 
+        type="{{ type }}"
+        id="{{ input_id }}"
+        name="{{ name }}"
+        class="form-input"
+        {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+        {% if value %}value="{{ value|e('html_attr') }}"{% endif %}
+        {% if required %}required aria-required="true"{% endif %}
+        {% for key, val in attrs %}{{ key }}="{{ val|e('html_attr') }}"{% endfor %}
+    >
+    
+    {% if help %}
+        <small class="form-help">{{ help }}</small>
+    {% endif %}
+</div>

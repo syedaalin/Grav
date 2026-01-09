@@ -1,0 +1,37 @@
+{% extends 'partials/base.html.twig' %}
+{% set blog_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
+{% set collection = page.collection() %}
+{% set blog = page.find(header_var('blog_url')|defined(theme_var('blog-page'))) %}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
+{% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.add('theme://js/scopedQuerySelectorShim.min.js') %}
+{% endblock %}
+
+
+        {% embed 'partials/layout.html.twig' with {blog: page} %}
+            {% block item %}
+                <div class="grid grid-cols-1 @md:grid-cols-2 @lg:grid-cols-2 @2xl:grid-cols-3 gap-10" role="list">
+                {% for child in collection %}
+                    <div class="animate-in fade-in slide-in-from-bottom-8 duration-700" style="animation-delay: {{ loop.index0 * 100 }}ms" role="listitem">
+                        {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+                    </div>
+                {% endfor %}
+                </div>
+                
+                {# Pagination to be reimplemented as Infinite Scroll or 2026 Standard #}
+            {% endblock %}
+        {% endembed %}
+        </div>
+    </div>
+{% endblock %}
+
+
+

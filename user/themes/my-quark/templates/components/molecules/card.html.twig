@@ -1,0 +1,65 @@
+{#
+/**
+ * CARD COMPONENT (2026 Edition)
+ * 
+ * Generic card component with multiple variants
+ * Supports glass effect, neomorphism, and modern CSS features
+ * 
+ * @param string title       - Card title
+ * @param string content     - Card body content
+ * @param string image       - Image URL (optional)
+ * @param string variant     - Style variant: default|glass|neo|accent
+ * @param boolean shadow     - Enable shadow (default: true)
+ * @param string class       - Additional CSS classes
+ * @param block actions      - Actions slot (buttons, links)
+ * 
+ * Usage:
+ * {% embed 'components/card.html.twig' with {
+ *     title: 'Card Title',
+ *     variant: 'glass'
+ * } %}
+ *     {% block content %}
+ *         <p>Card content goes here</p>
+ *     {% endblock %}
+ *     {% block actions %}
+ *         <a href="/learn-more" class="btn-primary">Learn More</a>
+ *     {% endblock %}
+ * {% endembed %}
+ */
+#}
+
+{% set title = title|default('') %}
+{% set variant = variant|default(theme_config.card_default_variant|default('default')) %}
+{% set shadow = shadow is defined ? shadow : (theme_config.card_shadow_enabled|default(true)) %}
+{% set class = class|default('') %}
+
+{% set variant_classes = {
+    'default': 'card--default',
+    'glass': 'card--glass',
+    'neo': 'card--neo',
+    'accent': 'card--accent'
+} %}
+
+<div class="card {{ variant_classes[variant] }} {{ shadow ? 'card--shadow' : '' }} {{ class }}">
+    {% if image %}
+        <div class="card-image">
+            <img src="{{ image }}" alt="{{ title }}" loading="lazy">
+        </div>
+    {% endif %}
+    
+    <div class="card-body">
+        {% if title %}
+            <h3 class="card-title">{{ title }}</h3>
+        {% endif %}
+        
+        <div class="card-content">
+            {% if content %}
+                {{ content|raw }}
+            {% else %}
+                {% block content %}{% endblock %}
+            {% endif %}
+        </div>
+        
+        {% block actions %}{% endblock %}
+    </div>
+</div>

@@ -1,0 +1,48 @@
+{% import "macros/components.html.twig" as components %}
+
+<div class="hidden @lg:flex justify-between items-center py-2 px-6 bg-brand-primary/5 text-xs font-bold border-b border-brand-dark/5">
+    {# Left: Date & Prayer #}
+    <div class="flex items-center gap-6">
+        {% if config.theme.utility_prayer_toggle %}
+            {{ components.prayer_widget() }}
+        {% endif %}
+        
+        {% if config.theme.utility_hijri_toggle %}
+            <div class="flex items-center text-brand-dark/80">
+                <i class="las la-calendar-alt text-lg mr-2 text-brand-primary"></i>
+                <span>{{ "now"|date("l, F j, Y") }}</span>
+                <span class="mx-2 opacity-30">|</span>
+                <span class="font-heading text-sm" x-data="{ hijri: '' }" x-init="hijri = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric', month: 'long', year: 'numeric'}).format(new Date())" x-text="hijri"></span>
+            </div>
+        {% endif %}
+    </div>
+
+    {# Right: Accessibility & Lang #}
+    <div class="flex items-center gap-4">
+        {% if config.theme.utility_accessibility_toggle %}
+            <div class="flex items-center gap-2 pr-4 border-r border-brand-dark/10">
+                <button class="p-3 min-h-[44px] min-w-[44px] flex items-center justify-center hover:text-brand-primary transition-colors" title="Increase Text Size" aria-label="Increase text size">
+                    <i class="las la-text-height text-lg"></i>
+                </button>
+                <button class="p-3 min-h-[44px] min-w-[44px] flex items-center justify-center hover:text-brand-primary transition-colors" title="High Contrast" aria-label="Toggle high contrast">
+                    <i class="las la-adjust text-lg"></i>
+                </button>
+            </div>
+        {% endif %}
+
+        {% if config.theme.utility_language_toggle %}
+            <div class="relative group/lang">
+                <button class="flex items-center gap-1 hover:text-brand-primary transition-colors uppercase tracking-wider">
+                    <i class="las la-globe text-lg"></i>
+                    <span>EN</span>
+                    <i class="las la-angle-down text-[10px]"></i>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-surface-sunken rounded-xl shadow-xl border border-glass-border opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-300 transform translate-y-2 group-hover/lang:translate-y-0 z-50">
+                     <a href="#" class="block px-4 py-2 hover:bg-brand-primary hover:text-white rounded-t-xl transition-colors">English</a>
+                     <a href="#" class="block px-4 py-2 hover:bg-brand-primary hover:text-white transition-colors text-right font-heading">اردو</a>
+                     <a href="#" class="block px-4 py-2 hover:bg-brand-primary hover:text-white rounded-b-xl transition-colors text-right font-heading">العربية</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

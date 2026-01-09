@@ -1,0 +1,18 @@
+{% if config.plugins.login.enabled and grav.user.username %}
+    <section class="login-status-wrapper inline-flex items-center gap-8 bg-white/40 backdrop-blur-3xl px-10 py-4 rounded-[2.5rem] border border-brand-primary/10 shadow-3xl shadow-black/5 transition-all hover:shadow-4xl hover:shadow-brand-primary/10 group/login animate-in fade-in slide-in-from-top-4 duration-700" aria-label="User Authentication Status">
+        <div class="relative">
+            <div class="w-14 h-14 rounded-[1.25rem] bg-gradient-to-br from-brand-primary to-brand-secondary text-white flex items-center justify-center shadow-2xl shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-500" aria-hidden="true">
+                <span class="la la-user-circle text-4xl"></span>
+            </div>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-brand-success rounded-full border-2 border-white animate-pulse" aria-hidden="true"></span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-brand-primary mb-1" aria-hidden="true">Authenticated Entity</span>
+            <strong class="text-lg font-black text-brand-dark leading-none tracking-tightest">{{ grav.user.fullname ?: grav.user.username }}</strong>
+        </div>
+        <div class="w-px h-10 bg-brand-dark/5 ml-2" aria-hidden="true"></div>
+        <a class="inline-flex items-center justify-center w-12 h-12 text-brand-primary hover:text-white hover:bg-brand-primary rounded-[1rem] transition-all active:scale-90 bg-white/60 shadow-xl shadow-black/5 group/logout" href="{{ base_url_absolute }}/task:login.logout/nonce:{{ nonce }}" aria-label="{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}">
+            <span class="la la-power-off text-2xl group-hover/logout:rotate-12 transition-transform" aria-hidden="true"></span>
+        </a>
+    </section>
+{% endif %}

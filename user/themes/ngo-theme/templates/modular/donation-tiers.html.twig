@@ -1,0 +1,57 @@
+<section class="donation-tiers py-32 bg-brand-bg relative overflow-hidden @container [content-visibility:auto] [contain-intrinsic-size:800px]">
+    <div class="container mx-auto px-6 max-w-container relative z-10">
+        <header class="max-w-3xl mb-20 space-y-4">
+            <span class="text-xs font-black uppercase tracking-[0.4em] text-brand-primary animate-in slide-in-from-left duration-700">Get Involved</span>
+            <h2 class="text-h2 font-black text-brand-dark tracking-tighter leading-tightest">Support Our Mission</h2>
+            <p class="text-xl text-brand-dark/60 font-medium leading-relaxed">Choose a donation tier to make a direct impact on our community projects.</p>
+        </header>
+
+        <div class="grid grid-cols-1 @md:grid-cols-2 @xl:grid-cols-3 gap-10">
+            {% set tiers = [
+                { 'amount': 10, 'label': 'Sustaining Member', 'desc': 'Provides one student with a digital course toolkit per month.' },
+                { 'amount': 50, 'label': 'Community Leader', 'desc': 'Funds a local community seminar or workshop for 20 people.' },
+                { 'amount': 100, 'label': 'Mission Partner', 'desc': 'Supports the maintenance of our Moodle servers for a whole month.' }
+            ] %}
+
+            {% for tier in tiers %}
+                <div class="group/tier p-12 bg-white/40 backdrop-blur-3xl border border-brand-primary/5 rounded-[3rem] shadow-xl hover:shadow-4xl hover:-translate-y-4 transition-all duration-700">
+                    <div class="grid grid-cols-1 @md:grid-cols-3 gap-6">
+        {% for tier in page.header.tiers %}
+            <button class="group relative p-8 bg-surface-sunken border border-glass-border rounded-[2.5rem] hover:bg-brand-primary hover:border-brand-primary transition-all duration-500 active:scale-95 shadow-xl shadow-transparent hover:shadow-brand-primary/20">
+                <span class="block text-4xl font-black text-brand-dark group-hover:text-white mb-2 transition-colors">{{ tier.amount }}</span>
+                <span class="block text-sm font-bold uppercase tracking-widest text-brand-gray group-hover:text-white/80 transition-colors">{{ tier.label }}</span>
+            </button>
+        {% endfor %}
+    </div>
+                        <div class="space-y-2">
+                            <h3 class="text-2xl font-black text-brand-dark">{{ tier.label }}</h3>
+                            <p class="text-brand-dark/60 font-medium leading-relaxed">{{ tier.desc }}</p>
+                        </div>
+                        <button class="w-full py-6 bg-brand-dark text-white font-black uppercase tracking-[0.2em] text-[10px] rounded-2xl group-hover/tier:bg-brand-primary transition-all active:scale-95 shadow-lg">
+                            Select Tier
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {# Custom Amount Entry #}
+            <div class="@md:col-span-2 @xl:col-span-3 p-12 bg-gradient-to-br from-brand-dark to-black rounded-[3.5rem] text-white shadow-3xl mt-10">
+                <div class="flex flex-col @lg:flex-row items-center justify-between gap-12">
+                    <div class="space-y-4 text-center @lg:text-left">
+                        <h3 class="text-4xl font-black tracking-tighter">Every Contribution Matters</h3>
+                        <p class="text-white/60 text-lg max-w-xl">Enter a custom amount or toggle recurring giving to provide consistent support for our global initiatives.</p>
+                    </div>
+                    <div class="flex flex-col @sm:flex-row gap-6 w-full @lg:w-auto">
+                        <div class="relative w-full @sm:w-64">
+                            <span class="absolute left-6 top-1/2 -translate-y-1/2 text-xl font-black opacity-30">$</span>
+                            <input type="number" class="w-full pl-12 pr-6 py-6 bg-white/10 border border-white/20 rounded-3xl text-white outline-none focus:ring-2 focus:ring-brand-primary transition-all" placeholder="Custom">
+                        </div>
+                        <button class="px-16 py-6 bg-brand-primary text-white font-black uppercase tracking-[0.2em] text-[11px] rounded-[1.5rem] hover:scale-105 active:scale-95 transition-all shadow-3xl shadow-brand-primary/40">
+                            Donate Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+{% if page.header.hero_enabled %}
+    {% set hero_style = page.header.hero_style|default('standard') %}
+    {% set title = page.header.hero_title|default(page.title) %}
+    {% set subtitle = page.header.hero_subtitle %}
+    {% set overlay_op = page.header.hero_overlay_opacity|default(0.3) %}
+    
+    {# Media Handling #}
+    {% set hero_bg = '' %}
+    {% if page.header.hero_image %}
+        {% set hero_image = page.media[page.header.hero_image] %}
+        {% if hero_image %}
+             {% set hero_bg = 'background-image: url(' ~ hero_image.url ~ ');' %}
+             {# LCP Optimization: Preload standard hero image #}
+             <link rel="preload" as="image" href="{{ hero_image.url }}" fetchpriority="high">
+        {% endif %}
+    {% endif %}
+
+    <section 
+        class="hero-builder hero-{{ hero_style }}" 
+        style="{{ hero_bg }} --overlay-opacity: {{ overlay_op }};"
+        aria-label="Hero Section"
+    >
+        {# Video Background #}
+        {% if page.header.hero_video %}
+             {% set video = page.media[page.header.hero_video] %}
+             <video class="hero-video" autoplay muted loop playsinline>
+                 <source src="{{ video.url }}" type="{{ video.mime }}">
+             </video>
+        {% endif %}
+        
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" style="text-wrap: balance;">{{ title|e }}</h1>
+                
+                {% if subtitle %}
+                    <p class="hero-subtitle" style="text-wrap: pretty;">{{ subtitle|e }}</p>
+                {% endif %}
+
+                {% if page.header.hero_buttons %}
+                <div class="hero-actions">
+                    {% for button in page.header.hero_buttons %}
+                        {# Use Button Component #}
+                        {% include 'components/atoms/button.html.twig' with {
+                            text: button.text,
+                            url: button.url,
+                            variant: button.class|replace({'btn-': ''})|default('primary'),
+                            size: 'lg'
+                        } %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endif %}

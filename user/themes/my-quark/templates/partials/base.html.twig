@@ -1,9 +1,4 @@
 {% set body_classes = [
-    theme_var('agent_header_fixed') ? 'header-fixed' : '',
-    theme_var('agent_header_animated') ? 'header-animated' : '',
-    theme_var('agent_header_dark') ? 'header-dark' : '',
-    theme_var('agent_header_transparent') ? 'header-transparent' : '',
-    theme_var('agent_footer_sticky') ? 'sticky-footer' : '',
     theme_var('physic_eco_mode') ? 'eco-mode' : '',
     theme_var('physic_focus_mode') ? 'focus-mode' : ''
 ]|join(' ')|trim %}
@@ -40,7 +35,7 @@
 
 {% block javascripts %}
     {% do assets.addJs('theme://js/email-deobfuscate.js', {group:'bottom'}) %}
-    {% do assets.addJs('theme://js/builder-features.js', {group:'bottom'}) %}
+
     {% do assets.addJs('theme://js/theme-core.js', {group:'bottom'}) %}
 {% endblock %}
 
@@ -79,33 +74,9 @@ if ('startViewTransition' in document) {
 </script>
 </head>
 <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}" data-haptics="{{ theme_var('agent_gov_haptics')|default('false') }}">
-    <a href="#start" class="skip-to-content">Skip to main content</a>
     <div id="page-wrapper">
-    {% block header %}
-        <section id="header" class="section">
-            <section class="container {{ grid_size }}">
-                <nav class="navbar" role="navigation" aria-label="Primary navigation">
-                    {% include 'partials/header-builder.html.twig' %}
-                </nav>
-            </section>
-        </section>
-        <div class="mobile-menu">
-            <button 
-                class="button_container" 
-                id="toggle"
-                aria-label="Toggle mobile navigation menu"
-                aria-expanded="false"
-                aria-controls="overlay"
-                type="button">
-                <span class="top"></span>
-                <span class="middle"></span>
-                <span class="bottom"></span>
-            </button>
-        </div>
-    {% endblock %}
-
     {% block hero %}
-        {% include 'partials/hero-builder.html.twig' %}
+        {% include 'components/organisms/site-hero.html.twig' %}
     {% endblock %}
 
         <section id="start">
@@ -127,22 +98,9 @@ if ('startViewTransition' in document) {
         {% include 'partials/footer.html.twig' %}
     {% endblock %}
 
-    {% block mobile %}
-    <div class="mobile-container">
-        <div class="overlay" id="overlay">
-            <div class="mobile-logo">
-                {% include 'partials/logo.html.twig' with {mobile: true} %}
-            </div>
-            <nav class="overlay-menu" role="navigation" aria-label="Mobile navigation">
-                {% include 'partials/navigation.html.twig' with {tree: true} %}
-            </nav>
-        </div>
-    </div>
-    {% endblock %}
-
 {% block bottom %}
     {{ assets.js('bottom')|raw }}
-    <script src="{{ url('theme://js/navigation.js') }}" defer></script>
+
 {% endblock %}
 
 </body>

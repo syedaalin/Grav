@@ -1,0 +1,39 @@
+<section class="events-modular py-32 bg-brand-bg @container [content-visibility:auto] [contain-intrinsic-size:800px]">
+    <div class="container mx-auto px-6 max-w-container">
+        <header class="flex flex-col @lg:flex-row justify-between items-end gap-12 mb-20">
+            <div class="max-w-2xl space-y-4">
+                <span class="text-xs font-black uppercase tracking-[0.4em] text-brand-secondary">Upcoming</span>
+                <h2 class="text-h2 font-black text-brand-dark tracking-tighter leading-tightest">Community Events</h2>
+                <p class="text-lg text-brand-dark/60 font-medium">Join us for upcoming webinars, majalis, and educational seminars.</p>
+            </div>
+            <button class="px-10 py-5 border-2 border-brand-dark/10 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-brand-dark hover:text-white transition-all">
+                Full Calendar
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 @xl:grid-cols-2 gap-10">
+            {% set events = page.header.events|default(theme_config.events_list) %}
+
+            {% for event in events %}
+                <div class="group/event p-8 bg-white/40 backdrop-blur-3xl border border-glass-border rounded-[2.5rem] flex items-center gap-10 hover:shadow-3xl hover:border-brand-secondary/20 transition-all duration-700">
+                    <div class="shrink-0 w-24 h-24 bg-gradient-to-br from-brand-secondary to-brand-secondary/50 rounded-3xl flex flex-col items-center justify-center text-white shadow-xl shadow-brand-secondary/20 group-hover/event:scale-110 transition-transform">
+                        <span class="text-xs font-black uppercase tracking-widest opacity-60">{{ event.date|date("M") }}</span>
+                        <span class="text-3xl font-black tracking-tighter">{{ event.date|date("d") }}</span>
+                    </div>
+                    <div class="flex-grow space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-4 py-1.5 bg-surface-sunken rounded-full text-[9px] font-black uppercase tracking-widest text-brand-gray group-hover/event:bg-brand-secondary/10 group-hover/event:text-brand-secondary transition-colors">{{ event.type|default('Event') }}</span>
+                            <span class="text-[10px] font-bold text-brand-gray opacity-60">{{ event.date|date("h:ia") }}</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-brand-dark tracking-tight">{{ event.title }}</h3>
+                        <div class="flex gap-4 pt-2">
+                            <button class="text-[10px] font-black uppercase tracking-widest text-brand-primary hover:underline">Add to Calendar</button>
+                            <span class="opacity-10 text-brand-gray">|</span>
+                            <button class="text-[10px] font-black uppercase tracking-widest text-brand-gray hover:text-brand-dark transition-colors">More Info</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

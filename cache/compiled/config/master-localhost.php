@@ -1,17 +1,29 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1767759312,
-    'checksum' => '738b822f71a6d28d705db35f3d23e74e',
+    'timestamp' => 1767924126,
+    'checksum' => '8754b176342c80058ff49b7907e0e8e6',
     'files' => [
         'user/localhost/config' => [
             'security' => [
                 'file' => 'user/localhost/config/security.yaml',
                 'modified' => 1767733546
             ],
+            'system' => [
+                'file' => 'user/localhost/config/system.yaml',
+                'modified' => 1767814929
+            ],
             'themes/my-quark' => [
                 'file' => 'user/localhost/config/themes/my-quark.yaml',
-                'modified' => 1767759312
+                'modified' => 1767790452
+            ],
+            'themes/ngo-theme' => [
+                'file' => 'user/localhost/config/themes/ngo-theme.yaml',
+                'modified' => 1767924126
+            ],
+            'themes/quark' => [
+                'file' => 'user/localhost/config/themes/quark.yaml',
+                'modified' => 1767807405
             ]
         ],
         'user/config' => [
@@ -37,11 +49,11 @@ return [
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1764287214
+                'modified' => 1767813071
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1767759271
+                'modified' => 1767822661
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -169,18 +181,251 @@ return [
             ]
         ],
         'user/themes' => [
+            'themes/ngo-theme' => [
+                'file' => 'user/themes/ngo-theme/ngo-theme.yaml',
+                'modified' => 1767917806
+            ],
             'themes/quark' => [
                 'file' => 'user/themes/quark/quark.yaml',
                 'modified' => 1764386856
             ],
             'themes/my-quark' => [
                 'file' => 'user/themes/my-quark/my-quark.yaml',
-                'modified' => 1767728328
+                'modified' => 1767809389
             ]
         ]
     ],
     'data' => [
         'themes' => [
+            'ngo-theme' => [
+                'enabled' => true,
+                'production-mode' => true,
+                'grid-size' => 'grid-lg',
+                'header-fixed' => true,
+                'header-animated' => true,
+                'header-dark' => false,
+                'header-transparent' => false,
+                'sticky-footer' => true,
+                'blog-page' => '/blog',
+                'sustainability_score' => 'A+',
+                'co2_per_view' => '0.3g',
+                'ai_disclosure' => false,
+                'ai_assistant' => false,
+                'focus_mode' => false,
+                'doodle_engine' => false,
+                'bionic_mode' => false,
+                'eco_mode' => false,
+                'footer_about_title' => 'About Our Mission',
+                'footer_mission' => 'Faith. Knowledge. Access.',
+                'contact_address' => NULL,
+                'contact_email' => NULL,
+                'contact_phone' => NULL,
+                'contact_whatsapp' => NULL,
+                'project_timeline_list' => [
+                    0 => [
+                        'title' => 'Clean Water Initiative',
+                        'description' => 'Installing filtration plants in rural Sindh.',
+                        'goal' => '$15,000',
+                        'raised' => '$12,400',
+                        'percent' => 82,
+                        'status' => 'active'
+                    ],
+                    1 => [
+                        'title' => 'Ramadan Ration Pack',
+                        'description' => 'Distributing food to 500 families.',
+                        'goal' => '$25,000',
+                        'raised' => '$5,000',
+                        'percent' => 20,
+                        'status' => 'active'
+                    ]
+                ],
+                'inspiration_text' => '"Indeed, with hardship [will be] ease."',
+                'inspiration_source' => 'Quran 94:6',
+                'prayer_times_enabled' => true,
+                'hijri_adjustment' => 0,
+                'khums_title' => 'Khums Calculator',
+                'khums_description' => 'Calculate your religious liability based on annual savings and assets.',
+                'khums_result_label' => 'Estimated Khums (1/5th)',
+                'khums_info_tooltip' => 'Khums is 20% of your annual surplus.',
+                'khums_rate' => 20,
+                'khums_currency' => '$',
+                'utility_hijri_toggle' => true,
+                'utility_prayer_toggle' => true,
+                'utility_prayer_city' => 'Karachi',
+                'utility_language_toggle' => true,
+                'utility_accessibility_toggle' => true,
+                'hero_glass_opacity' => 60,
+                'hero_primary_cta_text' => 'Explore Services',
+                'hero_primary_cta_link' => '/services',
+                'hero_secondary_cta_text' => 'Support Our Mission',
+                'hero_secondary_cta_link' => '/donate',
+                'services_list' => [
+                    0 => [
+                        'icon' => 'balance-scale',
+                        'title' => 'Religious Audits',
+                        'description' => 'Comprehensive review of business structures, contracts, and financial ethics.',
+                        'link' => '/services/audits'
+                    ],
+                    1 => [
+                        'icon' => 'search-plus',
+                        'title' => 'Personal Istikhara',
+                        'description' => 'Seek spiritual guidance for major life decisions.',
+                        'link' => '/services/istikhara'
+                    ],
+                    2 => [
+                        'icon' => 'users',
+                        'title' => 'Family Counseling',
+                        'description' => 'Empathetic support rooted in traditional wisdom.',
+                        'link' => '/services/counseling'
+                    ]
+                ],
+                'testimonials_list' => [
+                    0 => [
+                        'name' => 'Sara Ahmed',
+                        'role' => 'Scholarship Recipient',
+                        'quote' => 'This organization changed my life by funding my education.',
+                        'video_url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ],
+                    1 => [
+                        'name' => 'Ali Raza',
+                        'role' => 'Donor',
+                        'quote' => 'Transparency and impact are why I trust them with my Khums.',
+                        'video_url' => NULL,
+                        'image' => [
+                            
+                        ]
+                    ]
+                ],
+                'events_list' => [
+                    0 => [
+                        'title' => 'Annual Majlis-e-Aza',
+                        'date' => '10-03-2026 19:00',
+                        'location' => 'Main Hall, Karachi',
+                        'url' => '#',
+                        'type' => 'Religious'
+                    ],
+                    1 => [
+                        'title' => 'Youth Seminar: AIM in 2026',
+                        'date' => '15-04-2026 10:00',
+                        'location' => 'Zoom Webinar',
+                        'url' => '#',
+                        'type' => 'Webinar'
+                    ]
+                ],
+                'cta_button' => [
+                    'enabled' => true,
+                    'text' => 'Student Portal',
+                    'url' => 'https://moodle.aabtaab.com',
+                    'icon' => 'user-graduate',
+                    'external' => true
+                ],
+                'student_login_title' => 'Student Login',
+                'student_login_description' => 'Access your Moodle courses and dashboard.',
+                'student_login_button_text' => 'Sign In to Portal',
+                'featured_courses_list' => [
+                    0 => [
+                        'title' => 'Islamic Ethics in Business',
+                        'instructor' => 'Dr. A. Rahman',
+                        'url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ],
+                    1 => [
+                        'title' => 'Fiqh of Zakat',
+                        'instructor' => 'Mufti S. Ahmed',
+                        'url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ],
+                    2 => [
+                        'title' => 'Introduction to Quranic Arabic',
+                        'instructor' => 'Ustadha F. Khan',
+                        'url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ]
+                ],
+                'products_list' => [
+                    0 => [
+                        'title' => 'Sahifa Sajjadiya (Premium)',
+                        'price' => '$25.00',
+                        'type' => 'physical',
+                        'url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ],
+                    1 => [
+                        'title' => 'Fiqh Guide PDF',
+                        'price' => '$5.00',
+                        'type' => 'digital',
+                        'url' => '#',
+                        'image' => [
+                            
+                        ]
+                    ]
+                ],
+                'trust_signals_images' => [
+                    0 => [
+                        'name' => 'Stripe',
+                        'url' => NULL,
+                        'image' => 'theme://images/badges/stripe.png'
+                    ],
+                    1 => [
+                        'name' => 'SSL Secure',
+                        'url' => NULL,
+                        'image' => 'theme://images/badges/ssl.png'
+                    ]
+                ],
+                'faq_list' => [
+                    0 => [
+                        'q' => 'How do I pay Khums online?',
+                        'a' => 'Use our calculator and proceed to Stripe checkout.'
+                    ],
+                    1 => [
+                        'q' => 'Is my donation tax deductible?',
+                        'a' => 'Yes, we are a registered non-profit.'
+                    ]
+                ],
+                'spectre' => [
+                    'exp' => false,
+                    'icons' => false
+                ],
+                'custom_logo' => [
+                    'user/themes/ngo-theme/images/logo/aabtaab-logo.webp' => [
+                        'name' => 'aabtaab-logo.webp',
+                        'full_path' => 'aabtaab-logo.webp',
+                        'type' => 'image/webp',
+                        'size' => 56746,
+                        'path' => 'user/themes/ngo-theme/images/logo/aabtaab-logo.webp'
+                    ]
+                ],
+                'custom_logo_mobile' => [
+                    
+                ],
+                'text' => 'Student Login',
+                'url' => 'https://edu.aabtaab.com',
+                'icon' => 'graduation-cap',
+                'external' => true,
+                'newsletter_enabled' => true,
+                'newsletter_action' => NULL,
+                'search_enabled' => true,
+                'mega_menu_structure' => [
+                    0 => [
+                        'title' => NULL
+                    ]
+                ],
+                'prayer_api_key' => NULL,
+                'hero_video_url' => [
+                    
+                ]
+            ],
             'quark' => [
                 'enabled' => true,
                 'production-mode' => true,
@@ -196,22 +441,10 @@ return [
                     'icons' => true
                 ],
                 'custom_logo' => [
-                    'user/themes/quark/images/logo/aabtaab-logo.webp' => [
-                        'name' => 'aabtaab-logo.webp',
-                        'full_path' => 'aabtaab-logo.webp',
-                        'type' => 'image/webp',
-                        'size' => 56746,
-                        'path' => 'user/themes/quark/images/logo/aabtaab-logo.webp'
-                    ]
+                    
                 ],
                 'custom_logo_mobile' => [
-                    'user/themes/quark/images/logo/aabtaab-logo.webp' => [
-                        'name' => 'aabtaab-logo.webp',
-                        'full_path' => 'aabtaab-logo.webp',
-                        'type' => 'image/webp',
-                        'size' => 56746,
-                        'path' => 'user/themes/quark/images/logo/aabtaab-logo.webp'
-                    ]
+                    
                 ]
             ],
             'my-quark' => [
@@ -228,9 +461,124 @@ return [
                         ]
                     ]
                 ],
-                'glass_blur' => 20,
+                'sustainability_score' => 'A+',
+                'co2_per_view' => '0.2g',
+                'ai_augmentation_enabled' => true,
+                'glass_blur' => 17,
                 'neomorphism_strength' => 0,
                 'neomorphism_light' => 'top-left',
+                'button_default_variant' => 'primary',
+                'button_default_size' => 'md',
+                'button_haptic_enabled' => '0',
+                'card_default_variant' => 'default',
+                'card_shadow_enabled' => '1',
+                'card_image_lazy_load' => '1',
+                'form_required_symbol' => '*',
+                'form_validation_style' => 'inline',
+                'form_focus_highlight' => '1',
+                'image_default_loading' => 'lazy',
+                'image_default_quality' => 85,
+                'image_caption_enabled' => '1',
+                'image_responsive' => '1',
+                'meta_show_author' => '1',
+                'meta_show_date' => '1',
+                'meta_date_format' => 'F d, Y',
+                'meta_show_reading_time' => '1',
+                'meta_separator' => '•',
+                'hero_default_style' => 'standard',
+                'hero_default_overlay' => 0.3,
+                'hero_default_button_style' => 'primary',
+                'hero_enable_animations' => '1',
+                'home_enabled' => true,
+                'home_hero_title' => 'Learn Quran, Fiqh & More From Shia Scholars.',
+                'home_hero_description' => 'At Aabtaab, we bring accessible and affordable Shia Islamic education to everyone no matter where you are in the world.',
+                'home_hero_btn_text' => 'VIEW ALL SERVICES',
+                'home_hero_btn_url' => '#services',
+                'home_services_title' => 'Our Services 🤲',
+                'home_services' => [
+                    0 => [
+                        'icon' => '🕌',
+                        'title' => 'Niyabat Ziyarat',
+                        'description' => 'Have a representative perform Ziarat on your behalf at holy shrines with sincerity and devotion.',
+                        'url' => '/services/niyabat-ziyarat',
+                        'btn_text' => 'View Details →'
+                    ],
+                    1 => [
+                        'icon' => '🌾',
+                        'title' => 'Zakat',
+                        'description' => 'Purify your wealth through our Zakat services, ensuring accurate distribution to rightful recipients.',
+                        'url' => '/services/zakat',
+                        'btn_text' => 'View Details →'
+                    ],
+                    2 => [
+                        'icon' => '⚖️',
+                        'title' => 'Khums',
+                        'description' => 'Easily fulfill the obligation of paying Khums with proper calculation and Shariah compliance.',
+                        'url' => '/services/khums',
+                        'btn_text' => 'View Details →'
+                    ],
+                    3 => [
+                        'icon' => '🕯️',
+                        'title' => 'Ijarah',
+                        'description' => 'Hire someone to perform religious duties (prayers/fasts) on behalf of your departed loved ones.',
+                        'url' => '/services/ijarah',
+                        'btn_text' => 'View Details →'
+                    ],
+                    4 => [
+                        'icon' => '🛡️',
+                        'title' => 'Expiation',
+                        'description' => 'Make up for missed fasts or broken oaths through properly guided expiation services.',
+                        'url' => '/services/expiation',
+                        'btn_text' => 'View Details →'
+                    ],
+                    5 => [
+                        'icon' => '🐑',
+                        'title' => 'Sacrifice',
+                        'description' => 'Sadqah, Expiation or Aqiqah Qurbani on your behalf with complete adherence to Islamic principles.',
+                        'url' => '/services/sacrifice',
+                        'btn_text' => 'View Details →'
+                    ]
+                ],
+                'home_quote_title' => 'Quote of the Day',
+                'home_quote_author' => 'Prophet Muhammad (SAWW)',
+                'home_quote_arabic' => 'ظِلُّ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ صَدَقَتُهُ',
+                'home_quote_english' => '"The believer\'s shade on the Day of Resurrection will be his charity"',
+                'home_quote_btn_text' => '❤️ GIVE TODAY',
+                'home_quote_btn_url' => '/donate',
+                'home_courses_title' => 'Popular Courses 📚',
+                'home_courses_subtitle' => 'Pick A Course To Get Started',
+                'home_courses' => [
+                    0 => [
+                        'icon' => '💡',
+                        'title' => 'Ethics (Akhlaq)',
+                        'subtitle' => 'Path to Moral Perfection',
+                        'url' => '/online-courses/ethics'
+                    ],
+                    1 => [
+                        'icon' => '📜',
+                        'title' => 'Islamic History',
+                        'subtitle' => 'Master the Narrative',
+                        'url' => '/online-courses/history'
+                    ],
+                    2 => [
+                        'icon' => '⚖️',
+                        'title' => 'Jurisprudence (Fiqh)',
+                        'subtitle' => 'Foundations of Law',
+                        'url' => '/online-courses/jurisprudence'
+                    ],
+                    3 => [
+                        'icon' => '📖',
+                        'title' => 'Nahjul Balagha',
+                        'subtitle' => 'Book of Eloquence',
+                        'url' => '/online-courses/nahjul-balagha'
+                    ],
+                    4 => [
+                        'icon' => '🕋',
+                        'title' => 'Quran',
+                        'subtitle' => 'Arabic & Tajweed',
+                        'url' => '/online-courses/quran'
+                    ]
+                ],
                 'physic_glass_blur' => 20,
                 'physic_neo_strength' => 8,
                 'physic_neo_lightSource' => 'top',
@@ -295,7 +643,7 @@ return [
                 'brand_text_show' => '1',
                 'background_texture' => 'none',
                 'texture_opacity' => 1.05,
-                'glass_opacity' => 0.85,
+                'glass_opacity' => 6.85,
                 'container_width' => 1200,
                 'spacing_scale' => 1,
                 'texture_animate' => '1',
@@ -328,6 +676,12 @@ return [
                 'footer_copyright' => '&copy; 2026 Your Company. All rights reserved.',
                 'footer_credits' => 'Designed by Antigravity',
                 'footer_links_title' => 'Links',
+                'newsletter_placeholder' => 'THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER',
+                'newsletter_button_text' => 'THEME_MY_QUARK.NEWSLETTER_BUTTON',
+                'skip_link_text' => 'THEME_MY_QUARK.SKIP_TO_CONTENT',
+                'mobile_menu_label' => 'THEME_MY_QUARK.TOGGLE_MOBILE_MENU',
+                'agent_footer_newsletter_text' => 'THEME_MY_QUARK.NEWSLETTER_DEFAULT_TEXT',
+                'agent_footer_links_title' => 'THEME_MY_QUARK.FOOTER_LINKS_TITLE',
                 'radius_main' => '12px',
                 'custom_logo' => [
                     'user/themes/quark/images/logo/aabtaab-logo.webp' => [
@@ -527,6 +881,80 @@ return [
                         'title' => NULL,
                         'content' => NULL,
                         'animation' => 'fadeUp'
+                    ]
+                ],
+                'color_primary' => '#3b4252',
+                'color_secondary' => '#88c0d0',
+                'color_accent' => '#bf616a',
+                'color_background_body' => '#ffffff',
+                'color_background_card' => '#f5c1c1',
+                'color_text_primary' => '#2e3440',
+                'color_text_secondary' => '#7d8597',
+                'typography_font_body' => 'Outfit',
+                'typography_font_headings' => 'Bebas Neue',
+                'typography_fluid_enabled' => '1',
+                'typography_size_min' => 16,
+                'typography_size_max' => 18,
+                'typography_scale_ratio' => 1.25,
+                'typography_line_height_body' => 1.6,
+                'typography_line_height_headings' => 1.2,
+                'typography_letter_spacing_headings' => 0.98,
+                'typography_max_measure' => 65,
+                'layout_container_width' => 1200,
+                'layout_spacing_scale' => 0,
+                'layout_grid_size' => 'grid-xl',
+                'radius_corners' => '6px',
+                'shadow_neomorphism_strength' => 3,
+                'shadow_neomorphism_light_source' => 'top-left',
+                'effect_vignette_enabled' => '1',
+                'brand_name' => 'Aabtaab',
+                'brand_show_text' => '1',
+                'header_sticky_enabled' => '1',
+                'header_shrink_enabled' => '1',
+                'header_dark_mode' => '0',
+                'header_transparent' => '0',
+                'footer_color_background' => '#0f0f10',
+                'footer_color_text' => '#ffffff',
+                'footer_color_accent' => '#d4af37',
+                'footer_sticky' => '1',
+                'footer_newsletter_text' => 'THEME_MY_QUARK.NEWSLETTER_DEFAULT_TEXT',
+                'footer_legal_copy' => '&copy; 2026 Semantic OS. All rights reserved.',
+                'background_mode' => 0,
+                'background_solid_color' => '#ffffff',
+                'background_gradient_type' => 'linear',
+                'background_gradient_angle' => 135,
+                'background_gradient_start' => '#3b4252',
+                'background_gradient_end' => '#88c0d0',
+                'background_image_position' => 'center center',
+                'background_image_size' => 'cover',
+                'background_image_attachment' => 'fixed',
+                'background_image_overlay' => '#000000',
+                'background_image_overlay_opacity' => 0.3,
+                'background_mesh_color1' => '#3b4252',
+                'background_mesh_color2' => '#bf616a',
+                'background_mesh_color3' => '#88c0d0',
+                'background_mesh_speed' => 20,
+                'background_pattern_type' => 'none',
+                'background_pattern_color' => '#000000',
+                'background_pattern_opacity' => 0.05,
+                'animations_enabled' => '1',
+                'animations_respect_reduced_motion' => '1',
+                'accessibility_skip_link_text' => 'THEME_MY_QUARK.SKIP_TO_CONTENT',
+                'accessibility_mobile_menu_label' => 'THEME_MY_QUARK.TOGGLE_MOBILE_MENU',
+                'accessibility_focus_mode' => '0',
+                'sustainability_eco_mode' => '0',
+                'advanced_haptics' => '0',
+                'performance_production_mode' => '1',
+                'privacy_shield_enabled' => '1',
+                'localization_newsletter_placeholder' => 'THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER',
+                'localization_newsletter_button' => 'THEME_MY_QUARK.NEWSLETTER_BUTTON',
+                'brand_logo' => [
+                    'user/themes/my-quark/images/logo/aabtaab-logo.webp' => [
+                        'name' => 'aabtaab-logo.webp',
+                        'full_path' => 'aabtaab-logo.webp',
+                        'type' => 'image/webp',
+                        'size' => 56746,
+                        'path' => 'user/themes/my-quark/images/logo/aabtaab-logo.webp'
                     ]
                 ]
             ],
@@ -4651,7 +5079,7 @@ node_modules'
                 1 => 'tag'
             ],
             'metadata' => [
-                'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
+                'description' => 'AabTaab - Accessible and affordable Shia Islamic online courses and religious services including Niyabat Ziyarat, Zakat, and Khums.'
             ],
             'summary' => [
                 'enabled' => true,
@@ -4709,7 +5137,7 @@ node_modules'
                 'dirs' => [
                     0 => 'page://'
                 ],
-                'theme' => 'my-quark',
+                'theme' => 'ngo-theme',
                 'order' => [
                     'by' => 'default',
                     'dir' => 'asc'

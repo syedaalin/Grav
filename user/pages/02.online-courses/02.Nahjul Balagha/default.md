@@ -3,6 +3,9 @@ title: Nahjul Balagha
 menu: Nahjul Balagha
 metadata:
     description: 'Study the eloquent sermons, letters, and sayings of Imam Ali (AS) compiled in Nahjul Balagha - a comprehensive guide to Islamic wisdom and governance.'
+ai_augmented: true
+ai_reasoning: 'Scholarly analysis of Peak of Eloquence, structured into thematic modules for governance, ethics, and spirituality.'
+hero_classes: 'parallax overlay-dark-gradient hero-large'
 header:
     short_description: Explore the Peak of Eloquence - profound wisdom on spirituality, governance, ethics, and social justice from Imam Ali (AS).
     instructor: Shaykh Murtaza Rizvi

@@ -1,0 +1,24 @@
+{% macro nav_loop(page) %}
+  {% import _self as macros %}
+  {% for p in page.children.visible %}
+    {% set is_active = (p.active or p.activeChild) %}
+    {% set active_classes = is_active ? 'bg-brand-primary text-white font-black shadow-3xl shadow-brand-primary/30' : 'text-brand-dark/40 hover:text-brand-primary hover:bg-brand-primary/5' %}
+    <li class="group/nav relative">
+      <a href="{{ p.url }}" 
+         class="flex items-center px-8 py-4 text-[13px] font-black transition-all rounded-[1.5rem] uppercase tracking-[0.15em] {{ active_classes }} focus:ring-4 focus:ring-brand-primary/10"
+         {% if p.active %}aria-current="page"{% endif %}
+         {% if p.children.visible.count > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>
+        <span class="relative z-10">{{ p.menu }}</span>
+        {% if p.children.visible.count > 0 %}
+          <span class="la la-angle-down ml-3 text-xs transition-transform duration-500 group-hover/nav:rotate-180 group-focus-within/nav:rotate-180" aria-hidden="true"></span>
+        {% endif %}
+      </a>
+      {% if p.children.visible.count > 0 %}
+        <ul class="lg:absolute lg:top-full lg:left-0 lg:min-w-[300px] lg:bg-surface-sunken/40 lg:backdrop-blur-3xl lg:shadow-4xl lg:rounded-[2.5rem] lg:p-8 lg:mt-6 lg:opacity-0 lg:invisible lg:group-hover/nav:opacity-100 lg:group-hover/nav:visible lg:translate-x-4 lg:group-hover/nav:translate-x-0 lg:transition-all lg:duration-700 lg:z-[70] lg:border lg:border-brand-primary/10
+                   pl-10 border-l-2 border-brand-primary/5 ml-8 space-y-4 mt-6 lg:ml-0 lg:border-l-0" role="list">
+          {{ macros.nav_loop(p) }}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+{% endmacro %}

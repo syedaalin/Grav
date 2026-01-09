@@ -35,7 +35,7 @@ pages:
   type: regular
   dirs:
     - "page://"
-  theme: my-quark
+  theme: ngo-theme
   order:
     by: default
     dir: asc

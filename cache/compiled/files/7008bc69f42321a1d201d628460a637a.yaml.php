@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/system.yaml',
-    'modified' => 1767759271,
-    'size' => 4780,
+    'modified' => 1767822661,
+    'size' => 4781,
     'data' => [
         'absolute_urls' => false,
         'timezone' => 'UTC',
@@ -48,7 +48,7 @@ return [
             'dirs' => [
                 0 => 'page://'
             ],
-            'theme' => 'my-quark',
+            'theme' => 'ngo-theme',
             'order' => [
                 'by' => 'default',
                 'dir' => 'asc'

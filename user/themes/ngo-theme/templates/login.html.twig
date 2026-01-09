@@ -1,0 +1,35 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+<section class="min-h-[90svh] flex items-center justify-center py-32 bg-brand-bg relative overflow-hidden @container" aria-labelledby="login-heading">
+    {# Decorative elements #}
+    <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 animate-pulse" aria-hidden="true"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2 animate-pulse delay-1000" aria-hidden="true"></div>
+
+    <div class="relative w-full max-w-2xl mx-6 animate-in zoom-in-95 duration-1000">
+        <div class="bg-white/40 backdrop-blur-3xl border border-brand-primary/10 p-16 @2xl:p-24 rounded-[5rem] shadow-3xl transition-all duration-700 hover:shadow-brand-primary/5 group/login-card">
+            
+            <div class="text-center mb-16 space-y-6">
+                <div class="inline-flex w-24 h-24 bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-[2.5rem] items-center justify-center shadow-2xl shadow-brand-primary/30 mb-6 rotate-6 group-hover/login-card:rotate-0 transition-all duration-700" aria-hidden="true">
+                    <span class="la la-user-lock text-5xl"></span>
+                </div>
+                <h1 id="login-heading" class="text-5xl font-black font-heading text-brand-dark tracking-tighter leading-tight">
+                    {{ page.title }}
+                </h1>
+                {% if page.content %}
+                    <div class="text-xl text-brand-dark/60 font-medium leading-relaxed max-w-md mx-auto">
+                        {{ page.content|raw }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="login-form-wrapper">
+                {% if config.plugins.login.enabled %}
+                    {% include 'partials/login-form.html.twig' with {form: forms['login']} %}
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

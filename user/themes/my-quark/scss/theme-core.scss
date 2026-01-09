@@ -1,0 +1,64 @@
+/* ==========================================================================
+   MY-QUARK THEME | MASTER SCSS FILE (2026 Edition)
+   
+   This file imports all SCSS modules in the correct dependency order.
+   
+   Architecture:
+   1. Tokens (Foundation)
+   2. Core (Grid, Variables)
+   3. Components (UI Building Blocks)
+   4. Utilities (Helpers)
+   
+   Note: Custom CSS properties are defined in custom-styles.html.twig
+   ========================================================================== */
+
+/* ==========================================================================
+   1. TOKENS - Design System Foundation
+   ========================================================================== */
+@import 'tokens/design-tokens';
+
+/* ==========================================================================
+   2. CORE - Foundational Systems
+   ========================================================================== */
+@import 'core/variables';
+@import 'core/grid';
+
+/* ==========================================================================
+   3. COMPONENTS - UI Building Blocks
+   ========================================================================== */
+@import 'components/components';    // Button, Social, Contact, Card
+@import 'components/hero';          // Hero sections
+@import 'components/modern-css';    // 2026 CSS features (Container Queries, Anchor Positioning, etc.)
+
+/* ==========================================================================
+   4. LEGACY COMPATIBILITY
+   ========================================================================== */
+
+
+/* ==========================================================================
+   NOTES
+   ========================================================================== */
+
+/*
+ * Token System:
+ * - SCSS tokens defined in tokens/_design-tokens.scss
+ * - CSS custom properties generated in custom-styles.html.twig
+ * - Admin panel controls override CSS properties
+ * 
+ * Component Architecture:
+ * - All components use design tokens
+ * - Container queries for intrinsic design
+ * - ARIA-compliant markup
+ * - Minimum 44x44px touch targets
+ * 
+ * Performance:
+ * - Content visibility for off-screen elements
+ * - Will-change managed carefully
+ * - Reduced motion support
+ * - LCP optimization
+ * 
+ * Browser Support:
+ * - Modern browsers (Chrome 120+, Safari 17+, Firefox 120+)
+ * - Graceful degradation for older browsers
+ * - @supports rules for new features
+ */

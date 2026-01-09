@@ -1,0 +1,31 @@
+{% extends "forms/field.html.twig" %}
+
+{% block input %}
+    <div class="{{ form_field_wrapper_classes ?: 'mb-2' }} {{ field.size }} {{ field.wrapper_classes }}">
+        <textarea
+            {# required attribute structures #}
+            name="{{ (scope ~ field.name)|fieldName }}"
+            {# input attribute structures #}
+            {% block input_attributes %}
+                class="block w-full px-8 py-5 bg-white/40 backdrop-blur-3xl border border-brand-primary/10 rounded-[1.5rem] shadow-inner-lg border-brand-primary/20 focus:outline-none focus:ring-8 focus:ring-brand-primary/5 focus:border-brand-primary/40 focus:bg-white/80 text-brand-dark font-black text-xl transition-all duration-500 hover:border-brand-primary/30 min-h-[200px] {{ field.classes }}"
+                {% if field.id is defined %}id="{{ field.id|e }}" {% endif %}
+                {% if field.style is defined %}style="{{ field.style|e }}" {% endif %}
+                {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
+                {% if field.placeholder %}placeholder="{{ field.placeholder|t }}"{% endif %}
+                {% if field.autofocus in ['on', 'true', 1] %}autofocus="autofocus"{% endif %}
+                {% if field.novalidate in ['on', 'true', 1] %}novalidate="novalidate"{% endif %}
+                {% if field.readonly in ['on', 'true', 1] %}readonly="readonly"{% endif %}
+                {% if field.autocomplete in ['on', 'off'] %}autocomplete="{{ field.autocomplete }}"{% endif %}
+                {% if field.attributes is defined %}
+                  {% for attribute in field.attributes %}
+                      {{ attribute.name }}="{{ attribute.value }}"
+                  {% endfor %}
+                {% endif %}
+                {% if required %}required="required" aria-required="true"{% endif %}
+                {% if field.validate.pattern %}pattern="{{ field.validate.pattern|e }}"{% endif %}
+                rows="{{ field.rows|default(10) }}"
+                {% if field.help %}aria-describedby="{{ field.id|e }}-help"{% endif %}
+            {% endblock %}
+            >{{ value|join("\n")|e('html') }}</textarea>
+    </div>
+{% endblock %}

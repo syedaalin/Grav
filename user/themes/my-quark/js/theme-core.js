@@ -6,6 +6,7 @@ const ThemeCore = {
         this.initSpatial();
         this.initAgentic();
         this.initPredictive();
+        this.initBionicReading();
     },
 
     initSpatial: function() {
@@ -137,6 +138,69 @@ const ThemeCore = {
         } catch (e) {
             console.warn('Gravity: Speculation Rules API failed, using fallback:', e);
             this.initBasicPrefetch();
+        }
+    },
+
+    initBionicReading: function() {
+        // Rule 3.2: Bionic Reading for neurodivergent users
+        // Highlights the first half of words to improve reading speed and comprehension
+        
+        try {
+            // Check if bionic reading is enabled (either globally or via focus mode)
+            const bionicEnabled = document.body.dataset.bionicReading === 'true';
+            const focusMode = document.body.classList.contains('focus-mode');
+            
+            if (!bionicEnabled && !focusMode) return;
+            
+            // Function to apply bionic reading to text nodes
+            const makeBionic = (text) => {
+                // Split by words, preserve spaces
+                return text.replace(/\b(\w{3,})\b/g, (match) => {
+                    const splitPoint = Math.ceil(match.length / 2);
+                    const bold = match.slice(0, splitPoint);
+                    const normal = match.slice(splitPoint);
+                    return `<strong class="bionic-bold">${bold}</strong>${normal}`;
+                });
+            };
+            
+            // Apply to paragraph and list content
+            const textContainers = document.querySelectorAll('p, li, blockquote, .article-content');
+            
+            textContainers.forEach(container => {
+                // Skip if already processed
+                if (container.dataset.bionicProcessed) return;
+                
+                // Process text nodes only (preserve HTML structure)
+                const walker = document.createTreeWalker(
+                    container,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+                
+                const textNodes = [];
+                let node;
+                while (node = walker.nextNode()) {
+                    // Only process text nodes with substantial content
+                    if (node.textContent.trim().length > 3) {
+                        textNodes.push(node);
+                    }
+                }
+                
+                // Process each text node
+                textNodes.forEach(textNode => {
+                    const span = document.createElement('span');
+                    span.innerHTML = makeBionic(textNode.textContent);
+                    textNode.parentNode.replaceChild(span, textNode);
+                });
+                
+                container.dataset.bionicProcessed = 'true';
+            });
+            
+            console.log('Gravity: Bionic Reading Active');
+            
+        } catch (e) {
+            console.warn('Gravity: Bionic Reading initialization failed:', e);
         }
     },
 

@@ -1,0 +1,61 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set show_onpage_menu = header.onpage_menu == true or header.onpage_menu is null %}
+
+{% block javascripts %}
+    {% if show_onpage_menu %}
+        {% do assets.add('theme://js/singlepagenav.min.js') %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bottom %}
+    {{ parent() }}
+    {% if show_onpage_menu %}
+        <script>
+        // singlePageNav initialization & configuration
+        $('ul.navigation').singlePageNav({
+            offset: $('#header').outerHeight(),
+            filter: ':not(.external)',
+            updateHash: true,
+            currentClass: 'active'
+        });
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block header_navigation %}
+    {% if show_onpage_menu %}
+        <nav class="flex items-center" aria-label="On-page navigation">
+            <ul class="navigation flex items-center gap-3 bg-white/40 backdrop-blur-3xl p-3 rounded-[2.5rem] border border-white/10 shadow-2xl" role="list">
+            {% for module in page.collection() if module.header.visible is not same as(false) %}
+                <li role="listitem">
+                    <a class="px-10 py-5 text-xs font-black transition-all duration-700 rounded-[1.75rem] hover:bg-brand-primary/10 text-brand-dark/40 hover:text-brand-primary [&.active]:bg-brand-primary [&.active]:text-white [&.active]:shadow-2xl [&.active]:shadow-brand-primary/40 focus:ring-8 focus:ring-brand-primary/10 uppercase tracking-[0.3em] active:scale-90" href="#{{ module.menu|hyphenize }}">
+                        {{ module.menu }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </nav>
+    {% else %}
+        {{  parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block hero %}
+    {% for module in page.collection() if module.template == 'modular/hero' %}
+        <div id="{{ module.menu|hyphenize }}"></div>
+        {{ module.content|raw }}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+    <div class="space-y-0 animate-in fade-in duration-1000">
+    {% for module in page.collection() if module.template != 'modular/hero' %}
+        <div id="{{ module.menu|hyphenize }}"></div>
+        <div class="relative overflow-hidden">
+            {{ module.content|raw }}
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

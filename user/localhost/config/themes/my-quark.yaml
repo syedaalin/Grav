@@ -4,9 +4,37 @@ streams:
       type: ReadOnlyStream
       prefixes:
         '': [user/themes/my-quark, user/themes/quark]
-glass_blur: 20
+glass_blur: 17
 neomorphism_strength: 0
 neomorphism_light: top-left
+button_default_variant: primary
+button_default_size: md
+button_haptic_enabled: '0'
+card_default_variant: default
+card_shadow_enabled: '1'
+card_image_lazy_load: '1'
+form_required_symbol: '*'
+form_validation_style: inline
+form_focus_highlight: '1'
+image_default_loading: lazy
+image_default_quality: 85
+image_caption_enabled: '1'
+image_responsive: '1'
+meta_show_author: '1'
+meta_show_date: '1'
+meta_date_format: 'F d, Y'
+meta_show_reading_time: '1'
+meta_separator: •
+hero_default_style: standard
+hero_default_overlay: 0.3
+hero_default_button_style: primary
+hero_enable_animations: '1'
+newsletter_placeholder: THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER
+newsletter_button_text: THEME_MY_QUARK.NEWSLETTER_BUTTON
+skip_link_text: THEME_MY_QUARK.SKIP_TO_CONTENT
+mobile_menu_label: THEME_MY_QUARK.TOGGLE_MOBILE_MENU
+agent_footer_newsletter_text: THEME_MY_QUARK.NEWSLETTER_DEFAULT_TEXT
+agent_footer_links_title: THEME_MY_QUARK.FOOTER_LINKS_TITLE
 physic_glass_blur: 20
 physic_neo_strength: 8
 physic_neo_lightSource: top
@@ -63,7 +91,7 @@ brand_text: Aabtaab
 brand_text_show: '1'
 background_texture: none
 texture_opacity: 1.05
-glass_opacity: 0.85
+glass_opacity: 6.85
 container_width: 1200
 spacing_scale: 1
 texture_animate: '1'
@@ -265,3 +293,75 @@ agent_footer_widgets:
     title: null
     content: null
     animation: fadeUp
+color_primary: '#3b4252'
+color_secondary: '#88c0d0'
+color_accent: '#bf616a'
+color_background_body: '#ffffff'
+color_background_card: '#f5c1c1'
+color_text_primary: '#2e3440'
+color_text_secondary: '#7d8597'
+typography_font_body: Outfit
+typography_font_headings: 'Bebas Neue'
+typography_fluid_enabled: '1'
+typography_size_min: 16
+typography_size_max: 18
+typography_scale_ratio: 1.25
+typography_line_height_body: 1.6
+typography_line_height_headings: 1.2
+typography_letter_spacing_headings: 0.98
+typography_max_measure: 65
+layout_container_width: 1200
+layout_spacing_scale: 0
+layout_grid_size: grid-xl
+radius_corners: 6px
+shadow_neomorphism_strength: 3
+shadow_neomorphism_light_source: top-left
+effect_vignette_enabled: '1'
+brand_name: Aabtaab
+brand_show_text: '1'
+header_sticky_enabled: '1'
+header_shrink_enabled: '1'
+header_dark_mode: '0'
+header_transparent: '0'
+footer_color_background: '#0f0f10'
+footer_color_text: '#ffffff'
+footer_color_accent: '#d4af37'
+footer_sticky: '1'
+footer_newsletter_text: THEME_MY_QUARK.NEWSLETTER_DEFAULT_TEXT
+footer_legal_copy: '&copy; 2026 Semantic OS. All rights reserved.'
+background_mode: 0
+background_solid_color: '#ffffff'
+background_gradient_type: linear
+background_gradient_angle: 135
+background_gradient_start: '#3b4252'
+background_gradient_end: '#88c0d0'
+background_image_position: 'center center'
+background_image_size: cover
+background_image_attachment: fixed
+background_image_overlay: '#000000'
+background_image_overlay_opacity: 0.3
+background_mesh_color1: '#3b4252'
+background_mesh_color2: '#bf616a'
+background_mesh_color3: '#88c0d0'
+background_mesh_speed: 20
+background_pattern_type: none
+background_pattern_color: '#000000'
+background_pattern_opacity: 0.05
+animations_enabled: '1'
+animations_respect_reduced_motion: '1'
+accessibility_skip_link_text: THEME_MY_QUARK.SKIP_TO_CONTENT
+accessibility_mobile_menu_label: THEME_MY_QUARK.TOGGLE_MOBILE_MENU
+accessibility_focus_mode: '0'
+sustainability_eco_mode: '0'
+advanced_haptics: '0'
+performance_production_mode: '1'
+privacy_shield_enabled: '1'
+localization_newsletter_placeholder: THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER
+localization_newsletter_button: THEME_MY_QUARK.NEWSLETTER_BUTTON
+brand_logo:
+  user/themes/my-quark/images/logo/aabtaab-logo.webp:
+    name: aabtaab-logo.webp
+    full_path: aabtaab-logo.webp
+    type: image/webp
+    size: 56746
+    path: user/themes/my-quark/images/logo/aabtaab-logo.webp

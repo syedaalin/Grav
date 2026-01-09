@@ -236,7 +236,7 @@ class __TwigTemplate_47a461b892a2c44b6074a3b42b2cad2b extends Template
         <div class=\"tabs-content\">
             ";
                 // line 48
-                yield from $this->load("forms/fields/tabs/tabs.html.twig", 48, 1320707057)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 48), "fields" => ($context["fields"] ?? null)]));
+                yield from $this->load("forms/fields/tabs/tabs.html.twig", 48, 1103086432)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 48), "fields" => ($context["fields"] ?? null)]));
                 // line 56
                 yield "        </div>
     ";
@@ -280,7 +280,7 @@ class __TwigTemplate_47a461b892a2c44b6074a3b42b2cad2b extends Template
 
 
 /* forms/fields/tabs/tabs.html.twig */
-class __TwigTemplate_47a461b892a2c44b6074a3b42b2cad2b___1320707057 extends Template
+class __TwigTemplate_47a461b892a2c44b6074a3b42b2cad2b___1103086432 extends Template
 {
     private Source $source;
     /**

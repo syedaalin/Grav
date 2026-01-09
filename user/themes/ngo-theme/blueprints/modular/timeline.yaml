@@ -1,0 +1,48 @@
+title: Timeline (Roadmap) Module
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+             header.title:
+              type: text
+              label: Section Title
+              default: 'Current Projects'
+
+             header.projects:
+              type: list
+              label: Projects
+              fields:
+                .title:
+                  type: text
+                  label: Project Title
+                .location:
+                  type: text
+                  label: Location
+                .description:
+                  type: textarea
+                  label: Description
+                .icon:
+                  type: icon
+                  label: Icon
+                .percent:
+                  type: range
+                  label: Percent Funded
+                  min: 0
+                  max: 100
+                .raised:
+                    type: text
+                    label: Amount Raised (Formatted)
+                .goal:
+                    type: text
+                    label: Goal Amount (Formatted)

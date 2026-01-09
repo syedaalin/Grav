@@ -79,7 +79,7 @@ class __TwigTemplate_3ea7d55969ae44b5b0703af71128022e extends Template
         yield ">
     ";
         // line 12
-        yield from $this->load("partials/blueprints.html.twig", 12, 504427934)->unwrap()->yield(CoreExtension::merge($context, ["name" => null, "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["blueprints"] ?? null), "fields", [], "any", false, false, false, 12)]));
+        yield from $this->load("partials/blueprints.html.twig", 12, 628504509)->unwrap()->yield(CoreExtension::merge($context, ["name" => null, "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["blueprints"] ?? null), "fields", [], "any", false, false, false, 12)]));
         // line 16
         yield "
     ";
@@ -196,7 +196,7 @@ class __TwigTemplate_3ea7d55969ae44b5b0703af71128022e extends Template
 
 
 /* partials/blueprints.html.twig */
-class __TwigTemplate_3ea7d55969ae44b5b0703af71128022e___504427934 extends Template
+class __TwigTemplate_3ea7d55969ae44b5b0703af71128022e___628504509 extends Template
 {
     private Source $source;
     /**
