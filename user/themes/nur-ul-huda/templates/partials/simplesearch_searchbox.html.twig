@@ -1,0 +1,27 @@
+{% set min_chars = config.get('plugins.simplesearch.min_query_length', 3) %}
+<div class="search-wrapper relative">
+    <form name="search" data-simplesearch-form>
+        <div class="relative">
+            <input
+                name="searchfield"
+                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out"
+                type="text"
+                {% if min_chars > 0 %} min="{{ min_chars }}" {% endif %}
+                required
+                placeholder="{{ 'PLUGIN_SIMPLESEARCH.SEARCH_PLACEHOLDER'|t }}"
+                value="{{ query|e }}"
+                data-search-invalid="{{ 'PLUGIN_SIMPLESEARCH.SEARCH_FIELD_MINIMUM_CHARACTERS'|t(min_chars)|e }}"
+                data-search-separator="{{ config.system.param_sep }}"
+                data-search-input="{{ base_url }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
+            />
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fa fa-search text-gray-400"></i>
+            </div>
+        </div>
+        {% if config.plugins.simplesearch.display_button %}
+            <button type="submit" class="mt-2 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <i class="fa fa-search mr-2"></i> {{ 'PLUGIN_SIMPLESEARCH.SEARCH_BUTTON'|t }}
+            </button>
+        {% endif %}
+    </form>
+</div>

@@ -1,0 +1,39 @@
+title: Services Bento Grid
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        services:
+          type: tab
+          title: Services
+          fields:
+            header.services:
+              type: list
+              label: Bento Services
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .icon:
+                  type: iconpicker
+                  label: Icon
+                .text:
+                  type: textarea
+                  label: Description
+                .url:
+                  type: text
+                  label: Link URL
+                .width:
+                  type: select
+                  label: Visual Weight
+                  default: standard
+                  options:
+                    standard: Standard (1x1)
+                    feature: Feature (2x2)
+                    wide: Wide (2x1)
+                .color:
+                  type: colorpicker
+                  label: Custom Color Overlay
+                  help: Optional color override for this specific box

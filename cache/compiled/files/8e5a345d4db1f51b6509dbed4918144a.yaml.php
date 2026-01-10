@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/system/config/security.yaml',
-    'modified' => 1767661386,
+    'modified' => 1767934750,
     'size' => 643,
     'data' => [
         'xss_whitelist' => [

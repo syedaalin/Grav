@@ -1,0 +1,47 @@
+{% set grid_size = theme_var('grid-size') %}
+
+<section class="section py-12 md:py-16 lg:py-24 modular-services">
+    <div class="container mx-auto px-4">
+        {% if page.content %}
+            <div class="mb-12 text-center max-w-3xl mx-auto">
+                {{ page.content|raw }}
+            </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
+        {% for service in page.header.services %}
+            {% set width_class = '' %}
+            {% if service.width == 'feature' %}
+                {% set width_class = 'md:col-span-2 md:row-span-2' %}
+            {% elseif service.width == 'wide' %}
+                {% set width_class = 'md:col-span-2' %}
+            {% endif %}
+
+            <div class="glass group relative overflow-hidden rounded-2xl md:rounded-3xl p-6 md:p-8 hover:bg-white/20 transition-all duration-500 {{ width_class }}" 
+                 {% if service.color %}style="background-color: {{ service.color }}22"{% endif %}>
+                
+                <div class="relative z-10 h-full flex flex-col">
+                    <div class="mb-3 md:mb-4 text-3xl md:text-4xl text-primary transform group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa fa-fw {{ service.icon }}"></i>
+                    </div>
+                    
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">{{ service.title }}</h3>
+                    
+                    <p class="text-sm md:text-base text-gray-700 grow">
+                        {{ service.text }}
+                    </p>
+
+                    {% if service.url %}
+                        <a href="{{ service.url }}" class="mt-3 md:mt-4 inline-flex items-center text-sm md:text-base text-primary font-semibold hover:gap-2 transition-all">
+                            Learn More <i class="fa fa-chevron-right ml-2 text-xs"></i>
+                        </a>
+                    {% endif %}
+                </div>
+
+                {# Decorative Background Gradient #}
+                <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-700"></div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>

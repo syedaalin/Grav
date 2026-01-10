@@ -1,0 +1,82 @@
+{% set active_lang = grav.language.getActive ?: grav.config.site.default_lang %}
+<html lang="{{ active_lang }}" dir="{{ theme_config.site_direction|default('ltr') }}">
+	<head>
+		{% block head %}
+			<meta charset="utf-8"/>
+			<title>
+				{% if header.title %}
+					{{ header.title|e }}
+					|
+				{% endif %}
+				{{ site.title|e }}
+			</title>
+
+			<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			{% include 'partials/structured-data.html.twig' %}
+
+			{# PWA Support #}
+			<link rel="manifest" href="{{ url('theme://manifest.json') }}">
+			<meta name="theme-color" content="{{ theme_config.primary_spirit_color }}">
+
+			{% block stylesheets %}
+				{% do assets.addCss('theme://css/main.css', 100) %}
+				<link rel="preconnect" href="https://app.snipcart.com">
+				<link rel="preconnect" href="https://cdn.snipcart.com">
+				<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css"/>
+			{% endblock %}
+
+			{% block javascripts %}
+				{% do assets.addJs('jquery', 101) %}
+				{% do assets.addJs('theme://js/main.js', { 'group': 'bottom' }) %}
+
+				{% if theme_config.adhan_file %}
+					{% set adhan = theme_config.adhan_file|first %}
+					<script>
+						window.ADHAN_URL = "{{ url(adhan.path) }}";
+					</script>
+				{% endif %}
+
+				<script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+			{% endblock %}
+
+			{{ assets.css()|raw }}
+			{{ assets.js()|raw }}
+		{% endblock %}
+	</head>
+
+	<body class="bg-divine-dark text-sacred-white font-sans antialiased overflow-x-hidden font-pairing-{{ theme_config.typography_pairing|default('inter-noto') }}" style="--glass-blur: {{ theme_config.glassmorphism_blur }}px;" data-city="{{ theme_config.geo_location_default }}" data-country-code="{{ theme_config.geo_country_code|default('PK') }}" data-method="{{ theme_config.prayer_method }}" data-hijri-calibration="{{ theme_config.hijri_calibration }}" data-khums-rate="{{ theme_config.khums_rate / 100 }}" data-theme-url="{{ url('theme://')|trim('/') }}">
+
+		{% block header %}
+			<header id="header" class="fixed top-0 w-full z-50 glass-header">
+				{% include 'partials/utility-bar.html.twig' %}
+				<nav class="max-w-7xl mx-auto px-fluid-md py-4 flex items-center justify-between">
+					{% include 'partials/logo.html.twig' %}
+					{% include 'partials/navigation.html.twig' %}
+				</nav>
+			</header>
+		{% endblock %}
+
+		{% block body %}
+			<main id="main-content" class="min-h-screen pt-24">
+				{% block content %}
+					{% block content_wrapper %}
+						{{ page.content|raw }}
+					{% endblock %}
+				{% endblock %}
+			</main>
+		{% endblock %}
+
+		{% block footer %}
+			<footer id="footer" class="bg-black/50 border-t border-white/5 py-fluid-lg">
+				{% include 'partials/footer.html.twig' %}
+			</footer>
+		{% endblock %}
+
+		{% block bottom %}
+			{{ assets.js('bottom')|raw }}
+			{% include 'partials/a11y-panel.html.twig' %}
+		{% endblock %}
+	</body>
+	<div hidden id="snipcart" data-api-key="{{ theme_config.snipcart_api_key }}" data-config-modal-style="side"></div>
+</html>

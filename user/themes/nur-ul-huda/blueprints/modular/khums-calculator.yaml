@@ -1,0 +1,36 @@
+title: Khums & Sadaqah Calculator
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        calculator:
+          type: tab
+          title: Calculator
+          fields:
+            header.calc_title:
+              type: text
+              label: Section Title
+              default: Khums & Sadaqah Calculator
+
+            header.calc_description:
+              type: textarea
+              label: Section Description
+              default: Calculate your religious dues with complete privacy. All calculations are performed client-side.
+
+            header.khums_rate:
+              type: number
+              label: Khums Rate (%)
+              default: 20
+              help: Default is 20% of surplus assets.
+
+            header.currency_symbol:
+              type: text
+              label: Currency Symbol
+              default: "$"
+
+            header.donation_snipcart_id:
+              type: text
+              label: Snipcart Product ID (Base)
+              help: The product ID used to send the total amount to Snipcart.

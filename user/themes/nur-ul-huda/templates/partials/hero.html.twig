@@ -1,0 +1,61 @@
+{% set hero_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
+{% set hero_video = page.header.hero_video ? page.media[page.header.hero_video|first.name] : null %}
+
+<section id="{{ id }}" class="section relative overflow-hidden modular-hero hero {{ page.header.hero_classes }} {{ page.header.background.parallax ? 'parallax' : '' }}" 
+    {% if not hero_video %}style="background-image: url('{{ hero_image.url }}');"{% endif %}>
+    
+    {# Background Video #}
+    {% if hero_video %}
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="{{ hero_video.url }}" type="video/webm">
+        </video>
+        {# Fallback/Overlay to ensure readability over video #}
+        <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-1"></div>
+    {% endif %}
+
+    <div class="container mx-auto px-4 relative z-10 flex flex-col justify-center h-full min-h-[500px] md:min-h-[600px]">
+        <div class="max-w-4xl">
+            {{ page.content|raw }}
+            
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mt-8 md:mt-12">
+                <a href="{{ url('theme://services') }}" class="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-bold text-sm hover:shadow-xl hover:shadow-primary/20 transition-all uppercase tracking-widest text-center">
+                    Our Services
+                </a>
+                <a href="{{ url('theme://donate') }}" class="glass bg-accent text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-2xl font-bold text-sm hover:shadow-xl hover:shadow-accent/20 transition-all uppercase tracking-widest text-center">
+                    Make a Donation
+                </a>
+            </div>
+        </div>
+
+        {# Daily Inspiration Slot #}
+        {% if page.header.inspirations %}
+            {% set random_inspiration = page.header.inspirations|random %}
+            <div class="mt-12 md:mt-24 glass max-w-2xl p-6 md:p-8 rounded-3xl md:rounded-4xl border-white/20 animate-fade-in">
+                <div class="flex items-center gap-3 mb-3 md:mb-4">
+                    <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
+                        {{ random_inspiration.type|replace({'hadith': 'Hadith of the Day', 'ayat': 'Ayat of the Day', 'nahj': 'Nahj al-Balagha'}) }}
+                    </span>
+                </div>
+                
+                {% if random_inspiration.arabic %}
+                    <p class="text-xl md:text-2xl font-serif text-white mb-3 md:mb-4 leading-relaxed line-clamp-2" dir="rtl">
+                        {{ random_inspiration.arabic }}
+                    </p>
+                {% endif %}
+                
+                <p class="text-sm md:text-base text-gray-200 italic mb-3 md:mb-4 leading-relaxed">
+                    "{{ random_inspiration.translation }}"
+                </p>
+                
+                <div class="text-xs font-bold text-accent uppercase tracking-widest">
+                    — {{ random_inspiration.source }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {# Scroll Indicator #}
+    <a href="#start" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-all animate-bounce z-10">
+        <i class="fa fa-chevron-down text-2xl"></i>
+    </a>
+</section>

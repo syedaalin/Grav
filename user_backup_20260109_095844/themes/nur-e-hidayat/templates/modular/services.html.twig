@@ -1,0 +1,18 @@
+{% import 'macros/components.html.twig' as ui %}
+
+<section class="max-w-7xl mx-auto px-fluid-md py-fluid-lg content-auto">
+	<div class="mb-fluid-md">
+		<h2 class="text-3xl md:text-5xl font-black mb-4">Digital Services</h2>
+		<p class="text-sacred-white/60">Connecting the community with sacred knowledge and professional support.</p>
+	</div>
+
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 sanctum-container">
+		{% for service in theme_config.services_list %}
+			{# Using Bento Grid Logic #}
+			{% set grid_class = service.weight == 'wide' ? 'md:col-span-2' : '' %}
+			<div class="{{ grid_class }}">
+				{{ ui.glass_card(service.title, service.description, service.icon, service.link) }}
+			</div>
+		{% endfor %}
+	</div>
+</section>

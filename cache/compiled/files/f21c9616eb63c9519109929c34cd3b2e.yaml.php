@@ -1,0 +1,96 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml',
+    'modified' => 1768018297,
+    'size' => 2059,
+    'data' => [
+        'enabled' => true,
+        'production-mode' => true,
+        'grid-size' => 'grid-xl',
+        'header-fixed' => true,
+        'header-animated' => true,
+        'header-dark' => false,
+        'header-transparent' => false,
+        'sticky-footer' => true,
+        'blog-page' => '/blog',
+        'site_name' => NULL,
+        'site_tagline' => NULL,
+        'direction' => 'ltr',
+        'language' => 'en',
+        'number_format' => 'western',
+        'date_calendar' => 'gregorian',
+        'primary_spirit_color' => '#2ecc71',
+        'accent_color' => '#f1c40f',
+        'blur_strength' => 12,
+        'typography' => 'inter_noto',
+        'social_facebook' => NULL,
+        'social_twitter' => NULL,
+        'social_instagram' => NULL,
+        'social_youtube' => NULL,
+        'social_telegram' => NULL,
+        'social_whatsapp' => NULL,
+        'social_email' => NULL,
+        'contact_phone' => NULL,
+        'contact_address' => NULL,
+        'prayer_method' => 'karachi',
+        'hijri_offset' => 0,
+        'default_location' => 'Karachi',
+        'footer_copyright' => NULL,
+        'footer_show_social' => true,
+        'hero_enabled' => true,
+        'hero_default_style' => 'hero-large',
+        'services_enabled' => true,
+        'services_default_columns' => '3',
+        'features_enabled' => true,
+        'features_default_layout' => 'standard',
+        'gallery_enabled' => true,
+        'istafta_enabled' => true,
+        'khums_enabled' => true,
+        'timeline_enabled' => true,
+        'trust_signals_enabled' => true,
+        'courses_enabled' => true,
+        'spectre' => [
+            'exp' => true,
+            'icons' => true
+        ],
+        'custom_logo' => [
+            'user/themes/nur-ul-huda/images/logo/aabtaab-logo.webp' => [
+                'name' => 'aabtaab-logo.webp',
+                'full_path' => 'aabtaab-logo.webp',
+                'type' => 'image/webp',
+                'size' => 56746,
+                'path' => 'user/themes/nur-ul-huda/images/logo/aabtaab-logo.webp'
+            ]
+        ],
+        'custom_logo_mobile' => [
+            'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg' => [
+                'name' => 'aabtaab-logo (1).svg',
+                'full_path' => 'aabtaab-logo (1).svg',
+                'type' => 'image/svg+xml',
+                'size' => 17774,
+                'path' => 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
+            ]
+        ],
+        'moodle_url' => NULL,
+        'moodle_token' => NULL,
+        'snipcart_key' => NULL,
+        'jazzcash_merchant' => 'ahmed',
+        'jazzcash_salt' => NULL,
+        'adhan_media' => [
+            
+        ],
+        'minaret_enabled' => true,
+        'minaret_announcement_enabled' => true,
+        'minaret_announcement_text' => 'Wiladat Imam Hussain mubarak to all',
+        'minaret_announcement_expires' => '10-01-2026 09:05',
+        'minaret_bg_color' => '#111827',
+        'minaret_text_color' => '#f1c40f',
+        'minaret_show_dates' => true,
+        'minaret_show_prayer_ticker' => true,
+        'minaret_show_contact' => true,
+        'minaret_show_social' => true,
+        'minaret_announcement_bg_color' => '#b91c1c',
+        'minaret_announcement_text_color' => '#ffffff'
+    ]
+];

@@ -1,0 +1,107 @@
+{% if theme_var('minaret_enabled')|default(true) %}
+    {# Logic Hoisting #}
+    {% set announcement_text = theme_var('minaret_announcement_text') %}
+    {% set announcement_expires = theme_var('minaret_announcement_expires') %}
+    {% set show_announcement = theme_var('minaret_announcement_enabled') and announcement_text and (not announcement_expires or date(announcement_expires) > date('now')) %}
+    {% set text_dir = grav.language.getDirection() ?: 'ltr' %}
+    
+    {# Color Logic #}
+    {% set default_bg = theme_var('minaret_bg_color')|default('#111827') %}
+    {% set default_text = theme_var('minaret_text_color')|default('#f1c40f') %}
+    {% set announce_bg = theme_var('minaret_announcement_bg_color')|default('#b91c1c') %}
+    {% set announce_text = theme_var('minaret_announcement_text_color')|default('#ffffff') %}
+
+    {% set current_bg = show_announcement ? announce_bg : default_bg %}
+    {% set current_text = show_announcement ? announce_text : default_text %}
+
+<div id="minaret-utility-bar" 
+     class="@container py-0.5 text-xs font-medium relative border-b border-light-sep transition-colors duration-300 overflow-hidden" 
+     style="z-index: 100; --minaret-bg: {{ current_bg }}; --minaret-text: {{ current_text }}; background-color: var(--minaret-bg); color: var(--minaret-text);" dir="{{ text_dir }}">
+    
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX({{ text_dir == 'rtl' ? '-100%' : '100%' }}); }
+            100% { transform: translateX({{ text_dir == 'rtl' ? '100%' : '-100%' }}); }
+        }
+        .animate-marquee {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite; /* Slower 30s for readability */
+            align-items: center;
+            /* No gap, use margins on separators for consistency */
+            column-gap: 0; 
+            /* Ensure direction flows naturally for the text content */
+            direction: {{ text_dir }};
+        }
+        .animate-marquee:hover, 
+        .animate-marquee:focus-within {
+            animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .animate-marquee {
+                animation: none;
+                transform: none;
+                white-space: normal;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+
+    <div class="container mx-auto px-4 flex items-center min-h-[24px] h-full overflow-hidden">
+        
+        {% if show_announcement %}
+            {# === EXCLUSIVE ANNOUNCEMENT MODE === #}
+            {# Full width centered container for marquee #}
+            <div class="w-full flex justify-center h-full" role="alert" aria-live="polite">
+                {# Desktop: Scrolling #}
+                <div class="hidden @md:block w-full max-w-3xl overflow-hidden text-center">
+                    <div class="animate-marquee font-semibold" tabindex="0">
+                        {{ announcement_text }}
+                    </div>
+                </div>
+                {# Mobile: Stacked/Scrolling #}
+                <div class="block @md:hidden w-full overflow-hidden text-center">
+                    <div class="animate-marquee" tabindex="0">
+                        {{ announcement_text }}
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            {# === STANDARD WIDGET MODE (SCROLLING TICKER) === #}
+            
+            <div class="w-full h-full overflow-hidden relative">
+                <div class="animate-marquee w-full h-full" role="toolbar" aria-label="Utility Bar Ticker">
+                    
+                    {# --- left-group: Dates & Prayers --- #}
+                    {% if theme_var('minaret_show_dates')|default(true) %}
+                        <div class="flex items-center">
+                            <time id="gregorian-date" class="uppercase tracking-wider" datetime="{{ 'now'|date('Y-m-d') }}">{{ "now"|date("D, M j, Y") }}</time>
+                            <span class="mx-2 opacity-80">|</span>
+                            <span id="hijri-date" class="font-arabic uppercase tracking-wider">Loading Hijri...</span>
+                        </div>
+                    {% endif %}
+                    
+                    {% if theme_var('minaret_show_dates')|default(true) and theme_var('minaret_show_prayer_ticker')|default(true) %}
+                        <span class="mx-2 opacity-80">|</span>
+                    {% endif %}
+
+                    {% if theme_var('minaret_show_prayer_ticker')|default(true) %}
+                        <div class="flex items-center gap-2" role="timer" aria-live="polite">
+                            <span>Next Prayer:</span>
+                            <span class="font-bold" id="next-prayer-name">Maghrib</span>
+                            <time class="tabular-nums tracking-widest text-[0.9em]" id="prayer-countdown" datetime="PT2H14M15S">02:14:15</time>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            
+        {% endif %} {# End Conditional #}
+
+    </div>
+</div>
+{% endif %}
+

@@ -1,0 +1,31 @@
+en:
+  THEME_NUR:
+    ADMIN:
+      VISUAL_IDENTITY: "Visual Identity"
+      RELIGIOUS_UTILITIES: "The Digital Sanctum"
+      INTEGRATIONS: "Integrations"
+      SACRED_ACADEMY: "Sacred Academy"
+      NGO_TIMELINE: "NGO Transparency Timeline"
+      CONTACT_SANCTUM: "Contact Sanctum"
+    UI:
+      NEXT_PRAYER: "Next Prayer"
+      SUPPORT_US: "Support Us"
+      ENROLL_NOW: "Enroll Now"
+      KHUMS_CALCULATOR: "Khums & Sadaqah Calculator"
+      SEHME_IMAM: "Sehme Imam (A.S)"
+      SEHME_SADAAT: "Sehme Sadaat"
+      DONATE_NOW: "Donate Now"
+    NAV:
+      LOGIN: "Login / Sanctum"
+      DASHBOARD: "My Dashboard"
+ur:
+  THEME_NUR_E_HIDAYAT:
+    TITLE: "نور ہدایت"
+    TAGLINE: "ڈیجیٹل رحمت"
+    NAV:
+      LOGIN: "لاگ ان / خانقاہ"
+      DASHBOARD: "میرا ڈیش بورڈ"
+      SUPPORT_US: "ہماری حمایت کریں"
+      ENROLL_NOW: "داخلہ لیں"
+      KHUMS_CALCULATOR: "خمس اور صدقہ کیلکولیٹر"
+      DONATE_NOW: "ابھی عطیہ کریں"

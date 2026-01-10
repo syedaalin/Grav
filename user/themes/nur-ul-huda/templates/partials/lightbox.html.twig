@@ -1,0 +1,19 @@
+{# Lightbox Partial - Fallback for Gallery #}
+{# This is a simple fallback. For full lightbox functionality, install the Lightbox Gallery premium plugin #}
+
+{% if config.plugins['lightbox-gallery'] is defined and config.plugins['lightbox-gallery'].enabled %}
+    {# Use premium plugin if available #}
+    <a href="{{ image }}" class="glightbox" data-gallery="{{ gallery }}" data-glightbox="title: {{ title }}; description: {{ desc }}">
+        {{ content|raw }}
+    </a>
+{% else %}
+    {# Simple fallback: open image in new tab #}
+    <a href="{{ image }}" target="_blank" rel="noopener noreferrer" class="gallery-link group block overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300" title="{{ title }}">
+        <div class="relative">
+            {{ content|raw }}
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <i class="fa fa-search-plus text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+            </div>
+        </div>
+    </a>
+{% endif %}

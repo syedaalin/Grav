@@ -1,0 +1,16 @@
+{
+    "webp": {
+        "slug": "webp",
+        "disabled_at": 1767661584,
+        "message": "Declaration of GuzzleHttp\\Psr7\\Uri::getScheme() must be compatible with Psr\\Http\\Message\\UriInterface::getScheme(): string",
+        "file": "/Users/syedaalin/Documents/Grav/user/plugins/webp/vendor/guzzlehttp/psr7/src/Uri.php",
+        "line": 423
+    },
+    "shortcodes": {
+        "slug": "shortcodes",
+        "disabled_at": 1767662677,
+        "message": "spl_autoload_register(): Argument #2 ($do_throw) has been ignored, spl_autoload_register() will always throw",
+        "file": "/Users/syedaalin/Documents/Grav/user/plugins/shortcodes/classes/Autoloader.php",
+        "line": 92
+    }
+}

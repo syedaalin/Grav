@@ -1,0 +1,337 @@
+{% set direction = theme_var('direction')|default('ltr') %}
+{% set language = theme_var('language')|default(grav.language.getActive ?: grav.config.site.default_lang ?: 'en') %}
+{% set typography = theme_var('typography')|default('inter_noto') %}
+{% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer', direction, typography]) %}
+{% set grid_size = theme_var('grid-size') %}
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% use 'blocks/base.html.twig' %}
+<!DOCTYPE html>
+<html lang="{{ language }}" dir="{{ direction }}">
+<head>
+{% block head deferred %}
+    <meta charset="utf-8" />
+    <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    {% if theme_var('production-mode') %}
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.snipcart.com https://api.aladhan.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.snipcart.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.snipcart.com; connect-src 'self' https://api.aladhan.com https://cdn.snipcart.com; frame-src 'self' https://cdn.snipcart.com;">
+    {% endif %}
+    {% include 'partials/metadata.html.twig' %}
+
+    {% set logo_img = theme_var('custom_logo') ? media['theme://images/logo/' ~ (theme_var('custom_logo')|first).name] : null %}
+    {% set favicon = logo_img ? logo_img.cropZoom(32, 32) : media['theme://images/favicon.png'] %}
+    <link rel="icon" type="image/png" href="{{ favicon.url }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+    <link rel="manifest" href="{{ url('theme://manifest.json') }}">
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('{{ url('theme://sw.js') }}');
+        });
+      }
+    </script>
+
+    {% set primary_color = theme_var('primary_spirit_color')|default('#2ecc71') %}
+    {% set accent_color = theme_var('accent_color')|default('#f1c40f') %}
+    {% set blur_strength = theme_var('blur_strength')|default(12) ~ 'px' %}
+
+    <style>
+        :root {
+            --color-primary: {{ primary_color }};
+            --color-accent: {{ accent_color }};
+            --color-secondary: {{ accent_color }};
+            --blur-strength: {{ blur_strength }};
+        }
+    </style>
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCss('theme://css/line-awesome.min.css') %}
+{% endblock %}
+
+{% block javascripts %}
+    {% do assets.addJs('jquery', 101) %}
+    {% do assets.addJs('theme://js/number-format.js', 95) %}
+    {% do assets.addJs('theme://js/pull-to-refresh.js', 94) %}
+    {% do assets.addJs('theme://js/gallery-swipe.js', 93) %}
+    {% do assets.addJs('theme://js/site.js', 90) %}
+    
+    {# Pass theme config to JavaScript #}
+    <script>
+        window.themeConfig = {
+            numberFormat: '{{ theme_var('number_format')|default('western') }}',
+            dateCalendar: '{{ theme_var('date_calendar')|default('gregorian') }}',
+            direction: '{{ direction }}',
+            language: '{{ language }}'
+        };
+    </script>
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+<body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+    {# Skip Link for Accessibility #}
+    <a href="#start" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+    
+{% block header %}
+        {% include 'partials/minaret.html.twig' %}
+        <section id="header" class="section py-4 lg:py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 transition-transform duration-300">
+            <section class="container mx-auto px-4">
+                <nav class="navbar flex justify-between items-center h-12 lg:h-14">
+                    
+                    {# ZONE A (Mobile: Toggle | Desktop: Logo) #}
+                    <div class="navbar-left flex items-center gap-4 lg:gap-8 flex-1 lg:flex-none">
+                        {# Mobile Toggle #}
+                        {# Mobile Toggle #}
+                        <button id="mobile-toggle" 
+                                class="lg:hidden p-2 -ml-2 text-black hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg relative z-50"
+                                aria-label="Toggle navigation"
+                                aria-controls="mobile-overlay"
+                                aria-expanded="false"
+                                onclick="document.getElementById('mobile-overlay').classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden';"
+                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+
+                        {# Desktop Logo #}
+                        <div class="hidden lg:block logo-wrapper">
+                            {% include 'partials/logo.html.twig' %}
+                        </div>
+                    </div>
+
+                    {# ZONE B (Mobile: Logo | Desktop: Navigation) #}
+                    <div class="navbar-center flex items-center justify-center lg:justify-start lg:flex-1">
+                        {# Mobile Logo (Centered) #}
+                        <div class="lg:hidden logo-mobile">
+                            {% include 'partials/logo.html.twig' with {mobile: true} %}
+                        </div>
+
+                        {# Desktop Navigation #}
+                        <nav class="hidden lg:flex items-center space-x-6 font-bold text-sm uppercase tracking-wide">
+                            {% block header_navigation %}
+                                {% include 'partials/navigation.html.twig' %}
+                            {% endblock %}
+                        </nav>
+                    </div>
+
+                    {# ZONE C (Mobile & Desktop: User Actions) #}
+                    <div class="navbar-right flex items-center justify-end gap-3 lg:gap-4 flex-1 lg:flex-none">
+                        
+                        {# Search Trigger (Expandable) #}
+                        <button class="p-2 text-gray-700 hover:text-primary transition-colors rounded-lg" 
+                                aria-label="Search"
+                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                            <i class="la la-search text-xl" aria-hidden="true"></i>
+                        </button>
+
+                        {# Snipcart Indicator (Always Visible) #}
+                        <button class="snipcart-checkout relative p-2 text-gray-700 hover:text-primary transition-colors rounded-lg" 
+                                aria-label="Shopping cart"
+                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                            <i class="la la-shopping-bag text-xl md:text-2xl" aria-hidden="true"></i>
+                            <span class="snipcart-items-count absolute top-1 right-0 bg-accent text-gray-900 text-[10px] font-black w-4 h-4 md:w-5 md:h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm" aria-live="polite">0</span>
+                        </button>
+
+                        {# User Account (Icon on Mobile, Button on Desktop) #}
+                        {% if config.plugins.login.enabled and grav.user.username %}
+                            <a href="{{ url('theme://dashboard') }}" 
+                               class="hidden lg:inline-flex items-center gap-2 glass bg-primary text-white px-5 py-2 rounded-xl font-bold text-xs hover:shadow-lg hover:shadow-primary/20 transition-all"
+                               aria-label="Dashboard">
+                                <span>Dashboard</span>
+                            </a>
+                            <a href="{{ url('theme://dashboard') }}" 
+                               class="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg"
+                               aria-label="Dashboard"
+                               style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                                <i class="la la-user-circle text-2xl" aria-hidden="true"></i>
+                            </a>
+                        {% else %}
+                            {% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
+                            <a href="{{ login_url }}" 
+                               class="hidden lg:inline-block text-gray-900 font-black text-xs uppercase hover:text-primary transition-colors ml-2"
+                               aria-label="Login">
+                                Login
+                            </a>
+                            <a href="{{ login_url }}" 
+                               class="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg"
+                               aria-label="Login"
+                               style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                                <i class="la la-sign-in-alt text-2xl" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </nav>
+            </section>
+        </section>
+
+        {# Mobile Off-Canvas Menu (Overlay) #}
+        <div id="mobile-overlay" 
+             class="fixed inset-0 z-60 bg-gray-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+             aria-hidden="true">
+            
+            <div class="flex flex-col h-full">
+                {# Overlay Header #}
+                <div class="flex items-center justify-between p-4 border-b border-gray-800">
+                    <div class="w-32 brightness-0 invert filter">
+                         {% include 'partials/logo.html.twig' with {mobile: true} %}
+                    </div>
+                    <button id="mobile-close" 
+                            class="p-2 text-gray-400 hover:text-white transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                            aria-label="Close menu"
+                            style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                {# Overlay Content #}
+                <div class="flex-1 overflow-y-auto p-6">
+                    {# Search Bar (Mobile) #}
+                    <div class="mb-8">
+                        <div class="relative">
+                            <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder-gray-500">
+                            <i class="la la-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                        </div>
+                    </div>
+
+                    {# Navigation Links #}
+                    <nav class="mobile-nav space-y-2 font-bold text-lg">
+                        {% include 'partials/navigation.html.twig' with {mobile: true} %}
+                    </nav>
+                </div>
+
+                {# Overlay Footer #}
+                <div class="p-6 bg-gray-900 border-t border-gray-800">
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Connect With Us</h4>
+                    <div class="flex gap-4">
+                        {% if theme_var('social_facebook') %}
+                            <a href="{{ theme_var('social_facebook') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-facebook-f"></i></a>
+                        {% endif %}
+                        {% if theme_var('social_twitter') %}
+                            <a href="{{ theme_var('social_twitter') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-twitter"></i></a>
+                        {% endif %}
+                        {% if theme_var('social_instagram') %}
+                            <a href="{{ theme_var('social_instagram') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-instagram"></i></a>
+                        {% endif %}
+                         {% if theme_var('social_youtube') %}
+                            <a href="{{ theme_var('social_youtube') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-youtube"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block hero %}{% endblock %}
+
+        <section id="start">
+        {% block body %}
+            <section id="body-wrapper" class="section py-8">
+                {% block messages %}
+                    <div class="container mx-auto px-4">
+                        {% include 'partials/messages.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+                <div class="container mx-auto px-4">
+                    {{ block('content_surround') }}
+                </div>
+            </section>
+        {% endblock %}
+        </section>
+
+    </div>
+
+    {% block footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock %}
+
+    {# NOTE: Removed old .mobile-menu block as it's now integrated #}
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+
+    <script>
+        window.themeConfig = {
+            direction: '{{ direction }}',
+            prayerMethod: '{{ theme_var('prayer_method')|default('tehran') }}',
+            hijriOffset: {{ theme_var('hijri_offset')|default(0) }},
+            location: '{{ theme_var('default_location')|default('Karachi') }}',
+            snipcartKey: '{{ theme_var('snipcart_key') }}',
+            moodleUrl: '{{ theme_var('moodle_url') }}',
+            adhanMedia: '{{ theme_var('adhan_media') ? url('theme://media/' ~ (theme_var('adhan_media')|first).name) : '' }}'
+        };
+
+        // CRITICAL: Inline Mobile Menu Logic (No Dependencies)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileClose = document.getElementById('mobile-close');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const bodyEl = document.body;
+
+            console.log('Mobile Menu Script Loaded');
+
+            function toggleMenu() {
+                if (!mobileOverlay) return;
+                
+                // Toggle state
+                if (mobileOverlay.classList.contains('-translate-x-full')) {
+                    // Open
+                    console.log('Opening Menu');
+                    mobileOverlay.classList.remove('-translate-x-full');
+                    bodyEl.classList.add('overflow-hidden');
+                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+                } else {
+                    // Close
+                    console.log('Closing Menu');
+                    mobileOverlay.classList.add('-translate-x-full');
+                    bodyEl.classList.remove('overflow-hidden');
+                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Stop bubbling
+                    toggleMenu();
+                });
+            } else {
+                console.error('Mobile Toggle Button NOT found');
+            }
+
+            if (mobileClose) {
+                mobileClose.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+            }
+
+            // Close on click outside
+            document.addEventListener('click', function(e) {
+                if (mobileOverlay && !mobileOverlay.classList.contains('-translate-x-full') && 
+                    !mobileOverlay.contains(e.target) && 
+                    (!mobileToggle || !mobileToggle.contains(e.target))) {
+                    console.log('Closing Menu (Outside Click)');
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
+
+    {# Snipcart Integration #}
+    {% if theme_var('snipcart_key') %}
+        <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+        <div hidden id="snipcart" data-api-key="{{ theme_var('snipcart_key') }}" data-config-modal-style="side"></div>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<a href="{{ base_url == '' ? '/' : base_url }}" class="flex items-center gap-2 group">
+	{% set logo = theme_config.logo|first %}
+	{% if logo %}
+		<img src="{{ url(logo.path) }}" class="h-10 w-auto group-hover:rotate-360 transition-transform duration-700" alt="{{ site.title|e }}"/>
+	{% else %}
+		<div class="h-10 w-10 rounded-full bg-primary-spirit flex items-center justify-center text-accent-gold font-serif text-2xl font-bold">ن</div>
+	{% endif %}
+	<span class="text-xl font-bold tracking-tight text-sacred-white group-hover:text-accent-gold transition-colors">{{ site.title|e }}</span>
+</a>

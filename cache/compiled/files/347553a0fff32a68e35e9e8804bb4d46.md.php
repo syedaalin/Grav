@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/system/pages/notfound.md',
-    'modified' => 1767661386,
+    'modified' => 1767934750,
     'size' => 67,
     'data' => [
         'header' => [

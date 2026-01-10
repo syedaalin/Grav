@@ -1,0 +1,199 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-e-hidayat.yaml',
+    'modified' => 1767942918,
+    'size' => 4161,
+    'data' => [
+        'enabled' => true,
+        'moodle_enabled' => false,
+        'commerce_enabled' => false,
+        'payment_gateways_enabled' => false,
+        'primary_spirit_color' => '#065f46',
+        'accent_gold_color' => '#fbbf24',
+        'glassmorphism_blur' => 15,
+        'site_direction' => 'ltr',
+        'prayer_method' => 'Karachi',
+        'hijri_calibration' => 0,
+        'geo_location_default' => 'Karachi',
+        'moodle_url' => 'https://edu.aabtaab.com',
+        'moodle_api_token' => 'mock-token-123',
+        'snipcart_api_key' => 'mock-snipcart-key',
+        'jazzcash_merchant_id' => 'JC12345',
+        'jazzcash_salt' => 'SECRET-SALT',
+        'inspirations' => [
+            0 => [
+                'category' => 'Ayat of the Day',
+                'text' => 'Indeed, with hardship [will be] ease.',
+                'source' => 'Quran 94:6'
+            ],
+            1 => [
+                'category' => 'Wisdom of Imam Ali (AS)',
+                'text' => 'He who has a thousand friends has not a friend to spare, and he who has one enemy will meet him everywhere.',
+                'source' => 'Imam Ali (AS)'
+            ],
+            2 => [
+                'category' => 'Nahj al-Balagha',
+                'text' => 'The best wealth is the abandonment of desires.',
+                'source' => 'Nahj al-Balagha'
+            ]
+        ],
+        'hero_primary_cta_text' => 'Explore Services',
+        'hero_primary_cta_link' => '/services',
+        'hero_secondary_cta_text' => 'Support Our Mission',
+        'hero_secondary_cta_link' => '/donate',
+        'services_list' => [
+            0 => [
+                'title' => 'Online Istikhara',
+                'description' => 'Seek spiritual guidance through traditional methods with qualified scholars.',
+                'icon' => 'star',
+                'link' => '/services/istikhara',
+                'weight' => 'wide'
+            ],
+            1 => [
+                'title' => 'Live Counseling',
+                'description' => 'One-on-one sessions for family, youth, and spiritual matters.',
+                'icon' => 'users',
+                'link' => '/services/counseling',
+                'weight' => 'standard'
+            ],
+            2 => [
+                'title' => 'Jurisprudence (Fiqh)',
+                'description' => 'Access our rich library of rulings and live Q&A sessions.',
+                'icon' => 'book',
+                'link' => '/services/fiqh',
+                'weight' => 'standard'
+            ]
+        ],
+        'featured_courses_list' => [
+            0 => [
+                'title' => 'Introduction to Quranic Exegesis',
+                'instructor' => 'Dr. Ali Raza',
+                'url' => '/online-courses/quranic-exegesis'
+            ],
+            1 => [
+                'title' => 'Ethics in Modern Business',
+                'instructor' => 'Sheikh Hassan',
+                'url' => '/online-courses/ethics'
+            ],
+            2 => [
+                'title' => 'Foundations of Jurisprudence',
+                'instructor' => 'Sayyid Ammar',
+                'url' => '/online-courses/fiqh-basics'
+            ]
+        ],
+        'project_timeline_list' => [
+            0 => [
+                'title' => 'Clean Water Project - Rural Sindh',
+                'description' => 'Installing solar-powered water filtration units for over 500 families.',
+                'goal' => '$25,000',
+                'raised' => '$18,750',
+                'percent' => 75,
+                'suggested_donation' => 10,
+                'status' => 'active',
+                'snipcart_id' => 'project-water-sindh'
+            ],
+            1 => [
+                'title' => 'Sanctum Library Digitalization',
+                'description' => 'Preserving ancient manuscripts in high-definition digital formats.',
+                'goal' => '$15,000',
+                'raised' => '$12,000',
+                'percent' => 80,
+                'suggested_donation' => 10,
+                'status' => 'active',
+                'snipcart_id' => 'project-library-digital'
+            ],
+            2 => [
+                'title' => 'Community Health Clinic',
+                'description' => 'Building a free medical center for the underprivileged.',
+                'goal' => '$50,000',
+                'raised' => '$5,000',
+                'percent' => 10,
+                'suggested_donation' => 10,
+                'status' => 'planning',
+                'snipcart_id' => 'project-health-clinic'
+            ]
+        ],
+        'trust_signals_images' => [
+            0 => [
+                'name' => 'Verified NGO',
+                'url' => '#'
+            ],
+            1 => [
+                'name' => 'PCI DSS Compliant',
+                'url' => '#'
+            ],
+            2 => [
+                'name' => 'Sharia Certified',
+                'url' => '#'
+            ]
+        ],
+        'footer_links' => [
+            0 => [
+                'text' => 'Home',
+                'url' => '/'
+            ],
+            1 => [
+                'text' => 'Services',
+                'url' => '/services'
+            ],
+            2 => [
+                'text' => 'Courses',
+                'url' => '/online-courses'
+            ],
+            3 => [
+                'text' => 'Donate',
+                'url' => '/donate'
+            ]
+        ],
+        'social_links' => [
+            0 => [
+                'network' => 'facebook',
+                'url' => '#'
+            ],
+            1 => [
+                'network' => 'twitter',
+                'url' => '#'
+            ],
+            2 => [
+                'network' => 'youtube',
+                'url' => '#'
+            ],
+            3 => [
+                'network' => 'instagram',
+                'url' => '#'
+            ]
+        ],
+        'footer_mission' => 'Faith. Knowledge. Access. Bridging tradition with the future through the Digital Sanctum.',
+        'contact_address' => '123 Sanctum Heights, Knowledge Valley, Karachi',
+        'contact_email' => 'salam@hidayat.org',
+        'contact_phone' => '+92 21 34567890',
+        'khums_currency' => '$',
+        'khums_rate' => 20,
+        'logo' => [
+            'user/themes/nur-e-hidayat/images/logo/aabtaab-logo.svg' => [
+                'name' => 'aabtaab-logo.svg',
+                'full_path' => 'aabtaab-logo.svg',
+                'type' => 'image/svg+xml',
+                'size' => 17774,
+                'path' => 'user/themes/nur-e-hidayat/images/logo/aabtaab-logo.svg'
+            ]
+        ],
+        'favicon' => [
+            'user/themes/nur-e-hidayat/images/logo/aabtaab-logo.webp' => [
+                'name' => 'aabtaab-logo.webp',
+                'full_path' => 'aabtaab-logo.webp',
+                'type' => 'image/webp',
+                'size' => 56746,
+                'path' => 'user/themes/nur-e-hidayat/images/logo/aabtaab-logo.webp'
+            ]
+        ],
+        'typography_pairing' => 'roboto-serif',
+        'geo_country_code' => 'PK',
+        'easypaisa_merchant_id' => NULL,
+        'easypaisa_hash_key' => NULL,
+        'adhan_file' => [
+            
+        ]
+    ]
+];

@@ -1,0 +1,57 @@
+{% import 'macros/components.html.twig' as ui %}
+
+<section class="max-w-7xl mx-auto px-fluid-md py-fluid-lg overflow-hidden">
+	{% set is_rtl = theme_config.site_direction == 'rtl' %}
+	<div class="flex items-center justify-between mb-fluid-md">
+		<div>
+			<h2 class="text-3xl md:text-5xl font-black mb-4">Sacred artifacts</h2>
+			<p class="text-sacred-white/60">Curated items to support your spiritual journey.</p>
+		</div>
+		<div class="flex gap-2" x-data="{ isRTL: {{ is_rtl ? 'true' : 'false' }} }">
+			<button @click="$refs.carousel.scrollBy({ left: isRTL ? 300 : -300, behavior: 'smooth' })" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+				<i class="fa fa-chevron-{{ is_rtl ? 'right' : 'left' }}"></i>
+			</button>
+			<button @click="$refs.carousel.scrollBy({ left: isRTL ? -300 : 300, behavior: 'smooth' })" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+				<i class="fa fa-chevron-{{ is_rtl ? 'left' : 'right' }}"></i>
+			</button>
+		</div>
+	</div>
+
+	<div x-data class="relative">
+		<div x-ref="carousel" class="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-8">
+			{% for product in page.header.products %}
+				<div class="flex-none w-72 snap-start group">
+					<div class="glass-panel rounded-sacred overflow-hidden relative aspect-[3/4]">
+						{% if product.image %}
+							<img src="{{ url(product.image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ product.name }}"/>
+						{% else %}
+							<div class="w-full h-full bg-primary-spirit/10 flex items-center justify-center">
+								<i class="fa fa-shopping-bag text-4xl text-white/10"></i>
+							</div>
+						{% endif %}
+
+						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+							<button class="snipcart-add-item btn-sacred w-full justify-center" data-item-id="{{ product.id }}" data-item-name="{{ product.name }}" data-item-price="{{ product.price }}" data-item-url="{{ page.url }}" data-item-description="{{ product.description }}">
+								Add to Cart
+							</button>
+						</div>
+					</div>
+					<div class="mt-4">
+						<h3 class="font-bold text-lg">{{ product.name }}</h3>
+						<span class="text-accent-gold font-black">{{ product.price_formatted|default('$' ~ product.price) }}</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<style>
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+</style>

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/system/blueprints/config/backups.yaml',
-    'modified' => 1767661386,
+    'modified' => 1767934750,
     'size' => 4224,
     'data' => [
         'title' => 'PLUGIN_ADMIN.BACKUPS',

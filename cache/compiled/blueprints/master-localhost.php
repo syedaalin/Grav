@@ -1,49 +1,43 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1767918860,
-    'checksum' => '96c57cf4a9a1f48af6f617c9476b1836',
+    'timestamp' => 1768019947,
+    'checksum' => '4d0b7c465338537c327424e772ec6249',
     'files' => [
-        'user/plugins/admin/blueprints/config' => [
-            'media' => [
-                'file' => 'user/plugins/admin/blueprints/config/media.yaml',
-                'modified' => 1766978626
-            ]
-        ],
         'system/blueprints/config' => [
             'backups' => [
                 'file' => 'system/blueprints/config/backups.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'media' => [
                 'file' => 'system/blueprints/config/media.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'scheduler' => [
                 'file' => 'system/blueprints/config/scheduler.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'security' => [
                 'file' => 'system/blueprints/config/security.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'site' => [
                 'file' => 'system/blueprints/config/site.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'streams' => [
                 'file' => 'system/blueprints/config/streams.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ],
             'system' => [
                 'file' => 'system/blueprints/config/system.yaml',
-                'modified' => 1767661386
+                'modified' => 1767934750
             ]
         ],
         'user/plugins' => [
             'plugins/markdown-notices' => [
                 'file' => 'user/plugins/markdown-notices/blueprints.yaml',
-                'modified' => 1762876910
+                'modified' => 1767934750
             ],
             'plugins/pagination' => [
                 'file' => 'user/plugins/pagination/blueprints.yaml',
@@ -75,11 +69,19 @@ return [
             ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/blueprints.yaml',
-                'modified' => 1762876910
+                'modified' => 1767934750
+            ],
+            'plugins/archives' => [
+                'file' => 'user/plugins/archives/blueprints.yaml',
+                'modified' => 1715813008
             ],
             'plugins/feed' => [
                 'file' => 'user/plugins/feed/blueprints.yaml',
                 'modified' => 1695707474
+            ],
+            'plugins/shortcode-core' => [
+                'file' => 'user/plugins/shortcode-core/blueprints.yaml',
+                'modified' => 1766488580
             ],
             'plugins/seo' => [
                 'file' => 'user/plugins/seo/blueprints.yaml',
@@ -87,7 +89,7 @@ return [
             ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/blueprints.yaml',
-                'modified' => 1762876910
+                'modified' => 1767934750
             ],
             'plugins/breadcrumbs' => [
                 'file' => 'user/plugins/breadcrumbs/blueprints.yaml',
@@ -100,79 +102,21 @@ return [
             'plugins/email' => [
                 'file' => 'user/plugins/email/blueprints.yaml',
                 'modified' => 1765351098
+            ],
+            'plugins/taxonomylist' => [
+                'file' => 'user/plugins/taxonomylist/blueprints.yaml',
+                'modified' => 1736125930
             ]
         ],
         'user/themes' => [
-            'themes/ngo-theme' => [
-                'file' => 'user/themes/ngo-theme/blueprints.yaml',
-                'modified' => 1767918684
-            ],
-            'themes/quark' => [
-                'file' => 'user/themes/quark/blueprints.yaml',
-                'modified' => 1764386856
-            ],
-            'themes/my-quark' => [
-                'file' => 'user/themes/my-quark/blueprints.yaml',
-                'modified' => 1767809409
+            'themes/nur-ul-huda' => [
+                'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
+                'modified' => 1767968782
             ]
         ]
     ],
     'data' => [
         'items' => [
-            'media' => [
-                'type' => '_root',
-                'form_field' => false,
-                'form' => [
-                    'validation' => 'loose'
-                ]
-            ],
-            'media.types' => [
-                'array' => true,
-                'name' => 'media.types',
-                'type' => 'list',
-                'label' => 'PLUGIN_ADMIN.MEDIA_TYPES',
-                'style' => 'vertical',
-                'key' => 'extension',
-                'controls' => 'both',
-                'collapsed' => true,
-                'validation' => 'loose'
-            ],
-            'media.types.*' => [
-                'type' => '_parent',
-                'name' => 'media.types.*',
-                'form_field' => false
-            ],
-            'media.types.*.type' => [
-                'type' => 'text',
-                'label' => 'PLUGIN_ADMIN.TYPE',
-                'name' => 'media.types.*.type',
-                'validation' => 'loose'
-            ],
-            'media.types.*.thumb' => [
-                'type' => 'text',
-                'label' => 'PLUGIN_ADMIN.THUMB',
-                'name' => 'media.types.*.thumb',
-                'validation' => 'loose'
-            ],
-            'media.types.*.mime' => [
-                'type' => 'text',
-                'label' => 'PLUGIN_ADMIN.MIME_TYPE',
-                'validate' => [
-                    'type' => 'lower'
-                ],
-                'name' => 'media.types.*.mime',
-                'validation' => 'loose'
-            ],
-            'media.types.*.image' => [
-                'type' => 'textarea',
-                'yaml' => true,
-                'label' => 'PLUGIN_ADMIN.IMAGE_OPTIONS',
-                'validate' => [
-                    'type' => 'yaml'
-                ],
-                'name' => 'media.types.*.image',
-                'validation' => 'loose'
-            ],
             'backups' => [
                 'type' => '_root',
                 'form_field' => false,
@@ -336,6 +280,13 @@ return [
                 ],
                 'name' => 'backups.profiles.*.schedule_environment',
                 'validation' => 'loose'
+            ],
+            'media' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'loose'
+                ]
             ],
             'scheduler' => [
                 'type' => '_root',
@@ -5693,6 +5644,216 @@ return [
                 'name' => 'plugins.problems.built_in_css',
                 'validation' => 'strict'
             ],
+            'plugins.archives' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    
+                ]
+            ],
+            'plugins.archives.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.archives.enabled'
+            ],
+            'plugins.archives.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'Use built in CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.archives.built_in_css'
+            ],
+            'plugins.archives.date_display_format' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Date Format',
+                'default' => 'jS M Y',
+                'options' => [
+                    'F jS Y' => 'January 1st 2024',
+                    'l jS of F' => 'Monday 1st of January',
+                    'D, m M Y' => 'Mon, 01 Jan 2024',
+                    'd-m-y' => '01-01-24',
+                    'jS M Y' => '10th Feb 2024',
+                    'F Y' => 'Jan 2024',
+                    'Y' => '2024'
+                ],
+                'name' => 'plugins.archives.date_display_format'
+            ],
+            'plugins.archives.show_count' => [
+                'type' => 'toggle',
+                'label' => 'Show Count',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.archives.show_count'
+            ],
+            'plugins.archives.limit' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Count Limit',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 1
+                ],
+                'name' => 'plugins.archives.limit'
+            ],
+            'plugins.archives.taxonomy_names' => [
+                'type' => 'array',
+                'label' => 'Taxonomy Names',
+                'name' => 'plugins.archives.taxonomy_names'
+            ],
+            'plugins.archives.taxonomy_values' => [
+                'type' => 'array',
+                'label' => 'Taxonomy Values (date format)',
+                'name' => 'plugins.archives.taxonomy_values'
+            ],
+            'plugins.archives.order' => [
+                'type' => '_parent',
+                'name' => 'plugins.archives.order',
+                'form_field' => false
+            ],
+            'plugins.archives.order.by' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Order Type',
+                'options' => [
+                    'default' => 'Default - based on folder name',
+                    'title' => 'Title - based on title field in header',
+                    'basename' => 'Basename - based on the alphabetic folder name',
+                    'date' => 'Date - based on date field in header',
+                    'modified' => 'Modified - based on the modified timestamp',
+                    'folder' => 'Folder - based on prefix-less folder name',
+                    'random' => 'Random - order is randomized'
+                ],
+                'name' => 'plugins.archives.order.by'
+            ],
+            'plugins.archives.order.dir' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'label' => 'Order Direction',
+                'default' => 'desc',
+                'options' => [
+                    'asc' => 'Ascending',
+                    'desc' => 'Descending'
+                ],
+                'name' => 'plugins.archives.order.dir'
+            ],
+            'plugins.archives.filters' => [
+                'type' => 'textarea',
+                'yaml' => true,
+                'label' => 'Filter',
+                'validate' => [
+                    'type' => 'yaml'
+                ],
+                'name' => 'plugins.archives.filters'
+            ],
+            'plugins.archives.filter_combinator' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Filter Combinator',
+                'default' => 'and',
+                'options' => [
+                    'and' => 'And - Boolean &&',
+                    'or' => 'Or - Boolean ||'
+                ],
+                'name' => 'plugins.archives.filter_combinator'
+            ],
+            'plugins.archives.page_specific_config' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'Configurations',
+                'name' => 'plugins.archives.page_specific_config'
+            ],
+            'plugins.archives.page_specific_config.*' => [
+                'type' => '_parent',
+                'name' => 'plugins.archives.page_specific_config.*',
+                'form_field' => false
+            ],
+            'plugins.archives.page_specific_config.*.route' => [
+                'type' => 'text',
+                'label' => 'Route',
+                'validate' => [
+                    'required' => true
+                ],
+                'name' => 'plugins.archives.page_specific_config.*.route'
+            ],
+            'plugins.archives.page_specific_config.*.filters' => [
+                'type' => 'textarea',
+                'yaml' => true,
+                'label' => 'Filter',
+                'validate' => [
+                    'type' => 'yaml'
+                ],
+                'name' => 'plugins.archives.page_specific_config.*.filters'
+            ],
+            'plugins.archives.page_specific_config.*.filter_combinator' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Filter Combinator',
+                'default' => '',
+                'options' => [
+                    '' => 'Use Default',
+                    'and' => 'And - Boolean &&',
+                    'or' => 'Or - Boolean ||'
+                ],
+                'name' => 'plugins.archives.page_specific_config.*.filter_combinator'
+            ],
+            'plugins.archives.page_specific_config.*.order_by' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Order Type',
+                'default' => '',
+                'options' => [
+                    '' => 'Use Default',
+                    'default' => 'Default - based on folder name',
+                    'title' => 'Title - based on title field in header',
+                    'basename' => 'Basename - based on the alphabetic folder name',
+                    'date' => 'Date - based on date field in header',
+                    'modified' => 'Modified - based on the modified timestamp',
+                    'folder' => 'Folder - based on prefix-less folder name',
+                    'random' => 'Random - order is randomized'
+                ],
+                'name' => 'plugins.archives.page_specific_config.*.order_by'
+            ],
+            'plugins.archives.page_specific_config.*.order_dir' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'label' => 'Order Direction',
+                'default' => '',
+                'options' => [
+                    '' => 'Use Default',
+                    'asc' => 'Ascending',
+                    'desc' => 'Descending'
+                ],
+                'name' => 'plugins.archives.page_specific_config.*.order_dir'
+            ],
             'plugins.feed' => [
                 'type' => '_root',
                 'form_field' => false,
@@ -5777,6 +5938,155 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'plugins.feed.show_last_modified',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.shortcode-core.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin Enabled',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.active' => [
+                'type' => 'toggle',
+                'label' => 'Activated',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.active',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.active_admin' => [
+                'type' => 'toggle',
+                'label' => 'Activated in Admin',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.active_admin',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.admin_pages_only' => [
+                'type' => 'toggle',
+                'label' => 'Admin Real-Pages Only',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.admin_pages_only',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.parser' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Processor',
+                'options' => [
+                    'wordpress' => 'WordpressParser',
+                    'regex' => 'RegexParser',
+                    'regular' => 'RegularParser'
+                ],
+                'name' => 'plugins.shortcode-core.parser',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.custom_shortcodes' => [
+                'type' => 'text',
+                'label' => 'Custom Shortcodes',
+                'size' => 'large',
+                'name' => 'plugins.shortcode-core.custom_shortcodes',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.css' => [
+                'type' => '_parent',
+                'name' => 'plugins.shortcode-core.css',
+                'form_field' => false
+            ],
+            'plugins.shortcode-core.css.notice_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Notice Shortcode CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.css.notice_enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.fontawesome' => [
+                'type' => '_parent',
+                'name' => 'plugins.shortcode-core.fontawesome',
+                'form_field' => false
+            ],
+            'plugins.shortcode-core.fontawesome.load' => [
+                'type' => 'toggle',
+                'label' => 'Load Fontawesome Library',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.fontawesome.load',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.fontawesome.url' => [
+                'type' => 'text',
+                'label' => 'Fontawesome URL',
+                'size' => 'large',
+                'name' => 'plugins.shortcode-core.fontawesome.url',
+                'validation' => 'strict'
+            ],
+            'plugins.shortcode-core.fontawesome.v5' => [
+                'type' => 'toggle',
+                'label' => 'Use Fontawesome Version 5',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.fontawesome.v5',
                 'validation' => 'strict'
             ],
             'plugins.seo' => [
@@ -6793,7 +7103,38 @@ return [
                 'name' => 'plugins.email.debug',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme' => [
+            'plugins.taxonomylist' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.taxonomylist.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.taxonomylist.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.taxonomylist.route' => [
+                'type' => 'text',
+                'label' => 'Route to blog',
+                'validate' => [
+                    'pattern' => '/([a-z\\-_]+/?)+'
+                ],
+                'name' => 'plugins.taxonomylist.route',
+                'validation' => 'strict'
+            ],
+            'themes.nur-ul-huda' => [
                 'type' => '_root',
                 'form_field' => false,
                 'form' => [
@@ -6805,37 +7146,58 @@ return [
                 'name' => 'themes',
                 'form_field' => false
             ],
-            'themes.ngo-theme.production-mode' => [
+            'themes.nur-ul-huda.direction' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.PRODUCTION_MODE',
+                'label' => 'Text Direction',
                 'highlight' => 1,
-                'default' => 1,
+                'default' => 'ltr',
                 'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
+                    'ltr' => 'LTR',
+                    'rtl' => 'RTL'
                 ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.production-mode',
+                'name' => 'themes.nur-ul-huda.direction',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.grid-size' => [
+            'themes.nur-ul-huda.language' => [
                 'type' => 'select',
-                'label' => 'THEME_NGO.ADMIN.GRID_SIZE',
-                'size' => 'small',
+                'label' => 'Primary Language',
+                'default' => 'en',
                 'options' => [
-                    '' => 'THEME_NGO.ADMIN.GRID_SIZE_NONE',
-                    'grid-xl' => 'THEME_NGO.ADMIN.GRID_SIZE_EXTRA_LARGE',
-                    'grid-lg' => 'THEME_NGO.ADMIN.GRID_SIZE_LARGE',
-                    'grid-md' => 'THEME_NGO.ADMIN.GRID_SIZE_MEDIUM'
+                    'en' => 'English',
+                    'ar' => 'Arabic (العربية)',
+                    'ur' => 'Urdu (اردو)',
+                    'fa' => 'Persian (فارسی)'
                 ],
-                'name' => 'themes.ngo-theme.grid-size',
+                'name' => 'themes.nur-ul-huda.language',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.search_enabled' => [
+            'themes.nur-ul-huda.number_format' => [
+                'type' => 'select',
+                'label' => 'Number Format',
+                'default' => 'western',
+                'options' => [
+                    'western' => 'Western (0-9)',
+                    'arabic_indic' => 'Arabic-Indic (٠-٩)',
+                    'persian' => 'Persian (۰-۹)'
+                ],
+                'name' => 'themes.nur-ul-huda.number_format',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.date_calendar' => [
+                'type' => 'select',
+                'label' => 'Date Calendar',
+                'default' => 'gregorian',
+                'options' => [
+                    'gregorian' => 'Gregorian Only',
+                    'both' => 'Gregorian + Hijri',
+                    'hijri_primary' => 'Hijri + Gregorian'
+                ],
+                'name' => 'themes.nur-ul-huda.date_calendar',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.production-mode' => [
                 'type' => 'toggle',
-                'label' => 'Enable Search',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.PRODUCTION_MODE',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -6845,1058 +7207,69 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.ngo-theme.search_enabled',
+                'name' => 'themes.nur-ul-huda.production-mode',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.sustainability_score' => [
-                'type' => 'text',
-                'label' => 'THEME_NGO.ADMIN.SUSTAINABILITY_SCORE',
-                'size' => 'x-small',
-                'default' => 'A+',
-                'name' => 'themes.ngo-theme.sustainability_score',
+            'themes.nur-ul-huda.primary_spirit_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Primary Spirit Color',
+                'default' => '#2ecc71',
+                'name' => 'themes.nur-ul-huda.primary_spirit_color',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.co2_per_view' => [
-                'type' => 'text',
-                'label' => 'THEME_NGO.ADMIN.CO2_PER_VIEW',
-                'size' => 'x-small',
-                'default' => '0.3g',
-                'name' => 'themes.ngo-theme.co2_per_view',
+            'themes.nur-ul-huda.accent_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Accent Color',
+                'default' => '#f1c40f',
+                'name' => 'themes.nur-ul-huda.accent_color',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.ai_disclosure' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.AI_DISCLOSURE',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.ai_disclosure',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.ai_assistant' => [
-                'type' => 'toggle',
-                'label' => 'AI Assistant',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.ai_assistant',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.doodle_engine' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.DOODLE_ENGINE',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.doodle_engine',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.eco_mode' => [
-                'type' => 'toggle',
-                'label' => 'Sustainability Mode',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.eco_mode',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.focus_mode' => [
-                'type' => 'toggle',
-                'label' => 'Neurodivergent Focus Mode',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.focus_mode',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.custom_logo' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'THEME_NGO.ADMIN.CUSTOM_LOGO',
-                'size' => 'large',
-                'destination' => 'theme://images/logo',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.ngo-theme.custom_logo',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.header-fixed' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.HEADER_FIXED',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.header-fixed',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.header-animated' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.HEADER_ANIMATED',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.header-animated',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.header-dark' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.HEADER_DARK',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.header-dark',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.header-transparent' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.HEADER_TRANSPARENT',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.header-transparent',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.utility_hijri_toggle' => [
-                'type' => 'toggle',
-                'label' => 'Show Hijri Date',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.utility_hijri_toggle',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.utility_prayer_toggle' => [
-                'type' => 'toggle',
-                'label' => 'Show Prayer Times',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.utility_prayer_toggle',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.utility_prayer_city' => [
-                'type' => 'text',
-                'label' => 'Default City for Prayer Times',
-                'default' => 'Karachi',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.utility_prayer_city',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.utility_language_toggle' => [
-                'type' => 'toggle',
-                'label' => 'Show Language Switcher',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.utility_language_toggle',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.utility_accessibility_toggle' => [
-                'type' => 'toggle',
-                'label' => 'Show Accessibility Tools',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.utility_accessibility_toggle',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.mega_menu_structure' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Menu Columns',
-                'name' => 'themes.ngo-theme.mega_menu_structure',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.mega_menu_structure.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.mega_menu_structure.*.title' => [
-                'type' => 'text',
-                'label' => 'Column Title',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.mega_menu_structure.*.links' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Links',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*.links',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.mega_menu_structure.*.links.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.mega_menu_structure.*.links.*.text' => [
-                'type' => 'text',
-                'label' => 'Link Text',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*.text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.mega_menu_structure.*.links.*.url' => [
-                'type' => 'text',
-                'label' => 'URL',
-                'name' => 'themes.ngo-theme.mega_menu_structure.*.links.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable CTA Button',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.enabled',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.text' => [
-                'type' => 'text',
-                'label' => 'Button Text',
-                'default' => 'Student Login',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.url' => [
-                'type' => 'url',
-                'label' => 'Button URL',
-                'default' => 'https://moodle.aabtaab.com',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.icon' => [
-                'type' => 'text',
-                'label' => 'Button Icon',
-                'default' => 'graduation-cap',
-                'name' => 'themes.ngo-theme.icon',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.external' => [
-                'type' => 'toggle',
-                'label' => 'Open in New Tab',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.external',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hero_video_url' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Hero Background Video',
-                'destination' => 'theme://images/hero',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'video/*'
-                ],
-                'name' => 'themes.ngo-theme.hero_video_url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hero_glass_opacity' => [
+            'themes.nur-ul-huda.blur_strength' => [
                 'type' => 'range',
-                'label' => 'Glass Overlay Opacity',
-                'default' => 60,
-                'min' => 0,
-                'max' => 100,
-                'append' => '%',
-                'name' => 'themes.ngo-theme.hero_glass_opacity',
+                'label' => 'Glass Blur Strength',
+                'default' => 12,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 30
+                ],
+                'name' => 'themes.nur-ul-huda.blur_strength',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.hero_primary_cta_text' => [
-                'type' => 'text',
-                'label' => 'Primary CTA Text',
-                'default' => 'Explore Services',
-                'name' => 'themes.ngo-theme.hero_primary_cta_text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hero_primary_cta_link' => [
-                'type' => 'text',
-                'label' => 'Primary CTA Link',
-                'default' => '/services',
-                'name' => 'themes.ngo-theme.hero_primary_cta_link',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hero_secondary_cta_text' => [
-                'type' => 'text',
-                'label' => 'Secondary CTA Text',
-                'default' => 'Support Our Mission',
-                'name' => 'themes.ngo-theme.hero_secondary_cta_text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hero_secondary_cta_link' => [
-                'type' => 'text',
-                'label' => 'Secondary CTA Link',
-                'default' => '/donate',
-                'name' => 'themes.ngo-theme.hero_secondary_cta_link',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.inspiration_text' => [
-                'type' => 'text',
-                'label' => 'Inspiration Text',
-                'default' => '"Indeed, with hardship [will be] ease."',
-                'size' => 'large',
-                'name' => 'themes.ngo-theme.inspiration_text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.inspiration_source' => [
-                'type' => 'text',
-                'label' => 'Inspiration Source',
-                'default' => 'Quran 94:6',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.inspiration_source',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.services_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Service Cards',
-                'name' => 'themes.ngo-theme.services_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.services_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.services_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.services_list.*.icon' => [
-                'type' => 'text',
-                'label' => 'Icon (Line Awesome)',
-                'name' => 'themes.ngo-theme.services_list.*.icon',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.services_list.*.title' => [
-                'type' => 'text',
-                'label' => 'Title',
-                'name' => 'themes.ngo-theme.services_list.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.services_list.*.description' => [
-                'type' => 'textarea',
-                'label' => 'Description',
-                'name' => 'themes.ngo-theme.services_list.*.description',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.services_list.*.link' => [
-                'type' => 'text',
-                'label' => 'Link URL',
-                'name' => 'themes.ngo-theme.services_list.*.link',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Upcoming Events',
-                'name' => 'themes.ngo-theme.events_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.events_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.events_list.*.title' => [
-                'type' => 'text',
-                'label' => 'Event Title',
-                'name' => 'themes.ngo-theme.events_list.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list.*.date' => [
-                'type' => 'datetime',
-                'label' => 'Date & Time',
-                'name' => 'themes.ngo-theme.events_list.*.date',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list.*.location' => [
-                'type' => 'text',
-                'label' => 'Location',
-                'name' => 'themes.ngo-theme.events_list.*.location',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list.*.url' => [
-                'type' => 'text',
-                'label' => 'Event Link/Registration',
-                'name' => 'themes.ngo-theme.events_list.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.events_list.*.type' => [
-                'type' => 'text',
-                'label' => 'Event Type',
-                'default' => 'Seminar',
-                'name' => 'themes.ngo-theme.events_list.*.type',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Active Projects (Timeline)',
-                'name' => 'themes.ngo-theme.project_timeline_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.project_timeline_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.project_timeline_list.*.title' => [
-                'type' => 'text',
-                'label' => 'Project Title',
-                'name' => 'themes.ngo-theme.project_timeline_list.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*.description' => [
-                'type' => 'textarea',
-                'label' => 'Short Description',
-                'name' => 'themes.ngo-theme.project_timeline_list.*.description',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*.goal' => [
-                'type' => 'text',
-                'label' => 'Funding Goal (e.g. $10k)',
-                'name' => 'themes.ngo-theme.project_timeline_list.*.goal',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*.raised' => [
-                'type' => 'text',
-                'label' => 'Amount Raised (e.g. $7.5k)',
-                'name' => 'themes.ngo-theme.project_timeline_list.*.raised',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*.percent' => [
-                'type' => 'range',
-                'label' => 'Completion %',
-                'min' => 0,
-                'max' => 100,
-                'default' => 0,
-                'append' => '%',
-                'name' => 'themes.ngo-theme.project_timeline_list.*.percent',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.project_timeline_list.*.status' => [
+            'themes.nur-ul-huda.typography' => [
                 'type' => 'select',
-                'label' => 'Status',
+                'label' => 'Typography Pairings',
+                'default' => 'inter_noto',
                 'options' => [
-                    'active' => 'Active',
-                    'completed' => 'Completed',
-                    'planning' => 'Planning'
+                    'inter_noto' => 'Inter + Noto Nastaliq (Urdu Optimized)',
+                    'roboto_mono' => 'Roboto + Roboto Mono',
+                    'outfit' => 'Outfit + Inter'
                 ],
-                'name' => 'themes.ngo-theme.project_timeline_list.*.status',
+                'name' => 'themes.nur-ul-huda.typography',
                 'validation' => 'loose'
             ],
-            'themes.ngo-theme.khums_rate' => [
-                'type' => 'number',
-                'label' => 'Khums Rate (%)',
-                'default' => 20,
-                'size' => 'x-small',
-                'name' => 'themes.ngo-theme.khums_rate',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.khums_currency' => [
-                'type' => 'text',
-                'label' => 'Currency Symbol',
-                'default' => '$',
-                'size' => 'x-small',
-                'name' => 'themes.ngo-theme.khums_currency',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.prayer_times_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Prayer Times',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.prayer_times_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.prayer_api_key' => [
-                'type' => 'text',
-                'label' => 'Aladhan API Key (Optional)',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.prayer_api_key',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.hijri_adjustment' => [
-                'type' => 'number',
-                'label' => 'Hijri Date Adjustment',
-                'default' => 0,
-                'size' => 'x-small',
-                'name' => 'themes.ngo-theme.hijri_adjustment',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.trust_signals_images' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Trust Badges (Payment/SSL)',
-                'name' => 'themes.ngo-theme.trust_signals_images',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.trust_signals_images.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.trust_signals_images.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.trust_signals_images.*.name' => [
-                'type' => 'text',
-                'label' => 'Name',
-                'name' => 'themes.ngo-theme.trust_signals_images.*.name',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.trust_signals_images.*.image' => [
+            'themes.nur-ul-huda.custom_logo' => [
                 'array' => true,
                 'media_field' => true,
                 'validate' => [
-                    'type' => 'ignore'
+                    'type' => 'ignore',
+                    'method' => 'Grav\\Theme\\NurUlHuda::validateLogo'
                 ],
                 'type' => 'file',
-                'label' => 'Badge Image',
-                'destination' => 'theme://images/badges',
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.ngo-theme.trust_signals_images.*.image',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.trust_signals_images.*.url' => [
-                'type' => 'text',
-                'label' => 'Link (optional)',
-                'name' => 'themes.ngo-theme.trust_signals_images.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.student_login_title' => [
-                'type' => 'text',
-                'label' => 'Student Login Title',
-                'default' => 'Student Login',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.student_login_title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.student_login_description' => [
-                'type' => 'text',
-                'label' => 'Student Login Description',
-                'default' => 'Access your Moodle courses and dashboard.',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.student_login_description',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.student_login_button_text' => [
-                'type' => 'text',
-                'label' => 'Student Login Button Text',
-                'default' => 'Sign In to Portal',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.student_login_button_text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.featured_courses_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Featured Courses',
-                'name' => 'themes.ngo-theme.featured_courses_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.featured_courses_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.featured_courses_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.featured_courses_list.*.title' => [
-                'type' => 'text',
-                'label' => 'Course Title',
-                'name' => 'themes.ngo-theme.featured_courses_list.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.featured_courses_list.*.instructor' => [
-                'type' => 'text',
-                'label' => 'Instructor Name',
-                'name' => 'themes.ngo-theme.featured_courses_list.*.instructor',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.featured_courses_list.*.image' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Course Thumbnail',
-                'destination' => 'theme://images/courses',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.ngo-theme.featured_courses_list.*.image',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.featured_courses_list.*.url' => [
-                'type' => 'text',
-                'label' => 'Course Link',
-                'default' => '#',
-                'name' => 'themes.ngo-theme.featured_courses_list.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Product Highlights',
-                'name' => 'themes.ngo-theme.products_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.products_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.products_list.*.title' => [
-                'type' => 'text',
-                'label' => 'Product Title',
-                'name' => 'themes.ngo-theme.products_list.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list.*.price' => [
-                'type' => 'text',
-                'label' => 'Price',
-                'name' => 'themes.ngo-theme.products_list.*.price',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list.*.type' => [
-                'type' => 'select',
-                'label' => 'Type',
-                'options' => [
-                    'physical' => 'Physical',
-                    'digital' => 'Digital'
-                ],
-                'name' => 'themes.ngo-theme.products_list.*.type',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list.*.image' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Product Image',
-                'destination' => 'theme://images/products',
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.ngo-theme.products_list.*.image',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.products_list.*.url' => [
-                'type' => 'text',
-                'label' => 'Product Link',
-                'default' => '#',
-                'name' => 'themes.ngo-theme.products_list.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.sticky-footer' => [
-                'type' => 'toggle',
-                'label' => 'THEME_NGO.ADMIN.STICKY_FOOTER',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.sticky-footer',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_about_title' => [
-                'type' => 'text',
-                'label' => 'Footer About Title',
-                'size' => 'medium',
-                'default' => 'About Our Mission',
-                'name' => 'themes.ngo-theme.footer_about_title',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_mission' => [
-                'type' => 'textarea',
-                'label' => 'Footer Mission Statement',
-                'size' => 'medium',
-                'default' => 'Faith. Knowledge. Access.',
-                'name' => 'themes.ngo-theme.footer_mission',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.contact_address' => [
-                'type' => 'textarea',
-                'label' => 'Contact Address',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.contact_address',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.contact_email' => [
-                'type' => 'email',
-                'label' => 'Contact Email',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.contact_email',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.contact_phone' => [
-                'type' => 'text',
-                'label' => 'Contact Phone',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.contact_phone',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.contact_whatsapp' => [
-                'type' => 'text',
-                'label' => 'WhatsApp Number',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.contact_whatsapp',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.social_links' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Social Media Links',
-                'name' => 'themes.ngo-theme.social_links',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.social_links.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.social_links.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.social_links.*.network' => [
-                'type' => 'select',
-                'label' => 'Network',
-                'options' => [
-                    'facebook' => 'Facebook',
-                    'twitter' => 'Twitter',
-                    'instagram' => 'Instagram',
-                    'linkedin' => 'LinkedIn',
-                    'youtube' => 'YouTube',
-                    'whatsapp' => 'WhatsApp'
-                ],
-                'name' => 'themes.ngo-theme.social_links.*.network',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.social_links.*.url' => [
-                'type' => 'url',
-                'label' => 'URL',
-                'name' => 'themes.ngo-theme.social_links.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_links' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Footer Quick Links',
-                'name' => 'themes.ngo-theme.footer_links',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_links.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.footer_links.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.footer_links.*.text' => [
-                'type' => 'text',
-                'label' => 'Link Text',
-                'name' => 'themes.ngo-theme.footer_links.*.text',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_links.*.url' => [
-                'type' => 'text',
-                'label' => 'Link URL',
-                'name' => 'themes.ngo-theme.footer_links.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.footer_links.*.icon' => [
-                'type' => 'text',
-                'label' => 'Icon (optional)',
-                'name' => 'themes.ngo-theme.footer_links.*.icon',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.newsletter_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Newsletter Signup',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.ngo-theme.newsletter_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.newsletter_action' => [
-                'type' => 'url',
-                'label' => 'Newsletter Form Action',
-                'size' => 'medium',
-                'name' => 'themes.ngo-theme.newsletter_action',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.blog-page' => [
-                'type' => 'text',
-                'label' => 'THEME_NGO.ADMIN.BLOG_PAGE',
-                'size' => 'medium',
-                'default' => '/blog',
-                'name' => 'themes.ngo-theme.blog-page',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Testimonials',
-                'name' => 'themes.ngo-theme.testimonials_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.testimonials_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.testimonials_list.*.name' => [
-                'type' => 'text',
-                'label' => 'Name',
-                'name' => 'themes.ngo-theme.testimonials_list.*.name',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list.*.role' => [
-                'type' => 'text',
-                'label' => 'Role (e.g. Student, Donor)',
-                'name' => 'themes.ngo-theme.testimonials_list.*.role',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list.*.quote' => [
-                'type' => 'textarea',
-                'label' => 'Quote',
-                'name' => 'themes.ngo-theme.testimonials_list.*.quote',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list.*.image' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Photo',
-                'destination' => 'theme://images/testimonials',
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.ngo-theme.testimonials_list.*.image',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.testimonials_list.*.video_url' => [
-                'type' => 'text',
-                'label' => 'Video URL (optional)',
-                'name' => 'themes.ngo-theme.testimonials_list.*.video_url',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.faq_list' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Common Q&A',
-                'name' => 'themes.ngo-theme.faq_list',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.faq_list.*' => [
-                'type' => '_parent',
-                'name' => 'themes.ngo-theme.faq_list.*',
-                'form_field' => false
-            ],
-            'themes.ngo-theme.faq_list.*.q' => [
-                'type' => 'text',
-                'label' => 'Question',
-                'name' => 'themes.ngo-theme.faq_list.*.q',
-                'validation' => 'loose'
-            ],
-            'themes.ngo-theme.faq_list.*.a' => [
-                'type' => 'textarea',
-                'label' => 'Answer',
-                'name' => 'themes.ngo-theme.faq_list.*.a',
-                'validation' => 'loose'
-            ],
-            'themes.quark' => [
-                'type' => '_root',
-                'form_field' => false,
-                'form' => [
-                    'validation' => 'loose'
-                ]
-            ],
-            'themes.quark.production-mode' => [
-                'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.PRODUCTION_MODE',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.quark.production-mode',
-                'validation' => 'loose'
-            ],
-            'themes.quark.grid-size' => [
-                'type' => 'select',
-                'label' => 'THEME_QUARK.ADMIN.GRID_SIZE',
-                'size' => 'small',
-                'options' => [
-                    '' => 'THEME_QUARK.ADMIN.GRID_SIZE_NONE',
-                    'grid-xl' => 'THEME_QUARK.ADMIN.GRID_SIZE_EXTRA_LARGE',
-                    'grid-lg' => 'THEME_QUARK.ADMIN.GRID_SIZE_LARGE',
-                    'grid-md' => 'THEME_QUARK.ADMIN.GRID_SIZE_MEDIUM'
-                ],
-                'name' => 'themes.quark.grid-size',
-                'validation' => 'loose'
-            ],
-            'themes.quark.custom_logo' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'THEME_QUARK.ADMIN.CUSTOM_LOGO',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO',
                 'size' => 'large',
                 'destination' => 'theme://images/logo',
                 'multiple' => false,
                 'markdown' => true,
-                'description' => 'THEME_QUARK.ADMIN.CUSTOM_LOGO_DESCRIPTION',
+                'description' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO_DESCRIPTION',
                 'accept' => [
                     0 => 'image/*'
                 ],
-                'name' => 'themes.quark.custom_logo',
+                'name' => 'themes.nur-ul-huda.custom_logo',
                 'validation' => 'loose'
             ],
-            'themes.quark.custom_logo_mobile' => [
-                'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'THEME_QUARK.ADMIN.CUSTOM_LOGO_MOBILE',
-                'size' => 'large',
-                'destination' => 'theme://images/logo',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.quark.custom_logo_mobile',
-                'validation' => 'loose'
-            ],
-            'themes.quark.header-fixed' => [
+            'themes.nur-ul-huda.header-fixed' => [
                 'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.HEADER_FIXED',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7906,12 +7279,12 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.quark.header-fixed',
+                'name' => 'themes.nur-ul-huda.header-fixed',
                 'validation' => 'loose'
             ],
-            'themes.quark.header-animated' => [
+            'themes.nur-ul-huda.header-animated' => [
                 'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.HEADER_ANIMATED',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7921,12 +7294,12 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.quark.header-animated',
+                'name' => 'themes.nur-ul-huda.header-animated',
                 'validation' => 'loose'
             ],
-            'themes.quark.header-dark' => [
+            'themes.nur-ul-huda.header-dark' => [
                 'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.HEADER_DARK',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK',
                 'highlight' => 0,
                 'default' => 0,
                 'options' => [
@@ -7936,12 +7309,12 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.quark.header-dark',
+                'name' => 'themes.nur-ul-huda.header-dark',
                 'validation' => 'loose'
             ],
-            'themes.quark.header-transparent' => [
+            'themes.nur-ul-huda.header-transparent' => [
                 'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.HEADER_TRANSPARENT',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT',
                 'highlight' => 0,
                 'default' => 0,
                 'options' => [
@@ -7951,12 +7324,12 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.quark.header-transparent',
+                'name' => 'themes.nur-ul-huda.header-transparent',
                 'validation' => 'loose'
             ],
-            'themes.quark.sticky-footer' => [
+            'themes.nur-ul-huda.minaret_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.STICKY_FOOTER',
+                'label' => 'Enable Minaret Bar',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7966,1160 +7339,553 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.quark.sticky-footer',
+                'name' => 'themes.nur-ul-huda.minaret_enabled',
                 'validation' => 'loose'
             ],
-            'themes.quark.blog-page' => [
+            'themes.nur-ul-huda.minaret_announcement_enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Announcement',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.minaret_announcement_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.minaret_announcement_text' => [
                 'type' => 'text',
-                'label' => 'THEME_QUARK.ADMIN.BLOG_PAGE',
-                'size' => 'medium',
-                'default' => '/blog',
-                'name' => 'themes.quark.blog-page',
+                'label' => 'Announcement Text',
+                'name' => 'themes.nur-ul-huda.minaret_announcement_text',
                 'validation' => 'loose'
             ],
-            'themes.quark.spectre' => [
-                'type' => '_parent',
-                'name' => 'themes.quark.spectre',
-                'form_field' => false
-            ],
-            'themes.quark.spectre.exp' => [
-                'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.SPECTRE_EXP',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.quark.spectre.exp',
+            'themes.nur-ul-huda.minaret_announcement_expires' => [
+                'type' => 'datetime',
+                'label' => 'Expiration Date & Time',
+                'name' => 'themes.nur-ul-huda.minaret_announcement_expires',
                 'validation' => 'loose'
             ],
-            'themes.quark.spectre.icons' => [
-                'type' => 'toggle',
-                'label' => 'THEME_QUARK.ADMIN.SPECTRE_ICONS',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'themes.quark.spectre.icons',
+            'themes.nur-ul-huda.minaret_announcement_bg_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Announcement Background',
+                'default' => '#b91c1c',
+                'name' => 'themes.nur-ul-huda.minaret_announcement_bg_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark' => [
-                'type' => '_root',
-                'form_field' => false,
-                'form' => [
-                    'validation' => 'loose'
-                ]
-            ],
-            'themes.my-quark.color_primary' => [
-                'type' => 'color',
-                'label' => 'Primary Color',
-                'default' => '#3b4252',
-                'validate' => [
-                    'required' => true
-                ],
-                'name' => 'themes.my-quark.color_primary',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.color_secondary' => [
-                'type' => 'color',
-                'label' => 'Secondary Color',
-                'default' => '#88c0d0',
-                'name' => 'themes.my-quark.color_secondary',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.color_accent' => [
-                'type' => 'color',
-                'label' => 'Accent Color',
-                'default' => '#bf616a',
-                'name' => 'themes.my-quark.color_accent',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.color_background_body' => [
-                'type' => 'color',
-                'label' => 'Body Background',
-                'default' => '#eceff4',
-                'name' => 'themes.my-quark.color_background_body',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.color_background_card' => [
-                'type' => 'color',
-                'label' => 'Card Background',
+            'themes.nur-ul-huda.minaret_announcement_text_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Announcement Text Color',
                 'default' => '#ffffff',
-                'name' => 'themes.my-quark.color_background_card',
+                'name' => 'themes.nur-ul-huda.minaret_announcement_text_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.color_text_primary' => [
-                'type' => 'color',
-                'label' => 'Primary Text',
-                'default' => '#2e3440',
-                'name' => 'themes.my-quark.color_text_primary',
+            'themes.nur-ul-huda.minaret_bg_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Background Color',
+                'default' => '#111827',
+                'name' => 'themes.nur-ul-huda.minaret_bg_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.color_text_secondary' => [
-                'type' => 'color',
-                'label' => 'Secondary Text',
-                'default' => '#4c566a',
-                'name' => 'themes.my-quark.color_text_secondary',
+            'themes.nur-ul-huda.minaret_text_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Text Color',
+                'default' => '#f1c40f',
+                'name' => 'themes.nur-ul-huda.minaret_text_color',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.typography_font_body' => [
-                'type' => 'select',
-                'label' => 'Body Font',
-                'default' => 'Outfit',
-                'options' => [
-                    'optgroup.sans' => 'Sans Serif',
-                    'Outfit' => 'Outfit',
-                    'Roboto' => 'Roboto',
-                    'Open Sans' => 'Open Sans',
-                    'Inter' => 'Inter',
-                    'Lato' => 'Lato',
-                    'Montserrat' => 'Montserrat',
-                    'Poppins' => 'Poppins',
-                    'optgroup.serif' => 'Serif',
-                    'Merriweather' => 'Merriweather',
-                    'Playfair Display' => 'Playfair Display',
-                    'Lora' => 'Lora'
-                ],
-                'name' => 'themes.my-quark.typography_font_body',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_font_headings' => [
-                'type' => 'select',
-                'label' => 'Headings Font',
-                'default' => 'Outfit',
-                'options' => [
-                    'Outfit' => 'Outfit (Default)',
-                    'optgroup.display' => 'Display',
-                    'Bebas Neue' => 'Bebas Neue',
-                    'Lobster' => 'Lobster',
-                    'optgroup.serif' => 'Serif',
-                    'Playfair Display' => 'Playfair Display',
-                    'Merriweather' => 'Merriweather'
-                ],
-                'name' => 'themes.my-quark.typography_font_headings',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_fluid_enabled' => [
+            'themes.nur-ul-huda.minaret_show_dates' => [
                 'type' => 'toggle',
-                'label' => 'Enable Fluid Scaling',
+                'label' => 'Show Date Ticker',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.typography_fluid_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_size_min' => [
-                'type' => 'range',
-                'label' => 'Minimum Font Size (Mobile)',
-                'default' => 16,
-                'min' => 14,
-                'max' => 18,
-                'step' => 0.5,
-                'append' => 'px',
-                'name' => 'themes.my-quark.typography_size_min',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_size_max' => [
-                'type' => 'range',
-                'label' => 'Maximum Font Size (Desktop)',
-                'default' => 18,
-                'min' => 16,
-                'max' => 24,
-                'step' => 0.5,
-                'append' => 'px',
-                'name' => 'themes.my-quark.typography_size_max',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_scale_ratio' => [
-                'type' => 'range',
-                'label' => 'Type Scale Ratio',
-                'default' => 1.25,
-                'min' => 1.067,
-                'max' => 1.618,
-                'step' => 0.001,
-                'append' => 'x',
-                'name' => 'themes.my-quark.typography_scale_ratio',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_line_height_body' => [
-                'type' => 'range',
-                'label' => 'Body Line Height',
-                'default' => 1.6,
-                'min' => 1.4,
-                'max' => 2.0,
-                'step' => 0.05,
-                'name' => 'themes.my-quark.typography_line_height_body',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_line_height_headings' => [
-                'type' => 'range',
-                'label' => 'Headings Line Height',
-                'default' => 1.2,
-                'min' => 1.0,
-                'max' => 1.4,
-                'step' => 0.05,
-                'name' => 'themes.my-quark.typography_line_height_headings',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_letter_spacing_headings' => [
-                'type' => 'range',
-                'label' => 'Headings Letter Spacing',
-                'default' => -0.02,
-                'min' => -0.1,
-                'max' => 0.1,
-                'step' => 0.01,
-                'append' => 'em',
-                'name' => 'themes.my-quark.typography_letter_spacing_headings',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.typography_max_measure' => [
-                'type' => 'range',
-                'label' => 'Maximum Line Length',
-                'default' => 65,
-                'min' => 45,
-                'max' => 85,
-                'step' => 1,
-                'append' => 'ch',
-                'name' => 'themes.my-quark.typography_max_measure',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.layout_container_width' => [
-                'type' => 'range',
-                'label' => 'Container Max Width',
-                'default' => 1200,
-                'min' => 800,
-                'max' => 1600,
-                'step' => 50,
-                'append' => 'px',
-                'name' => 'themes.my-quark.layout_container_width',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.layout_spacing_scale' => [
-                'type' => 'range',
-                'label' => 'Spacing Scale',
-                'default' => 1.0,
-                'min' => 0.5,
-                'max' => 2.0,
-                'step' => 0.1,
-                'append' => 'x',
-                'name' => 'themes.my-quark.layout_spacing_scale',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.layout_grid_size' => [
-                'type' => 'select',
-                'label' => 'Grid System',
-                'default' => 'grid-xl',
-                'options' => [
-                    'grid-lg' => 'Large Grid',
-                    'grid-xl' => 'Extra Large Grid'
+                'validate' => [
+                    'type' => 'bool'
                 ],
-                'name' => 'themes.my-quark.layout_grid_size',
+                'name' => 'themes.nur-ul-huda.minaret_show_dates',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.radius_corners' => [
-                'type' => 'select',
-                'label' => 'Border Radius',
-                'default' => '12px',
-                'options' => [
-                    '0px' => 'Sharp (0px)',
-                    '6px' => 'Subtle (6px)',
-                    '12px' => 'Moderate (12px)',
-                    '20px' => 'Rounded (20px)',
-                    '32px' => 'Soft (32px)',
-                    '999px' => 'Pill (Fully Rounded)'
-                ],
-                'name' => 'themes.my-quark.radius_corners',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.shadow_neomorphism_strength' => [
-                'type' => 'range',
-                'label' => 'Neomorphism Intensity',
-                'default' => 0,
-                'min' => 0,
-                'max' => 1.0,
-                'step' => 0.1,
-                'name' => 'themes.my-quark.shadow_neomorphism_strength',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.shadow_neomorphism_light_source' => [
-                'type' => 'select',
-                'label' => 'Light Source Direction',
-                'default' => 'top-left',
-                'options' => [
-                    'top-left' => 'Top Left',
-                    'top-right' => 'Top Right',
-                    'top' => 'Top (Overhead)'
-                ],
-                'name' => 'themes.my-quark.shadow_neomorphism_light_source',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.glass_opacity' => [
-                'type' => 'range',
-                'label' => 'Glass Transparency',
-                'default' => 0.85,
-                'min' => 0.1,
-                'max' => 1.0,
-                'step' => 0.05,
-                'name' => 'themes.my-quark.glass_opacity',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.glass_blur' => [
-                'type' => 'range',
-                'label' => 'Background Blur',
-                'default' => 20,
-                'min' => 0,
-                'max' => 50,
-                'step' => 1,
-                'append' => 'px',
-                'name' => 'themes.my-quark.glass_blur',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.effect_vignette_enabled' => [
+            'themes.nur-ul-huda.minaret_show_prayer_ticker' => [
                 'type' => 'toggle',
-                'label' => 'Enable Vignette',
-                'default' => 0,
+                'label' => 'Show Prayer Countdown',
+                'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.effect_vignette_enabled',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.minaret_show_prayer_ticker',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_logo' => [
+            'themes.nur-ul-huda.minaret_show_contact' => [
+                'type' => 'toggle',
+                'label' => 'Show Contact Info',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.minaret_show_contact',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.minaret_show_social' => [
+                'type' => 'toggle',
+                'label' => 'Show Social Icons',
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.minaret_show_social',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.prayer_method' => [
+                'type' => 'select',
+                'label' => 'Prayer Calculation Standard',
+                'default' => 'tehran',
+                'options' => [
+                    'tehran' => 'University of Tehran',
+                    'karachi' => 'University of Islamic Sciences, Karachi',
+                    'isna' => 'ISNA',
+                    'leva' => 'Leva Institute, Qom'
+                ],
+                'name' => 'themes.nur-ul-huda.prayer_method',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.hijri_offset' => [
+                'type' => 'number',
+                'label' => 'Hijri Calibration',
+                'default' => 0,
+                'name' => 'themes.nur-ul-huda.hijri_offset',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.adhan_media' => [
                 'array' => true,
                 'media_field' => true,
                 'validate' => [
                     'type' => 'ignore'
                 ],
                 'type' => 'file',
-                'label' => 'Website Logo',
-                'destination' => 'theme://images/logo',
+                'label' => 'Adhan Media',
+                'destination' => 'theme://media',
                 'multiple' => false,
                 'accept' => [
-                    0 => 'image/*'
+                    0 => '.mp3'
                 ],
-                'name' => 'themes.my-quark.brand_logo',
+                'name' => 'themes.nur-ul-huda.adhan_media',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_name' => [
+            'themes.nur-ul-huda.default_location' => [
                 'type' => 'text',
-                'label' => 'Brand Name',
-                'name' => 'themes.my-quark.brand_name',
+                'label' => 'Geo-Location Default',
+                'default' => 'Karachi',
+                'name' => 'themes.nur-ul-huda.default_location',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.brand_show_text' => [
+            'themes.nur-ul-huda.moodle_url' => [
+                'type' => 'text',
+                'label' => 'Moodle URL',
+                'name' => 'themes.nur-ul-huda.moodle_url',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.moodle_token' => [
+                'type' => 'password',
+                'label' => 'Web Service API Token',
+                'name' => 'themes.nur-ul-huda.moodle_token',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.snipcart_key' => [
+                'type' => 'text',
+                'label' => 'Snipcart Public API Key',
+                'name' => 'themes.nur-ul-huda.snipcart_key',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.jazzcash_merchant' => [
+                'type' => 'text',
+                'label' => 'JazzCash Merchant ID',
+                'name' => 'themes.nur-ul-huda.jazzcash_merchant',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.jazzcash_salt' => [
+                'type' => 'password',
+                'label' => 'JazzCash Integrity Salt',
+                'name' => 'themes.nur-ul-huda.jazzcash_salt',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.hero_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Show Brand Text with Logo',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.brand_show_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.contact_address' => [
-                'type' => 'text',
-                'label' => 'Address',
-                'name' => 'themes.my-quark.contact_address',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.contact_email' => [
-                'type' => 'text',
-                'label' => 'Email Address',
-                'name' => 'themes.my-quark.contact_email',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.contact_phone' => [
-                'type' => 'text',
-                'label' => 'Phone Number',
-                'name' => 'themes.my-quark.contact_phone',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.social_links' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Social Profiles',
-                'name' => 'themes.my-quark.social_links',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.social_links.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.social_links.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.social_links.*.network' => [
-                'type' => 'select',
-                'label' => 'Network',
-                'options' => [
-                    'facebook' => 'Facebook',
-                    'twitter' => 'Twitter (X)',
-                    'instagram' => 'Instagram',
-                    'linkedin' => 'LinkedIn',
-                    'youtube' => 'YouTube',
-                    'github' => 'GitHub',
-                    'googlemaps' => 'Google Maps'
-                ],
-                'name' => 'themes.my-quark.social_links.*.network',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.social_links.*.url' => [
-                'type' => 'text',
-                'label' => 'Profile URL',
-                'name' => 'themes.my-quark.social_links.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Dynamic Homepage',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_ENABLED',
+                'highlight' => 1,
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
                     0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.home_enabled',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.hero_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.home_hero_title' => [
-                'type' => 'text',
-                'label' => 'Hero Title',
-                'default' => 'Learn Quran, Fiqh & More From Shia Scholars.',
-                'name' => 'themes.my-quark.home_hero_title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_hero_description' => [
-                'type' => 'textarea',
-                'label' => 'Hero Description',
-                'default' => 'At Aabtaab, we bring accessible and affordable Shia Islamic education to everyone no matter where you are in the world.',
-                'name' => 'themes.my-quark.home_hero_description',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_hero_btn_text' => [
-                'type' => 'text',
-                'label' => 'Primary Button Text',
-                'default' => 'VIEW ALL SERVICES',
-                'name' => 'themes.my-quark.home_hero_btn_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_hero_btn_url' => [
-                'type' => 'text',
-                'label' => 'Primary Button URL',
-                'default' => '#services',
-                'name' => 'themes.my-quark.home_hero_btn_url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services_title' => [
-                'type' => 'text',
-                'label' => 'Section Title',
-                'default' => 'Our Services 🤲',
-                'name' => 'themes.my-quark.home_services_title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Services List',
-                'name' => 'themes.my-quark.home_services',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.home_services.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.home_services.*.icon' => [
-                'type' => 'text',
-                'label' => 'Icon (Emoji/Text)',
-                'name' => 'themes.my-quark.home_services.*.icon',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services.*.title' => [
-                'type' => 'text',
-                'label' => 'Title',
-                'name' => 'themes.my-quark.home_services.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services.*.description' => [
-                'type' => 'textarea',
-                'label' => 'Description',
-                'name' => 'themes.my-quark.home_services.*.description',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services.*.url' => [
-                'type' => 'text',
-                'label' => 'Link URL',
-                'name' => 'themes.my-quark.home_services.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_services.*.btn_text' => [
-                'type' => 'text',
-                'label' => 'Button Text',
-                'default' => 'View Details →',
-                'name' => 'themes.my-quark.home_services.*.btn_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_title' => [
-                'type' => 'text',
-                'label' => 'Section Title',
-                'default' => 'Quote of the Day',
-                'name' => 'themes.my-quark.home_quote_title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_author' => [
-                'type' => 'text',
-                'label' => 'Author',
-                'default' => 'Prophet Muhammad (SAWW)',
-                'name' => 'themes.my-quark.home_quote_author',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_arabic' => [
-                'type' => 'textarea',
-                'label' => 'Arabic Text',
-                'default' => 'ظِلُّ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ صَدَقَتُهُ',
-                'name' => 'themes.my-quark.home_quote_arabic',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_english' => [
-                'type' => 'textarea',
-                'label' => 'English Translation',
-                'default' => '"The believer\'s shade on the Day of Resurrection will be his charity"',
-                'name' => 'themes.my-quark.home_quote_english',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_btn_text' => [
-                'type' => 'text',
-                'label' => 'CTA Button Text',
-                'default' => '❤️ GIVE TODAY',
-                'name' => 'themes.my-quark.home_quote_btn_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_quote_btn_url' => [
-                'type' => 'text',
-                'label' => 'CTA Button URL',
-                'default' => '/donate',
-                'name' => 'themes.my-quark.home_quote_btn_url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses_title' => [
-                'type' => 'text',
-                'label' => 'Section Title',
-                'default' => 'Popular Courses 📚',
-                'name' => 'themes.my-quark.home_courses_title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses_subtitle' => [
-                'type' => 'text',
-                'label' => 'Subtitle',
-                'default' => 'Pick A Course To Get Started',
-                'name' => 'themes.my-quark.home_courses_subtitle',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'Courses List',
-                'name' => 'themes.my-quark.home_courses',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses.*' => [
-                'type' => '_parent',
-                'name' => 'themes.my-quark.home_courses.*',
-                'form_field' => false
-            ],
-            'themes.my-quark.home_courses.*.icon' => [
-                'type' => 'text',
-                'label' => 'Icon',
-                'name' => 'themes.my-quark.home_courses.*.icon',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses.*.title' => [
-                'type' => 'text',
-                'label' => 'Title',
-                'name' => 'themes.my-quark.home_courses.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses.*.subtitle' => [
-                'type' => 'text',
-                'label' => 'Subtitle',
-                'name' => 'themes.my-quark.home_courses.*.subtitle',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.home_courses.*.url' => [
-                'type' => 'text',
-                'label' => 'Enroll URL',
-                'name' => 'themes.my-quark.home_courses.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.hero_default_style' => [
+            'themes.nur-ul-huda.hero_default_style' => [
                 'type' => 'select',
-                'label' => 'Default Style',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_DEFAULT_STYLE',
+                'default' => 'hero-large',
+                'options' => [
+                    'hero-fullscreen' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_FULLSCREEN',
+                    'hero-large' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_LARGE',
+                    'hero-medium' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_MEDIUM',
+                    'hero-small' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_SMALL',
+                    'hero-tiny' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_TINY'
+                ],
+                'name' => 'themes.nur-ul-huda.hero_default_style',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.services_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.services_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.services_default_columns' => [
+                'type' => 'select',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_DEFAULT_COLUMNS',
+                'default' => 3,
+                'options' => [
+                    2 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_2',
+                    3 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_3',
+                    4 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_4'
+                ],
+                'name' => 'themes.nur-ul-huda.services_default_columns',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.features_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.features_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.features_default_layout' => [
+                'type' => 'select',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_DEFAULT_LAYOUT',
                 'default' => 'standard',
                 'options' => [
-                    'standard' => 'Standard (Centered)',
-                    'split' => 'Split (Text Left / Image Right)',
-                    'immersive' => 'Immersive (Full Screen)',
-                    'minimal' => 'Minimal (Text Only)'
+                    'small' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_SMALL',
+                    'standard' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_STANDARD'
                 ],
-                'name' => 'themes.my-quark.hero_default_style',
+                'name' => 'themes.nur-ul-huda.features_default_layout',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.hero_default_overlay' => [
-                'type' => 'range',
-                'label' => 'Default Overlay Opacity',
-                'default' => 0.3,
-                'min' => 0,
-                'max' => 1,
-                'step' => 0.1,
-                'name' => 'themes.my-quark.hero_default_overlay',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.hero_default_button_style' => [
-                'type' => 'select',
-                'label' => 'Default CTA Button Style',
-                'default' => 'primary',
-                'options' => [
-                    'primary' => 'Primary',
-                    'secondary' => 'Secondary',
-                    'accent' => 'Accent',
-                    'ghost' => 'Ghost'
-                ],
-                'name' => 'themes.my-quark.hero_default_button_style',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.hero_enable_animations' => [
+            'themes.nur-ul-huda.gallery_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Enable Animations',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.hero_enable_animations',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_mode' => [
-                'type' => 'toggle',
-                'label' => 'Background Type',
-                'default' => 0,
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.GALLERY_ENABLED',
                 'highlight' => 1,
+                'default' => 1,
                 'options' => [
-                    0 => 'Solid Color',
-                    1 => 'Gradient',
-                    2 => 'Image',
-                    3 => 'Animated Mesh',
-                    4 => 'Pattern'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
                 'validate' => [
-                    'type' => 'int'
+                    'type' => 'bool'
                 ],
-                'name' => 'themes.my-quark.background_mode',
+                'name' => 'themes.nur-ul-huda.gallery_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_solid_color' => [
-                'type' => 'color',
-                'label' => 'Background Color',
-                'default' => '#ffffff',
-                'name' => 'themes.my-quark.background_solid_color',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_gradient_type' => [
-                'type' => 'select',
-                'label' => 'Gradient Type',
-                'default' => 'linear',
+            'themes.nur-ul-huda.istafta_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
                 'options' => [
-                    'linear' => 'Linear',
-                    'radial' => 'Radial'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.my-quark.background_gradient_type',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.istafta_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_gradient_angle' => [
-                'type' => 'range',
-                'label' => 'Angle',
-                'default' => 135,
-                'min' => 0,
-                'max' => 360,
-                'step' => 5,
-                'append' => 'deg',
-                'name' => 'themes.my-quark.background_gradient_angle',
+            'themes.nur-ul-huda.khums_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.KHUMS_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.khums_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_gradient_start' => [
-                'type' => 'color',
-                'label' => 'Start Color',
-                'default' => '#3b4252',
-                'name' => 'themes.my-quark.background_gradient_start',
+            'themes.nur-ul-huda.timeline_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.TIMELINE_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.timeline_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_gradient_end' => [
-                'type' => 'color',
-                'label' => 'End Color',
-                'default' => '#88c0d0',
-                'name' => 'themes.my-quark.background_gradient_end',
+            'themes.nur-ul-huda.trust_signals_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.trust_signals_enabled',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_image' => [
+            'themes.nur-ul-huda.courses_enabled' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.COURSES_ENABLED',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.courses_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.sticky-footer' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.STICKY_FOOTER',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.sticky-footer',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.footer_show_social' => [
+                'type' => 'toggle',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_SHOW_SOCIAL',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.footer_show_social',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.site_name' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_NAME',
+                'name' => 'themes.nur-ul-huda.site_name',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.site_tagline' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_TAGLINE',
+                'name' => 'themes.nur-ul-huda.site_tagline',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.contact_phone' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_PHONE',
+                'name' => 'themes.nur-ul-huda.contact_phone',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.contact_address' => [
+                'type' => 'textarea',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_ADDRESS',
+                'rows' => 3,
+                'name' => 'themes.nur-ul-huda.contact_address',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.footer_copyright' => [
+                'type' => 'textarea',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COPYRIGHT',
+                'rows' => 3,
+                'name' => 'themes.nur-ul-huda.footer_copyright',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_facebook' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_FACEBOOK',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_facebook',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_twitter' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TWITTER',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_twitter',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_instagram' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_INSTAGRAM',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_instagram',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_youtube' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_YOUTUBE',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_youtube',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_telegram' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TELEGRAM',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_telegram',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_whatsapp' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_WHATSAPP',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_whatsapp',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_email' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_EMAIL',
+                'validate' => [
+                    'type' => 'email'
+                ],
+                'name' => 'themes.nur-ul-huda.social_email',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.footer_columns' => [
                 'array' => true,
-                'media_field' => true,
-                'validate' => [
-                    'type' => 'ignore'
-                ],
-                'type' => 'file',
-                'label' => 'Background Image',
-                'destination' => 'theme://images/backgrounds',
-                'multiple' => false,
-                'accept' => [
-                    0 => 'image/*'
-                ],
-                'name' => 'themes.my-quark.background_image',
+                'type' => 'list',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMNS',
+                'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_FOOTER_COLUMN',
+                'name' => 'themes.nur-ul-huda.footer_columns',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.background_image_position' => [
-                'type' => 'select',
-                'label' => 'Position',
-                'default' => 'center center',
-                'options' => [
-                    'center center' => 'Center',
-                    'top center' => 'Top',
-                    'bottom center' => 'Bottom'
-                ],
-                'name' => 'themes.my-quark.background_image_position',
-                'validation' => 'loose'
+            'themes.nur-ul-huda.footer_columns.*' => [
+                'type' => '_parent',
+                'name' => 'themes.nur-ul-huda.footer_columns.*',
+                'form_field' => false
             ],
-            'themes.my-quark.background_image_size' => [
-                'type' => 'select',
-                'label' => 'Size',
-                'default' => 'cover',
-                'options' => [
-                    'cover' => 'Cover (Fill)',
-                    'contain' => 'Contain (Fit)',
-                    'auto' => 'Original Size'
-                ],
-                'name' => 'themes.my-quark.background_image_size',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_image_attachment' => [
-                'type' => 'select',
-                'label' => 'Scroll Behavior',
-                'default' => 'fixed',
-                'options' => [
-                    'fixed' => 'Fixed (Parallax)',
-                    'scroll' => 'Scroll (Normal)'
-                ],
-                'name' => 'themes.my-quark.background_image_attachment',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_image_overlay' => [
-                'type' => 'color',
-                'label' => 'Overlay Color',
-                'default' => '#000000',
-                'name' => 'themes.my-quark.background_image_overlay',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_image_overlay_opacity' => [
-                'type' => 'range',
-                'label' => 'Overlay Opacity',
-                'default' => 0.3,
-                'min' => 0,
-                'max' => 1,
-                'step' => 0.1,
-                'name' => 'themes.my-quark.background_image_overlay_opacity',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_mesh_color1' => [
-                'type' => 'color',
-                'label' => 'Mesh Color 1',
-                'default' => '#3b4252',
-                'name' => 'themes.my-quark.background_mesh_color1',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_mesh_color2' => [
-                'type' => 'color',
-                'label' => 'Mesh Color 2',
-                'default' => '#bf616a',
-                'name' => 'themes.my-quark.background_mesh_color2',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_mesh_color3' => [
-                'type' => 'color',
-                'label' => 'Mesh Color 3',
-                'default' => '#88c0d0',
-                'name' => 'themes.my-quark.background_mesh_color3',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_mesh_speed' => [
-                'type' => 'range',
-                'label' => 'Animation Speed',
-                'default' => 20,
-                'min' => 5,
-                'max' => 60,
-                'step' => 5,
-                'name' => 'themes.my-quark.background_mesh_speed',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_pattern_type' => [
-                'type' => 'select',
-                'label' => 'Pattern Type',
-                'default' => 'none',
-                'options' => [
-                    'none' => 'None',
-                    'noise' => 'Perlin Noise',
-                    'dots' => 'Dots',
-                    'grid' => 'Grid Lines',
-                    'lines' => 'Diagonal Lines'
-                ],
-                'name' => 'themes.my-quark.background_pattern_type',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_pattern_color' => [
-                'type' => 'color',
-                'label' => 'Pattern Color',
-                'default' => '#000000',
-                'name' => 'themes.my-quark.background_pattern_color',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.background_pattern_opacity' => [
-                'type' => 'range',
-                'label' => 'Pattern Opacity',
-                'default' => 0.05,
-                'min' => 0.01,
-                'max' => 0.2,
-                'step' => 0.01,
-                'name' => 'themes.my-quark.background_pattern_opacity',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.button_default_variant' => [
-                'type' => 'select',
-                'label' => 'Default Style',
-                'default' => 'primary',
-                'options' => [
-                    'primary' => 'Primary (Brand Color)',
-                    'secondary' => 'Secondary (Neutral)',
-                    'accent' => 'Accent (Highlight)',
-                    'ghost' => 'Ghost (Transparent)',
-                    'glass' => 'Glass (Glassmorphic)'
-                ],
-                'name' => 'themes.my-quark.button_default_variant',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.button_default_size' => [
-                'type' => 'select',
-                'label' => 'Default Size',
-                'default' => 'md',
-                'options' => [
-                    'sm' => 'Small',
-                    'md' => 'Medium',
-                    'lg' => 'Large'
-                ],
-                'name' => 'themes.my-quark.button_default_size',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.button_haptic_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Haptic Feedback',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.button_haptic_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.card_default_variant' => [
-                'type' => 'select',
-                'label' => 'Default Style',
-                'default' => 'default',
-                'options' => [
-                    'default' => 'Default (Solid)',
-                    'glass' => 'Glass (Translucent)',
-                    'neo' => 'Neomorphic (Soft 3D)',
-                    'accent' => 'Accent (Highlighted)'
-                ],
-                'name' => 'themes.my-quark.card_default_variant',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.card_shadow_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Shadows',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.card_shadow_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.card_image_lazy_load' => [
-                'type' => 'toggle',
-                'label' => 'Lazy Load Images',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.card_image_lazy_load',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.form_required_symbol' => [
+            'themes.nur-ul-huda.footer_columns.*.title' => [
                 'type' => 'text',
-                'label' => 'Required Field Symbol',
-                'default' => '*',
-                'name' => 'themes.my-quark.form_required_symbol',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_TITLE',
+                'name' => 'themes.nur-ul-huda.footer_columns.*.title',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.form_validation_style' => [
+            'themes.nur-ul-huda.footer_columns.*.links' => [
+                'array' => true,
+                'type' => 'list',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_LINKS',
+                'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_LINK',
+                'name' => 'themes.nur-ul-huda.footer_columns.*.links',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.footer_columns.*.links.*' => [
+                'type' => '_parent',
+                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*',
+                'form_field' => false
+            ],
+            'themes.nur-ul-huda.footer_columns.*.links.*.text' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_TEXT',
+                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*.text',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.footer_columns.*.links.*.url' => [
+                'type' => 'text',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_URL',
+                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*.url',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.grid-size' => [
                 'type' => 'select',
-                'label' => 'Validation Display',
-                'default' => 'inline',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE',
+                'size' => 'small',
                 'options' => [
-                    'inline' => 'Inline (Below Field)',
-                    'tooltip' => 'Tooltip (On Hover)',
-                    'summary' => 'Summary (Top of Form)'
+                    '' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_NONE',
+                    'grid-xl' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_EXTRA_LARGE',
+                    'grid-lg' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_LARGE',
+                    'grid-md' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_MEDIUM'
                 ],
-                'name' => 'themes.my-quark.form_validation_style',
+                'name' => 'themes.nur-ul-huda.grid-size',
                 'validation' => 'loose'
             ],
-            'themes.my-quark.form_focus_highlight' => [
-                'type' => 'toggle',
-                'label' => 'Focus Highlight',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.form_focus_highlight',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.image_default_loading' => [
-                'type' => 'select',
-                'label' => 'Loading Strategy',
-                'default' => 'lazy',
-                'options' => [
-                    'eager' => 'Eager (Immediate)',
-                    'lazy' => 'Lazy (Deferred)'
-                ],
-                'name' => 'themes.my-quark.image_default_loading',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.image_default_quality' => [
-                'type' => 'range',
-                'label' => 'Image Quality',
-                'default' => 85,
-                'min' => 60,
-                'max' => 100,
-                'step' => 5,
-                'append' => '%',
-                'name' => 'themes.my-quark.image_default_quality',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.image_caption_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Show Captions',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.image_caption_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.image_responsive' => [
-                'type' => 'toggle',
-                'label' => 'Responsive Images',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.image_responsive',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.meta_show_author' => [
-                'type' => 'toggle',
-                'label' => 'Show Author',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.meta_show_author',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.meta_show_date' => [
-                'type' => 'toggle',
-                'label' => 'Show Publish Date',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.meta_show_date',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.meta_date_format' => [
+            'themes.nur-ul-huda.blog-page' => [
                 'type' => 'text',
-                'label' => 'Date Format',
-                'default' => 'F d, Y',
-                'name' => 'themes.my-quark.meta_date_format',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.meta_show_reading_time' => [
-                'type' => 'toggle',
-                'label' => 'Show Reading Time',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.meta_show_reading_time',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.meta_separator' => [
-                'type' => 'text',
-                'label' => 'Separator Character',
-                'default' => '•',
-                'name' => 'themes.my-quark.meta_separator',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.animations_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable Animations',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.animations_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.animations_respect_reduced_motion' => [
-                'type' => 'toggle',
-                'label' => 'Respect Reduced Motion',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.animations_respect_reduced_motion',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.accessibility_skip_link_text' => [
-                'type' => 'text',
-                'label' => 'Skip to Content Text',
-                'default' => 'THEME_MY_QUARK.SKIP_TO_CONTENT',
-                'name' => 'themes.my-quark.accessibility_skip_link_text',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.accessibility_mobile_menu_label' => [
-                'type' => 'text',
-                'label' => 'Mobile Menu Label',
-                'default' => 'THEME_MY_QUARK.TOGGLE_MOBILE_MENU',
-                'name' => 'themes.my-quark.accessibility_mobile_menu_label',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.accessibility_focus_mode' => [
-                'type' => 'toggle',
-                'label' => 'Focus Mode',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.accessibility_focus_mode',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.sustainability_eco_mode' => [
-                'type' => 'toggle',
-                'label' => 'Force Eco Mode',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.sustainability_eco_mode',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.sustainability_score' => [
-                'type' => 'text',
-                'label' => 'Sustainability Score',
-                'default' => 'A+',
-                'name' => 'themes.my-quark.sustainability_score',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.co2_per_view' => [
-                'type' => 'text',
-                'label' => 'CO2 per View',
-                'default' => '0.2g',
-                'name' => 'themes.my-quark.co2_per_view',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.ai_augmentation_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Enable AI Enhancements',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.ai_augmentation_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.advanced_haptics' => [
-                'type' => 'toggle',
-                'label' => 'Global Haptic Feedback',
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.advanced_haptics',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.performance_production_mode' => [
-                'type' => 'toggle',
-                'label' => 'Production Mode',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.performance_production_mode',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.privacy_shield_enabled' => [
-                'type' => 'toggle',
-                'label' => 'Privacy Shield',
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'name' => 'themes.my-quark.privacy_shield_enabled',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.localization_newsletter_placeholder' => [
-                'type' => 'text',
-                'label' => 'Newsletter Email Placeholder',
-                'default' => 'THEME_MY_QUARK.NEWSLETTER_PLACEHOLDER',
-                'name' => 'themes.my-quark.localization_newsletter_placeholder',
-                'validation' => 'loose'
-            ],
-            'themes.my-quark.localization_newsletter_button' => [
-                'type' => 'text',
-                'label' => 'Newsletter Button Text',
-                'default' => 'THEME_MY_QUARK.NEWSLETTER_BUTTON',
-                'name' => 'themes.my-quark.localization_newsletter_button',
+                'label' => 'THEME_NUR_UL_HUDA.ADMIN.BLOG_PAGE',
+                'size' => 'medium',
+                'default' => '/blog',
+                'name' => 'themes.nur-ul-huda.blog-page',
                 'validation' => 'loose'
             ]
         ],
@@ -9127,16 +7893,6 @@ return [
             
         ],
         'nested' => [
-            'media' => [
-                'types' => [
-                    '*' => [
-                        'type' => 'media.types.*.type',
-                        'thumb' => 'media.types.*.thumb',
-                        'mime' => 'media.types.*.mime',
-                        'image' => 'media.types.*.image'
-                    ]
-                ]
-            ],
             'backups' => [
                 'history' => 'backups.history',
                 'purge' => [
@@ -9157,6 +7913,7 @@ return [
                     ]
                 ]
             ],
+            'media' => 'media',
             'scheduler' => [
                 'status' => 'scheduler.status',
                 'custom_jobs' => [
@@ -9746,6 +8503,30 @@ return [
                     'enabled' => 'plugins.problems.enabled',
                     'built_in_css' => 'plugins.problems.built_in_css'
                 ],
+                'archives' => [
+                    'enabled' => 'plugins.archives.enabled',
+                    'built_in_css' => 'plugins.archives.built_in_css',
+                    'date_display_format' => 'plugins.archives.date_display_format',
+                    'show_count' => 'plugins.archives.show_count',
+                    'limit' => 'plugins.archives.limit',
+                    'taxonomy_names' => 'plugins.archives.taxonomy_names',
+                    'taxonomy_values' => 'plugins.archives.taxonomy_values',
+                    'order' => [
+                        'by' => 'plugins.archives.order.by',
+                        'dir' => 'plugins.archives.order.dir'
+                    ],
+                    'filters' => 'plugins.archives.filters',
+                    'filter_combinator' => 'plugins.archives.filter_combinator',
+                    'page_specific_config' => [
+                        '*' => [
+                            'route' => 'plugins.archives.page_specific_config.*.route',
+                            'filters' => 'plugins.archives.page_specific_config.*.filters',
+                            'filter_combinator' => 'plugins.archives.page_specific_config.*.filter_combinator',
+                            'order_by' => 'plugins.archives.page_specific_config.*.order_by',
+                            'order_dir' => 'plugins.archives.page_specific_config.*.order_dir'
+                        ]
+                    ]
+                ],
                 'feed' => [
                     'enabled' => 'plugins.feed.enabled',
                     'limit' => 'plugins.feed.limit',
@@ -9754,6 +8535,22 @@ return [
                     'length' => 'plugins.feed.length',
                     'enable_json_feed' => 'plugins.feed.enable_json_feed',
                     'show_last_modified' => 'plugins.feed.show_last_modified'
+                ],
+                'shortcode-core' => [
+                    'enabled' => 'plugins.shortcode-core.enabled',
+                    'active' => 'plugins.shortcode-core.active',
+                    'active_admin' => 'plugins.shortcode-core.active_admin',
+                    'admin_pages_only' => 'plugins.shortcode-core.admin_pages_only',
+                    'parser' => 'plugins.shortcode-core.parser',
+                    'custom_shortcodes' => 'plugins.shortcode-core.custom_shortcodes',
+                    'css' => [
+                        'notice_enabled' => 'plugins.shortcode-core.css.notice_enabled'
+                    ],
+                    'fontawesome' => [
+                        'load' => 'plugins.shortcode-core.fontawesome.load',
+                        'url' => 'plugins.shortcode-core.fontawesome.url',
+                        'v5' => 'plugins.shortcode-core.fontawesome.v5'
+                    ]
                 ],
                 'seo' => [
                     'enabled' => 'plugins.seo.enabled',
@@ -9861,293 +8658,88 @@ return [
                     'reply_to' => 'plugins.email.reply_to',
                     'body' => 'plugins.email.body',
                     'debug' => 'plugins.email.debug'
+                ],
+                'taxonomylist' => [
+                    'enabled' => 'plugins.taxonomylist.enabled',
+                    'route' => 'plugins.taxonomylist.route'
                 ]
             ],
             'themes' => [
-                'ngo-theme' => [
-                    'production-mode' => 'themes.ngo-theme.production-mode',
-                    'grid-size' => 'themes.ngo-theme.grid-size',
-                    'search_enabled' => 'themes.ngo-theme.search_enabled',
-                    'sustainability_score' => 'themes.ngo-theme.sustainability_score',
-                    'co2_per_view' => 'themes.ngo-theme.co2_per_view',
-                    'ai_disclosure' => 'themes.ngo-theme.ai_disclosure',
-                    'ai_assistant' => 'themes.ngo-theme.ai_assistant',
-                    'doodle_engine' => 'themes.ngo-theme.doodle_engine',
-                    'eco_mode' => 'themes.ngo-theme.eco_mode',
-                    'focus_mode' => 'themes.ngo-theme.focus_mode',
-                    'custom_logo' => 'themes.ngo-theme.custom_logo',
-                    'header-fixed' => 'themes.ngo-theme.header-fixed',
-                    'header-animated' => 'themes.ngo-theme.header-animated',
-                    'header-dark' => 'themes.ngo-theme.header-dark',
-                    'header-transparent' => 'themes.ngo-theme.header-transparent',
-                    'utility_hijri_toggle' => 'themes.ngo-theme.utility_hijri_toggle',
-                    'utility_prayer_toggle' => 'themes.ngo-theme.utility_prayer_toggle',
-                    'utility_prayer_city' => 'themes.ngo-theme.utility_prayer_city',
-                    'utility_language_toggle' => 'themes.ngo-theme.utility_language_toggle',
-                    'utility_accessibility_toggle' => 'themes.ngo-theme.utility_accessibility_toggle',
-                    'mega_menu_structure' => [
+                'nur-ul-huda' => [
+                    'direction' => 'themes.nur-ul-huda.direction',
+                    'language' => 'themes.nur-ul-huda.language',
+                    'number_format' => 'themes.nur-ul-huda.number_format',
+                    'date_calendar' => 'themes.nur-ul-huda.date_calendar',
+                    'production-mode' => 'themes.nur-ul-huda.production-mode',
+                    'primary_spirit_color' => 'themes.nur-ul-huda.primary_spirit_color',
+                    'accent_color' => 'themes.nur-ul-huda.accent_color',
+                    'blur_strength' => 'themes.nur-ul-huda.blur_strength',
+                    'typography' => 'themes.nur-ul-huda.typography',
+                    'custom_logo' => 'themes.nur-ul-huda.custom_logo',
+                    'header-fixed' => 'themes.nur-ul-huda.header-fixed',
+                    'header-animated' => 'themes.nur-ul-huda.header-animated',
+                    'header-dark' => 'themes.nur-ul-huda.header-dark',
+                    'header-transparent' => 'themes.nur-ul-huda.header-transparent',
+                    'minaret_enabled' => 'themes.nur-ul-huda.minaret_enabled',
+                    'minaret_announcement_enabled' => 'themes.nur-ul-huda.minaret_announcement_enabled',
+                    'minaret_announcement_text' => 'themes.nur-ul-huda.minaret_announcement_text',
+                    'minaret_announcement_expires' => 'themes.nur-ul-huda.minaret_announcement_expires',
+                    'minaret_announcement_bg_color' => 'themes.nur-ul-huda.minaret_announcement_bg_color',
+                    'minaret_announcement_text_color' => 'themes.nur-ul-huda.minaret_announcement_text_color',
+                    'minaret_bg_color' => 'themes.nur-ul-huda.minaret_bg_color',
+                    'minaret_text_color' => 'themes.nur-ul-huda.minaret_text_color',
+                    'minaret_show_dates' => 'themes.nur-ul-huda.minaret_show_dates',
+                    'minaret_show_prayer_ticker' => 'themes.nur-ul-huda.minaret_show_prayer_ticker',
+                    'minaret_show_contact' => 'themes.nur-ul-huda.minaret_show_contact',
+                    'minaret_show_social' => 'themes.nur-ul-huda.minaret_show_social',
+                    'prayer_method' => 'themes.nur-ul-huda.prayer_method',
+                    'hijri_offset' => 'themes.nur-ul-huda.hijri_offset',
+                    'adhan_media' => 'themes.nur-ul-huda.adhan_media',
+                    'default_location' => 'themes.nur-ul-huda.default_location',
+                    'moodle_url' => 'themes.nur-ul-huda.moodle_url',
+                    'moodle_token' => 'themes.nur-ul-huda.moodle_token',
+                    'snipcart_key' => 'themes.nur-ul-huda.snipcart_key',
+                    'jazzcash_merchant' => 'themes.nur-ul-huda.jazzcash_merchant',
+                    'jazzcash_salt' => 'themes.nur-ul-huda.jazzcash_salt',
+                    'hero_enabled' => 'themes.nur-ul-huda.hero_enabled',
+                    'hero_default_style' => 'themes.nur-ul-huda.hero_default_style',
+                    'services_enabled' => 'themes.nur-ul-huda.services_enabled',
+                    'services_default_columns' => 'themes.nur-ul-huda.services_default_columns',
+                    'features_enabled' => 'themes.nur-ul-huda.features_enabled',
+                    'features_default_layout' => 'themes.nur-ul-huda.features_default_layout',
+                    'gallery_enabled' => 'themes.nur-ul-huda.gallery_enabled',
+                    'istafta_enabled' => 'themes.nur-ul-huda.istafta_enabled',
+                    'khums_enabled' => 'themes.nur-ul-huda.khums_enabled',
+                    'timeline_enabled' => 'themes.nur-ul-huda.timeline_enabled',
+                    'trust_signals_enabled' => 'themes.nur-ul-huda.trust_signals_enabled',
+                    'courses_enabled' => 'themes.nur-ul-huda.courses_enabled',
+                    'sticky-footer' => 'themes.nur-ul-huda.sticky-footer',
+                    'footer_show_social' => 'themes.nur-ul-huda.footer_show_social',
+                    'site_name' => 'themes.nur-ul-huda.site_name',
+                    'site_tagline' => 'themes.nur-ul-huda.site_tagline',
+                    'contact_phone' => 'themes.nur-ul-huda.contact_phone',
+                    'contact_address' => 'themes.nur-ul-huda.contact_address',
+                    'footer_copyright' => 'themes.nur-ul-huda.footer_copyright',
+                    'social_facebook' => 'themes.nur-ul-huda.social_facebook',
+                    'social_twitter' => 'themes.nur-ul-huda.social_twitter',
+                    'social_instagram' => 'themes.nur-ul-huda.social_instagram',
+                    'social_youtube' => 'themes.nur-ul-huda.social_youtube',
+                    'social_telegram' => 'themes.nur-ul-huda.social_telegram',
+                    'social_whatsapp' => 'themes.nur-ul-huda.social_whatsapp',
+                    'social_email' => 'themes.nur-ul-huda.social_email',
+                    'footer_columns' => [
                         '*' => [
-                            'title' => 'themes.ngo-theme.mega_menu_structure.*.title',
+                            'title' => 'themes.nur-ul-huda.footer_columns.*.title',
                             'links' => [
                                 '*' => [
-                                    'text' => 'themes.ngo-theme.mega_menu_structure.*.links.*.text',
-                                    'url' => 'themes.ngo-theme.mega_menu_structure.*.links.*.url'
+                                    'text' => 'themes.nur-ul-huda.footer_columns.*.links.*.text',
+                                    'url' => 'themes.nur-ul-huda.footer_columns.*.links.*.url'
                                 ]
                             ]
                         ]
                     ],
-                    'enabled' => 'themes.ngo-theme.enabled',
-                    'text' => 'themes.ngo-theme.text',
-                    'url' => 'themes.ngo-theme.url',
-                    'icon' => 'themes.ngo-theme.icon',
-                    'external' => 'themes.ngo-theme.external',
-                    'hero_video_url' => 'themes.ngo-theme.hero_video_url',
-                    'hero_glass_opacity' => 'themes.ngo-theme.hero_glass_opacity',
-                    'hero_primary_cta_text' => 'themes.ngo-theme.hero_primary_cta_text',
-                    'hero_primary_cta_link' => 'themes.ngo-theme.hero_primary_cta_link',
-                    'hero_secondary_cta_text' => 'themes.ngo-theme.hero_secondary_cta_text',
-                    'hero_secondary_cta_link' => 'themes.ngo-theme.hero_secondary_cta_link',
-                    'inspiration_text' => 'themes.ngo-theme.inspiration_text',
-                    'inspiration_source' => 'themes.ngo-theme.inspiration_source',
-                    'services_list' => [
-                        '*' => [
-                            'icon' => 'themes.ngo-theme.services_list.*.icon',
-                            'title' => 'themes.ngo-theme.services_list.*.title',
-                            'description' => 'themes.ngo-theme.services_list.*.description',
-                            'link' => 'themes.ngo-theme.services_list.*.link'
-                        ]
-                    ],
-                    'events_list' => [
-                        '*' => [
-                            'title' => 'themes.ngo-theme.events_list.*.title',
-                            'date' => 'themes.ngo-theme.events_list.*.date',
-                            'location' => 'themes.ngo-theme.events_list.*.location',
-                            'url' => 'themes.ngo-theme.events_list.*.url',
-                            'type' => 'themes.ngo-theme.events_list.*.type'
-                        ]
-                    ],
-                    'project_timeline_list' => [
-                        '*' => [
-                            'title' => 'themes.ngo-theme.project_timeline_list.*.title',
-                            'description' => 'themes.ngo-theme.project_timeline_list.*.description',
-                            'goal' => 'themes.ngo-theme.project_timeline_list.*.goal',
-                            'raised' => 'themes.ngo-theme.project_timeline_list.*.raised',
-                            'percent' => 'themes.ngo-theme.project_timeline_list.*.percent',
-                            'status' => 'themes.ngo-theme.project_timeline_list.*.status'
-                        ]
-                    ],
-                    'khums_rate' => 'themes.ngo-theme.khums_rate',
-                    'khums_currency' => 'themes.ngo-theme.khums_currency',
-                    'prayer_times_enabled' => 'themes.ngo-theme.prayer_times_enabled',
-                    'prayer_api_key' => 'themes.ngo-theme.prayer_api_key',
-                    'hijri_adjustment' => 'themes.ngo-theme.hijri_adjustment',
-                    'trust_signals_images' => [
-                        '*' => [
-                            'name' => 'themes.ngo-theme.trust_signals_images.*.name',
-                            'image' => 'themes.ngo-theme.trust_signals_images.*.image',
-                            'url' => 'themes.ngo-theme.trust_signals_images.*.url'
-                        ]
-                    ],
-                    'student_login_title' => 'themes.ngo-theme.student_login_title',
-                    'student_login_description' => 'themes.ngo-theme.student_login_description',
-                    'student_login_button_text' => 'themes.ngo-theme.student_login_button_text',
-                    'featured_courses_list' => [
-                        '*' => [
-                            'title' => 'themes.ngo-theme.featured_courses_list.*.title',
-                            'instructor' => 'themes.ngo-theme.featured_courses_list.*.instructor',
-                            'image' => 'themes.ngo-theme.featured_courses_list.*.image',
-                            'url' => 'themes.ngo-theme.featured_courses_list.*.url'
-                        ]
-                    ],
-                    'products_list' => [
-                        '*' => [
-                            'title' => 'themes.ngo-theme.products_list.*.title',
-                            'price' => 'themes.ngo-theme.products_list.*.price',
-                            'type' => 'themes.ngo-theme.products_list.*.type',
-                            'image' => 'themes.ngo-theme.products_list.*.image',
-                            'url' => 'themes.ngo-theme.products_list.*.url'
-                        ]
-                    ],
-                    'sticky-footer' => 'themes.ngo-theme.sticky-footer',
-                    'footer_about_title' => 'themes.ngo-theme.footer_about_title',
-                    'footer_mission' => 'themes.ngo-theme.footer_mission',
-                    'contact_address' => 'themes.ngo-theme.contact_address',
-                    'contact_email' => 'themes.ngo-theme.contact_email',
-                    'contact_phone' => 'themes.ngo-theme.contact_phone',
-                    'contact_whatsapp' => 'themes.ngo-theme.contact_whatsapp',
-                    'social_links' => [
-                        '*' => [
-                            'network' => 'themes.ngo-theme.social_links.*.network',
-                            'url' => 'themes.ngo-theme.social_links.*.url'
-                        ]
-                    ],
-                    'footer_links' => [
-                        '*' => [
-                            'text' => 'themes.ngo-theme.footer_links.*.text',
-                            'url' => 'themes.ngo-theme.footer_links.*.url',
-                            'icon' => 'themes.ngo-theme.footer_links.*.icon'
-                        ]
-                    ],
-                    'newsletter_enabled' => 'themes.ngo-theme.newsletter_enabled',
-                    'newsletter_action' => 'themes.ngo-theme.newsletter_action',
-                    'blog-page' => 'themes.ngo-theme.blog-page',
-                    'testimonials_list' => [
-                        '*' => [
-                            'name' => 'themes.ngo-theme.testimonials_list.*.name',
-                            'role' => 'themes.ngo-theme.testimonials_list.*.role',
-                            'quote' => 'themes.ngo-theme.testimonials_list.*.quote',
-                            'image' => 'themes.ngo-theme.testimonials_list.*.image',
-                            'video_url' => 'themes.ngo-theme.testimonials_list.*.video_url'
-                        ]
-                    ],
-                    'faq_list' => [
-                        '*' => [
-                            'q' => 'themes.ngo-theme.faq_list.*.q',
-                            'a' => 'themes.ngo-theme.faq_list.*.a'
-                        ]
-                    ]
-                ],
-                'quark' => [
-                    'production-mode' => 'themes.quark.production-mode',
-                    'grid-size' => 'themes.quark.grid-size',
-                    'custom_logo' => 'themes.quark.custom_logo',
-                    'custom_logo_mobile' => 'themes.quark.custom_logo_mobile',
-                    'header-fixed' => 'themes.quark.header-fixed',
-                    'header-animated' => 'themes.quark.header-animated',
-                    'header-dark' => 'themes.quark.header-dark',
-                    'header-transparent' => 'themes.quark.header-transparent',
-                    'sticky-footer' => 'themes.quark.sticky-footer',
-                    'blog-page' => 'themes.quark.blog-page',
-                    'spectre' => [
-                        'exp' => 'themes.quark.spectre.exp',
-                        'icons' => 'themes.quark.spectre.icons'
-                    ]
-                ],
-                'my-quark' => [
-                    'color_primary' => 'themes.my-quark.color_primary',
-                    'color_secondary' => 'themes.my-quark.color_secondary',
-                    'color_accent' => 'themes.my-quark.color_accent',
-                    'color_background_body' => 'themes.my-quark.color_background_body',
-                    'color_background_card' => 'themes.my-quark.color_background_card',
-                    'color_text_primary' => 'themes.my-quark.color_text_primary',
-                    'color_text_secondary' => 'themes.my-quark.color_text_secondary',
-                    'typography_font_body' => 'themes.my-quark.typography_font_body',
-                    'typography_font_headings' => 'themes.my-quark.typography_font_headings',
-                    'typography_fluid_enabled' => 'themes.my-quark.typography_fluid_enabled',
-                    'typography_size_min' => 'themes.my-quark.typography_size_min',
-                    'typography_size_max' => 'themes.my-quark.typography_size_max',
-                    'typography_scale_ratio' => 'themes.my-quark.typography_scale_ratio',
-                    'typography_line_height_body' => 'themes.my-quark.typography_line_height_body',
-                    'typography_line_height_headings' => 'themes.my-quark.typography_line_height_headings',
-                    'typography_letter_spacing_headings' => 'themes.my-quark.typography_letter_spacing_headings',
-                    'typography_max_measure' => 'themes.my-quark.typography_max_measure',
-                    'layout_container_width' => 'themes.my-quark.layout_container_width',
-                    'layout_spacing_scale' => 'themes.my-quark.layout_spacing_scale',
-                    'layout_grid_size' => 'themes.my-quark.layout_grid_size',
-                    'radius_corners' => 'themes.my-quark.radius_corners',
-                    'shadow_neomorphism_strength' => 'themes.my-quark.shadow_neomorphism_strength',
-                    'shadow_neomorphism_light_source' => 'themes.my-quark.shadow_neomorphism_light_source',
-                    'glass_opacity' => 'themes.my-quark.glass_opacity',
-                    'glass_blur' => 'themes.my-quark.glass_blur',
-                    'effect_vignette_enabled' => 'themes.my-quark.effect_vignette_enabled',
-                    'brand_logo' => 'themes.my-quark.brand_logo',
-                    'brand_name' => 'themes.my-quark.brand_name',
-                    'brand_show_text' => 'themes.my-quark.brand_show_text',
-                    'contact_address' => 'themes.my-quark.contact_address',
-                    'contact_email' => 'themes.my-quark.contact_email',
-                    'contact_phone' => 'themes.my-quark.contact_phone',
-                    'social_links' => [
-                        '*' => [
-                            'network' => 'themes.my-quark.social_links.*.network',
-                            'url' => 'themes.my-quark.social_links.*.url'
-                        ]
-                    ],
-                    'home_enabled' => 'themes.my-quark.home_enabled',
-                    'home_hero_title' => 'themes.my-quark.home_hero_title',
-                    'home_hero_description' => 'themes.my-quark.home_hero_description',
-                    'home_hero_btn_text' => 'themes.my-quark.home_hero_btn_text',
-                    'home_hero_btn_url' => 'themes.my-quark.home_hero_btn_url',
-                    'home_services_title' => 'themes.my-quark.home_services_title',
-                    'home_services' => [
-                        '*' => [
-                            'icon' => 'themes.my-quark.home_services.*.icon',
-                            'title' => 'themes.my-quark.home_services.*.title',
-                            'description' => 'themes.my-quark.home_services.*.description',
-                            'url' => 'themes.my-quark.home_services.*.url',
-                            'btn_text' => 'themes.my-quark.home_services.*.btn_text'
-                        ]
-                    ],
-                    'home_quote_title' => 'themes.my-quark.home_quote_title',
-                    'home_quote_author' => 'themes.my-quark.home_quote_author',
-                    'home_quote_arabic' => 'themes.my-quark.home_quote_arabic',
-                    'home_quote_english' => 'themes.my-quark.home_quote_english',
-                    'home_quote_btn_text' => 'themes.my-quark.home_quote_btn_text',
-                    'home_quote_btn_url' => 'themes.my-quark.home_quote_btn_url',
-                    'home_courses_title' => 'themes.my-quark.home_courses_title',
-                    'home_courses_subtitle' => 'themes.my-quark.home_courses_subtitle',
-                    'home_courses' => [
-                        '*' => [
-                            'icon' => 'themes.my-quark.home_courses.*.icon',
-                            'title' => 'themes.my-quark.home_courses.*.title',
-                            'subtitle' => 'themes.my-quark.home_courses.*.subtitle',
-                            'url' => 'themes.my-quark.home_courses.*.url'
-                        ]
-                    ],
-                    'hero_default_style' => 'themes.my-quark.hero_default_style',
-                    'hero_default_overlay' => 'themes.my-quark.hero_default_overlay',
-                    'hero_default_button_style' => 'themes.my-quark.hero_default_button_style',
-                    'hero_enable_animations' => 'themes.my-quark.hero_enable_animations',
-                    'background_mode' => 'themes.my-quark.background_mode',
-                    'background_solid_color' => 'themes.my-quark.background_solid_color',
-                    'background_gradient_type' => 'themes.my-quark.background_gradient_type',
-                    'background_gradient_angle' => 'themes.my-quark.background_gradient_angle',
-                    'background_gradient_start' => 'themes.my-quark.background_gradient_start',
-                    'background_gradient_end' => 'themes.my-quark.background_gradient_end',
-                    'background_image' => 'themes.my-quark.background_image',
-                    'background_image_position' => 'themes.my-quark.background_image_position',
-                    'background_image_size' => 'themes.my-quark.background_image_size',
-                    'background_image_attachment' => 'themes.my-quark.background_image_attachment',
-                    'background_image_overlay' => 'themes.my-quark.background_image_overlay',
-                    'background_image_overlay_opacity' => 'themes.my-quark.background_image_overlay_opacity',
-                    'background_mesh_color1' => 'themes.my-quark.background_mesh_color1',
-                    'background_mesh_color2' => 'themes.my-quark.background_mesh_color2',
-                    'background_mesh_color3' => 'themes.my-quark.background_mesh_color3',
-                    'background_mesh_speed' => 'themes.my-quark.background_mesh_speed',
-                    'background_pattern_type' => 'themes.my-quark.background_pattern_type',
-                    'background_pattern_color' => 'themes.my-quark.background_pattern_color',
-                    'background_pattern_opacity' => 'themes.my-quark.background_pattern_opacity',
-                    'button_default_variant' => 'themes.my-quark.button_default_variant',
-                    'button_default_size' => 'themes.my-quark.button_default_size',
-                    'button_haptic_enabled' => 'themes.my-quark.button_haptic_enabled',
-                    'card_default_variant' => 'themes.my-quark.card_default_variant',
-                    'card_shadow_enabled' => 'themes.my-quark.card_shadow_enabled',
-                    'card_image_lazy_load' => 'themes.my-quark.card_image_lazy_load',
-                    'form_required_symbol' => 'themes.my-quark.form_required_symbol',
-                    'form_validation_style' => 'themes.my-quark.form_validation_style',
-                    'form_focus_highlight' => 'themes.my-quark.form_focus_highlight',
-                    'image_default_loading' => 'themes.my-quark.image_default_loading',
-                    'image_default_quality' => 'themes.my-quark.image_default_quality',
-                    'image_caption_enabled' => 'themes.my-quark.image_caption_enabled',
-                    'image_responsive' => 'themes.my-quark.image_responsive',
-                    'meta_show_author' => 'themes.my-quark.meta_show_author',
-                    'meta_show_date' => 'themes.my-quark.meta_show_date',
-                    'meta_date_format' => 'themes.my-quark.meta_date_format',
-                    'meta_show_reading_time' => 'themes.my-quark.meta_show_reading_time',
-                    'meta_separator' => 'themes.my-quark.meta_separator',
-                    'animations_enabled' => 'themes.my-quark.animations_enabled',
-                    'animations_respect_reduced_motion' => 'themes.my-quark.animations_respect_reduced_motion',
-                    'accessibility_skip_link_text' => 'themes.my-quark.accessibility_skip_link_text',
-                    'accessibility_mobile_menu_label' => 'themes.my-quark.accessibility_mobile_menu_label',
-                    'accessibility_focus_mode' => 'themes.my-quark.accessibility_focus_mode',
-                    'sustainability_eco_mode' => 'themes.my-quark.sustainability_eco_mode',
-                    'sustainability_score' => 'themes.my-quark.sustainability_score',
-                    'co2_per_view' => 'themes.my-quark.co2_per_view',
-                    'ai_augmentation_enabled' => 'themes.my-quark.ai_augmentation_enabled',
-                    'advanced_haptics' => 'themes.my-quark.advanced_haptics',
-                    'performance_production_mode' => 'themes.my-quark.performance_production_mode',
-                    'privacy_shield_enabled' => 'themes.my-quark.privacy_shield_enabled',
-                    'localization_newsletter_placeholder' => 'themes.my-quark.localization_newsletter_placeholder',
-                    'localization_newsletter_button' => 'themes.my-quark.localization_newsletter_button'
+                    'grid-size' => 'themes.nur-ul-huda.grid-size',
+                    'blog-page' => 'themes.nur-ul-huda.blog-page'
                 ]
             ]
         ],

@@ -1,0 +1,37 @@
+{% macro glass_card(title, content, icon, link) %}
+	<div class="glass-panel p-fluid-md rounded-sacred group hover:scale-[1.02] transition-transform duration-300">
+		<div class="flex items-start gap-4">
+			{% if icon %}
+				<div class="w-12 h-12 rounded-full bg-primary-spirit/20 flex items-center justify-center text-accent-gold">
+					<i class="fa fa-{{ icon }}"></i>
+				</div>
+			{% endif %}
+			<div>
+				<h3 class="text-xl font-bold mb-2 group-hover:text-accent-gold transition-colors">{{ title|e }}</h3>
+				<p class="text-sacred-white/70 text-sm leading-relaxed mb-4">{{ content|e }}</p>
+				{% if link %}
+					<a href="{{ link }}" class="text-accent-gold font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+						Explore Details
+						<i class="fa fa-arrow-right text-xs rtl:rotate-180 transition-transform"></i>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro primary_button(text, url, icon, external=false) %}
+	<a href="{{ url }}" class="btn-sacred" {% if external %} target="_blank" rel="noopener" {% endif %}>
+		{% if icon %}
+			<i class="fa fa-{{ icon }} me-2"></i>
+		{% endif %}
+		{{ text|e }}
+	</a>
+{% endmacro %}
+
+{% macro prayer_widget(name, time, status='upcoming') %}
+	<div class="flex items-center justify-between p-3 rounded-xl {% if status == 'current' %}bg-primary-spirit/30 border border-primary-spirit{% else %}bg-white/5{% endif %}">
+		<span class="font-medium text-sm">{{ name|e }}</span>
+		<span class="font-bold text-accent-gold">{{ time|e }}</span>
+	</div>
+{% endmacro %}

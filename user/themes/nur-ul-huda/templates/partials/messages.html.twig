@@ -1,0 +1,26 @@
+{% set type_mapping = {'info':'bg-blue-50 text-blue-700', 'error': 'bg-red-50 text-red-700', 'warning': 'bg-yellow-50 text-yellow-700', 'success': 'bg-green-50 text-green-700'} %}
+{% set icon_mapping = {'info':'fa-info-circle', 'error':'fa-times-circle', 'warning':'fa-exclamation-triangle', 'success':'fa-check-circle'} %}
+
+{% if grav.messages.all %}
+    <div id="messages" class="space-y-4 mb-8">
+    {% for message in grav.messages.fetch %}
+
+        {% set scope = message.scope|e %}
+        {% set type = type_mapping[scope] %}
+        {% set icon = icon_mapping[scope] %}
+
+        <div class="rounded-md p-4 {{ type }} {{ scope }}">
+            <div class="flex">
+                <span class="shrink-0">
+                    <i class="fa {{ icon }} {{ type }}"></i>
+                </span>
+                <div class="ml-3">
+                    <div class="text-sm font-medium">
+                        {{ message.message|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}

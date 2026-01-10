@@ -1,0 +1,25 @@
+{
+  "files.associations": {
+    "*.html.twig": "twig",
+    "*.yaml": "yaml"
+  },
+  "emmet.includeLanguages": {
+    "twig": "html"
+  },
+  "tailwindCSS.includeLanguages": {
+    "twig": "html"
+  },
+  "editor.formatOnSave": true,
+  "[twig]": {
+    "editor.defaultFormatter": "mblode.twig-language-2"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["class:\\s*\"([^\"]*)\"", "([^\"\\s]+)"]
+  ]
+}

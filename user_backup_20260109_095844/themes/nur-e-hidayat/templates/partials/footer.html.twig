@@ -1,0 +1,65 @@
+<div class="max-w-7xl mx-auto px-fluid-md grid grid-cols-1 md:grid-cols-4 gap-12">
+	<div class="md:col-span-2">
+		{% include 'partials/logo.html.twig' %}
+		<p class="mt-6 text-sacred-white/50 max-w-sm leading-relaxed">
+			{{ theme_config.footer_mission }}
+		</p>
+		<div class="mt-8 flex gap-4">
+			{% for social in theme_config.social_links %}
+				<a href="{{ social.url }}" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary-spirit hover:text-white transition-all">
+					<i class="fa fa-{{ social.network }}"></i>
+				</a>
+			{% endfor %}
+		</div>
+
+		{# Newsletter Integration #}
+		<div class="mt-12">
+			<h4 class="text-[10px] uppercase tracking-widest font-black text-accent-gold mb-4">Daily Sanctum Updates</h4>
+			<form class="flex border border-white/10 rounded-xl overflow-hidden focus-within:border-accent-gold/50 transition-colors">
+				<input type="email" placeholder="Email Address" class="bg-transparent px-4 py-3 text-sm outline-none flex-1">
+				<button class="bg-white/5 px-6 hover:bg-accent-gold hover:text-divine-dark transition-all">
+					<i class="fa fa-paper-plane"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<h4 class="text-xs uppercase tracking-widest font-bold text-accent-gold mb-6">Quick Access</h4>
+		<ul class="space-y-4 text-sm font-medium">
+			{% for link in theme_config.footer_links %}
+				<li>
+					<a href="{{ link.url }}" class="hover:text-accent-gold transition-colors">{{ link.text|e }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div>
+		<h4 class="text-xs uppercase tracking-widest font-bold text-accent-gold mb-6">Contact Sanctum</h4>
+		<div class="space-y-4 text-sm text-sacred-white/70">
+			<p class="flex items-start gap-3">
+				<i class="fa fa-map-marker mt-1 text-primary-spirit"></i>
+				{{ theme_config.contact_address }}
+			</p>
+			<p class="flex items-center gap-3">
+				<i class="fa fa-envelope text-primary-spirit"></i>
+				{{ theme_config.contact_email }}
+			</p>
+			<p class="flex items-center gap-3">
+				<i class="fa fa-phone text-primary-spirit"></i>
+				{{ theme_config.contact_phone }}
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="max-w-7xl mx-auto px-fluid-md mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-sacred-white/30 tracking-widest uppercase">
+	<span>&copy;
+		{{ "now"|date("Y") }}
+		Nur-e-Hidayat. All Rights Reserved.</span>
+	<div class="flex gap-8">
+		<a href="#" class="hover:text-sacred-white transition-colors">Privacy Policy</a>
+		<a href="#" class="hover:text-sacred-white transition-colors">Terms of Service</a>
+	</div>
+</div>

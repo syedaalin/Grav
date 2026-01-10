@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: oklch(0.6 0.2 160); /* Emerald Green */
+  --color-accent: oklch(0.8 0.18 90); /* Gold */
+  --color-secondary: var(--color-accent);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Fluid Typography Tokens */
+  --font-size-base: clamp(1rem, 2.5vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 3vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 4vw, 1.875rem);
+  --font-size-3xl: clamp(1.875rem, 5vw, 2.25rem);
+}
+
+/* Skip Link for Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@utility glass {
+  @apply bg-white/10 border border-white/20 shadow-xl;
+  -webkit-backdrop-filter: blur(var(--blur-strength, 12px));
+  backdrop-filter: blur(var(--blur-strength, 12px));
+}
+
+/* Safari Support for Glassmorphism */
+[class*="backdrop-blur"] {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@utility inter_noto {
+  @apply font-sans;
+}
+
+@utility roboto_mono {
+  @apply font-mono;
+}
+
+@utility outfit {
+  @apply font-sans;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 1280px;
+}
+
+/* Header Scroll State */
+#header {
+  @apply fixed top-0 w-full z-40 transition-all duration-300;
+}
+#header.scrolled {
+  @apply bg-white/95 backdrop-blur shadow-md py-2;
+}
+
+/* Mobile Menu Overlay */
+#overlay {
+  @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300 pt-24 px-8;
+}
+[dir="ltr"] #overlay {
+  @apply translate-x-full;
+}
+[dir="rtl"] #overlay {
+  @apply -translate-x-full;
+}
+#overlay.open {
+  @apply translate-x-0;
+}
+
+/* Mobile Menu Links */
+#overlay nav ul {
+  @apply flex flex-col space-y-4 text-xl font-bold text-gray-800;
+}
+.overlay-dark-gradient::before {
+  content: "";
+  @apply absolute inset-0 bg-linear-to-b from-transparent to-black/80 z-60;
+}
+#overlay nav ul li ul {
+  @apply ms-4 mt-2 mb-2 text-base font-normal text-gray-600;
+}
+
+/* Mobile Menu Toggle (Hamburger) */
+#toggle {
+  @apply fixed top-5 right-4 z-60 md:hidden cursor-pointer w-8 h-6 flex flex-col justify-between;
+}
+#toggle span {
+  @apply block w-full h-[3px] bg-gray-800 rounded transition-all duration-300;
+}
+#toggle.active span.top {
+  @apply transform rotate-45 translate-y-[10px];
+}
+#toggle.active span.middle {
+  @apply opacity-0;
+}
+#toggle.active span.bottom {
+  @apply transform -rotate-45 -translate-y-[11px];
+}
+
+/* Utility for 'pulse' animation (FontAwesome usually handles this, but custom pulse class on #to-start) */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Heights - Using Modern Viewport Units (svh) for Mobile Browser Chrome */
+.hero-fullscreen {
+  min-height: 100svh;
+}
+.hero-large {
+  min-height: 75svh;
+}
+.hero-medium {
+  min-height: 50svh;
+}
+.hero-small {
+  min-height: 30svh;
+}
+.hero-tiny {
+  min-height: 15svh;
+}
+
+/* Fallback for browsers without svh support */
+@supports not (height: 100svh) {
+  .hero-fullscreen {
+    min-height: 100vh;
+  }
+  .hero-large {
+    min-height: 75vh;
+  }
+  .hero-medium {
+    min-height: 50vh;
+  }
+  .hero-small {
+    min-height: 30vh;
+  }
+  .hero-tiny {
+    min-height: 15vh;
+  }
+}
+
+/* Overlays */
+.overlay-dark {
+  @apply bg-black/50;
+}
+.overlay-light {
+  @apply bg-white/50;
+}
+.overlay-dark-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+.overlay-light-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+}
+
+/* Text colors for Hero */
+.text-light {
+  @apply text-white;
+}
+.text-dark {
+  @apply text-gray-900;
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility: High Contrast Mode */
+.high-contrast {
+  filter: grayscale(100%) contrast(150%);
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast .glass {
+  background: transparent !important;
+  border: 2px solid #fff !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.high-contrast img,
+.high-contrast video {
+  filter: grayscale(100%) brightness(80%);
+}
+
+/* Container Query Utilities for 2026 Responsive Design */
+@utility course-grid {
+  container-type: inline-size;
+  container-name: course-grid;
+}
+
+@container course-grid (min-width: 640px) {
+  .course-card-responsive {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+@container course-grid (min-width: 1024px) {
+  .course-card-responsive {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Focus Indicators for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

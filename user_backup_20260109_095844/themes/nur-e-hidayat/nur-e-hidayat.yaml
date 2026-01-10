@@ -1,0 +1,123 @@
+enabled: true
+primary_spirit_color: "#065f46"
+accent_gold_color: "#fbbf24"
+glassmorphism_blur: 15
+site_direction: ltr
+prayer_method: "Karachi"
+hijri_calibration: 0
+geo_location_default: "Karachi"
+moodle_url: "https://moodle.example.com"
+moodle_api_token: "mock-token-123"
+snipcart_api_key: "mock-snipcart-key"
+jazzcash_merchant_id: "JC12345"
+jazzcash_salt: "SECRET-SALT"
+
+# Inspiration Settings (Rotates Daily)
+inspirations:
+  - category: "Ayat of the Day"
+    text: "Indeed, with hardship [will be] ease."
+    source: "Quran 94:6"
+  - category: "Wisdom of Imam Ali (AS)"
+    text: "He who has a thousand friends has not a friend to spare, and he who has one enemy will meet him everywhere."
+    source: "Imam Ali (AS)"
+  - category: "Nahj al-Balagha"
+    text: "The best wealth is the abandonment of desires."
+    source: "Nahj al-Balagha"
+
+hero_primary_cta_text: "Explore Services"
+hero_primary_cta_link: "/services"
+hero_secondary_cta_text: "Support Our Mission"
+hero_secondary_cta_link: "/donate"
+
+# Services List
+services_list:
+  - title: "Online Istikhara"
+    description: "Seek spiritual guidance through traditional methods with qualified scholars."
+    icon: "star"
+    link: "/services/istikhara"
+    weight: "wide"
+  - title: "Live Counseling"
+    description: "One-on-one sessions for family, youth, and spiritual matters."
+    icon: "users"
+    link: "/services/counseling"
+    weight: "standard"
+  - title: "Jurisprudence (Fiqh)"
+    description: "Access our rich library of rulings and live Q&A sessions."
+    icon: "book"
+    link: "/services/fiqh"
+    weight: "standard"
+
+# Featured Courses
+featured_courses_list:
+  - title: "Introduction to Quranic Exegesis"
+    instructor: "Dr. Ali Raza"
+    url: "/online-courses/quranic-exegesis"
+  - title: "Ethics in Modern Business"
+    instructor: "Sheikh Hassan"
+    url: "/online-courses/ethics"
+  - title: "Foundations of Jurisprudence"
+    instructor: "Sayyid Ammar"
+    url: "/online-courses/fiqh-basics"
+
+# Project Timeline
+project_timeline_list:
+  - title: "Clean Water Project - Rural Sindh"
+    description: "Installing solar-powered water filtration units for over 500 families."
+    goal: "$25,000"
+    raised: "$18,750"
+    percent: 75
+    status: "active"
+    snipcart_id: "project-water-sindh"
+  - title: "Sanctum Library Digitalization"
+    description: "Preserving ancient manuscripts in high-definition digital formats."
+    goal: "$15,000"
+    raised: "$12,000"
+    percent: 80
+    status: "active"
+    snipcart_id: "project-library-digital"
+  - title: "Community Health Clinic"
+    description: "Building a free medical center for the underprivileged."
+    goal: "$50,000"
+    raised: "$5,000"
+    percent: 10
+    status: "planning"
+    snipcart_id: "project-health-clinic"
+
+# Trust Signals
+trust_signals_images:
+  - name: "Verified NGO"
+    url: "#"
+  - name: "PCI DSS Compliant"
+    url: "#"
+  - name: "Sharia Certified"
+    url: "#"
+
+# Footer Links
+footer_links:
+  - text: "Home"
+    url: "/"
+  - text: "Services"
+    url: "/services"
+  - text: "Courses"
+    url: "/online-courses"
+  - text: "Donate"
+    url: "/donate"
+
+# Social Links
+social_links:
+  - network: "facebook"
+    url: "#"
+  - network: "twitter"
+    url: "#"
+  - network: "youtube"
+    url: "#"
+  - network: "instagram"
+    url: "#"
+
+# Footer Contact
+footer_mission: "Faith. Knowledge. Access. Bridging tradition with the future through the Digital Sanctum."
+contact_address: "123 Sanctum Heights, Knowledge Valley, Karachi"
+contact_email: "salam@hidayat.org"
+contact_phone: "+92 21 34567890"
+khums_currency: "$"
+khums_rate: 20

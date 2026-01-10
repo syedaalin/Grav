@@ -1,0 +1,71 @@
+<section class="py-32 bg-brand-light dark:bg-brand-dark relative overflow-hidden @container" id="khums-calculator">
+    <div class="container mx-auto px-6 max-w-4xl relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-brand-primary font-bold uppercase tracking-widest text-sm mb-2 block">Religious Obligations</span>
+            <h2 class="text-4xl @md:text-5xl font-black text-brand-dark dark:text-white mb-6">
+                {{ config.theme.khums_title }}
+            </h2>
+            <p class="text-xl text-brand-gray max-w-2xl mx-auto">
+                {{ config.theme.khums_description }}
+            </p>
+        </div>
+        
+        <div class="bg-white dark:bg-surface-sunken rounded-[3rem] shadow-xl border border-surface-sunken dark:border-white/10 p-8 @md:p-12" x-data="khumsCalculator()">
+            <form id="khumsForm" class="space-y-8" @submit.prevent>
+                <div class="grid @md:grid-cols-2 gap-8">
+                    {# Savings Input #}
+                    <div class="space-y-4">
+                        <label class="block text-sm font-bold uppercase tracking-widest text-brand-gray">
+                            Annual Savings
+                            <i class="las la-info-circle ml-2 text-brand-primary cursor-help" title="Total cash savings at the end of your fiscal year"></i>
+                        </label>
+                        <div class="relative group">
+                            <span class="absolute left-6 top-1/2 -translate-y-1/2 text-2xl font-bold text-brand-gray opacity-50 group-focus-within:text-brand-primary group-focus-within:opacity-100 transition-all">
+                                {{ config.theme.khums_currency }}
+                            </span>
+                            <input type="number" id="savings" x-model="savings"
+                                   class="w-full bg-brand-light dark:bg-black border-2 border-surface-sunken dark:border-white/10 rounded-2xl py-6 pl-14 pr-6 text-2xl font-bold text-brand-dark dark:text-white focus:outline-none focus:border-brand-primary transition-colors placeholder:text-brand-gray/30" 
+                                   placeholder="0.00">
+                        </div>
+                    </div>
+                    
+                    {# Assets Input #}
+                    <div class="space-y-4">
+                        <label class="block text-sm font-bold uppercase tracking-widest text-brand-gray">
+                            Unused Assets Value
+                            <i class="las la-info-circle ml-2 text-brand-primary cursor-help" title="Value of items not used for a full year"></i>
+                        </label>
+                        <div class="relative group">
+                            <span class="absolute left-6 top-1/2 -translate-y-1/2 text-2xl font-bold text-brand-gray opacity-50 group-focus-within:text-brand-primary group-focus-within:opacity-100 transition-all">
+                                {{ config.theme.khums_currency }}
+                            </span>
+                            <input type="number" id="assets" x-model="assets"
+                                   class="w-full bg-brand-light dark:bg-black border-2 border-surface-sunken dark:border-white/10 rounded-2xl py-6 pl-14 pr-6 text-2xl font-bold text-brand-dark dark:text-white focus:outline-none focus:border-brand-primary transition-colors placeholder:text-brand-gray/30" 
+                                   placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+                
+                {# Result Area #}
+                <div class="bg-brand-primary/5 rounded-[2rem] p-8 mt-8 flex flex-col @md:flex-row items-center justify-between gap-6 border border-brand-primary/10">
+                    <div class="text-center @md:text-left">
+                        <span class="block text-sm font-bold uppercase tracking-widest text-brand-primary mb-1">
+                            {{ config.theme.khums_result_label }} ({{ config.theme.khums_rate }}%)
+                        </span>
+                        <div class="text-5xl font-black text-brand-primary tabular-nums tracking-tight" id="totalKhums" x-text="formattedTotal">
+                            {{ config.theme.khums_currency }}0
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="w-full @md:w-auto px-10 py-5 min-h-[60px] bg-brand-primary text-white rounded-[1.5rem] font-bold uppercase tracking-widest hover:bg-brand-secondary transition-colors shadow-lg shadow-brand-primary/20 hover:shadow-brand-primary/40 active:scale-95">
+                        Proceed to Payment
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="text-center mt-8 text-sm text-brand-gray">
+            <p><i class="las la-shield-alt mr-1"></i> Calculations are client-side only. No data is stored.</p>
+        </div>
+    </div>
+</section>

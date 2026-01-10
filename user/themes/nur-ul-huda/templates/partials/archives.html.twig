@@ -1,0 +1,13 @@
+<ul class="space-y-1">
+
+{% for month,items in archives_data %}
+    <li class="flex items-center justify-between">
+    	<a href="{{ base_url }}/{{ config.plugins.archives.taxonomy_names.month }}{{ config.system.param_sep }}{{ month|date(config.plugins.archives.taxonomy_values.month)|lower|e('url') }}">
+        {% if archives_show_count %}
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 ml-2">{{ items|length }}</span>
+        {% endif %}
+          <span class="text-sm text-gray-600">{{ month|date(config.plugins.archives.date_display_format) }} </span>
+        </a>
+    </li>
+{% endfor %}
+</ul>

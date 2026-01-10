@@ -1,0 +1,48 @@
+title: Hero
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        buttons:
+          type: tab
+          title: Hero
+          fields:
+            header.hero_classes:
+              type: text
+              label: Hero Classes
+              default: "hero-large overlay-dark-gradient"
+
+            header.hero_video:
+              type: file
+              label: Background Video (WebM)
+              destination: "page://"
+              multiple: false
+              accept:
+                - .webm
+
+            header.inspirations:
+              type: list
+              label: Daily Inspirations
+              fields:
+                .type:
+                  type: select
+                  label: Type
+                  options:
+                    hadith: Hadith of the Day
+                    ayat: Ayat of the Day
+                    nahj: Nahj al-Balagha
+                .arabic:
+                  type: textarea
+                  label: Arabic Text
+                .translation:
+                  type: textarea
+                  label: Translation
+                .source:
+                  type: text
+                  label: Source
+              description: "There are several Hero class options that can be listed here (space separated):<br />`text-light`, `text-dark`, `title-h1h2`, `parallax`, `overlay-dark-gradient`, `overlay-light-gradient`, `overlay-dark`, `overlay-light`, `hero-fullscreen`, `hero-large`, `hero-medium`, `hero-small`, `hero-tiny`<br />Please consult the [Nur-ul-Huda documentation](https://github.com/getgrav/grav-theme-nur-ul-huda#hero-options) for more details."
+            header.hero_image:
+              type: filepicker
+              label: Hero Image

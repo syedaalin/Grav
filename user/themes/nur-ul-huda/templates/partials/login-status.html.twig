@@ -1,0 +1,13 @@
+{% if grav.user.username %}
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+        <i class="fa fa-user mr-2 text-gray-400"></i>
+        {{ grav.user.fullname ?: grav.user.username }}
+        <a href="{{ base_url_relative }}/task{{ config.system.param_sep }}login.logout" class="ml-2 text-gray-500 hover:text-red-600 focus:outline-none" title="{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}">
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </span>
+{% else %}
+    <a href="{{ base_url_relative }}/login" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900">
+        <i class="fa fa-sign-in mr-1"></i> {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}
+    </a>
+{% endif %}

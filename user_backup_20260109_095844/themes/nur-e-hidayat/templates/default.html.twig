@@ -1,0 +1,12 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<div class="max-w-7xl mx-auto px-fluid-md py-fluid-lg">
+		<article class="glass-panel p-fluid-lg rounded-[2.5rem]">
+			<h1 class="text-4xl md:text-6xl font-black mb-8">{{ page.title }}</h1>
+			<div class="prose prose-invert prose-sacred max-w-none">
+				{{ page.content|raw }}
+			</div>
+		</article>
+	</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+/* CSS for Typography Pairings - Rule 1.4 */
+.font-pairing-inter-noto {
+  --font-sans: "Inter", system-ui;
+  --font-serif: "Noto Nastaliq Urdu", serif;
+}
+
+.font-pairing-roboto-serif {
+  --font-sans: "Roboto", system-ui;
+  --font-serif: "Noto Serif", serif;
+}
+
+.font-pairing-outfit-arabic {
+  --font-sans: "Outfit", system-ui;
+  --font-serif: "Noto Sans Arabic", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-sacred {
+  font-family: var(--font-serif);
+}
+
+.urdu-text {
+  font-family: "Noto Nastaliq Urdu", serif;
+  line-height: 2.5;
+}

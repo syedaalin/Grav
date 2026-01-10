@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/plugins/error/pages/error.md',
-    'modified' => 1762876910,
+    'modified' => 1767934750,
     'size' => 200,
     'data' => [
         'header' => [

@@ -1,0 +1,80 @@
+enabled: true
+production-mode: true
+grid-size: grid-xl
+header-fixed: true
+header-animated: true
+header-dark: false
+header-transparent: false
+sticky-footer: true
+blog-page: /blog
+site_name: null
+site_tagline: null
+direction: ltr
+language: en
+number_format: western
+date_calendar: gregorian
+primary_spirit_color: '#2ecc71'
+accent_color: '#f1c40f'
+blur_strength: 12
+typography: inter_noto
+social_facebook: null
+social_twitter: null
+social_instagram: null
+social_youtube: null
+social_telegram: null
+social_whatsapp: null
+social_email: null
+contact_phone: null
+contact_address: null
+prayer_method: karachi
+hijri_offset: 0
+default_location: Karachi
+footer_copyright: null
+footer_show_social: true
+hero_enabled: true
+hero_default_style: hero-large
+services_enabled: true
+services_default_columns: '3'
+features_enabled: true
+features_default_layout: standard
+gallery_enabled: true
+istafta_enabled: true
+khums_enabled: true
+timeline_enabled: true
+trust_signals_enabled: true
+courses_enabled: true
+spectre:
+  exp: true
+  icons: true
+custom_logo:
+  user/themes/nur-ul-huda/images/logo/aabtaab-logo.webp:
+    name: aabtaab-logo.webp
+    full_path: aabtaab-logo.webp
+    type: image/webp
+    size: 56746
+    path: user/themes/nur-ul-huda/images/logo/aabtaab-logo.webp
+custom_logo_mobile:
+  'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg':
+    name: 'aabtaab-logo (1).svg'
+    full_path: 'aabtaab-logo (1).svg'
+    type: image/svg+xml
+    size: 17774
+    path: 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
+moodle_url: null
+moodle_token: null
+snipcart_key: null
+jazzcash_merchant: ahmed
+jazzcash_salt: null
+adhan_media: {  }
+minaret_enabled: true
+minaret_announcement_enabled: true
+minaret_announcement_text: 'Wiladat Imam Hussain mubarak to all'
+minaret_announcement_expires: '10-01-2026 09:05'
+minaret_bg_color: '#111827'
+minaret_text_color: '#f1c40f'
+minaret_show_dates: true
+minaret_show_prayer_ticker: true
+minaret_show_contact: true
+minaret_show_social: true
+minaret_announcement_bg_color: '#b91c1c'
+minaret_announcement_text_color: '#ffffff'

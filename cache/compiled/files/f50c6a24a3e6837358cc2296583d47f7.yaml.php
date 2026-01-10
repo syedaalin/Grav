@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/ngo-theme.yaml',
-    'modified' => 1767924126,
+    'modified' => 1767925399,
     'size' => 4482,
     'data' => [
         'enabled' => true,

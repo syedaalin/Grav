@@ -1,0 +1,12 @@
+<section class="bg-black/20 border-y border-white/5 py-12">
+	<div class="max-w-7xl mx-auto px-fluid-md flex flex-wrap items-center justify-center gap-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+		{% for badge in theme_config.trust_signals_images %}
+			{% set badge_img = badge.image|first %}
+			{% if badge_img %}
+				<a href="{{ badge.url }}" target="_blank" rel="noopener" title="{{ badge.name }}">
+					<img src="{{ url(badge_img.path) }}" class="h-12 w-auto object-contain" alt="{{ badge.name }}"/>
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+</section>

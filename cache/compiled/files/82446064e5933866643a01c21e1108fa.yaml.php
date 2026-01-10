@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/system.yaml',
-    'modified' => 1767814929,
-    'size' => 4783,
+    'modified' => 1767952435,
+    'size' => 4781,
     'data' => [
         'absolute_urls' => false,
         'timezone' => 'UTC',
@@ -48,7 +48,7 @@ return [
             'dirs' => [
                 0 => 'page://'
             ],
-            'theme' => 'ngo-theme',
+            'theme' => 'nur-ul-huda',
             'order' => [
                 'by' => 'default',
                 'dir' => 'asc'
@@ -174,13 +174,13 @@ return [
             'umask_fix' => false
         ],
         'assets' => [
-            'css_pipeline' => true,
+            'css_pipeline' => false,
             'css_pipeline_include_externals' => true,
             'css_pipeline_before_excludes' => true,
             'css_minify' => true,
             'css_minify_windows' => false,
             'css_rewrite' => true,
-            'js_pipeline' => true,
+            'js_pipeline' => false,
             'js_pipeline_include_externals' => true,
             'js_pipeline_before_excludes' => true,
             'js_module_pipeline' => false,

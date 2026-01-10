@@ -1,0 +1,15 @@
+{
+  "name": "grav-theme-nur-ul-huda",
+  "version": "2.1.2",
+  "description": "Nur-ul-Huda Theme for Grav CMS - Modern Islamic theme with Tailwind CSS v4, prayer times, Hijri calendar, and LMS integration",
+  "main": "index.php",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tailwindcss -i ./css/input.css -o ./css/custom.css --watch",
+    "build": "tailwindcss -i ./css/input.css -o ./css/custom.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}

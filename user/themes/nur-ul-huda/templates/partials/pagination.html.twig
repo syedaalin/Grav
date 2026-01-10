@@ -1,0 +1,58 @@
+{% if pagination|length > 1 %}
+<nav class="flex justify-center my-8">
+    <ul class="flex space-x-2">
+        {% if pagination.hasPrev %}
+            {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+            <li>
+                <a rel="prev" href="{{ url }}" class="px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                    &laquo; {{ 'THEME_NUR_UL_HUDA.PAGINATION.PREV'|t }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <span class="px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-400 bg-gray-50 cursor-not-allowed">
+                    &laquo; {{ 'THEME_NUR_UL_HUDA.PAGINATION.PREV'|t }}
+                </span>
+            </li>
+        {% endif %}
+
+        {% for paginate in pagination %}
+            {% if paginate.isCurrent %}
+                <li>
+                    <span class="px-3 py-2 border border-blue-500 rounded-md text-sm font-medium text-white bg-blue-600">
+                        {{ paginate.number }}
+                    </span>
+                </li>
+            {% elseif paginate.isInDelta %}
+                {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+                <li>
+                    <a href="{{ url }}" class="px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        {{ paginate.number }}
+                    </a>
+                </li>
+            {% elseif paginate.isDeltaBorder %}
+                <li>
+                    <span class="px-3 py-2 border border-transparent text-sm font-medium text-gray-500">
+                        &hellip;
+                    </span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if pagination.hasNext %}
+            {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+            <li>
+                <a rel="next" href="{{ url }}" class="px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                    {{ 'THEME_NUR_UL_HUDA.PAGINATION.NEXT'|t }} &raquo;
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <span class="px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-400 bg-gray-50 cursor-not-allowed">
+                    {{ 'THEME_NUR_UL_HUDA.PAGINATION.NEXT'|t }} &raquo;
+                </span>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

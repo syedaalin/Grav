@@ -1,0 +1,197 @@
+<section class="section py-12 md:py-16 lg:py-24 modular-khums-calculator bg-gray-50/50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">{{ page.header.calc_title|default('Khums & Sadaqah Calculator') }}</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">{{ page.header.calc_description|default('Calculate your religious dues with complete privacy. All calculations are performed client-side.') }}</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                {# Inputs Area #}
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="glass p-8 rounded-[32px] border-primary/10">
+                        <h3 class="text-xl font-bold mb-8 flex items-center gap-3">
+                            <i class="fa fa-coins text-primary"></i> 1. Assets (Surplus)
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-500">Savings & Cash</label>
+                                <div class="relative">
+                                    <span class="absolute start-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">{{ page.header.currency_symbol|default('$') }}</span>
+                                    <input type="number" id="khums-savings" class="w-full bg-white/50 border border-gray-100 rounded-2xl py-4 ps-10 pe-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all active-assets" value="0">
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-500">Gold & Jewelry</label>
+                                <div class="relative">
+                                    <span class="absolute start-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">{{ page.header.currency_symbol|default('$') }}</span>
+                                    <input type="number" id="khums-gold" class="w-full bg-white/50 border border-gray-100 rounded-2xl py-4 ps-10 pe-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all active-assets" value="0">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-500">Business Inventory</label>
+                                <div class="relative">
+                                    <span class="absolute start-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">{{ page.header.currency_symbol|default('$') }}</span>
+                                    <input type="number" id="khums-business" class="w-full bg-white/50 border border-gray-100 rounded-2xl py-4 ps-10 pe-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all active-assets" value="0">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-500">Other Surplus Assets</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">{{ page.header.currency_symbol|default('$') }}</span>
+                                    <input type="number" id="khums-other" class="w-full bg-white/50 border border-gray-100 rounded-2xl py-4 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all active-assets" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass p-8 rounded-[32px] border-accent/10">
+                        <h3 class="text-xl font-bold mb-8 flex items-center gap-3 text-gray-900">
+                            <i class="fa fa-hand-holding-usd text-accent"></i> 2. Deductible Liabilities
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-gray-500">Outstanding Debts & Expenses</label>
+                                <div class="relative">
+                                    <span class="absolute start-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">{{ page.header.currency_symbol|default('$') }}</span>
+                                    <input type="number" id="khums-debts" class="w-full bg-white/50 border border-gray-100 rounded-2xl py-4 ps-10 pe-4 focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all active-assets" value="0">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                {# Results Area #}
+                <div class="lg:col-span-1">
+                    <div class="glass p-8 rounded-[32px] border-primary/20 sticky top-24 bg-primary/5">
+                        <h3 class="text-xl font-bold mb-6 text-gray-900">Summary</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Total Net Surplus:</span>
+                                <span id="khums-net-display" class="font-bold text-gray-900">{{ page.header.currency_symbol|default('$') }} 0.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Khums Rate:</span>
+                                <span class="font-bold text-gray-900">{{ page.header.khums_rate|default(20) }}%</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-6 mb-8 text-center border border-primary/10">
+                            <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Total Khums Due</div>
+                            <div id="khums-total-display" class="text-4xl font-black text-gray-900">{{ page.header.currency_symbol|default('$') }} 0.00</div>
+                        </div>
+
+                        {# Khums Split Toggle #}
+                        <div class="mb-8 p-4 bg-white/50 rounded-2xl border border-gray-100">
+                             <label class="flex items-center justify-between cursor-pointer group">
+                                <span class="text-xs font-bold text-gray-600 uppercase tracking-tight">Split 50/50 (Imam/Sadaat)</span>
+                                <input type="checkbox" id="khums-split-toggle" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                            <p class="text-[10px] text-gray-400 mt-2 leading-tight">Divide your contribution equally between Sehme Imam and Sehme Sadaat.</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2 p-3 rounded-xl bg-green-50 text-[10px] text-green-700 font-bold uppercase tracking-wider mb-4">
+                                <i class="fa fa-shield-alt"></i> Secure & Client-Side Only
+                            </div>
+                            
+                            <button id="khums-checkout-btn" 
+                                class="snipcart-add-item w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                                data-item-id="{{ page.header.donation_snipcart_id|default('khums-donation') }}"
+                                data-item-name="Khums Donation"
+                                data-item-price="0"
+                                data-item-url="{{ page.url(true) }}"
+                                data-item-custom1-name="Donation Type"
+                                data-item-custom1-options="Full Amount|Split 50/50"
+                                data-item-custom2-name="Sehme Imam"
+                                data-item-custom2-type="hidden"
+                                data-item-custom3-name="Sehme Sadaat"
+                                data-item-custom3-type="hidden">
+                                <i class="fa fa-heart"></i> Pay Khums
+                            </button>
+                            
+                            <button id="sadaqah-toggle-btn" class="w-full border-2 border-primary/20 text-primary py-4 rounded-2xl font-bold hover:bg-primary/5 transition-all text-xs uppercase tracking-widest">
+                                Add Optional Sadaqah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('.active-assets');
+    const netDisplay = document.getElementById('khums-net-display');
+    const totalDisplay = document.getElementById('khums-total-display');
+    const currency = '{{ page.header.currency_symbol|default('$') }}';
+    const rate = {{ page.header.khums_rate|default(20) }} / 100;
+
+    // Final checkout logic with Snipcart metadata
+    const checkoutBtn = document.getElementById('khums-checkout-btn');
+    const splitToggle = document.getElementById('khums-split-toggle');
+
+    const updateSnipcartData = (total) => {
+        const isSplit = splitToggle.checked;
+        const imamAmount = isSplit ? (total / 2).toFixed(2) : total.toFixed(2);
+        const sadaatAmount = isSplit ? (total / 2).toFixed(2) : "0.00";
+
+        checkoutBtn.setAttribute('data-item-price', total.toFixed(2));
+        checkoutBtn.setAttribute('data-item-custom1-value', isSplit ? 'Split 50/50' : 'Full Amount');
+        checkoutBtn.setAttribute('data-item-custom2-value', imamAmount);
+        checkoutBtn.setAttribute('data-item-custom3-value', sadaatAmount);
+    };
+
+    // Core calculation function returns the khums amount for downstream usage.
+    function calculate() {
+        const savings = parseFloat(document.getElementById('khums-savings').value) || 0;
+        const gold = parseFloat(document.getElementById('khums-gold').value) || 0;
+        const business = parseFloat(document.getElementById('khums-business').value) || 0;
+        const other = parseFloat(document.getElementById('khums-other').value) || 0;
+        const debts = parseFloat(document.getElementById('khums-debts').value) || 0;
+
+        const net = Math.max(0, (savings + gold + business + other) - debts);
+        const khums = net * rate;
+
+        netDisplay.textContent = `${currency} ${net.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        totalDisplay.textContent = `${currency} ${khums.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        
+        return khums;
+    }
+
+    // Wire up interactions.
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const total = calculate();
+            updateSnipcartData(total);
+        });
+    });
+
+    splitToggle.addEventListener('change', () => {
+        const total = calculate();
+        updateSnipcartData(total);
+    });
+
+    checkoutBtn.addEventListener('click', (e) => {
+        const total = parseFloat(totalDisplay.textContent.replace(/[^0-9.-]+/g,""));
+        if (total <= 0) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert("Please enter your surplus assets to calculate Khums.");
+        }
+    });
+
+    // Initial calculation and Snipcart metadata setup on load.
+    const initialTotal = calculate();
+    updateSnipcartData(initialTotal);
+});
+</script>

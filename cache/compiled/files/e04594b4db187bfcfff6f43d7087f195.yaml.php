@@ -2,32 +2,16 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/site.yaml',
-    'modified' => 1767813071,
-    'size' => 400,
+    'modified' => 1767934750,
+    'size' => 160,
     'data' => [
-        'title' => 'AabTaab',
-        'default_lang' => 'en',
+        'title' => 'Grav',
         'author' => [
             'name' => 'Joe Bloggs',
             'email' => 'joe@example.com'
         ],
-        'taxonomies' => [
-            0 => 'category',
-            1 => 'tag'
-        ],
         'metadata' => [
-            'description' => 'AabTaab - Accessible and affordable Shia Islamic online courses and religious services including Niyabat Ziyarat, Zakat, and Khums.'
-        ],
-        'summary' => [
-            'enabled' => true,
-            'format' => 'short',
-            'size' => 300,
-            'delimiter' => '==='
-        ],
-        'redirects' => NULL,
-        'routes' => NULL,
-        'blog' => [
-            'route' => '/blog'
+            'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
         ]
     ]
 ];

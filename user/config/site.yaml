@@ -1,19 +1,7 @@
-title: AabTaab
-default_lang: en
+title: Grav
 author:
-  name: 'Joe Bloggs'
-  email: joe@example.com
-taxonomies:
-  - category
-  - tag
+  name: Joe Bloggs
+  email: 'joe@example.com'
 metadata:
-  description: 'AabTaab - Accessible and affordable Shia Islamic online courses and religious services including Niyabat Ziyarat, Zakat, and Khums.'
-summary:
-  enabled: true
-  format: short
-  size: 300
-  delimiter: '==='
-redirects: null
-routes: null
-blog:
-  route: /blog
+    description: 'Grav is an easy to use, yet powerful, open source flat-file CMS'
+

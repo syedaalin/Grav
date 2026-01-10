@@ -1,0 +1,46 @@
+<script type="application/ld+json">
+	{
+		  "@context": "https://schema.org",
+		  "@graph": [
+		    {
+		      "@type": "NGO",
+		      "@id": "{{ site.url }}#organization",
+		      "name": "{{ site.title|e }}",
+		      "url": "{{ site.url }}",
+	{% set logo = theme_config.logo|first %}
+	{% if logo %}
+		"logo": "{{ site.url }}{{ url(logo.path) }}",
+	{% endif %}
+	"description": "{{ site.description|e }}",
+		      "sameAs": [
+	{% for social in theme_config.social_links %}
+		"{{ social.url }}"
+		{% if not loop.last %},
+		{% endif %}
+	{% endfor %}
+	],
+		      "contactPoint": {
+		        "@type": "ContactPoint",
+		        "telephone": "{{ theme_config.contact_phone }}",
+		        "contactType": "customer service",
+		        "email": "{{ theme_config.contact_email }}"
+		      }
+		    },
+		    {
+		      "@type": "WebSite",
+		      "@id": "{{ site.url }}#website",
+		      "url": "{{ site.url }}",
+		      "name": "{{ site.title|e }}",
+		      "publisher": { "@id": "{{ site.url }}#organization" }
+		    }
+	{% if page.template == 'modular' %}
+		, {
+				      "@type": "EducationalOrganization",
+				      "name": "Sacred Academy",
+				      "description": "Integrated learning platform for sacred knowledge.",
+				      "parentOrganization": { "@id": "{{ site.url }}#organization" }
+				    }
+	{% endif %}
+	]
+		}
+</script>

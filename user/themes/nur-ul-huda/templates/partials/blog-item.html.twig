@@ -1,0 +1,32 @@
+<div class="content-item h-entry">
+
+{% if not hero_image_name %}
+    <div class="content-title text-center">
+        {% include 'partials/blog/title.html.twig' with {title_level: 'h2'} %}
+        {% if page.header.subtitle %}
+        <h3 >{{ page.header.subtitle }}</h3>
+        {% endif %}
+        {% include 'partials/blog/date.html.twig' %}
+        {% include 'partials/blog/taxonomy.html.twig' %}
+    </div>
+{% endif %}
+    <div class="e-content">
+        {{ page.content|raw }}
+    </div>
+
+    {% if page.header.continue_link is same as(true) and config.plugins.comments.enabled %}
+        {% include 'partials/comments.html.twig' %}
+    {% endif %}
+</div>
+
+<p class="prev-next text-center">
+    {% if not page.isLast %}
+            <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" href="{{ page.prevSibling.url }}"><i class="fa fa-angle-left mr-1"></i> {{ 'THEME_NUR_UL_HUDA.BLOG.ITEM.PREV_POST'|t }}</a>
+    {% endif %}
+
+    {% if not page.isFirst %}
+    {% if not page.isFirst %}
+        <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" href="{{ page.nextSibling.url }}">{{ 'THEME_NUR_UL_HUDA.BLOG.ITEM.NEXT_POST'|t }} <i class="fa fa-angle-right ml-1"></i></a>
+    {% endif %}
+    {% endif %}
+</p>

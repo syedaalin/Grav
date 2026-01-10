@@ -1,0 +1,938 @@
+name: NGO Theme
+slug: ngo-theme
+type: theme
+version: 3.0.0
+description: NGO Premium Theme - 2026 Agentic Standard
+icon: microchip
+author:
+  name: Team Grav
+  email: devs@getgrav.org
+  url: https://getgrav.org
+homepage: https://github.com/getgrav/grav-theme-quark
+demo: https://demo.getgrav.org/onepage-skeleton
+keywords: quark, spectre, theme, core, modern, fast, responsive, html5, css3
+bugs: https://github.com/getgrav/grav-theme-quark/issues
+license: MIT
+
+dependencies:
+  - { name: grav, version: ">=1.6.0" }
+
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        # -------------------------
+        # TAB 1: Global Settings
+        # -------------------------
+        global_tab:
+          type: tab
+          title: Global
+          fields:
+            production-mode:
+              type: toggle
+              label: THEME_NGO.ADMIN.PRODUCTION_MODE
+              help: THEME_NGO.ADMIN.PRODUCTION_MODE_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            grid-size:
+              type: select
+              label: THEME_NGO.ADMIN.GRID_SIZE
+              help: THEME_NGO.ADMIN.GRID_SIZE_HELP
+              size: small
+              options:
+                "": THEME_NGO.ADMIN.GRID_SIZE_NONE
+                grid-xl: THEME_NGO.ADMIN.GRID_SIZE_EXTRA_LARGE
+                grid-lg: THEME_NGO.ADMIN.GRID_SIZE_LARGE
+                grid-md: THEME_NGO.ADMIN.GRID_SIZE_MEDIUM
+
+            search_section:
+              type: section
+              title: Search Configuration
+              underline: true
+
+            search_enabled:
+              type: toggle
+              label: Enable Search
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            sustainability_section:
+              type: section
+              title: THEME_NGO.ADMIN.SUSTAINABILITY
+              underline: true
+
+            sustainability_score:
+              type: text
+              label: THEME_NGO.ADMIN.SUSTAINABILITY_SCORE
+              help: THEME_NGO.ADMIN.SUSTAINABILITY_SCORE_HELP
+              size: x-small
+              default: "A+"
+
+            co2_per_view:
+              type: text
+              label: THEME_NGO.ADMIN.CO2_PER_VIEW
+              help: THEME_NGO.ADMIN.CO2_PER_VIEW_HELP
+              size: x-small
+              default: "0.3g"
+
+            agentic_section:
+              type: section
+              title: THEME_NGO.ADMIN.AGENTIC_SETTINGS
+              underline: true
+
+            ai_disclosure:
+              type: toggle
+              label: THEME_NGO.ADMIN.AI_DISCLOSURE
+              help: THEME_NGO.ADMIN.AI_DISCLOSURE_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            ai_assistant:
+              type: toggle
+              label: THEME_NGO.ADMIN.AI_ASSISTANT
+              help: THEME_NGO.ADMIN.AI_ASSISTANT_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            doodle_engine:
+              type: toggle
+              label: THEME_NGO.ADMIN.DOODLE_ENGINE
+              help: THEME_NGO.ADMIN.DOODLE_ENGINE_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            eco_mode:
+              type: toggle
+              label: THEME_NGO.ADMIN.SUSTAINABILITY_MODE
+              help: THEME_NGO.ADMIN.SUSTAINABILITY_MODE_HELP
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            focus_mode:
+              type: toggle
+              label: THEME_NGO.ADMIN.FOCUS_MODE_ADMIN
+              help: THEME_NGO.ADMIN.FOCUS_MODE_ADMIN_HELP
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+        # -------------------------
+        # TAB 2: Header & Nav
+        # -------------------------
+        header_tab:
+          type: tab
+          title: Header & Nav
+          fields:
+            header_section:
+              type: section
+              title: THEME_NGO.ADMIN.HEADER_DEFAULTS
+              underline: true
+
+            custom_logo:
+              type: file
+              label: THEME_NGO.ADMIN.CUSTOM_LOGO
+              size: large
+              destination: "theme://images/logo"
+              multiple: false
+              accept:
+                - image/*
+
+            header-fixed:
+              type: toggle
+              label: THEME_NGO.ADMIN.HEADER_FIXED
+              help: THEME_NGO.ADMIN.HEADER_FIXED_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            header-animated:
+              type: toggle
+              label: THEME_NGO.ADMIN.HEADER_ANIMATED
+              help: THEME_NGO.ADMIN.HEADER_ANIMATED_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            header-dark:
+              type: toggle
+              label: THEME_NGO.ADMIN.HEADER_DARK
+              help: THEME_NGO.ADMIN.HEADER_DARK_HELP
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            header-transparent:
+              type: toggle
+              label: THEME_NGO.ADMIN.HEADER_TRANSPARENT
+              help: THEME_NGO.ADMIN.HEADER_TRANSPARENT_HELP
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            utility_bar_section:
+              type: section
+              title: THEME_NGO.ADMIN.UTILITY_BAR_SECTION
+              underline: true
+
+            utility_hijri_toggle:
+              type: toggle
+              label: THEME_NGO.ADMIN.UTILITY_HIJRI
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            utility_prayer_toggle:
+              type: toggle
+              label: THEME_NGO.ADMIN.UTILITY_PRAYER
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            utility_prayer_city:
+              type: text
+              label: THEME_NGO.ADMIN.UTILITY_CITY
+              default: "Karachi"
+              size: medium
+
+            utility_language_toggle:
+              type: toggle
+              label: THEME_NGO.ADMIN.UTILITY_LANG
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            utility_accessibility_toggle:
+              type: toggle
+              label: THEME_NGO.ADMIN.UTILITY_A11Y
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            mega_menu_section:
+              type: section
+              title: THEME_NGO.ADMIN.MEGA_MENU_SECTION
+              underline: true
+
+            mega_menu_structure:
+              type: list
+              label: Menu Columns
+              fields:
+                .title:
+                  type: text
+                  label: Column Title
+                .links:
+                  type: list
+                  label: Links
+                  fields:
+                    .text:
+                      type: text
+                      label: Link Text
+                    .url:
+                      type: text
+                      label: URL
+
+            cta_section_header:
+              type: section
+              title: THEME_NGO.ADMIN.CTA_SECTION_HEADER
+              underline: true
+
+            cta_button:
+              type: fieldset
+              title: CTA Button Configuration
+              collapsed: false
+              fields:
+                enabled:
+                  type: toggle
+                  label: Enable CTA Button
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+                text:
+                  type: text
+                  label: Button Text
+                  default: "Student Login"
+                  size: medium
+                url:
+                  type: url
+                  label: Button URL
+                  default: "https://moodle.aabtaab.com"
+                  size: medium
+                icon:
+                  type: text
+                  label: Button Icon
+                  default: "graduation-cap"
+                  help: FontAwesome icon name (without fa- prefix)
+                external:
+                  type: toggle
+                  label: Open in New Tab
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
+        # -------------------------
+        # TAB 3: Hero
+        # -------------------------
+        hero_tab:
+          type: tab
+          title: Hero
+          fields:
+            hero_section:
+              type: section
+              title: THEME_NGO.ADMIN.HERO_SECTION
+              underline: true
+
+            hero_video_url:
+              type: file
+              label: THEME_NGO.ADMIN.HERO_VIDEO
+              destination: "theme://images/hero"
+              multiple: false
+              accept:
+                - video/*
+
+            hero_glass_opacity:
+              type: range
+              label: THEME_NGO.ADMIN.HERO_GLASS
+              default: 60
+              min: 0
+              max: 100
+              append: "%"
+
+            hero_primary_cta_text:
+              type: text
+              label: THEME_NGO.ADMIN.HERO_PRIMARY_TEXT
+              default: "Explore Services"
+
+            hero_primary_cta_link:
+              type: text
+              label: THEME_NGO.ADMIN.HERO_PRIMARY_LINK
+              default: "/services"
+
+            hero_secondary_cta_text:
+              type: text
+              label: THEME_NGO.ADMIN.HERO_SECONDARY_TEXT
+              default: "Support Our Mission"
+
+            hero_secondary_cta_link:
+              type: text
+              label: THEME_NGO.ADMIN.HERO_SECONDARY_LINK
+              default: "/donate"
+
+            inspiration_section:
+              type: section
+              title: THEME_NGO.ADMIN.INSPIRATION_SECTION
+              underline: true
+
+            inspiration_text:
+              type: text
+              label: THEME_NGO.ADMIN.INSPIRATION_TEXT
+              help: THEME_NGO.ADMIN.INSPIRATION_TEXT_HELP
+              default: '"Indeed, with hardship [will be] ease."'
+              size: large
+
+            inspiration_source:
+              type: text
+              label: THEME_NGO.ADMIN.INSPIRATION_SOURCE
+              help: THEME_NGO.ADMIN.INSPIRATION_SOURCE_HELP
+              default: "Quran 94:6"
+              size: medium
+
+        # -------------------------
+        # TAB 4: Services
+        # -------------------------
+        services_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.SERVICES_TAB
+          fields:
+            services_section:
+              type: section
+              title: THEME_NGO.ADMIN.SERVICES_SECTION
+              underline: true
+
+            services_list:
+              type: list
+              label: THEME_NGO.ADMIN.SERVICES_LIST
+              fields:
+                .icon:
+                  type: text
+                  label: THEME_NGO.ADMIN.SERVICE_ICON
+                .title:
+                  type: text
+                  label: THEME_NGO.ADMIN.SERVICE_TITLE
+                .description:
+                  type: textarea
+                  label: THEME_NGO.ADMIN.SERVICE_DESC
+                .link:
+                  type: text
+                  label: THEME_NGO.ADMIN.SERVICE_LINK
+
+        # -------------------------
+        # TAB 5: Events
+        # -------------------------
+        events_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.EVENTS_TAB
+          fields:
+            events_section:
+              type: section
+              title: THEME_NGO.ADMIN.EVENTS_SECTION
+              underline: true
+
+            events_list:
+              type: list
+              label: THEME_NGO.ADMIN.EVENTS_LIST
+              fields:
+                .title:
+                  type: text
+                  label: THEME_NGO.ADMIN.EVENT_TITLE
+                .date:
+                  type: datetime
+                  label: THEME_NGO.ADMIN.EVENT_DATE
+                .location:
+                  type: text
+                  label: THEME_NGO.ADMIN.EVENT_LOCATION
+                .url:
+                  type: text
+                  label: THEME_NGO.ADMIN.EVENT_URL
+                .type:
+                  type: text
+                  label: THEME_NGO.ADMIN.EVENT_TYPE
+                  default: "Seminar"
+
+        # -------------------------
+        # TAB 6: NGO Tools
+        # -------------------------
+        ngo_tools_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.NGO_TOOLS_TAB
+          fields:
+            ngo_section:
+              type: section
+              title: THEME_NGO.ADMIN.NGO_SECTION
+              underline: true
+
+            project_timeline_list:
+              type: list
+              label: THEME_NGO.ADMIN.PROJECT_TIMELINE_LIST
+              fields:
+                .title:
+                  type: text
+                  label: THEME_NGO.ADMIN.PROJECT_TITLE
+                .description:
+                  type: textarea
+                  label: THEME_NGO.ADMIN.PROJECT_DESC
+                .goal:
+                  type: text
+                  label: THEME_NGO.ADMIN.PROJECT_GOAL
+                .raised:
+                  type: text
+                  label: THEME_NGO.ADMIN.PROJECT_RAISED
+                .percent:
+                  type: range
+                  label: THEME_NGO.ADMIN.PROJECT_PERCENT
+                  min: 0
+                  max: 100
+                  default: 0
+                  append: "%"
+                .status:
+                  type: select
+                  label: THEME_NGO.ADMIN.PROJECT_STATUS
+                  options:
+                    active: Active
+                    completed: Completed
+                    planning: Planning
+
+            khums_section:
+              type: section
+              title: THEME_NGO.ADMIN.KHUMS_SECTION
+              underline: true
+
+            khums_rate:
+              type: number
+              label: THEME_NGO.ADMIN.KHUMS_RATE
+              default: 20
+              size: x-small
+
+            khums_currency:
+              type: text
+              label: THEME_NGO.ADMIN.KHUMS_CURRENCY
+              default: "$"
+              size: x-small
+
+            prayer_section:
+              type: section
+              title: THEME_NGO.ADMIN.RELIGIOUS_SETTINGS
+              underline: true
+
+            prayer_times_enabled:
+              type: toggle
+              label: THEME_NGO.ADMIN.PRAYER_TIMES_ENABLED
+              help: THEME_NGO.ADMIN.PRAYER_TIMES_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            prayer_api_key:
+              type: text
+              label: THEME_NGO.ADMIN.PRAYER_API_KEY
+              help: THEME_NGO.ADMIN.PRAYER_API_HELP
+              size: medium
+
+            hijri_adjustment:
+              type: number
+              label: THEME_NGO.ADMIN.HIJRI_ADJUSTMENT
+              help: THEME_NGO.ADMIN.HIJRI_ADJUSTMENT_HELP
+              default: 0
+              size: x-small
+
+            trust_signals_section:
+              type: section
+              title: THEME_NGO.ADMIN.TRUST_SIGNALS_SECTION
+              underline: true
+
+            trust_signals_images:
+              type: list
+              label: THEME_NGO.ADMIN.TRUST_SIGNALS_LIST
+              fields:
+                .name:
+                  type: text
+                  label: THEME_NGO.ADMIN.BADGE_NAME
+                .image:
+                  type: file
+                  label: THEME_NGO.ADMIN.BADGE_IMAGE
+                  destination: "theme://images/badges"
+                  accept:
+                    - image/*
+                .url:
+                  type: text
+                  label: THEME_NGO.ADMIN.BADGE_URL
+
+        # -------------------------
+        # TAB 7: Education
+        # -------------------------
+        education_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.EDUCATION_TAB
+          fields:
+            education_section:
+              type: section
+              title: THEME_NGO.ADMIN.EDUCATION_SECTION
+              underline: true
+
+            student_login_title:
+              type: text
+              label: THEME_NGO.ADMIN.STUDENT_LOGIN_TITLE
+              default: "Student Login"
+              size: medium
+
+            student_login_description:
+              type: text
+              label: THEME_NGO.ADMIN.STUDENT_LOGIN_DESC
+              default: "Access your Moodle courses and dashboard."
+              size: medium
+
+            student_login_button_text:
+              type: text
+              label: THEME_NGO.ADMIN.STUDENT_LOGIN_BTN
+              default: "Sign In to Portal"
+              size: medium
+
+            featured_courses_list:
+              type: list
+              label: THEME_NGO.ADMIN.FEATURED_COURSES_LIST
+              fields:
+                .title:
+                  type: text
+                  label: THEME_NGO.ADMIN.COURSE_TITLE
+                .instructor:
+                  type: text
+                  label: THEME_NGO.ADMIN.COURSE_INSTRUCTOR
+                .image:
+                  type: file
+                  label: THEME_NGO.ADMIN.COURSE_IMAGE
+                  destination: "theme://images/courses"
+                  multiple: false
+                  accept:
+                    - image/*
+                .url:
+                  type: text
+                  label: THEME_NGO.ADMIN.COURSE_URL
+                  default: "#"
+
+        # -------------------------
+        # TAB 8: Shop
+        # -------------------------
+        shop_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.SHOP_TAB
+          fields:
+            products_section:
+              type: section
+              title: THEME_NGO.ADMIN.PRODUCTS_SECTION
+              underline: true
+
+            products_list:
+              type: list
+              label: THEME_NGO.ADMIN.PRODUCTS_LIST
+              fields:
+                .title:
+                  type: text
+                  label: THEME_NGO.ADMIN.PRODUCT_TITLE
+                .price:
+                  type: text
+                  label: THEME_NGO.ADMIN.PRODUCT_PRICE
+                .type:
+                  type: select
+                  label: THEME_NGO.ADMIN.PRODUCT_TYPE
+                  options:
+                    physical: Physical
+                    digital: Digital
+                .image:
+                  type: file
+                  label: THEME_NGO.ADMIN.PRODUCT_IMAGE
+                  destination: "theme://images/products"
+                  accept:
+                    - image/*
+                .url:
+                  type: text
+                  label: THEME_NGO.ADMIN.PRODUCT_URL
+                  default: "#"
+
+        # -------------------------
+        # TAB 9: Footer & Content
+        # -------------------------
+        footer_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.FOOTER_DEFAULTS
+          fields:
+            footer_section:
+              type: section
+              title: THEME_NGO.ADMIN.FOOTER_DEFAULTS
+              underline: true
+
+            sticky-footer:
+              type: toggle
+              label: THEME_NGO.ADMIN.STICKY_FOOTER
+              help: THEME_NGO.ADMIN.STICKY_FOOTER_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            contact_section:
+              type: section
+              title: THEME_NGO.ADMIN.CONTACT_SECTION
+              underline: true
+
+            footer_about_title:
+              type: text
+              label: Footer About Title
+              default: "About Our Mission"
+
+            footer_mission:
+              type: textarea
+              label: Footer Mission Statement
+              default: "Faith. Knowledge. Access."
+
+            contact_address:
+              type: textarea
+              label: THEME_NGO.ADMIN.CONTACT_ADDRESS
+              help: THEME_NGO.ADMIN.CONTACT_ADDRESS
+              size: medium
+              placeholder: "123 Main St, City, Country"
+
+            contact_email:
+              type: email
+              label: THEME_NGO.ADMIN.CONTACT_EMAIL
+              help: THEME_NGO.ADMIN.CONTACT_EMAIL
+              size: medium
+              placeholder: "info@example.org"
+
+            contact_phone:
+              type: text
+              label: THEME_NGO.ADMIN.CONTACT_PHONE
+              help: THEME_NGO.ADMIN.CONTACT_PHONE
+              size: medium
+              placeholder: "+1 234 567 8900"
+
+            contact_whatsapp:
+              type: text
+              label: THEME_NGO.ADMIN.CONTACT_WHATSAPP
+              help: THEME_NGO.ADMIN.CONTACT_WHATSAPP
+              size: medium
+              placeholder: "+1234567890"
+
+            social_section:
+              type: section
+              title: THEME_NGO.ADMIN.SOCIAL_SECTION
+              underline: true
+
+            social_links:
+              type: list
+              label: THEME_NGO.ADMIN.SOCIAL_LINKS
+              fields:
+                .network:
+                  type: select
+                  label: Network
+                  options:
+                    facebook: Facebook
+                    twitter: Twitter
+                    instagram: Instagram
+                    linkedin: LinkedIn
+                    youtube: YouTube
+                    whatsapp: WhatsApp
+                .url:
+                  type: url
+                  label: URL
+
+            footer_links_section:
+              type: section
+              title: THEME_NGO.ADMIN.FOOTER_LINKS_SECTION
+              underline: true
+
+            footer_links:
+              type: list
+              label: THEME_NGO.ADMIN.FOOTER_LINKS
+              fields:
+                .text:
+                  type: text
+                  label: Link Text
+                .url:
+                  type: text
+                  label: Link URL
+                .icon:
+                  type: text
+                  label: Icon (optional)
+
+        # -------------------------
+        # TAB 10: PWA & SEO
+        # -------------------------
+        pwa_tab:
+          type: tab
+          title: THEME_NGO.ADMIN.PWA_SETTINGS
+          fields:
+            pwa_section:
+              type: section
+              title: THEME_NGO.ADMIN.PWA_SETTINGS
+              underline: true
+
+            pwa_enabled:
+              type: toggle
+              label: THEME_NGO.ADMIN.PWA_ENABLED
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            pwa_short_name:
+              type: text
+              label: THEME_NGO.ADMIN.PWA_SHORT_NAME
+              help: THEME_NGO.ADMIN.PWA_SHORT_NAME_HELP
+              default: "NGO"
+              size: small
+
+            pwa_theme_color:
+              type: text
+              label: THEME_NGO.ADMIN.PWA_THEME_COLOR
+              help: THEME_NGO.ADMIN.PWA_THEME_COLOR_HELP
+              default: "#000000"
+              size: small
+
+            pwa_background_color:
+              type: text
+              label: THEME_NGO.ADMIN.PWA_BACKGROUND_COLOR
+              help: THEME_NGO.ADMIN.PWA_BACKGROUND_COLOR_HELP
+              default: "#ffffff"
+              size: small
+
+            pwa_display:
+              type: select
+              label: THEME_NGO.ADMIN.PWA_DISPLAY
+              default: standalone
+              options:
+                fullscreen: Fullscreen
+                standalone: Standalone
+                minimal-ui: Minimal UI
+                browser: Browser
+
+            seo_section:
+              type: section
+              title: THEME_NGO.ADMIN.SEO_SETTINGS
+              underline: true
+
+            seo_twitter_handle:
+              type: text
+              label: THEME_NGO.ADMIN.SEO_TWITTER_HANDLE
+              placeholder: "@yourhandle"
+              size: medium
+
+            newsletter_section:
+              type: section
+              title: THEME_NGO.ADMIN.NEWSLETTER_SECTION
+              underline: true
+
+            newsletter_enabled:
+              type: toggle
+              label: THEME_NGO.ADMIN.NEWSLETTER_ENABLED
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            newsletter_action:
+              type: url
+              label: THEME_NGO.ADMIN.NEWSLETTER_ACTION
+              help: THEME_NGO.ADMIN.NEWSLETTER_ACTION
+              size: medium
+              placeholder: "https://example.com/subscribe"
+
+            other_tabs:
+              type: tab
+              title: THEME_NGO.ADMIN.OTHER_TAB
+              fields:
+                blog_section:
+                  type: section
+                  title: THEME_NGO.ADMIN.BLOG_DEFAULTS
+                  underline: true
+
+                blog-page:
+                  type: text
+                  label: THEME_NGO.ADMIN.BLOG_PAGE
+                  help: THEME_NGO.ADMIN.BLOG_PAGE_HELP
+                  size: medium
+                  default: "/blog"
+
+                testimonials_section:
+                  type: section
+                  title: THEME_NGO.ADMIN.TESTIMONIALS_SECTION
+                  underline: true
+
+                testimonials_list:
+                  type: list
+                  label: THEME_NGO.ADMIN.TESTIMONIALS_LIST
+                  fields:
+                    .name:
+                      type: text
+                      label: Name
+                    .role:
+                      type: text
+                      label: Role
+                    .quote:
+                      type: textarea
+                      label: Quote
+                    .image:
+                      type: file
+                      label: Photo
+                      destination: "theme://images/testimonials"
+                      accept:
+                        - image/*
+                    .video_url:
+                      type: text
+                      label: Video URL
+
+                faq_section:
+                  type: section
+                  title: THEME_NGO.ADMIN.FAQ_SECTION
+                  underline: true
+
+                faq_list:
+                  type: list
+                  label: THEME_NGO.ADMIN.FAQ_LIST
+                  fields:
+                    .q:
+                      type: text
+                      label: Question
+                    .a:
+                      type: textarea
+                      label: Answer

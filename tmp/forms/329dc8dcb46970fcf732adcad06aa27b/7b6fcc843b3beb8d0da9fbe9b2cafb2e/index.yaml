@@ -1,0 +1,60 @@
+form: flex-pages-raw
+id: 'tmp://forms/session/7b6fcc843b3beb8d0da9fbe9b2cafb2e'
+unique_id: 7b6fcc843b3beb8d0da9fbe9b2cafb2e
+url: 'http://localhost:8888/admin/pages/home-content-archive'
+user:
+  username: ahmed
+  email: syedaalin@gmail.com
+timestamps:
+  created: 1767941415
+  updated: 1767941415
+data:
+  frontmatter: "title: 'Home Content Archive'\ncontent:\n    items: '@self.modular'\nbody_classes: modular-home"
+  content: null
+  ordering: true
+  folder: home
+  route: null
+  name: modular
+  order: 'home,home,online-courses,services'
+  blueprint: null
+  xss_check: null
+  header:
+    media_order: null
+files: {  }
+object:
+  type: pages
+  key: home-content-archive
+  storage_key: 04.home-content-archive
+  timestamp: 1767941384
+  serialized:
+    __META:
+      key: home-content-archive
+      storage_key: 04.home-content-archive
+      template: modular
+      storage_timestamp: 1767941384
+      markdown:
+        '': { modular: 1767941384 }
+      children:
+        _01hero: false
+        _02trust-signals: false
+        _03services: false
+        _04featured-courses: false
+        _05project-timeline: false
+        _06istafta: false
+      checksum: 9ec427991ae57b93f8ffdf9f241647bc
+    storage_key: 04.home-content-archive
+    parent_key: ''
+    order: '04.'
+    folder: home-content-archive
+    template: modular
+    lang: ''
+    header:
+      title: 'Home Content Archive'
+      content:
+        items: '@self.modular'
+      body_classes: modular-home
+    root: false
+    frontmatter: "title: 'Home Content Archive'\ncontent:\n    items: '@self.modular'\nbody_classes: modular-home"
+    markdown: ''
+    slug: home-content-archive
+    name: modular.md

@@ -1,0 +1,10 @@
+{% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page, children_only) : taxonomylist.get() %}
+
+{% if taxlist %}
+<div class="flex flex-wrap gap-2">
+    {% for tax,value in taxlist[taxonomy] %}
+        {% set label_class = uri.param(taxonomy) == tax ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' %}
+        <a class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ label_class }}" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}">{{ tax }}</a>
+    {% endfor %}
+</div>
+{% endif %}

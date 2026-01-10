@@ -1,12 +1,12 @@
 absolute_urls: false
 timezone: null
-param_sep: ':'
+param_sep: ":"
 wrapped_site: false
 reverse_proxy_setup: false
 force_ssl: false
 force_lowercase_urls: true
 custom_base_url: null
-username_regex: '^[a-z0-9_-]{3,16}$'
+username_regex: "^[a-z0-9_-]{3,16}$"
 pwd_regex: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
 intl_enabled: true
 http_x_forwarded:
@@ -32,8 +32,8 @@ home:
 pages:
   type: regular
   dirs:
-    - 'page://'
-  theme: quark
+    - "page://"
+  theme: nur-ul-huda
   order:
     by: default
     dir: asc
@@ -41,7 +41,7 @@ pages:
     count: 20
   dateformat:
     default: null
-    short: 'jS M Y'
+    short: "jS M Y"
     long: 'F jS \a\t g:ia'
   publish_dates: true
   process:
@@ -58,8 +58,8 @@ pages:
     auto_url_links: false
     escape_markup: false
     special_chars:
-      '>': gt
-      '<': lt
+      ">": gt
+      "<": lt
     valid_link_attributes:
       - rel
       - target
@@ -80,7 +80,7 @@ pages:
   last_modified: false
   etag: true
   vary_accept_encoding: false
-  redirect_default_code: '302'
+  redirect_default_code: "302"
   redirect_trailing_slash: 1
   redirect_default_route: 0
   ignore_files:
@@ -102,8 +102,8 @@ cache:
     method: file
   driver: auto
   prefix: g
-  purge_at: '0 4 * * *'
-  clear_at: '0 3 * * *'
+  purge_at: "0 4 * * *"
+  clear_at: "0 3 * * *"
   clear_job_type: standard
   clear_images_by_default: false
   cli_compatibility: false
@@ -112,7 +112,7 @@ cache:
   gzip: false
   allow_webserver_gzip: false
   redis:
-    socket: '0'
+    socket: "0"
     password: null
     database: null
     server: null
@@ -130,8 +130,8 @@ twig:
   autoescape: true
   undefined_functions: true
   undefined_filters: true
-  safe_functions: {  }
-  safe_filters: {  }
+  safe_functions: {}
+  safe_filters: {}
   umask_fix: false
 assets:
   css_pipeline: false
@@ -150,7 +150,7 @@ assets:
   enable_asset_timestamp: false
   enable_asset_sri: false
   collections:
-    jquery: 'system://assets/jquery/jquery-3.x.min.js'
+    jquery: "system://assets/jquery/jquery-3.x.min.js"
 errors:
   display: 1
   log: true
@@ -170,20 +170,20 @@ images:
   adapter: gd
   default_image_quality: 85
   cache_all: false
-  cache_perms: '0755'
+  cache_perms: "0755"
   debug: false
   auto_fix_orientation: true
   seofriendly: false
   cls:
     auto_sizes: false
     aspect_ratio: false
-    retina_scale: '1'
+    retina_scale: "1"
   defaults:
     loading: auto
     decoding: auto
     fetchpriority: auto
   watermark:
-    image: 'system://images/watermark.png'
+    image: "system://images/watermark.png"
     position_y: center
     position_x: center
     scale: 33

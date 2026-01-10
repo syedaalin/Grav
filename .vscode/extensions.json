@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "mblode.twig-language-2",
+    "redhat.vscode-yaml",
+    "bmewburn.vscode-intelephense-client",
+    "yzhang.markdown-all-in-one",
+    "sissel.grav-vscode",
+    "esbenp.prettier-vscode"
+  ]
+}
