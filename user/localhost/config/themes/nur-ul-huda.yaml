@@ -12,11 +12,11 @@ site_tagline: null
 direction: ltr
 language: en
 number_format: western
-date_calendar: gregorian
+date_calendar: both
 primary_spirit_color: '#2ecc71'
 accent_color: '#f1c40f'
 blur_strength: 12
-typography: inter_noto
+typography: roboto_mono
 social_facebook: null
 social_twitter: null
 social_instagram: null
@@ -70,11 +70,30 @@ minaret_enabled: true
 minaret_announcement_enabled: true
 minaret_announcement_text: 'Wiladat Imam Hussain mubarak to all'
 minaret_announcement_expires: '10-01-2026 09:05'
+minaret_announcement_bg_color: '#b91c1c'
+minaret_announcement_text_color: '#ffffff'
 minaret_bg_color: '#111827'
 minaret_text_color: '#f1c40f'
 minaret_show_dates: true
 minaret_show_prayer_ticker: true
 minaret_show_contact: true
 minaret_show_social: true
-minaret_announcement_bg_color: '#b91c1c'
-minaret_announcement_text_color: '#ffffff'
+glass_blur: 16
+glass_opacity_initial: 0.05
+glass_opacity_scrolled: 0.2
+glass_border_opacity: 0.1
+glass_opacity: 0.15
+glass_thickness: 1
+glass_shadow_intensity: 0.1
+top_banner_enabled: true
+top_banner_announcement_enabled: false
+top_banner_announcement_text: null
+top_banner_announcement_expires: null
+top_banner_announcement_bg_color: '#b91c1c'
+top_banner_announcement_text_color: '#ffffff'
+top_banner_bg_color: '#111827'
+top_banner_text_color: '#f1c40f'
+top_banner_show_dates: true
+top_banner_show_prayer_ticker: true
+top_banner_show_contact: true
+top_banner_show_social: true

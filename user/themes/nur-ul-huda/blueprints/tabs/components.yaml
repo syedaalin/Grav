@@ -1,0 +1,180 @@
+type: tab
+title: THEME_NUR_UL_HUDA.ADMIN.COMPONENTS
+fields:
+  components_intro:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.COMPONENTS_INTRO
+    text: THEME_NUR_UL_HUDA.ADMIN.COMPONENTS_INTRO_TEXT
+    underline: true
+
+  hero_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.HERO_COMPONENT
+    underline: true
+
+  hero_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.HERO_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  hero_default_style:
+    type: select
+    label: THEME_NUR_UL_HUDA.ADMIN.HERO_DEFAULT_STYLE
+    default: hero-large
+    options:
+      hero-fullscreen: THEME_NUR_UL_HUDA.ADMIN.HERO_FULLSCREEN
+      hero-large: THEME_NUR_UL_HUDA.ADMIN.HERO_LARGE
+      hero-medium: THEME_NUR_UL_HUDA.ADMIN.HERO_MEDIUM
+      hero-small: THEME_NUR_UL_HUDA.ADMIN.HERO_SMALL
+      hero-tiny: THEME_NUR_UL_HUDA.ADMIN.HERO_TINY
+
+  services_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.SERVICES_COMPONENT
+    underline: true
+
+  services_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.SERVICES_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  services_default_columns:
+    type: select
+    label: THEME_NUR_UL_HUDA.ADMIN.SERVICES_DEFAULT_COLUMNS
+    default: 3
+    options:
+      2: THEME_NUR_UL_HUDA.ADMIN.COLUMNS_2
+      3: THEME_NUR_UL_HUDA.ADMIN.COLUMNS_3
+      4: THEME_NUR_UL_HUDA.ADMIN.COLUMNS_4
+
+  features_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.FEATURES_COMPONENT
+    underline: true
+
+  features_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.FEATURES_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  features_default_layout:
+    type: select
+    label: THEME_NUR_UL_HUDA.ADMIN.FEATURES_DEFAULT_LAYOUT
+    default: standard
+    options:
+      small: THEME_NUR_UL_HUDA.ADMIN.FEATURES_SMALL
+      standard: THEME_NUR_UL_HUDA.ADMIN.FEATURES_STANDARD
+
+  gallery_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.GALLERY_COMPONENT
+    underline: true
+
+  gallery_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.GALLERY_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  istafta_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_COMPONENT
+    underline: true
+
+  istafta_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  khums_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.KHUMS_COMPONENT
+    underline: true
+
+  khums_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.KHUMS_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  timeline_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.TIMELINE_COMPONENT
+    underline: true
+
+  timeline_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.TIMELINE_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  trust_signals_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_COMPONENT
+    underline: true
+
+  trust_signals_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  courses_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.COURSES_COMPONENT
+    underline: true
+
+  courses_enabled:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.COURSES_ENABLED
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool

@@ -1,14 +1,17 @@
-<ul class="space-y-2">
+<ul class="space-y-3">
     {% for related_path, score in related_pages %}
         {% set related = grav['pages'].get(related_path) %}
         {% if related %}
-            <li class="flex items-center justify-between p-2 hover:bg-gray-100 rounded">
-                {% if config.plugins.relatedpages.show_score %}
-                    <div class="ml-2">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">{{ score }}</span>
-                    </div>
-                {% endif %}
-                <a href="{{ related.url }}" title="{{ related.title }}">{{ related.title }}</a>
+            <li class="group">
+                <a href="{{ related.url }}" title="{{ related.title }}" 
+                   class="flex items-center justify-between card-glass p-5">
+                    <span class="text-sm font-black text-gray-950 group-hover:text-primary transition-colors line-clamp-1">{{ related.title }}</span>
+                    {% if config.plugins.relatedpages.show_score %}
+                        <span class="badge-primary">
+                            {{ score }}
+                        </span>
+                    {% endif %}
+                </a>
             </li>
         {% endif %}
     {% endfor %}

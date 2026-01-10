@@ -1,0 +1,6 @@
+1768087461
+02.online-courses_backup
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:21:"online-courses_backup";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:14:"Online Courses";s:4:"menu";s:7:"Courses";s:7:"content";a:1:{s:5:"items";s:13:"@self.modular";}}s:11:"frontmatter";s:73:"title: 'Online Courses'
+menu: Courses
+content:
+    items: '@self.modular'";s:8:"markdown";s:0:"";}s:7:"storage";a:7:{s:3:"key";s:21:"online-courses_backup";s:11:"storage_key";s:24:"02.online-courses_backup";s:8:"template";s:7:"modular";s:17:"storage_timestamp";i:1767925399;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"modular";i:1767925399;}}s:8:"children";a:7:{s:8:"01.Quran";b:0;s:17:"02.Nahjul Balagha";b:0;s:9:"03.Ethics";b:0;s:10:"04.History";b:0;s:16:"05.Jurisprudence";b:0;s:6:"_intro";b:0;s:5:"_list";b:0;}s:8:"checksum";s:32:"e74e2f97d62cf6f59f93b2b86f649ac2";}}

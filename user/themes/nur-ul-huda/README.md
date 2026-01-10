@@ -2,17 +2,40 @@
 
 ![](assets/nur-ul-huda-screenshots.jpg)
 
-**Nur-ul-Huda** is the new default theme for [Grav CMS](http://github.com/getgrav/grav).  This theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Nur-ul-Huda uses functionality that is only available in Grav 1.4+, as such you cannot run Nur-ul-Huda on earlier versions of Grav.
+**Nur-ul-Huda** is a modern Islamic theme for [Grav CMS](http://github.com/getgrav/grav). This theme is built with **Tailwind CSS v4** (CSS-first architecture) and provides specialized features for Islamic institutions including prayer times, Hijri calendar, Moodle LMS integration, Snipcart e-commerce, and JazzCash payment gateway support. Nur-ul-Huda requires Grav 1.6+ to function properly.
 
 ## Features
 
-* Lightweight and minimal for optimal performance
-* Spectre CSS Framework
-* Fully responsive with full-page mobile navigation
-* SCSS based CSS source files for easy customization
-* Built-in support for on-page navigation
-* Multiple page template types
-* Fontawesome icon support
+* **Modern Islamic Features**
+  * Prayer times with multiple calculation methods (Aladhan API)
+  * Hijri calendar with Maghrib-aware date transition
+  * Configurable Adhan audio playback
+  * Multi-language support (Arabic, Urdu, Persian, English)
+  * RTL/LTR text direction support
+* **E-Commerce & Payments**
+  * Snipcart headless commerce integration
+  * JazzCash payment gateway with HMAC-SHA256 security
+  * Real-time cart indicator
+* **LMS Integration**
+  * Moodle API integration with course fetching
+  * Cached course data for performance
+* **Modern Frontend**
+  * Tailwind CSS v4 with CSS-first configuration
+  * Responsive design with container queries
+  * Fluid typography using clamp()
+  * Modern viewport units (svh) for mobile
+  * Glassmorphism effects with Safari support
+* **Accessibility**
+  * WCAG 2.1 AA compliant
+  * High contrast mode toggle
+  * Font scaling controls
+  * Skip to main content link
+  * Comprehensive ARIA labels
+* **Performance**
+  * PWA support with service worker
+  * localStorage caching for API data
+  * Asset pipelining
+  * Production mode with minified CSS
 
 ### Supported Page Templates
 

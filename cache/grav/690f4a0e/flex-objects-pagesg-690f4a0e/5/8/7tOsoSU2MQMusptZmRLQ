@@ -1,0 +1,8 @@
+1768087461
+03.donate__SLASH___calculator
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:18:"donate/_calculator";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:6:{s:5:"title";s:25:"Religious Dues Calculator";s:10:"calc_title";s:26:"Khums & Sadaqah Calculator";s:16:"calc_description";s:148:"Enter your surplus assets below. Calculations are performed entirely in your browser and are not stored on our servers until you proceed to payment.";s:10:"khums_rate";i:20;s:15:"currency_symbol";s:2:"£";s:20:"donation_snipcart_id";s:19:"religious-dues-2026";}s:11:"frontmatter";s:325:"title: 'Religious Dues Calculator'
+calc_title: 'Khums & Sadaqah Calculator'
+calc_description: 'Enter your surplus assets below. Calculations are performed entirely in your browser and are not stored on our servers until you proceed to payment.'
+khums_rate: 20
+currency_symbol: '£'
+donation_snipcart_id: 'religious-dues-2026'";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:18:"donate/_calculator";s:11:"storage_key";s:21:"03.donate/_calculator";s:8:"template";s:16:"khums-calculator";s:17:"storage_timestamp";i:1767947434;s:8:"markdown";a:1:{s:0:"";a:1:{s:16:"khums-calculator";i:1767947434;}}s:8:"checksum";s:32:"1721de6781691cdbf10046327caf1400";}}

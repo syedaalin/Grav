@@ -1,8 +1,11 @@
 {% if page.taxonomy.tag %}
-<div class="flex flex-wrap gap-2 py-2 p-category">
+<div class="flex flex-wrap gap-2 py-2 p-category {{ classes|default('') }}">
     {% for tag in page.taxonomy.tag %}
-    {% set tag_class = label_style == 'label-primary' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' %}
-    <a class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ tag_class }}" href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}#body-wrapper">{{ tag }}</a>
+    <a class="badge-primary" 
+       href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}#body-wrapper">
+        {{ tag }}
+    </a>
     {% endfor %}
 </div>
 {% endif %}
+

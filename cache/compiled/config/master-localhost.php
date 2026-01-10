@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1768019498,
-    'checksum' => '573d941f61e76caf5c7bd0b710342614',
+    'timestamp' => 1768086864,
+    'checksum' => 'f4664e8c1477145b334b635ac8635209',
     'files' => [
         'user/localhost/config' => [
             'security' => [
@@ -27,7 +27,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768018297
+                'modified' => 1768084515
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -61,7 +61,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768019165
+                'modified' => 1768086861
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -224,11 +224,11 @@ return [
                 'direction' => 'ltr',
                 'language' => 'en',
                 'number_format' => 'western',
-                'date_calendar' => 'gregorian',
+                'date_calendar' => 'both',
                 'primary_spirit_color' => '#2ecc71',
                 'accent_color' => '#f1c40f',
                 'blur_strength' => 12,
-                'typography' => 'inter_noto',
+                'typography' => 'roboto_mono',
                 'social_facebook' => NULL,
                 'social_twitter' => NULL,
                 'social_instagram' => NULL,
@@ -292,14 +292,33 @@ return [
                 'minaret_announcement_enabled' => true,
                 'minaret_announcement_text' => 'Wiladat Imam Hussain mubarak to all',
                 'minaret_announcement_expires' => '10-01-2026 09:05',
+                'minaret_announcement_bg_color' => '#b91c1c',
+                'minaret_announcement_text_color' => '#ffffff',
                 'minaret_bg_color' => '#111827',
                 'minaret_text_color' => '#f1c40f',
                 'minaret_show_dates' => true,
                 'minaret_show_prayer_ticker' => true,
                 'minaret_show_contact' => true,
                 'minaret_show_social' => true,
-                'minaret_announcement_bg_color' => '#b91c1c',
-                'minaret_announcement_text_color' => '#ffffff'
+                'glass_blur' => 16,
+                'glass_opacity_initial' => 0.05,
+                'glass_opacity_scrolled' => 0.2,
+                'glass_border_opacity' => 0.1,
+                'glass_opacity' => 0.15,
+                'glass_thickness' => 1,
+                'glass_shadow_intensity' => 0.1,
+                'top_banner_enabled' => true,
+                'top_banner_announcement_enabled' => false,
+                'top_banner_announcement_text' => NULL,
+                'top_banner_announcement_expires' => NULL,
+                'top_banner_announcement_bg_color' => '#b91c1c',
+                'top_banner_announcement_text_color' => '#ffffff',
+                'top_banner_bg_color' => '#111827',
+                'top_banner_text_color' => '#f1c40f',
+                'top_banner_show_dates' => true,
+                'top_banner_show_prayer_ticker' => true,
+                'top_banner_show_contact' => true,
+                'top_banner_show_social' => true
             ],
             'agency' => [
                 'enabled' => true,

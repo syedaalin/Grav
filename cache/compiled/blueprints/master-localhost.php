@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1768019947,
-    'checksum' => '4d0b7c465338537c327424e772ec6249',
+    'timestamp' => 1768086916,
+    'checksum' => '39559bed236d98ddd8b478f03617d367',
     'files' => [
         'system/blueprints/config' => [
             'backups' => [
@@ -111,7 +111,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
-                'modified' => 1767968782
+                'modified' => 1768084379
             ]
         ]
     ],
@@ -7247,6 +7247,65 @@ return [
                 'name' => 'themes.nur-ul-huda.typography',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.glass_opacity' => [
+                'type' => 'range',
+                'label' => 'Glass Density (Translucency)',
+                'default' => 0.12,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.01
+                ],
+                'name' => 'themes.nur-ul-huda.glass_opacity',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.glass_blur' => [
+                'type' => 'range',
+                'label' => 'Diffusion (Blur)',
+                'default' => 25,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 50
+                ],
+                'name' => 'themes.nur-ul-huda.glass_blur',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.glass_border_opacity' => [
+                'type' => 'range',
+                'label' => 'Edge Visibility (Reflective Edge)',
+                'default' => 0.15,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.01
+                ],
+                'name' => 'themes.nur-ul-huda.glass_border_opacity',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.glass_thickness' => [
+                'type' => 'range',
+                'label' => 'Edge Thickness',
+                'default' => 1,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 5,
+                    'step' => 1
+                ],
+                'name' => 'themes.nur-ul-huda.glass_thickness',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.glass_shadow_intensity' => [
+                'type' => 'range',
+                'label' => 'Depth (Shadow Intensity)',
+                'default' => 0.1,
+                'validate' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.01
+                ],
+                'name' => 'themes.nur-ul-huda.glass_shadow_intensity',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.custom_logo' => [
                 'array' => true,
                 'media_field' => true,
@@ -7327,9 +7386,9 @@ return [
                 'name' => 'themes.nur-ul-huda.header-transparent',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_enabled' => [
+            'themes.nur-ul-huda.top_banner_enabled' => [
                 'type' => 'toggle',
-                'label' => 'Enable Minaret Bar',
+                'label' => 'Enable Top Banner',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7339,10 +7398,10 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_enabled',
+                'name' => 'themes.nur-ul-huda.top_banner_enabled',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_announcement_enabled' => [
+            'themes.nur-ul-huda.top_banner_announcement_enabled' => [
                 'type' => 'toggle',
                 'label' => 'Enable Announcement',
                 'highlight' => 1,
@@ -7354,50 +7413,50 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_announcement_enabled',
+                'name' => 'themes.nur-ul-huda.top_banner_announcement_enabled',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_announcement_text' => [
+            'themes.nur-ul-huda.top_banner_announcement_text' => [
                 'type' => 'text',
                 'label' => 'Announcement Text',
-                'name' => 'themes.nur-ul-huda.minaret_announcement_text',
+                'name' => 'themes.nur-ul-huda.top_banner_announcement_text',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_announcement_expires' => [
+            'themes.nur-ul-huda.top_banner_announcement_expires' => [
                 'type' => 'datetime',
                 'label' => 'Expiration Date & Time',
-                'name' => 'themes.nur-ul-huda.minaret_announcement_expires',
+                'name' => 'themes.nur-ul-huda.top_banner_announcement_expires',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_announcement_bg_color' => [
+            'themes.nur-ul-huda.top_banner_announcement_bg_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Announcement Background',
                 'default' => '#b91c1c',
-                'name' => 'themes.nur-ul-huda.minaret_announcement_bg_color',
+                'name' => 'themes.nur-ul-huda.top_banner_announcement_bg_color',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_announcement_text_color' => [
+            'themes.nur-ul-huda.top_banner_announcement_text_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Announcement Text Color',
                 'default' => '#ffffff',
-                'name' => 'themes.nur-ul-huda.minaret_announcement_text_color',
+                'name' => 'themes.nur-ul-huda.top_banner_announcement_text_color',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_bg_color' => [
+            'themes.nur-ul-huda.top_banner_bg_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Background Color',
                 'default' => '#111827',
-                'name' => 'themes.nur-ul-huda.minaret_bg_color',
+                'name' => 'themes.nur-ul-huda.top_banner_bg_color',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_text_color' => [
+            'themes.nur-ul-huda.top_banner_text_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Text Color',
                 'default' => '#f1c40f',
-                'name' => 'themes.nur-ul-huda.minaret_text_color',
+                'name' => 'themes.nur-ul-huda.top_banner_text_color',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_show_dates' => [
+            'themes.nur-ul-huda.top_banner_show_dates' => [
                 'type' => 'toggle',
                 'label' => 'Show Date Ticker',
                 'default' => 1,
@@ -7408,10 +7467,10 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_show_dates',
+                'name' => 'themes.nur-ul-huda.top_banner_show_dates',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_show_prayer_ticker' => [
+            'themes.nur-ul-huda.top_banner_show_prayer_ticker' => [
                 'type' => 'toggle',
                 'label' => 'Show Prayer Countdown',
                 'default' => 1,
@@ -7422,10 +7481,10 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_show_prayer_ticker',
+                'name' => 'themes.nur-ul-huda.top_banner_show_prayer_ticker',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_show_contact' => [
+            'themes.nur-ul-huda.top_banner_show_contact' => [
                 'type' => 'toggle',
                 'label' => 'Show Contact Info',
                 'default' => 1,
@@ -7436,10 +7495,10 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_show_contact',
+                'name' => 'themes.nur-ul-huda.top_banner_show_contact',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.minaret_show_social' => [
+            'themes.nur-ul-huda.top_banner_show_social' => [
                 'type' => 'toggle',
                 'label' => 'Show Social Icons',
                 'default' => 1,
@@ -7450,7 +7509,7 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.minaret_show_social',
+                'name' => 'themes.nur-ul-huda.top_banner_show_social',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.prayer_method' => [
@@ -8675,23 +8734,28 @@ return [
                     'accent_color' => 'themes.nur-ul-huda.accent_color',
                     'blur_strength' => 'themes.nur-ul-huda.blur_strength',
                     'typography' => 'themes.nur-ul-huda.typography',
+                    'glass_opacity' => 'themes.nur-ul-huda.glass_opacity',
+                    'glass_blur' => 'themes.nur-ul-huda.glass_blur',
+                    'glass_border_opacity' => 'themes.nur-ul-huda.glass_border_opacity',
+                    'glass_thickness' => 'themes.nur-ul-huda.glass_thickness',
+                    'glass_shadow_intensity' => 'themes.nur-ul-huda.glass_shadow_intensity',
                     'custom_logo' => 'themes.nur-ul-huda.custom_logo',
                     'header-fixed' => 'themes.nur-ul-huda.header-fixed',
                     'header-animated' => 'themes.nur-ul-huda.header-animated',
                     'header-dark' => 'themes.nur-ul-huda.header-dark',
                     'header-transparent' => 'themes.nur-ul-huda.header-transparent',
-                    'minaret_enabled' => 'themes.nur-ul-huda.minaret_enabled',
-                    'minaret_announcement_enabled' => 'themes.nur-ul-huda.minaret_announcement_enabled',
-                    'minaret_announcement_text' => 'themes.nur-ul-huda.minaret_announcement_text',
-                    'minaret_announcement_expires' => 'themes.nur-ul-huda.minaret_announcement_expires',
-                    'minaret_announcement_bg_color' => 'themes.nur-ul-huda.minaret_announcement_bg_color',
-                    'minaret_announcement_text_color' => 'themes.nur-ul-huda.minaret_announcement_text_color',
-                    'minaret_bg_color' => 'themes.nur-ul-huda.minaret_bg_color',
-                    'minaret_text_color' => 'themes.nur-ul-huda.minaret_text_color',
-                    'minaret_show_dates' => 'themes.nur-ul-huda.minaret_show_dates',
-                    'minaret_show_prayer_ticker' => 'themes.nur-ul-huda.minaret_show_prayer_ticker',
-                    'minaret_show_contact' => 'themes.nur-ul-huda.minaret_show_contact',
-                    'minaret_show_social' => 'themes.nur-ul-huda.minaret_show_social',
+                    'top_banner_enabled' => 'themes.nur-ul-huda.top_banner_enabled',
+                    'top_banner_announcement_enabled' => 'themes.nur-ul-huda.top_banner_announcement_enabled',
+                    'top_banner_announcement_text' => 'themes.nur-ul-huda.top_banner_announcement_text',
+                    'top_banner_announcement_expires' => 'themes.nur-ul-huda.top_banner_announcement_expires',
+                    'top_banner_announcement_bg_color' => 'themes.nur-ul-huda.top_banner_announcement_bg_color',
+                    'top_banner_announcement_text_color' => 'themes.nur-ul-huda.top_banner_announcement_text_color',
+                    'top_banner_bg_color' => 'themes.nur-ul-huda.top_banner_bg_color',
+                    'top_banner_text_color' => 'themes.nur-ul-huda.top_banner_text_color',
+                    'top_banner_show_dates' => 'themes.nur-ul-huda.top_banner_show_dates',
+                    'top_banner_show_prayer_ticker' => 'themes.nur-ul-huda.top_banner_show_prayer_ticker',
+                    'top_banner_show_contact' => 'themes.nur-ul-huda.top_banner_show_contact',
+                    'top_banner_show_social' => 'themes.nur-ul-huda.top_banner_show_social',
                     'prayer_method' => 'themes.nur-ul-huda.prayer_method',
                     'hijri_offset' => 'themes.nur-ul-huda.hijri_offset',
                     'adhan_media' => 'themes.nur-ul-huda.adhan_media',

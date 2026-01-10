@@ -1,14 +1,17 @@
-{% set item_col = show_sidebar ? 'col-span-1 lg:col-span-3' : 'col-span-full' %}
+{% set item_col = show_sidebar ? 'col-span-1 @lg:col-span-3' : 'col-span-full' %}
 {% set sidebar_col = show_sidebar ? 'col-span-1' : 'col-span-full' %}
 
-<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<div class="grid grid-cols-1 @lg:grid-cols-4 gap-12 @xl:gap-16">
     <div id="item" class="{{ item_col }}">
         {% block item %}{% endblock %}
     </div>
     {% if show_sidebar %}
-    <div id="sidebar" class="{{ sidebar_col }}">
-        {% block sidebar %}{% endblock %}
+    <div id="sidebar" class="{{ sidebar_col }} relative">
+        <div class="sticky top-24">
+            {% block sidebar %}{% endblock %}
+        </div>
     </div>
     {% endif %}
 </div>
+
 

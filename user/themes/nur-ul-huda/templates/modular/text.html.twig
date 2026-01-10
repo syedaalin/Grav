@@ -1,21 +1,25 @@
-{% set grid_size = theme_var('grid-size') %}
-{% set image = page.media.images|first %}
+<section class="section-py modular-text {{ page.header.class}} bg-white @container overflow-hidden">
+    <div class="container-px mx-auto max-w-7xl animate-fade-in-up">
+        <div class="flex flex-col @lg:flex-row gap-12 @lg:gap-20 items-center {{ page.header.image_align|default('align-right') == 'align-right' ? '' : '@lg:flex-row-reverse' }}">
+            
+            <div class="@lg:w-1/2 w-full">
+                <div class="prose-custom max-w-none">
+                    {{ content|raw }}
+                </div>
+            </div>
 
-<section class="section py-12 md:py-16 lg:py-24 modular-text {{ page.header.class}} bg-gray-50">
-    <section class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 {{ page.header.image_align|default('align-right') == 'align-right' ? '' : 'flex-row-reverse' }}">
+            {% set image = page.media.images|first %}
             {% if image %}
-            <div class="text-content">
-                {{ content|raw }}
-            </div>
-            <div class="image-content">
-                {{ image.html|raw }}
-            </div>
-            {% else %}
-            <div class="col-span-full">
-                {{ content|raw }}
-            </div>
+                <div class="@lg:w-1/2 w-full relative">
+                    <div class="relative group">
+                        {# Decorative Glow #}
+                        <div class="absolute -inset-4 bg-linear-to-tr from-primary/20 via-primary/5 to-transparent rounded-premium blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                        
+                        {{ image.html('','','w-full h-auto rounded-[2.5rem] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] relative z-10')|raw }}
+                    </div>
+                </div>
             {% endif %}
         </div>
-    </section>
+    </div>
 </section>
+

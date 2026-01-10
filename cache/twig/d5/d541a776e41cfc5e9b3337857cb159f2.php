@@ -68,7 +68,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         // line 2
         $context["language"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "language"), ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 2), "getActive", [], "any", false, false, false, 2)) ? (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 2), "getActive", [], "any", false, false, false, 2)) : (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "config", [], "any", false, false, false, 2), "site", [], "any", false, false, false, 2), "default_lang", [], "any", false, false, false, 2)) ? (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "config", [], "any", false, false, false, 2), "site", [], "any", false, false, false, 2), "default_lang", [], "any", false, false, false, 2)) : ("en")))));
         // line 3
-        $context["typography"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "typography"), "inter_noto");
+        $context["typography"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "typography"), "font-sans");
         // line 4
         $context["body_classes"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->bodyClassFunc($context, ["header-fixed", "header-animated", "header-dark", "header-transparent", "sticky-footer", ($context["direction"] ?? null), ($context["typography"] ?? null)]);
         // line 5
@@ -82,71 +82,71 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["language"] ?? null), "html", null, true);
         yield "\" dir=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["direction"] ?? null), "html", null, true);
+        yield "\" style=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(($context["dynamic_styles"] ?? null), ";"), "html", null, true);
         yield "\">
 <head>
 ";
         // line 11
         yield from $this->unwrap()->yieldBlock('head', $context, $blocks);
-        // line 49
+        // line 40
         yield "
 ";
-        // line 50
+        // line 41
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 54
+        // line 45
         yield "
 ";
-        // line 55
+        // line 46
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 72
+        // line 111
         yield "
 ";
-        // line 73
+        // line 112
         yield from $this->unwrap()->yieldBlock('assets', $context, $blocks);
-        // line 77
+        // line 116
         yield "</head>
-<body id=\"top\" class=\"";
-        // line 78
+<body id=\"top\" class=\"@container ";
+        // line 117
         yield from $this->unwrap()->yieldBlock('body_classes', $context, $blocks);
-        yield "\">
+        yield " selection:bg-primary/20 selection:text-primary\">
     ";
-        // line 80
-        yield "    <a href=\"#start\" class=\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg\">Skip to main content</a>
+        // line 119
+        yield "    <a href=\"#start\" class=\"sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-6 focus:py-3 focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-primary font-bold transition-all\">Skip to main content</a>
     
-";
-        // line 82
-        yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 233
-        yield "
     ";
-        // line 234
+        // line 121
+        yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
+        // line 277
+        yield "
+
+    ";
+        // line 279
         yield from $this->unwrap()->yieldBlock('hero', $context, $blocks);
-        // line 235
+        // line 280
         yield "
         <section id=\"start\">
         ";
-        // line 237
+        // line 282
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 249
+        // line 294
         yield "        </section>
 
-    </div>
-
     ";
-        // line 253
+        // line 296
         yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
-        // line 256
+        // line 299
         yield "
     ";
-        // line 258
+        // line 301
         yield "
 ";
-        // line 259
+        // line 302
         yield from $this->unwrap()->yieldBlock('bottom', $context, $blocks);
-        // line 335
+        // line 312
         yield "
 </body>
-</html>
-";
+</html>";
         $this->deferred->resolve($this, $context, $blocks);
         yield from [];
     }
@@ -207,125 +207,202 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         // line 25
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "url", [true, true], "method", false, false, false, 25), "html", null, true);
         yield "\" />
-    <link rel=\"manifest\" href=\"";
-        // line 26
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://manifest.json"), "html", null, true);
-        yield "\">
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('";
-        // line 31
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://sw.js"), "html", null, true);
-        yield "');
-        });
-      }
-    </script>
-
     ";
-        // line 36
-        $context["primary_color"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "primary_spirit_color"), "#2ecc71");
-        // line 37
+        // line 27
         yield "    ";
-        $context["accent_color"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "accent_color"), "#f1c40f");
-        // line 38
-        yield "    ";
-        $context["blur_strength"] = (Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "blur_strength"), 12) . "px");
-        // line 39
+        // line 28
         yield "
-    <style>
-        :root {
-            --color-primary: ";
-        // line 42
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["primary_color"] ?? null), "html", null, true);
-        yield ";
-            --color-accent: ";
-        // line 43
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["accent_color"] ?? null), "html", null, true);
-        yield ";
-            --color-secondary: ";
-        // line 44
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["accent_color"] ?? null), "html", null, true);
-        yield ";
-            --blur-strength: ";
-        // line 45
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["blur_strength"] ?? null), "html", null, true);
-        yield ";
-        }
-    </style>
+    ";
+        // line 30
+        yield "    ";
+        // line 37
+        yield "
+
 ";
         $this->deferred->resolve($this, $context, $blocks);
         yield from [];
     }
 
-    // line 50
+    // line 41
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 51
+        // line 42
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/custom.css"], "method", false, false, false, 51);
-        // line 52
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/nur-ul-huda.css"], "method", false, false, false, 42);
+        // line 43
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 52);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 43);
         yield from [];
     }
 
-    // line 55
+    // line 46
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
+        // line 47
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["jquery", 101], "method", false, false, false, 47);
+        // line 48
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/utils.js", 95], "method", false, false, false, 48);
+        // line 49
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/pull-refresh.js", 94], "method", false, false, false, 49);
+        // line 50
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", 93], "method", false, false, false, 50);
+        // line 51
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/mobile-menu.js", 90], "method", false, false, false, 51);
+        // line 52
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/sticky-header.js?v=pure-fluid", 90], "method", false, false, false, 52);
+        // line 53
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/high-contrast.js", 89], "method", false, false, false, 53);
+        // line 54
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/font-scaler.js", 89], "method", false, false, false, 54);
+        // line 55
+        yield "    ";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/footer.js", 89], "method", false, false, false, 55);
         // line 56
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["jquery", 101], "method", false, false, false, 56);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/prayer-times.js", 89], "method", false, false, false, 56);
         // line 57
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/number-format.js", 95], "method", false, false, false, 57);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/hijri-date.js", 89], "method", false, false, false, 57);
         // line 58
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/pull-to-refresh.js", 94], "method", false, false, false, 58);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/adhan-player.js", 89], "method", false, false, false, 58);
         // line 59
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/gallery-swipe.js", 93], "method", false, false, false, 59);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/khums-calculator.js", 89], "method", false, false, false, 59);
         // line 60
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/site.js", 90], "method", false, false, false, 60);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/spiritual.js", 88], "method", false, false, false, 60);
         // line 61
         yield "    
     ";
         // line 63
-        yield "    <script>
-        window.themeConfig = {
-            numberFormat: '";
+        yield "
+    ";
         // line 65
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "number_format"), "western"), "html", null, true);
-        yield "',
-            dateCalendar: '";
+        yield "    ";
+        $context["glass_blur"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "glass_blur"), 16);
         // line 66
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "date_calendar"), "gregorian"), "html", null, true);
-        yield "',
-            direction: '";
+        yield "    ";
+        $context["glass_opacity"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "glass_opacity"), 0.15);
         // line 67
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["direction"] ?? null), "html", null, true);
-        yield "',
-            language: '";
+        yield "    ";
+        $context["glass_border_opacity"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "glass_border_opacity"), 0.1);
         // line 68
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["language"] ?? null), "html", null, true);
-        yield "'
-        };
-    </script>
+        yield "    ";
+        $context["glass_thickness"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "glass_thickness"), 1);
+        // line 69
+        yield "    ";
+        $context["glass_shadow_intensity"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "glass_shadow_intensity"), 0.1);
+        // line 70
+        yield "    ";
+        // line 71
+        yield "    ";
+        $context["top_banner_color"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color"), "#111827");
+        // line 72
+        yield "
+    <style>
+        /* Global Premium Glass Standard (The 4 Pillars) */
+        .glass-card {
+            /* Pillar 1: Translucency (Surface) */
+            background-color: color-mix(in srgb, ";
+        // line 77
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["top_banner_color"] ?? null), "html", null, true);
+        yield " calc(";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_opacity"] ?? null), "html", null, true);
+        yield " * 100%), transparent);
+            
+            /* Pillar 2: Diffusion (Blur) */
+            backdrop-filter: blur(";
+        // line 80
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_blur"] ?? null), "html", null, true);
+        yield "px);
+            
+            /* Pillar 3: Reflective Edge (Border) */
+            border: ";
+        // line 83
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_thickness"] ?? null), "html", null, true);
+        yield "px solid oklch(1 0 0 / ";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_border_opacity"] ?? null), "html", null, true);
+        yield ");
+            
+            /* Pillar 4: Depth (Shadow) */
+            box-shadow: 0 4px 30px oklch(0 0 0 / ";
+        // line 86
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_shadow_intensity"] ?? null), "html", null, true);
+        yield ");
+        }
+
+        #header.header-glass:not(.scrolled) {
+            background-color: color-mix(in srgb, ";
+        // line 90
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["top_banner_color"] ?? null), "html", null, true);
+        yield " calc(";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_opacity"] ?? null), "html", null, true);
+        yield " * 100%), transparent) !important;
+            backdrop-filter: blur(";
+        // line 91
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_blur"] ?? null), "html", null, true);
+        yield "px) !important;
+            border-bottom: ";
+        // line 92
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_thickness"] ?? null), "html", null, true);
+        yield "px solid oklch(1 0 0 / ";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_border_opacity"] ?? null), "html", null, true);
+        yield ") !important;
+             /* Initial state usually has no shadow or very subtle one */
+            box-shadow: none !important;
+        }
+
+        /* Scrolled state uses the same blur but enables the full Glass Card effect */
+        #header.header-glass.scrolled {
+            background-color: color-mix(in srgb, ";
+        // line 99
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["top_banner_color"] ?? null), "html", null, true);
+        yield " calc(";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_opacity"] ?? null), "html", null, true);
+        yield " * 100%), transparent) !important;
+            backdrop-filter: blur(";
+        // line 100
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_blur"] ?? null), "html", null, true);
+        yield "px) !important;
+            box-shadow: 0 4px 30px oklch(0 0 0 / ";
+        // line 101
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_shadow_intensity"] ?? null), "html", null, true);
+        yield ") !important;
+            border-bottom: ";
+        // line 102
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_thickness"] ?? null), "html", null, true);
+        yield "px solid oklch(1 0 0 / ";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["glass_border_opacity"] ?? null), "html", null, true);
+        yield ") !important;
+        }
+        
+        /* Ensure the shadow (if applied inline) is visible */
+        #header[style*=\"box-shadow\"] {
+             /* No special rule needed, inline style wins */
+        }
+    </style>
 ";
         yield from [];
     }
 
-    // line 73
+    // line 112
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -342,20 +419,20 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
     public function block_assets_deferred(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 74
+        // line 113
         yield "    ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "css", [], "method", false, false, false, 74);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "css", [], "method", false, false, false, 113);
         yield "
     ";
-        // line 75
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", [], "method", false, false, false, 75);
+        // line 114
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", [], "method", false, false, false, 114);
         yield "
 ";
         $this->deferred->resolve($this, $context, $blocks);
         yield from [];
     }
 
-    // line 78
+    // line 117
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -366,234 +443,246 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 82
+    // line 121
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_header(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 83
+        // line 122
         yield "        ";
-        yield from $this->load("partials/minaret.html.twig", 83)->unwrap()->yield($context);
-        // line 84
-        yield "        <section id=\"header\" class=\"section py-4 lg:py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 transition-transform duration-300\">
-            <section class=\"container mx-auto px-4\">
-                <nav class=\"navbar flex justify-between items-center h-12 lg:h-14\">
+        $context["_top_banner_enabled"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_enabled");
+        // line 123
+        yield "        ";
+        $context["top_banner_active"] = (((null === ($context["_top_banner_enabled"] ?? null))) ? (true) : (($context["_top_banner_enabled"] ?? null)));
+        // line 124
+        yield "        ";
+        $context["top_banner_color"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color"), "#111827");
+        // line 125
+        yield "        
+        ";
+        // line 127
+        yield "        <div class=\"sticky top-0 z-40 w-full transition-transform duration-300 ease-in-out\">
+            ";
+        // line 128
+        yield from $this->load("partials/top-banner.html.twig", 128)->unwrap()->yield($context);
+        // line 129
+        yield "        </div>
+        
+        ";
+        // line 132
+        yield "        <header id=\"header\" 
+                class=\"sticky top-0 w-full z-50 header-glass transition-transform duration-300 ease-in-out\"
+                role=\"banner\">
+            
+            <div class=\"container-px mx-auto max-w-7xl py-4 @lg:py-6\">
+                <nav class=\"flex justify-between items-center h-14 @lg:h-20\" aria-label=\"Main navigation\">
                     
                     ";
-        // line 89
-        yield "                    <div class=\"navbar-left flex items-center gap-4 lg:gap-8 flex-1 lg:flex-none\">
+        // line 140
+        yield "                    <div class=\"flex items-center gap-4 @lg:gap-8 flex-1 @lg:flex-none\">
                         ";
-        // line 91
-        yield "                        ";
-        // line 92
+        // line 142
         yield "                        <button id=\"mobile-toggle\" 
-                                class=\"lg:hidden p-2 -ml-2 text-black hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg relative z-50\"
-                                aria-label=\"Toggle navigation\"
+                                class=\"@lg:hidden p-2 -ml-2 text-gray-800 hover:text-primary transition-all focus:outline-none focus:ring-4 focus:ring-primary/10 rounded-2xl relative z-60 flex items-center justify-center min-w-[48px] min-h-[48px]\"
+                                aria-label=\"Open navigation menu\"
                                 aria-controls=\"mobile-overlay\"
-                                aria-expanded=\"false\"
-                                onclick=\"document.getElementById('mobile-overlay').classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden';\"
-                                style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-6 h-6\">
+                                aria-expanded=\"false\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"w-7 h-7\">
                                 <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\" />
                             </svg>
                         </button>
 
                         ";
-        // line 105
-        yield "                        <div class=\"hidden lg:block logo-wrapper\">
+        // line 153
+        yield "                        <div class=\"hidden @lg:block transition-transform duration-300 hover:scale-[1.03] active:scale-95\">
                             ";
-        // line 106
-        yield from $this->load("partials/logo.html.twig", 106)->unwrap()->yield($context);
-        // line 107
+        // line 154
+        yield from $this->load("partials/logo.html.twig", 154)->unwrap()->yield($context);
+        // line 155
         yield "                        </div>
                     </div>
 
                     ";
-        // line 111
-        yield "                    <div class=\"navbar-center flex items-center justify-center lg:justify-start lg:flex-1\">
+        // line 159
+        yield "                    <div class=\"flex items-center justify-center @lg:justify-start @lg:flex-1\">
                         ";
-        // line 113
-        yield "                        <div class=\"lg:hidden logo-mobile\">
+        // line 161
+        yield "                        <div class=\"@lg:hidden transition-transform duration-300 hover:scale-105\">
                             ";
-        // line 114
-        yield from $this->load("partials/logo.html.twig", 114)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 115
+        // line 162
+        yield from $this->load("partials/logo.html.twig", 162)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
+        // line 163
         yield "                        </div>
 
                         ";
-        // line 118
-        yield "                        <nav class=\"hidden lg:flex items-center space-x-6 font-bold text-sm uppercase tracking-wide\">
+        // line 166
+        yield "                        <nav id=\"desktop-nav\" class=\"hidden @lg:flex items-center @container\">
                             ";
-        // line 119
+        // line 167
         yield from $this->unwrap()->yieldBlock('header_navigation', $context, $blocks);
-        // line 122
+        // line 170
         yield "                        </nav>
                     </div>
 
                     ";
-        // line 126
-        yield "                    <div class=\"navbar-right flex items-center justify-end gap-3 lg:gap-4 flex-1 lg:flex-none\">
+        // line 174
+        yield "                    <div class=\"flex items-center justify-end gap-2 @lg:gap-4 flex-1 @lg:flex-none\">
                         
                         ";
-        // line 129
-        yield "                        <button class=\"p-2 text-gray-700 hover:text-primary transition-colors rounded-lg\" 
-                                aria-label=\"Search\"
-                                style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
-                            <i class=\"la la-search text-xl\" aria-hidden=\"true\"></i>
+        // line 177
+        yield "                        <button class=\"p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10\" 
+                                aria-label=\"Open search\">
+                            <i class=\"la la-search text-2xl\" aria-hidden=\"true\"></i>
                         </button>
 
                         ";
-        // line 136
-        yield "                        <button class=\"snipcart-checkout relative p-2 text-gray-700 hover:text-primary transition-colors rounded-lg\" 
-                                aria-label=\"Shopping cart\"
-                                style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
-                            <i class=\"la la-shopping-bag text-xl md:text-2xl\" aria-hidden=\"true\"></i>
-                            <span class=\"snipcart-items-count absolute top-1 right-0 bg-accent text-gray-900 text-[10px] font-black w-4 h-4 md:w-5 md:h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm\" aria-live=\"polite\">0</span>
+        // line 183
+        yield "                        <button class=\"snipcart-checkout relative p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10\" 
+                                aria-label=\"View shopping cart\">
+                            <i class=\"la la-shopping-bag text-2xl\" aria-hidden=\"true\"></i>
+                            <span class=\"snipcart-items-count absolute top-2 right-2 bg-accent text-gray-900 text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-xl animate-pulse-subtle\" aria-live=\"polite\">0</span>
                         </button>
 
                         ";
-        // line 144
+        // line 190
         yield "                        ";
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "plugins", [], "any", false, false, false, 144), "login", [], "any", false, false, false, 144), "enabled", [], "any", false, false, false, 144) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "user", [], "any", false, false, false, 144), "username", [], "any", false, false, false, 144))) {
-            // line 145
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "plugins", [], "any", false, false, false, 190), "login", [], "any", false, false, false, 190), "enabled", [], "any", false, false, false, 190) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "user", [], "any", false, false, false, 190), "username", [], "any", false, false, false, 190))) {
+            // line 191
             yield "                            <a href=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://dashboard"), "html", null, true);
             yield "\" 
-                               class=\"hidden lg:inline-flex items-center gap-2 glass bg-primary text-white px-5 py-2 rounded-xl font-bold text-xs hover:shadow-lg hover:shadow-primary/20 transition-all\"
-                               aria-label=\"Dashboard\">
+                               class=\"hidden @lg:inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-2xl font-black text-sm shadow-xl shadow-primary/20 hover:-translate-y-1 hover:shadow-primary/40 active:translate-y-0 transition-all focus:outline-none focus:ring-4 focus:ring-primary/20\"
+                               aria-label=\"Go to Dashboard\">
                                 <span>Dashboard</span>
                             </a>
                             <a href=\"";
-            // line 150
+            // line 196
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://dashboard"), "html", null, true);
             yield "\" 
-                               class=\"lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg\"
-                               aria-label=\"Dashboard\"
-                               style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
+                               class=\"@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]\"
+                               aria-label=\"Go to Dashboard\">
                                 <i class=\"la la-user-circle text-2xl\" aria-hidden=\"true\"></i>
                             </a>
                         ";
         } else {
-            // line 157
+            // line 202
             yield "                            ";
             $context["login_url"] = (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url") . "/login")) : ($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://login")));
-            // line 158
+            // line 203
             yield "                            <a href=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["login_url"] ?? null), "html", null, true);
             yield "\" 
-                               class=\"hidden lg:inline-block text-gray-900 font-black text-xs uppercase hover:text-primary transition-colors ml-2\"
-                               aria-label=\"Login\">
+                               class=\"hidden @lg:inline-flex items-center px-4 py-3 text-gray-800 font-black text-sm hover:text-primary hover:bg-primary/5 rounded-xl transition-all\"
+                               aria-label=\"Log in to your account\">
                                 Login
                             </a>
                             <a href=\"";
-            // line 163
+            // line 208
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["login_url"] ?? null), "html", null, true);
             yield "\" 
-                               class=\"lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg\"
-                               aria-label=\"Login\"
-                               style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
+                               class=\"@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]\"
+                               aria-label=\"Log in to your account\">
                                 <i class=\"la la-sign-in-alt text-2xl\" aria-hidden=\"true\"></i>
                             </a>
                         ";
         }
-        // line 170
+        // line 214
         yield "                    </div>
                 </nav>
-            </section>
-        </section>
+            </div>
+        </header>
 
         ";
-        // line 176
+        // line 220
         yield "        <div id=\"mobile-overlay\" 
-             class=\"fixed inset-0 z-60 bg-gray-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden\"
-             aria-hidden=\"true\">
+             class=\"fixed inset-0 z-[100] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0\"
+             role=\"dialog\"
+             aria-modal=\"true\"
+             aria-label=\"Mobile Navigation\">
             
-            <div class=\"flex flex-col h-full\">
+            <div class=\"flex flex-col h-full bg-white/95 backdrop-blur-2xl\">
                 ";
-        // line 182
-        yield "                <div class=\"flex items-center justify-between p-4 border-b border-gray-800\">
-                    <div class=\"w-32 brightness-0 invert filter\">
+        // line 228
+        yield "                <div class=\"flex items-center justify-between p-8 border-b border-subtle/50\">
+                    <div class=\"w-36 transition-transform hover:scale-105\">
                          ";
-        // line 184
-        yield from $this->load("partials/logo.html.twig", 184)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 185
+        // line 230
+        yield from $this->load("partials/logo.html.twig", 230)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
+        // line 231
         yield "                    </div>
                     <button id=\"mobile-close\" 
-                            class=\"p-2 text-gray-400 hover:text-white transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500\"
-                            aria-label=\"Close menu\"
-                            style=\"min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-6 h-6\">
+                            class=\"p-2 text-subtle hover:text-red-500 hover:bg-red-50 transition-all rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/10 min-w-[54px] min-h-[54px] flex items-center justify-center\"
+                            aria-label=\"Close navigation menu\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"w-8 h-8\">
                           <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18L18 6M6 6l12 12\" />
                         </svg>
                     </button>
                 </div>
 
                 ";
-        // line 197
-        yield "                <div class=\"flex-1 overflow-y-auto p-6\">
+        // line 242
+        yield "                <div class=\"flex-1 overflow-y-auto p-8 @container\">
                     ";
-        // line 199
-        yield "                    <div class=\"mb-8\">
-                        <div class=\"relative\">
-                            <input type=\"text\" placeholder=\"Search...\" class=\"w-full pl-10 pr-4 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder-gray-500\">
-                            <i class=\"la la-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg\"></i>
+        // line 244
+        yield "                    <div class=\"mb-10 animate-fade-in-up\">
+                        <div class=\"relative group\">
+                            <input type=\"text\" placeholder=\"Explore resources...\" 
+                                   class=\"w-full pl-14 pr-6 py-5 bg-surface-subtle/20 border-2 border-transparent focus:input-focus rounded-premium placeholder-gray-400 font-bold text-lg\">
+                            <i class=\"la la-search absolute left-5 top-1/2 -translate-y-1/2 text-subtle text-2xl group-focus-within:text-primary transition-colors\"></i>
                         </div>
                     </div>
 
                     ";
-        // line 207
-        yield "                    <nav class=\"mobile-nav space-y-2 font-bold text-lg\">
+        // line 253
+        yield "                    <nav class=\"mobile-nav space-y-2 animate-fade-in-up\" style=\"animation-delay: 0.1s\">
                         ";
-        // line 208
-        yield from $this->load("partials/navigation.html.twig", 208)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 209
+        // line 254
+        yield from $this->load("partials/navigation.html.twig", 254)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
+        // line 255
         yield "                    </nav>
                 </div>
 
                 ";
-        // line 213
-        yield "                <div class=\"p-6 bg-gray-900 border-t border-gray-800\">
-                    <h4 class=\"text-xs font-bold text-gray-500 uppercase tracking-wider mb-4\">Connect With Us</h4>
-                    <div class=\"flex gap-4\">
+        // line 259
+        yield "                <div class=\"p-10 bg-surface-subtle/20 border-t border-subtle/50 animate-fade-in-up\" style=\"animation-delay: 0.2s\">
+                    <h4 class=\"text-[11px] font-black text-subtle uppercase tracking-[0.2em] mb-8\">Follow Our Journey</h4>
+                    <div class=\"flex flex-wrap gap-5\">
                         ";
-        // line 216
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_facebook")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 217
-            yield "                            <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_facebook"), "html", null, true);
-            yield "\" target=\"_blank\" class=\"w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm\"><i class=\"lab la-facebook-f\"></i></a>
-                        ";
+        // line 262
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(["facebook", "twitter", "instagram", "youtube"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["platform"]) {
+            // line 263
+            yield "                             ";
+            $context["social_url"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, ("social_" . $context["platform"]));
+            // line 264
+            yield "                             ";
+            if ((($tmp = ($context["social_url"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 265
+                yield "                                <a href=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["social_url"] ?? null), "html", null, true);
+                yield "\" target=\"_blank\" 
+                                   class=\"w-14 h-14 rounded-2xl bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center text-subtle hover:text-primary hover:shadow-primary/20 hover:-translate-y-1.5 active:translate-y-0 transition-all text-2xl border border-gray-50\" 
+                                   aria-label=\"";
+                // line 267
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::capitalize($this->env->getCharset(), $context["platform"]), "html", null, true);
+                yield "\">
+                                    <i class=\"lab la-";
+                // line 268
+                yield ((($context["platform"] == "facebook")) ? ("facebook-f") : ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["platform"], "html", null, true)));
+                yield "\"></i>
+                                </a>
+                             ";
+            }
+            // line 271
+            yield "                        ";
         }
-        // line 219
-        yield "                        ";
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_twitter")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 220
-            yield "                            <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_twitter"), "html", null, true);
-            yield "\" target=\"_blank\" class=\"w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm\"><i class=\"lab la-twitter\"></i></a>
-                        ";
-        }
-        // line 222
-        yield "                        ";
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_instagram")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 223
-            yield "                            <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_instagram"), "html", null, true);
-            yield "\" target=\"_blank\" class=\"w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm\"><i class=\"lab la-instagram\"></i></a>
-                        ";
-        }
-        // line 225
-        yield "                         ";
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_youtube")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 226
-            yield "                            <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_youtube"), "html", null, true);
-            yield "\" target=\"_blank\" class=\"w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm\"><i class=\"lab la-youtube\"></i></a>
-                        ";
-        }
-        // line 228
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['platform'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 272
         yield "                    </div>
                 </div>
             </div>
@@ -602,22 +691,22 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 119
+    // line 167
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_header_navigation(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 120
+        // line 168
         yield "                                ";
-        yield from $this->load("partials/navigation.html.twig", 120)->unwrap()->yield($context);
-        // line 121
+        yield from $this->load("partials/navigation.html.twig", 168)->unwrap()->yield($context);
+        // line 169
         yield "                            ";
         yield from [];
     }
 
-    // line 234
+    // line 279
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -627,22 +716,22 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 237
+    // line 282
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 238
-        yield "            <section id=\"body-wrapper\" class=\"section py-8\">
+        // line 283
+        yield "            <section id=\"body-wrapper\" class=\"section-py container-px\">
                 ";
-        // line 239
+        // line 284
         yield from $this->unwrap()->yieldBlock('messages', $context, $blocks);
-        // line 244
-        yield "                <div class=\"container mx-auto px-4\">
+        // line 289
+        yield "                <div class=\"mx-auto max-w-7xl\">
                     ";
-        // line 245
+        // line 290
         yield from         $this->unwrap()->yieldBlock("content_surround", $context, $blocks);
         yield "
                 </div>
@@ -651,19 +740,19 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 239
+    // line 284
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_messages(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 240
-        yield "                    <div class=\"container mx-auto px-4\">
+        // line 285
+        yield "                    <div class=\"mx-auto max-w-7xl mb-8\">
                         ";
-        // line 241
+        // line 286
         try {
-            $_v2 = $this->load("partials/messages.html.twig", 241);
+            $_v2 = $this->load("partials/messages.html.twig", 286);
         } catch (LoaderError $e) {
             // ignore missing template
             $_v2 = null;
@@ -671,139 +760,51 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         if ($_v2) {
             yield from $_v2->unwrap()->yield($context);
         }
-        // line 242
+        // line 287
         yield "                    </div>
                 ";
         yield from [];
     }
 
-    // line 253
+    // line 296
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_footer(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 254
+        // line 297
         yield "        ";
-        yield from $this->load("partials/footer.html.twig", 254)->unwrap()->yield($context);
-        // line 255
+        yield from $this->load("partials/footer.html.twig", 297)->unwrap()->yield($context);
+        // line 298
         yield "    ";
         yield from [];
     }
 
-    // line 259
+    // line 302
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_bottom(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 260
+        // line 303
         yield "    ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 260);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 303);
         yield "
 
-    <script>
-        window.themeConfig = {
-            direction: '";
-        // line 264
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["direction"] ?? null), "html", null, true);
-        yield "',
-            prayerMethod: '";
-        // line 265
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "prayer_method"), "tehran"), "html", null, true);
-        yield "',
-            hijriOffset: ";
-        // line 266
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "hijri_offset"), 0), "html", null, true);
-        yield ",
-            location: '";
-        // line 267
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "default_location"), "Karachi"), "html", null, true);
-        yield "',
-            snipcartKey: '";
-        // line 268
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key"), "html", null, true);
-        yield "',
-            moodleUrl: '";
-        // line 269
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url"), "html", null, true);
-        yield "',
-            adhanMedia: '";
-        // line 270
-        yield (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "adhan_media")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc(("theme://media/" . CoreExtension::getAttribute($this->env, $this->source, Twig\Extension\CoreExtension::first($this->env->getCharset(), $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "adhan_media")), "name", [], "any", false, false, false, 270))), "html", null, true)) : (""));
-        yield "'
-        };
-
-        // CRITICAL: Inline Mobile Menu Logic (No Dependencies)
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const mobileClose = document.getElementById('mobile-close');
-            const mobileOverlay = document.getElementById('mobile-overlay');
-            const bodyEl = document.body;
-
-            console.log('Mobile Menu Script Loaded');
-
-            function toggleMenu() {
-                if (!mobileOverlay) return;
-                
-                // Toggle state
-                if (mobileOverlay.classList.contains('-translate-x-full')) {
-                    // Open
-                    console.log('Opening Menu');
-                    mobileOverlay.classList.remove('-translate-x-full');
-                    bodyEl.classList.add('overflow-hidden');
-                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
-                } else {
-                    // Close
-                    console.log('Closing Menu');
-                    mobileOverlay.classList.add('-translate-x-full');
-                    bodyEl.classList.remove('overflow-hidden');
-                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-                }
-            }
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Stop bubbling
-                    toggleMenu();
-                });
-            } else {
-                console.error('Mobile Toggle Button NOT found');
-            }
-
-            if (mobileClose) {
-                mobileClose.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleMenu();
-                });
-            }
-
-            // Close on click outside
-            document.addEventListener('click', function(e) {
-                if (mobileOverlay && !mobileOverlay.classList.contains('-translate-x-full') && 
-                    !mobileOverlay.contains(e.target) && 
-                    (!mobileToggle || !mobileToggle.contains(e.target))) {
-                    console.log('Closing Menu (Outside Click)');
-                    toggleMenu();
-                }
-            });
-        });
+    ";
+        // line 306
+        yield "    <script id=\"theme-config\" type=\"application/json\">
+        ";
+        // line 307
+        yield json_encode(($context["theme_js_config"] ?? null));
+        yield "
     </script>
 
     ";
-        // line 330
-        yield "    ";
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 331
-            yield "        <script async src=\"https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js\"></script>
-        <div hidden id=\"snipcart\" data-api-key=\"";
-            // line 332
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key"), "html", null, true);
-            yield "\" data-config-modal-style=\"side\"></div>
-    ";
-        }
+        // line 310
+        yield from $this->load("partials/snipcart.html.twig", 310)->unwrap()->yield($context);
         yield from [];
     }
 
@@ -828,7 +829,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  803 => 332,  800 => 331,  797 => 330,  735 => 270,  731 => 269,  727 => 268,  723 => 267,  719 => 266,  715 => 265,  711 => 264,  703 => 260,  696 => 259,  691 => 255,  688 => 254,  681 => 253,  675 => 242,  665 => 241,  662 => 240,  655 => 239,  646 => 245,  643 => 244,  641 => 239,  638 => 238,  631 => 237,  621 => 234,  616 => 121,  613 => 120,  606 => 119,  597 => 228,  591 => 226,  588 => 225,  582 => 223,  579 => 222,  573 => 220,  570 => 219,  564 => 217,  562 => 216,  557 => 213,  552 => 209,  550 => 208,  547 => 207,  538 => 199,  535 => 197,  522 => 185,  520 => 184,  516 => 182,  509 => 176,  502 => 170,  492 => 163,  483 => 158,  480 => 157,  470 => 150,  461 => 145,  458 => 144,  449 => 136,  441 => 129,  437 => 126,  432 => 122,  430 => 119,  427 => 118,  423 => 115,  421 => 114,  418 => 113,  415 => 111,  410 => 107,  408 => 106,  405 => 105,  391 => 92,  389 => 91,  386 => 89,  380 => 84,  377 => 83,  370 => 82,  359 => 78,  351 => 75,  346 => 74,  329 => 73,  320 => 68,  316 => 67,  312 => 66,  308 => 65,  304 => 63,  301 => 61,  298 => 60,  295 => 59,  292 => 58,  289 => 57,  286 => 56,  279 => 55,  273 => 52,  270 => 51,  263 => 50,  253 => 45,  249 => 44,  245 => 43,  241 => 42,  236 => 39,  233 => 38,  230 => 37,  228 => 36,  220 => 31,  212 => 26,  208 => 25,  203 => 24,  200 => 23,  198 => 22,  195 => 21,  192 => 20,  188 => 18,  186 => 17,  175 => 13,  172 => 12,  155 => 11,  146 => 335,  144 => 259,  141 => 258,  138 => 256,  136 => 253,  130 => 249,  128 => 237,  124 => 235,  122 => 234,  119 => 233,  117 => 82,  113 => 80,  109 => 78,  106 => 77,  104 => 73,  101 => 72,  99 => 55,  96 => 54,  94 => 50,  91 => 49,  89 => 11,  82 => 9,  79 => 8,  77 => 6,  75 => 5,  73 => 4,  71 => 3,  69 => 2,  67 => 1,  35 => 7,);
+        return array (  807 => 310,  801 => 307,  798 => 306,  792 => 303,  785 => 302,  780 => 298,  777 => 297,  770 => 296,  764 => 287,  754 => 286,  751 => 285,  744 => 284,  735 => 290,  732 => 289,  730 => 284,  727 => 283,  720 => 282,  710 => 279,  705 => 169,  702 => 168,  695 => 167,  686 => 272,  680 => 271,  674 => 268,  670 => 267,  664 => 265,  661 => 264,  658 => 263,  654 => 262,  649 => 259,  644 => 255,  642 => 254,  639 => 253,  629 => 244,  626 => 242,  614 => 231,  612 => 230,  608 => 228,  599 => 220,  592 => 214,  583 => 208,  574 => 203,  571 => 202,  562 => 196,  553 => 191,  550 => 190,  542 => 183,  535 => 177,  531 => 174,  526 => 170,  524 => 167,  521 => 166,  517 => 163,  515 => 162,  512 => 161,  509 => 159,  504 => 155,  502 => 154,  499 => 153,  487 => 142,  484 => 140,  475 => 132,  471 => 129,  469 => 128,  466 => 127,  463 => 125,  460 => 124,  457 => 123,  454 => 122,  447 => 121,  436 => 117,  428 => 114,  423 => 113,  406 => 112,  390 => 102,  386 => 101,  382 => 100,  376 => 99,  364 => 92,  360 => 91,  354 => 90,  347 => 86,  339 => 83,  333 => 80,  325 => 77,  318 => 72,  315 => 71,  313 => 70,  310 => 69,  307 => 68,  304 => 67,  301 => 66,  298 => 65,  295 => 63,  292 => 61,  289 => 60,  286 => 59,  283 => 58,  280 => 57,  277 => 56,  274 => 55,  271 => 54,  268 => 53,  265 => 52,  262 => 51,  259 => 50,  256 => 49,  253 => 48,  250 => 47,  243 => 46,  237 => 43,  234 => 42,  227 => 41,  219 => 37,  217 => 30,  214 => 28,  212 => 27,  208 => 25,  203 => 24,  200 => 23,  198 => 22,  195 => 21,  192 => 20,  188 => 18,  186 => 17,  175 => 13,  172 => 12,  155 => 11,  147 => 312,  145 => 302,  142 => 301,  139 => 299,  137 => 296,  133 => 294,  131 => 282,  127 => 280,  125 => 279,  121 => 277,  119 => 121,  115 => 119,  111 => 117,  108 => 116,  106 => 112,  103 => 111,  101 => 46,  98 => 45,  96 => 41,  93 => 40,  91 => 11,  82 => 9,  79 => 8,  77 => 6,  75 => 5,  73 => 4,  71 => 3,  69 => 2,  67 => 1,  35 => 7,);
     }
 
     public function getSourceContext(): Source

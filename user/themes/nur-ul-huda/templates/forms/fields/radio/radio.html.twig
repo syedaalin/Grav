@@ -4,24 +4,31 @@
 {% set value = (value is null ? field.default : value) %}
 
 {% block input %}
+    <div class="flex flex-wrap gap-4 @container">
     {% for key, text in field.options %}
         {% set id = field.id|default(field.name) ~ '-' ~ key %}
 
-        <div class="radio {{ form_field_wrapper_classes }} {{ field.wrapper_classes }} flex items-center mb-2">
-            <label class="{{ form_field_radio_classes }}" for="{{ id|e }}">
-            <input type="radio"
-                   value="{{ key|e }}"
-                   id="{{ id|e }}"
-                   name="{{ (scope ~ field.name)|fieldName }}"
-                   {% if field.classes is defined %}class="{{ field.classes }}" {% endif %}
-                   {% if key == value %}checked="checked" {% endif %}
-                   {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
-                   {% if required %}required="required"{% endif %}
-            />
-            <span class="ml-2">
-            {{ text|t|raw }}
-            </span>
+        <div class="radio-item group">
+            <label class="flex items-center cursor-pointer select-none" for="{{ id|e }}">
+                <div class="relative form-indicator rounded-full group-hover:border-primary/50">
+                    <input type="radio"
+                           value="{{ key|e }}"
+                           id="{{ id|e }}"
+                           name="{{ (scope ~ field.name)|fieldName }}"
+                           class="sr-only peer"
+                           {% if field.classes is defined %}class="{{ field.classes }}" {% endif %}
+                           {% if key == value %}checked="checked" {% endif %}
+                           {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
+                           {% if required %}required="required"{% endif %}
+                    />
+                    <div class="form-check-mark !w-3 !h-3 rounded-full peer-checked:scale-100 peer-focus:shadow-[0_0_0_4px_oklch(var(--color-primary)/0.1)]"></div>
+                </div>
+                <span class="ml-3 form-label-text group-hover:text-primary">
+                    {{ text|t|raw }}
+                </span>
             </label>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
+

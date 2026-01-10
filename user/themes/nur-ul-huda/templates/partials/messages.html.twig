@@ -1,24 +1,29 @@
-{% set type_mapping = {'info':'bg-blue-50 text-blue-700', 'error': 'bg-red-50 text-red-700', 'warning': 'bg-yellow-50 text-yellow-700', 'success': 'bg-green-50 text-green-700'} %}
-{% set icon_mapping = {'info':'fa-info-circle', 'error':'fa-times-circle', 'warning':'fa-exclamation-triangle', 'success':'fa-check-circle'} %}
+{% set type_mapping = {
+    'info': 'bg-primary/5 text-primary border-primary/20', 
+    'error': 'bg-red-50 text-red-600 border-red-100', 
+    'warning': 'bg-orange-50 text-orange-600 border-orange-100', 
+    'success': 'bg-emerald-50 text-emerald-600 border-emerald-100'
+} %}
+{% set icon_mapping = {
+    'info': 'la-info-circle', 
+    'error': 'la-times-circle', 
+    'warning': 'la-exclamation-triangle', 
+    'success': 'la-check-circle'
+} %}
 
 {% if grav.messages.all %}
-    <div id="messages" class="space-y-4 mb-8">
+    <div id="messages" class="space-y-4 mb-12 animate-fade-in-up">
     {% for message in grav.messages.fetch %}
-
         {% set scope = message.scope|e %}
-        {% set type = type_mapping[scope] %}
-        {% set icon = icon_mapping[scope] %}
+        {% set type_classes = type_mapping[scope] ?: 'bg-surface-subtle text-subtle border-subtle' %}
+        {% set icon_name = icon_mapping[scope] ?: 'la-bell' %}
 
-        <div class="rounded-md p-4 {{ type }} {{ scope }}">
-            <div class="flex">
-                <span class="shrink-0">
-                    <i class="fa {{ icon }} {{ type }}"></i>
-                </span>
-                <div class="ml-3">
-                    <div class="text-sm font-medium">
-                        {{ message.message|raw }}
-                    </div>
-                </div>
+        <div class="card-glass p-6 flex items-start gap-4 transition-all {{ type_classes }}">
+            <span class="shrink-0 w-10 h-10 rounded-2xl bg-white/50 flex items-center justify-center text-xl shadow-inner-premium">
+                <i class="la {{ icon_name }}" aria-hidden="true"></i>
+            </span>
+            <div class="pt-2 text-sm font-bold leading-relaxed tracking-tight">
+                {{ message.message|raw }}
             </div>
         </div>
     {% endfor %}

@@ -2,7 +2,11 @@ const CACHE_NAME = 'hidayat-cache-v1';
 const urlsToCache = [
   '/',
   '/user/themes/nur-ul-huda/css/custom.css',
-  '/user/themes/nur-ul-huda/js/site.js'
+  '/user/themes/nur-ul-huda/js/modules/utils.js',
+  '/user/themes/nur-ul-huda/js/modules/mobile-menu.js',
+  '/user/themes/nur-ul-huda/js/modules/sticky-header.js',
+  '/user/themes/nur-ul-huda/js/modules/footer.js',
+  '/user/themes/nur-ul-huda/js/modules/spiritual.js'
 ];
 
 self.addEventListener('install', event => {

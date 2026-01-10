@@ -1,13 +1,14 @@
 {% block module_content %}
   {% set data = page.header.gallery %}
-  {% set thumb_width = data.thumb.width|default(600) %}
-  {% set thumb_height = data.thumb.height|default(450) %}
+  {% set thumb_width = data.thumb.width|default(800) %}
+  {% set thumb_height = data.thumb.height|default(600) %}
 
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div class="container-px mx-auto section-py @container">
+    <div class="grid-gallery">
       {% set gallery = md5(page.url) %}
       {% for item in data.items %}
-        <div class="gallery-item">
+        <div class="relative overflow-hidden card-glass group cursor-pointer aspect-4/3" 
+             role="button" aria-label="View {{ item.title|default('image') }}">
           {% set item_image = page.media[item.image] %}
           {% if item.title %}
             {% set title = item.title %}
@@ -15,20 +16,35 @@
           {% if item.desc %}
             {% set desc = ".desc-" ~ md5(item.desc) %}
           {% endif %}
-          {% set content = item_image.cropZoom(thumb_width,thumb_height).html(title, title) %}
-          {% set image =  item_image.url %}
+          
+          <div class="w-full h-full relative z-0">
+            {{ item_image.cropZoom(thumb_width, thumb_height).html(title, title, 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110')|raw }}
+            <div class="absolute inset-0 bg-linear-to-t from-gray-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+
+          {% if item.title %}
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
+              <p class="text-white font-black text-xs uppercase tracking-[0.2em]">{{ item.title }}</p>
+            </div>
+          {% endif %}
+
+          {% set image = item_image.url %}
           {% include "partials/lightbox.html.twig" %}
         </div>
       {% endfor %}
     </div>
-    <div class="hidden">
+
+    <div class="hidden" aria-hidden="true">
       {% for item in data.items %}
         {% if item.desc %}
           <div class="glightbox-desc desc-{{ md5(item.desc) }}">
-            <p>{{ item.desc|markdown(false) }}</p>
+            <div class="prose-custom !text-gray-200 p-8">
+                {{ item.desc|markdown(false) }}
+            </div>
           </div>
         {% endif %}
       {% endfor %}
     </div>
   </div>
 {% endblock %}
+

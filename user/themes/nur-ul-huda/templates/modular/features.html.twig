@@ -1,29 +1,34 @@
 {% set grid_size = theme_var('grid-size') %}
-{% set columns = page.header.class == 'small' ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'  %}
-<section class="section py-12 md:py-16 lg:py-24 modular-features {{ page.header.class}}">
-        <section class="container mx-auto px-4">
-            <div class="frame-box">
-
-                {{ content|raw }}
-                <div class="grid gap-8 {{ columns }}">
-                {% for feature in page.header.features %}
-                   <div class="feature-item">
-                      {% if feature.url %}<a href="{{feature.url}}">{% endif %}
-                      <div class="feature-icon">
-                         <i class="fa fa-fw {{ feature.icon }}"></i>
-                         {% if feature.header %}
-                            <h6>{{ feature.header }}</h6>
-                         {% endif %}
-                      </div>
-                      {% if feature.url %}</a>{% endif %}
-                      <div class="feature-content">
-                         {% if feature.text %}
-                         <p>{{ feature.text }}</p>
-                         {% endif %}
-                      </div>
-                   </div>
-                {% endfor %}
+{% set columns = page.header.class == 'small' ? 'grid-cols-1 @sm:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4' : 'grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3'  %}
+<section class="section section-py modular-features {{ page.header.class}} @container">
+    <div class="container-px mx-auto max-w-7xl">
+        <div class="frame-box animate-fade-in-up">
+            {% if content %}
+                <div class="mb-12 text-center prose-custom max-w-none">
+                    {{ content|raw }}
                 </div>
+            {% endif %}
+            
+            <div class="grid {{ columns }} gap-spacing-base @lg:gap-8">
+            {% for feature in page.header.features %}
+                <div class="feature-item card-glass p-8 group">
+                    {% if feature.url %}<a href="{{feature.url}}" class="block group/link focus:input-focus rounded-xl">{% endif %}
+                    <div class="feature-icon mb-4 text-primary text-3xl @lg:text-4xl transition-transform duration-300 group-hover:scale-110">
+                        <i class="la la-fw {{ feature.icon }}" aria-hidden="true"></i>
+                        {% if feature.header %}
+                            <h3 class="text-lg @lg:text-xl font-bold mt-4 text-gray-900 group-hover/link:text-primary transition-colors">{{ feature.header }}</h3>
+                        {% endif %}
+                    </div>
+                    {% if feature.url %}</a>{% endif %}
+                    <div class="feature-content">
+                        {% if feature.text %}
+                            <p class="text-sm @lg:text-base text-subtle leading-relaxed">{{ feature.text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
             </div>
-        </section>
+        </div>
+    </div>
 </section>
+

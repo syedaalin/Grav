@@ -1,0 +1,11 @@
+{
+    "name": "huda/nur-ul-huda",
+    "description": "Nur-ul-Huda Theme",
+    "type": "grav-theme",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Grav\\Theme\\NurUlHuda\\": "classes/"
+        }
+    }
+}

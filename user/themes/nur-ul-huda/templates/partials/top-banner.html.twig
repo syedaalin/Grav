@@ -1,0 +1,78 @@
+{# === Custom CSS for Responsive Year Visibility === #}
+<style>
+    .year-responsive { display: none; }
+    @media (min-width: 768px) {
+        .year-responsive { display: inline !important; }
+    }
+</style>
+
+{% set _top_banner_enabled = theme_var('top_banner_enabled') %}
+{% if _top_banner_enabled is null ? true : _top_banner_enabled %}
+    {# Logic Hoisting #}
+    {% set announcement_text = theme_var('top_banner_announcement_text') %}
+    {% set announcement_expires = theme_var('top_banner_announcement_expires') %}
+    {% set show_announcement = theme_var('top_banner_announcement_enabled') and announcement_text and (not announcement_expires or date(announcement_expires) > date('now')) %}
+    {% set text_dir = grav.language.getDirection() ?: 'ltr' %}
+    
+    {# Color Logic - Using oklch for broader gamut and better accessibility #}
+    {% set default_bg = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
+    {% set default_text = theme_var('top_banner_text_color')|default('oklch(0.85 0.15 85)') %}
+    {% set announce_bg = theme_var('top_banner_announcement_bg_color')|default('oklch(0.5 0.25 25)') %}
+    {% set announce_text = theme_var('top_banner_announcement_text_color')|default('oklch(0.98 0.01 260)') %}
+
+    {% set current_bg = show_announcement ? announce_bg : default_bg %}
+    {% set current_text = show_announcement ? announce_text : default_text %}
+
+<div id="top-banner-utility-bar" 
+     class="@container py-1 text-[10px] @md:text-xs font-bold relative border-b border-white/5 transition-colors duration-300 z-50" 
+     style="background-color: {{ current_bg }}; color: {{ current_text }}; box-shadow: 0 4px 24px -2px {{ current_bg }};" 
+     dir="{{ text_dir }}"
+     role="complementary"
+     aria-label="Utility Bar">
+    
+    <div class="container-px mx-auto flex items-center min-h-[28px] h-full">
+        
+        {% if show_announcement %}
+            {# === EXCLUSIVE ANNOUNCEMENT MODE === #}
+            <div class="w-full flex justify-center h-full" role="alert" aria-live="assertive">
+                <div class="w-full max-w-4xl overflow-hidden whitespace-nowrap">
+                    <div class="animate-marquee inline-block px-4 tracking-wide uppercase">
+                        {{ announcement_text }}
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            {# === STANDARD WIDGET MODE === #}
+            <div class="flex items-center w-full justify-between sm:justify-center divide-x divide-white/20 text-[10px] sm:text-xs">
+                
+                {# 1. Gregorian Date #}
+                {% if theme_var('top_banner_show_dates')|default(true) %}
+                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center">
+                        <time id="gregorian-date" class="uppercase tracking-[0.2em] whitespace-nowrap" datetime="{{ 'now'|date('Y-m-d') }}">
+                            {{ "now"|date("D, M j") }}<span class="year-responsive">{{ "now"|date(", Y") }}</span>
+                        </time>
+                    </div>
+                {% endif %}
+
+                {# 2. Prayer Ticker (Center) #}
+                {% if theme_var('top_banner_show_prayer_ticker')|default(true) %}
+                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center gap-[2ch]" role="timer" aria-live="polite">
+                        <span class="uppercase tracking-[0.2em]" id="next-prayer-name">Maghrib</span>
+                        <time class="uppercase tracking-[0.2em]" id="prayer-countdown">00:00</time>
+                    </div>
+                {% endif %}
+
+                {# 3. Hijri Date (Right) #}
+                {% if theme_var('top_banner_show_dates')|default(true) %}
+                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center">
+                        <span id="hijri-date" class="uppercase tracking-[0.2em] whitespace-nowrap" aria-live="polite">Loading...</span>
+                    </div>
+                {% endif %}
+            </div>
+            
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}

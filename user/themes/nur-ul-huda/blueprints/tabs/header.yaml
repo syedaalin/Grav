@@ -1,0 +1,79 @@
+type: tab
+title: THEME_NUR_UL_HUDA.ADMIN.HEADER_TAB
+fields:
+  header_intro:
+    type: display
+    content: THEME_NUR_UL_HUDA.ADMIN.HEADER_TAB_INTRO
+    markdown: true
+
+  logos_section:
+    type: section
+    title: Link & Assets
+    underline: true
+
+  custom_logo:
+    type: file
+    label: THEME_NUR_UL_HUDA.ADMIN.LOGO
+    size: large
+    destination: "theme://images/logo"
+    multiple: false
+    markdown: true
+    description: THEME_NUR_UL_HUDA.ADMIN.LOGO_DESCRIPTION
+    help: THEME_NUR_UL_HUDA.ADMIN.LOGO_HELP
+    accept:
+      - image/*
+    validate:
+      method: 'Grav\Theme\NurUlHuda::validateLogo'
+
+  behavior_section:
+    type: section
+    title: THEME_NUR_UL_HUDA.ADMIN.HEADER_DEFAULTS
+    underline: true
+
+  header-fixed:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED
+    help: THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED_HELP
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-animated:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED
+    help: THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED_HELP
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-dark:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK
+    help: THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK_HELP
+    highlight: 0
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-transparent:
+    type: toggle
+    label: THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT
+    help: THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT_HELP
+    highlight: 0
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool

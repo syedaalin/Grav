@@ -1,286 +1,374 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: oklch(0.6 0.2 160); /* Emerald Green */
-  --color-accent: oklch(0.8 0.18 90); /* Gold */
+  --color-primary: oklch(0.55 0.18 165); /* Modern Emerald */
+  --color-accent: oklch(0.85 0.15 85);   /* Modern Gold */
   --color-secondary: var(--color-accent);
-  --font-sans: "Inter", system-ui, sans-serif;
-  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-mono: "Fira Code", monospace;
 
-  /* Fluid Typography Tokens */
-  --font-size-base: clamp(1rem, 2.5vw, 1.125rem);
-  --font-size-lg: clamp(1.125rem, 3vw, 1.25rem);
-  --font-size-xl: clamp(1.25rem, 3.5vw, 1.5rem);
-  --font-size-2xl: clamp(1.5rem, 4vw, 1.875rem);
-  --font-size-3xl: clamp(1.875rem, 5vw, 2.25rem);
+  --animate-pulse-subtle: pulse-subtle 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Refined Fluid Typography */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.15rem + 0.6vw, 1.75rem);
+  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --font-size-3xl: clamp(2rem, 1.8rem + 1.5vw, 3.5rem);
+
+  /* Enhanced Spacing */
+  --spacing-section: clamp(4rem, 8vw, 8rem);
+  --spacing-hero-fullscreen: 100svh;
+  --spacing-hero-large: 80svh;
+
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --spacing-header: 6rem;
+  --spacing-header-lg: 8.5rem;
 }
 
-/* Skip Link for Accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.focus\:not-sr-only:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
+/* Modern Utilities */
 @utility glass {
-  @apply bg-white/10 border border-white/20 shadow-xl;
-  -webkit-backdrop-filter: blur(var(--blur-strength, 12px));
+  background-color: rgb(255 255 255 / 0.6);
   backdrop-filter: blur(var(--blur-strength, 12px));
+  border: 1px solid rgb(255 255 255 / 0.2);
 }
 
-/* Safari Support for Glassmorphism */
-[class*="backdrop-blur"] {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+@utility glass-dark {
+  background-color: oklch(0.1 0.02 165 / 0.6);
+  backdrop-filter: blur(var(--blur-strength, 20px));
+  border: 1px solid oklch(1 0 0 / 0.1);
+  box-shadow: 0 20px 50px oklch(0 0 0 / 0.3);
 }
 
-@utility inter_noto {
-  @apply font-sans;
+@utility bento-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1.5rem;
+  font-size: 2.25rem;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 2px 4px oklch(1 0 0 / 0.1);
 }
 
-@utility roboto_mono {
-  @apply font-mono;
+@utility grid-bento {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+  
+  @md { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @xl { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@utility outfit {
-  @apply font-sans;
+@utility grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  
+  @md { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @lg { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@utility container {
-  margin-inline: auto;
+@utility text-gradient {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-accent));
+}
+
+@utility container-px {
+  padding-left: clamp(1rem, 5vw, 2rem);
+  padding-right: clamp(1rem, 5vw, 2rem);
+}
+
+@utility section-py {
+  padding-block: var(--spacing-section);
+}
+
+@utility card-glass {
+  background-color: oklch(1 0 0 / 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(1 0 0 / 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &:hover {
+    background-color: oklch(1 0 0 / 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px oklch(0 0 0 / 0.1);
+  }
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 2rem;
+  padding-block: 0.75rem;
+  border-radius: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 12px oklch(var(--color-primary) / 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px oklch(var(--color-primary) / 0.3);
+  }
+}
+
+@utility prose-custom {
+  --tw-prose-body: oklch(0.3 0.02 165);
+  --tw-prose-headings: oklch(0.2 0.05 165);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-links-hover: var(--color-accent);
+  
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  
+  & h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility header-glass {
+  background-color: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &.scrolled {
+    background-color: oklch(1 0 0 / 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid oklch(1 0 0 / 0.1);
+    box-shadow: 0 10px 40px oklch(0 0 0 / 0.05);
+  }
+}
+
+@utility section-title {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: oklch(0.2 0.01 165);
+  line-height: 1.1;
+  font-size: var(--font-size-3xl);
+}
+
+@utility badge-primary {
+  display: inline-flex;
+  align-items: center;
   padding-inline: 1rem;
-  max-width: 1280px;
-}
-
-/* Header Scroll State */
-#header {
-  @apply fixed top-0 w-full z-40 transition-all duration-300;
-}
-#header.scrolled {
-  @apply bg-white/95 backdrop-blur shadow-md py-2;
-}
-
-/* Mobile Menu Overlay */
-#overlay {
-  @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300 pt-24 px-8;
-}
-[dir="ltr"] #overlay {
-  @apply translate-x-full;
-}
-[dir="rtl"] #overlay {
-  @apply -translate-x-full;
-}
-#overlay.open {
-  @apply translate-x-0;
-}
-
-/* Mobile Menu Links */
-#overlay nav ul {
-  @apply flex flex-col space-y-4 text-xl font-bold text-gray-800;
-}
-.overlay-dark-gradient::before {
-  content: "";
-  @apply absolute inset-0 bg-linear-to-b from-transparent to-black/80 z-60;
-}
-#overlay nav ul li ul {
-  @apply ms-4 mt-2 mb-2 text-base font-normal text-gray-600;
-}
-
-/* Mobile Menu Toggle (Hamburger) */
-#toggle {
-  @apply fixed top-5 right-4 z-60 md:hidden cursor-pointer w-8 h-6 flex flex-col justify-between;
-}
-#toggle span {
-  @apply block w-full h-[3px] bg-gray-800 rounded transition-all duration-300;
-}
-#toggle.active span.top {
-  @apply transform rotate-45 translate-y-[10px];
-}
-#toggle.active span.middle {
-  @apply opacity-0;
-}
-#toggle.active span.bottom {
-  @apply transform -rotate-45 -translate-y-[11px];
-}
-
-/* Utility for 'pulse' animation (FontAwesome usually handles this, but custom pulse class on #to-start) */
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  padding-block: 0.375rem;
+  border-radius: 0.75rem;
+  font-size: 0.625rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: oklch(var(--color-primary) / 0.05);
+  color: var(--color-primary);
+  border: 1px solid oklch(var(--color-primary) / 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 12px oklch(var(--color-primary) / 0.2);
   }
 }
 
-/* Hero Heights - Using Modern Viewport Units (svh) for Mobile Browser Chrome */
-.hero-fullscreen {
-  min-height: 100svh;
-}
-.hero-large {
-  min-height: 75svh;
-}
-.hero-medium {
-  min-height: 50svh;
-}
-.hero-small {
-  min-height: 30svh;
-}
-.hero-tiny {
-  min-height: 15svh;
+@utility rounded-premium {
+  border-radius: 2rem;
 }
 
-/* Fallback for browsers without svh support */
-@supports not (height: 100svh) {
-  .hero-fullscreen {
-    min-height: 100vh;
-  }
-  .hero-large {
-    min-height: 75vh;
-  }
-  .hero-medium {
-    min-height: 50vh;
-  }
-  .hero-small {
-    min-height: 30vh;
-  }
-  .hero-tiny {
-    min-height: 15vh;
+@utility input-focus {
+  outline: none;
+  transition: all 0.3s ease;
+  &:focus {
+    box-shadow: 0 0 0 4px oklch(var(--color-primary) / 0.1);
+    border-color: var(--color-primary);
   }
 }
 
-/* Overlays */
-.overlay-dark {
-  @apply bg-black/50;
-}
-.overlay-light {
-  @apply bg-white/50;
-}
-.overlay-dark-gradient {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-}
-.overlay-light-gradient {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-}
-
-/* Text colors for Hero */
-.text-light {
-  @apply text-white;
-}
-.text-dark {
-  @apply text-gray-900;
-}
-
-@utility animate-fade-in {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-@utility animate-slide-up {
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+@utility form-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: white;
+  border: 2px solid oklch(0.9 0 0);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: oklch(var(--color-primary) / 0.5);
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@utility form-check-mark {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  transform: scale(0);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px oklch(var(--color-primary) / 0.2);
+}
+
+@utility form-switch-track {
+  width: 3.5rem;
+  height: 1.75rem;
+  background-color: oklch(0.9 0 0);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px oklch(0 0 0 / 0.05);
+}
+
+@utility form-switch-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 0.1);
+}
+
+@utility form-label-text {
+  font-size: 0.875rem;
+  font-weight: 900;
+  color: oklch(0.3 0.02 165);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: color 0.3s ease;
+}
+
+@utility btn-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: oklch(1 0 0 / 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.6);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: oklch(0.3 0.02 165);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  
+  &:hover:not(:disabled) {
+    color: var(--color-primary);
+    background-color: oklch(var(--color-primary) / 0.05);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-/* Accessibility: High Contrast Mode */
-.high-contrast {
-  filter: grayscale(100%) contrast(150%);
-  background-color: #000 !important;
-  color: #fff !important;
+@utility btn-page-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+  box-shadow: 0 8px 16px oklch(var(--color-primary) / 0.2);
+  transform: scale(1.1);
+  position: relative;
+  z-index: 10;
 }
 
-.high-contrast .glass {
-  background: transparent !important;
-  border: 2px solid #fff !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+@utility btn-page-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: oklch(1 0 0 / 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.2);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: oklch(0.8 0 0);
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: inset 0 2px 4px oklch(0 0 0 / 0.05);
 }
 
-.high-contrast img,
-.high-contrast video {
-  filter: grayscale(100%) brightness(80%);
+@utility border-subtle {
+  border-color: oklch(0.9 0 0 / 0.5);
 }
 
-/* Container Query Utilities for 2026 Responsive Design */
-@utility course-grid {
-  container-type: inline-size;
-  container-name: course-grid;
+@utility text-subtle {
+  color: oklch(0.5 0.01 165 / 0.8);
 }
 
-@container course-grid (min-width: 640px) {
-  .course-card-responsive {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-  }
+@utility bg-surface-subtle {
+  background-color: oklch(0.98 0.005 165 / 0.5);
 }
 
-@container course-grid (min-width: 1024px) {
-  .course-card-responsive {
-    grid-template-columns: 1fr;
-  }
+@utility shadow-inner-premium {
+  box-shadow: inset 0 2px 4px oklch(0 0 0 / 0.05);
 }
 
-/* Focus Indicators for Accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+@utility bg-dark {
+  background-color: oklch(0.1 0 0);
 }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: 4px;
+@utility text-dark {
+  color: oklch(0.1 0 0);
 }
+
+@utility text-muted {
+  color: oklch(0.5 0 0 / 0.7);
+}
+
+@utility text-muted-dark {
+  color: oklch(0.4 0 0 / 0.6);
+}
+
+@utility text-light {
+  color: oklch(0.8 0 0 / 0.5);
+}
+

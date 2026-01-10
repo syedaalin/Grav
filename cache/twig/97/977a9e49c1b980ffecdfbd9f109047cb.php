@@ -30,7 +30,7 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'content' => [$this, 'block_content'],
+            'body' => [$this, 'block_body'],
         ];
     }
 
@@ -51,13 +51,20 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_content(array $context, array $blocks = []): iterable
+    public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         // line 4
-        yield "    ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 4);
+        yield "<section class=\"section section-py @container animate-fade-in-up\">
+    <div class=\"container-px mx-auto max-w-4xl\">
+        <div class=\"prose-custom max-w-none prose-img:rounded-premium prose-img:shadow-2xl\">
+            ";
+        // line 7
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 7);
         yield "
+        </div>
+    </div>
+</section>
 ";
         yield from [];
     }
@@ -83,7 +90,7 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  58 => 4,  51 => 3,  40 => 1,);
+        return array (  63 => 7,  58 => 4,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source

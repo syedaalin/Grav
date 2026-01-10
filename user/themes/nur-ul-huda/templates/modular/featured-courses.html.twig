@@ -1,74 +1,81 @@
 {% set grid_size = theme_var('grid-size') %}
 
-<section class="section py-12 md:py-16 lg:py-24 modular-courses bg-gray-50/50">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-end mb-12">
-            <div class="max-w-2xl">
+<section class="section section-py modular-courses bg-surface-subtle @container">
+    <div class="container-px mx-auto">
+        <div class="flex flex-col @md:flex-row justify-between items-start @md:items-end gap-6 mb-12">
+            <div class="max-w-2xl animate-fade-in-up">
                 {% if page.content %}
-                    {{ page.content|raw }}
+                    <div class="prose-custom max-w-none">
+                        {{ page.content|raw }}
+                    </div>
                 {% else %}
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Featured Courses</h2>
-                    <p class="text-gray-600">Deepen your knowledge with our premium selection of certified courses.</p>
+                    <h2 class="section-title mb-4">Featured Courses</h2>
+                    <p class="text-base @lg:text-lg text-subtle">Deepen your knowledge with our premium selection of certified courses.</p>
                 {% endif %}
             </div>
-            <a href="{{ url('theme://courses') }}" class="hidden md:block text-primary font-bold hover:underline">View All Courses</a>
+            <a href="{{ url('theme://courses') }}" class="inline-flex items-center gap-2 text-primary font-bold hover:underline group focus:input-focus rounded-lg">
+                View All Courses
+                <i class="la la-angle-right transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
+            </a>
         </div>
 
         {% set courses = page.header.course_source == 'moodle' and moodle_courses ? moodle_courses : page.header.courses %}
 
         {% if courses and courses|length > 0 %}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid-bento gap-8">
         {% for course in courses %}
-            <div class="glass flex flex-col rounded-4xl overflow-hidden hover:shadow-2xl transition-all duration-500 group">
+            <article class="card-glass flex flex-col group overflow-hidden">
                 <div class="relative h-48 overflow-hidden">
                     {% if page.header.course_source == 'moodle' %}
                         {# Moodle course mapping #}
-                        <img src="{{ course.overviewfiles[0].fileurl ~ '?token=' ~ theme_var('moodle_token') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="{{ course.fullname }}">
+                        <img src="{{ course.overviewfiles[0].fileurl ~ '?token=' ~ theme_var('moodle_token') }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                             alt="{{ course.fullname }}"
+                             loading="lazy" />
                     {% else %}
-                        {# Static course thumbnails are simple filenames defined in the page header. #}
+                        {# Static course thumbnails #}
                         {% set course_img = course.thumbnail ? page.media[course.thumbnail] : null %}
                         {% if course_img %}
-                            {{ course_img.cropZoom(600, 400).html('', '', 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700')|raw }}
+                            {{ course_img.cropZoom(600, 400).html('', course.title, 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700')|raw }}
                         {% else %}
-                            <div class="w-full h-full bg-primary/10 flex items-center justify-center">
-                                <i class="fa fa-graduation-cap text-4xl text-primary/30"></i>
+                            <div class="w-full h-full bento-icon !w-full !h-full bg-primary/10">
+                                <i class="la la-graduation-cap text-primary/30" aria-hidden="true"></i>
                             </div>
                         {% endif %}
                     {% endif %}
-                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-800">
+                    <div class="absolute top-4 right-4 badge-primary !bg-white/90 !backdrop-blur-md">
                         Enroll Now
                     </div>
                 </div>
                 
                 <div class="p-6 flex flex-col grow">
-                    <span class="text-accent uppercase tracking-widest text-[10px] font-bold mb-2">{{ course.instructor|default('Certified Scholar') }}</span>
-                    <h4 class="text-lg font-bold mb-4 line-clamp-2 text-gray-900">{{ course.fullname|default(course.title) }}</h4>
-                    <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                         <a href="{{ course.viewurl|default(course.url)|default('#') }}" class="bg-primary text-white text-sm px-6 py-2 rounded-xl hover:bg-primary/90 transition-colors w-full text-center">
+                    <span class="text-accent uppercase tracking-[0.2em] text-[10px] font-black mb-2">{{ course.instructor|default('Certified Scholar') }}</span>
+                    <h3 class="text-lg font-black mb-4 line-clamp-2 text-gray-950 group-hover:text-primary transition-colors">{{ course.fullname|default(course.title) }}</h3>
+                    <div class="mt-auto pt-4 border-t border-subtle/50 flex items-center">
+                         <a href="{{ course.viewurl|default(course.url)|default('#') }}" 
+                            class="btn-primary w-full"
+                            aria-label="Start learning {{ course.fullname|default(course.title) }}">
                             Start Learning
                         </a>
                     </div>
                 </div>
-            </div>
+            </article>
         {% endfor %}
         </div>
         {% else %}
         {# Error/Empty State #}
-        <div class="glass p-12 rounded-3xl text-center">
-            <i class="fa fa-exclamation-circle text-5xl text-gray-300 mb-4"></i>
+        <div class="card-glass p-12 text-center animate-fade-in-up">
+            <i class="la la-exclamation-circle text-5xl text-gray-300 mb-4" aria-hidden="true"></i>
             <h3 class="text-xl font-bold text-gray-700 mb-2">No Courses Available</h3>
-            <p class="text-gray-500 text-sm">
+            <p class="text-sm text-subtle">
                 {% if page.header.course_source == 'moodle' %}
-                    Unable to load courses from Moodle. Please check your connection or try again later.
+                    Unable to load courses from Moodle. Please check your connection or contact support.
                 {% else %}
-                    No courses have been configured yet. Check back soon!
+                    No courses have been configured yet. Please check back later.
                 {% endif %}
             </p>
         </div>
         {% endif %}
-        
-        <div class="mt-12 text-center md:hidden">
-             <a href="{{ url('theme://courses') }}" class="text-primary font-bold hover:underline">View All Courses</a>
-        </div>
     </div>
 </section>
+

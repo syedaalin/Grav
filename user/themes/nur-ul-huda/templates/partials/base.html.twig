@@ -1,12 +1,12 @@
 {% set direction = theme_var('direction')|default('ltr') %}
 {% set language = theme_var('language')|default(grav.language.getActive ?: grav.config.site.default_lang ?: 'en') %}
-{% set typography = theme_var('typography')|default('inter_noto') %}
+{% set typography = theme_var('typography')|default('font-sans') %}
 {% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer', direction, typography]) %}
 {% set grid_size = theme_var('grid-size') %}
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
 {% use 'blocks/base.html.twig' %}
 <!DOCTYPE html>
-<html lang="{{ language }}" dir="{{ direction }}">
+<html lang="{{ language }}" dir="{{ direction }}" style="{{ dynamic_styles|join(';') }}">
 <head>
 {% block head deferred %}
     <meta charset="utf-8" />
@@ -23,51 +23,90 @@
     {% set favicon = logo_img ? logo_img.cropZoom(32, 32) : media['theme://images/favicon.png'] %}
     <link rel="icon" type="image/png" href="{{ favicon.url }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
-    <link rel="manifest" href="{{ url('theme://manifest.json') }}">
+    {# PWA Manifest - Requires proper web server (Apache/Nginx) to serve from user/themes #}
+    {# <link rel="manifest" href="{{ theme_url }}/manifest.json"> #}
 
-    <script>
+    {# Service Worker - Disabled for PHP built-in server #}
+    {# <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('{{ url('theme://sw.js') }}');
+          navigator.serviceWorker.register('{{ theme_url }}/sw.js');
         });
       }
-    </script>
+    </script> #}
 
-    {% set primary_color = theme_var('primary_spirit_color')|default('#2ecc71') %}
-    {% set accent_color = theme_var('accent_color')|default('#f1c40f') %}
-    {% set blur_strength = theme_var('blur_strength')|default(12) ~ 'px' %}
 
-    <style>
-        :root {
-            --color-primary: {{ primary_color }};
-            --color-accent: {{ accent_color }};
-            --color-secondary: {{ accent_color }};
-            --blur-strength: {{ blur_strength }};
-        }
-    </style>
 {% endblock head %}
 
 {% block stylesheets %}
-    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCss('theme://css/nur-ul-huda.css') %}
     {% do assets.addCss('theme://css/line-awesome.min.css') %}
 {% endblock %}
 
 {% block javascripts %}
     {% do assets.addJs('jquery', 101) %}
-    {% do assets.addJs('theme://js/number-format.js', 95) %}
-    {% do assets.addJs('theme://js/pull-to-refresh.js', 94) %}
-    {% do assets.addJs('theme://js/gallery-swipe.js', 93) %}
-    {% do assets.addJs('theme://js/site.js', 90) %}
+    {% do assets.addJs('theme://js/modules/utils.js', 95) %}
+    {% do assets.addJs('theme://js/modules/pull-refresh.js', 94) %}
+    {% do assets.addJs('theme://js/modules/gallery.js', 93) %}
+    {% do assets.addJs('theme://js/modules/mobile-menu.js', 90) %}
+    {% do assets.addJs('theme://js/modules/sticky-header.js?v=pure-fluid', 90) %}
+    {% do assets.addJs('theme://js/modules/high-contrast.js', 89) %}
+    {% do assets.addJs('theme://js/modules/font-scaler.js', 89) %}
+    {% do assets.addJs('theme://js/modules/footer.js', 89) %}
+    {% do assets.addJs('theme://js/modules/prayer-times.js', 89) %}
+    {% do assets.addJs('theme://js/modules/hijri-date.js', 89) %}
+    {% do assets.addJs('theme://js/modules/adhan-player.js', 89) %}
+    {% do assets.addJs('theme://js/modules/khums-calculator.js', 89) %}
+    {% do assets.addJs('theme://js/modules/spiritual.js', 88) %}
     
     {# Pass theme config to JavaScript #}
-    <script>
-        window.themeConfig = {
-            numberFormat: '{{ theme_var('number_format')|default('western') }}',
-            dateCalendar: '{{ theme_var('date_calendar')|default('gregorian') }}',
-            direction: '{{ direction }}',
-            language: '{{ language }}'
-        };
-    </script>
+
+    {# Force Header Glassmorphism Override & Global Standard #}
+    {% set glass_blur = theme_var('glass_blur')|default(16) %}
+    {% set glass_opacity = theme_var('glass_opacity')|default(0.15) %}
+    {% set glass_border_opacity = theme_var('glass_border_opacity')|default(0.1) %}
+    {% set glass_thickness = theme_var('glass_thickness')|default(1) %}
+    {% set glass_shadow_intensity = theme_var('glass_shadow_intensity')|default(0.1) %}
+    {# Fetch Top Banner Color for Tinting #}
+    {% set top_banner_color = theme_var('top_banner_bg_color')|default('#111827') %}
+
+    <style>
+        /* Global Premium Glass Standard (The 4 Pillars) */
+        .glass-card {
+            /* Pillar 1: Translucency (Surface) */
+            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent);
+            
+            /* Pillar 2: Diffusion (Blur) */
+            backdrop-filter: blur({{ glass_blur }}px);
+            
+            /* Pillar 3: Reflective Edge (Border) */
+            border: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }});
+            
+            /* Pillar 4: Depth (Shadow) */
+            box-shadow: 0 4px 30px oklch(0 0 0 / {{ glass_shadow_intensity }});
+        }
+
+        #header.header-glass:not(.scrolled) {
+            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent) !important;
+            backdrop-filter: blur({{ glass_blur }}px) !important;
+            border-bottom: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }}) !important;
+             /* Initial state usually has no shadow or very subtle one */
+            box-shadow: none !important;
+        }
+
+        /* Scrolled state uses the same blur but enables the full Glass Card effect */
+        #header.header-glass.scrolled {
+            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent) !important;
+            backdrop-filter: blur({{ glass_blur }}px) !important;
+            box-shadow: 0 4px 30px oklch(0 0 0 / {{ glass_shadow_intensity }}) !important;
+            border-bottom: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }}) !important;
+        }
+        
+        /* Ensure the shadow (if applied inline) is visible */
+        #header[style*="box-shadow"] {
+             /* No special rule needed, inline style wins */
+        }
+    </style>
 {% endblock %}
 
 {% block assets deferred %}
@@ -75,180 +114,184 @@
     {{ assets.js()|raw }}
 {% endblock %}
 </head>
-<body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+<body id="top" class="@container {% block body_classes %}{{ body_classes }}{% endblock %} selection:bg-primary/20 selection:text-primary">
     {# Skip Link for Accessibility #}
-    <a href="#start" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+    <a href="#start" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-6 focus:py-3 focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-primary font-bold transition-all">Skip to main content</a>
     
-{% block header %}
-        {% include 'partials/minaret.html.twig' %}
-        <section id="header" class="section py-4 lg:py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 transition-transform duration-300">
-            <section class="container mx-auto px-4">
-                <nav class="navbar flex justify-between items-center h-12 lg:h-14">
+    {% block header %}
+        {% set _top_banner_enabled = theme_var('top_banner_enabled') %}
+        {% set top_banner_active = _top_banner_enabled is null ? true : _top_banner_enabled %}
+        {% set top_banner_color = theme_var('top_banner_bg_color')|default('#111827') %}
+        
+        {# Top Banner (Always Sticky, Z-40) #}
+        <div class="sticky top-0 z-40 w-full transition-transform duration-300 ease-in-out">
+            {% include 'partials/top-banner.html.twig' %}
+        </div>
+        
+        {# Main Header (Smart Sticky, Z-50) #}
+        <header id="header" 
+                class="sticky top-0 w-full z-50 header-glass transition-transform duration-300 ease-in-out"
+                role="banner">
+            
+            <div class="container-px mx-auto max-w-7xl py-4 @lg:py-6">
+                <nav class="flex justify-between items-center h-14 @lg:h-20" aria-label="Main navigation">
                     
-                    {# ZONE A (Mobile: Toggle | Desktop: Logo) #}
-                    <div class="navbar-left flex items-center gap-4 lg:gap-8 flex-1 lg:flex-none">
-                        {# Mobile Toggle #}
+                    {# ZONE A: Mobile Toggle / Desktop Logo #}
+                    <div class="flex items-center gap-4 @lg:gap-8 flex-1 @lg:flex-none">
                         {# Mobile Toggle #}
                         <button id="mobile-toggle" 
-                                class="lg:hidden p-2 -ml-2 text-black hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg relative z-50"
-                                aria-label="Toggle navigation"
+                                class="@lg:hidden p-2 -ml-2 text-gray-800 hover:text-primary transition-all focus:outline-none focus:ring-4 focus:ring-primary/10 rounded-2xl relative z-60 flex items-center justify-center min-w-[48px] min-h-[48px]"
+                                aria-label="Open navigation menu"
                                 aria-controls="mobile-overlay"
-                                aria-expanded="false"
-                                onclick="document.getElementById('mobile-overlay').classList.remove('-translate-x-full'); document.body.style.overflow = 'hidden';"
-                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                             </svg>
                         </button>
 
                         {# Desktop Logo #}
-                        <div class="hidden lg:block logo-wrapper">
+                        <div class="hidden @lg:block transition-transform duration-300 hover:scale-[1.03] active:scale-95">
                             {% include 'partials/logo.html.twig' %}
                         </div>
                     </div>
 
-                    {# ZONE B (Mobile: Logo | Desktop: Navigation) #}
-                    <div class="navbar-center flex items-center justify-center lg:justify-start lg:flex-1">
+                    {# ZONE B: Mobile Logo / Desktop Navigation #}
+                    <div class="flex items-center justify-center @lg:justify-start @lg:flex-1">
                         {# Mobile Logo (Centered) #}
-                        <div class="lg:hidden logo-mobile">
+                        <div class="@lg:hidden transition-transform duration-300 hover:scale-105">
                             {% include 'partials/logo.html.twig' with {mobile: true} %}
                         </div>
 
                         {# Desktop Navigation #}
-                        <nav class="hidden lg:flex items-center space-x-6 font-bold text-sm uppercase tracking-wide">
+                        <nav id="desktop-nav" class="hidden @lg:flex items-center @container">
                             {% block header_navigation %}
                                 {% include 'partials/navigation.html.twig' %}
                             {% endblock %}
                         </nav>
                     </div>
 
-                    {# ZONE C (Mobile & Desktop: User Actions) #}
-                    <div class="navbar-right flex items-center justify-end gap-3 lg:gap-4 flex-1 lg:flex-none">
+                    {# ZONE C: User Actions #}
+                    <div class="flex items-center justify-end gap-2 @lg:gap-4 flex-1 @lg:flex-none">
                         
-                        {# Search Trigger (Expandable) #}
-                        <button class="p-2 text-gray-700 hover:text-primary transition-colors rounded-lg" 
-                                aria-label="Search"
-                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
-                            <i class="la la-search text-xl" aria-hidden="true"></i>
+                        {# Search Trigger #}
+                        <button class="p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10" 
+                                aria-label="Open search">
+                            <i class="la la-search text-2xl" aria-hidden="true"></i>
                         </button>
 
-                        {# Snipcart Indicator (Always Visible) #}
-                        <button class="snipcart-checkout relative p-2 text-gray-700 hover:text-primary transition-colors rounded-lg" 
-                                aria-label="Shopping cart"
-                                style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
-                            <i class="la la-shopping-bag text-xl md:text-2xl" aria-hidden="true"></i>
-                            <span class="snipcart-items-count absolute top-1 right-0 bg-accent text-gray-900 text-[10px] font-black w-4 h-4 md:w-5 md:h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm" aria-live="polite">0</span>
+                        {# Shopping Cart #}
+                        <button class="snipcart-checkout relative p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10" 
+                                aria-label="View shopping cart">
+                            <i class="la la-shopping-bag text-2xl" aria-hidden="true"></i>
+                            <span class="snipcart-items-count absolute top-2 right-2 bg-accent text-gray-900 text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-xl animate-pulse-subtle" aria-live="polite">0</span>
                         </button>
 
-                        {# User Account (Icon on Mobile, Button on Desktop) #}
+                        {# User Account #}
                         {% if config.plugins.login.enabled and grav.user.username %}
                             <a href="{{ url('theme://dashboard') }}" 
-                               class="hidden lg:inline-flex items-center gap-2 glass bg-primary text-white px-5 py-2 rounded-xl font-bold text-xs hover:shadow-lg hover:shadow-primary/20 transition-all"
-                               aria-label="Dashboard">
+                               class="hidden @lg:inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-2xl font-black text-sm shadow-xl shadow-primary/20 hover:-translate-y-1 hover:shadow-primary/40 active:translate-y-0 transition-all focus:outline-none focus:ring-4 focus:ring-primary/20"
+                               aria-label="Go to Dashboard">
                                 <span>Dashboard</span>
                             </a>
                             <a href="{{ url('theme://dashboard') }}" 
-                               class="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg"
-                               aria-label="Dashboard"
-                               style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                               class="@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]"
+                               aria-label="Go to Dashboard">
                                 <i class="la la-user-circle text-2xl" aria-hidden="true"></i>
                             </a>
                         {% else %}
                             {% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
                             <a href="{{ login_url }}" 
-                               class="hidden lg:inline-block text-gray-900 font-black text-xs uppercase hover:text-primary transition-colors ml-2"
-                               aria-label="Login">
+                               class="hidden @lg:inline-flex items-center px-4 py-3 text-gray-800 font-black text-sm hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                               aria-label="Log in to your account">
                                 Login
                             </a>
                             <a href="{{ login_url }}" 
-                               class="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors rounded-lg"
-                               aria-label="Login"
-                               style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                               class="@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]"
+                               aria-label="Log in to your account">
                                 <i class="la la-sign-in-alt text-2xl" aria-hidden="true"></i>
                             </a>
                         {% endif %}
                     </div>
                 </nav>
-            </section>
-        </section>
+            </div>
+        </header>
 
-        {# Mobile Off-Canvas Menu (Overlay) #}
+        {# Mobile Off-Canvas Menu #}
         <div id="mobile-overlay" 
-             class="fixed inset-0 z-60 bg-gray-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
-             aria-hidden="true">
+             class="fixed inset-0 z-[100] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Mobile Navigation">
             
-            <div class="flex flex-col h-full">
+            <div class="flex flex-col h-full bg-white/95 backdrop-blur-2xl">
                 {# Overlay Header #}
-                <div class="flex items-center justify-between p-4 border-b border-gray-800">
-                    <div class="w-32 brightness-0 invert filter">
+                <div class="flex items-center justify-between p-8 border-b border-subtle/50">
+                    <div class="w-36 transition-transform hover:scale-105">
                          {% include 'partials/logo.html.twig' with {mobile: true} %}
                     </div>
                     <button id="mobile-close" 
-                            class="p-2 text-gray-400 hover:text-white transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                            aria-label="Close menu"
-                            style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            class="p-2 text-subtle hover:text-red-500 hover:bg-red-50 transition-all rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/10 min-w-[54px] min-h-[54px] flex items-center justify-center"
+                            aria-label="Close navigation menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
                 {# Overlay Content #}
-                <div class="flex-1 overflow-y-auto p-6">
-                    {# Search Bar (Mobile) #}
-                    <div class="mb-8">
-                        <div class="relative">
-                            <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-3 bg-gray-800 text-white border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder-gray-500">
-                            <i class="la la-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                <div class="flex-1 overflow-y-auto p-8 @container">
+                    {# Mobile Search #}
+                    <div class="mb-10 animate-fade-in-up">
+                        <div class="relative group">
+                            <input type="text" placeholder="Explore resources..." 
+                                   class="w-full pl-14 pr-6 py-5 bg-surface-subtle/20 border-2 border-transparent focus:input-focus rounded-premium placeholder-gray-400 font-bold text-lg">
+                            <i class="la la-search absolute left-5 top-1/2 -translate-y-1/2 text-subtle text-2xl group-focus-within:text-primary transition-colors"></i>
                         </div>
                     </div>
 
-                    {# Navigation Links #}
-                    <nav class="mobile-nav space-y-2 font-bold text-lg">
+                    {# Mobile Nav #}
+                    <nav class="mobile-nav space-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
                         {% include 'partials/navigation.html.twig' with {mobile: true} %}
                     </nav>
                 </div>
 
                 {# Overlay Footer #}
-                <div class="p-6 bg-gray-900 border-t border-gray-800">
-                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Connect With Us</h4>
-                    <div class="flex gap-4">
-                        {% if theme_var('social_facebook') %}
-                            <a href="{{ theme_var('social_facebook') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-facebook-f"></i></a>
-                        {% endif %}
-                        {% if theme_var('social_twitter') %}
-                            <a href="{{ theme_var('social_twitter') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-twitter"></i></a>
-                        {% endif %}
-                        {% if theme_var('social_instagram') %}
-                            <a href="{{ theme_var('social_instagram') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-instagram"></i></a>
-                        {% endif %}
-                         {% if theme_var('social_youtube') %}
-                            <a href="{{ theme_var('social_youtube') }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors text-xl shadow-sm"><i class="lab la-youtube"></i></a>
-                        {% endif %}
+                <div class="p-10 bg-surface-subtle/20 border-t border-subtle/50 animate-fade-in-up" style="animation-delay: 0.2s">
+                    <h4 class="text-[11px] font-black text-subtle uppercase tracking-[0.2em] mb-8">Follow Our Journey</h4>
+                    <div class="flex flex-wrap gap-5">
+                        {% for platform in ['facebook', 'twitter', 'instagram', 'youtube'] %}
+                             {% set social_url = theme_var('social_' ~ platform) %}
+                             {% if social_url %}
+                                <a href="{{ social_url }}" target="_blank" 
+                                   class="w-14 h-14 rounded-2xl bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center text-subtle hover:text-primary hover:shadow-primary/20 hover:-translate-y-1.5 active:translate-y-0 transition-all text-2xl border border-gray-50" 
+                                   aria-label="{{ platform|capitalize }}">
+                                    <i class="lab la-{{ platform == 'facebook' ? 'facebook-f' : platform }}"></i>
+                                </a>
+                             {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     {% endblock %}
 
+
     {% block hero %}{% endblock %}
 
         <section id="start">
         {% block body %}
-            <section id="body-wrapper" class="section py-8">
+            <section id="body-wrapper" class="section-py container-px">
                 {% block messages %}
-                    <div class="container mx-auto px-4">
+                    <div class="mx-auto max-w-7xl mb-8">
                         {% include 'partials/messages.html.twig' ignore missing %}
                     </div>
                 {% endblock %}
-                <div class="container mx-auto px-4">
+                <div class="mx-auto max-w-7xl">
                     {{ block('content_surround') }}
                 </div>
             </section>
         {% endblock %}
         </section>
-
-    </div>
 
     {% block footer %}
         {% include 'partials/footer.html.twig' %}
@@ -259,78 +302,12 @@
 {% block bottom %}
     {{ assets.js('bottom')|raw }}
 
-    <script>
-        window.themeConfig = {
-            direction: '{{ direction }}',
-            prayerMethod: '{{ theme_var('prayer_method')|default('tehran') }}',
-            hijriOffset: {{ theme_var('hijri_offset')|default(0) }},
-            location: '{{ theme_var('default_location')|default('Karachi') }}',
-            snipcartKey: '{{ theme_var('snipcart_key') }}',
-            moodleUrl: '{{ theme_var('moodle_url') }}',
-            adhanMedia: '{{ theme_var('adhan_media') ? url('theme://media/' ~ (theme_var('adhan_media')|first).name) : '' }}'
-        };
-
-        // CRITICAL: Inline Mobile Menu Logic (No Dependencies)
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const mobileClose = document.getElementById('mobile-close');
-            const mobileOverlay = document.getElementById('mobile-overlay');
-            const bodyEl = document.body;
-
-            console.log('Mobile Menu Script Loaded');
-
-            function toggleMenu() {
-                if (!mobileOverlay) return;
-                
-                // Toggle state
-                if (mobileOverlay.classList.contains('-translate-x-full')) {
-                    // Open
-                    console.log('Opening Menu');
-                    mobileOverlay.classList.remove('-translate-x-full');
-                    bodyEl.classList.add('overflow-hidden');
-                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
-                } else {
-                    // Close
-                    console.log('Closing Menu');
-                    mobileOverlay.classList.add('-translate-x-full');
-                    bodyEl.classList.remove('overflow-hidden');
-                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-                }
-            }
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Stop bubbling
-                    toggleMenu();
-                });
-            } else {
-                console.error('Mobile Toggle Button NOT found');
-            }
-
-            if (mobileClose) {
-                mobileClose.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleMenu();
-                });
-            }
-
-            // Close on click outside
-            document.addEventListener('click', function(e) {
-                if (mobileOverlay && !mobileOverlay.classList.contains('-translate-x-full') && 
-                    !mobileOverlay.contains(e.target) && 
-                    (!mobileToggle || !mobileToggle.contains(e.target))) {
-                    console.log('Closing Menu (Outside Click)');
-                    toggleMenu();
-                }
-            });
-        });
+    {# Pass theme config to JavaScript #}
+    <script id="theme-config" type="application/json">
+        {{ theme_js_config|json_encode|raw }}
     </script>
 
-    {# Snipcart Integration #}
-    {% if theme_var('snipcart_key') %}
-        <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
-        <div hidden id="snipcart" data-api-key="{{ theme_var('snipcart_key') }}" data-config-modal-style="side"></div>
-    {% endif %}
+    {% include 'partials/snipcart.html.twig' %}
 {% endblock %}
 
 </body>

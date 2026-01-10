@@ -1,10 +1,18 @@
 {% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page, children_only) : taxonomylist.get() %}
 
 {% if taxlist %}
-<div class="flex flex-wrap gap-2">
-    {% for tax,value in taxlist[taxonomy] %}
-        {% set label_class = uri.param(taxonomy) == tax ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' %}
-        <a class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ label_class }}" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}">{{ tax }}</a>
+<div class="flex flex-wrap gap-3">
+    {% for tax, value in taxlist[taxonomy] %}
+        {% set is_active = uri.param(taxonomy) == tax %}
+        <a href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}"
+           class="badge-primary !text-[10px] py-2 px-5 {{ is_active ? 'active scale-105' : '' }} focus:input-focus"
+           aria-current="{{ is_active ? 'page' : 'false' }}">
+            {{ tax }}
+            {% if config.plugins.taxonomylist.show_count %}
+                <span class="ml-2 opacity-50 text-[8px] font-black">({{ value }})</span>
+            {% endif %}
+        </a>
     {% endfor %}
 </div>
 {% endif %}
+

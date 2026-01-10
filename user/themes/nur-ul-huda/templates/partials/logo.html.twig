@@ -1,5 +1,7 @@
-{% set logo_var = theme_var('custom_logo') %}
-<a href="{{ home_url }}" class="font-bold text-xl mr-10 relative z-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-lg transition-colors" title="{{ site.title|e('html') }}" aria-label="{{ site.title|default('Home') }}">
+<a href="{{ home_url }}" 
+   class="font-black text-xl mr-spacing-base relative z-10 group focus:input-focus" 
+   title="{{ site.title|e('html') }}" 
+   aria-label="{{ site.title|default('Home') }}">
 {% if logo_var %}
   {% set logo_media = media['theme://images/logo/' ~ (logo_var|first).name] %}
   {% set logo_img = mobile ? logo_media.resize(80, 80) : logo_media.resize(160, 160) %}
@@ -7,13 +9,15 @@
        width="{{ logo_img.width }}" 
        height="{{ logo_img.height }}" 
        alt="{{ site.title|default('Site Logo') }}" 
-       class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
-       style="height: var(--header-logo-height, 2.5rem); width: auto;"
+       class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)]"
        fetchpriority="high"
        decoding="async" />
 {% else %}
-  <div class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" style="height: var(--header-logo-height, 2.5rem);">
-    {% include('@images/grav-logo.svg') %}
+  <div class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)] text-primary">
+    {% include('@images/grav-logo.svg') ignore missing %}
+    {% if not logo_media %}
+        <span class="text-gradient font-black tracking-tighter">{{ site.title|default('NUR-UL-HUDA') }}</span>
+    {% endif %}
   </div>
 {% endif %}
 </a>

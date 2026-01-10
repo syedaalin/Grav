@@ -1,11 +1,14 @@
 {% set title_level = title_level ?: 'h2' %}
 {% if page.header.link %}
-    <{{ title_level }} class="p-name mt-1">
+    <{{ title_level }} class="p-name mb-4 font-black tracking-tight text-gray-950">
         {% if page.header.continue_link is not same as(false) %}
-        <a href="{{ page.url }}"><i class="fa fa-angle-double-right u-url"></i></a>
+        <a href="{{ page.url }}" class="hover:text-primary transition-all mr-2" aria-label="Read full post"><i class="la la-external-link-square text-xl"></i></a>
         {% endif %}
-        <a href="{{ page.header.link }}" class="u-url">{{ page.title }}</a>
+        <a href="{{ page.header.link }}" class="u-url hover:text-primary transition-all">{{ page.title }}</a>
     </{{ title_level }}>
 {% else %}
-    <{{ title_level }} class="p-name mt-1"><a href="{{ page.url }}" class="u-url">{{ page.title }}</a></{{ title_level }}>
+    <{{ title_level }} class="p-name mb-4 section-title !text-3xl !leading-tight hover:text-primary transition-colors">
+        <a href="{{ page.url }}" class="u-url">{{ page.title }}</a>
+    </{{ title_level }}>
 {% endif %}
+

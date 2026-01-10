@@ -21,5 +21,15 @@
   },
   "tailwindCSS.experimental.classRegex": [
     ["class:\\s*\"([^\"]*)\"", "([^\"\\s]+)"]
-  ]
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  "markdownlint.ignore": [
+    ".gemini/**"
+  ],
+  "cSpell.ignorePaths": [
+    "**/.gemini/**"
+  ],
+  "files.watcherExclude": {
+    "**/.gemini/**": true
+  }
 }

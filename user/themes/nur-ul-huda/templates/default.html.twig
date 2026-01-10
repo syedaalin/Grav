@@ -1,5 +1,12 @@
 {% extends 'partials/base.html.twig' %}
 
-{% block content %}
-    {{ page.content|raw }}
+{% block body %}
+<section class="section section-py @container animate-fade-in-up">
+    <div class="container-px mx-auto max-w-4xl">
+        <div class="prose-custom max-w-none prose-img:rounded-premium prose-img:shadow-2xl">
+            {{ page.content|raw }}
+        </div>
+    </div>
+</section>
 {% endblock %}
+

@@ -1,0 +1,31 @@
+1768087461
+01.home_backup__SLASH___06istafta
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:22:"home_backup/_06istafta";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:25:"Have a specific question?";s:12:"cache_enable";b:0;s:4:"form";a:5:{s:4:"name";s:12:"istafta-form";s:6:"action";s:9:"/#istafta";s:6:"fields";a:1:{s:8:"question";a:6:{s:4:"type";s:4:"text";s:5:"label";s:13:"Your Question";s:11:"placeholder";s:20:"Ask your question...";s:7:"classes";s:142:"flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-3 outline-none focus:border-accent-gold transition-colors text-sacred-white w-full";s:10:"item_class";s:6:"flex-1";s:8:"validate";a:2:{s:8:"required";b:1;s:7:"message";s:23:"Please enter a question";}}}s:7:"buttons";a:1:{s:6:"submit";a:3:{s:4:"type";s:6:"submit";s:5:"value";s:12:"Submit Query";s:7:"classes";s:30:"btn-sacred px-8 cursor-pointer";}}s:7:"process";a:3:{i:0;a:1:{s:5:"email";a:4:{s:4:"from";s:31:"{{ config.plugins.email.from }}";s:2:"to";a:1:{i:0;s:31:"{{ config.plugins.email.from }}";}s:7:"subject";s:22:"[Istafta] New Question";s:4:"body";s:36:"{% include 'forms/data.html.twig' %}";}}i:1;a:1:{s:7:"message";s:41:"Your query has been submitted for review.";}i:2;a:1:{s:7:"display";s:1:"/";}}}}s:11:"frontmatter";s:1015:"title: Have a specific question?
+cache_enable: false
+form:
+    name: istafta-form
+    action: /#istafta
+    fields:
+        question:
+            type: text
+            label: Your Question
+            placeholder: Ask your question...
+            classes: "flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-3 outline-none focus:border-accent-gold transition-colors text-sacred-white w-full"
+            item_class: "flex-1"
+            validate:
+                required: true
+                message: "Please enter a question"
+    buttons:
+        submit:
+            type: submit
+            value: Submit Query
+            classes: "btn-sacred px-8 cursor-pointer"
+    process:
+        - email:
+            from: "{{ config.plugins.email.from }}"
+            to:
+                - "{{ config.plugins.email.from }}"
+            subject: "[Istafta] New Question"
+            body: "{% include 'forms/data.html.twig' %}"
+        - message: "Your query has been submitted for review."
+        - display: /";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:22:"home_backup/_06istafta";s:11:"storage_key";s:25:"01.home_backup/_06istafta";s:8:"template";s:7:"istafta";s:17:"storage_timestamp";i:1767941591;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"istafta";i:1767941591;}}s:8:"checksum";s:32:"82e118711a005547995b50d4e31f2f26";}}

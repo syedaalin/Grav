@@ -1,0 +1,7 @@
+1768087461
+02.online-courses_backup__SLASH___intro
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:28:"online-courses_backup/_intro";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:1:{s:5:"title";s:18:"Our Online Courses";}s:11:"frontmatter";s:27:"title: 'Our Online Courses'";s:8:"markdown";s:314:"## Discover our carefully curated online courses in Islamic sciences
+
+Delivered by qualified scholars with years of experience.  
+Each course is **100% online, self-paced**, and includes video lessons, readings, quizzes, and community support. Enroll today and deepen your knowledge from the comfort of your home.
+";}s:7:"storage";a:6:{s:3:"key";s:28:"online-courses_backup/_intro";s:11:"storage_key";s:31:"02.online-courses_backup/_intro";s:8:"template";s:4:"text";s:17:"storage_timestamp";i:1767925399;s:8:"markdown";a:1:{s:0:"";a:1:{s:4:"text";i:1767925399;}}s:8:"checksum";s:32:"343b9094608f0e5594fc87fd5906074a";}}

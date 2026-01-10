@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml',
-    'modified' => 1767968782,
-    'size' => 24898,
+    'modified' => 1768084379,
+    'size' => 27005,
     'data' => [
         'name' => 'Nur-ul-Huda',
         'slug' => 'nur-ul-huda',
@@ -34,7 +34,7 @@ return [
                     'type' => 'tabs',
                     'active' => 1,
                     'fields' => [
-                        'visual' => [
+                        'visual_tab' => [
                             'type' => 'tab',
                             'title' => 'Visual Identity',
                             'fields' => [
@@ -140,7 +140,73 @@ return [
                                 ]
                             ]
                         ],
-                        'header' => [
+                        'glass_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Glassmorphism',
+                            'fields' => [
+                                'glass_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Glass Effect Settings',
+                                    'underline' => true,
+                                    'text' => 'Configure the global glassmorphism style for headers and panels. <button id=\'btn-reset-glass\' class=\'button button-small\' style=\'float: right; margin-top: -5px;\'><i class=\'fa fa-undo\'></i> Reset Defaults</button>'
+                                ],
+                                'glass_opacity' => [
+                                    'type' => 'range',
+                                    'label' => 'Glass Density (Translucency)',
+                                    'default' => 0.12,
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 1,
+                                        'step' => 0.01
+                                    ],
+                                    'help' => 'Pillar 1: Translucency - The tint strength of the surface (Standard: 0.12)'
+                                ],
+                                'glass_blur' => [
+                                    'type' => 'range',
+                                    'label' => 'Diffusion (Blur)',
+                                    'default' => 25,
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 50
+                                    ],
+                                    'help' => 'Pillar 2: Diffusion - How blurry the background should be (Standard: 25px)'
+                                ],
+                                'glass_border_opacity' => [
+                                    'type' => 'range',
+                                    'label' => 'Edge Visibility (Reflective Edge)',
+                                    'default' => 0.15,
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 1,
+                                        'step' => 0.01
+                                    ],
+                                    'help' => 'Pillar 3: Reflective Edge - Opacity of the white border (Standard: 0.15)'
+                                ],
+                                'glass_thickness' => [
+                                    'type' => 'range',
+                                    'label' => 'Edge Thickness',
+                                    'default' => 1,
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 5,
+                                        'step' => 1
+                                    ],
+                                    'help' => 'Pillar 3: Reflective Edge - Physical width of the glass edge (Standard: 1px)'
+                                ],
+                                'glass_shadow_intensity' => [
+                                    'type' => 'range',
+                                    'label' => 'Depth (Shadow Intensity)',
+                                    'default' => 0.1,
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 1,
+                                        'step' => 0.01
+                                    ],
+                                    'help' => 'Pillar 4: Depth - Intensity of the soft, diffused shadow (Standard: 0.1)'
+                                ]
+                            ]
+                        ],
+                        'header_tab' => [
                             'type' => 'tab',
                             'title' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TAB',
                             'fields' => [
@@ -233,19 +299,19 @@ return [
                                 ]
                             ]
                         ],
-                        'minaret_bar' => [
+                        'top_banner_tab' => [
                             'type' => 'tab',
-                            'title' => 'Minaret Bar',
+                            'title' => 'Top Banner',
                             'fields' => [
-                                'minaret_section' => [
+                                'top_banner_section' => [
                                     'type' => 'section',
                                     'title' => 'Utility Bar Settings',
                                     'underline' => true,
-                                    'text' => 'Configure the top bar (Minaret) that appears above the main header.'
+                                    'text' => 'Configure the top bar (Top Banner) that appears above the main header.'
                                 ],
-                                'minaret_enabled' => [
+                                'top_banner_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'Enable Minaret Bar',
+                                    'label' => 'Enable Top Banner',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -256,12 +322,12 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'minaret_announcement_section' => [
+                                'top_banner_announcement_section' => [
                                     'type' => 'section',
                                     'title' => 'Announcement Ticker',
                                     'underline' => true
                                 ],
-                                'minaret_announcement_enabled' => [
+                                'top_banner_announcement_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Announcement',
                                     'highlight' => 1,
@@ -274,47 +340,47 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'minaret_announcement_text' => [
+                                'top_banner_announcement_text' => [
                                     'type' => 'text',
                                     'label' => 'Announcement Text',
                                     'placeholder' => 'Important update: Eid prayer will be at 8:00 AM.',
-                                    'help' => 'Text to scroll in the Minaret bar.'
+                                    'help' => 'Text to scroll in the Top Banner.'
                                 ],
-                                'minaret_announcement_expires' => [
+                                'top_banner_announcement_expires' => [
                                     'type' => 'datetime',
                                     'label' => 'Expiration Date & Time',
                                     'help' => 'The announcement will automatically hide after this time.'
                                 ],
-                                'minaret_announcement_bg_color' => [
+                                'top_banner_announcement_bg_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Announcement Background',
                                     'default' => '#b91c1c',
                                     'help' => 'Background color when announcement is active (default Red).'
                                 ],
-                                'minaret_announcement_text_color' => [
+                                'top_banner_announcement_text_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Announcement Text Color',
                                     'default' => '#ffffff',
                                     'help' => 'Text color for the announcement.'
                                 ],
-                                'minaret_appearance_section' => [
+                                'top_banner_appearance_section' => [
                                     'type' => 'section',
                                     'title' => 'Appearance & Content',
                                     'underline' => true
                                 ],
-                                'minaret_bg_color' => [
+                                'top_banner_bg_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Background Color',
                                     'default' => '#111827',
                                     'help' => 'Customize the background color. Default is Deep Navy.'
                                 ],
-                                'minaret_text_color' => [
+                                'top_banner_text_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Text Color',
                                     'default' => '#f1c40f',
                                     'help' => 'Customize text color. Default is Yellow (Active Accent).'
                                 ],
-                                'minaret_show_dates' => [
+                                'top_banner_show_dates' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Date Ticker',
                                     'help' => 'Display Gregorian and Hijri dates',
@@ -327,7 +393,7 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'minaret_show_prayer_ticker' => [
+                                'top_banner_show_prayer_ticker' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Prayer Countdown',
                                     'help' => 'Display next prayer name and countdown timer',
@@ -340,7 +406,7 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'minaret_show_contact' => [
+                                'top_banner_show_contact' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Contact Info',
                                     'help' => 'Display Phone and Email (configured in Footer tab)',
@@ -353,7 +419,7 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'minaret_show_social' => [
+                                'top_banner_show_social' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Social Icons',
                                     'help' => 'Display Social Media icons (configured in Footer tab)',
@@ -368,7 +434,7 @@ return [
                                 ]
                             ]
                         ],
-                        'sanctum' => [
+                        'sanctum_tab' => [
                             'type' => 'tab',
                             'title' => 'Religious Utilities',
                             'fields' => [
@@ -411,7 +477,7 @@ return [
                                 ]
                             ]
                         ],
-                        'integrations' => [
+                        'integrations_tab' => [
                             'type' => 'tab',
                             'title' => 'Integrations',
                             'fields' => [
@@ -453,7 +519,7 @@ return [
                                 ]
                             ]
                         ],
-                        'components' => [
+                        'components_tab' => [
                             'type' => 'tab',
                             'title' => 'THEME_NUR_UL_HUDA.ADMIN.COMPONENTS',
                             'fields' => [
@@ -658,7 +724,7 @@ return [
                                 ]
                             ]
                         ],
-                        'footer' => [
+                        'footer_tab' => [
                             'type' => 'tab',
                             'title' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_TAB',
                             'fields' => [

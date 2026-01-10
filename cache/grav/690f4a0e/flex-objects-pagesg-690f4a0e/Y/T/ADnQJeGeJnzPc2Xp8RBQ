@@ -1,0 +1,3 @@
+1768087461
+01.home_backup__SLASH___01hero
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:19:"home_backup/_01hero";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:1:{s:5:"title";s:12:"Hero Section";}s:11:"frontmatter";s:19:"title: Hero Section";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:19:"home_backup/_01hero";s:11:"storage_key";s:22:"01.home_backup/_01hero";s:8:"template";s:4:"hero";s:17:"storage_timestamp";i:1767941580;s:8:"markdown";a:1:{s:0:"";a:1:{s:4:"hero";i:1767941580;}}s:8:"checksum";s:32:"74a3e161527e22f8f45f016415e53541";}}

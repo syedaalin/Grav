@@ -1,43 +1,88 @@
+{# Sidebar Section - Enhanced with Tailwind CSS v4 #}
 {% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
 {% set new_base_url = blog.url == '/' ? '' : blog.url %}
 
-{% if config.plugins.simplesearch.enabled %}
-<div class="mb-8">
-    {% include 'partials/simplesearch_searchbox.html.twig' %}
-</div>
-{% endif %}
-{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
-<div class="mb-8">
-    <h4>{{ 'THEME_NUR_UL_HUDA.SIDEBAR.RELATED_POSTS.HEADLINE'|t }}</h4>
-    {% include 'partials/relatedpages.html.twig' %}
-</div>
-{% endif %}
-{% if config.plugins.random.enabled %}
-<div class="mb-8">
-	<h4>{{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.HEADLINE'|t }}</h4>
-	<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" href="{{ base_url }}/random"><i class="fa fa-retweet mr-1"></i> {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.FEELING_LUCKY'|t }}</a>
-</div>
-{% endif %}
+<aside class="sidebar-wrapper space-y-12" role="complementary">
+    
+    {# Search Widget #}
+    {% if config.plugins.simplesearch.enabled %}
+    <section class="sidebar-widget" aria-labelledby="sidebar-search-label">
+        <h4 id="sidebar-search-label" class="sr-only">Search</h4>
+        {% include 'partials/simplesearch_searchbox.html.twig' %}
+    </section>
+    {% endif %}
 
-{{ page.find('/modules/sidebar').content|raw }}
+    {# Related Posts Widget #}
+    {% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    <section class="sidebar-widget card-glass p-8" aria-labelledby="related-posts-heading">
+        <h4 id="related-posts-heading" class="text-xs font-black uppercase tracking-[0.2em] text-subtle mb-6 flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-primary/40 animate-pulse-subtle"></span>
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RELATED_POSTS.HEADLINE'|t }}
+        </h4>
+        {% include 'partials/relatedpages.html.twig' %}
+    </section>
+    {% endif %}
 
-{% if config.plugins.taxonomylist.enabled %}
-<div class="mb-8">
-    <h4>{{ 'THEME_NUR_UL_HUDA.SIDEBAR.POPULAR_TAGS.HEADLINE'|t }}</h4>
-    {% include 'partials/taxonomylist.html.twig' with {'base_url':new_base_url, 'taxonomy':'tag', 'children_only':true} %}
-</div>
-{% endif %}
-{% if config.plugins.archives.enabled %}
-<div class="mb-8">
-    <h4>{{ 'THEME_NUR_UL_HUDA.SIDEBAR.ARCHIVES.HEADLINE'|t }}</h4>
-	{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
-</div>
-{% endif %}
-{% if config.plugins.feed.enabled %}
-<div class="mb-8 syndicate">
-    <h4>{{ 'THEME_NUR_UL_HUDA.SIDEBAR.SYNDICATE.HEADLINE'|t }}</h4>
-    <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 mr-1" href="{{ feed_url }}.atom"><i class="fa fa-rss-square mr-1"></i> Atom 1.0</a>
-    <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 mr-1" href="{{ feed_url }}.rss"><i class="fa fa-rss-square mr-1"></i> RSS</a>
-    {% if config.plugins.feed.enable_json_feed %}<a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 mr-1" href="{{ feed_url }}.json"><i class="fa fa-rss-square mr-1"></i> JSON</a>{% endif %}
-</div>
-{% endif %}
+    {# Random Article Widget #}
+    {% if config.plugins.random.enabled %}
+    <section class="sidebar-widget card-glass p-8" aria-labelledby="random-heading">
+        <h4 id="random-heading" class="text-xs font-black uppercase tracking-[0.2em] text-subtle mb-6 flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-accent/40 animate-pulse-subtle"></span>
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.HEADLINE'|t }}
+        </h4>
+        <a class="inline-flex items-center justify-center btn-primary w-full p-8" href="{{ base_url }}/random">
+            <i class="la la-random mr-3 transition-transform group-hover:rotate-180"></i> 
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.FEELING_LUCKY'|t }}
+        </a>
+    </section>
+    {% endif %}
+
+    {# Dynamic Sidebar Content #}
+    <div class="sidebar-dynamic-content prose-custom">
+        {{ page.find('/modules/sidebar').content|raw }}
+    </div>
+
+    {# Taxonomy Widget #}
+    {% if config.plugins.taxonomylist.enabled %}
+    <section class="sidebar-widget card-glass p-8" aria-labelledby="tags-heading">
+        <h4 id="tags-heading" class="text-xs font-black uppercase tracking-[0.2em] text-subtle mb-6">
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.POPULAR_TAGS.HEADLINE'|t }}
+        </h4>
+        {% include 'partials/taxonomylist.html.twig' with {'base_url':new_base_url, 'taxonomy':'tag', 'children_only':true} %}
+    </section>
+    {% endif %}
+
+    {# Archives Widget #}
+    {% if config.plugins.archives.enabled %}
+    <section class="sidebar-widget card-glass p-8" aria-labelledby="archives-heading">
+        <h4 id="archives-heading" class="text-xs font-black uppercase tracking-[0.2em] text-subtle mb-6">
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.ARCHIVES.HEADLINE'|t }}
+        </h4>
+        {% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
+    </section>
+    {% endif %}
+
+    {# Feed Widget #}
+    {% if config.plugins.feed.enabled %}
+    <section class="sidebar-widget p-8 rounded-[2rem] glass-dark shadow-2xl" aria-labelledby="feed-heading">
+        <h4 id="feed-heading" class="text-xs font-black uppercase tracking-[0.2em] text-white/40 mb-6">
+            {{ 'THEME_NUR_UL_HUDA.SIDEBAR.SYNDICATE.HEADLINE'|t }}
+        </h4>
+        <div class="flex flex-wrap gap-3">
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 hover:border-white/20 transition-all focus:input-focus" href="{{ feed_url }}.atom">
+                <i class="la la-rss-square text-lg text-accent"></i> ATOM
+            </a>
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 hover:border-white/20 transition-all focus:input-focus" href="{{ feed_url }}.rss">
+                <i class="la la-rss text-lg text-accent"></i> RSS
+            </a>
+            {% if config.plugins.feed.enable_json_feed %}
+                <a class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 hover:border-white/20 transition-all focus:input-focus" href="{{ feed_url }}.json">
+                    <i class="la la-code text-lg text-accent"></i> JSON
+                </a>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+</aside>
+
