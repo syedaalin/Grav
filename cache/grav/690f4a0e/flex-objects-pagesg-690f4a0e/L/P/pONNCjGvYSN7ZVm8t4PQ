@@ -1,3 +1,0 @@
-1768087461
-01.home_backup__SLASH___04featured-courses
-O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:31:"home_backup/_04featured-courses";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:1:{s:5:"title";s:16:"Featured Courses";}s:11:"frontmatter";s:23:"title: Featured Courses";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:31:"home_backup/_04featured-courses";s:11:"storage_key";s:34:"01.home_backup/_04featured-courses";s:8:"template";s:16:"featured-courses";s:17:"storage_timestamp";i:1767941586;s:8:"markdown";a:1:{s:0:"";a:1:{s:16:"featured-courses";i:1767941586;}}s:8:"checksum";s:32:"f4cb559d8a71d16462ef0d1405dbf2ac";}}

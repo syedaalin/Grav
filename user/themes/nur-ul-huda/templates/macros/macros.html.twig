@@ -1,33 +1,35 @@
 {% macro nav_loop(page) %}
     {% import _self as macros %}
     {% for p in page.children.visible %}
-        {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
-        <li class="relative group/nav">
-            <a href="{{ p.url }}" 
-               class="flex items-center gap-2 px-4 py-3 text-sm @lg:text-base font-black transition-all duration-300 whitespace-nowrap rounded-xl
-                      {{ active_page == 'active' ? 'text-primary bg-primary/5' : 'text-gray-950 hover:text-primary hover:bg-primary/5' }}
-                      focus:input-focus"
-               {% if p.active or p.activeChild %}aria-current="page"{% endif %}>
-                {{ p.menu }}
-                {% if p.children.visible.count > 0 %}
-                    <i class="la la-angle-down text-[10px] transition-transform duration-300 group-hover/nav:rotate-180" aria-hidden="true"></i>
-                {% endif %}
-            </a>
+        {% if not p.home %}
+            {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+            <li class="relative group/nav">
+                <a href="{{ p.url }}" 
+                   class="flex items-center gap-2 px-4 py-3 text-sm @lg:text-base font-black transition-all duration-300 whitespace-nowrap rounded-xl
+                          {{ active_page == 'active' ? 'text-primary bg-primary/5' : 'text-gray-950 hover:text-primary hover:bg-primary/5' }}
+                          focus:input-focus"
+                   {% if p.active or p.activeChild %}aria-current="page"{% endif %}>
+                    {{ p.menu }}
+                    {% if p.children.visible.count > 0 %}
+                        <i class="la la-angle-down text-[10px] transition-transform duration-300 group-hover/nav:rotate-180" aria-hidden="true"></i>
+                    {% endif %}
+                </a>
 
-            {% if p.children.visible.count > 0 %}
-                <ul class="absolute top-full left-0 mt-2 min-w-[220px] card-glass p-2 opacity-0 translate-y-2 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto z-50">
-                    {% for sub in p.children.visible %}
-                        <li>
-                            <a href="{{ sub.url }}" 
-                               class="block px-4 py-3 text-sm font-black text-gray-950 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors
-                                      focus:input-focus"
-                               {% if sub.active %}aria-current="page"{% endif %}>
-                                {{ sub.menu }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </li>
+                {% if p.children.visible.count > 0 %}
+                    <ul class="absolute top-full left-0 mt-2 min-w-[220px] card-glass p-2 opacity-0 translate-y-2 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto z-50">
+                        {% for sub in p.children.visible %}
+                            <li>
+                                <a href="{{ sub.url }}" 
+                                   class="block px-4 py-3 text-sm font-black text-gray-950 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors
+                                          focus:input-focus"
+                                   {% if sub.active %}aria-current="page"{% endif %}>
+                                    {{ sub.menu }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
     {% endfor %}
 {% endmacro %}

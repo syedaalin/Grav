@@ -1,9 +1,25 @@
 ---
-title: 'Financial Purity (Khums & Sadaqah)'
+title: Khums
 visible: true
-body_classes: 'bg-gray-50'
+body_classes: bg-gray-50
 content:
     items: '@self.modular'
+onpage_menu: '0'
+sitemap:
+    lastmod: '10-01-2026 23:51'
+twitterenable: true
+twittercardoptions: summary
+articleenabled: false
+musiceventenabled: false
+orgaenabled: false
+orgaratingenabled: false
+eventenabled: false
+personenabled: false
+restaurantenabled: false
+restaurant:
+    acceptsReservations: 'yes'
+    priceRange: $
+facebookenable: true
 ---
 
 # Purify Your Wealth

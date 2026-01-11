@@ -48,7 +48,7 @@
     {% do assets.addJs('theme://js/modules/utils.js', 95) %}
     {% do assets.addJs('theme://js/modules/pull-refresh.js', 94) %}
     {% do assets.addJs('theme://js/modules/gallery.js', 93) %}
-    {% do assets.addJs('theme://js/modules/mobile-menu.js', 90) %}
+    {% do assets.addJs('theme://js/modules/mobile-menu.js?v=a11y-focus', 90) %}
     {% do assets.addJs('theme://js/modules/sticky-header.js?v=pure-fluid', 90) %}
     {% do assets.addJs('theme://js/modules/high-contrast.js', 89) %}
     {% do assets.addJs('theme://js/modules/font-scaler.js', 89) %}
@@ -217,26 +217,15 @@
         </header>
 
         {# Mobile Off-Canvas Menu #}
+        {# Mobile Off-Canvas Menu #}
         <div id="mobile-overlay" 
-             class="fixed inset-0 z-[100] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0"
+             class="fixed bottom-0 w-1/2 z-30 translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0"
              role="dialog"
              aria-modal="true"
              aria-label="Mobile Navigation">
             
-            <div class="flex flex-col h-full bg-white/95 backdrop-blur-2xl">
-                {# Overlay Header #}
-                <div class="flex items-center justify-between p-8 border-b border-subtle/50">
-                    <div class="w-36 transition-transform hover:scale-105">
-                         {% include 'partials/logo.html.twig' with {mobile: true} %}
-                    </div>
-                    <button id="mobile-close" 
-                            class="p-2 text-subtle hover:text-red-500 hover:bg-red-50 transition-all rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/10 min-w-[54px] min-h-[54px] flex items-center justify-center"
-                            aria-label="Close navigation menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+            <div class="flex flex-col h-full glass-card pt-4">
+                {# Overlay Content (Header removed) #}
 
                 {# Overlay Content #}
                 <div class="flex-1 overflow-y-auto p-8 @container">

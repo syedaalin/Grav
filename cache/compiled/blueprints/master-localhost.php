@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1768086916,
-    'checksum' => '39559bed236d98ddd8b478f03617d367',
+    'timestamp' => 1768090143,
+    'checksum' => 'f29057ee86b77e6f4d15a3ff6d877ea7',
     'files' => [
         'system/blueprints/config' => [
             'backups' => [
@@ -111,7 +111,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
-                'modified' => 1768084379
+                'modified' => 1768088563
             ]
         ]
     ],
@@ -7326,6 +7326,12 @@ return [
                 'name' => 'themes.nur-ul-huda.custom_logo',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.site_name' => [
+                'type' => 'text',
+                'label' => 'Site Name',
+                'name' => 'themes.nur-ul-huda.site_name',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.header-fixed' => [
                 'type' => 'toggle',
                 'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED',
@@ -7785,12 +7791,6 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'themes.nur-ul-huda.footer_show_social',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.site_name' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_NAME',
-                'name' => 'themes.nur-ul-huda.site_name',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.site_tagline' => [
@@ -8740,6 +8740,7 @@ return [
                     'glass_thickness' => 'themes.nur-ul-huda.glass_thickness',
                     'glass_shadow_intensity' => 'themes.nur-ul-huda.glass_shadow_intensity',
                     'custom_logo' => 'themes.nur-ul-huda.custom_logo',
+                    'site_name' => 'themes.nur-ul-huda.site_name',
                     'header-fixed' => 'themes.nur-ul-huda.header-fixed',
                     'header-animated' => 'themes.nur-ul-huda.header-animated',
                     'header-dark' => 'themes.nur-ul-huda.header-dark',
@@ -8779,7 +8780,6 @@ return [
                     'courses_enabled' => 'themes.nur-ul-huda.courses_enabled',
                     'sticky-footer' => 'themes.nur-ul-huda.sticky-footer',
                     'footer_show_social' => 'themes.nur-ul-huda.footer_show_social',
-                    'site_name' => 'themes.nur-ul-huda.site_name',
                     'site_tagline' => 'themes.nur-ul-huda.site_tagline',
                     'contact_phone' => 'themes.nur-ul-huda.contact_phone',
                     'contact_address' => 'themes.nur-ul-huda.contact_address',

@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml',
-    'modified' => 1768084379,
-    'size' => 27005,
+    'modified' => 1768088563,
+    'size' => 26979,
     'data' => [
         'name' => 'Nur-ul-Huda',
         'slug' => 'nur-ul-huda',
@@ -235,6 +235,12 @@ return [
                                     'validate' => [
                                         'method' => 'Grav\\Theme\\NurUlHuda::validateLogo'
                                     ]
+                                ],
+                                'site_name' => [
+                                    'type' => 'text',
+                                    'label' => 'Site Name',
+                                    'help' => 'Global Site Name (displayed in Header & Footer)',
+                                    'placeholder' => 'Nur-ul-Huda'
                                 ],
                                 'behavior_section' => [
                                     'type' => 'section',
@@ -775,12 +781,6 @@ return [
                                     'type' => 'section',
                                     'title' => 'Footer Branding',
                                     'underline' => true
-                                ],
-                                'site_name' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_NAME',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_NAME_HELP',
-                                    'placeholder' => 'Nur-ul-Huda Islamic Center'
                                 ],
                                 'site_tagline' => [
                                     'type' => 'text',

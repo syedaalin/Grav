@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1768086864,
-    'checksum' => 'f4664e8c1477145b334b635ac8635209',
+    'timestamp' => 1768090142,
+    'checksum' => '436659659866de2f455ba8a27393e4df',
     'files' => [
         'user/localhost/config' => [
             'security' => [
@@ -27,7 +27,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768084515
+                'modified' => 1768088585
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -61,7 +61,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768086861
+                'modified' => 1768090140
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -219,7 +219,7 @@ return [
                 'header-transparent' => false,
                 'sticky-footer' => true,
                 'blog-page' => '/blog',
-                'site_name' => NULL,
+                'site_name' => 'aabtaab',
                 'site_tagline' => NULL,
                 'direction' => 'ltr',
                 'language' => 'en',
@@ -281,7 +281,7 @@ return [
                     ]
                 ],
                 'moodle_url' => NULL,
-                'moodle_token' => NULL,
+                'moodle_token' => 'Pa$$w0rd',
                 'snipcart_key' => NULL,
                 'jazzcash_merchant' => 'ahmed',
                 'jazzcash_salt' => NULL,
@@ -318,7 +318,8 @@ return [
                 'top_banner_show_dates' => true,
                 'top_banner_show_prayer_ticker' => true,
                 'top_banner_show_contact' => true,
-                'top_banner_show_social' => true
+                'top_banner_show_social' => true,
+                'header_site_name' => 'Aabtaab'
             ],
             'agency' => [
                 'enabled' => true,

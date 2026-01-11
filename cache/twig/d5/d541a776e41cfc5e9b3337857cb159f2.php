@@ -117,33 +117,33 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
     ";
         // line 121
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 277
+        // line 266
         yield "
 
     ";
-        // line 279
+        // line 268
         yield from $this->unwrap()->yieldBlock('hero', $context, $blocks);
-        // line 280
+        // line 269
         yield "
         <section id=\"start\">
         ";
-        // line 282
+        // line 271
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 294
+        // line 283
         yield "        </section>
 
     ";
-        // line 296
+        // line 285
         yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
-        // line 299
+        // line 288
         yield "
     ";
-        // line 301
+        // line 290
         yield "
 ";
-        // line 302
+        // line 291
         yield from $this->unwrap()->yieldBlock('bottom', $context, $blocks);
-        // line 312
+        // line 301
         yield "
 </body>
 </html>";
@@ -260,7 +260,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", 93], "method", false, false, false, 50);
         // line 51
         yield "    ";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/mobile-menu.js", 90], "method", false, false, false, 51);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/mobile-menu.js?v=a11y-focus", 90], "method", false, false, false, 51);
         // line 52
         yield "    ";
         CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/sticky-header.js?v=pure-fluid", 90], "method", false, false, false, 52);
@@ -596,36 +596,23 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
 
         ";
         // line 220
+        yield "        ";
+        // line 221
         yield "        <div id=\"mobile-overlay\" 
-             class=\"fixed inset-0 z-[100] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0\"
+             class=\"fixed bottom-0 w-1/2 z-30 translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0\"
              role=\"dialog\"
              aria-modal=\"true\"
              aria-label=\"Mobile Navigation\">
             
-            <div class=\"flex flex-col h-full bg-white/95 backdrop-blur-2xl\">
+            <div class=\"flex flex-col h-full glass-card pt-4\">
                 ";
-        // line 228
-        yield "                <div class=\"flex items-center justify-between p-8 border-b border-subtle/50\">
-                    <div class=\"w-36 transition-transform hover:scale-105\">
-                         ";
-        // line 230
-        yield from $this->load("partials/logo.html.twig", 230)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
+        // line 229
+        yield "
+                ";
         // line 231
-        yield "                    </div>
-                    <button id=\"mobile-close\" 
-                            class=\"p-2 text-subtle hover:text-red-500 hover:bg-red-50 transition-all rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/10 min-w-[54px] min-h-[54px] flex items-center justify-center\"
-                            aria-label=\"Close navigation menu\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"w-8 h-8\">
-                          <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18L18 6M6 6l12 12\" />
-                        </svg>
-                    </button>
-                </div>
-
-                ";
-        // line 242
         yield "                <div class=\"flex-1 overflow-y-auto p-8 @container\">
                     ";
-        // line 244
+        // line 233
         yield "                    <div class=\"mb-10 animate-fade-in-up\">
                         <div class=\"relative group\">
                             <input type=\"text\" placeholder=\"Explore resources...\" 
@@ -635,54 +622,54 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
                     </div>
 
                     ";
-        // line 253
+        // line 242
         yield "                    <nav class=\"mobile-nav space-y-2 animate-fade-in-up\" style=\"animation-delay: 0.1s\">
                         ";
-        // line 254
-        yield from $this->load("partials/navigation.html.twig", 254)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 255
+        // line 243
+        yield from $this->load("partials/navigation.html.twig", 243)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
+        // line 244
         yield "                    </nav>
                 </div>
 
                 ";
-        // line 259
+        // line 248
         yield "                <div class=\"p-10 bg-surface-subtle/20 border-t border-subtle/50 animate-fade-in-up\" style=\"animation-delay: 0.2s\">
                     <h4 class=\"text-[11px] font-black text-subtle uppercase tracking-[0.2em] mb-8\">Follow Our Journey</h4>
                     <div class=\"flex flex-wrap gap-5\">
                         ";
-        // line 262
+        // line 251
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(["facebook", "twitter", "instagram", "youtube"]);
         foreach ($context['_seq'] as $context["_key"] => $context["platform"]) {
-            // line 263
+            // line 252
             yield "                             ";
             $context["social_url"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, ("social_" . $context["platform"]));
-            // line 264
+            // line 253
             yield "                             ";
             if ((($tmp = ($context["social_url"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 265
+                // line 254
                 yield "                                <a href=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["social_url"] ?? null), "html", null, true);
                 yield "\" target=\"_blank\" 
                                    class=\"w-14 h-14 rounded-2xl bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center text-subtle hover:text-primary hover:shadow-primary/20 hover:-translate-y-1.5 active:translate-y-0 transition-all text-2xl border border-gray-50\" 
                                    aria-label=\"";
-                // line 267
+                // line 256
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::capitalize($this->env->getCharset(), $context["platform"]), "html", null, true);
                 yield "\">
                                     <i class=\"lab la-";
-                // line 268
+                // line 257
                 yield ((($context["platform"] == "facebook")) ? ("facebook-f") : ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["platform"], "html", null, true)));
                 yield "\"></i>
                                 </a>
                              ";
             }
-            // line 271
+            // line 260
             yield "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['platform'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 272
+        // line 261
         yield "                    </div>
                 </div>
             </div>
@@ -706,7 +693,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 279
+    // line 268
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -716,22 +703,22 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 282
+    // line 271
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 283
+        // line 272
         yield "            <section id=\"body-wrapper\" class=\"section-py container-px\">
                 ";
-        // line 284
+        // line 273
         yield from $this->unwrap()->yieldBlock('messages', $context, $blocks);
-        // line 289
+        // line 278
         yield "                <div class=\"mx-auto max-w-7xl\">
                     ";
-        // line 290
+        // line 279
         yield from         $this->unwrap()->yieldBlock("content_surround", $context, $blocks);
         yield "
                 </div>
@@ -740,19 +727,19 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 284
+    // line 273
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_messages(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 285
+        // line 274
         yield "                    <div class=\"mx-auto max-w-7xl mb-8\">
                         ";
-        // line 286
+        // line 275
         try {
-            $_v2 = $this->load("partials/messages.html.twig", 286);
+            $_v2 = $this->load("partials/messages.html.twig", 275);
         } catch (LoaderError $e) {
             // ignore missing template
             $_v2 = null;
@@ -760,51 +747,51 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         if ($_v2) {
             yield from $_v2->unwrap()->yield($context);
         }
-        // line 287
+        // line 276
         yield "                    </div>
                 ";
         yield from [];
     }
 
-    // line 296
+    // line 285
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_footer(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 297
+        // line 286
         yield "        ";
-        yield from $this->load("partials/footer.html.twig", 297)->unwrap()->yield($context);
-        // line 298
+        yield from $this->load("partials/footer.html.twig", 286)->unwrap()->yield($context);
+        // line 287
         yield "    ";
         yield from [];
     }
 
-    // line 302
+    // line 291
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_bottom(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 303
+        // line 292
         yield "    ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 303);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 292);
         yield "
 
     ";
-        // line 306
+        // line 295
         yield "    <script id=\"theme-config\" type=\"application/json\">
         ";
-        // line 307
+        // line 296
         yield json_encode(($context["theme_js_config"] ?? null));
         yield "
     </script>
 
     ";
-        // line 310
-        yield from $this->load("partials/snipcart.html.twig", 310)->unwrap()->yield($context);
+        // line 299
+        yield from $this->load("partials/snipcart.html.twig", 299)->unwrap()->yield($context);
         yield from [];
     }
 
@@ -829,7 +816,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  807 => 310,  801 => 307,  798 => 306,  792 => 303,  785 => 302,  780 => 298,  777 => 297,  770 => 296,  764 => 287,  754 => 286,  751 => 285,  744 => 284,  735 => 290,  732 => 289,  730 => 284,  727 => 283,  720 => 282,  710 => 279,  705 => 169,  702 => 168,  695 => 167,  686 => 272,  680 => 271,  674 => 268,  670 => 267,  664 => 265,  661 => 264,  658 => 263,  654 => 262,  649 => 259,  644 => 255,  642 => 254,  639 => 253,  629 => 244,  626 => 242,  614 => 231,  612 => 230,  608 => 228,  599 => 220,  592 => 214,  583 => 208,  574 => 203,  571 => 202,  562 => 196,  553 => 191,  550 => 190,  542 => 183,  535 => 177,  531 => 174,  526 => 170,  524 => 167,  521 => 166,  517 => 163,  515 => 162,  512 => 161,  509 => 159,  504 => 155,  502 => 154,  499 => 153,  487 => 142,  484 => 140,  475 => 132,  471 => 129,  469 => 128,  466 => 127,  463 => 125,  460 => 124,  457 => 123,  454 => 122,  447 => 121,  436 => 117,  428 => 114,  423 => 113,  406 => 112,  390 => 102,  386 => 101,  382 => 100,  376 => 99,  364 => 92,  360 => 91,  354 => 90,  347 => 86,  339 => 83,  333 => 80,  325 => 77,  318 => 72,  315 => 71,  313 => 70,  310 => 69,  307 => 68,  304 => 67,  301 => 66,  298 => 65,  295 => 63,  292 => 61,  289 => 60,  286 => 59,  283 => 58,  280 => 57,  277 => 56,  274 => 55,  271 => 54,  268 => 53,  265 => 52,  262 => 51,  259 => 50,  256 => 49,  253 => 48,  250 => 47,  243 => 46,  237 => 43,  234 => 42,  227 => 41,  219 => 37,  217 => 30,  214 => 28,  212 => 27,  208 => 25,  203 => 24,  200 => 23,  198 => 22,  195 => 21,  192 => 20,  188 => 18,  186 => 17,  175 => 13,  172 => 12,  155 => 11,  147 => 312,  145 => 302,  142 => 301,  139 => 299,  137 => 296,  133 => 294,  131 => 282,  127 => 280,  125 => 279,  121 => 277,  119 => 121,  115 => 119,  111 => 117,  108 => 116,  106 => 112,  103 => 111,  101 => 46,  98 => 45,  96 => 41,  93 => 40,  91 => 11,  82 => 9,  79 => 8,  77 => 6,  75 => 5,  73 => 4,  71 => 3,  69 => 2,  67 => 1,  35 => 7,);
+        return array (  794 => 299,  788 => 296,  785 => 295,  779 => 292,  772 => 291,  767 => 287,  764 => 286,  757 => 285,  751 => 276,  741 => 275,  738 => 274,  731 => 273,  722 => 279,  719 => 278,  717 => 273,  714 => 272,  707 => 271,  697 => 268,  692 => 169,  689 => 168,  682 => 167,  673 => 261,  667 => 260,  661 => 257,  657 => 256,  651 => 254,  648 => 253,  645 => 252,  641 => 251,  636 => 248,  631 => 244,  629 => 243,  626 => 242,  616 => 233,  613 => 231,  610 => 229,  601 => 221,  599 => 220,  592 => 214,  583 => 208,  574 => 203,  571 => 202,  562 => 196,  553 => 191,  550 => 190,  542 => 183,  535 => 177,  531 => 174,  526 => 170,  524 => 167,  521 => 166,  517 => 163,  515 => 162,  512 => 161,  509 => 159,  504 => 155,  502 => 154,  499 => 153,  487 => 142,  484 => 140,  475 => 132,  471 => 129,  469 => 128,  466 => 127,  463 => 125,  460 => 124,  457 => 123,  454 => 122,  447 => 121,  436 => 117,  428 => 114,  423 => 113,  406 => 112,  390 => 102,  386 => 101,  382 => 100,  376 => 99,  364 => 92,  360 => 91,  354 => 90,  347 => 86,  339 => 83,  333 => 80,  325 => 77,  318 => 72,  315 => 71,  313 => 70,  310 => 69,  307 => 68,  304 => 67,  301 => 66,  298 => 65,  295 => 63,  292 => 61,  289 => 60,  286 => 59,  283 => 58,  280 => 57,  277 => 56,  274 => 55,  271 => 54,  268 => 53,  265 => 52,  262 => 51,  259 => 50,  256 => 49,  253 => 48,  250 => 47,  243 => 46,  237 => 43,  234 => 42,  227 => 41,  219 => 37,  217 => 30,  214 => 28,  212 => 27,  208 => 25,  203 => 24,  200 => 23,  198 => 22,  195 => 21,  192 => 20,  188 => 18,  186 => 17,  175 => 13,  172 => 12,  155 => 11,  147 => 301,  145 => 291,  142 => 290,  139 => 288,  137 => 285,  133 => 283,  131 => 271,  127 => 269,  125 => 268,  121 => 266,  119 => 121,  115 => 119,  111 => 117,  108 => 116,  106 => 112,  103 => 111,  101 => 46,  98 => 45,  96 => 41,  93 => 40,  91 => 11,  82 => 9,  79 => 8,  77 => 6,  75 => 5,  73 => 4,  71 => 3,  69 => 2,  67 => 1,  35 => 7,);
     }
 
     public function getSourceContext(): Source

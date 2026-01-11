@@ -209,6 +209,12 @@ form:
               validate:
                 method: 'Grav\Theme\NurUlHuda::validateLogo'
 
+            site_name:
+              type: text
+              label: Site Name
+              help: "Global Site Name (displayed in Header & Footer)"
+              placeholder: "Nur-ul-Huda"
+
             behavior_section:
               type: section
               title: THEME_NUR_UL_HUDA.ADMIN.HEADER_DEFAULTS
@@ -691,12 +697,6 @@ form:
               type: section
               title: Footer Branding
               underline: true
-
-            site_name:
-              type: text
-              label: THEME_NUR_UL_HUDA.ADMIN.SITE_NAME
-              help: THEME_NUR_UL_HUDA.ADMIN.SITE_NAME_HELP
-              placeholder: Nur-ul-Huda Islamic Center
 
             site_tagline:
               type: text

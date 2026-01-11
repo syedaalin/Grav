@@ -7,7 +7,7 @@ header-dark: false
 header-transparent: false
 sticky-footer: true
 blog-page: /blog
-site_name: null
+site_name: aabtaab
 site_tagline: null
 direction: ltr
 language: en
@@ -61,7 +61,7 @@ custom_logo_mobile:
     size: 17774
     path: 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
 moodle_url: null
-moodle_token: null
+moodle_token: Pa$$w0rd
 snipcart_key: null
 jazzcash_merchant: ahmed
 jazzcash_salt: null
@@ -97,3 +97,4 @@ top_banner_show_dates: true
 top_banner_show_prayer_ticker: true
 top_banner_show_contact: true
 top_banner_show_social: true
+header_site_name: Aabtaab

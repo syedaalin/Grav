@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml',
-    'modified' => 1768084515,
-    'size' => 2633,
+    'modified' => 1768088585,
+    'size' => 2666,
     'data' => [
         'enabled' => true,
         'production-mode' => true,
@@ -14,7 +14,7 @@ return [
         'header-transparent' => false,
         'sticky-footer' => true,
         'blog-page' => '/blog',
-        'site_name' => NULL,
+        'site_name' => 'aabtaab',
         'site_tagline' => NULL,
         'direction' => 'ltr',
         'language' => 'en',
@@ -73,7 +73,7 @@ return [
             ]
         ],
         'moodle_url' => NULL,
-        'moodle_token' => NULL,
+        'moodle_token' => 'Pa$$w0rd',
         'snipcart_key' => NULL,
         'jazzcash_merchant' => 'ahmed',
         'jazzcash_salt' => NULL,
@@ -110,6 +110,7 @@ return [
         'top_banner_show_dates' => true,
         'top_banner_show_prayer_ticker' => true,
         'top_banner_show_contact' => true,
-        'top_banner_show_social' => true
+        'top_banner_show_social' => true,
+        'header_site_name' => 'Aabtaab'
     ]
 ];

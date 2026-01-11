@@ -3,10 +3,10 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'config',
     'environment' => 'localhost',
-    'timestamp' => 1768086863,
+    'timestamp' => 1768090142,
     'directories' => [
         '/Users/syedaalin/Documents/Grav/user/localhost/config' => 1767933299,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1768084515,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1768088585,
         '/Users/syedaalin/Documents/Grav/user/config' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/config/plugins' => 1767662677,
         '/Users/syedaalin/Documents/Grav/user/config/themes' => 1767950165,
@@ -39,7 +39,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/my-quark.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/ngo-theme.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-e-hidayat.yaml' => 1767942918,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml' => 1768084515,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml' => 1768088585,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/quark.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/config/media.yaml' => 1767934750,
         '/Users/syedaalin/Documents/Grav/user/config/navigation.yaml' => 1767728456,
@@ -47,7 +47,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/config/plugins/webp.yaml' => 1767661584,
         '/Users/syedaalin/Documents/Grav/user/config/security.yaml' => 1764207892,
         '/Users/syedaalin/Documents/Grav/user/config/site.yaml' => 1767934750,
-        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1768086861,
+        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1768090140,
         '/Users/syedaalin/Documents/Grav/user/config/themes/agency.yaml' => 1764296560,
         '/Users/syedaalin/Documents/Grav/user/config/themes/akazie-forest.yaml' => 1764384828,
         '/Users/syedaalin/Documents/Grav/user/config/themes/cardstack.yaml' => 1764293604,
@@ -107,7 +107,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768084515
+                'modified' => 1768088585
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -141,7 +141,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768086861
+                'modified' => 1768090140
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',

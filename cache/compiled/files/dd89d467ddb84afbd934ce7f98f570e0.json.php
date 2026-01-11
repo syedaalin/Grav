@@ -2,28 +2,27 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledJsonFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/data/flex/indexes/pages.json',
-    'modified' => 1768080948,
-    'size' => 9733,
+    'modified' => 1768089123,
+    'size' => 7730,
     'data' => [
         'version' => '1.5',
-        'timestamp' => 1768080948,
-        'count' => 35,
+        'timestamp' => 1768089123,
+        'count' => 28,
         'index' => [
             '' => [
                 'key' => '',
                 'storage_key' => '',
                 'template' => NULL,
-                'storage_timestamp' => 1767947687,
+                'storage_timestamp' => 1768089013,
                 'children' => [
-                    '01.home' => 1767944677,
-                    '01.home_backup' => 1767941703,
+                    '01.home' => 1768080948,
                     '02.online-courses_backup' => 1767925399,
                     '03.donate' => 1767947434,
                     '03.services_backup' => 1767925399,
                     '04.ask' => 1767948173,
                     'manifest' => 1767942191
                 ],
-                'checksum' => 'b8a292bb55654c5d495c1b096d44fa91'
+                'checksum' => 'd8b35e744e318ea752658cace7f3c722'
             ],
             '01.home' => [
                 'key' => 'home',
@@ -117,99 +116,6 @@ return [
                     ]
                 ],
                 'checksum' => '11d8c300bd25800a129695437e72d982'
-            ],
-            '01.home_backup' => [
-                'key' => 'home_backup',
-                'storage_key' => '01.home_backup',
-                'template' => 'default',
-                'storage_timestamp' => 1767941703,
-                'markdown' => [
-                    '' => [
-                        'default' => 1767941044,
-                        'modular' => 1767939014
-                    ]
-                ],
-                'children' => [
-                    '_01hero' => 1767941580,
-                    '_02trust-signals' => 1767941582,
-                    '_03services' => 1767941584,
-                    '_04featured-courses' => 1767941586,
-                    '_05project-timeline' => 1767941589,
-                    '_06istafta' => 1767941591
-                ],
-                'checksum' => '740503e6d9e9d1f121caf7f9d5afc326'
-            ],
-            '01.home_backup/_01hero' => [
-                'key' => 'home_backup/_01hero',
-                'storage_key' => '01.home_backup/_01hero',
-                'template' => 'hero',
-                'storage_timestamp' => 1767941580,
-                'markdown' => [
-                    '' => [
-                        'hero' => 1767941580
-                    ]
-                ],
-                'checksum' => '74a3e161527e22f8f45f016415e53541'
-            ],
-            '01.home_backup/_02trust-signals' => [
-                'key' => 'home_backup/_02trust-signals',
-                'storage_key' => '01.home_backup/_02trust-signals',
-                'template' => 'trust-signals',
-                'storage_timestamp' => 1767941582,
-                'markdown' => [
-                    '' => [
-                        'trust-signals' => 1767941582
-                    ]
-                ],
-                'checksum' => '1dae4723072d92e54748f55ba549e5cf'
-            ],
-            '01.home_backup/_03services' => [
-                'key' => 'home_backup/_03services',
-                'storage_key' => '01.home_backup/_03services',
-                'template' => 'services',
-                'storage_timestamp' => 1767941584,
-                'markdown' => [
-                    '' => [
-                        'services' => 1767941584
-                    ]
-                ],
-                'checksum' => 'f61e70d672552054753836525c2e29e3'
-            ],
-            '01.home_backup/_04featured-courses' => [
-                'key' => 'home_backup/_04featured-courses',
-                'storage_key' => '01.home_backup/_04featured-courses',
-                'template' => 'featured-courses',
-                'storage_timestamp' => 1767941586,
-                'markdown' => [
-                    '' => [
-                        'featured-courses' => 1767941586
-                    ]
-                ],
-                'checksum' => 'f4cb559d8a71d16462ef0d1405dbf2ac'
-            ],
-            '01.home_backup/_05project-timeline' => [
-                'key' => 'home_backup/_05project-timeline',
-                'storage_key' => '01.home_backup/_05project-timeline',
-                'template' => 'project-timeline',
-                'storage_timestamp' => 1767941589,
-                'markdown' => [
-                    '' => [
-                        'project-timeline' => 1767941589
-                    ]
-                ],
-                'checksum' => 'e95538a19cf57f7257ab786a256fa266'
-            ],
-            '01.home_backup/_06istafta' => [
-                'key' => 'home_backup/_06istafta',
-                'storage_key' => '01.home_backup/_06istafta',
-                'template' => 'istafta',
-                'storage_timestamp' => 1767941591,
-                'markdown' => [
-                    '' => [
-                        'istafta' => 1767941591
-                    ]
-                ],
-                'checksum' => '82e118711a005547995b50d4e31f2f26'
             ],
             '02.online-courses_backup' => [
                 'key' => 'online-courses_backup',
@@ -372,16 +278,16 @@ return [
                 'key' => 'donate',
                 'storage_key' => '03.donate',
                 'template' => 'modular',
-                'storage_timestamp' => 1767947434,
+                'storage_timestamp' => 1768089123,
                 'markdown' => [
                     '' => [
-                        'modular' => 1767947433
+                        'modular' => 1768089123
                     ]
                 ],
                 'children' => [
                     '_calculator' => 1767947434
                 ],
-                'checksum' => 'e68fba8429d5a239c548ec80a8ce9ca1'
+                'checksum' => 'fc738f6d49d78f0a8bf836f561be715e'
             ],
             '03.donate/_calculator' => [
                 'key' => 'donate/_calculator',

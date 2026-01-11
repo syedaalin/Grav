@@ -1,23 +1,33 @@
+{% set custom_logo_file = theme_var('custom_logo') %}
+{% set logo_image = custom_logo_file ? media['theme://images/logo/' ~ (custom_logo_file|first).name] : null %}
+{% set site_name = theme_var('site_name') %}
+
 <a href="{{ home_url }}" 
-   class="font-black text-xl mr-spacing-base relative z-10 group focus:input-focus" 
+   class="font-black text-xl mr-spacing-base relative z-10 group focus:input-focus flex items-center gap-2" 
    title="{{ site.title|e('html') }}" 
    aria-label="{{ site.title|default('Home') }}">
-{% if logo_var %}
-  {% set logo_media = media['theme://images/logo/' ~ (logo_var|first).name] %}
-  {% set logo_img = mobile ? logo_media.resize(80, 80) : logo_media.resize(160, 160) %}
-  <img src="{{ logo_img.url }}" 
-       width="{{ logo_img.width }}" 
-       height="{{ logo_img.height }}" 
-       alt="{{ site.title|default('Site Logo') }}" 
-       class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)]"
-       fetchpriority="high"
-       decoding="async" />
-{% else %}
-  <div class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)] text-primary">
-    {% include('@images/grav-logo.svg') ignore missing %}
-    {% if not logo_media %}
-        <span class="text-gradient font-black tracking-tighter">{{ site.title|default('NUR-UL-HUDA') }}</span>
+
+    {# 1. Logo Image #}
+    {% if logo_image %}
+        {% set logo_resized = mobile ? logo_image.resize(80, 80) : logo_image.resize(160, 160) %}
+        <img src="{{ logo_resized.url }}" 
+             width="{{ logo_resized.width }}" 
+             height="{{ logo_resized.height }}" 
+             alt="{{ site_name|default(site.title)|default('Site Logo') }}" 
+             class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)]"
+             fetchpriority="high"
+             decoding="async" />
+    {% else %}
+        {# Fallback: Grav Logo only if NO site name and NO logo #}
+        {% if not site_name %}
+             <div class="w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)] text-primary">
+                {% include('@images/grav-logo.svg') ignore missing %}
+             </div>
+        {% endif %}
     {% endif %}
-  </div>
-{% endif %}
+
+    {# 2. Site Name Text (Hidden on Mobile) #}
+    {% if site_name %}
+        <span class="text-gradient font-black tracking-tighter hidden @lg:inline">{{ site_name }}</span>
+    {% endif %}
 </a>
