@@ -12,24 +12,28 @@
 
 {% block header_navigation %}
     {% if show_onpage_menu %}
-        <ul class="flex items-center gap-1 navigation @container">
+        <ul class="modular-nav">
+        {# 1. Standard Global Pages (Home, Donate, Ask, etc.) #}
+        {% import 'macros/macros.html.twig' as macros %}
+        {{ macros.nav_loop(pages) }}
+
+        {# 2. Modular Sections (Jump links for current page) #}
         {% for module in page.collection() if module.header.visible is not same as(false) %}
             {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
             <li>
                 <a href="#{{ module.menu|hyphenize }}" 
-                   class="px-4 py-2 text-sm font-black transition-all duration-300 rounded-xl whitespace-nowrap
-                          {{ current_module == 'active' ? 'text-primary bg-primary/5' : 'text-gray-700 hover:text-primary hover:bg-primary/5' }}
-                          focus:outline-none focus:ring-4 focus:ring-primary/10">
+                   class="nav-link {{ current_module == 'active' ? 'nav-link-active' : '' }}">
                     {{ module.menu }}
                 </a>
             </li>
         {% endfor %}
+        
+        {# 3. Manual Site Menu Items #}
         {% for mitem in site.menu %}
             <li>
                 <a href="{{ mitem.url }}" 
-                   class="flex items-center gap-2 px-4 py-2 text-sm font-black text-gray-700 hover:text-primary hover:bg-primary/5 rounded-xl transition-all
-                          {{ mitem.class }} focus:outline-none focus:ring-2 focus:ring-primary/20">
-                    {% if mitem.icon %}<i class="la la-{{ mitem.icon }} text-lg" aria-hidden="true"></i>{% endif %}
+                   class="nav-link {{ mitem.class }}">
+                    {% if mitem.icon %}<i class="la la-{{ mitem.icon }} nav-icon" aria-hidden="true"></i>{% endif %}
                     {{ mitem.text }}
                 </a>
             </li>
@@ -42,19 +46,18 @@
 
 {% block hero %}
     {% for module in page.collection() if module.template == 'modular/hero' %}
-        <div id="{{ module.menu|hyphenize }}" class="scroll-mt-20">
+        <div id="{{ module.menu|hyphenize }}" class="modular-section-anchor">
             {{ module.content|raw }}
         </div>
     {% endfor %}
 {% endblock %}
 
 {% block body %}
-    <div class="modular-body-wrapper space-y-0">
+    <div class="modular-body-wrapper">
         {% for module in page.collection() if module.template != 'modular/hero' %}
-            <div id="{{ module.menu|hyphenize }}" class="scroll-mt-20 section-py">
+            <div id="{{ module.menu|hyphenize }}" class="modular-section-anchor section-py">
                 {{ module.content|raw }}
             </div>
         {% endfor %}
     </div>
 {% endblock %}
-

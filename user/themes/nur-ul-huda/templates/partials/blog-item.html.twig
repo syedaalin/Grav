@@ -1,56 +1,55 @@
-<article class="content-item h-entry animate-fade-in-up">
+<article class="blog-article animate-fade-in-up">
 
 {% if not hero_image_name %}
-    <header class="mb-12 text-center">
-        <div class="mb-4">
+    <header class="blog-article-header">
+        <div class="blog-article-meta">
             {% include 'partials/blog/taxonomy.html.twig' %}
         </div>
-        <h1 class="section-title mb-6">{{ page.title }}</h1>
+        <h1 class="section-title blog-article-title">{{ page.title }}</h1>
         {% if page.header.subtitle %}
-            <p class="text-xl @lg:text-2xl text-subtle font-black mb-6 italic opacity-80">{{ page.header.subtitle }}</p>
+            <p class="blog-article-subtitle">{{ page.header.subtitle }}</p>
         {% endif %}
-        <div class="flex items-center justify-center gap-4 text-subtle font-black uppercase tracking-[0.2em] text-[10px]">
+        <div class="blog-article-date">
             {% include 'partials/blog/date.html.twig' %}
         </div>
     </header>
 {% endif %}
 
-    <div class="e-content prose-custom">
+    <div class="blog-article-content prose-custom">
         {{ page.content|raw }}
     </div>
 
     {% if page.header.continue_link is same as(true) and config.plugins.comments.enabled %}
-        <section class="mt-20 pt-16 border-t border-subtle">
+        <section class="blog-article-comments">
             {% include 'partials/comments.html.twig' %}
         </section>
     {% endif %}
 </article>
 
-<nav class="prev-next mt-20 pt-12 border-t border-subtle flex flex-col @sm:flex-row justify-between gap-6" aria-label="Post navigation">
+<nav class="blog-nav-prevnext" aria-label="Post navigation">
     {% if not page.isLast %}
-        <a class="flex-1 inline-flex items-center gap-4 card-glass p-6 hover:-translate-x-2" href="{{ page.prevSibling.url }}">
-            <span class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
-                <i class="la la-arrow-left text-xl transition-transform group-hover:-translate-x-1"></i>
+        <a class="blog-nav-link blog-nav-prev" href="{{ page.prevSibling.url }}">
+            <span class="blog-nav-icon">
+                <i class="la la-arrow-left"></i>
             </span>
-            <div class="flex flex-col text-left">
-                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-subtle">Previous</span>
-                <span class="font-black text-gray-950 line-clamp-1">{{ page.prevSibling.title }}</span>
+            <div class="blog-nav-content">
+                <span class="blog-nav-label">Previous</span>
+                <span class="blog-nav-title">{{ page.prevSibling.title }}</span>
             </div>
         </a>
     {% else %}
-        <div class="flex-1"></div>
+        <div class="blog-nav-spacer"></div>
     {% endif %}
 
     {% if not page.isFirst %}
-        <a class="flex-1 inline-flex items-center justify-end gap-4 card-glass p-6 hover:translate-x-2" href="{{ page.nextSibling.url }}">
-            <div class="flex flex-col text-right">
-                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-subtle">Next</span>
-                <span class="font-black text-gray-950 line-clamp-1">{{ page.nextSibling.title }}</span>
+        <a class="blog-nav-link blog-nav-next" href="{{ page.nextSibling.url }}">
+            <div class="blog-nav-content blog-nav-content-right">
+                <span class="blog-nav-label">Next</span>
+                <span class="blog-nav-title">{{ page.nextSibling.title }}</span>
             </div>
-            <span class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
-                <i class="la la-arrow-right text-xl transition-transform group-hover:translate-x-1"></i>
+            <span class="blog-nav-icon">
+                <i class="la la-arrow-right"></i>
             </span>
         </a>
     {% endif %}
 </nav>
-

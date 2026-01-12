@@ -55,9 +55,9 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
     {
         $macros = $this->macros;
         // line 4
-        yield "<section class=\"section section-py @container animate-fade-in-up\">
-    <div class=\"container-px mx-auto max-w-4xl\">
-        <div class=\"prose-custom max-w-none prose-img:rounded-premium prose-img:shadow-2xl\">
+        yield "<section class=\"section section-py animate-fade-in-up\">
+    <div class=\"section-container-narrow\">
+        <div class=\"prose-custom default-content\">
             ";
         // line 7
         yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 7);

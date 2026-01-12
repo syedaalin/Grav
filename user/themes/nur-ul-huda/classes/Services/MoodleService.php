@@ -17,10 +17,6 @@ class MoodleService
 
     /**
      * Fetch featured courses from Moodle
-     * 
-     * @param string $url
-     * @param string $token
-     * @return array
      */
     public function fetchCourses(string $url, string $token): array
     {

@@ -1,19 +1,18 @@
 {% if crumbs|length > 1 %}
-<nav class="flex text-xs font-black my-8 uppercase tracking-[0.2em] @container" aria-label="Breadcrumb">
-  <ol class="flex flex-wrap items-center gap-2">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
     {% for crumb in crumbs %}
-      <li class="flex items-center">
+      <li class="breadcrumb-item">
         {% if not loop.first %}
-          <i class="la la-angle-right text-gray-300 mx-2 text-sm" aria-hidden="true"></i>
+          <i class="la la-angle-right breadcrumb-separator" aria-hidden="true"></i>
         {% endif %}
         
         {% if not loop.last %}
-          <a href="{{ crumb.url }}" 
-             class="text-subtle hover:text-primary transition-all underline decoration-transparent hover:decoration-primary/30 decoration-2 underline-offset-4">
+          <a href="{{ crumb.url }}" class="breadcrumb-link">
             {{ crumb.menu }}
           </a>
         {% else %}
-          <span class="text-gray-950 font-black" aria-current="page">
+          <span class="breadcrumb-current" aria-current="page">
             {{ crumb.menu }}
           </span>
         {% endif %}

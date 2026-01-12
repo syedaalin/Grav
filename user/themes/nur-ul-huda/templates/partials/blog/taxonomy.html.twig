@@ -1,5 +1,5 @@
 {% if page.taxonomy.tag %}
-<div class="flex flex-wrap gap-2 py-2 p-category {{ classes|default('') }}">
+<div class="blog-tags {{ classes|default('') }}">
     {% for tag in page.taxonomy.tag %}
     <a class="badge-primary" 
        href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}#body-wrapper">

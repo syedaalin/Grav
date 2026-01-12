@@ -15,7 +15,7 @@
     let currentY = 0;
     let pulling = false;
     const threshold = 80; // pixels to pull before refresh
-    const $minaret = $('#top-banner-utility-bar');
+    const $topBanner = $('#top-banner-utility-bar');
     const $body = $('body');
 
     // Create pull indicator
@@ -48,10 +48,10 @@
             $pullIndicator.css('transform', `translateY(${pullDistance - 100}%)`);
             
             if (pullDistance >= threshold) {
-                $pullIndicator.addClass('bg-accent text-gray-900');
+                $pullIndicator.addClass('bg-accent text-dark');
                 $pullIndicator.find('span').text('Release to refresh');
             } else {
-                $pullIndicator.removeClass('bg-accent text-gray-900');
+                $pullIndicator.removeClass('bg-accent text-dark');
                 $pullIndicator.find('span').text('Pull to refresh prayer times');
             }
         }

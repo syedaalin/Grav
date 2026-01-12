@@ -5,14 +5,14 @@
 
 {% block input %}
     {% set id = field.id|default(field.name) ~ '-' ~ key %}
-    <div class="{{ form_field_wrapper_classes ?: 'form-input-wrapper' }} {{ field.size }} {{ field.wrapper_classes }} @container">
-        <label class="flex items-center cursor-pointer group select-none" for="{{ id|e }}">
-            <div class="relative form-indicator rounded-lg group-hover:border-primary/50">
+    <div class="{{ form_field_wrapper_classes ?: 'form-input-wrapper' }} {{ field.size }} {{ field.wrapper_classes }} form-checkbox container-inline">
+        <label class="checkbox-label group" for="{{ id|e }}">
+            <div class="checkbox-indicator">
                 <input
                     name="{{ (scope ~ field.name)|fieldName }}"
                     value="{{ value|join(', ') }}"
                     type="checkbox"
-                    class="sr-only peer"
+                    class="sr-only"
                     {% if value == true %} checked="checked" {% endif %}
 
                     {% block input_attributes %}
@@ -25,15 +25,15 @@
                         {% if required %}required="required"{% endif %}
                     {% endblock %}
                 />
-                <div class="form-check-mark rounded-lg peer-checked:scale-100 peer-focus:shadow-[0_0_0_4px_oklch(var(--color-primary)/0.1)]">
-                    <i class="la la-check text-white text-xs font-black"></i>
+                <div class="checkbox-mark">
+                    <i class="la la-check" aria-hidden="true"></i>
                 </div>
             </div>
 
-            <span class="ml-3 form-label-text group-hover:text-primary">
+            <span class="checkbox-text">
                 {{ field.label|t|e }} 
                 {% if field.validate.required in ['on', 'true', 1] %}
-                    <span class="text-primary ml-1">*</span>
+                    <span class="required-asterisk">*</span>
                 {% endif %}
             </span>
         </label>

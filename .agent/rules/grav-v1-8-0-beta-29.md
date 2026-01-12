@@ -14,7 +14,7 @@ Backend: PHP v8.5.0 (Strict typing, pipe operators, and property hooks).
 
 Templating: Twig 3.x-dev (Targeting commit 62c58c8; no legacy tags).
 
-Styling: Pure Tailwind CSS v4.1.18 (CSS-first, @theme block system).
+Styling: Pure Custom CSS (Modern Vanilla).
 
 Integration Logic: Java 25.0.1 (For backend logic patterns) & Modern ES2025+ JavaScript.
 
@@ -34,7 +34,7 @@ DRY (Don’t Repeat Yourself): Use Twig block inheritance and Java Record patter
 
 Phase 3: The Review & Audit Loop
 
-Pure Tailwind Audit: Verify the CSS uses the @import "tailwindcss"; directive and adheres to v4-only utility patterns.
+Pure Custom CSS (Modern Vanilla) Audit: Verify the CSS uses Pure Custom CSS (Modern Vanilla) patterns.
 
 Engine Verification: * Review PHP code against v8.5.0 specifications.
 

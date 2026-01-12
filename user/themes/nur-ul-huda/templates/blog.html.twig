@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block body %}
-    <section id="body-wrapper" class="section section-py @container">
-        <section class="container-px mx-auto max-w-7xl">
+    <section id="body-wrapper" class="section section-py">
+        <div class="section-container">
 
         {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
             {% include 'partials/breadcrumbs.html.twig' %}
@@ -20,8 +20,8 @@
 
         {% embed 'partials/layout.html.twig' with {blog: page} %}
             {% block item %}
-                <div class="@container">
-                    <div class="grid-bento !@xl:grid-cols-3 gap-8 @lg:gap-10">
+                <div class="blog-listing container-inline">
+                    <div class="blog-grid">
                     {% for child in collection %}
                         {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
                     {% endfor %}
@@ -29,7 +29,7 @@
                 </div>
 
                 {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
-                    <div id="listing-footer" class="mt-12">
+                    <div id="listing-footer" class="blog-pagination-wrapper">
                         {% include 'partials/pagination.html.twig' with {base_url: page.url, pagination: collection.params.pagination} %}
                     </div>
                 {% endif %}
@@ -42,4 +42,3 @@
         </section>
     </section>
 {% endblock %}
-

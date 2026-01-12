@@ -1,0 +1,10 @@
+streams:
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        "":
+          - user/themes/grav
+          - user/plugins/admin/themes/grav
+
+enabled: true

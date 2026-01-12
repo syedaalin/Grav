@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledLanguages',
-    'timestamp' => 1768090143,
-    'checksum' => 'a2b74fb33be15e2af0f2f87926321425',
+    'timestamp' => 1768241563,
+    'checksum' => '4b5af1f6e2b4c9684f9c49d3b2fff2b8',
     'files' => [
         'system/languages' => [
             'ar' => [
@@ -215,9 +215,9 @@ return [
                 'file' => 'user/plugins/relatedpages/languages.yaml',
                 'modified' => 1691710516
             ],
-            'plugins/simplesearch' => [
-                'file' => 'user/plugins/simplesearch/languages.yaml',
-                'modified' => 1661506352
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/languages.yaml',
+                'modified' => 1728001206
             ],
             'plugins/sitemap' => [
                 'file' => 'user/plugins/sitemap/languages.yaml',
@@ -2039,13 +2039,10 @@ Sie haben **2FA** für dieses Konto aktiviert. Bitte benutzen Sie Ihre **2FA** A
                 'CONTENT_SCORE_SCALE' => 'Taxonomie-Inhalt Bewertungsskala',
                 'EXCLUDED_TYPES' => 'Seitentypen, die von den Ergebnissen ausgeschlossen werden sollen'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Suche …',
-                'SEARCH_RESULTS' => 'Suchergebnisse',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Suche: <strong>%s</strong> fand ein Ergebnis',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Suche: <strong>%s</strong> fand %s Ergebnisse',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Bitte geben Sie mindestens %s Zeichen ein',
-                'SEARCH_VALUE' => 'Suchen'
+            'PLUGIN_TNTSEARCH' => [
+                'FOUND_RESULTS' => 'Es wurden %s Resultate gefunden',
+                'FOUND_IN' => '(<span>%s</span>)',
+                'POWERED_BY' => 'Powered by %s'
             ],
             'PLUGIN_SITEMAP' => [
                 'SITEMAP' => 'Sitemap',
@@ -4004,38 +4001,10 @@ You have **2FA** enabled on this account. Please use your **2FA** app to enter t
                 'CONTENT_SCORE_SCALE' => 'Taxonomy-content score scale',
                 'EXCLUDED_TYPES' => 'Page types to exclude from results'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Search …',
-                'SEARCH_RESULTS' => 'Search Results',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Query: <strong>%s</strong> found one result',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Query: <strong>%s</strong> found %s results',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Please add at least %s characters',
-                'SEARCH_CONTENT' => 'Search Content',
-                'RENDERED_CONTENT' => 'Rendered Content (Slower)',
-                'RAW_CONTENT' => 'Raw Markdown Content (Faster)',
-                'BUILTIN_CSS' => 'Use built in CSS',
-                'BUILTIN_CSS_HELP' => 'Include the CSS provided by the simplesearch plugin',
-                'BUILTIN_JS' => 'Use built in JavaScript',
-                'BUILTIN_JS_HELP' => 'Include the JavaScript provided by the simplesearch plugin',
-                'DISPLAY_SEARCH_BUTTON' => 'Display Search Button',
-                'DISPLAY_SEARCH_BUTTON_HELP' => 'Display a search button near the search field',
-                'IGNORE_ACCENDED_CHARACTERS' => 'Ignore accented characters',
-                'IGNORE_ACCENDED_CHARACTERS_HELP' => 'If enabled, search terms will match accented characters regardless to their diacritics i.e. search results will show up for "cafe" and "café" no matter how you typed it.',
-                'MIN_QUERY_LENGTH' => 'Minimum query length',
-                'MIN_QUERY_LENGTH_HELP' => 'The minimum number of characters needed before search can be submitted',
-                'SEARCH_PAGE_ROUTE' => 'Route',
-                'SEARCH_PAGE_ROUTE_HELP' => 'Default route of the simplesearch plugin',
-                'SEARCH_PAGE_TEMPLATE' => 'Template',
-                'SEARCH_PAGE_TEMPLATE_HELP' => 'Name of the template for the search results',
-                'CATEGORY_FILTER' => 'Category filter',
-                'CATEGORY_FILTER_HELP' => 'Comma separated list of category names. Enter "@none" to search in all pages.',
-                'FILTER_COMBINATOR' => 'Filter Combinator',
-                'AND_COMBINATOR' => 'And - Boolean &&',
-                'OR_COMBINATOR' => 'Or - Boolean ||',
-                'SEARCHABLE_TYPES' => 'Searchable Types',
-                'SEARCHABLE_TYPES_DESCRIPTION' => '<b>Title</b> = Search Page Title<br><b>Content</b> = Search Page Content<br><b>Header</b> = Search Raw Page Headers<br><b>Taxonomy</b> = Search Taxonomy',
-                'HEADER_KEYS_IGNORED' => 'Header Keys to Ignore',
-                'HEADER_KEYS_IGNORED_HELP' => 'The root-level header keys that should be skipped when searching type "Header"'
+            'PLUGIN_TNTSEARCH' => [
+                'FOUND_RESULTS' => 'Found %s results',
+                'FOUND_IN' => 'in <span>%s</span>',
+                'POWERED_BY' => 'Powered by %s'
             ],
             'PLUGIN_SITEMAP' => [
                 'SITEMAP' => 'Sitemap',
@@ -5831,12 +5800,6 @@ Tienes **2FA** habilitado en esta cuenta. Por favor usa tu aplicación **2FA** p
                 'CONTENT_SCORE_SCALE' => 'Escala de puntuación Taxonomía-contenido',
                 'EXCLUDED_TYPES' => 'tipos de página para excluir de los resultados'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Buscar …',
-                'SEARCH_RESULTS' => 'Resultados de la búsqueda',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Consulta: <strong>%s</strong> se encontró 1 resultado',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Consulta: <strong>%s</strong> se encontraron %s resultados'
-            ],
             'PLUGIN_EMAIL' => [
                 'PLEASE_CONFIGURE_A_TO_ADDRESS' => 'Por favor configura una dirección de \'remitente\' en la configuración del Plugin de Email o en el formulario',
                 'PLEASE_CONFIGURE_A_FROM_ADDRESS' => 'Por favor configura una dirección de \'destinatario\' en la configuración del Plugin de Email o en el formulario'
@@ -7405,12 +7368,10 @@ L\'**authentification à deux facteurs** est activée sur ce compte. Veuillez ut
                 'CONTENT_SCORE_SCALE' => 'Taxonomie-niveau de score de contenu',
                 'EXCLUDED_TYPES' => 'Types de pages à exclure des résultats'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Recherche …',
-                'SEARCH_RESULTS' => 'Résultats de la recherche',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Recherche : Un résultat trouvé pour <strong>%s</strong>',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Recherche : %2$s résultats trouvés pour <strong>%1$s</strong>',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Veuillez ajouter au moins %s caractères'
+            'PLUGIN_TNTSEARCH' => [
+                'FOUND_RESULTS' => 'Résultats trouvés: %s',
+                'FOUND_IN' => '(<span>%s</span>)',
+                'POWERED_BY' => 'Par %s'
             ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Erreur',
@@ -8477,12 +8438,6 @@ Chemin: `%2$s`
                 'FILEPOND_CANCEL_UPLOAD' => 'Odustani od slanja',
                 'FILEPOND_ERROR_FILESIZE' => 'Fajl je prevelik',
                 'FILEPOND_ERROR_FILETYPE' => 'Nevažeći tip fajla'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Traži …',
-                'SEARCH_RESULTS' => 'Rezultati pretrage',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Upit: <strong>%s</strong> je pronašao jedan rezultat',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Upit: <strong>%s</strong> je pronašao %s rezultata'
             ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Greška',
@@ -12842,12 +12797,6 @@ Aveți **2FA** activată pentru acest cont. Vă rugăm folosiți aplicația pent
                 'CONTENT_SCORE_SCALE' => 'Scorul scalei Taxonomie-conținut',
                 'EXCLUDED_TYPES' => 'tipuri de pagini de exclus din rezultate'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Caută …',
-                'SEARCH_RESULTS' => 'Rezultatele căutării',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Căutarea: <strong>%s</strong> a găsit un rezultat',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Căutarea: <strong>%s</strong> a găsit %s rezultate'
-            ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Eroare',
                 'ERROR_MESSAGE' => 'Ooops. Se pare că pagina nu există.'
@@ -14397,34 +14346,10 @@ Calea: `%2$s`
                 'FILEPOND_ERROR_FILESIZE' => 'Файл слишком большой',
                 'FILEPOND_ERROR_FILETYPE' => 'Неверный тип файла'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Найти …',
-                'SEARCH_RESULTS' => 'Результат поиска',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'По запросу: <strong>%s</strong> найден 1 результат',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'По запросу: <strong>%s</strong> результатов найдено %s',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Добавьте не менее %s символов',
-                'SEARCH_CONTENT' => 'Поиск контента',
-                'RENDERED_CONTENT' => 'Обработанный контент (медленнее)',
-                'RAW_CONTENT' => 'Необработанный Markdown контент (быстрее)',
-                'BUILTIN_CSS' => 'Использовать встроенный CSS',
-                'BUILTIN_CSS_HELP' => 'Использовать CSS, предоставленный плагином simplesearch',
-                'BUILTIN_JS' => 'Использовать встроенный JavaScript',
-                'BUILTIN_JS_HELP' => 'Использовать JavaScript, предоставленный плагином simplesearch',
-                'DISPLAY_SEARCH_BUTTON' => 'Показать кнопку поиска',
-                'DISPLAY_SEARCH_BUTTON_HELP' => 'Показать кнопку поиска рядом с полем поиска',
-                'IGNORE_ACCENDED_CHARACTERS' => 'Игнорировать акцентированные символы',
-                'IGNORE_ACCENDED_CHARACTERS_HELP' => 'Если этот параметр включен, поисковые термины будут совпадать с акцентированными символами, независимо от их диакритических знаков, т.е. результаты поиска будут отображаться как "кафе" и "кафе́", независимо от того, как вы их набрали',
-                'MIN_QUERY_LENGTH' => 'Минимальная длина запроса',
-                'MIN_QUERY_LENGTH_HELP' => 'Минимальное количество символов, необходимое для отправки запроса',
-                'SEARCH_PAGE_ROUTE' => 'Маршрут',
-                'SEARCH_PAGE_ROUTE_HELP' => 'Маршрут по умолчанию для плагина simplesearch',
-                'SEARCH_PAGE_TEMPLATE' => 'Шаблон',
-                'SEARCH_PAGE_TEMPLATE_HELP' => 'Имя шаблона для страницы результатов поиска',
-                'CATEGORY_FILTER' => 'Фильтр категорий',
-                'CATEGORY_FILTER_HELP' => 'Разделенный запятыми список названий категорий. Введите "@none" для поиска на всех страницах',
-                'FILTER_COMBINATOR' => 'Фильтр комбинатор',
-                'AND_COMBINATOR' => 'И - Булева &&',
-                'OR_COMBINATOR' => 'Или - Булева ||'
+            'PLUGIN_TNTSEARCH' => [
+                'FOUND_RESULTS' => 'Результатов: %s',
+                'FOUND_IN' => '(<span>%s</span>)',
+                'POWERED_BY' => 'Работает на %s'
             ],
             'PLUGIN_SITEMAP' => [
                 'SITEMAP' => 'Карта сайта',
@@ -15574,35 +15499,6 @@ title: %1$s
                 'FILEPOND_CANCEL_UPLOAD' => 'Скасувати завантаження',
                 'FILEPOND_ERROR_FILESIZE' => 'Файл занадто великий',
                 'FILEPOND_ERROR_FILETYPE' => 'Невірний тип файлу'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Знайти …',
-                'SEARCH_RESULTS' => 'Результат пошуку',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'На запит: <strong>%s</strong> знайдено 1 результат',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'На запит: <strong>%s</strong> результатів знайдено %s',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Введіть не менше %s символів',
-                'SEARCH_CONTENT' => 'Пошук контенту',
-                'RENDERED_CONTENT' => 'Оброблений контент (повільніше)',
-                'RAW_CONTENT' => 'Необроблений Markdown контент (швидше)',
-                'BUILTIN_CSS' => 'Використовувати вбудований CSS',
-                'BUILTIN_CSS_HELP' => 'Використовувати CSS, наданий плагіном simplesearch',
-                'BUILTIN_JS' => 'Використовувати вбудований JavaScript',
-                'BUILTIN_JS_HELP' => 'Використовувати JavaScript, наданий плагіном simplesearch',
-                'DISPLAY_SEARCH_BUTTON' => 'Показати кнопку пошуку',
-                'DISPLAY_SEARCH_BUTTON_HELP' => 'Показати кнопку пошуку поряд з полем пошуку',
-                'IGNORE_ACCENDED_CHARACTERS' => 'Ігнорувати акцентовані символи',
-                'IGNORE_ACCENDED_CHARACTERS_HELP' => 'Якщо цей параметр включений, пошукові терміни будуть збігатися з акцентованими символами, незалежно від їх діакритичних знаків, тобто результати пошуку будуть відображатися як "кафе" і "кафе́", незалежно від того, як ви їх набрали',
-                'MIN_QUERY_LENGTH' => 'Мінімальна довжина запиту',
-                'MIN_QUERY_LENGTH_HELP' => 'Мінімальна кількість символів, необхідна для відправлення запиту',
-                'SEARCH_PAGE_ROUTE' => 'Маршрут',
-                'SEARCH_PAGE_ROUTE_HELP' => 'Маршрут за замовчуванням для плагіна simplesearch',
-                'SEARCH_PAGE_TEMPLATE' => 'Шаблон',
-                'SEARCH_PAGE_TEMPLATE_HELP' => 'Ім\'я шаблону для сторінки результатів пошуку',
-                'CATEGORY_FILTER' => 'Фільтр категорій',
-                'CATEGORY_FILTER_HELP' => 'Розділений комами список назв категорій. Введіть "@none" для пошуку на всіх сторінках',
-                'FILTER_COMBINATOR' => 'Фільтр комбінатор',
-                'AND_COMBINATOR' => 'І - Булева &&',
-                'OR_COMBINATOR' => 'Або - Булева ||'
             ],
             'PLUGIN_SITEMAP' => [
                 'SITEMAP' => 'Карта сайту',
@@ -17022,12 +16918,6 @@ Path: `%2$s`
                 'LEGACY_MEDIA_MUTATION_HELP' => '只有当图像操作在Grav 更新后中断时才启用此设置。',
                 'BACKWARD_COMPATIBILITY' => '向后兼容'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => '搜索 …',
-                'SEARCH_RESULTS' => '搜索结果',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => '查询: <strong>%s</strong> 找到 1 个结果',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => '查询: <strong>%s</strong> 找到 %s 个结果'
-            ],
             'PLUGIN_SITEMAP' => [
                 'SITEMAP' => '网站地图',
                 'HEADER_CHANGEFREQ' => '网站地图变更频率',
@@ -18414,13 +18304,6 @@ Je hebt **2FA** aanstaan op dit account. Gebruik je **2FA** App om de huidige **
                 'TAXONOMY_SCORE_SCALE' => 'Taxonomie-taxonomie score schaal',
                 'CONTENT_SCORE_SCALE' => 'Taxonomie-inhoud score schaal',
                 'EXCLUDED_TYPES' => 'Paginatypen die moeten worden uitgesloten van resultaten'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Zoeken …',
-                'SEARCH_RESULTS' => 'Zoek resultaten',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Query: <strong>%s</strong> is 1 keer gevonden',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Query: <strong>%s</strong> is %s keer gevonden',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Geef minstens %s tekens in'
             ],
             'GRAV' => [
                 'FRONTMATTER_ERROR_PAGE' => '---
@@ -22561,12 +22444,6 @@ Máte na svém účtu aktivováno **dvoufaktorové ověřování**. Pro dokonče
                 'YES' => 'Ano',
                 'NO' => 'Ne'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Vyhledat …',
-                'SEARCH_RESULTS' => 'Výsledky hledání',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Hledání výrazu \'<strong>%s</strong>\' našlo jeden výsledek',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Hledání výrazu \'<strong>%s</strong>\' našlo %s výsledků'
-            ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Chyba',
                 'ERROR_MESSAGE' => 'A jéje. Vypadá to, že hledaná stránka tu není.'
@@ -23728,12 +23605,6 @@ Du har **2FA** aktiveret for denne konto. Benyt venligst din **2FA**-app til at 
                 'FILEPOND_CANCEL_UPLOAD' => 'Annuleer upload',
                 'FILEPOND_ERROR_FILESIZE' => 'Bestand is te groot',
                 'FILEPOND_ERROR_FILETYPE' => 'Ongeldig bestandstype'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Søg …',
-                'SEARCH_RESULTS' => 'Søgeresultat',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Søgning: <strong>%s</strong> fandt et resultat',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Søgning: <strong>%s</strong> fandt %s resultater'
             ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Fejl',
@@ -27859,12 +27730,6 @@ asukoht: `%2$s`
                 'DASHBOARD' => 'پیشخوان',
                 'NOTIFICATIONS' => 'اطلاعیه‌ها'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'جستجو …',
-                'SEARCH_RESULTS' => 'نتایج جستجو',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'جستار: <strong>%s</strong> یک نتیجه یافت شد',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'جستار: <strong>%s</strong> %s نتیجه یافت شد'
-            ],
             'GRAV' => [
                 'FRONTMATTER_ERROR_PAGE' => '---
 عنوان: %1$s
@@ -29225,12 +29090,6 @@ Filtrar os vínculos Moz',
                 'NOTIFICATIONS' => 'Notificacións',
                 'PAGEMEDIA_RESIZER' => '> A seguinte configuración aplícase ás imaxes cargadas a través da páxina de medios. Redimensionar largo / alto reducirá automaticamente proporcionalmente unha imaxe a nivel máis baixo se excede os límites definidos na configuración. Os valores de resolución mínima e máxima define os límites das imaxes cargadas. Defínase os campos como 0 para evitar calquera manipulación.',
                 'IMAGES_CLS_AUTO_SIZES' => 'Habilitar Tamaños Automáticos'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Procurar …',
-                'SEARCH_RESULTS' => 'Resultados da procura',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Consulta: <strong>%s</strong> atopouse 1 resultado',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Consulta: <strong>%s</strong> atopáronse %s resultados'
             ],
             'GRAV' => [
                 'FRONTMATTER_ERROR_PAGE' => '---
@@ -32122,13 +31981,6 @@ La **2FA** è abilitata per questo account. Si prega di utilizzare la vostra app
                 'FILEPOND_ERROR_FILESIZE' => 'Il file è troppo grande',
                 'FILEPOND_ERROR_FILETYPE' => 'Tipo di file non valido'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Cerca …',
-                'SEARCH_RESULTS' => 'Risultati della ricerca',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Ricerca: <strong>%s</strong>. Trovato un risultato',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Ricerca: <strong>%s</strong>. Trovati %s risultati',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Inserisci almeno %s caratteri'
-            ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Errore',
                 'ERROR_MESSAGE' => 'Ooops. A quanto pare, questa pagina non esiste.'
@@ -33126,12 +32978,6 @@ La **2FA** è abilitata per questo account. Si prega di utilizzare la vostra app
                     'LIST_EMPTY_ADD' => '現在データがありません。<a href="%s">追加</a> ボタンをクリックして新規作成してください…',
                     'NO_FLEX_DIRECTORIES' => 'Flex ディレクトリーが見つかりません。'
                 ]
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => '検索する …',
-                'SEARCH_RESULTS' => '検索結果',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => '検索 : <strong>%s</strong> に一つの結果があります。',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => '検索 : <strong>%s</strong> に %s の結果があります。'
             ],
             'GRAV' => [
                 'INFLECTOR_UNCOUNTABLE' => [
@@ -37679,13 +37525,6 @@ Masz na tym koncie włączone **2FA**. Użyj aplikacji od **2FA** i wprowadź ak
                 'FILEPOND_ERROR_FILESIZE' => 'Plik jest zbyt duży',
                 'FILEPOND_ERROR_FILETYPE' => 'Nieprawidłowy typ pliku'
             ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Szukaj…',
-                'SEARCH_RESULTS' => 'Wyniki wyszukiwania',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Znaleziono jeden wynik dla frazy <strong>%s</strong>.',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Znaleziono %2$s wyników dla frazy <strong>%1$s</strong>.',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Fraza musi składać się z minimum %s znaków.'
-            ],
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Błąd',
                 'ERROR_MESSAGE' => 'Ups. Wygląda na to, że ta strona nie istnieje.'
@@ -38535,12 +38374,6 @@ Path: `%2$s`
                 'FILEPOND_CANCEL_UPLOAD' => 'Cancelar upload',
                 'FILEPOND_ERROR_FILESIZE' => 'O arquivo é muito grande',
                 'FILEPOND_ERROR_FILETYPE' => 'Tipo de arquivo inválido'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'O que você procura?',
-                'SEARCH_RESULTS' => 'Resultados da pesquisa',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Pesquisa: <strong>%s</strong>. Foram encontrados 1 resultados',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Pesquisa: <strong>%s</strong>. Foram encontrados %s resultados'
             ],
             'GRAV' => [
                 'FRONTMATTER_ERROR_PAGE' => '---
@@ -42677,12 +42510,6 @@ Path: `%2$s`
                 'TIMEOUT_HELP' => 'Anger sessionstimeout i sekunder',
                 'DASHBOARD' => 'Översiktspanel',
                 'NOTIFICATIONS' => 'Notiser'
-            ],
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'Sök …',
-                'SEARCH_RESULTS' => 'Sökresultat',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Sökning: <strong>%s</strong> hittade ett resultat',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Sökning: <strong>%s</strong> hittade %s resultat'
             ],
             'GRAV' => [
                 'FRONTMATTER_ERROR_PAGE' => '--- titel: %1$s --- # Fel: Ogiltig Frontmatter-sökväg: `%2$s` **%3$s** ``` %4$s ```',
@@ -49145,24 +48972,6 @@ title: %1$s
                     'TEXT_MONTH' => ' 的 <b />',
                     'TEXT_DOM' => ' 的 <b />'
                 ]
-            ]
-        ],
-        'zh-TW' => [
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => '搜尋 …',
-                'SEARCH_RESULTS' => '搜尋結果',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => '查詢: <strong>%s</strong> 找到 1 個結果',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => '查詢: <strong>%s</strong> 找到 %s 個結果',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => '請輸入至少 %s 個字元'
-            ]
-        ],
-        'kk' => [
-            'PLUGIN_SIMPLESEARCH' => [
-                'SEARCH_PLACEHOLDER' => 'іздеу …',
-                'SEARCH_RESULTS' => 'Іздеу нәтижесі',
-                'SEARCH_RESULTS_SUMMARY_SINGULAR' => 'Сұраныс бойынша: <strong>%s</strong> табылды 1',
-                'SEARCH_RESULTS_SUMMARY_PLURAL' => 'Сұраныс бойынша: <strong>%s</strong> табылды %s',
-                'SEARCH_FIELD_MINIMUM_CHARACTERS' => 'Кемінде %s таңба қосу'
             ]
         ],
         'is' => [

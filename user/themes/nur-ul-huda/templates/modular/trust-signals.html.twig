@@ -1,24 +1,23 @@
-<section class="section section-py modular-trust-signals @container overflow-hidden">
-    <div class="container-px mx-auto max-w-7xl animate-fade-in-up">
-        <div class="card-glass flex flex-wrap justify-center items-stretch gap-12 @md:gap-24 p-12 @lg:p-16 border border-white/60 bg-linear-to-br from-white/10 to-primary/5">
+<section class="modular-section modular-trust-signals">
+    <div class="section-container animate-fade-in-up">
+        <div class="trust-signals-container">
             {% for signal in page.header.signals %}
-                <div class="text-center group flex flex-col items-center flex-1 min-w-[160px]">
-                    <div class="bento-icon mb-6 shadow-inner-premium"
-                         style="background-color: oklch(from {{ signal.color|default('#2ecc71') }} L C H / 0.1); color: {{ signal.color|default('#2ecc71') }}">
-                        <i class="la la-fw {{ signal.icon }} text-4xl" aria-hidden="true"></i>
+                <div class="trust-signal">
+                    <div class="trust-signal-icon"
+                         style="background-color: oklch(from {{ signal.color|default('var(--color-primary)') }} L C H / 0.1); color: {{ signal.color|default('var(--color-primary)') }}">
+                        <i class="la la-fw {{ signal.icon }}" aria-hidden="true"></i>
                     </div>
-                    <div class="section-title !text-[clamp(1.5rem,3cqw,2.5rem)] mb-2 group-hover:scale-110 transition-transform duration-500">
+                    <div class="trust-signal-value">
                         {{ signal.title }}
                     </div>
-                    <div class="text-[10px] font-black text-subtle uppercase tracking-[0.2em] transition-colors group-hover:text-primary">
+                    <div class="trust-signal-label">
                         {{ signal.text }}
                     </div>
                 </div>
                 {% if not loop.last %}
-                    <div class="hidden @xl:block w-px h-24 self-center bg-linear-to-b from-transparent via-gray-200 to-transparent" aria-hidden="true"></div>
+                    <div class="trust-signal-divider" aria-hidden="true"></div>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
 </section>
-

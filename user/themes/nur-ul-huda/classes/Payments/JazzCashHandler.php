@@ -11,15 +11,13 @@ use Grav\Theme\NurUlHuda\Utils\SecurityLogger;
 class JazzCashHandler
 {
     protected Grav $grav;
-    protected SecurityLogger $logger;
-    protected mixed $config;
     protected SnipcartHandler $snipcart;
 
-    public function __construct(mixed $config)
-    {
+    public function __construct(
+        protected mixed $config,
+        protected SecurityLogger $logger = new SecurityLogger()
+    ) {
         $this->grav = Grav::instance();
-        $this->logger = new SecurityLogger();
-        $this->config = $config;
         $this->snipcart = new SnipcartHandler($config);
     }
 

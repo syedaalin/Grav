@@ -1,0 +1,85 @@
+@layer reset {
+  /* Modern CSS Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  body {
+    min-height: 100svh;
+    line-height: 1.5;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Remove default focus styles (we'll add custom ones in components) */
+  :focus {
+    outline: none;
+  }
+  
+  /* Ensure smooth scrolling */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Accessibility: Skip Link */
+  .skip-link {
+    position: absolute;
+    inset-block-start: -1000px;
+    inset-inline-start: -1000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    color: white;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0.25rem;
+  }
+  
+  .skip-link:focus {
+    inset-block-start: 1rem;
+    inset-inline-start: 1rem;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+  }
+}

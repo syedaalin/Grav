@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1768090142,
-    'checksum' => '436659659866de2f455ba8a27393e4df',
+    'timestamp' => 1768241562,
+    'checksum' => '19095ea6955684cc7c03ffd4711e773e',
     'files' => [
         'user/localhost/config' => [
             'security' => [
@@ -27,7 +27,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768088585
+                'modified' => 1768238528
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -47,6 +47,10 @@ return [
                 'file' => 'user/config/plugins/shortcodes.yaml',
                 'modified' => 1767662677
             ],
+            'plugins/tntsearch' => [
+                'file' => 'user/config/plugins/tntsearch.yaml',
+                'modified' => 1768106898
+            ],
             'plugins/webp' => [
                 'file' => 'user/config/plugins/webp.yaml',
                 'modified' => 1767661584
@@ -61,7 +65,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768090140
+                'modified' => 1768241527
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -77,7 +81,7 @@ return [
             ],
             'themes/my-nur-ul-huda' => [
                 'file' => 'user/config/themes/my-nur-ul-huda.yaml',
-                'modified' => 1767950165
+                'modified' => 1768103474
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/config/themes/nur-ul-huda.yaml',
@@ -147,9 +151,9 @@ return [
                 'file' => 'user/plugins/relatedpages/relatedpages.yaml',
                 'modified' => 1691710516
             ],
-            'plugins/simplesearch' => [
-                'file' => 'user/plugins/simplesearch/simplesearch.yaml',
-                'modified' => 1661506352
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/tntsearch.yaml',
+                'modified' => 1728001206
             ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
@@ -203,7 +207,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/nur-ul-huda.yaml',
-                'modified' => 1767957630
+                'modified' => 1768231147
             ]
         ]
     ],
@@ -213,51 +217,63 @@ return [
                 'enabled' => true,
                 'production-mode' => true,
                 'grid-size' => 'grid-xl',
+                'debug_glass' => false,
+                'font_heading' => 'sans-serif',
+                'font_body' => '\'Outfit-VariableFont_wght\', sans-serif',
+                'custom_fonts' => [
+                    'Inter-VariableFont_slnt,wght.ttf' => [
+                        'name' => 'Inter-VariableFont_slnt,wght.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/Inter-VariableFont_slnt,wght.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 297214
+                    ],
+                    'Outfit-VariableFont_wght.ttf' => [
+                        'name' => 'Outfit-VariableFont_wght.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/Outfit-VariableFont_wght.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 110884
+                    ],
+                    'PlusJakartaSans-VariableFont_wght.ttf' => [
+                        'name' => 'PlusJakartaSans-VariableFont_wght.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/PlusJakartaSans-VariableFont_wght.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 176288
+                    ],
+                    'PlayfairDisplay-VariableFont_wght.ttf' => [
+                        'name' => 'PlayfairDisplay-VariableFont_wght.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/PlayfairDisplay-VariableFont_wght.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 300724
+                    ],
+                    'Merriweather-Regular.ttf' => [
+                        'name' => 'Merriweather-Regular.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/Merriweather-Regular.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 297273
+                    ],
+                    'Merriweather-Bold.ttf' => [
+                        'name' => 'Merriweather-Bold.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/Merriweather-Bold.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 297238
+                    ],
+                    'NotoNastaliqUrdu-VariableFont_wght.ttf' => [
+                        'name' => 'NotoNastaliqUrdu-VariableFont_wght.ttf',
+                        'path' => 'user/themes/nur-ul-huda/fonts/custom/NotoNastaliqUrdu-VariableFont_wght.ttf',
+                        'type' => 'application/octet-stream',
+                        'size' => 690304
+                    ]
+                ],
+                'glass_blur' => 2,
+                'glass_opacity' => 10,
+                'glass_noise' => true,
+                'bottom_banner_show_social_labels' => true,
                 'header-fixed' => true,
                 'header-animated' => true,
                 'header-dark' => false,
                 'header-transparent' => false,
-                'sticky-footer' => true,
+                'sticky-footer' => '1',
                 'blog-page' => '/blog',
-                'site_name' => 'aabtaab',
-                'site_tagline' => NULL,
-                'direction' => 'ltr',
-                'language' => 'en',
-                'number_format' => 'western',
-                'date_calendar' => 'both',
-                'primary_spirit_color' => '#2ecc71',
-                'accent_color' => '#f1c40f',
-                'blur_strength' => 12,
-                'typography' => 'roboto_mono',
-                'social_facebook' => NULL,
-                'social_twitter' => NULL,
-                'social_instagram' => NULL,
-                'social_youtube' => NULL,
-                'social_telegram' => NULL,
-                'social_whatsapp' => NULL,
-                'social_email' => NULL,
-                'contact_phone' => NULL,
-                'contact_address' => NULL,
-                'prayer_method' => 'karachi',
-                'hijri_offset' => 0,
-                'default_location' => 'Karachi',
-                'footer_copyright' => NULL,
-                'footer_show_social' => true,
-                'footer_columns' => [
-                    
-                ],
-                'hero_enabled' => true,
-                'hero_default_style' => 'hero-large',
-                'services_enabled' => true,
-                'services_default_columns' => '3',
-                'features_enabled' => true,
-                'features_default_layout' => 'standard',
-                'gallery_enabled' => true,
-                'istafta_enabled' => true,
-                'khums_enabled' => true,
-                'timeline_enabled' => true,
-                'trust_signals_enabled' => true,
-                'courses_enabled' => true,
                 'spectre' => [
                     'exp' => true,
                     'icons' => true
@@ -280,6 +296,44 @@ return [
                         'path' => 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
                     ]
                 ],
+                'site_name' => 'aabtaab',
+                'site_tagline' => 'Guiding is light of faith',
+                'direction' => 'ltr',
+                'language' => 'en',
+                'number_format' => 'western',
+                'date_calendar' => 'both',
+                'primary_spirit_color' => '#2ecc71',
+                'accent_color' => '#f1c40f',
+                'blur_strength' => 12,
+                'typography' => 'roboto_mono',
+                'social_facebook' => 'https://www.facebook.com/aabtaab/',
+                'social_twitter' => 'https://x.com/aabtaabonline',
+                'social_instagram' => 'https://www.instagram.com/aabtaab_online/',
+                'social_youtube' => 'https://www.youtube.com/c/aabtaab/',
+                'social_telegram' => NULL,
+                'social_whatsapp' => 'https://api.whatsapp.com/send/?phone=923022452000&text=Hi%20there!%20I%27m%20visiting%20aabtaab.com%20and%20have%20a%20few%20questions.%20Could%20you%20help%20me%20out?&type=phone_number&app_absent=0',
+                'social_email' => 'edu.aabtaab@gmail.com',
+                'contact_phone' => '+92 302 245 2000',
+                'contact_address' => 'R-591 , Near Amroha Ground , F.B. Area Block 20 (incholi) Karach Pakistan',
+                'prayer_method' => 'karachi',
+                'hijri_offset' => 0,
+                'default_location' => 'Karachi',
+                'bottom_banner_copyright' => NULL,
+                'bottom_banner_show_social' => true,
+                'hero_enabled' => true,
+                'hero_default_style' => 'hero-large',
+                'services_enabled' => true,
+                'services_default_columns' => '3',
+                'features_enabled' => true,
+                'features_default_layout' => 'standard',
+                'gallery_enabled' => true,
+                'istafta_enabled' => true,
+                'khums_enabled' => true,
+                'timeline_enabled' => true,
+                'trust_signals_enabled' => true,
+                'courses_enabled' => true,
+                'footer_copyright' => '',
+                'footer_show_social' => '1',
                 'moodle_url' => NULL,
                 'moodle_token' => 'Pa$$w0rd',
                 'snipcart_key' => NULL,
@@ -300,11 +354,9 @@ return [
                 'minaret_show_prayer_ticker' => true,
                 'minaret_show_contact' => true,
                 'minaret_show_social' => true,
-                'glass_blur' => 16,
                 'glass_opacity_initial' => 0.05,
                 'glass_opacity_scrolled' => 0.2,
-                'glass_border_opacity' => 0.1,
-                'glass_opacity' => 0.15,
+                'glass_border_opacity' => 50,
                 'glass_thickness' => 1,
                 'glass_shadow_intensity' => 0.1,
                 'top_banner_enabled' => true,
@@ -319,7 +371,28 @@ return [
                 'top_banner_show_prayer_ticker' => true,
                 'top_banner_show_contact' => true,
                 'top_banner_show_social' => true,
-                'header_site_name' => 'Aabtaab'
+                'header_site_name' => 'Aabtaab',
+                'header' => [
+                    'glass_bg_color' => '#050000',
+                    'glass_opacity' => 62,
+                    'glass_blur' => '8px',
+                    'glass_border_opacity' => 41
+                ],
+                'dropdown' => [
+                    'enabled' => true
+                ],
+                'favicon' => [
+                    
+                ],
+                'glass_bg_color' => '#000000',
+                'glass_highlight' => 100,
+                'social_google_maps' => 'https://maps.app.goo.gl/jC5WoemexvgKoA8F6',
+                'social_phone' => '+923022452000',
+                'bottom_banner_show_logo' => true,
+                'bottom_banner_show_site_name' => true,
+                'bottom_banner_show_tagline' => true,
+                'bottom_banner_show_social_labels_mobile' => false,
+                'bottom_banner_show_social_labels_desktop' => true
             ],
             'agency' => [
                 'enabled' => true,
@@ -520,6 +593,7 @@ return [
                         ]
                     ]
                 ],
+                'snipcart_key' => 'M2MzN2Y2NzktNGEzNi00MjY5LWFkNTktYzg1M2YwM2QyZTAwNjM4NzQ2Nzc2MjE2NzM3ODQ2',
                 'physic_glass_blur' => 20,
                 'physic_neo_strength' => 0.5,
                 'physic_neo_lightSource' => 'top-left',
@@ -545,9 +619,9 @@ return [
                 'brand_accent' => '#bf616a',
                 'physic_radius_main' => '12px',
                 'font_family' => 'Outfit',
-                'footer_bg' => '#0f0f10',
-                'footer_text' => '#ffffff',
-                'footer_accent' => '#d4af37',
+                'bottom_banner_bg' => '#0f0f10',
+                'bottom_banner_text' => '#ffffff',
+                'bottom_banner_accent' => '#d4af37',
                 'contact_address' => 'R-591 Block 20 F B Area Karachi.',
                 'contact_email' => 'edu.aabtaab@gmail.com',
                 'contact_phone' => '+92 302 245 2000',
@@ -605,7 +679,7 @@ return [
                         'focus_hide' => '0'
                     ]
                 ],
-                'footer_builder' => [
+                'bottom_banner_builder' => [
                     0 => [
                         'width' => 'col-4',
                         'type' => 'branding',
@@ -614,9 +688,9 @@ return [
                         'animation' => 'fadeUp'
                     ]
                 ],
-                'footer_copyright' => '&copy; 2026 Your Company. All rights reserved.',
-                'footer_credits' => 'Designed by Antigravity',
-                'footer_links_title' => 'Links'
+                'bottom_banner_copyright' => '&copy; 2026 Your Company. All rights reserved.',
+                'bottom_banner_credits' => 'Designed by Antigravity',
+                'bottom_banner_links_title' => 'Links'
             ],
             'purity' => [
                 'enabled' => true,
@@ -1637,38 +1711,39 @@ return [
                     'process' => false
                 ]
             ],
-            'simplesearch' => [
+            'tntsearch' => [
                 'enabled' => true,
-                'built_in_css' => true,
+                'search_route' => '/search',
+                'query_route' => '/s',
+                'built_in_css' => false,
                 'built_in_js' => true,
-                'display_button' => false,
-                'min_query_length' => 3,
-                'route' => '/search',
-                'search_content' => 'rendered',
-                'template' => 'simplesearch_results',
-                'filters' => [
-                    'category' => NULL
+                'built_in_search_page' => true,
+                'enable_admin_page_events' => true,
+                'search_type' => 'auto',
+                'fuzzy' => false,
+                'distance' => 2,
+                'phrases' => true,
+                'stemmer' => 'default',
+                'display_route' => true,
+                'display_hits' => true,
+                'display_time' => true,
+                'live_uri_update' => true,
+                'limit' => 20,
+                'min' => 3,
+                'snippet' => 300,
+                'index_page_by_default' => true,
+                'scheduled_index' => [
+                    'enabled' => false,
+                    'at' => '0 */3 * * *',
+                    'logs' => 'logs/tntsearch-index.out'
                 ],
-                'filter_combinator' => 'and',
-                'ignore_accented_characters' => false,
-                'order' => [
-                    'by' => 'date',
-                    'dir' => 'desc'
+                'filter' => [
+                    'items' => [
+                        0 => 'root@.descendants'
+                    ]
                 ],
-                'searchable_types' => [
-                    'title' => true,
-                    'content' => true,
-                    'taxonomy' => true,
-                    'header' => false
-                ],
-                'header_keys_ignored' => [
-                    0 => 'title',
-                    1 => 'taxonomy',
-                    2 => 'content',
-                    3 => 'form',
-                    4 => 'forms',
-                    5 => 'media_order'
-                ]
+                'powered_by' => false,
+                'search_object_type' => 'Grav'
             ],
             'admin' => [
                 'enabled' => true,

@@ -3,16 +3,16 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'languages',
     'environment' => 'localhost',
-    'timestamp' => 1768090142,
+    'timestamp' => 1768241562,
     'directories' => [
         '/Users/syedaalin/Documents/Grav/system/languages' => 1767934750,
-        '/Users/syedaalin/Documents/Grav/user/plugins' => 1767944120,
+        '/Users/syedaalin/Documents/Grav/user/plugins' => 1768107130,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/pagination' => 1767731299,
         '/Users/syedaalin/Documents/Grav/user/plugins/form' => 1767660593,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects' => 1767663065,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages' => 1767636900,
-        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch' => 1767731298,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch' => 1768106850,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin' => 1767663061,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap' => 1767636900,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems' => 1767660592,
@@ -79,7 +79,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/pagination/languages.yaml' => 1707084214,
         '/Users/syedaalin/Documents/Grav/user/plugins/form/languages.yaml' => 1766923054,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages/languages.yaml' => 1691710516,
-        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch/languages.yaml' => 1661506352,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch/languages.yaml' => 1728001206,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap/languages.yaml' => 1718603524,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems/languages.yaml' => 1767934750,
         '/Users/syedaalin/Documents/Grav/user/plugins/error/languages.yaml' => 1767934750,
@@ -372,9 +372,9 @@ return [
                 'file' => 'user/plugins/relatedpages/languages.yaml',
                 'modified' => 1691710516
             ],
-            'plugins/simplesearch' => [
-                'file' => 'user/plugins/simplesearch/languages.yaml',
-                'modified' => 1661506352
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/languages.yaml',
+                'modified' => 1728001206
             ],
             'plugins/sitemap' => [
                 'file' => 'user/plugins/sitemap/languages.yaml',

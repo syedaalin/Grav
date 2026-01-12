@@ -1,0 +1,25 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    <section class="section section-py">
+        <div class="section-container">
+            {# Page Header / Intro #}
+            {% if page.content %}
+                <header class="services-parent-header animate-fade-in-up">
+                    <h1 class="services-parent-title">{{ page.title }}</h1>
+                    <div class="prose-custom services-parent-intro">
+                        {{ page.content|raw }}
+                    </div>
+                </header>
+            {% else %}
+                 <header class="services-parent-header animate-fade-in-up">
+                    <h1 class="services-parent-title">{{ page.title }}</h1>
+                </header>
+            {% endif %}
+
+            {# Child Pages Grid #}
+            {% include 'partials/child-list.html.twig' with {'collection': page.children.visible} %}
+            
+        </div>
+    </section>
+{% endblock %}

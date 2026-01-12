@@ -1,59 +1,59 @@
 {% set grid_size = theme_var('grid-size') %}
 
-<section class="section section-py modular-courses bg-surface-subtle @container">
-    <div class="container-px mx-auto">
-        <div class="flex flex-col @md:flex-row justify-between items-start @md:items-end gap-6 mb-12">
-            <div class="max-w-2xl animate-fade-in-up">
+<section class="modular-section modular-courses">
+    <div class="section-container">
+        <div class="courses-header">
+            <div class="courses-intro animate-fade-in-up">
                 {% if page.content %}
                     <div class="prose-custom max-w-none">
                         {{ page.content|raw }}
                     </div>
                 {% else %}
-                    <h2 class="section-title mb-4">Featured Courses</h2>
-                    <p class="text-base @lg:text-lg text-subtle">Deepen your knowledge with our premium selection of certified courses.</p>
+                    <h2 class="section-title">Featured Courses</h2>
+                    <p class="courses-description">Deepen your knowledge with our premium selection of certified courses.</p>
                 {% endif %}
             </div>
-            <a href="{{ url('theme://courses') }}" class="inline-flex items-center gap-2 text-primary font-bold hover:underline group focus:input-focus rounded-lg">
+            <a href="{{ url('theme://courses') }}" class="courses-view-all">
                 View All Courses
-                <i class="la la-angle-right transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
+                <i class="la la-angle-right courses-view-icon" aria-hidden="true"></i>
             </a>
         </div>
 
         {% set courses = page.header.course_source == 'moodle' and moodle_courses ? moodle_courses : page.header.courses %}
 
         {% if courses and courses|length > 0 %}
-        <div class="grid-bento gap-8">
+        <div class="courses-grid">
         {% for course in courses %}
-            <article class="card-glass flex flex-col group overflow-hidden">
-                <div class="relative h-48 overflow-hidden">
+            <article class="course-card">
+                <div class="course-thumbnail">
                     {% if page.header.course_source == 'moodle' %}
                         {# Moodle course mapping #}
                         <img src="{{ course.overviewfiles[0].fileurl ~ '?token=' ~ theme_var('moodle_token') }}" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                             class="course-image" 
                              alt="{{ course.fullname }}"
                              loading="lazy" />
                     {% else %}
                         {# Static course thumbnails #}
                         {% set course_img = course.thumbnail ? page.media[course.thumbnail] : null %}
                         {% if course_img %}
-                            {{ course_img.cropZoom(600, 400).html('', course.title, 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700')|raw }}
+                            {{ course_img.cropZoom(600, 400).html('', course.title, 'course-image')|raw }}
                         {% else %}
-                            <div class="w-full h-full bento-icon !w-full !h-full bg-primary/10">
-                                <i class="la la-graduation-cap text-primary/30" aria-hidden="true"></i>
+                            <div class="course-placeholder">
+                                <i class="la la-graduation-cap" aria-hidden="true"></i>
                             </div>
                         {% endif %}
                     {% endif %}
-                    <div class="absolute top-4 right-4 badge-primary !bg-white/90 !backdrop-blur-md">
+                    <div class="course-badge">
                         Enroll Now
                     </div>
                 </div>
                 
-                <div class="p-6 flex flex-col grow">
-                    <span class="text-accent uppercase tracking-[0.2em] text-[10px] font-black mb-2">{{ course.instructor|default('Certified Scholar') }}</span>
-                    <h3 class="text-lg font-black mb-4 line-clamp-2 text-gray-950 group-hover:text-primary transition-colors">{{ course.fullname|default(course.title) }}</h3>
-                    <div class="mt-auto pt-4 border-t border-subtle/50 flex items-center">
+                <div class="course-content">
+                    <span class="course-instructor">{{ course.instructor|default('Certified Scholar') }}</span>
+                    <h3 class="course-title">{{ course.fullname|default(course.title) }}</h3>
+                    <div class="course-action">
                          <a href="{{ course.viewurl|default(course.url)|default('#') }}" 
-                            class="btn-primary w-full"
+                            class="btn-primary course-button"
                             aria-label="Start learning {{ course.fullname|default(course.title) }}">
                             Start Learning
                         </a>
@@ -64,10 +64,10 @@
         </div>
         {% else %}
         {# Error/Empty State #}
-        <div class="card-glass p-12 text-center animate-fade-in-up">
-            <i class="la la-exclamation-circle text-5xl text-gray-300 mb-4" aria-hidden="true"></i>
-            <h3 class="text-xl font-bold text-gray-700 mb-2">No Courses Available</h3>
-            <p class="text-sm text-subtle">
+        <div class="courses-empty">
+            <i class="la la-exclamation-circle courses-empty-icon" aria-hidden="true"></i>
+            <h3 class="courses-empty-title">No Courses Available</h3>
+            <p class="courses-empty-text">
                 {% if page.header.course_source == 'moodle' %}
                     Unable to load courses from Moodle. Please check your connection or contact support.
                 {% else %}
@@ -78,4 +78,3 @@
         {% endif %}
     </div>
 </section>
-

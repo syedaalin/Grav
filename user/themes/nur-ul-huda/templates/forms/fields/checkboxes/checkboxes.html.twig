@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block input %}
-    <div class="flex flex-wrap gap-4 @container">
+    <div class="form-checkbox-group" style="container-type: inline-size;">
     {% for key, text in field.options %}
 
         {% set id = field.id|default(field.name) ~ '-' ~ key %}
@@ -22,24 +22,25 @@
         {% set checked = (field.use == 'keys' ? value[key] : key in value) %}
         {% set help = (key in field.help_options|keys ? field.help_options[key] : false) %}
 
-        <div class="checkbox-item group">
-            <label class="flex items-center cursor-pointer select-none" for="{{ id|e }}">
-                <div class="relative form-indicator rounded-lg group-hover:border-primary/50">
+        {# Using the exact structure from checkbox.html.twig which matches valid CSS #}
+        <div class="{{ form_field_wrapper_classes ?: 'form-input-wrapper' }} {{ field.size }} {{ field.wrapper_classes }} form-checkbox">
+            <label class="checkbox-label group" for="{{ id|e }}">
+                <div class="checkbox-indicator">
                     <input type="checkbox"
                            id="{{ id|e }}"
                            value="{{ val|e }}"
                            name="{{ (scope ~ field.name)|fieldName ~ '[' ~ name ~ ']' }}"
                            {% if checked %}checked="checked"{% endif %}
-                           class="sr-only peer"
+                           class="sr-only"
                            {% if field.classes is defined %}class="{{ field.classes }}" {% endif %}
                            {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}
                     >
-                    <div class="form-check-mark rounded-lg peer-checked:scale-100 peer-focus:shadow-[0_0_0_4px_oklch(var(--color-primary)/0.1)]">
-                        <i class="la la-check text-white text-xs font-black"></i>
+                    <div class="checkbox-mark">
+                        <i class="la la-check" aria-hidden="true"></i>
                     </div>
                 </div>
 
-                <span class="ml-3 form-label-text group-hover:text-primary">
+                <span class="checkbox-text">
                     {% if help %}
                         <span class="hint--bottom" data-hint="{{ help|t|e('html_attr') }}">{{ text|t|e }}</span>
                     {% else %}
@@ -51,4 +52,3 @@
     {% endfor %}
     </div>
 {% endblock %}
-

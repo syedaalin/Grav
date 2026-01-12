@@ -1,24 +1,24 @@
 {% if pagination|length > 1 %}
-<nav class="flex justify-center my-12 @container" aria-label="Pagination">
-    <ul class="flex items-center gap-2">
+<nav class="pagination-nav container-inline" aria-label="Pagination">
+    <ul class="pagination-list">
         {% if pagination.hasPrev %}
             {% set url = (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
             <li>
                 <a rel="prev" href="{{ url }}" class="btn-page">
-                    <i class="la la-long-arrow-alt-left mr-2 text-lg"></i>
+                    <i class="la la-long-arrow-alt-left btn-page-icon-left"></i>
                     {{ 'THEME_NUR_UL_HUDA.PAGINATION.PREV'|t }}
                 </a>
             </li>
         {% else %}
             <li>
                 <span class="btn-page-disabled">
-                    <i class="la la-long-arrow-alt-left mr-2 text-lg"></i>
+                    <i class="la la-long-arrow-alt-left btn-page-icon-left"></i>
                     {{ 'THEME_NUR_UL_HUDA.PAGINATION.PREV'|t }}
                 </span>
             </li>
         {% endif %}
 
-        <div class="hidden @md:flex items-center gap-2">
+        <div class="pagination-hidden-mobile">
             {% for paginate in pagination %}
                 {% if paginate.isCurrent %}
                     <li>
@@ -28,13 +28,13 @@
                     </li>
                 {% elseif paginate.isInDelta %}
                     <li>
-                        <a href="{{ url }}" class="btn-page !w-11 !h-11 !px-0">
+                        <a href="{{ url }}" class="btn-page btn-page-square">
                             {{ paginate.number }}
                         </a>
                     </li>
                 {% elseif paginate.isDeltaBorder %}
                     <li>
-                        <span class="flex items-center justify-center w-11 h-11 text-sm font-black text-subtle">
+                        <span class="pagination-ellipsis">
                             &hellip;
                         </span>
                     </li>
@@ -47,18 +47,17 @@
             <li>
                 <a rel="next" href="{{ url }}" class="btn-page">
                     {{ 'THEME_NUR_UL_HUDA.PAGINATION.NEXT'|t }}
-                    <i class="la la-long-arrow-alt-right ml-2 text-lg"></i>
+                    <i class="la la-long-arrow-alt-right btn-page-icon-right"></i>
                 </a>
             </li>
         {% else %}
             <li>
                 <span class="btn-page-disabled">
                     {{ 'THEME_NUR_UL_HUDA.PAGINATION.NEXT'|t }}
-                    <i class="la la-long-arrow-alt-right ml-2 text-lg"></i>
+                    <i class="la la-long-arrow-alt-right btn-page-icon-right"></i>
                 </span>
             </li>
         {% endif %}
     </ul>
 </nav>
 {% endif %}
-

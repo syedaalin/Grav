@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1768090143,
-    'checksum' => 'f29057ee86b77e6f4d15a3ff6d877ea7',
+    'timestamp' => 1768241564,
+    'checksum' => '185ec7296a6c120e3d0c498516eb259e',
     'files' => [
         'system/blueprints/config' => [
             'backups' => [
@@ -55,9 +55,9 @@ return [
                 'file' => 'user/plugins/relatedpages/blueprints.yaml',
                 'modified' => 1691710516
             ],
-            'plugins/simplesearch' => [
-                'file' => 'user/plugins/simplesearch/blueprints.yaml',
-                'modified' => 1661506352
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/blueprints.yaml',
+                'modified' => 1728001206
             ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
@@ -111,7 +111,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
-                'modified' => 1768088563
+                'modified' => 1768241514
             ]
         ]
     ],
@@ -4110,209 +4110,351 @@ return [
                 'name' => 'plugins.relatedpages.taxonomy_match.taxonomy_content.score_scale',
                 'validation' => 'loose'
             ],
-            'plugins.simplesearch' => [
+            'plugins.tntsearch' => [
                 'type' => '_root',
                 'form_field' => false,
                 'form' => [
                     'validation' => 'strict'
                 ]
             ],
-            'plugins.simplesearch.enabled' => [
+            'plugins.tntsearch.enabled' => [
                 'type' => 'toggle',
-                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'label' => 'Plugin status',
                 'highlight' => 1,
                 'default' => 0,
                 'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
+                    1 => 'Enabled',
+                    0 => 'Disabled'
                 ],
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'plugins.simplesearch.enabled',
+                'name' => 'plugins.tntsearch.enabled',
                 'validation' => 'strict'
             ],
-            'plugins.simplesearch.search_content' => [
-                'type' => 'select',
+            'plugins.tntsearch.index_status' => [
+                'type' => 'indexstatus',
+                'label' => 'Search Index Status',
+                'name' => 'plugins.tntsearch.index_status',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.enable_admin_page_events' => [
+                'type' => 'toggle',
+                'label' => 'Enable Admin Page Events',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.enable_admin_page_events',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.scheduled_index' => [
+                'type' => '_parent',
+                'name' => 'plugins.tntsearch.scheduled_index',
+                'form_field' => false
+            ],
+            'plugins.tntsearch.scheduled_index.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Enable Index Scheduled Job',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.scheduled_index.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.scheduled_index.at' => [
+                'type' => 'cron',
+                'label' => 'Scheduled Job Frequency',
                 'size' => 'medium',
-                'classes' => 'fancy',
-                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_CONTENT',
-                'default' => 'rendered',
-                'options' => [
-                    'rendered' => 'PLUGIN_SIMPLESEARCH.RENDERED_CONTENT',
-                    'raw' => 'PLUGIN_SIMPLESEARCH.RAW_CONTENT'
-                ],
-                'name' => 'plugins.simplesearch.search_content',
+                'default' => '0 */3 * * *',
+                'name' => 'plugins.tntsearch.scheduled_index.at',
                 'validation' => 'strict'
             ],
-            'plugins.simplesearch.built_in_css' => [
-                'type' => 'toggle',
-                'label' => 'PLUGIN_SIMPLESEARCH.BUILTIN_CSS',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'plugins.simplesearch.built_in_css',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.built_in_js' => [
-                'type' => 'toggle',
-                'label' => 'PLUGIN_SIMPLESEARCH.BUILTIN_JS',
-                'highlight' => 1,
-                'default' => 1,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'plugins.simplesearch.built_in_js',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.display_button' => [
-                'type' => 'toggle',
-                'label' => 'PLUGIN_SIMPLESEARCH.DISPLAY_SEARCH_BUTTON',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'plugins.simplesearch.display_button',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.ignore_accented_characters' => [
-                'type' => 'toggle',
-                'label' => 'PLUGIN_SIMPLESEARCH.IGNORE_ACCENDED_CHARACTERS',
-                'highlight' => 0,
-                'default' => 0,
-                'options' => [
-                    1 => 'PLUGIN_ADMIN.ENABLED',
-                    0 => 'PLUGIN_ADMIN.DISABLED'
-                ],
-                'validate' => [
-                    'type' => 'bool'
-                ],
-                'name' => 'plugins.simplesearch.ignore_accented_characters',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.min_query_length' => [
+            'plugins.tntsearch.scheduled_index.logs' => [
                 'type' => 'text',
+                'label' => 'Scheduled Job Log File',
+                'size' => 'medium',
+                'name' => 'plugins.tntsearch.scheduled_index.logs',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'Built-in CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.built_in_css',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.built_in_js' => [
+                'type' => 'toggle',
+                'label' => 'Built-in Javascript',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.built_in_js',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.built_in_search_page' => [
+                'type' => 'toggle',
+                'label' => 'Built-in Search Page',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.built_in_search_page',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.search_route' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'Search Page Route',
+                'name' => 'plugins.tntsearch.search_route',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.query_route' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'Query Route',
+                'name' => 'plugins.tntsearch.query_route',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.search_type' => [
+                'type' => 'select',
+                'size' => 'small',
+                'classes' => 'fancy',
+                'label' => 'Search Type',
+                'default' => 'auto',
+                'options' => [
+                    'auto' => 'Auto',
+                    'basic' => 'Basic',
+                    'boolean' => 'Boolean'
+                ],
+                'name' => 'plugins.tntsearch.search_type',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.fuzzy' => [
+                'type' => 'toggle',
+                'label' => 'Fuzzy Search',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.fuzzy',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.distance' => [
+                'type' => 'number',
                 'size' => 'x-small',
-                'label' => 'PLUGIN_SIMPLESEARCH.MIN_QUERY_LENGTH',
-                'validate' => [
-                    'type' => 'number',
-                    'min' => 0
-                ],
-                'name' => 'plugins.simplesearch.min_query_length',
+                'label' => 'Levenshtein distance of fuzzy search',
+                'default' => 2,
+                'name' => 'plugins.tntsearch.distance',
                 'validation' => 'strict'
             ],
-            'plugins.simplesearch.route' => [
-                'type' => 'text',
-                'size' => 'medium',
-                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_PAGE_ROUTE',
-                'default' => '/random',
-                'name' => 'plugins.simplesearch.route',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.searchable_types' => [
-                'type' => 'checkboxes',
-                'label' => 'PLUGIN_SIMPLESEARCH.SEARCHABLE_TYPES',
-                'description' => 'PLUGIN_SIMPLESEARCH.SEARCHABLE_TYPES_DESCRIPTION',
-                'options' => [
-                    'title' => 'Title',
-                    'content' => 'Content',
-                    'header' => 'Header',
-                    'taxonomy' => 'Taxonomy'
-                ],
-                'use' => 'keys',
-                'name' => 'plugins.simplesearch.searchable_types',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.header_keys_ignored' => [
-                'type' => 'selectize',
-                'size' => 'large',
-                'label' => 'PLUGIN_SIMPLESEARCH.HEADER_KEYS_IGNORED',
-                'classes' => 'fancy',
-                'validate' => [
-                    'type' => 'commalist'
-                ],
-                'name' => 'plugins.simplesearch.header_keys_ignored',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.template' => [
-                'type' => 'text',
-                'size' => 'medium',
-                'label' => 'PLUGIN_SIMPLESEARCH.SEARCH_PAGE_TEMPLATE',
-                'default' => 'simplesearch_results',
-                'name' => 'plugins.simplesearch.template',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.filters' => [
-                'type' => '_parent',
-                'name' => 'plugins.simplesearch.filters',
-                'form_field' => false
-            ],
-            'plugins.simplesearch.filters.category' => [
-                'type' => 'selectize',
-                'label' => 'PLUGIN_SIMPLESEARCH.CATEGORY_FILTER',
-                'validate' => [
-                    'type' => 'commalist'
-                ],
-                'name' => 'plugins.simplesearch.filters.category',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.filter_combinator' => [
-                'type' => 'select',
-                'size' => 'medium',
-                'classes' => 'fancy',
-                'label' => 'PLUGIN_SIMPLESEARCH.FILTER_COMBINATOR',
-                'default' => 'and',
-                'options' => [
-                    'and' => 'PLUGIN_SIMPLESEARCH.AND_COMBINATOR',
-                    'or' => 'PLUGIN_SIMPLESEARCH.OR_COMBINATOR'
-                ],
-                'name' => 'plugins.simplesearch.filter_combinator',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.order' => [
-                'type' => '_parent',
-                'name' => 'plugins.simplesearch.order',
-                'form_field' => false
-            ],
-            'plugins.simplesearch.order.by' => [
-                'type' => 'select',
-                'size' => 'long',
-                'classes' => 'fancy',
-                'label' => 'PLUGIN_ADMIN.DEFAULT_ORDERING',
-                'options' => [
-                    'default' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_DEFAULT',
-                    'folder' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_FOLDER',
-                    'title' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_TITLE',
-                    'date' => 'PLUGIN_ADMIN.DEFAULT_ORDERING_DATE'
-                ],
-                'name' => 'plugins.simplesearch.order.by',
-                'validation' => 'strict'
-            ],
-            'plugins.simplesearch.order.dir' => [
+            'plugins.tntsearch.phrases' => [
                 'type' => 'toggle',
-                'label' => 'PLUGIN_ADMIN.DEFAULT_ORDER_DIRECTION',
-                'highlight' => 'asc',
-                'default' => 'desc',
+                'label' => 'Match quoted phrases',
+                'highlight' => 1,
+                'default' => 1,
                 'options' => [
-                    'asc' => 'PLUGIN_ADMIN.ASCENDING',
-                    'desc' => 'PLUGIN_ADMIN.DESCENDING'
+                    1 => 'Enabled',
+                    0 => 'Disabled'
                 ],
-                'name' => 'plugins.simplesearch.order.dir',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.phrases',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.stemmer' => [
+                'type' => 'select',
+                'size' => 'small',
+                'classes' => 'fancy',
+                'label' => 'Stemmer',
+                'default' => 'no',
+                'options' => [
+                    'no' => 'Disabled',
+                    'arabic' => 'Arabic',
+                    'croatian' => 'Croatian',
+                    'porter' => 'English',
+                    'german' => 'German',
+                    'italian' => 'Italian',
+                    'portuguese' => 'Portuguese',
+                    'russian' => 'Russian',
+                    'ukrainian' => 'Ukrainian'
+                ],
+                'name' => 'plugins.tntsearch.stemmer',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.display_route' => [
+                'type' => 'toggle',
+                'label' => 'Display Route',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.display_route',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.live_uri_update' => [
+                'type' => 'toggle',
+                'label' => 'Live URI Update',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.live_uri_update',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.display_hits' => [
+                'type' => 'toggle',
+                'label' => 'Display Hits',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.display_hits',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.display_time' => [
+                'type' => 'toggle',
+                'label' => 'Display Time',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.display_time',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.limit' => [
+                'type' => 'number',
+                'size' => 'x-small',
+                'label' => 'Results Limit',
+                'default' => 20,
+                'name' => 'plugins.tntsearch.limit',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.min' => [
+                'type' => 'number',
+                'size' => 'x-small',
+                'label' => 'Min Chars Before Search',
+                'default' => 3,
+                'name' => 'plugins.tntsearch.min',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.snippet' => [
+                'type' => 'number',
+                'size' => 'x-small',
+                'label' => 'Results Text Limit',
+                'default' => 300,
+                'name' => 'plugins.tntsearch.snippet',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.index_page_by_default' => [
+                'type' => 'toggle',
+                'label' => 'Index Every Page',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.index_page_by_default',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.filter' => [
+                'type' => '_parent',
+                'name' => 'plugins.tntsearch.filter',
+                'form_field' => false
+            ],
+            'plugins.tntsearch.filter.items' => [
+                'type' => 'textarea',
+                'size' => 'large',
+                'rows' => 4,
+                'label' => 'Search Filter',
+                'yaml' => true,
+                'validate' => [
+                    'type' => 'yaml'
+                ],
+                'name' => 'plugins.tntsearch.filter.items',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.powered_by' => [
+                'type' => 'toggle',
+                'label' => 'Powered By',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tntsearch.powered_by',
+                'validation' => 'strict'
+            ],
+            'plugins.tntsearch.search_object_type' => [
+                'type' => 'text',
+                'label' => 'Search Object Type',
+                'default' => 'Grav',
+                'name' => 'plugins.tntsearch.search_object_type',
                 'validation' => 'strict'
             ],
             'plugins.admin' => [
@@ -7149,6 +7291,8 @@ return [
             'themes.nur-ul-huda.direction' => [
                 'type' => 'toggle',
                 'label' => 'Text Direction',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 'ltr',
                 'options' => [
@@ -7161,6 +7305,8 @@ return [
             'themes.nur-ul-huda.language' => [
                 'type' => 'select',
                 'label' => 'Primary Language',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'en',
                 'options' => [
                     'en' => 'English',
@@ -7174,6 +7320,8 @@ return [
             'themes.nur-ul-huda.number_format' => [
                 'type' => 'select',
                 'label' => 'Number Format',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'western',
                 'options' => [
                     'western' => 'Western (0-9)',
@@ -7186,6 +7334,8 @@ return [
             'themes.nur-ul-huda.date_calendar' => [
                 'type' => 'select',
                 'label' => 'Date Calendar',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'gregorian',
                 'options' => [
                     'gregorian' => 'Gregorian Only',
@@ -7197,7 +7347,9 @@ return [
             ],
             'themes.nur-ul-huda.production-mode' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.PRODUCTION_MODE',
+                'label' => 'Production Mode',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7213,20 +7365,26 @@ return [
             'themes.nur-ul-huda.primary_spirit_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Primary Spirit Color',
-                'default' => '#2ecc71',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.55 0.18 165)',
                 'name' => 'themes.nur-ul-huda.primary_spirit_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.accent_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Accent Color',
-                'default' => '#f1c40f',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.85 0.15 85)',
                 'name' => 'themes.nur-ul-huda.accent_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.blur_strength' => [
                 'type' => 'range',
                 'label' => 'Glass Blur Strength',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 12,
                 'validate' => [
                     'min' => 0,
@@ -7235,106 +7393,166 @@ return [
                 'name' => 'themes.nur-ul-huda.blur_strength',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.typography' => [
-                'type' => 'select',
-                'label' => 'Typography Pairings',
-                'default' => 'inter_noto',
-                'options' => [
-                    'inter_noto' => 'Inter + Noto Nastaliq (Urdu Optimized)',
-                    'roboto_mono' => 'Roboto + Roboto Mono',
-                    'outfit' => 'Outfit + Inter'
+            'themes.nur-ul-huda.custom_fonts' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
                 ],
-                'name' => 'themes.nur-ul-huda.typography',
+                'type' => 'file',
+                'label' => 'Custom Fonts Library',
+                'style' => 'vertical',
+                'width' => '33%',
+                'destination' => 'theme://fonts/custom',
+                'multiple' => true,
+                'accept' => [
+                    0 => '.ttf',
+                    1 => '.woff',
+                    2 => '.woff2'
+                ],
+                'name' => 'themes.nur-ul-huda.custom_fonts',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.font_heading' => [
+                'type' => 'select',
+                'label' => 'Heading Font Family',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => '\'PlusJakartaSans-VariableFont_wght\', sans-serif',
+                'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
+                'name' => 'themes.nur-ul-huda.font_heading',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.font_body' => [
+                'type' => 'select',
+                'label' => 'Body Font Family',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => '\'Outfit-VariableFont_wght\', sans-serif',
+                'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
+                'name' => 'themes.nur-ul-huda.font_body',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.glass_bg_color' => [
+                'type' => 'colorpicker',
+                'label' => 'Base Color',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => '#ffffff',
+                'name' => 'themes.nur-ul-huda.glass_bg_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.glass_opacity' => [
                 'type' => 'range',
-                'label' => 'Glass Density (Translucency)',
-                'default' => 0.12,
+                'label' => 'Opacity %',
+                'style' => 'vertical',
+                'width' => '33%',
                 'validate' => [
-                    'min' => 0,
-                    'max' => 1,
-                    'step' => 0.01
+                    'min' => 10,
+                    'max' => 90
                 ],
+                'default' => 65,
                 'name' => 'themes.nur-ul-huda.glass_opacity',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.glass_blur' => [
                 'type' => 'range',
-                'label' => 'Diffusion (Blur)',
-                'default' => 25,
+                'label' => 'Blur Radius (px)',
+                'style' => 'vertical',
+                'width' => '33%',
                 'validate' => [
                     'min' => 0,
                     'max' => 50
                 ],
+                'default' => 16,
                 'name' => 'themes.nur-ul-huda.glass_blur',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.glass_border_opacity' => [
                 'type' => 'range',
-                'label' => 'Edge Visibility (Reflective Edge)',
-                'default' => 0.15,
+                'label' => 'Border Opacity %',
+                'style' => 'vertical',
+                'width' => '33%',
                 'validate' => [
                     'min' => 0,
-                    'max' => 1,
-                    'step' => 0.01
+                    'max' => 100
                 ],
+                'default' => 15,
                 'name' => 'themes.nur-ul-huda.glass_border_opacity',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.glass_thickness' => [
+            'themes.nur-ul-huda.glass_highlight' => [
                 'type' => 'range',
-                'label' => 'Edge Thickness',
-                'default' => 1,
+                'label' => 'Specular Highlight %',
+                'style' => 'vertical',
+                'width' => '33%',
                 'validate' => [
                     'min' => 0,
-                    'max' => 5,
-                    'step' => 1
+                    'max' => 100
                 ],
-                'name' => 'themes.nur-ul-huda.glass_thickness',
+                'default' => 40,
+                'name' => 'themes.nur-ul-huda.glass_highlight',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.glass_shadow_intensity' => [
-                'type' => 'range',
-                'label' => 'Depth (Shadow Intensity)',
-                'default' => 0.1,
-                'validate' => [
-                    'min' => 0,
-                    'max' => 1,
-                    'step' => 0.01
+            'themes.nur-ul-huda.glass_noise' => [
+                'type' => 'toggle',
+                'label' => 'Noise Texture',
+                'style' => 'vertical',
+                'width' => '33%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.nur-ul-huda.glass_shadow_intensity',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.glass_noise',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.custom_logo' => [
                 'array' => true,
                 'media_field' => true,
                 'validate' => [
-                    'type' => 'ignore',
-                    'method' => 'Grav\\Theme\\NurUlHuda::validateLogo'
+                    'type' => 'ignore'
                 ],
                 'type' => 'file',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO',
-                'size' => 'large',
+                'label' => 'Desktop Logo',
+                'style' => 'vertical',
+                'width' => '33%',
                 'destination' => 'theme://images/logo',
                 'multiple' => false,
-                'markdown' => true,
-                'description' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO_DESCRIPTION',
                 'accept' => [
                     0 => 'image/*'
                 ],
                 'name' => 'themes.nur-ul-huda.custom_logo',
-                'validation' => 'loose'
+                'validation' => 'loose',
+                'size' => 'large',
+                'markdown' => true,
+                'description' => 'Your site logo'
             ],
             'themes.nur-ul-huda.site_name' => [
                 'type' => 'text',
                 'label' => 'Site Name',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.site_name',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.site_tagline' => [
+                'type' => 'text',
+                'label' => 'Site Tagline',
+                'style' => 'vertical',
+                'width' => '33%',
+                'name' => 'themes.nur-ul-huda.site_tagline',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.header-fixed' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED',
+                'label' => 'Fixed Header',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7349,7 +7567,9 @@ return [
             ],
             'themes.nur-ul-huda.header-animated' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED',
+                'label' => 'Animated Header',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7364,7 +7584,9 @@ return [
             ],
             'themes.nur-ul-huda.header-dark' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK',
+                'label' => 'Dark Header',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 0,
                 'default' => 0,
                 'options' => [
@@ -7379,7 +7601,9 @@ return [
             ],
             'themes.nur-ul-huda.header-transparent' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT',
+                'label' => 'Transparent Header',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 0,
                 'default' => 0,
                 'options' => [
@@ -7395,6 +7619,8 @@ return [
             'themes.nur-ul-huda.top_banner_enabled' => [
                 'type' => 'toggle',
                 'label' => 'Enable Top Banner',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7410,6 +7636,8 @@ return [
             'themes.nur-ul-huda.top_banner_announcement_enabled' => [
                 'type' => 'toggle',
                 'label' => 'Enable Announcement',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 0,
                 'options' => [
@@ -7425,46 +7653,60 @@ return [
             'themes.nur-ul-huda.top_banner_announcement_text' => [
                 'type' => 'text',
                 'label' => 'Announcement Text',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.top_banner_announcement_text',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_announcement_expires' => [
                 'type' => 'datetime',
                 'label' => 'Expiration Date & Time',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.top_banner_announcement_expires',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_announcement_bg_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Announcement Background',
-                'default' => '#b91c1c',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.55 0.25 25)',
                 'name' => 'themes.nur-ul-huda.top_banner_announcement_bg_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_announcement_text_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Announcement Text Color',
-                'default' => '#ffffff',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.98 0 0)',
                 'name' => 'themes.nur-ul-huda.top_banner_announcement_text_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_bg_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Background Color',
-                'default' => '#111827',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.2 0.02 260)',
                 'name' => 'themes.nur-ul-huda.top_banner_bg_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_text_color' => [
                 'type' => 'colorpicker',
                 'label' => 'Text Color',
-                'default' => '#f1c40f',
+                'style' => 'vertical',
+                'width' => '33%',
+                'default' => 'oklch(0.85 0.15 85)',
                 'name' => 'themes.nur-ul-huda.top_banner_text_color',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.top_banner_show_dates' => [
                 'type' => 'toggle',
                 'label' => 'Show Date Ticker',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
@@ -7479,6 +7721,8 @@ return [
             'themes.nur-ul-huda.top_banner_show_prayer_ticker' => [
                 'type' => 'toggle',
                 'label' => 'Show Prayer Countdown',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
@@ -7493,6 +7737,8 @@ return [
             'themes.nur-ul-huda.top_banner_show_contact' => [
                 'type' => 'toggle',
                 'label' => 'Show Contact Info',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
@@ -7507,6 +7753,8 @@ return [
             'themes.nur-ul-huda.top_banner_show_social' => [
                 'type' => 'toggle',
                 'label' => 'Show Social Icons',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 1,
                 'options' => [
                     1 => 'PLUGIN_ADMIN.ENABLED',
@@ -7521,6 +7769,8 @@ return [
             'themes.nur-ul-huda.prayer_method' => [
                 'type' => 'select',
                 'label' => 'Prayer Calculation Standard',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'tehran',
                 'options' => [
                     'tehran' => 'University of Tehran',
@@ -7534,6 +7784,8 @@ return [
             'themes.nur-ul-huda.hijri_offset' => [
                 'type' => 'number',
                 'label' => 'Hijri Calibration',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 0,
                 'name' => 'themes.nur-ul-huda.hijri_offset',
                 'validation' => 'loose'
@@ -7546,6 +7798,8 @@ return [
                 ],
                 'type' => 'file',
                 'label' => 'Adhan Media',
+                'style' => 'vertical',
+                'width' => '33%',
                 'destination' => 'theme://media',
                 'multiple' => false,
                 'accept' => [
@@ -7557,6 +7811,8 @@ return [
             'themes.nur-ul-huda.default_location' => [
                 'type' => 'text',
                 'label' => 'Geo-Location Default',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'Karachi',
                 'name' => 'themes.nur-ul-huda.default_location',
                 'validation' => 'loose'
@@ -7564,36 +7820,48 @@ return [
             'themes.nur-ul-huda.moodle_url' => [
                 'type' => 'text',
                 'label' => 'Moodle URL',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.moodle_url',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.moodle_token' => [
                 'type' => 'password',
                 'label' => 'Web Service API Token',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.moodle_token',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.snipcart_key' => [
                 'type' => 'text',
                 'label' => 'Snipcart Public API Key',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.snipcart_key',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.jazzcash_merchant' => [
                 'type' => 'text',
                 'label' => 'JazzCash Merchant ID',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.jazzcash_merchant',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.jazzcash_salt' => [
                 'type' => 'password',
                 'label' => 'JazzCash Integrity Salt',
+                'style' => 'vertical',
+                'width' => '33%',
                 'name' => 'themes.nur-ul-huda.jazzcash_salt',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.hero_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_ENABLED',
+                'label' => 'Enable Hero',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7608,21 +7876,25 @@ return [
             ],
             'themes.nur-ul-huda.hero_default_style' => [
                 'type' => 'select',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_DEFAULT_STYLE',
+                'label' => 'Default Hero Style',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'hero-large',
                 'options' => [
-                    'hero-fullscreen' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_FULLSCREEN',
-                    'hero-large' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_LARGE',
-                    'hero-medium' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_MEDIUM',
-                    'hero-small' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_SMALL',
-                    'hero-tiny' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_TINY'
+                    'hero-fullscreen' => 'Full Screen',
+                    'hero-large' => 'Large',
+                    'hero-medium' => 'Medium',
+                    'hero-small' => 'Small',
+                    'hero-tiny' => 'Tiny'
                 ],
                 'name' => 'themes.nur-ul-huda.hero_default_style',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.services_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_ENABLED',
+                'label' => 'Enable Services',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7637,19 +7909,23 @@ return [
             ],
             'themes.nur-ul-huda.services_default_columns' => [
                 'type' => 'select',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_DEFAULT_COLUMNS',
+                'label' => 'Default Columns',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 3,
                 'options' => [
-                    2 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_2',
-                    3 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_3',
-                    4 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_4'
+                    2 => '2 Columns',
+                    3 => '3 Columns',
+                    4 => '4 Columns'
                 ],
                 'name' => 'themes.nur-ul-huda.services_default_columns',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.features_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_ENABLED',
+                'label' => 'Enable Features',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7664,18 +7940,22 @@ return [
             ],
             'themes.nur-ul-huda.features_default_layout' => [
                 'type' => 'select',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_DEFAULT_LAYOUT',
+                'label' => 'Default Layout',
+                'style' => 'vertical',
+                'width' => '33%',
                 'default' => 'standard',
                 'options' => [
-                    'small' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_SMALL',
-                    'standard' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_STANDARD'
+                    'small' => 'Small',
+                    'standard' => 'Standard'
                 ],
                 'name' => 'themes.nur-ul-huda.features_default_layout',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.gallery_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.GALLERY_ENABLED',
+                'label' => 'Enable Gallery',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7690,7 +7970,9 @@ return [
             ],
             'themes.nur-ul-huda.istafta_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_ENABLED',
+                'label' => 'Enable Istafta',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7705,7 +7987,9 @@ return [
             ],
             'themes.nur-ul-huda.khums_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.KHUMS_ENABLED',
+                'label' => 'Enable Khums',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7720,7 +8004,9 @@ return [
             ],
             'themes.nur-ul-huda.timeline_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.TIMELINE_ENABLED',
+                'label' => 'Enable Timeline',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7735,7 +8021,9 @@ return [
             ],
             'themes.nur-ul-huda.trust_signals_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_ENABLED',
+                'label' => 'Enable Trust Signals',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7750,7 +8038,9 @@ return [
             ],
             'themes.nur-ul-huda.courses_enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.COURSES_ENABLED',
+                'label' => 'Enable Courses',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7763,9 +8053,57 @@ return [
                 'name' => 'themes.nur-ul-huda.courses_enabled',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.sticky-footer' => [
+            'themes.nur-ul-huda.theme_colors_tab' => [
+                'validation' => 'loose',
+                'name' => 'themes.nur-ul-huda.theme_colors_tab',
+                'type' => ''
+            ],
+            'themes.nur-ul-huda.custom_logo_mobile' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Mobile Logo',
+                'style' => 'vertical',
+                'width' => '33%',
+                'destination' => 'theme://images/logo',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.nur-ul-huda.custom_logo_mobile',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.favicon' => [
+                'array' => true,
+                'media_field' => true,
+                'validate' => [
+                    'type' => 'ignore'
+                ],
+                'type' => 'file',
+                'label' => 'Favicon',
+                'style' => 'vertical',
+                'width' => '33%',
+                'destination' => 'theme://images',
+                'multiple' => false,
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'themes.nur-ul-huda.favicon',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.dropdown' => [
+                'type' => '_parent',
+                'name' => 'themes.nur-ul-huda.dropdown',
+                'form_field' => false
+            ],
+            'themes.nur-ul-huda.dropdown.enabled' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.STICKY_FOOTER',
+                'label' => 'Enable Dropdown Menus',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7775,12 +8113,40 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.sticky-footer',
+                'name' => 'themes.nur-ul-huda.dropdown.enabled',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.footer_show_social' => [
+            'themes.nur-ul-huda.grid-size' => [
+                'type' => 'select',
+                'label' => 'Grid Size',
+                'style' => 'vertical',
+                'width' => '33%',
+                'size' => 'small',
+                'options' => [
+                    '' => 'None',
+                    'grid-xl' => 'Extra Large',
+                    'grid-lg' => 'Large',
+                    'grid-md' => 'Medium'
+                ],
+                'name' => 'themes.nur-ul-huda.grid-size',
+                'validation' => 'loose',
+                'default' => ''
+            ],
+            'themes.nur-ul-huda.blog-page' => [
+                'type' => 'text',
+                'label' => 'Blog Page Path',
+                'style' => 'vertical',
+                'width' => '33%',
+                'size' => 'medium',
+                'default' => '/blog',
+                'name' => 'themes.nur-ul-huda.blog-page',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.bottom_banner_show_logo' => [
                 'type' => 'toggle',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_SHOW_SOCIAL',
+                'label' => 'Site Logo',
+                'style' => 'vertical',
+                'width' => '33%',
                 'highlight' => 1,
                 'default' => 1,
                 'options' => [
@@ -7790,161 +8156,504 @@ return [
                 'validate' => [
                     'type' => 'bool'
                 ],
-                'name' => 'themes.nur-ul-huda.footer_show_social',
+                'name' => 'themes.nur-ul-huda.bottom_banner_show_logo',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.site_tagline' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_TAGLINE',
-                'name' => 'themes.nur-ul-huda.site_tagline',
+            'themes.nur-ul-huda.bottom_banner_show_site_name' => [
+                'type' => 'toggle',
+                'label' => 'Site Name',
+                'style' => 'vertical',
+                'width' => '33%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.bottom_banner_show_site_name',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.contact_phone' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_PHONE',
-                'name' => 'themes.nur-ul-huda.contact_phone',
+            'themes.nur-ul-huda.bottom_banner_show_tagline' => [
+                'type' => 'toggle',
+                'label' => 'Site Tagline',
+                'style' => 'vertical',
+                'width' => '33%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.bottom_banner_show_tagline',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.contact_address' => [
+            'themes.nur-ul-huda.bottom_banner_copyright' => [
                 'type' => 'textarea',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_ADDRESS',
+                'label' => 'Copyright Text',
+                'style' => 'vertical',
+                'width' => '33%',
                 'rows' => 3,
-                'name' => 'themes.nur-ul-huda.contact_address',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.footer_copyright' => [
-                'type' => 'textarea',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COPYRIGHT',
-                'rows' => 3,
-                'name' => 'themes.nur-ul-huda.footer_copyright',
+                'name' => 'themes.nur-ul-huda.bottom_banner_copyright',
                 'validation' => 'loose'
             ],
             'themes.nur-ul-huda.social_facebook' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_FACEBOOK',
+                'label' => 'Facebook',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_facebook',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_facebook_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_facebook_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_twitter' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TWITTER',
+                'label' => 'Twitter',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_twitter',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_twitter_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_twitter_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_instagram' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_INSTAGRAM',
+                'label' => 'Instagram',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_instagram',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_instagram_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_instagram_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_youtube' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_YOUTUBE',
+                'label' => 'YouTube',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_youtube',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_youtube_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_youtube_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_telegram' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TELEGRAM',
+                'label' => 'Telegram',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_telegram',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_telegram_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_telegram_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_linkedin' => [
+                'type' => 'text',
+                'label' => 'LinkedIn',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_linkedin',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_linkedin_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_linkedin_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_tiktok' => [
+                'type' => 'text',
+                'label' => 'TikTok',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_tiktok',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_tiktok_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_tiktok_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_pinterest' => [
+                'type' => 'text',
+                'label' => 'Pinterest',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_pinterest',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_pinterest_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_pinterest_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_snapchat' => [
+                'type' => 'text',
+                'label' => 'Snapchat',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_snapchat',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_snapchat_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_snapchat_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_spotify' => [
+                'type' => 'text',
+                'label' => 'Spotify',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_spotify',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_spotify_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_spotify_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_discord' => [
+                'type' => 'text',
+                'label' => 'Discord Invite',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_discord',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_discord_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_discord_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_google_maps' => [
+                'type' => 'text',
+                'label' => 'Google Maps',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'URL'
+                ],
+                'name' => 'themes.nur-ul-huda.social_google_maps',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_google_maps_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_google_maps_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_whatsapp' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_WHATSAPP',
+                'label' => 'WhatsApp',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'URL'
                 ],
                 'name' => 'themes.nur-ul-huda.social_whatsapp',
                 'validation' => 'loose'
             ],
+            'themes.nur-ul-huda.social_whatsapp_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_whatsapp_enabled',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_phone' => [
+                'type' => 'text',
+                'label' => 'Phone',
+                'style' => 'vertical',
+                'width' => '100%',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'themes.nur-ul-huda.social_phone',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.social_phone_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_phone_enabled',
+                'validation' => 'loose'
+            ],
             'themes.nur-ul-huda.social_email' => [
                 'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_EMAIL',
+                'label' => 'Email',
+                'style' => 'vertical',
+                'width' => '100%',
                 'validate' => [
                     'type' => 'email'
                 ],
                 'name' => 'themes.nur-ul-huda.social_email',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.footer_columns' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMNS',
-                'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_FOOTER_COLUMN',
-                'name' => 'themes.nur-ul-huda.footer_columns',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.footer_columns.*' => [
-                'type' => '_parent',
-                'name' => 'themes.nur-ul-huda.footer_columns.*',
-                'form_field' => false
-            ],
-            'themes.nur-ul-huda.footer_columns.*.title' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_TITLE',
-                'name' => 'themes.nur-ul-huda.footer_columns.*.title',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.footer_columns.*.links' => [
-                'array' => true,
-                'type' => 'list',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_LINKS',
-                'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_LINK',
-                'name' => 'themes.nur-ul-huda.footer_columns.*.links',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.footer_columns.*.links.*' => [
-                'type' => '_parent',
-                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*',
-                'form_field' => false
-            ],
-            'themes.nur-ul-huda.footer_columns.*.links.*.text' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_TEXT',
-                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*.text',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.footer_columns.*.links.*.url' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_URL',
-                'name' => 'themes.nur-ul-huda.footer_columns.*.links.*.url',
-                'validation' => 'loose'
-            ],
-            'themes.nur-ul-huda.grid-size' => [
-                'type' => 'select',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE',
-                'size' => 'small',
+            'themes.nur-ul-huda.social_email_enabled' => [
+                'type' => 'toggle',
+                'label' => '&nbsp;',
+                'style' => 'vertical',
+                'width' => '100%',
+                'highlight' => 1,
+                'default' => 1,
                 'options' => [
-                    '' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_NONE',
-                    'grid-xl' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_EXTRA_LARGE',
-                    'grid-lg' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_LARGE',
-                    'grid-md' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_MEDIUM'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
-                'name' => 'themes.nur-ul-huda.grid-size',
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.social_email_enabled',
                 'validation' => 'loose'
             ],
-            'themes.nur-ul-huda.blog-page' => [
-                'type' => 'text',
-                'label' => 'THEME_NUR_UL_HUDA.ADMIN.BLOG_PAGE',
-                'size' => 'medium',
-                'default' => '/blog',
-                'name' => 'themes.nur-ul-huda.blog-page',
+            'themes.nur-ul-huda.bottom_banner_show_social_labels_mobile' => [
+                'type' => 'toggle',
+                'label' => 'Show Names on Mobile',
+                'style' => 'vertical',
+                'width' => '33%',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.bottom_banner_show_social_labels_mobile',
+                'validation' => 'loose'
+            ],
+            'themes.nur-ul-huda.bottom_banner_show_social_labels_desktop' => [
+                'type' => 'toggle',
+                'label' => 'Show Names on Desktop',
+                'style' => 'vertical',
+                'width' => '33%',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'themes.nur-ul-huda.bottom_banner_show_social_labels_desktop',
                 'validation' => 'loose'
             ]
         ],
@@ -8393,26 +9102,38 @@ return [
                         'process' => 'plugins.relatedpages.content_match.process'
                     ]
                 ],
-                'simplesearch' => [
-                    'enabled' => 'plugins.simplesearch.enabled',
-                    'search_content' => 'plugins.simplesearch.search_content',
-                    'built_in_css' => 'plugins.simplesearch.built_in_css',
-                    'built_in_js' => 'plugins.simplesearch.built_in_js',
-                    'display_button' => 'plugins.simplesearch.display_button',
-                    'ignore_accented_characters' => 'plugins.simplesearch.ignore_accented_characters',
-                    'min_query_length' => 'plugins.simplesearch.min_query_length',
-                    'route' => 'plugins.simplesearch.route',
-                    'searchable_types' => 'plugins.simplesearch.searchable_types',
-                    'header_keys_ignored' => 'plugins.simplesearch.header_keys_ignored',
-                    'template' => 'plugins.simplesearch.template',
-                    'filters' => [
-                        'category' => 'plugins.simplesearch.filters.category'
+                'tntsearch' => [
+                    'enabled' => 'plugins.tntsearch.enabled',
+                    'index_status' => 'plugins.tntsearch.index_status',
+                    'enable_admin_page_events' => 'plugins.tntsearch.enable_admin_page_events',
+                    'scheduled_index' => [
+                        'enabled' => 'plugins.tntsearch.scheduled_index.enabled',
+                        'at' => 'plugins.tntsearch.scheduled_index.at',
+                        'logs' => 'plugins.tntsearch.scheduled_index.logs'
                     ],
-                    'filter_combinator' => 'plugins.simplesearch.filter_combinator',
-                    'order' => [
-                        'by' => 'plugins.simplesearch.order.by',
-                        'dir' => 'plugins.simplesearch.order.dir'
-                    ]
+                    'built_in_css' => 'plugins.tntsearch.built_in_css',
+                    'built_in_js' => 'plugins.tntsearch.built_in_js',
+                    'built_in_search_page' => 'plugins.tntsearch.built_in_search_page',
+                    'search_route' => 'plugins.tntsearch.search_route',
+                    'query_route' => 'plugins.tntsearch.query_route',
+                    'search_type' => 'plugins.tntsearch.search_type',
+                    'fuzzy' => 'plugins.tntsearch.fuzzy',
+                    'distance' => 'plugins.tntsearch.distance',
+                    'phrases' => 'plugins.tntsearch.phrases',
+                    'stemmer' => 'plugins.tntsearch.stemmer',
+                    'display_route' => 'plugins.tntsearch.display_route',
+                    'live_uri_update' => 'plugins.tntsearch.live_uri_update',
+                    'display_hits' => 'plugins.tntsearch.display_hits',
+                    'display_time' => 'plugins.tntsearch.display_time',
+                    'limit' => 'plugins.tntsearch.limit',
+                    'min' => 'plugins.tntsearch.min',
+                    'snippet' => 'plugins.tntsearch.snippet',
+                    'index_page_by_default' => 'plugins.tntsearch.index_page_by_default',
+                    'filter' => [
+                        'items' => 'plugins.tntsearch.filter.items'
+                    ],
+                    'powered_by' => 'plugins.tntsearch.powered_by',
+                    'search_object_type' => 'plugins.tntsearch.search_object_type'
                 ],
                 'admin' => [
                     'enabled' => 'plugins.admin.enabled',
@@ -8733,14 +9454,18 @@ return [
                     'primary_spirit_color' => 'themes.nur-ul-huda.primary_spirit_color',
                     'accent_color' => 'themes.nur-ul-huda.accent_color',
                     'blur_strength' => 'themes.nur-ul-huda.blur_strength',
-                    'typography' => 'themes.nur-ul-huda.typography',
+                    'custom_fonts' => 'themes.nur-ul-huda.custom_fonts',
+                    'font_heading' => 'themes.nur-ul-huda.font_heading',
+                    'font_body' => 'themes.nur-ul-huda.font_body',
+                    'glass_bg_color' => 'themes.nur-ul-huda.glass_bg_color',
                     'glass_opacity' => 'themes.nur-ul-huda.glass_opacity',
                     'glass_blur' => 'themes.nur-ul-huda.glass_blur',
                     'glass_border_opacity' => 'themes.nur-ul-huda.glass_border_opacity',
-                    'glass_thickness' => 'themes.nur-ul-huda.glass_thickness',
-                    'glass_shadow_intensity' => 'themes.nur-ul-huda.glass_shadow_intensity',
+                    'glass_highlight' => 'themes.nur-ul-huda.glass_highlight',
+                    'glass_noise' => 'themes.nur-ul-huda.glass_noise',
                     'custom_logo' => 'themes.nur-ul-huda.custom_logo',
                     'site_name' => 'themes.nur-ul-huda.site_name',
+                    'site_tagline' => 'themes.nur-ul-huda.site_tagline',
                     'header-fixed' => 'themes.nur-ul-huda.header-fixed',
                     'header-animated' => 'themes.nur-ul-huda.header-animated',
                     'header-dark' => 'themes.nur-ul-huda.header-dark',
@@ -8778,32 +9503,50 @@ return [
                     'timeline_enabled' => 'themes.nur-ul-huda.timeline_enabled',
                     'trust_signals_enabled' => 'themes.nur-ul-huda.trust_signals_enabled',
                     'courses_enabled' => 'themes.nur-ul-huda.courses_enabled',
-                    'sticky-footer' => 'themes.nur-ul-huda.sticky-footer',
-                    'footer_show_social' => 'themes.nur-ul-huda.footer_show_social',
-                    'site_tagline' => 'themes.nur-ul-huda.site_tagline',
-                    'contact_phone' => 'themes.nur-ul-huda.contact_phone',
-                    'contact_address' => 'themes.nur-ul-huda.contact_address',
-                    'footer_copyright' => 'themes.nur-ul-huda.footer_copyright',
-                    'social_facebook' => 'themes.nur-ul-huda.social_facebook',
-                    'social_twitter' => 'themes.nur-ul-huda.social_twitter',
-                    'social_instagram' => 'themes.nur-ul-huda.social_instagram',
-                    'social_youtube' => 'themes.nur-ul-huda.social_youtube',
-                    'social_telegram' => 'themes.nur-ul-huda.social_telegram',
-                    'social_whatsapp' => 'themes.nur-ul-huda.social_whatsapp',
-                    'social_email' => 'themes.nur-ul-huda.social_email',
-                    'footer_columns' => [
-                        '*' => [
-                            'title' => 'themes.nur-ul-huda.footer_columns.*.title',
-                            'links' => [
-                                '*' => [
-                                    'text' => 'themes.nur-ul-huda.footer_columns.*.links.*.text',
-                                    'url' => 'themes.nur-ul-huda.footer_columns.*.links.*.url'
-                                ]
-                            ]
-                        ]
+                    'theme_colors_tab' => 'themes.nur-ul-huda.theme_colors_tab',
+                    'custom_logo_mobile' => 'themes.nur-ul-huda.custom_logo_mobile',
+                    'favicon' => 'themes.nur-ul-huda.favicon',
+                    'dropdown' => [
+                        'enabled' => 'themes.nur-ul-huda.dropdown.enabled'
                     ],
                     'grid-size' => 'themes.nur-ul-huda.grid-size',
-                    'blog-page' => 'themes.nur-ul-huda.blog-page'
+                    'blog-page' => 'themes.nur-ul-huda.blog-page',
+                    'bottom_banner_show_logo' => 'themes.nur-ul-huda.bottom_banner_show_logo',
+                    'bottom_banner_show_site_name' => 'themes.nur-ul-huda.bottom_banner_show_site_name',
+                    'bottom_banner_show_tagline' => 'themes.nur-ul-huda.bottom_banner_show_tagline',
+                    'bottom_banner_copyright' => 'themes.nur-ul-huda.bottom_banner_copyright',
+                    'social_facebook' => 'themes.nur-ul-huda.social_facebook',
+                    'social_facebook_enabled' => 'themes.nur-ul-huda.social_facebook_enabled',
+                    'social_twitter' => 'themes.nur-ul-huda.social_twitter',
+                    'social_twitter_enabled' => 'themes.nur-ul-huda.social_twitter_enabled',
+                    'social_instagram' => 'themes.nur-ul-huda.social_instagram',
+                    'social_instagram_enabled' => 'themes.nur-ul-huda.social_instagram_enabled',
+                    'social_youtube' => 'themes.nur-ul-huda.social_youtube',
+                    'social_youtube_enabled' => 'themes.nur-ul-huda.social_youtube_enabled',
+                    'social_telegram' => 'themes.nur-ul-huda.social_telegram',
+                    'social_telegram_enabled' => 'themes.nur-ul-huda.social_telegram_enabled',
+                    'social_linkedin' => 'themes.nur-ul-huda.social_linkedin',
+                    'social_linkedin_enabled' => 'themes.nur-ul-huda.social_linkedin_enabled',
+                    'social_tiktok' => 'themes.nur-ul-huda.social_tiktok',
+                    'social_tiktok_enabled' => 'themes.nur-ul-huda.social_tiktok_enabled',
+                    'social_pinterest' => 'themes.nur-ul-huda.social_pinterest',
+                    'social_pinterest_enabled' => 'themes.nur-ul-huda.social_pinterest_enabled',
+                    'social_snapchat' => 'themes.nur-ul-huda.social_snapchat',
+                    'social_snapchat_enabled' => 'themes.nur-ul-huda.social_snapchat_enabled',
+                    'social_spotify' => 'themes.nur-ul-huda.social_spotify',
+                    'social_spotify_enabled' => 'themes.nur-ul-huda.social_spotify_enabled',
+                    'social_discord' => 'themes.nur-ul-huda.social_discord',
+                    'social_discord_enabled' => 'themes.nur-ul-huda.social_discord_enabled',
+                    'social_google_maps' => 'themes.nur-ul-huda.social_google_maps',
+                    'social_google_maps_enabled' => 'themes.nur-ul-huda.social_google_maps_enabled',
+                    'social_whatsapp' => 'themes.nur-ul-huda.social_whatsapp',
+                    'social_whatsapp_enabled' => 'themes.nur-ul-huda.social_whatsapp_enabled',
+                    'social_phone' => 'themes.nur-ul-huda.social_phone',
+                    'social_phone_enabled' => 'themes.nur-ul-huda.social_phone_enabled',
+                    'social_email' => 'themes.nur-ul-huda.social_email',
+                    'social_email_enabled' => 'themes.nur-ul-huda.social_email_enabled',
+                    'bottom_banner_show_social_labels_mobile' => 'themes.nur-ul-huda.bottom_banner_show_social_labels_mobile',
+                    'bottom_banner_show_social_labels_desktop' => 'themes.nur-ul-huda.bottom_banner_show_social_labels_desktop'
                 ]
             ]
         ],

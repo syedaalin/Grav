@@ -2,56 +2,62 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => 'themes://nur-ul-huda/nur-ul-huda.yaml',
-    'modified' => 1767957630,
-    'size' => 1125,
+    'modified' => 1768231147,
+    'size' => 1888,
     'data' => [
         'enabled' => true,
         'production-mode' => true,
-        'grid-size' => 'grid-lg',
-        'header-fixed' => true,
-        'header-animated' => true,
-        'header-dark' => false,
-        'header-transparent' => false,
-        'sticky-footer' => true,
-        'blog-page' => '/blog',
-        'site_name' => '',
-        'site_tagline' => '',
-        'direction' => 'ltr',
-        'language' => 'en',
-        'number_format' => 'western',
-        'date_calendar' => 'gregorian',
-        'primary_spirit_color' => '#2ecc71',
-        'accent_color' => '#f1c40f',
-        'blur_strength' => 12,
-        'typography' => 'inter_noto',
-        'social_facebook' => '',
-        'social_twitter' => '',
-        'social_instagram' => '',
-        'social_youtube' => '',
-        'social_telegram' => '',
-        'social_whatsapp' => '',
-        'social_email' => '',
-        'contact_phone' => '',
-        'contact_address' => '',
-        'prayer_method' => 'tehran',
-        'hijri_offset' => 0,
-        'default_location' => 'Karachi',
-        'footer_copyright' => '',
-        'footer_show_social' => true,
-        'footer_columns' => [
-            
+        'grid-size' => '1280px',
+        'debug_glass' => false,
+        'font_heading' => '\'PlusJakartaSans-VariableFont_wght\', sans-serif',
+        'font_body' => '\'Outfit-VariableFont_wght\', sans-serif',
+        'custom_fonts' => [
+            'Inter-VariableFont_slnt,wght.ttf' => [
+                'name' => 'Inter-VariableFont_slnt,wght.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/Inter-VariableFont_slnt,wght.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 297214
+            ],
+            'Outfit-VariableFont_wght.ttf' => [
+                'name' => 'Outfit-VariableFont_wght.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/Outfit-VariableFont_wght.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 110884
+            ],
+            'PlusJakartaSans-VariableFont_wght.ttf' => [
+                'name' => 'PlusJakartaSans-VariableFont_wght.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/PlusJakartaSans-VariableFont_wght.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 176288
+            ],
+            'PlayfairDisplay-VariableFont_wght.ttf' => [
+                'name' => 'PlayfairDisplay-VariableFont_wght.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/PlayfairDisplay-VariableFont_wght.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 300724
+            ],
+            'Merriweather-Regular.ttf' => [
+                'name' => 'Merriweather-Regular.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/Merriweather-Regular.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 297273
+            ],
+            'Merriweather-Bold.ttf' => [
+                'name' => 'Merriweather-Bold.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/Merriweather-Bold.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 297238
+            ],
+            'NotoNastaliqUrdu-VariableFont_wght.ttf' => [
+                'name' => 'NotoNastaliqUrdu-VariableFont_wght.ttf',
+                'path' => 'user/themes/nur-ul-huda/fonts/custom/NotoNastaliqUrdu-VariableFont_wght.ttf',
+                'type' => 'application/octet-stream',
+                'size' => 690304
+            ]
         ],
-        'hero_enabled' => true,
-        'hero_default_style' => 'hero-large',
-        'services_enabled' => true,
-        'services_default_columns' => 3,
-        'features_enabled' => true,
-        'features_default_layout' => 'standard',
-        'gallery_enabled' => true,
-        'istafta_enabled' => true,
-        'khums_enabled' => true,
-        'timeline_enabled' => true,
-        'trust_signals_enabled' => true,
-        'courses_enabled' => true
+        'glass_blur' => 16,
+        'glass_opacity' => 0.7,
+        'glass_noise' => true,
+        'bottom_banner_show_social_labels' => true
     ]
 ];

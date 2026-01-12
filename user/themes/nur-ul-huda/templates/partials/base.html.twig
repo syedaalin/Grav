@@ -1,303 +1,269 @@
 {% set direction = theme_var('direction')|default('ltr') %}
 {% set language = theme_var('language')|default(grav.language.getActive ?: grav.config.site.default_lang ?: 'en') %}
 {% set typography = theme_var('typography')|default('font-sans') %}
-{% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer', direction, typography]) %}
+{% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', direction, typography]) %}
 {% set grid_size = theme_var('grid-size') %}
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% set top_banner_color = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
+
+{# Dynamic Theme Colors Manager - DEPRECATED/MOVED TO PHP #}
+{# Usage: dynamic_styles is passed from nur-ul-huda.php #}
+
 {% use 'blocks/base.html.twig' %}
 <!DOCTYPE html>
-<html lang="{{ language }}" dir="{{ direction }}" style="{{ dynamic_styles|join(';') }}">
-<head>
-{% block head deferred %}
-    <meta charset="utf-8" />
-    <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+<html lang="{{ language }}" dir="{{ direction }}" style="--top-banner-color: {{ top_banner_color }}; {{ dynamic_styles|raw }}; --font-heading: {{ theme_fonts.heading|raw }}; --font-body: {{ theme_fonts.body|raw }};">
+	<head>
+		{% if theme_fonts.custom_css %}
+			<style>
+				{{theme_fonts.custom_css|raw}}</style>
+		{% endif %}
+		{# Local Fonts #}
+		{% block head deferred %}
+			<meta charset="utf-8"/>
+			<title>
+				{% if page.title %}
+					{{ page.title|e('html') }}
+					|
+				{% endif %}
+				{{ site.title|e('html') }}</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    {% if theme_var('production-mode') %}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.snipcart.com https://api.aladhan.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.snipcart.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.snipcart.com; connect-src 'self' https://api.aladhan.com https://cdn.snipcart.com; frame-src 'self' https://cdn.snipcart.com;">
-    {% endif %}
-    {% include 'partials/metadata.html.twig' %}
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			{% if theme_var('production-mode') %}
+				<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.snipcart.com https://api.aladhan.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.snipcart.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.snipcart.com; connect-src 'self' https://api.aladhan.com https://cdn.snipcart.com; frame-src 'self' https://cdn.snipcart.com;">
+			{% endif %}
+			{% include 'partials/metadata.html.twig' ignore missing %}
 
-    {% set logo_img = theme_var('custom_logo') ? media['theme://images/logo/' ~ (theme_var('custom_logo')|first).name] : null %}
-    {% set favicon = logo_img ? logo_img.cropZoom(32, 32) : media['theme://images/favicon.png'] %}
-    <link rel="icon" type="image/png" href="{{ favicon.url }}" />
-    <link rel="canonical" href="{{ page.url(true, true) }}" />
-    {# PWA Manifest - Requires proper web server (Apache/Nginx) to serve from user/themes #}
-    {# <link rel="manifest" href="{{ theme_url }}/manifest.json"> #}
+			{% set logo_img = theme_var('custom_logo') ? media['theme://images/logo/' ~ (theme_var('custom_logo')|first).name] : null %}
+			{% set favicon = logo_img ? logo_img.cropZoom(32, 32) : media['theme://images/favicon.png'] %}
+			<link rel="icon" type="image/png" href="{{ favicon.url }}"/>
+			<link rel="canonical" href="{{ page.url(true, true) }}"/>
 
-    {# Service Worker - Disabled for PHP built-in server #}
-    {# <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('{{ theme_url }}/sw.js');
-        });
-      }
-    </script> #}
+			<link rel="manifest" href="{{ base_url }}/manifest">
+			<meta name="theme-color" content="oklch(0.55 0.18 165)">
+			<meta name="mobile-web-app-capable" content="yes">
+			<meta name="apple-mobile-web-app-capable" content="yes">
+			<meta name="apple-mobile-web-app-status-bar-style" content="default">
+			<meta
+			name="apple-mobile-web-app-title" content="{{ site.title }}">
 
-
-{% endblock head %}
-
-{% block stylesheets %}
-    {% do assets.addCss('theme://css/nur-ul-huda.css') %}
-    {% do assets.addCss('theme://css/line-awesome.min.css') %}
-{% endblock %}
-
-{% block javascripts %}
-    {% do assets.addJs('jquery', 101) %}
-    {% do assets.addJs('theme://js/modules/utils.js', 95) %}
-    {% do assets.addJs('theme://js/modules/pull-refresh.js', 94) %}
-    {% do assets.addJs('theme://js/modules/gallery.js', 93) %}
-    {% do assets.addJs('theme://js/modules/mobile-menu.js?v=a11y-focus', 90) %}
-    {% do assets.addJs('theme://js/modules/sticky-header.js?v=pure-fluid', 90) %}
-    {% do assets.addJs('theme://js/modules/high-contrast.js', 89) %}
-    {% do assets.addJs('theme://js/modules/font-scaler.js', 89) %}
-    {% do assets.addJs('theme://js/modules/footer.js', 89) %}
-    {% do assets.addJs('theme://js/modules/prayer-times.js', 89) %}
-    {% do assets.addJs('theme://js/modules/hijri-date.js', 89) %}
-    {% do assets.addJs('theme://js/modules/adhan-player.js', 89) %}
-    {% do assets.addJs('theme://js/modules/khums-calculator.js', 89) %}
-    {% do assets.addJs('theme://js/modules/spiritual.js', 88) %}
-    
-    {# Pass theme config to JavaScript #}
-
-    {# Force Header Glassmorphism Override & Global Standard #}
-    {% set glass_blur = theme_var('glass_blur')|default(16) %}
-    {% set glass_opacity = theme_var('glass_opacity')|default(0.15) %}
-    {% set glass_border_opacity = theme_var('glass_border_opacity')|default(0.1) %}
-    {% set glass_thickness = theme_var('glass_thickness')|default(1) %}
-    {% set glass_shadow_intensity = theme_var('glass_shadow_intensity')|default(0.1) %}
-    {# Fetch Top Banner Color for Tinting #}
-    {% set top_banner_color = theme_var('top_banner_bg_color')|default('#111827') %}
-
-    <style>
-        /* Global Premium Glass Standard (The 4 Pillars) */
-        .glass-card {
-            /* Pillar 1: Translucency (Surface) */
-            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent);
-            
-            /* Pillar 2: Diffusion (Blur) */
-            backdrop-filter: blur({{ glass_blur }}px);
-            
-            /* Pillar 3: Reflective Edge (Border) */
-            border: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }});
-            
-            /* Pillar 4: Depth (Shadow) */
-            box-shadow: 0 4px 30px oklch(0 0 0 / {{ glass_shadow_intensity }});
-        }
-
-        #header.header-glass:not(.scrolled) {
-            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent) !important;
-            backdrop-filter: blur({{ glass_blur }}px) !important;
-            border-bottom: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }}) !important;
-             /* Initial state usually has no shadow or very subtle one */
-            box-shadow: none !important;
-        }
-
-        /* Scrolled state uses the same blur but enables the full Glass Card effect */
-        #header.header-glass.scrolled {
-            background-color: color-mix(in srgb, {{ top_banner_color }} calc({{ glass_opacity }} * 100%), transparent) !important;
-            backdrop-filter: blur({{ glass_blur }}px) !important;
-            box-shadow: 0 4px 30px oklch(0 0 0 / {{ glass_shadow_intensity }}) !important;
-            border-bottom: {{ glass_thickness }}px solid oklch(1 0 0 / {{ glass_border_opacity }}) !important;
-        }
-        
-        /* Ensure the shadow (if applied inline) is visible */
-        #header[style*="box-shadow"] {
-             /* No special rule needed, inline style wins */
-        }
-    </style>
-{% endblock %}
-
-{% block assets deferred %}
-    {{ assets.css()|raw }}
-    {{ assets.js()|raw }}
-{% endblock %}
-</head>
-<body id="top" class="@container {% block body_classes %}{{ body_classes }}{% endblock %} selection:bg-primary/20 selection:text-primary">
-    {# Skip Link for Accessibility #}
-    <a href="#start" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-6 focus:py-3 focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-primary font-bold transition-all">Skip to main content</a>
-    
-    {% block header %}
-        {% set _top_banner_enabled = theme_var('top_banner_enabled') %}
-        {% set top_banner_active = _top_banner_enabled is null ? true : _top_banner_enabled %}
-        {% set top_banner_color = theme_var('top_banner_bg_color')|default('#111827') %}
-        
-        {# Top Banner (Always Sticky, Z-40) #}
-        <div class="sticky top-0 z-40 w-full transition-transform duration-300 ease-in-out">
-            {% include 'partials/top-banner.html.twig' %}
-        </div>
-        
-        {# Main Header (Smart Sticky, Z-50) #}
-        <header id="header" 
-                class="sticky top-0 w-full z-50 header-glass transition-transform duration-300 ease-in-out"
-                role="banner">
-            
-            <div class="container-px mx-auto max-w-7xl py-4 @lg:py-6">
-                <nav class="flex justify-between items-center h-14 @lg:h-20" aria-label="Main navigation">
-                    
-                    {# ZONE A: Mobile Toggle / Desktop Logo #}
-                    <div class="flex items-center gap-4 @lg:gap-8 flex-1 @lg:flex-none">
-                        {# Mobile Toggle #}
-                        <button id="mobile-toggle" 
-                                class="@lg:hidden p-2 -ml-2 text-gray-800 hover:text-primary transition-all focus:outline-none focus:ring-4 focus:ring-primary/10 rounded-2xl relative z-60 flex items-center justify-center min-w-[48px] min-h-[48px]"
-                                aria-label="Open navigation menu"
-                                aria-controls="mobile-overlay"
-                                aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </button>
-
-                        {# Desktop Logo #}
-                        <div class="hidden @lg:block transition-transform duration-300 hover:scale-[1.03] active:scale-95">
-                            {% include 'partials/logo.html.twig' %}
-                        </div>
-                    </div>
-
-                    {# ZONE B: Mobile Logo / Desktop Navigation #}
-                    <div class="flex items-center justify-center @lg:justify-start @lg:flex-1">
-                        {# Mobile Logo (Centered) #}
-                        <div class="@lg:hidden transition-transform duration-300 hover:scale-105">
-                            {% include 'partials/logo.html.twig' with {mobile: true} %}
-                        </div>
-
-                        {# Desktop Navigation #}
-                        <nav id="desktop-nav" class="hidden @lg:flex items-center @container">
-                            {% block header_navigation %}
-                                {% include 'partials/navigation.html.twig' %}
-                            {% endblock %}
-                        </nav>
-                    </div>
-
-                    {# ZONE C: User Actions #}
-                    <div class="flex items-center justify-end gap-2 @lg:gap-4 flex-1 @lg:flex-none">
-                        
-                        {# Search Trigger #}
-                        <button class="p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10" 
-                                aria-label="Open search">
-                            <i class="la la-search text-2xl" aria-hidden="true"></i>
-                        </button>
-
-                        {# Shopping Cart #}
-                        <button class="snipcart-checkout relative p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px] focus:outline-none focus:ring-4 focus:ring-primary/10" 
-                                aria-label="View shopping cart">
-                            <i class="la la-shopping-bag text-2xl" aria-hidden="true"></i>
-                            <span class="snipcart-items-count absolute top-2 right-2 bg-accent text-gray-900 text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-xl animate-pulse-subtle" aria-live="polite">0</span>
-                        </button>
-
-                        {# User Account #}
-                        {% if config.plugins.login.enabled and grav.user.username %}
-                            <a href="{{ url('theme://dashboard') }}" 
-                               class="hidden @lg:inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-2xl font-black text-sm shadow-xl shadow-primary/20 hover:-translate-y-1 hover:shadow-primary/40 active:translate-y-0 transition-all focus:outline-none focus:ring-4 focus:ring-primary/20"
-                               aria-label="Go to Dashboard">
-                                <span>Dashboard</span>
-                            </a>
-                            <a href="{{ url('theme://dashboard') }}" 
-                               class="@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]"
-                               aria-label="Go to Dashboard">
-                                <i class="la la-user-circle text-2xl" aria-hidden="true"></i>
-                            </a>
-                        {% else %}
-                            {% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
-                            <a href="{{ login_url }}" 
-                               class="hidden @lg:inline-flex items-center px-4 py-3 text-gray-800 font-black text-sm hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
-                               aria-label="Log in to your account">
-                                Login
-                            </a>
-                            <a href="{{ login_url }}" 
-                               class="@lg:hidden p-2 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all rounded-2xl flex items-center justify-center min-w-[48px] min-h-[48px]"
-                               aria-label="Log in to your account">
-                                <i class="la la-sign-in-alt text-2xl" aria-hidden="true"></i>
-                            </a>
-                        {% endif %}
-                    </div>
-                </nav>
-            </div>
-        </header>
-
-        {# Mobile Off-Canvas Menu #}
-        {# Mobile Off-Canvas Menu #}
-        <div id="mobile-overlay" 
-             class="fixed bottom-0 w-1/2 z-30 translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] @lg:hidden invisible [&.open]:visible [&.open]:translate-x-0"
-             role="dialog"
-             aria-modal="true"
-             aria-label="Mobile Navigation">
-            
-            <div class="flex flex-col h-full glass-card pt-4">
-                {# Overlay Content (Header removed) #}
-
-                {# Overlay Content #}
-                <div class="flex-1 overflow-y-auto p-8 @container">
-                    {# Mobile Search #}
-                    <div class="mb-10 animate-fade-in-up">
-                        <div class="relative group">
-                            <input type="text" placeholder="Explore resources..." 
-                                   class="w-full pl-14 pr-6 py-5 bg-surface-subtle/20 border-2 border-transparent focus:input-focus rounded-premium placeholder-gray-400 font-bold text-lg">
-                            <i class="la la-search absolute left-5 top-1/2 -translate-y-1/2 text-subtle text-2xl group-focus-within:text-primary transition-colors"></i>
-                        </div>
-                    </div>
-
-                    {# Mobile Nav #}
-                    <nav class="mobile-nav space-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
-                        {% include 'partials/navigation.html.twig' with {mobile: true} %}
-                    </nav>
-                </div>
-
-                {# Overlay Footer #}
-                <div class="p-10 bg-surface-subtle/20 border-t border-subtle/50 animate-fade-in-up" style="animation-delay: 0.2s">
-                    <h4 class="text-[11px] font-black text-subtle uppercase tracking-[0.2em] mb-8">Follow Our Journey</h4>
-                    <div class="flex flex-wrap gap-5">
-                        {% for platform in ['facebook', 'twitter', 'instagram', 'youtube'] %}
-                             {% set social_url = theme_var('social_' ~ platform) %}
-                             {% if social_url %}
-                                <a href="{{ social_url }}" target="_blank" 
-                                   class="w-14 h-14 rounded-2xl bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center text-subtle hover:text-primary hover:shadow-primary/20 hover:-translate-y-1.5 active:translate-y-0 transition-all text-2xl border border-gray-50" 
-                                   aria-label="{{ platform|capitalize }}">
-                                    <i class="lab la-{{ platform == 'facebook' ? 'facebook-f' : platform }}"></i>
-                                </a>
-                             {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+			{# Service Worker Registration #}
+			<script>
+				if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('{{ theme_url }}/sw.js').then((registration) => {
+console.log('SW registered:', registration);
+}).catch((error) => {
+console.log('SW registration failed:', error);
+});
+});
+}
+			</script>
 
 
-    {% block hero %}{% endblock %}
+		{% endblock head %}
 
-        <section id="start">
-        {% block body %}
-            <section id="body-wrapper" class="section-py container-px">
-                {% block messages %}
-                    <div class="mx-auto max-w-7xl mb-8">
-                        {% include 'partials/messages.html.twig' ignore missing %}
-                    </div>
-                {% endblock %}
-                <div class="mx-auto max-w-7xl">
-                    {{ block('content_surround') }}
-                </div>
-            </section>
-        {% endblock %}
-        </section>
+		{% block stylesheets %}
+			{% do assets.addCss('theme://css/modern-vanilla.css') %}
+			{% do assets.addCss('theme://css/line-awesome.min.css') %}
+		{% endblock %}
 
-    {% block footer %}
-        {% include 'partials/footer.html.twig' %}
-    {% endblock %}
+		{% block javascripts %}
+			{% do assets.addJs('jquery', 101) %}
+			{% do assets.addJs('theme://js/modules/khums-calculator.js', {'priority': 100, 'group': 'bottom', 'type': 'module'}) %}
+			{% do assets.addJs('theme://js/modules/ui.js', {'priority': 95, 'group': 'bottom', 'type': 'module'}) %}
+			{% do assets.addJs('theme://js/modules/utils.js', 95) %}
+			{% do assets.addJs('theme://js/modules/performance-monitor.js', 94) %}
+			{% do assets.addJs('theme://js/modules/pull-refresh.js', 94) %}
+			{% do assets.addJs('theme://js/modules/gallery.js', 93) %}
+			{% do assets.addJs('theme://js/modules/high-contrast.js', 89) %}
+			{% do assets.addJs('theme://js/modules/font-scaler.js', 89) %}
+			{% do assets.addJs('theme://js/modules/bottom-banner.js', 89) %}
+			{% do assets.addJs('theme://js/modules/prayer-times.js', 89) %}
+			{% do assets.addJs('theme://js/modules/hijri-date.js', 89) %}
+			{% do assets.addJs('theme://js/modules/adhan-player.js', 89) %}
+			{% do assets.addJs('theme://js/modules/spiritual.js', 88) %}
+		{% endblock %}
 
-    {# NOTE: Removed old .mobile-menu block as it's now integrated #}
+		{% block assets deferred %}
+			{{ assets.css()|raw }}
+			{{ assets.js()|raw }}
+		{% endblock %}
+	</head>
+	<body id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}">
+		<div
+			id="page-wrapper">
+			{# Skip Link for Accessibility #}
+			<a href="#start" class="skip-link">Skip to main content</a>
 
-{% block bottom %}
-    {{ assets.js('bottom')|raw }}
+			{% block header %}
+				{% set _top_banner_enabled = theme_var('top_banner_enabled') %}
+				{% set top_banner_active = _top_banner_enabled is null ? true : _top_banner_enabled %}
+				{% set top_banner_color = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
 
-    {# Pass theme config to JavaScript #}
-    <script id="theme-config" type="application/json">
-        {{ theme_js_config|json_encode|raw }}
-    </script>
+				{# Top Banner (Always Sticky, Z-40) #}
+				<div class="header-top-sticky">
+					{% include 'partials/top-banner.html.twig' %}
+				</div>
 
-    {% include 'partials/snipcart.html.twig' %}
-{% endblock %}
+				{# Main Header (Smart Sticky, Z-50) #}
+				<header id="header" class="header-main-sticky" role="banner">
 
-</body>
+					<div class="container container-px header-spacing">
+						<nav
+							class="header-nav" aria-label="Main navigation">
+
+							{# ZONE A: Mobile Toggle / Desktop Logo #}
+							<div
+								class="header-zone-a">
+								{# Mobile Toggle #}
+								<button id="mobile-toggle" class="mobile-toggle" aria-label="Open navigation menu" aria-controls="mobile-overlay" aria-expanded="false">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+									</svg>
+								</button>
+
+								{# Desktop Logo #}
+								<div class="desktop-only logo-hover">
+									{% include 'partials/logo.html.twig' %}
+								</div>
+							</div>
+
+							{# ZONE B: Mobile Logo / Desktop Navigation #}
+							<div
+								class="header-zone-b">
+								{# Mobile Logo (Centered) #}
+								<div class="mobile-only logo-hover">
+									{% include 'partials/logo.html.twig' with {mobile: true} %}
+								</div>
+
+								{# Desktop Navigation #}
+								<nav id="desktop-nav" class="desktop-nav">
+									{% block header_navigation %}
+										{% include 'partials/navigation.html.twig' %}
+									{% endblock %}
+								</nav>
+							</div>
+
+							{# ZONE C: User Actions #}
+							<div
+								class="header-zone-c">
+
+								{# Search Trigger #}
+								<button id="search-trigger" class="icon-button desktop-only" aria-label="Open search">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+									</svg>
+								</button>
+
+
+								{# User Account #}
+								{% if config.plugins.login.enabled and grav.user.username %}
+									<a href="{{ url('theme://dashboard') }}" class="btn-dashboard desktop-only" aria-label="Go to Dashboard">
+										<span>Dashboard</span>
+									</a>
+								{% else %}
+									{% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
+									<a href="{{ login_url }}" class="btn-login desktop-only" aria-label="Log in to your account">
+										Login
+									</a>
+								{% endif %}
+							</div>
+						</nav>
+					</div>
+				</header>
+
+				{# Mobile Off-Canvas Menu #}
+				{# Mobile Off-Canvas Menu #}
+				<div
+					id="mobile-menu-wrapper" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+
+					{# Backdrop #}
+					<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+
+					{# Sidebar #}
+					<div id="mobile-sidebar" class="mobile-sidebar">
+
+						<div
+							class="mobile-sidebar-inner">
+							{# Overlay Content #}
+							<div
+								class="mobile-sidebar-content">
+								{# Mobile Nav #}
+								<nav class="mobile-nav stack-s animate-fade-in-up delay-100">
+									{% include 'partials/navigation.html.twig' with {mobile: true} %}
+								</nav>
+							</div>
+
+							{# Overlay Footer #}
+							<div class="mobile-sidebar-footer animate-fade-in-up delay-200">
+								<h4 class="mobile-footer-title">Follow Our Journey</h4>
+								<div class="social-icons-grid">
+									{% for platform in ['facebook', 'twitter', 'instagram', 'youtube'] %}
+										{% set social_url = theme_var('social_' ~ platform) %}
+										{% if social_url %}
+											<a href="{{ social_url }}" target="_blank" class="social-icon" aria-label="{{ platform|capitalize }}">
+												<i class="lab la-{{ platform == 'facebook' ? 'facebook-f' : platform }}"></i>
+											</a>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endblock %}
+
+
+			{% block hero %}{% endblock %}
+
+			<section id="start">
+				{% block body %}
+					<section id="body-wrapper" class="section-py container-px">
+						{% block messages %}
+							<div class="container message-spacer">
+								{% include 'partials/messages.html.twig' ignore missing %}
+							</div>
+						{% endblock %}
+						<div class="container">
+							{{ block('content_surround') }}
+						</div>
+					</section>
+				{% endblock %}
+			</section>
+
+			{% block footer %}
+				{% include 'partials/bottom-banner.html.twig' %}
+			{% endblock %}
+
+			{# Search Overlay #}
+			<div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Search">
+
+				<button id="search-close" class="search-close-button">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-xl">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+					</svg>
+					<span class="sr-only">Close search</span>
+				</button>
+
+				<div class="search-container" id="search-container">
+					<h2 class="search-title desktop-only">Search Resources</h2>
+					{% include 'partials/tntsearch.html.twig' %}
+					<p class="desktop-only search-hint">Press
+						<kbd class="kbd">ESC</kbd>
+						to close</p>
+				</div>
+			</div>
+		</div>
+
+		{% block bottom %}
+			{{ assets.js('bottom')|raw }}
+			{% include 'partials/snipcart.html.twig' %}
+
+			{# Pass theme config to JavaScript #}
+			<script id="theme-config" type="application/json">
+				{{ theme_js_config|json_encode|raw }}
+			</script>
+		{% endblock %}
+	</body>
 </html>

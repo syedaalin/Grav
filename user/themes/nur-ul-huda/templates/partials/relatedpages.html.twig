@@ -1,11 +1,11 @@
-<ul class="space-y-3">
+<ul class="widget-list">
     {% for related_path, score in related_pages %}
         {% set related = grav['pages'].get(related_path) %}
         {% if related %}
             <li class="group">
                 <a href="{{ related.url }}" title="{{ related.title }}" 
-                   class="flex items-center justify-between card-glass p-5">
-                    <span class="text-sm font-black text-gray-950 group-hover:text-primary transition-colors line-clamp-1">{{ related.title }}</span>
+                   class="widget-link card-glass">
+                    <span class="widget-label line-clamp-1">{{ related.title }}</span>
                     {% if config.plugins.relatedpages.show_score %}
                         <span class="badge-primary">
                             {{ score }}

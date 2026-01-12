@@ -1,0 +1,159 @@
+@layer layout {
+  /* ========================================
+     Container System
+     ======================================== */
+  
+  .container {
+    width: 100%;
+    max-width: 80rem; /* 1280px */
+    margin-inline: auto;
+  }
+  
+  .section-container {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2rem);
+    container-type: inline-size;
+  }
+  
+  .section-container-narrow {
+    width: 100%;
+    max-width: 56rem; /* 4xl */
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2rem);
+    container-type: inline-size;
+  }
+  
+  .container-px {
+    padding-inline: clamp(1rem, 5vw, 2rem);
+  }
+  
+  .section-py {
+    padding-block: var(--spacing-section);
+  }
+  
+  /* ========================================
+     Grid Systems
+     ======================================== */
+  
+  .grid-bento {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+    
+    @container (width >= 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    @container (width >= 1280px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  
+  .grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    
+    @container (width >= 768px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    
+    @container (width >= 1024px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  
+  /* ========================================
+     Stack Pattern (Vertical Spacing)
+     ======================================== */
+  
+  .stack > * + * {
+    margin-top: var(--space-m);
+  }
+  
+  .stack-s > * + * {
+    margin-top: var(--space-s);
+  }
+  
+  .stack-l > * + * {
+    margin-top: var(--space-l);
+  }
+  
+  /* ========================================
+     Flex Utilities
+     ======================================== */
+  
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ========================================
+     Layout Components
+     ======================================== */
+
+  @scope (.layout-grid) {
+    :scope {
+      display: grid;
+      gap: 3rem;
+      grid-template-columns: 100%;
+      
+      &.has-sidebar {
+           @container (width >= 1024px) {
+                grid-template-columns: 1fr 20rem; 
+           }
+      }
+
+      /* Intrinsic Responsive Columns */
+      @container (width >= 1024px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      @container (width >= 1280px) {
+        gap: 4rem;
+      }
+    }
+  }
+  
+  .layout-sidebar {
+      /* Placeholder for specific sidebar styling if needed */
+  }
+  
+  .sticky-sidebar {
+      position: sticky;
+      inset-block-start: 6rem; /* top-24 */
+      z-index: 10;
+  }
+
+  /* Scoped Column Spanning */
+  @scope (.layout-sidebar-col) {
+    :scope {
+      grid-column: span 1 / span 1;
+      
+      .layout-grid:scope > & {
+         @container (width >= 1024px) {
+             grid-column: span 3 / span 3;
+         }
+      }
+    }
+  }
+
+  .container-inline {
+    container-type: inline-size;
+  }
+  
+  .flex-width-full {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}

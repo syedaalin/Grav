@@ -1,18 +1,15 @@
 {% if grav.user.username %}
-    <span class="inline-flex items-center gap-2 px-4 py-1.5 card-glass text-xs font-black uppercase tracking-widest text-gray-700">
-        <i class="la la-user-circle text-lg text-primary/60" aria-hidden="true"></i>
-        <span class="max-w-[120px] truncate">{{ grav.user.fullname ?: grav.user.username }}</span>
-        <a href="{{ base_url_relative }}/task{{ config.system.param_sep }}login.logout" 
-           class="ml-2 w-7 h-7 flex items-center justify-center rounded-xl bg-surface-subtle/5 hover:bg-red-50 hover:text-red-500 transition-all focus:outline-none focus:ring-4 focus:ring-red-100" 
-           title="{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}">
-            <i class="la la-sign-out-alt" aria-hidden="true"></i>
-        </a>
-    </span>
+	<span class="login-status">
+		<span class="status-badge">
+			<i class="la la-user-circle status-avatar" aria-hidden="true"></i>
+			<span class="status-name">{{ grav.user.fullname ?: grav.user.username }}</span>
+		</span>
+	</span>
 {% else %}
-    <a href="{{ base_url_relative }}/login" 
-       class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-subtle hover:text-primary transition-all focus:outline-none focus:ring-4 focus:ring-primary/10 px-4 py-2 rounded-xl">
-        <i class="la la-user-lock text-sm" aria-hidden="true"></i>
-        {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}
-    </a>
+	<div class="login-status">
+		<a href="{{ base_url_relative }}/login" class="login-link">
+			<i class="la la-user-lock" aria-hidden="true"></i>
+			{{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}
+		</a>
+	</div>
 {% endif %}
-

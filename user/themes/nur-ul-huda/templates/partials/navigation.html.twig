@@ -1,6 +1,5 @@
 {% import 'macros/macros.html.twig' as macros %}
 
-<ul>
-    {{ macros.nav_loop(pages) }}
+<ul class="nav-list">
+    {{ macros.nav_loop(pages, mobile|default(false)) }}
 </ul>
-

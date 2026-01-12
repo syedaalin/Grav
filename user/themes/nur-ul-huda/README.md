@@ -2,7 +2,7 @@
 
 ![](assets/nur-ul-huda-screenshots.jpg)
 
-**Nur-ul-Huda** is a modern Islamic theme for [Grav CMS](http://github.com/getgrav/grav). This theme is built with **Tailwind CSS v4** (CSS-first architecture) and provides specialized features for Islamic institutions including prayer times, Hijri calendar, Moodle LMS integration, Snipcart e-commerce, and JazzCash payment gateway support. Nur-ul-Huda requires Grav 1.6+ to function properly.
+**Nur-ul-Huda** is a modern Islamic theme for [Grav CMS](http://github.com/getgrav/grav). This theme is built with **Modern Vanilla CSS (2026)** (Pure Custom CSS) and provides specialized features for Islamic institutions including prayer times, Hijri calendar, Moodle LMS integration, Snipcart e-commerce, and JazzCash payment gateway support. Nur-ul-Huda requires Grav 1.6+ to function properly.
 
 ## Features
 
@@ -20,7 +20,7 @@
   * Moodle API integration with course fetching
   * Cached course data for performance
 * **Modern Frontend**
-  * Tailwind CSS v4 with CSS-first configuration
+  * Pure Custom CSS (Modern Vanilla) architecture
   * Responsive design with container queries
   * Fluid typography using clamp()
   * Modern viewport units (svh) for mobile
@@ -36,6 +36,15 @@
   * localStorage caching for API data
   * Asset pipelining
   * Production mode with minified CSS
+
+* **Browser Requirements**
+  * This theme uses **Modern Vanilla CSS (2026)** features including `@scope`, `@layer`, and `oklch` colors.
+  * **Required Browsers:**
+    * Chrome 118+
+    * Edge 118+
+    * Safari 17.4+
+    * Firefox 128+ (or latest)
+  * Note: IDE warnings about browser support for `@scope` are expected as this is a cutting-edge feature. The theme is designed for modern evergreen browsers.
 
 ### Supported Page Templates
 

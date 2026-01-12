@@ -2,14 +2,14 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml',
-    'modified' => 1768088563,
-    'size' => 26979,
+    'modified' => 1768241514,
+    'size' => 45556,
     'data' => [
         'name' => 'Nur-ul-Huda',
         'slug' => 'nur-ul-huda',
         'type' => 'theme',
         'version' => '2.1.2',
-        'description' => 'Modern Islamic theme with prayer times, Hijri calendar, Moodle LMS integration, Snipcart e-commerce, and JazzCash payment gateway support. Built with Tailwind CSS v4.',
+        'description' => 'Modern Islamic theme with prayer times, Hijri calendar, Moodle LMS integration, Snipcart e-commerce, and JazzCash payment gateway support. Built with Modern Vanilla CSS (2026).',
         'icon' => 'mosque',
         'author' => [
             'name' => 'Syed Aalin',
@@ -18,7 +18,7 @@ return [
         ],
         'homepage' => 'https://github.com/syedaalin/grav-theme-nur-ul-huda',
         'demo' => 'http://localhost:8888',
-        'keywords' => 'islamic, prayer-times, hijri-calendar, moodle, tailwind-v4, religious, education, ecommerce, snipcart, jazzcash, responsive, modern, accessibility',
+        'keywords' => 'islamic, prayer-times, hijri-calendar, moodle, religious, education, ecommerce, snipcart, jazzcash, responsive, modern, accessibility',
         'bugs' => 'https://github.com/syedaalin/grav-theme-nur-ul-huda/issues',
         'license' => 'MIT',
         'dependencies' => [
@@ -34,9 +34,9 @@ return [
                     'type' => 'tabs',
                     'active' => 1,
                     'fields' => [
-                        'visual_tab' => [
+                        'general_tab' => [
                             'type' => 'tab',
-                            'title' => 'Visual Identity',
+                            'title' => 'General Settings',
                             'fields' => [
                                 'global_section' => [
                                     'type' => 'section',
@@ -46,6 +46,8 @@ return [
                                 'direction' => [
                                     'type' => 'toggle',
                                     'label' => 'Text Direction',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 'ltr',
                                     'options' => [
@@ -57,6 +59,8 @@ return [
                                 'language' => [
                                     'type' => 'select',
                                     'label' => 'Primary Language',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'en',
                                     'options' => [
                                         'en' => 'English',
@@ -69,6 +73,8 @@ return [
                                 'number_format' => [
                                     'type' => 'select',
                                     'label' => 'Number Format',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'western',
                                     'options' => [
                                         'western' => 'Western (0-9)',
@@ -80,6 +86,8 @@ return [
                                 'date_calendar' => [
                                     'type' => 'select',
                                     'label' => 'Date Calendar',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'gregorian',
                                     'options' => [
                                         'gregorian' => 'Gregorian Only',
@@ -90,7 +98,9 @@ return [
                                 ],
                                 'production-mode' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.PRODUCTION_MODE',
+                                    'label' => 'Production Mode',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -109,18 +119,24 @@ return [
                                 'primary_spirit_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Primary Spirit Color',
-                                    'default' => '#2ecc71',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.55 0.18 165)',
                                     'help' => 'The main spiritual color of the theme (Emerald Green)'
                                 ],
                                 'accent_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Accent Color',
-                                    'default' => '#f1c40f',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.85 0.15 85)',
                                     'help' => 'The accent color (Gold)'
                                 ],
                                 'blur_strength' => [
                                     'type' => 'range',
                                     'label' => 'Glass Blur Strength',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 12,
                                     'validate' => [
                                         'min' => 0,
@@ -128,15 +144,43 @@ return [
                                     ],
                                     'help' => 'Controls the blur strength of Glassmorphism elements (0-30px)'
                                 ],
-                                'typography' => [
-                                    'type' => 'select',
-                                    'label' => 'Typography Pairings',
-                                    'default' => 'inter_noto',
-                                    'options' => [
-                                        'inter_noto' => 'Inter + Noto Nastaliq (Urdu Optimized)',
-                                        'roboto_mono' => 'Roboto + Roboto Mono',
-                                        'outfit' => 'Outfit + Inter'
+                                'font_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Typography Settings',
+                                    'underline' => true,
+                                    'text' => 'Configure dynamic fonts. Select from local 2025 favorites or custom import.'
+                                ],
+                                'custom_fonts' => [
+                                    'type' => 'file',
+                                    'label' => 'Custom Fonts Library',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Drag and drop your font files here. They will be auto-named by filename.',
+                                    'destination' => 'theme://fonts/custom',
+                                    'multiple' => true,
+                                    'accept' => [
+                                        0 => '.ttf',
+                                        1 => '.woff',
+                                        2 => '.woff2'
                                     ]
+                                ],
+                                'font_heading' => [
+                                    'type' => 'select',
+                                    'label' => 'Heading Font Family',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => '\'PlusJakartaSans-VariableFont_wght\', sans-serif',
+                                    'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
+                                    'help' => 'Select the primary font for headings'
+                                ],
+                                'font_body' => [
+                                    'type' => 'select',
+                                    'label' => 'Body Font Family',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => '\'Outfit-VariableFont_wght\', sans-serif',
+                                    'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
+                                    'help' => 'Select the primary font for body text'
                                 ]
                             ]
                         ],
@@ -146,73 +190,91 @@ return [
                             'fields' => [
                                 'glass_section' => [
                                     'type' => 'section',
-                                    'title' => 'Glass Effect Settings',
+                                    'title' => 'Adjustable Glassmorphism Scales',
                                     'underline' => true,
-                                    'text' => 'Configure the global glassmorphism style for headers and panels. <button id=\'btn-reset-glass\' class=\'button button-small\' style=\'float: right; margin-top: -5px;\'><i class=\'fa fa-undo\'></i> Reset Defaults</button>'
+                                    'text' => 'Configure the 2026 Glassmorphism properties.'
+                                ],
+                                'glass_bg_color' => [
+                                    'type' => 'colorpicker',
+                                    'label' => 'Base Color',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => '#ffffff',
+                                    'help' => 'Base color of the glass surface'
                                 ],
                                 'glass_opacity' => [
                                     'type' => 'range',
-                                    'label' => 'Glass Density (Translucency)',
-                                    'default' => 0.12,
+                                    'label' => 'Opacity %',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'validate' => [
-                                        'min' => 0,
-                                        'max' => 1,
-                                        'step' => 0.01
+                                        'min' => 10,
+                                        'max' => 90
                                     ],
-                                    'help' => 'Pillar 1: Translucency - The tint strength of the surface (Standard: 0.12)'
+                                    'default' => 65,
+                                    'help' => 'Translucency percentage'
                                 ],
                                 'glass_blur' => [
                                     'type' => 'range',
-                                    'label' => 'Diffusion (Blur)',
-                                    'default' => 25,
+                                    'label' => 'Blur Radius (px)',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'validate' => [
                                         'min' => 0,
                                         'max' => 50
                                     ],
-                                    'help' => 'Pillar 2: Diffusion - How blurry the background should be (Standard: 25px)'
+                                    'default' => 16,
+                                    'help' => 'Background blur intensity'
                                 ],
                                 'glass_border_opacity' => [
                                     'type' => 'range',
-                                    'label' => 'Edge Visibility (Reflective Edge)',
-                                    'default' => 0.15,
+                                    'label' => 'Border Opacity %',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'validate' => [
                                         'min' => 0,
-                                        'max' => 1,
-                                        'step' => 0.01
+                                        'max' => 100
                                     ],
-                                    'help' => 'Pillar 3: Reflective Edge - Opacity of the white border (Standard: 0.15)'
+                                    'default' => 15,
+                                    'help' => 'Sensitivity of the glass edge'
                                 ],
-                                'glass_thickness' => [
+                                'glass_highlight' => [
                                     'type' => 'range',
-                                    'label' => 'Edge Thickness',
+                                    'label' => 'Specular Highlight %',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'validate' => [
+                                        'min' => 0,
+                                        'max' => 100
+                                    ],
+                                    'default' => 40,
+                                    'help' => 'Intensity of the inner reflective edge'
+                                ],
+                                'glass_noise' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Noise Texture',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
                                     'default' => 1,
-                                    'validate' => [
-                                        'min' => 0,
-                                        'max' => 5,
-                                        'step' => 1
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
                                     ],
-                                    'help' => 'Pillar 3: Reflective Edge - Physical width of the glass edge (Standard: 1px)'
-                                ],
-                                'glass_shadow_intensity' => [
-                                    'type' => 'range',
-                                    'label' => 'Depth (Shadow Intensity)',
-                                    'default' => 0.1,
                                     'validate' => [
-                                        'min' => 0,
-                                        'max' => 1,
-                                        'step' => 0.01
+                                        'type' => 'bool'
                                     ],
-                                    'help' => 'Pillar 4: Depth - Intensity of the soft, diffused shadow (Standard: 0.1)'
+                                    'help' => 'Enable subtle noise for premium frosted texture'
                                 ]
                             ]
                         ],
                         'header_tab' => [
                             'type' => 'tab',
-                            'title' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TAB',
+                            'title' => 'Header',
                             'fields' => [
                                 'header_intro' => [
                                     'type' => 'display',
-                                    'content' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TAB_INTRO',
+                                    'content' => 'Configure your site header and navigation',
                                     'markdown' => true
                                 ],
                                 'logos_section' => [
@@ -222,13 +284,15 @@ return [
                                 ],
                                 'custom_logo' => [
                                     'type' => 'file',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO',
+                                    'label' => 'Logo',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'size' => 'large',
                                     'destination' => 'theme://images/logo',
                                     'multiple' => false,
                                     'markdown' => true,
-                                    'description' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO_DESCRIPTION',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.LOGO_HELP',
+                                    'description' => 'Your site logo',
+                                    'help' => 'Upload your site logo',
                                     'accept' => [
                                         0 => 'image/*'
                                     ],
@@ -239,18 +303,30 @@ return [
                                 'site_name' => [
                                     'type' => 'text',
                                     'label' => 'Site Name',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'Global Site Name (displayed in Header & Footer)',
                                     'placeholder' => 'Nur-ul-Huda'
                                 ],
+                                'site_tagline' => [
+                                    'type' => 'text',
+                                    'label' => 'Site Tagline',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Short description of your site (displayed in Footer & Title)',
+                                    'placeholder' => 'Guiding Light of Faith'
+                                ],
                                 'behavior_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_DEFAULTS',
+                                    'title' => 'Header Options',
                                     'underline' => true
                                 ],
                                 'header-fixed' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_FIXED_HELP',
+                                    'label' => 'Fixed Header',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Keep header visible when scrolling',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -263,8 +339,10 @@ return [
                                 ],
                                 'header-animated' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_ANIMATED_HELP',
+                                    'label' => 'Animated Header',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Animate header on scroll',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -277,8 +355,10 @@ return [
                                 ],
                                 'header-dark' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_DARK_HELP',
+                                    'label' => 'Dark Header',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Use dark header style',
                                     'highlight' => 0,
                                     'default' => 0,
                                     'options' => [
@@ -291,8 +371,10 @@ return [
                                 ],
                                 'header-transparent' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.HEADER_TRANSPARENT_HELP',
+                                    'label' => 'Transparent Header',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Make header transparent',
                                     'highlight' => 0,
                                     'default' => 0,
                                     'options' => [
@@ -318,6 +400,8 @@ return [
                                 'top_banner_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Top Banner',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -336,6 +420,8 @@ return [
                                 'top_banner_announcement_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Announcement',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 0,
                                     'options' => [
@@ -349,24 +435,32 @@ return [
                                 'top_banner_announcement_text' => [
                                     'type' => 'text',
                                     'label' => 'Announcement Text',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'placeholder' => 'Important update: Eid prayer will be at 8:00 AM.',
                                     'help' => 'Text to scroll in the Top Banner.'
                                 ],
                                 'top_banner_announcement_expires' => [
                                     'type' => 'datetime',
                                     'label' => 'Expiration Date & Time',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'The announcement will automatically hide after this time.'
                                 ],
                                 'top_banner_announcement_bg_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Announcement Background',
-                                    'default' => '#b91c1c',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.55 0.25 25)',
                                     'help' => 'Background color when announcement is active (default Red).'
                                 ],
                                 'top_banner_announcement_text_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Announcement Text Color',
-                                    'default' => '#ffffff',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.98 0 0)',
                                     'help' => 'Text color for the announcement.'
                                 ],
                                 'top_banner_appearance_section' => [
@@ -377,18 +471,24 @@ return [
                                 'top_banner_bg_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Background Color',
-                                    'default' => '#111827',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.2 0.02 260)',
                                     'help' => 'Customize the background color. Default is Deep Navy.'
                                 ],
                                 'top_banner_text_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Text Color',
-                                    'default' => '#f1c40f',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.85 0.15 85)',
                                     'help' => 'Customize text color. Default is Yellow (Active Accent).'
                                 ],
                                 'top_banner_show_dates' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Date Ticker',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'Display Gregorian and Hijri dates',
                                     'default' => 1,
                                     'options' => [
@@ -402,6 +502,8 @@ return [
                                 'top_banner_show_prayer_ticker' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Prayer Countdown',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'Display next prayer name and countdown timer',
                                     'default' => 1,
                                     'options' => [
@@ -415,6 +517,8 @@ return [
                                 'top_banner_show_contact' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Contact Info',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'Display Phone and Email (configured in Footer tab)',
                                     'default' => 1,
                                     'options' => [
@@ -428,6 +532,8 @@ return [
                                 'top_banner_show_social' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Social Icons',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'help' => 'Display Social Media icons (configured in Footer tab)',
                                     'default' => 1,
                                     'options' => [
@@ -440,7 +546,7 @@ return [
                                 ]
                             ]
                         ],
-                        'sanctum_tab' => [
+                        'islamic_features_tab' => [
                             'type' => 'tab',
                             'title' => 'Religious Utilities',
                             'fields' => [
@@ -452,6 +558,8 @@ return [
                                 'prayer_method' => [
                                     'type' => 'select',
                                     'label' => 'Prayer Calculation Standard',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'tehran',
                                     'options' => [
                                         'tehran' => 'University of Tehran',
@@ -463,12 +571,16 @@ return [
                                 'hijri_offset' => [
                                     'type' => 'number',
                                     'label' => 'Hijri Calibration',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 0,
                                     'help' => 'Adjust Hijri date manually (+/- days)'
                                 ],
                                 'adhan_media' => [
                                     'type' => 'file',
                                     'label' => 'Adhan Media',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'destination' => 'theme://media',
                                     'multiple' => false,
                                     'accept' => [
@@ -478,14 +590,16 @@ return [
                                 'default_location' => [
                                     'type' => 'text',
                                     'label' => 'Geo-Location Default',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'Karachi',
                                     'help' => 'Fallback city for prayer times'
                                 ]
                             ]
                         ],
-                        'integrations_tab' => [
+                        'integrations_advanced_tab' => [
                             'type' => 'tab',
-                            'title' => 'Integrations',
+                            'title' => 'Integrations & Advanced',
                             'fields' => [
                                 'moodle_section' => [
                                     'type' => 'section',
@@ -495,11 +609,15 @@ return [
                                 'moodle_url' => [
                                     'type' => 'text',
                                     'label' => 'Moodle URL',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'placeholder' => 'https://moodle.yoursite.com'
                                 ],
                                 'moodle_token' => [
                                     'type' => 'password',
-                                    'label' => 'Web Service API Token'
+                                    'label' => 'Web Service API Token',
+                                    'style' => 'vertical',
+                                    'width' => '33%'
                                 ],
                                 'commerce_section' => [
                                     'type' => 'section',
@@ -508,7 +626,9 @@ return [
                                 ],
                                 'snipcart_key' => [
                                     'type' => 'text',
-                                    'label' => 'Snipcart Public API Key'
+                                    'label' => 'Snipcart Public API Key',
+                                    'style' => 'vertical',
+                                    'width' => '33%'
                                 ],
                                 'payment_section' => [
                                     'type' => 'section',
@@ -517,32 +637,38 @@ return [
                                 ],
                                 'jazzcash_merchant' => [
                                     'type' => 'text',
-                                    'label' => 'JazzCash Merchant ID'
+                                    'label' => 'JazzCash Merchant ID',
+                                    'style' => 'vertical',
+                                    'width' => '33%'
                                 ],
                                 'jazzcash_salt' => [
                                     'type' => 'password',
-                                    'label' => 'JazzCash Integrity Salt'
+                                    'label' => 'JazzCash Integrity Salt',
+                                    'style' => 'vertical',
+                                    'width' => '33%'
                                 ]
                             ]
                         ],
                         'components_tab' => [
                             'type' => 'tab',
-                            'title' => 'THEME_NUR_UL_HUDA.ADMIN.COMPONENTS',
+                            'title' => 'Components',
                             'fields' => [
                                 'components_intro' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.COMPONENTS_INTRO',
-                                    'text' => 'THEME_NUR_UL_HUDA.ADMIN.COMPONENTS_INTRO_TEXT',
+                                    'title' => 'Components',
+                                    'text' => 'Enable or disable theme components',
                                     'underline' => true
                                 ],
                                 'hero_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_COMPONENT',
+                                    'title' => 'Hero Section',
                                     'underline' => true
                                 ],
                                 'hero_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_ENABLED',
+                                    'label' => 'Enable Hero',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -555,24 +681,28 @@ return [
                                 ],
                                 'hero_default_style' => [
                                     'type' => 'select',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_DEFAULT_STYLE',
+                                    'label' => 'Default Hero Style',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'hero-large',
                                     'options' => [
-                                        'hero-fullscreen' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_FULLSCREEN',
-                                        'hero-large' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_LARGE',
-                                        'hero-medium' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_MEDIUM',
-                                        'hero-small' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_SMALL',
-                                        'hero-tiny' => 'THEME_NUR_UL_HUDA.ADMIN.HERO_TINY'
+                                        'hero-fullscreen' => 'Full Screen',
+                                        'hero-large' => 'Large',
+                                        'hero-medium' => 'Medium',
+                                        'hero-small' => 'Small',
+                                        'hero-tiny' => 'Tiny'
                                     ]
                                 ],
                                 'services_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_COMPONENT',
+                                    'title' => 'Services Section',
                                     'underline' => true
                                 ],
                                 'services_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_ENABLED',
+                                    'label' => 'Enable Services',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -585,22 +715,26 @@ return [
                                 ],
                                 'services_default_columns' => [
                                     'type' => 'select',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SERVICES_DEFAULT_COLUMNS',
+                                    'label' => 'Default Columns',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 3,
                                     'options' => [
-                                        2 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_2',
-                                        3 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_3',
-                                        4 => 'THEME_NUR_UL_HUDA.ADMIN.COLUMNS_4'
+                                        2 => '2 Columns',
+                                        3 => '3 Columns',
+                                        4 => '4 Columns'
                                     ]
                                 ],
                                 'features_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_COMPONENT',
+                                    'title' => 'Features Section',
                                     'underline' => true
                                 ],
                                 'features_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_ENABLED',
+                                    'label' => 'Enable Features',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -613,21 +747,25 @@ return [
                                 ],
                                 'features_default_layout' => [
                                     'type' => 'select',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_DEFAULT_LAYOUT',
+                                    'label' => 'Default Layout',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'default' => 'standard',
                                     'options' => [
-                                        'small' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_SMALL',
-                                        'standard' => 'THEME_NUR_UL_HUDA.ADMIN.FEATURES_STANDARD'
+                                        'small' => 'Small',
+                                        'standard' => 'Standard'
                                     ]
                                 ],
                                 'gallery_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.GALLERY_COMPONENT',
+                                    'title' => 'Gallery Section',
                                     'underline' => true
                                 ],
                                 'gallery_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.GALLERY_ENABLED',
+                                    'label' => 'Enable Gallery',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -640,12 +778,14 @@ return [
                                 ],
                                 'istafta_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_COMPONENT',
+                                    'title' => 'Istafta Section',
                                     'underline' => true
                                 ],
                                 'istafta_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.ISTAFTA_ENABLED',
+                                    'label' => 'Enable Istafta',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -658,12 +798,14 @@ return [
                                 ],
                                 'khums_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.KHUMS_COMPONENT',
+                                    'title' => 'Khums Calculator',
                                     'underline' => true
                                 ],
                                 'khums_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.KHUMS_ENABLED',
+                                    'label' => 'Enable Khums',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -676,12 +818,14 @@ return [
                                 ],
                                 'timeline_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.TIMELINE_COMPONENT',
+                                    'title' => 'Timeline Section',
                                     'underline' => true
                                 ],
                                 'timeline_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.TIMELINE_ENABLED',
+                                    'label' => 'Enable Timeline',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -694,12 +838,14 @@ return [
                                 ],
                                 'trust_signals_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_COMPONENT',
+                                    'title' => 'Trust Signals',
                                     'underline' => true
                                 ],
                                 'trust_signals_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.TRUST_SIGNALS_ENABLED',
+                                    'label' => 'Enable Trust Signals',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -712,12 +858,14 @@ return [
                                 ],
                                 'courses_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.COURSES_COMPONENT',
+                                    'title' => 'Courses Section',
                                     'underline' => true
                                 ],
                                 'courses_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.COURSES_ENABLED',
+                                    'label' => 'Enable Courses',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -730,24 +878,56 @@ return [
                                 ]
                             ]
                         ],
-                        'footer_tab' => [
+                        'theme_colors_tab' => [
+                            'import@' => 'tabs/theme-colors'
+                        ],
+                        'advanced_tab' => [
                             'type' => 'tab',
-                            'title' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_TAB',
+                            'title' => 'Advanced Settings',
                             'fields' => [
-                                'footer_intro' => [
-                                    'type' => 'display',
-                                    'content' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_TAB_INTRO',
-                                    'markdown' => true
-                                ],
-                                'footer_behavior_section' => [
+                                'custom_logo_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_BEHAVIOR',
+                                    'title' => 'Logo Settings',
                                     'underline' => true
                                 ],
-                                'sticky-footer' => [
+                                'custom_logo' => [
+                                    'type' => 'file',
+                                    'label' => 'Desktop Logo',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'destination' => 'theme://images/logo',
+                                    'multiple' => false,
+                                    'accept' => [
+                                        0 => 'image/*'
+                                    ]
+                                ],
+                                'custom_logo_mobile' => [
+                                    'type' => 'file',
+                                    'label' => 'Mobile Logo',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'destination' => 'theme://images/logo',
+                                    'multiple' => false,
+                                    'accept' => [
+                                        0 => 'image/*'
+                                    ]
+                                ],
+                                'favicon' => [
+                                    'type' => 'file',
+                                    'label' => 'Favicon',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'destination' => 'theme://images',
+                                    'multiple' => false,
+                                    'accept' => [
+                                        0 => 'image/*'
+                                    ]
+                                ],
+                                'dropdown.enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.STICKY_FOOTER',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.STICKY_FOOTER_HELP',
+                                    'label' => 'Enable Dropdown Menus',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -758,10 +938,50 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'footer_show_social' => [
+                                'grid-size' => [
+                                    'type' => 'select',
+                                    'label' => 'Grid Size',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Choose grid overlay size for debugging',
+                                    'default' => '',
+                                    'options' => [
+                                        '' => 'None',
+                                        'grid-xl' => 'Extra Large',
+                                        'grid-lg' => 'Large',
+                                        'grid-md' => 'Medium'
+                                    ]
+                                ],
+                                'blog_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Blog Settings',
+                                    'underline' => true
+                                ],
+                                'blog-page' => [
+                                    'type' => 'text',
+                                    'label' => 'Blog Page Path',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Path to your blog page',
+                                    'size' => 'medium',
+                                    'default' => '/blog'
+                                ]
+                            ]
+                        ],
+                        'bottom_banner_tab' => [
+                            'type' => 'tab',
+                            'title' => 'Bottom Banner',
+                            'fields' => [
+                                'bottom_banner_header_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Header',
+                                    'underline' => true
+                                ],
+                                'bottom_banner_show_logo' => [
                                     'type' => 'toggle',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_SHOW_SOCIAL',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_SHOW_SOCIAL_HELP',
+                                    'label' => 'Site Logo',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -772,175 +992,760 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'footer_content_section' => [
-                                    'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_CONTENT',
-                                    'underline' => true
+                                'bottom_banner_show_site_name' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Site Name',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
+                                    'default' => 1,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
                                 ],
-                                'footer_branding_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Footer Branding',
-                                    'underline' => true
+                                'bottom_banner_show_tagline' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Site Tagline',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
+                                    'default' => 1,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
                                 ],
-                                'site_tagline' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_TAGLINE',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.SITE_TAGLINE_HELP',
-                                    'placeholder' => 'Guiding Light of Faith'
-                                ],
-                                'contact_section' => [
-                                    'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_INFO',
-                                    'underline' => true
-                                ],
-                                'contact_phone' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_PHONE',
-                                    'placeholder' => '+1 (234) 567-8900'
-                                ],
-                                'contact_address' => [
+                                'bottom_banner_copyright' => [
                                     'type' => 'textarea',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.CONTACT_ADDRESS',
-                                    'placeholder' => '123 Main Street, City, State, ZIP',
-                                    'rows' => 3
-                                ],
-                                'footer_copyright' => [
-                                    'type' => 'textarea',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COPYRIGHT',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COPYRIGHT_HELP',
+                                    'label' => 'Copyright Text',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Custom copyright text',
                                     'rows' => 3,
                                     'placeholder' => '© 2026 Your Organization. All rights reserved.'
                                 ],
-                                'footer_social_section' => [
+                                'bottom_banner_social_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_MEDIA',
-                                    'underline' => true,
-                                    'text' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_MEDIA_FOOTER_TEXT'
+                                    'title' => 'Body',
+                                    'underline' => true
                                 ],
-                                'social_facebook' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_FACEBOOK',
-                                    'placeholder' => 'https://facebook.com/yourpage',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_twitter' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TWITTER',
-                                    'placeholder' => 'https://twitter.com/yourhandle',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_instagram' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_INSTAGRAM',
-                                    'placeholder' => 'https://instagram.com/yourhandle',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_youtube' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_YOUTUBE',
-                                    'placeholder' => 'https://youtube.com/@yourchannel',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_telegram' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_TELEGRAM',
-                                    'placeholder' => 'https://t.me/yourgroup',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_whatsapp' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_WHATSAPP',
-                                    'placeholder' => 'https://wa.me/1234567890',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_WHATSAPP_HELP',
-                                    'validate' => [
-                                        'type' => 'URL'
-                                    ]
-                                ],
-                                'social_email' => [
-                                    'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.SOCIAL_EMAIL',
-                                    'placeholder' => 'info@yoursite.com',
-                                    'validate' => [
-                                        'type' => 'email'
-                                    ]
-                                ],
-                                'footer_columns' => [
-                                    'type' => 'list',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMNS',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMNS_HELP',
-                                    'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_FOOTER_COLUMN',
+                                'social_facebook_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
                                     'fields' => [
-                                        '.title' => [
-                                            'type' => 'text',
-                                            'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_TITLE',
-                                            'placeholder' => 'Quick Links'
-                                        ],
-                                        '.links' => [
-                                            'type' => 'list',
-                                            'label' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_COLUMN_LINKS',
-                                            'btnLabel' => 'THEME_NUR_UL_HUDA.ADMIN.ADD_LINK',
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
                                             'fields' => [
-                                                '.text' => [
+                                                'social_facebook' => [
                                                     'type' => 'text',
-                                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_TEXT',
-                                                    'placeholder' => 'About Us'
-                                                ],
-                                                '.url' => [
-                                                    'type' => 'text',
-                                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.LINK_URL',
-                                                    'placeholder' => '/about'
+                                                    'label' => 'Facebook',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://facebook.com/yourpage',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_facebook_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
                                                 ]
                                             ]
                                         ]
                                     ]
                                 ],
-                                'footer_preview_section' => [
-                                    'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_PREVIEW',
-                                    'underline' => true
+                                'social_twitter_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_twitter' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Twitter',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://twitter.com/yourhandle',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_twitter_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
                                 ],
-                                'footer_preview_info' => [
-                                    'type' => 'display',
-                                    'content' => 'THEME_NUR_UL_HUDA.ADMIN.FOOTER_PREVIEW_INFO',
-                                    'markdown' => true
+                                'social_instagram_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_instagram' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Instagram',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://instagram.com/yourhandle',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_instagram_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_youtube_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_youtube' => [
+                                                    'type' => 'text',
+                                                    'label' => 'YouTube',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://youtube.com/@yourchannel',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_youtube_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_telegram_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_telegram' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Telegram',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://t.me/yourgroup',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_telegram_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_linkedin_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_linkedin' => [
+                                                    'type' => 'text',
+                                                    'label' => 'LinkedIn',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://linkedin.com/company/yourorg',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_linkedin_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_tiktok_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_tiktok' => [
+                                                    'type' => 'text',
+                                                    'label' => 'TikTok',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://tiktok.com/@yourhandle',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_tiktok_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_pinterest_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_pinterest' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Pinterest',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://pinterest.com/yourhandle',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_pinterest_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_snapchat_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_snapchat' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Snapchat',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://snapchat.com/add/yourhandle',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_snapchat_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_spotify_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_spotify' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Spotify',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://open.spotify.com/show/yourshow',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_spotify_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_discord_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_discord' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Discord Invite',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://discord.gg/yourinvite',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_discord_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_google_maps_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_google_maps' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Google Maps',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://goo.gl/maps/yourlocation',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_google_maps_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_whatsapp_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_whatsapp' => [
+                                                    'type' => 'text',
+                                                    'label' => 'WhatsApp',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'https://wa.me/1234567890',
+                                                    'help' => 'Your WhatsApp number with country code',
+                                                    'validate' => [
+                                                        'type' => 'URL'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_whatsapp_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_phone_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_phone' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Phone',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => '+1234567890',
+                                                    'help' => 'Enter phone number for Click-to-Call icon',
+                                                    'validate' => [
+                                                        'type' => 'text'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_phone_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'social_email_group' => [
+                                    'type' => 'columns',
+                                    'width' => '33%',
+                                    'fields' => [
+                                        'col_input' => [
+                                            'type' => 'column',
+                                            'width' => '75%',
+                                            'fields' => [
+                                                'social_email' => [
+                                                    'type' => 'text',
+                                                    'label' => 'Email',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'placeholder' => 'info@yoursite.com',
+                                                    'validate' => [
+                                                        'type' => 'email'
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        'col_toggle' => [
+                                            'type' => 'column',
+                                            'width' => '25%',
+                                            'fields' => [
+                                                'social_email_enabled' => [
+                                                    'type' => 'toggle',
+                                                    'label' => '&nbsp;',
+                                                    'style' => 'vertical',
+                                                    'width' => '100%',
+                                                    'highlight' => 1,
+                                                    'default' => 1,
+                                                    'options' => [
+                                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                                    ],
+                                                    'validate' => [
+                                                        'type' => 'bool'
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'bottom_banner_show_social_labels_mobile' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Show Names on Mobile',
+                                    'help' => 'Show platform name on small screens',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
+                                    'default' => 0,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
+                                ],
+                                'bottom_banner_show_social_labels_desktop' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Show Names on Desktop',
+                                    'help' => 'Show platform name on large screens',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
+                                    'default' => 0,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
                                 ]
                             ]
                         ],
                         'nur-ul-huda_legacy' => [
                             'type' => 'tab',
-                            'title' => 'Nur-ul-Huda Options',
+                            'title' => 'Options',
                             'fields' => [
                                 'grid-size' => [
                                     'type' => 'select',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_HELP',
+                                    'label' => 'Grid Size',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Choose grid overlay size for debugging',
                                     'size' => 'small',
                                     'options' => [
-                                        '' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_NONE',
-                                        'grid-xl' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_EXTRA_LARGE',
-                                        'grid-lg' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_LARGE',
-                                        'grid-md' => 'THEME_NUR_UL_HUDA.ADMIN.GRID_SIZE_MEDIUM'
+                                        '' => 'None',
+                                        'grid-xl' => 'Extra Large',
+                                        'grid-lg' => 'Large',
+                                        'grid-md' => 'Medium'
                                     ]
                                 ],
                                 'blog_section' => [
                                     'type' => 'section',
-                                    'title' => 'THEME_NUR_UL_HUDA.ADMIN.BLOG_DEFAULTS',
+                                    'title' => 'Blog Settings',
                                     'underline' => true
                                 ],
                                 'blog-page' => [
                                     'type' => 'text',
-                                    'label' => 'THEME_NUR_UL_HUDA.ADMIN.BLOG_PAGE',
-                                    'help' => 'THEME_NUR_UL_HUDA.ADMIN.BLOG_PAGE_HELP',
+                                    'label' => 'Blog Page Path',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'help' => 'Path to your blog page',
                                     'size' => 'medium',
                                     'default' => '/blog'
                                 ]

@@ -3,21 +3,21 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'config',
     'environment' => 'localhost',
-    'timestamp' => 1768090142,
+    'timestamp' => 1768241562,
     'directories' => [
         '/Users/syedaalin/Documents/Grav/user/localhost/config' => 1767933299,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1768088585,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes' => 1768238528,
         '/Users/syedaalin/Documents/Grav/user/config' => 1767925399,
-        '/Users/syedaalin/Documents/Grav/user/config/plugins' => 1767662677,
+        '/Users/syedaalin/Documents/Grav/user/config/plugins' => 1768107131,
         '/Users/syedaalin/Documents/Grav/user/config/themes' => 1767950165,
         '/Users/syedaalin/Documents/Grav/system/config' => 1767934750,
-        '/Users/syedaalin/Documents/Grav/user/plugins' => 1767944120,
+        '/Users/syedaalin/Documents/Grav/user/plugins' => 1768107130,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/pagination' => 1767731299,
         '/Users/syedaalin/Documents/Grav/user/plugins/form' => 1767660593,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects' => 1767663065,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages' => 1767636900,
-        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch' => 1767731298,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch' => 1768106850,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin' => 1767663061,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap' => 1767636900,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems' => 1767660592,
@@ -31,7 +31,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist' => 1767942424,
         '/Users/syedaalin/Documents/Grav/user/themes' => 1767950053,
-        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda' => 1768076951
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda' => 1768231163
     ],
     'file_mtimes' => [
         '/Users/syedaalin/Documents/Grav/user/localhost/config/security.yaml' => 1767733546,
@@ -39,19 +39,20 @@ return [
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/my-quark.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/ngo-theme.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-e-hidayat.yaml' => 1767942918,
-        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml' => 1768088585,
+        '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml' => 1768238528,
         '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/quark.yaml' => 1767925399,
         '/Users/syedaalin/Documents/Grav/user/config/media.yaml' => 1767934750,
         '/Users/syedaalin/Documents/Grav/user/config/navigation.yaml' => 1767728456,
         '/Users/syedaalin/Documents/Grav/user/config/plugins/shortcodes.yaml' => 1767662677,
+        '/Users/syedaalin/Documents/Grav/user/config/plugins/tntsearch.yaml' => 1768106898,
         '/Users/syedaalin/Documents/Grav/user/config/plugins/webp.yaml' => 1767661584,
         '/Users/syedaalin/Documents/Grav/user/config/security.yaml' => 1764207892,
         '/Users/syedaalin/Documents/Grav/user/config/site.yaml' => 1767934750,
-        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1768090140,
+        '/Users/syedaalin/Documents/Grav/user/config/system.yaml' => 1768241527,
         '/Users/syedaalin/Documents/Grav/user/config/themes/agency.yaml' => 1764296560,
         '/Users/syedaalin/Documents/Grav/user/config/themes/akazie-forest.yaml' => 1764384828,
         '/Users/syedaalin/Documents/Grav/user/config/themes/cardstack.yaml' => 1764293604,
-        '/Users/syedaalin/Documents/Grav/user/config/themes/my-nur-ul-huda.yaml' => 1767950165,
+        '/Users/syedaalin/Documents/Grav/user/config/themes/my-nur-ul-huda.yaml' => 1768103474,
         '/Users/syedaalin/Documents/Grav/user/config/themes/nur-ul-huda.yaml' => 1767663949,
         '/Users/syedaalin/Documents/Grav/user/config/themes/purity.yaml' => 1764296314,
         '/Users/syedaalin/Documents/Grav/user/config/versions.yaml' => 1767935347,
@@ -68,7 +69,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/form/form.yaml' => 1766923054,
         '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects/flex-objects.yaml' => 1764496350,
         '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages/relatedpages.yaml' => 1691710516,
-        '/Users/syedaalin/Documents/Grav/user/plugins/simplesearch/simplesearch.yaml' => 1661506352,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch/tntsearch.yaml' => 1728001206,
         '/Users/syedaalin/Documents/Grav/user/plugins/admin/admin.yaml' => 1766978626,
         '/Users/syedaalin/Documents/Grav/user/plugins/sitemap/sitemap.yaml' => 1718603524,
         '/Users/syedaalin/Documents/Grav/user/plugins/problems/problems.yaml' => 1767934750,
@@ -81,7 +82,7 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/login/login.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/email/email.yaml' => 1765351098,
         '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist/taxonomylist.yaml' => 1736125930,
-        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/nur-ul-huda.yaml' => 1767957630
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/nur-ul-huda.yaml' => 1768231147
     ],
     'files' => [
         'user/localhost/config' => [
@@ -107,7 +108,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768088585
+                'modified' => 1768238528
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -127,6 +128,10 @@ return [
                 'file' => 'user/config/plugins/shortcodes.yaml',
                 'modified' => 1767662677
             ],
+            'plugins/tntsearch' => [
+                'file' => 'user/config/plugins/tntsearch.yaml',
+                'modified' => 1768106898
+            ],
             'plugins/webp' => [
                 'file' => 'user/config/plugins/webp.yaml',
                 'modified' => 1767661584
@@ -141,7 +146,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768090140
+                'modified' => 1768241527
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -157,7 +162,7 @@ return [
             ],
             'themes/my-nur-ul-huda' => [
                 'file' => 'user/config/themes/my-nur-ul-huda.yaml',
-                'modified' => 1767950165
+                'modified' => 1768103474
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/config/themes/nur-ul-huda.yaml',
@@ -227,9 +232,9 @@ return [
                 'file' => 'user/plugins/relatedpages/relatedpages.yaml',
                 'modified' => 1691710516
             ],
-            'plugins/simplesearch' => [
-                'file' => 'user/plugins/simplesearch/simplesearch.yaml',
-                'modified' => 1661506352
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/tntsearch.yaml',
+                'modified' => 1728001206
             ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
@@ -283,7 +288,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/nur-ul-huda.yaml',
-                'modified' => 1767957630
+                'modified' => 1768231147
             ]
         ]
     ]

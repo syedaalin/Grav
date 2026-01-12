@@ -1,15 +1,15 @@
 {% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page, children_only) : taxonomylist.get() %}
 
 {% if taxlist %}
-<div class="flex flex-wrap gap-3">
+<div class="tags-list">
     {% for tax, value in taxlist[taxonomy] %}
         {% set is_active = uri.param(taxonomy) == tax %}
         <a href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}"
-           class="badge-primary !text-[10px] py-2 px-5 {{ is_active ? 'active scale-105' : '' }} focus:input-focus"
+           class="badge-primary tag-link {{ is_active ? 'active' : '' }} input-focus"
            aria-current="{{ is_active ? 'page' : 'false' }}">
             {{ tax }}
             {% if config.plugins.taxonomylist.show_count %}
-                <span class="ml-2 opacity-50 text-[8px] font-black">({{ value }})</span>
+                <span class="opacity-50 text-xs font-black">({{ value }})</span>
             {% endif %}
         </a>
     {% endfor %}

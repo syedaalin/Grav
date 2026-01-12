@@ -1,6 +1,6 @@
 {# Refactored: templates/partials/blog/date.html.twig #}
-<span class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] {{ classes|default('text-subtle') }}">
-    <i class="la la-calendar-alt text-lg text-primary/50" aria-hidden="true"></i>
+<span class="blog-date {{ classes|default('text-subtle') }}">
+    <i class="la la-calendar-alt blog-date-icon" aria-hidden="true"></i>
     <time class="dt-published" datetime="{{ page.date|date("c") }}">
         {{ page.date|date(system.pages.dateformat.short) }}
     </time>

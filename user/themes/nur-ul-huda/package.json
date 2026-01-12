@@ -1,15 +1,16 @@
 {
   "name": "grav-theme-nur-ul-huda",
-  "version": "2.1.2",
-  "description": "Nur-ul-Huda Theme for Grav CMS - Modern Islamic theme with Tailwind CSS v4, prayer times, Hijri calendar, and LMS integration",
+  "version": "2.2.0",
+  "description": "Nur-ul-Huda Theme for Grav CMS - Modern Islamic theme with Pure Custom CSS (Modern Vanilla), prayer times, Hijri calendar, and LMS integration",
   "main": "index.php",
   "license": "MIT",
   "scripts": {
-    "dev": "tailwindcss -i ./css/input.css -o ./css/nur-ul-huda.css --watch",
-    "build": "tailwindcss -i ./css/input.css -o ./css/nur-ul-huda.css --minify"
+    "dev": "npx lightningcss --bundle --targets '>= 0.25%' ./css/modern-vanilla.css -o ./css/nur-ul-huda.css && echo 'CSS bundled for development'",
+    "build": "npx lightningcss --minify --bundle --targets '>= 0.25%' ./css/modern-vanilla.css -o ./css/nur-ul-huda.css",
+    "watch": "npx chokidar 'css/**/*.css' -c 'npm run dev'"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "tailwindcss": "^4.1.18"
+    "chokidar-cli": "^3.0.0",
+    "lightningcss-cli": "^1.21.0"
   }
 }

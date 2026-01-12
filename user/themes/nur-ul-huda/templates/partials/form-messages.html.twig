@@ -1,13 +1,13 @@
 {% if form.message %}
   {% set inline_errors = form.inline_errors is not null ? form.inline_errors : config.plugins.form.inline_errors(false) %}
   {% set status_mapping = {
-      'success': 'bg-emerald-50 text-emerald-600 border-emerald-100 shadow-emerald-900/5', 
-      'error': 'bg-red-50 text-red-600 border-red-100 shadow-red-900/5', 
-      'warning': 'bg-orange-50 text-orange-600 border-orange-100 shadow-orange-900/5'
+      'success': 'alert-success', 
+      'error': 'alert-error', 
+      'warning': 'alert-warning'
   } %}
   {% set message = inline_errors and form.messages ? "GRAV.FORM.VALIDATION_FAIL"|t : form.message %}
   
-  <div class="p-6 rounded-[2rem] border {{ status_mapping[form.status] ?: 'bg-surface-subtle text-subtle border-subtle' }} my-8 text-sm font-bold leading-relaxed shadow-sm transition-all hover:shadow-md animate-fade-in-up">
+  <div class="form-alert {{ status_mapping[form.status] ?: 'alert-default' }}">
     {{ message|raw }}
   </div>
 {% endif %}

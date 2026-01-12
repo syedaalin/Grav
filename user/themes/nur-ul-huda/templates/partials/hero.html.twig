@@ -1,54 +1,53 @@
-{# Hero Component - Enhanced with Tailwind CSS v4 #}
+{# Hero Component - Pure Custom CSS (Modern Vanilla) #}
 {% set hero_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
 {% set hero_video = page.header.hero_video is iterable ? page.media[page.header.hero_video|first.name] : page.media[page.header.hero_video] %}
 {% set accent_color = page.header.hero_accent|default('oklch(0.65 0.22 260)') %}
 
 <section id="{{ id }}" 
-         class="section relative min-h-[clamp(500px,80vh,800px)] flex items-center overflow-hidden modular-hero hero bg-dark text-white @container {{ page.header.hero_classes }}"
+         class="hero-section modular-hero {{ page.header.hero_classes }}"
          aria-labelledby="hero-title">
     
     {# Background Media #}
-    <div class="absolute inset-0 z-0">
+    <div class="hero-background">
         {% if hero_video %}
-            <video autoplay loop muted playsinline class="w-full h-full object-cover mix-blend-luminosity opacity-40 animate-float" fetchpriority="high">
+            <video autoplay loop muted playsinline class="hero-video" fetchpriority="high">
                 <source src="{{ hero_video.url }}" type="video/webm">
             </video>
         {% elseif hero_image %}
-            {{ hero_image.cropZoom(1920, 1080).html('', '', 'w-full h-full object-cover opacity-40 mix-blend-luminosity animate-float')|raw }}
+            {{ hero_image.cropZoom(1920, 1080).html('', '', 'hero-image')|raw }}
         {% endif %}
-        <div class="absolute inset-0 bg-gradient-to-b from-gray-950/90 via-transparent to-gray-950/95" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
     </div>
 
     {# Radial Glow #}
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,var(--color-primary),transparent_70%)] opacity-20" aria-hidden="true" style="--color-primary: {{ accent_color }};"></div>
+    <div class="hero-glow" aria-hidden="true" style="--color-primary: {{ accent_color }};"></div>
 
-    <div class="relative z-10 container-px mx-auto">
-        <div class="max-w-4xl">
+    <div class="hero-content">
+        <div class="hero-content-wrapper">
             <div class="animate-fade-in-up">
                 {{ page.content|raw }}
             </div>
             
-            <div class="flex flex-col @sm:flex-row flex-wrap items-start @sm:items-center gap-6 mt-12 @lg:mt-16 animate-fade-in-up" style="animation-delay: 0.1s">
-                <a href="{{ url('theme://services') }}" 
-                   class="btn-primary px-8 @lg:px-10 py-4 @lg:py-5">
+            <div class="hero-actions animate-fade-in-up delay-100">
+                <a href="{{ url('theme://services') }}" class="btn-primary hero-cta">
                     Our Services
-                    <i class="la la-angle-right ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+                    <i class="la la-angle-right hero-cta-icon" aria-hidden="true"></i>
                 </a>
 
                 {% if random_inspiration %}
-                <div class="card-glass p-6 max-w-lg mt-4 @sm:mt-0">
+                <div class="hero-inspiration">
                     {% if random_inspiration.arabic %}
-                        <p class="text-xl @md:text-2xl font-serif text-white mb-4 leading-relaxed font-arabic" dir="rtl">
+                        <p class="hero-inspiration-arabic" dir="rtl">
                             {{ random_inspiration.arabic }}
                         </p>
                     {% endif %}
                     
-                    <p class="text-sm @md:text-base text-[oklch(0.85_0.02_260)] italic mb-4 leading-relaxed">
+                    <p class="hero-inspiration-translation">
                         "{{ random_inspiration.translation }}"
                     </p>
                     
-                    <div class="text-[10px] font-bold text-accent uppercase tracking-widest flex items-center gap-2">
-                        <span class="w-4 h-px bg-accent/30"></span> {{ random_inspiration.source }}
+                    <div class="hero-inspiration-source">
+                        <span class="hero-inspiration-divider"></span> {{ random_inspiration.source }}
                     </div>
                 </div>
                 {% endif %}
@@ -57,9 +56,8 @@
     </div>
 
     {# Scroll Indicator #}
-    <a href="#start" class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 animate-pulse-subtle z-10 group" aria-label="Scroll down">
-        <span class="text-[10px] font-bold uppercase tracking-widest group-hover:text-white transition-colors">Discover</span>
-        <div class="w-px h-12 bg-linear-to-b from-white to-transparent"></div>
+    <a href="#start" class="hero-scroll-indicator" aria-label="Scroll down">
+        <span class="hero-scroll-text">Discover</span>
+        <div class="hero-scroll-line"></div>
     </a>
 </section>
-

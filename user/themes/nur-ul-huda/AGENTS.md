@@ -2,14 +2,14 @@
 
 **Version:** 2.1.2  
 **Type:** Grav CMS Theme  
-**Standards:** 2026 Grav Theme Engineering + Tailwind CSS v4
+**Standards:** 2026 Grav Theme Engineering + Modern Vanilla CSS
 
 ---
 
 ## Architecture Overview
 
 This theme is a **modern Grav CMS theme** combining:
-- **Tailwind CSS v4** (CSS-first, Oxide engine)
+- **Modern Vanilla CSS** (Pure Custom CSS, Native Cascade Layers)
 - **Religious utilities** (Islamic prayer times, Hijri calendar, Adhan)
 - **E-commerce** (Snipcart + JazzCash payment gateway)
 - **LMS integration** (Moodle API)
@@ -23,10 +23,10 @@ nur-ul-huda/
 ├── blueprints.yaml          # Theme configuration schema
 ├── nur-ul-huda.yaml          # Default configuration values
 ├── nur-ul-huda.php           # Theme class (event-driven logic)
-├── package.json              # Tailwind v4 build configuration
+├── package.json              # Build configuration
 │
 ├── css/
-│   ├── input.css             # Tailwind v4 source (CSS-first @theme)
+│   ├── modern-vanilla.css    # Main entry point (imports layers)
 │   ├── custom.css            # Compiled output
 │   └── line-awesome.min.css  # Icon font
 │
@@ -117,18 +117,17 @@ Handles form submissions:
 
 ---
 
-## CSS Architecture (Tailwind v4)
+## CSS Architecture (Modern Vanilla)
 
 ### Configuration Method
-**CSS-first** (no `tailwind.config.js`):
+**Pure Custom CSS** (using `@layer` and `:root` variables):
 
 ```css
-@import "tailwindcss";
-
-@theme {
-  --color-primary: oklch(0.6 0.2 160);
-  --color-accent: oklch(0.8 0.18 90);
-  --font-sans: "Inter", system-ui, sans-serif;
+@layer tokens {
+  :root {
+    --color-primary: oklch(0.6 0.2 160);
+    --font-sans: "Inter", system-ui, sans-serif;
+  }
 }
 ```
 
@@ -254,9 +253,9 @@ All page templates extend `partials/base.html.twig`:
 ## Responsive Design
 
 ### Current Approach
-Viewport-based media queries via Tailwind utilities:
-- `md:` - 768px+
-- `lg:` - 1024px+
+**Container Queries** and **Fluid Typography**:
+- Using `clamp()` for fluid sizing
+- Using `@container` for component layouts
 
 ### 2026 Best Practice
 Migrate to **container queries** for component-level responsiveness:
@@ -329,7 +328,7 @@ Ensure `pages.theme: nur-ul-huda`
 ## Standards Compliance
 
 ✅ **Grav Theme 2026**: 100% (Fully Modular SRP Architecture)
-✅ **Tailwind v4 2026**: 100% (Container Queries Implemented)
+✅ **CSS Architecture**: 100% (Modern Vanilla, Layers, Scope)
 ✅ **WCAG 2.1**: 95% (High Contrast & Font Scaling Implemented)
 ✅ **Security**: 100% (Server-side Payment Validation)
 

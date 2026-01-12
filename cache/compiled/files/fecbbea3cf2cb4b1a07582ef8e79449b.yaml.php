@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/themes/my-nur-ul-huda.yaml',
-    'modified' => 1767950165,
-    'size' => 2023,
+    'modified' => 1768103474,
+    'size' => 2150,
     'data' => [
         'streams' => [
             'schemes' => [
@@ -18,6 +18,7 @@ return [
                 ]
             ]
         ],
+        'snipcart_key' => 'M2MzN2Y2NzktNGEzNi00MjY5LWFkNTktYzg1M2YwM2QyZTAwNjM4NzQ2Nzc2MjE2NzM3ODQ2',
         'physic_glass_blur' => 20,
         'physic_neo_strength' => 0.5,
         'physic_neo_lightSource' => 'top-left',
@@ -43,9 +44,9 @@ return [
         'brand_accent' => '#bf616a',
         'physic_radius_main' => '12px',
         'font_family' => 'Outfit',
-        'footer_bg' => '#0f0f10',
-        'footer_text' => '#ffffff',
-        'footer_accent' => '#d4af37',
+        'bottom_banner_bg' => '#0f0f10',
+        'bottom_banner_text' => '#ffffff',
+        'bottom_banner_accent' => '#d4af37',
         'contact_address' => 'R-591 Block 20 F B Area Karachi.',
         'contact_email' => 'edu.aabtaab@gmail.com',
         'contact_phone' => '+92 302 245 2000',
@@ -103,7 +104,7 @@ return [
                 'focus_hide' => '0'
             ]
         ],
-        'footer_builder' => [
+        'bottom_banner_builder' => [
             0 => [
                 'width' => 'col-4',
                 'type' => 'branding',
@@ -112,8 +113,8 @@ return [
                 'animation' => 'fadeUp'
             ]
         ],
-        'footer_copyright' => '&copy; 2026 Your Company. All rights reserved.',
-        'footer_credits' => 'Designed by Antigravity',
-        'footer_links_title' => 'Links'
+        'bottom_banner_copyright' => '&copy; 2026 Your Company. All rights reserved.',
+        'bottom_banner_credits' => 'Designed by Antigravity',
+        'bottom_banner_links_title' => 'Links'
     ]
 ];

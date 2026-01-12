@@ -1,27 +1,27 @@
-<section class="section section-py modular-istafta bg-surface-subtle @container overflow-hidden">
-    <div class="container-px mx-auto">
-        <div class="max-w-5xl mx-auto flex flex-col @lg:flex-row gap-16 items-start">
+<section class="modular-section modular-istafta">
+    <div class="section-container">
+        <div class="istafta-layout">
             
             {# Left Column: Q&A Accordion #}
-            <div class="w-full @lg:w-2/3">
-                <header class="mb-16 animate-fade-in-up">
-                    <div class="prose-custom max-w-none">
+            <div class="istafta-content">
+                <header class="istafta-header animate-fade-in-up">
+                    <div class="prose-custom prose-fluid">
                         {{ page.content|raw }}
                     </div>
                 </header>
 
-                <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.1s">
+                <div class="istafta-questions animate-fade-in-up delay-100">
                     {% for item in page.header.questions %}
-                        <details class="group card-glass overflow-hidden border border-white/40 [&_summary::-webkit-details-marker]:hidden" 
+                        <details class="istafta-question" 
                                  {% if loop.first %}open{% endif %}>
-                            <summary class="flex items-center justify-between cursor-pointer list-none p-6 @md:p-8">
-                                <h4 class="text-xl @md:text-2xl font-black text-gray-950 pr-8 leading-tight tracking-tight">{{ item.question }}</h4>
-                                <span class="bg-primary text-white p-3 rounded-2xl transition-all duration-500 group-open:rotate-180 group-open:bg-primary-600 shadow-lg shadow-primary/20">
-                                    <i class="la la-angle-down text-sm" aria-hidden="true"></i>
+                            <summary class="istafta-question-summary">
+                                <h4 class="istafta-question-title">{{ item.question }}</h4>
+                                <span class="istafta-question-toggle">
+                                    <i class="la la-angle-down" aria-hidden="true"></i>
                                 </span>
                             </summary>
-                            <div class="px-6 @md:px-8 pb-8">
-                                <div class="pt-6 border-t border-subtle/50 prose prose-gray max-w-none">
+                            <div class="istafta-answer-wrapper">
+                                <div class="istafta-answer prose-custom">
                                     {{ item.answer|markdown }}
                                 </div>
                             </div>
@@ -31,27 +31,27 @@
             </div>
 
             {# Right Column: Submission Form CTA #}
-            <div class="w-full @lg:w-1/3 animate-fade-in-up" style="animation-delay: 0.2s">
-                <div class="glass-dark p-10 @md:p-12 rounded-[3.5rem] sticky top-28 text-white">
-                    <div class="bento-icon bg-primary/20 mb-8">
+            <div class="istafta-sidebar animate-fade-in-up delay-200">
+                <div class="istafta-cta">
+                    <div class="istafta-cta-icon">
                         <i class="la la-question-circle"></i>
                     </div>
-                    <h3 class="section-title !text-white !text-3xl mb-6">
+                    <h3 class="istafta-cta-title">
                         {{ page.header.form_title|default('Ask a Scholar') }}
                     </h3>
-                    <p class="text-[oklch(0.85_0.02_260)] mb-10 text-lg leading-relaxed">
+                    <p class="istafta-cta-description">
                         Submit your query anonymously to our certified scholars for a detailed, compassionate response.
                     </p>
                     
                     <a href="{{ url('theme://ask') }}" 
-                       class="btn-primary w-full py-5">
+                       class="btn-primary istafta-cta-button">
                         Ask Now
-                        <i class="la la-arrow-right ml-3 group-hover:translate-x-1.5 transition-transform" aria-hidden="true"></i>
+                        <i class="la la-arrow-right istafta-cta-icon-arrow" aria-hidden="true"></i>
                     </a>
 
                     {% if page.header.anonymous_toggle %}
-                        <div class="mt-8 flex items-center gap-3 text-xs font-bold text-white/40 justify-center uppercase tracking-widest">
-                            <i class="la la-user-secret text-lg"></i>
+                        <div class="istafta-cta-badge">
+                            <i class="la la-user-secret"></i>
                             End-to-End Anonymous
                         </div>
                     {% endif %}
@@ -61,4 +61,3 @@
         </div>
     </div>
 </section>
-

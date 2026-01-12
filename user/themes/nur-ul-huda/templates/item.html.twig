@@ -20,8 +20,8 @@
 {% endblock %}
 
 {% block body %}
-<section id="body-wrapper" class="section section-py @container">
-    <section class="container-px mx-auto max-w-7xl">
+<section id="body-wrapper" class="section section-py">
+    <div class="section-container">
 
         {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
             {% include 'partials/breadcrumbs.html.twig' %}
@@ -36,6 +36,6 @@
             {% endblock %}
         {% endembed %}
 
-    </section>
+    </div>
 </section>
 {% endblock %}

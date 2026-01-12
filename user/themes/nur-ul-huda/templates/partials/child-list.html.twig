@@ -1,0 +1,39 @@
+<div class="child-list-grid">
+    {% for child in collection %}
+        <a href="{{ child.url }}" class="child-card">
+            
+            {# Background Image (Optional) #}
+            {% set child_image = child.media.images|first %}
+            {% if child_image %}
+                <div class="child-card-bg">
+                    {{ child_image.cropZoom(600, 600).derivative('webp').html|raw }}
+                </div>
+            {% endif %}
+
+            <div class="child-card-content">
+                {# Icon #}
+                <div class="child-card-icon">
+                    {% if child.header.icon %}
+                        <i class="la la-fw {{ child.header.icon }}" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="la la-fw la-star" aria-hidden="true"></i>
+                    {% endif %}
+                </div>
+                
+                <h3 class="child-card-title">
+                    {{ child.title }}
+                </h3>
+                
+                <div class="child-card-excerpt">
+                    {{ child.summary|striptags|default(child.content|striptags|truncate(150)) }}
+                </div>
+
+                <div class="child-card-label">
+                    Discover <i class="la la-arrow-right" aria-hidden="true"></i>
+                </div>
+            </div>
+            
+            <div class="child-card-glow"></div>
+        </a>
+    {% endfor %}
+</div>

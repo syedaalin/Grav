@@ -9,12 +9,12 @@
 {% else %}
     {# Simple fallback: open image in new tab #}
     <a href="{{ image }}" target="_blank" rel="noopener noreferrer" 
-       class="group block overflow-hidden rounded-premium shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/40" title="{{ title }}">
-        <div class="relative aspect-auto">
+       class="lightbox-fallback" title="{{ title }}">
+        <div class="fallback-wrapper">
             {{ content|raw }}
-            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 backdrop-blur-[0px] group-hover:backdrop-blur-[4px] transition-all duration-500 flex items-center justify-center">
-                <div class="w-14 h-14 rounded-full bg-white/90 shadow-xl flex items-center justify-center transform scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 delay-100">
-                    <i class="la la-search-plus text-primary text-2xl" aria-hidden="true"></i>
+            <div class="fallback-overlay">
+                <div class="fallback-icon">
+                    <i class="la la-search-plus" aria-hidden="true"></i>
                 </div>
             </div>
         </div>

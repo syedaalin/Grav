@@ -1,54 +1,54 @@
-<section class="section section-py modular-services @container">
-    <div class="container-px mx-auto max-w-7xl">
+<section class="modular-section modular-services">
+    <div class="section-container">
         {% if page.content %}
-            <header class="mb-spacing-section text-center max-w-3xl mx-auto animate-fade-in-up">
-                <div class="prose-custom max-w-none">
+            <header class="section-header animate-fade-in-up">
+                <div class="prose-custom prose-fluid">
                     {{ page.content|raw }}
                 </div>
             </header>
         {% endif %}
 
-        <div class="grid-bento !gap-6 @md:!gap-8 auto-rows-[minmax(250px,auto)] animate-fade-in-up" style="animation-delay: 0.1s">
+        <div class="services-grid animate-fade-in-up delay-100">
         {% for service in page.header.services %}
             {% set width_class = '' %}
             {% if service.width == 'feature' %}
-                {% set width_class = '@md:col-span-2 @md:row-span-2' %}
+                {% set width_class = 'service-card-feature' %}
             {% elseif service.width == 'wide' %}
-                {% set width_class = '@md:col-span-2' %}
+                {% set width_class = 'service-card-wide' %}
+            {% else %}
+                {% set width_class = 'service-card' %}
             {% endif %}
 
-            <div class="card-glass flex flex-col group p-10 @md:p-12 {{ width_class }}" 
-                 {% if service.color %}style="--service-bg: {{ service.color }}1a; background-color: var(--service-bg);"{% endif %}>
+            <div class="card-glass {{ width_class }}" 
+                 {% if service.color %}style="--service-bg: oklch(from {{ service.color }} L C H / 0.1); background-color: var(--service-bg);"{% endif %}>
                 
-                <div class="relative z-10 h-full flex flex-col">
-                    <div class="bento-icon mb-8 bg-white/50 backdrop-blur-md shadow-xl text-primary transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-700">
-                        <i class="la la-fw {{ service.icon }}" aria-hidden="true"></i>
+                <div class="service-content">
+                    <div class="service-icon-wrapper">
+                        <i class="la la-fw {{ service.icon }} service-icon" aria-hidden="true"></i>
                     </div>
                     
-                    <h3 class="text-2xl @md:text-3xl font-black mb-4 text-gray-950 tracking-tight leading-tight transition-colors group-hover:text-primary">
+                    <h3 class="service-title">
                         {{ service.title }}
                     </h3>
                     
-                    <p class="text-lg text-subtle grow leading-relaxed">
+                    <p class="service-description">
                         {{ service.text }}
                     </p>
 
                     {% if service.url %}
-                        <div class="mt-8 pt-6 border-t border-gray-900/5">
-                            <a href="{{ service.url }}" 
-                               class="inline-flex items-center text-sm font-black uppercase tracking-[0.2em] text-primary hover:gap-4 transition-all">
-                                Discover <i class="la la-arrow-right ml-3" aria-hidden="true"></i>
+                        <div class="service-link-wrapper">
+                            <a href="{{ service.url }}" class="service-link">
+                                Discover <i class="la la-arrow-right service-link-icon" aria-hidden="true"></i>
                             </a>
                         </div>
                     {% endif %}
                 </div>
 
                 {# Decorative Radial Glow #}
-                <div class="absolute -right-8 -bottom-8 w-64 h-64 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[100px] pointer-events-none"
-                     style="background: radial-gradient(circle, var(--color-primary, {{ service.color|default('oklch(0.65 0.22 260)') }}), transparent 70%);"></div>
+                <div class="service-glow"
+                     style="background: radial-gradient(circle, oklch(from {{ service.color|default('var(--color-primary)') }} L C H), transparent 70%);"></div>
             </div>
         {% endfor %}
         </div>
     </div>
 </section>
-

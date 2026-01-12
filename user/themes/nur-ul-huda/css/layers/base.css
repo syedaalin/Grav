@@ -1,0 +1,50 @@
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: oklch(0.98 0.005 165);
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-dark);
+  }
+  
+  h1 { font-size: var(--font-size-3xl); }
+  h2 { font-size: var(--font-size-2xl); }
+  h3 { font-size: var(--font-size-xl); }
+  h4 { font-size: var(--font-size-lg); }
+  h5 { font-size: var(--font-size-base); }
+  h6 { font-size: var(--font-size-sm); }
+  
+  /* Links */
+  a {
+    color: var(--color-primary);
+    transition: color var(--transition-standard);
+    
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+  
+  /* Paragraphs */
+  p {
+    line-height: 1.8;
+  }
+  
+  /* Code */
+  code, pre {
+    font-family: var(--font-mono);
+  }
+  
+  /* Selection */
+  ::selection {
+    background-color: oklch(from var(--color-primary) l c h / 0.2);
+    color: var(--color-primary);
+  }
+}

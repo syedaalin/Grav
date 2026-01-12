@@ -1,0 +1,264 @@
+type: tab
+title: Colors & Style
+fields:
+  theme_colors_section:
+    type: section
+    title: Customize Your Theme
+    underline: true
+    text: Change colors, fonts, spacing, and visual effects to match your brand.
+
+  # Primary Brand Colors
+  brand_colors_section:
+    type: section
+    title: Brand Colors
+    underline: true
+
+  color_primary:
+    type: colorpicker
+    label: Main Color
+    default: "oklch(0.55 0.18 165)"
+    help: Your primary brand color for buttons and links (default: Teal)
+
+  color_accent:
+    type: colorpicker
+    label: Highlight Color
+    default: "oklch(0.75 0.15 85)"
+    help: Secondary color for special elements (default: Yellow)
+
+  color_error:
+    type: colorpicker
+    label: Error Color
+    default: "oklch(0.55 0.22 25)"
+    help: Color for error messages (default: Red)
+
+  color_success:
+    type: colorpicker
+    label: Success Color
+    default: "oklch(0.6 0.15 145)"
+    help: Color for success messages (default: Green)
+
+  # Backgrounds
+  surface_colors_section:
+    type: section
+    title: Backgrounds
+    underline: true
+
+  color_surface:
+    type: colorpicker
+    label: Page Background
+    default: "oklch(0.98 0.01 260)"
+    help: Main background color (default: Off-White)
+
+  color_surface_subtle:
+    type: colorpicker
+    label: Card Background
+    default: "oklch(0.95 0.01 260)"
+    help: Background for cards and panels
+
+  color_dark:
+    type: colorpicker
+    label: Dark Background
+    default: "oklch(0.15 0.02 260)"
+    help: For headers and footers
+
+  # Text
+  text_colors_section:
+    type: section
+    title: Text
+    underline: true
+
+  color_text:
+    type: colorpicker
+    label: Main Text
+    default: "oklch(0.2 0.02 260)"
+    help: Primary text color
+
+  color_text_muted:
+    type: colorpicker
+    label: Secondary Text
+    default: "oklch(0.5 0.02 260)"
+    help: For less important text
+
+  color_subtle:
+    type: colorpicker
+    label: Light Text
+    default: "oklch(0.4 0.02 260)"
+    help: For hints and labels
+
+  # Borders
+  border_colors_section:
+    type: section
+    title: Borders
+    underline: true
+
+  color_border:
+    type: colorpicker
+    label: Border Color
+    default: "oklch(0.85 0.01 260)"
+    help: For inputs and dividers
+
+  color_border_subtle:
+    type: colorpicker
+    label: Light Border
+    default: "oklch(0.9 0.01 260)"
+    help: For subtle separations
+
+  # Glass Effects
+  glass_section:
+    type: section
+    title: Glass Effects
+    underline: true
+
+  glass_blur:
+    type: range
+    label: Blur Amount
+    default: 16
+    validate:
+      min: 0
+      max: 32
+      step: 1
+    help: How blurry the glass effect is (0-32)
+
+  glass_opacity:
+    type: range
+    label: Background Opacity
+    default: 0.15
+    validate:
+      min: 0
+      max: 1
+      step: 0.05
+    help: How see-through the background is (0-1)
+
+  glass_border_opacity:
+    type: range
+    label: Border Opacity
+    default: 0.1
+    validate:
+      min: 0
+      max: 1
+      step: 0.05
+    help: How see-through the border is (0-1)
+
+  glass_thickness:
+    type: range
+    label: Border Thickness
+    default: 1
+    validate:
+      min: 0
+      max: 4
+      step: 0.5
+    help: Border width (0-4 pixels)
+
+  glass_shadow_intensity:
+    type: range
+    label: Shadow Strength
+    default: 0.1
+    validate:
+      min: 0
+      max: 0.5
+      step: 0.05
+    help: How strong the shadow is (0-0.5)
+
+  # Fonts & Text
+  typography_section:
+    type: section
+    title: Fonts & Text
+    underline: true
+
+  font_family_base:
+    type: select
+    label: Font Style
+    default: "font-sans"
+    options:
+      "font-sans": "Sans Serif (clean & modern)"
+      "font-serif": "Serif (traditional)"
+      "font-mono": "Monospace (technical)"
+    help: Choose your text style
+
+  font_size_base:
+    type: range
+    label: Text Size
+    default: 16
+    validate:
+      min: 14
+      max: 20
+      step: 1
+    help: Base text size (14-20 pixels)
+
+  line_height_base:
+    type: range
+    label: Line Spacing
+    default: 1.6
+    validate:
+      min: 1.2
+      max: 2
+      step: 0.1
+    help: Space between lines of text
+
+  # Layout
+  spacing_section:
+    type: section
+    title: Layout
+    underline: true
+
+  container_max_width:
+    type: select
+    label: Page Width
+    default: "max-w-7xl"
+    options:
+      "max-w-5xl": "Narrow"
+      "max-w-6xl": "Medium"
+      "max-w-7xl": "Wide"
+      "max-w-full": "Full Width"
+    help: Maximum width for content
+
+  section_spacing:
+    type: select
+    label: Section Spacing
+    default: "normal"
+    options:
+      "compact": "Tight"
+      "normal": "Normal"
+      "spacious": "Loose"
+    help: Space between sections
+
+  # Animations
+  animation_section:
+    type: section
+    title: Animations
+    underline: true
+
+  enable_animations:
+    type: toggle
+    label: Enable Animations
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    help: Turn animations on or off
+
+  animation_speed:
+    type: select
+    label: Animation Speed
+    default: "normal"
+    options:
+      "fast": "Fast"
+      "normal": "Normal"
+      "slow": "Slow"
+    help: How fast animations play
+
+  # Advanced
+  advanced_section:
+    type: section
+    title: Advanced
+    underline: true
+
+  custom_css_variables:
+    type: textarea
+    label: Custom CSS
+    placeholder: |
+      --my-color: oklch(0.5 0.2 180);
+      --my-spacing: 2rem;
+    help: Add your own CSS variables (one per line)
+    rows: 6

@@ -1,29 +1,29 @@
-<article class="flex flex-col card-glass h-full group" aria-labelledby="post-title-{{ page.slug }}">
+<article class="blog-list-card" aria-labelledby="post-title-{{ page.slug }}">
     {% set image = page.media.images|first %}
     {% if image %}
-    <div class="block overflow-hidden relative aspect-video">
-        <a href="{{ page.url }}" class="block w-full h-full" aria-hidden="true" tabindex="-1">
-            {{ image.cropZoom(800,450).html('','','w-full h-full object-cover transition-transform duration-700 group-hover:scale-110')|raw }}
-            <div class="absolute inset-0 bg-linear-to-t from-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div class="blog-list-image">
+        <a href="{{ page.url }}" class="blog-list-image-link" aria-hidden="true" tabindex="-1">
+            {{ image.cropZoom(800,450).html('','','blog-list-img')|raw }}
+            <div class="blog-list-overlay"></div>
         </a>
-        <div class="absolute top-4 left-4">
-             {% include 'partials/blog/date.html.twig' with {classes: 'badge-primary !bg-black/40 !backdrop-blur-md !text-white !border-none !shadow-xl'} %}
+        <div class="blog-list-date">
+             {% include 'partials/blog/date.html.twig' with {classes: 'badge-primary blog-list-date-badge'} %}
         </div>
     </div>
     {% endif %}
     
-    <div class="p-8 grow flex flex-col">
-        <div class="mb-4">
-            {% include 'partials/blog/taxonomy.html.twig' with {classes: 'text-xs font-black uppercase tracking-[0.2em] text-primary'} %}
+    <div class="blog-list-content">
+        <div class="blog-list-tags">
+            {% include 'partials/blog/taxonomy.html.twig' with {classes: 'blog-list-taxonomy'} %}
         </div>
         
-        <h2 id="post-title-{{ page.slug }}" class="section-title !text-2xl !leading-tight mb-4">
-             <a href="{{ page.url }}" class="text-gray-950 hover:text-primary transition-colors">
+        <h2 id="post-title-{{ page.slug }}" class="blog-list-title">
+             <a href="{{ page.url }}" class="blog-list-title-link">
                 {{ page.title }}
             </a>
         </h2>
         
-        <div class="text-subtle leading-relaxed line-clamp-3 mb-6">
+        <div class="blog-list-excerpt">
             {% if page.summary != page.content %}
                 {{ page.summary|striptags }}
             {% else %}
@@ -31,13 +31,11 @@
             {% endif %}
         </div>
 
-        <div class="mt-auto pt-6 border-t border-subtle flex items-center justify-between">
-            <a href="{{ page.url }}" class="inline-flex items-center gap-2 text-primary font-black text-sm uppercase tracking-[0.2em] hover:gap-3 transition-all focus:input-focus rounded-lg">
+        <div class="blog-list-footer">
+            <a href="{{ page.url }}" class="blog-list-read-more">
                 Read More
                 <i class="la la-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>
 </article>
-
-

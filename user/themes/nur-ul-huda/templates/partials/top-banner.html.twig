@@ -1,10 +1,3 @@
-{# === Custom CSS for Responsive Year Visibility === #}
-<style>
-    .year-responsive { display: none; }
-    @media (min-width: 768px) {
-        .year-responsive { display: inline !important; }
-    }
-</style>
 
 {% set _top_banner_enabled = theme_var('top_banner_enabled') %}
 {% if _top_banner_enabled is null ? true : _top_banner_enabled %}
@@ -22,21 +15,25 @@
 
     {% set current_bg = show_announcement ? announce_bg : default_bg %}
     {% set current_text = show_announcement ? announce_text : default_text %}
+    
+    {# Standardize color strings #}
+    {% set current_bg_style = current_bg matches '/^var\\(/i' or current_bg matches '/^oklch/i' ? current_bg : 'oklch(from ' ~ current_bg ~ ' L C H)' %}
+    {% set current_text_style = current_text matches '/^var\\(/i' or current_text matches '/^oklch/i' ? current_text : 'oklch(from ' ~ current_text ~ ' L C H)' %}
 
 <div id="top-banner-utility-bar" 
-     class="@container py-1 text-[10px] @md:text-xs font-bold relative border-b border-white/5 transition-colors duration-300 z-50" 
-     style="background-color: {{ current_bg }}; color: {{ current_text }}; box-shadow: 0 4px 24px -2px {{ current_bg }};" 
+     class="top-banner" 
+     style="background-color: {{ current_bg_style }}; color: {{ current_text_style }}; box-shadow: 0 4px 24px -2px oklch(from {{ current_bg_style }} L C H / 0.5);" 
      dir="{{ text_dir }}"
      role="complementary"
      aria-label="Utility Bar">
     
-    <div class="container-px mx-auto flex items-center min-h-[28px] h-full">
+    <div class="top-banner-inner">
         
         {% if show_announcement %}
             {# === EXCLUSIVE ANNOUNCEMENT MODE === #}
-            <div class="w-full flex justify-center h-full" role="alert" aria-live="assertive">
-                <div class="w-full max-w-4xl overflow-hidden whitespace-nowrap">
-                    <div class="animate-marquee inline-block px-4 tracking-wide uppercase">
+            <div class="top-banner-announcement" role="alert" aria-live="assertive">
+                <div class="announcement-marquee-container">
+                    <div class="announcement-marquee">
                         {{ announcement_text }}
                     </div>
                 </div>
@@ -44,12 +41,12 @@
 
         {% else %}
             {# === STANDARD WIDGET MODE === #}
-            <div class="flex items-center w-full justify-between sm:justify-center divide-x divide-white/20 text-[10px] sm:text-xs">
+            <div class="top-banner-widgets">
                 
                 {# 1. Gregorian Date #}
                 {% if theme_var('top_banner_show_dates')|default(true) %}
-                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center">
-                        <time id="gregorian-date" class="uppercase tracking-[0.2em] whitespace-nowrap" datetime="{{ 'now'|date('Y-m-d') }}">
+                    <div class="banner-widget">
+                        <time id="gregorian-date" class="banner-date" datetime="{{ 'now'|date('Y-m-d') }}">
                             {{ "now"|date("D, M j") }}<span class="year-responsive">{{ "now"|date(", Y") }}</span>
                         </time>
                     </div>
@@ -57,16 +54,16 @@
 
                 {# 2. Prayer Ticker (Center) #}
                 {% if theme_var('top_banner_show_prayer_ticker')|default(true) %}
-                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center gap-[2ch]" role="timer" aria-live="polite">
-                        <span class="uppercase tracking-[0.2em]" id="next-prayer-name">Maghrib</span>
-                        <time class="uppercase tracking-[0.2em]" id="prayer-countdown">00:00</time>
+                    <div class="banner-widget" role="timer" aria-live="polite">
+                        <span class="banner-prayer-name" id="next-prayer-name">Maghrib</span>
+                        <time class="banner-countdown" id="prayer-countdown">00:00</time>
                     </div>
                 {% endif %}
 
                 {# 3. Hijri Date (Right) #}
                 {% if theme_var('top_banner_show_dates')|default(true) %}
-                    <div class="px-3 sm:px-4 shrink-0 flex items-center justify-center">
-                        <span id="hijri-date" class="uppercase tracking-[0.2em] whitespace-nowrap" aria-live="polite">Loading...</span>
+                    <div class="banner-widget">
+                        <span id="hijri-date" class="banner-date" aria-live="polite">Loading...</span>
                     </div>
                 {% endif %}
             </div>

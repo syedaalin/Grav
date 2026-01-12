@@ -42,13 +42,12 @@ class __TwigTemplate_22a92eed6b94d2263db81f969134bbe3 extends Template
         $macros["͜macros"] = $this->macros["͜macros"] = $this->load("macros/macros.html.twig", 1)->unwrap();
         // line 2
         yield "
-<ul>
+<ul class=\"nav-list\">
     ";
         // line 4
-        yield $macros["͜macros"]->getTemplateForMacro("macro_nav_loop", $context, 4, $this->getSourceContext())->macro_nav_loop(...[($context["pages"] ?? null)]);
+        yield $macros["͜macros"]->getTemplateForMacro("macro_nav_loop", $context, 4, $this->getSourceContext())->macro_nav_loop(...[($context["pages"] ?? null), ((array_key_exists("mobile", $context)) ? (Twig\Extension\CoreExtension::default(($context["mobile"] ?? null), false)) : (false))]);
         yield "
 </ul>
-
 ";
         yield from [];
     }

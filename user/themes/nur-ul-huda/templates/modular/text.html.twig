@@ -1,25 +1,25 @@
-<section class="section-py modular-text {{ page.header.class}} bg-white @container overflow-hidden">
-    <div class="container-px mx-auto max-w-7xl animate-fade-in-up">
-        <div class="flex flex-col @lg:flex-row gap-12 @lg:gap-20 items-center {{ page.header.image_align|default('align-right') == 'align-right' ? '' : '@lg:flex-row-reverse' }}">
+<section class="modular-section modular-text {{ page.header.class}}" style="container-type: inline-size;">
+    <div class="section-container animate-fade-in-up">
+        {# Using text-content-layout scope #}
+        <div class="text-content-layout {{ page.header.image_align|default('align-right') == 'align-right' ? '' : 'text-content-reverse' }}">
             
-            <div class="@lg:w-1/2 w-full">
-                <div class="prose-custom max-w-none">
+            <div class="text-content-text">
+                <div class="prose-custom prose-fluid">
                     {{ content|raw }}
                 </div>
             </div>
 
             {% set image = page.media.images|first %}
             {% if image %}
-                <div class="@lg:w-1/2 w-full relative">
-                    <div class="relative group">
+                <div class="text-content-image">
+                    <div class="text-image-wrapper">
                         {# Decorative Glow #}
-                        <div class="absolute -inset-4 bg-linear-to-tr from-primary/20 via-primary/5 to-transparent rounded-premium blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                        <div class="text-image-glow"></div>
                         
-                        {{ image.html('','','w-full h-auto rounded-[2.5rem] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] relative z-10')|raw }}
+                        {{ image.html('','','text-image')|raw }}
                     </div>
                 </div>
             {% endif %}
         </div>
     </div>
 </section>
-

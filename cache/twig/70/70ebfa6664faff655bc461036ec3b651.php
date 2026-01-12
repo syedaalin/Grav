@@ -46,59 +46,46 @@ class __TwigTemplate_485d18bbdbea1bb5efadfeaeeb307ff1 extends Template
         $context["site_name"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "site_name");
         // line 4
         yield "
-<a href=\"";
-        // line 5
+<a
+\thref=\"";
+        // line 6
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["home_url"] ?? null), "html", null, true);
-        yield "\" 
-   class=\"font-black text-xl mr-spacing-base relative z-10 group focus:input-focus flex items-center gap-2\" 
-   title=\"";
-        // line 7
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 7), "html");
-        yield "\" 
-   aria-label=\"";
-        // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", true, true, false, 8)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 8), "Home")) : ("Home")), "html", null, true);
+        yield "\" class=\"logo-link\" title=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 6), "html");
+        yield "\" aria-label=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", true, true, false, 6)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 6), "Home")) : ("Home")), "html", null, true);
         yield "\">
 
-    ";
-        // line 11
-        yield "    ";
+\t";
+        // line 9
+        yield "\t";
         if ((($tmp = ($context["logo_image"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 12
-            yield "        ";
-            $context["logo_resized"] = (((($tmp = ($context["mobile"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (CoreExtension::getAttribute($this->env, $this->source, ($context["logo_image"] ?? null), "resize", [80, 80], "method", false, false, false, 12)) : (CoreExtension::getAttribute($this->env, $this->source, ($context["logo_image"] ?? null), "resize", [160, 160], "method", false, false, false, 12)));
-            // line 13
-            yield "        <img src=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "url", [], "any", false, false, false, 13), "html", null, true);
-            yield "\" 
-             width=\"";
-            // line 14
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "width", [], "any", false, false, false, 14), "html", null, true);
-            yield "\" 
-             height=\"";
-            // line 15
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "height", [], "any", false, false, false, 15), "html", null, true);
-            yield "\" 
-             alt=\"";
-            // line 16
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default(((array_key_exists("site_name", $context)) ? (Twig\Extension\CoreExtension::default(($context["site_name"] ?? null), CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 16))) : (CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 16))), "Site Logo"), "html", null, true);
-            yield "\" 
-             class=\"w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)]\"
-             fetchpriority=\"high\"
-             decoding=\"async\" />
-    ";
+            // line 10
+            yield "\t\t";
+            $context["logo_resized"] = (((($tmp = ($context["mobile"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (CoreExtension::getAttribute($this->env, $this->source, ($context["logo_image"] ?? null), "resize", [80, 80], "method", false, false, false, 10)) : (CoreExtension::getAttribute($this->env, $this->source, ($context["logo_image"] ?? null), "resize", [160, 160], "method", false, false, false, 10)));
+            // line 11
+            yield "\t\t<img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "url", [], "any", false, false, false, 11), "html", null, true);
+            yield "\" width=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "width", [], "any", false, false, false, 11), "html", null, true);
+            yield "\" height=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_resized"] ?? null), "height", [], "any", false, false, false, 11), "html", null, true);
+            yield "\" alt=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::default(((array_key_exists("site_name", $context)) ? (Twig\Extension\CoreExtension::default(($context["site_name"] ?? null), CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 11))) : (CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 11))), "Site Logo"), "html", null, true);
+            yield "\" class=\"logo-image\" fetchpriority=\"high\" decoding=\"async\"/>
+\t";
         } else {
-            // line 21
-            yield "        ";
-            // line 22
-            yield "        ";
+            // line 13
+            yield "\t\t";
+            // line 14
+            yield "\t\t";
             if ((($tmp =  !($context["site_name"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 23
-                yield "             <div class=\"w-auto object-contain transition-transform duration-500 group-hover:scale-105 h-[clamp(2rem,5vh,3.5rem)] text-primary\">
-                ";
-                // line 24
+                // line 15
+                yield "\t\t\t<div class=\"logo-fallback\">
+\t\t\t\t";
+                // line 16
                 try {
-                    $_v1 = $this->load("@images/grav-logo.svg", 24);
+                    $_v1 = $this->load("@images/grav-logo.svg", 16);
                 } catch (LoaderError $e) {
                     // ignore missing template
                     $_v1 = null;
@@ -106,27 +93,28 @@ class __TwigTemplate_485d18bbdbea1bb5efadfeaeeb307ff1 extends Template
                 if ($_v1) {
                     yield from $_v1->unwrap()->yield($context);
                 }
-                // line 25
-                yield "             </div>
-        ";
+                // line 17
+                yield "\t\t\t</div>
+\t\t";
             }
-            // line 27
-            yield "    ";
+            // line 19
+            yield "\t";
         }
-        // line 28
+        // line 20
         yield "
-    ";
-        // line 30
-        yield "    ";
+\t";
+        // line 22
+        yield "\t";
         if ((($tmp = ($context["site_name"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 31
-            yield "        <span class=\"text-gradient font-black tracking-tighter hidden @lg:inline\">";
+            // line 23
+            yield "\t\t<span class=\"logo-text desktop-only\">";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
             yield "</span>
-    ";
+\t";
         }
-        // line 33
-        yield "</a>";
+        // line 25
+        yield "</a>
+";
         yield from [];
     }
 
@@ -151,7 +139,7 @@ class __TwigTemplate_485d18bbdbea1bb5efadfeaeeb307ff1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  129 => 33,  123 => 31,  120 => 30,  117 => 28,  114 => 27,  110 => 25,  100 => 24,  97 => 23,  94 => 22,  92 => 21,  84 => 16,  80 => 15,  76 => 14,  71 => 13,  68 => 12,  65 => 11,  60 => 8,  56 => 7,  51 => 5,  48 => 4,  46 => 3,  44 => 2,  42 => 1,);
+        return array (  116 => 25,  110 => 23,  107 => 22,  104 => 20,  101 => 19,  97 => 17,  87 => 16,  84 => 15,  81 => 14,  79 => 13,  67 => 11,  64 => 10,  61 => 9,  52 => 6,  48 => 4,  46 => 3,  44 => 2,  42 => 1,);
     }
 
     public function getSourceContext(): Source
