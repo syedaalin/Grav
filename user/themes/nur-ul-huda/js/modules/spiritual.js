@@ -47,12 +47,17 @@ jQuery(document).ready(async function($){
             // 4. Update UI (Next Prayer & Countdown)
             updateTopBannerUI(timings);
             
+            
+            // 6. Start Real-time Date Watcher
+            startDateWatcher();
+            
             // Clear errors
              $('#prayer-error').remove();
         }
     } catch (e) {
         handleError(e);
     }
+
 
     // UI Updater Logic (kept here as it's presentation layer glue)
     function updateTopBannerUI(timings) {
@@ -62,8 +67,9 @@ jQuery(document).ready(async function($){
         $('#next-prayer-name').text(next.name);
 
         const timer = setInterval(() => {
+            const now = new Date();
             const nextPrayerTime = new Date(next.time);
-            const remaining = nextPrayerTime - new Date();
+            const remaining = nextPrayerTime - now;
 
             if (remaining <= 0) {
                 clearInterval(timer);
@@ -71,18 +77,34 @@ jQuery(document).ready(async function($){
             } 
             
             // Format time as hh:mm AM/PM instead of countdown
-            // Using toLocaleString logic for consistency or themeUtils
             const hours = nextPrayerTime.getHours();
             const minutes = nextPrayerTime.getMinutes();
             const ampm = hours >= 12 ? 'PM' : 'AM';
-            const formattedHours = hours % 12 || 12; // Convert 0 to 12
+            const formattedHours = hours % 12 || 12; 
             const formattedMinutes = minutes.toString().padStart(2, '0');
             
             const timeStr = `${formattedHours}:${formattedMinutes} ${ampm}`;
-            
             $('#prayer-countdown').text(timeStr);
 
         }, 1000);
+    }
+
+    function startDateWatcher() {
+        const $dateEl = $('#gregorian-date');
+        if (!$dateEl.length) return;
+
+        const updateDate = () => {
+            const now = new Date();
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('en-US', options);
+            const yearStr = now.getFullYear();
+            
+            $dateEl.html(`${dateStr}<span class="year-responsive">, ${yearStr}</span>`);
+            $dateEl.attr('datetime', now.toISOString().split('T')[0]);
+        };
+
+        // Check every minute if the day has changed
+        setInterval(updateDate, 60000);
     }
 
     function handleError(e) {

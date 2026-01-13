@@ -1,3 +1,0 @@
-{% set email = theme_var('contact_email')|default('email@example.com') %}
-{% set parts = email|split('@') %}
-<span class="email-obfuscated" data-user="{{ parts[0]|reverse }}" data-domain="{{ parts[1]|reverse }}"></span>

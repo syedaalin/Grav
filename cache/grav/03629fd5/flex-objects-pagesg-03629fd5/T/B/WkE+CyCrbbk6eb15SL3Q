@@ -1,0 +1,8 @@
+1768248640
+02.services__SLASH__04.expiation
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:18:"services/expiation";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:4:{s:5:"title";s:20:"Expiation (Kaffarah)";s:4:"menu";s:9:"Expiation";s:8:"template";s:15:"services_parent";s:7:"visible";b:1;}s:11:"frontmatter";s:83:"title: Expiation (Kaffarah)
+menu: Expiation
+template: services_parent
+visible: true";s:8:"markdown";s:83:"# Expiation (Kaffarah) Services
+Information about Kaffarah and expiation services.
+";}s:7:"storage";a:7:{s:3:"key";s:18:"services/expiation";s:11:"storage_key";s:24:"02.services/04.expiation";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768150066;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768150066;}}s:8:"children";a:3:{s:7:"01.fast";b:0;s:13:"02.hajj-umrah";b:0;s:22:"03.promises-vows-oaths";b:0;}s:8:"checksum";s:32:"7fc75d86c64b8630c8fac6080b39f524";}}

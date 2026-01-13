@@ -1,0 +1,45 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/languages/et.yaml',
+    'modified' => 1768243057,
+    'size' => 567,
+    'data' => [
+        'THEME_NUR_UL_HUDA' => [
+            'ADMIN' => [
+                'GRID_SIZE' => 'Ruudustiku suurus'
+            ],
+            'BLOG' => [
+                'ITEM' => [
+                    'CONTINUE_READING' => 'Loe edasi...',
+                    'NEXT_POST' => 'Järgmine postitus',
+                    'PREV_POST' => 'Eelmine postitus'
+                ]
+            ],
+            'SIDEBAR' => [
+                'SIMPLE_SEARCH' => [
+                    'HEADLINE' => 'Otsi'
+                ],
+                'RELATED_POSTS' => [
+                    'HEADLINE' => 'Seotud postitused'
+                ],
+                'RANDOM_ARTICLE' => [
+                    'HEADLINE' => 'Juhuslik artikkel',
+                    'FEELING_LUCKY' => 'Ehk mul veab!'
+                ],
+                'SOME_TEXT_WIDGET' => [
+                    'HEADLINE' => 'Mõni teksti vidin'
+                ],
+                'POPULAR_TAGS' => [
+                    'HEADLINE' => 'Populaarsed märksõnad'
+                ],
+                'ARCHIVES' => [
+                    'HEADLINE' => 'Arhiiv'
+                ],
+                'SYNDICATE' => [
+                    'HEADLINE' => 'Voog'
+                ]
+            ]
+        ]
+    ]
+];

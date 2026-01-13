@@ -1,63 +1,72 @@
+{# 
+    Istafta (Religious Inquiries) Module
+    ------------------------------------
+    This template displays a list of pre-answered religious questions (Faq style)
+    alongside a dedicated Call-to-Action for new inquiries.
+    
+    Layout:
+    - Left Column: Dynamic Q&A Accordion (uses native <details>).
+    - Right Column: Submission CTA with optional anonymous badge.
+#}
 <section class="modular-section modular-istafta">
-    <div class="section-container">
-        <div class="istafta-layout">
-            
-            {# Left Column: Q&A Accordion #}
-            <div class="istafta-content">
-                <header class="istafta-header animate-fade-in-up">
-                    <div class="prose-custom prose-fluid">
-                        {{ page.content|raw }}
-                    </div>
-                </header>
+	<div class="section-container">
+		<div
+			class="istafta-layout">
 
-                <div class="istafta-questions animate-fade-in-up delay-100">
-                    {% for item in page.header.questions %}
-                        <details class="istafta-question" 
-                                 {% if loop.first %}open{% endif %}>
-                            <summary class="istafta-question-summary">
-                                <h4 class="istafta-question-title">{{ item.question }}</h4>
-                                <span class="istafta-question-toggle">
-                                    <i class="la la-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </summary>
-                            <div class="istafta-answer-wrapper">
-                                <div class="istafta-answer prose-custom">
-                                    {{ item.answer|markdown }}
-                                </div>
-                            </div>
-                        </details>
-                    {% endfor %}
-                </div>
-            </div>
+			{# Left Column: Q&A Accordion #}
+			<div class="istafta-content">
+				<header class="istafta-header animate-fade-in-up">
+					<div class="prose-custom prose-fluid">
+						{{ page.content|raw }}
+					</div>
+				</header>
 
-            {# Right Column: Submission Form CTA #}
-            <div class="istafta-sidebar animate-fade-in-up delay-200">
-                <div class="istafta-cta">
-                    <div class="istafta-cta-icon">
-                        <i class="la la-question-circle"></i>
-                    </div>
-                    <h3 class="istafta-cta-title">
-                        {{ page.header.form_title|default('Ask a Scholar') }}
-                    </h3>
-                    <p class="istafta-cta-description">
-                        Submit your query anonymously to our certified scholars for a detailed, compassionate response.
-                    </p>
-                    
-                    <a href="{{ url('theme://ask') }}" 
-                       class="btn-primary istafta-cta-button">
-                        Ask Now
-                        <i class="la la-arrow-right istafta-cta-icon-arrow" aria-hidden="true"></i>
-                    </a>
+				<div class="istafta-questions animate-fade-in-up delay-100">
+					{% for item in page.header.questions %}
+						<details class="istafta-question" {% if loop.first %} open {% endif %}>
+							<summary class="istafta-question-summary">
+								<h4 class="istafta-question-title">{{ item.question }}</h4>
+								<span class="istafta-question-toggle">
+									<i class="la la-angle-down" aria-hidden="true"></i>
+								</span>
+							</summary>
+							<div class="istafta-answer-wrapper">
+								<div class="istafta-answer prose-custom">
+									{{ item.answer|markdown }}
+								</div>
+							</div>
+						</details>
+					{% endfor %}
+				</div>
+			</div>
 
-                    {% if page.header.anonymous_toggle %}
-                        <div class="istafta-cta-badge">
-                            <i class="la la-user-secret"></i>
-                            End-to-End Anonymous
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
+			{# Right Column: Submission Form CTA #}
+			<div class="istafta-sidebar animate-fade-in-up delay-200">
+				<div class="istafta-cta">
+					<div class="istafta-cta-icon">
+						<i class="la la-question-circle"></i>
+					</div>
+					<h3 class="istafta-cta-title">
+						{{ page.header.form_title|default('Ask a Scholar') }}
+					</h3>
+					<p class="istafta-cta-description">
+						Submit your query anonymously to our certified scholars for a detailed, compassionate response.
+					</p>
 
-        </div>
-    </div>
+					<a href="{{ url('theme://ask') }}" class="btn-primary istafta-cta-button">
+						Ask Now
+						<i class="la la-arrow-right istafta-cta-icon-arrow" aria-hidden="true"></i>
+					</a>
+
+					{% if page.header.anonymous_toggle %}
+						<div class="istafta-cta-badge">
+							<i class="la la-user-secret"></i>
+							End-to-End Anonymous
+						</div>
+					{% endif %}
+				</div>
+			</div>
+
+		</div>
+	</div>
 </section>

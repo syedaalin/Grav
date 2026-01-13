@@ -1,169 +1,171 @@
 {# Add JS Logic #}
 {% do assets.addJs('theme://js/modules/khums-calculator.js', { 'priority': 90, 'group': 'bottom', 'defer': true }) %}
 
+{# 
+    Khums & Sadaqah Calculator
+    --------------------------
+    This component handles religious tax calculations entirely on the client-side
+    to ensure maximum privacy. No financial data is sent to the server until
+    the user explicitly clicks 'Pay Total'.
+    
+    Data Flow:
+    1. UI inputs (Assets/Deductions) trigger 'khums-calculator.js'.
+    2. JavaScript calculates Net Surplus, Khums (20%), and Total.
+    3. Results are reflected in the Summary area.
+    4. Clicking 'Pay Total' updates Snipcart item custom fields and initiates checkout.
+#}
 <section class="modular-section modular-khums-calculator">
-    <div class="section-container">
-        <div class="calculator-wrapper">
-            
-            <div class="calculator-header animate-fade-in-up">
-                <h2 class="section-title">{{ page.header.calc_title|default('Khums & Sadaqah Calculator') }}</h2>
-                <p class="calculator-description">{{ page.header.calc_description|default('Calculate your religious dues with complete privacy. All calculations are performed client-side.') }}</p>
-                
-                {# Hidden config data for JS #}
-                <div id="khums-currency-config" data-currency="{{ page.header.currency_symbol|default('$') }}" hidden aria-hidden="true"></div>
-                <div id="khums-rate-config" data-rate="{{ page.header.khums_rate|default(20) }}" hidden aria-hidden="true"></div>
-            </div>
+	<div class="section-container">
+		<div class="calculator-wrapper">
 
-            <div class="calculator-layout">
-                
-                {# Inputs Area #}
-                <div class="calculator-inputs">
-                    {# Assets Section - Success/Green Theme #}
-                    <div class="calculator-card calculator-card-success">
-                        <div class="calculator-card-bg"></div>
-                        <h3 class="calculator-card-title">
-                            <div class="calculator-card-icon calculator-icon-success">
-                                <i class="la la-coins" aria-hidden="true"></i>
-                            </div>
-                            <span>1. Assets (Surplus)</span>
-                        </h3>
-                        
-                        <div class="calculator-fields-grid">
-                            {% for field in [
+			<div class="calculator-header animate-fade-in-up">
+				<h2 class="section-title">{{ page.header.calc_title|default('Khums & Sadaqah Calculator') }}</h2>
+				<p class="calculator-description">{{ page.header.calc_description|default('Calculate your religious dues with complete privacy. All calculations are performed client-side.') }}</p>
+
+				{# Hidden configuration bridge for JS logic #}
+				<div id="khums-currency-config" data-currency="{{ page.header.currency_symbol|default('$') }}" hidden aria-hidden="true"></div>
+				<div id="khums-rate-config" data-rate="{{ page.header.khums_rate|default(20) }}" hidden aria-hidden="true"></div>
+			</div>
+
+			<div
+				class="calculator-layout">
+
+				{# Inputs Area #}
+				<div
+					class="calculator-inputs">
+					{# Assets Section - Success/Green Theme #}
+					<div class="calculator-card calculator-card-success">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-success">
+								<i class="la la-coins" aria-hidden="true"></i>
+							</div>
+							<span>1. Assets (Surplus)</span>
+						</h3>
+
+						<div class="calculator-fields-grid">
+							{% for field in [
                                 {id: 'khums-savings', label: 'Savings & Cash', icon: 'la-wallet'},
                                 {id: 'khums-gold', label: 'Gold & Jewelry', icon: 'la-ring'},
                                 {id: 'khums-business', label: 'Business Inventory', icon: 'la-store'},
                                 {id: 'khums-other', label: 'Other Surplus', icon: 'la-archive'}
                             ] %}
-                            <div class="calculator-field">
-                                <label for="{{ field.id }}" class="calculator-label calculator-label-success">{{ field.label }}</label>
-                                <div class="calculator-input-wrapper">
-                                    <span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
-                                    <input type="number" id="{{ field.id }}" 
-                                           class="calculator-input calculator-input-success active-assets" 
-                                           value="" placeholder="0.00" min="0">
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
+								<div class="calculator-field">
+									<label for="{{ field.id }}" class="calculator-label calculator-label-success">{{ field.label }}</label>
+									<div class="calculator-input-wrapper">
+										<span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
+										<input type="number" id="{{ field.id }}" class="calculator-input calculator-input-success active-assets" value="" placeholder="0.00" min="0">
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
 
-                    {# Deductions Section - Error/Red Theme #}
-                    <div class="calculator-card calculator-card-error">
-                        <div class="calculator-card-bg"></div>
-                        <h3 class="calculator-card-title">
-                            <div class="calculator-card-icon calculator-icon-error">
-                                <i class="la la-file-invoice-dollar" aria-hidden="true"></i>
-                            </div>
-                            <span>2. Deductions</span>
-                        </h3>
-                        <div class="calculator-field">
-                            <label for="khums-debts" class="calculator-label calculator-label-error">Outstanding Debts & Expenses</label>
-                            <div class="calculator-input-wrapper">
-                                <span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
-                                <input type="number" id="khums-debts" 
-                                       class="calculator-input calculator-input-error active-assets" 
-                                       value="" placeholder="0.00" min="0">
-                            </div>
-                        </div>
-                    </div>
+					{# Deductions Section - Error/Red Theme #}
+					<div class="calculator-card calculator-card-error">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-error">
+								<i class="la la-file-invoice-dollar" aria-hidden="true"></i>
+							</div>
+							<span>2. Deductions</span>
+						</h3>
+						<div class="calculator-field">
+							<label for="khums-debts" class="calculator-label calculator-label-error">Outstanding Debts & Expenses</label>
+							<div class="calculator-input-wrapper">
+								<span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
+								<input type="number" id="khums-debts" class="calculator-input calculator-input-error active-assets" value="" placeholder="0.00" min="0">
+							</div>
+						</div>
+					</div>
 
-                    {# Sadaqah Section - Primary/Blue Theme #}
-                    <div class="calculator-card calculator-card-primary">
-                        <div class="calculator-card-bg"></div>
-                        <h3 class="calculator-card-title">
-                             <div class="calculator-card-icon calculator-icon-primary">
-                                <i class="la la-heart" aria-hidden="true"></i>
-                            </div>
-                            <span>3. Optional Sadaqah</span>
-                        </h3>
-                        <div class="calculator-field">
-                            <label for="sadaqah-amount" class="calculator-label calculator-label-primary">Voluntary Contribution</label>
-                            <div class="calculator-input-wrapper">
-                                <span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
-                                <input type="number" id="sadaqah-amount" 
-                                       class="calculator-input calculator-input-primary active-assets" 
-                                       value="" placeholder="0.00" min="0">
-                            </div>
-                        </div>
-                    </div>
+					{# Sadaqah Section - Primary/Blue Theme #}
+					<div class="calculator-card calculator-card-primary">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-primary">
+								<i class="la la-heart" aria-hidden="true"></i>
+							</div>
+							<span>3. Optional Sadaqah</span>
+						</h3>
+						<div class="calculator-field">
+							<label for="sadaqah-amount" class="calculator-label calculator-label-primary">Voluntary Contribution</label>
+							<div class="calculator-input-wrapper">
+								<span class="calculator-currency">{{ page.header.currency_symbol|default('$') }}</span>
+								<input type="number" id="sadaqah-amount" class="calculator-input calculator-input-primary active-assets" value="" placeholder="0.00" min="0">
+							</div>
+						</div>
+					</div>
 
-                    {# Mobile/Explicit Action #}
-                    <div class="calculator-action">
-                        <button id="khums-calc-trigger" class="btn-primary-outline calculator-button">
-                            <i class="la la-calculator calculator-button-icon"></i>
-                            <span>Calculate Amounts</span>
-                        </button>
-                    </div>
-                </div>
+					{# Mobile/Explicit Action #}
+					<div class="calculator-action">
+						<button id="khums-calc-trigger" class="btn-primary-outline calculator-button">
+							<i class="la la-calculator calculator-button-icon"></i>
+							<span>Calculate Amounts</span>
+						</button>
+					</div>
+				</div>
 
-                {# Results Area #}
-                <div class="calculator-results">
-                    <div class="calculator-results-card">
-                        <h3 class="calculator-results-title">
-                            <i class="la la-calculator"></i> Summary
-                        </h3>
-                        
-                        <div class="calculator-summary">
-                            <div class="calculator-summary-row">
-                                <span class="calculator-summary-label">Net Surplus</span>
-                                <span id="khums-net-display" class="calculator-summary-value">{{ page.header.currency_symbol|default('$') }} 0.00</span>
-                            </div>
-                            <div class="calculator-summary-row">
-                                <span class="calculator-summary-label calculator-summary-khums">Khums (20%)</span>
-                                <span id="khums-calc-display" class="calculator-summary-value calculator-summary-khums">{{ page.header.currency_symbol|default('$') }} 0.00</span>
-                            </div>
-                            <div class="calculator-summary-row">
-                                <span class="calculator-summary-label calculator-summary-sadaqah">Sadaqah</span>
-                                <span id="sadaqah-display" class="calculator-summary-value calculator-summary-sadaqah">{{ page.header.currency_symbol|default('$') }} 0.00</span>
-                            </div>
-                        </div>
+				{# Results Area #}
+				<div class="calculator-results">
+					<div class="calculator-results-card">
+						<h3 class="calculator-results-title">
+							<i class="la la-calculator"></i>
+							Summary
+						</h3>
 
-                        <div class="calculator-total">
-                           <div class="calculator-total-bg"></div>
-                            <div class="calculator-total-content">
-                                <div class="calculator-total-label">Total Payable</div>
-                                <div id="khums-total-display" class="calculator-total-amount">{{ page.header.currency_symbol|default('$') }} 0.00</div>
-                            </div>
-                        </div>
+						<div class="calculator-summary">
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label">Net Surplus</span>
+								<span id="khums-net-display" class="calculator-summary-value">{{ page.header.currency_symbol|default('$') }}
+									0.00</span>
+							</div>
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label calculator-summary-khums">Khums (20%)</span>
+								<span id="khums-calc-display" class="calculator-summary-value calculator-summary-khums">{{ page.header.currency_symbol|default('$') }}
+									0.00</span>
+							</div>
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label calculator-summary-sadaqah">Sadaqah</span>
+								<span id="sadaqah-display" class="calculator-summary-value calculator-summary-sadaqah">{{ page.header.currency_symbol|default('$') }}
+									0.00</span>
+							</div>
+						</div>
 
-                        {# Khums Split Toggle #}
-                        <div class="calculator-toggle-wrapper">
-                             <label class="calculator-toggle-label">
-                                <span class="calculator-toggle-text">Split Khums 50/50</span>
-                                <input type="checkbox" id="khums-split-toggle" class="sr-only">
-                                <div class="calculator-toggle-switch"></div>
-                            </label>
-                            <p class="calculator-toggle-hint">Automatically divides your Khums equally between Sehme Imam and Sehme Sadaat.</p>
-                        </div>
+						<div class="calculator-total">
+							<div class="calculator-total-bg"></div>
+							<div class="calculator-total-content">
+								<div class="calculator-total-label">Total Payable</div>
+								<div id="khums-total-display" class="calculator-total-amount">{{ page.header.currency_symbol|default('$') }}
+									0.00</div>
+							</div>
+						</div>
 
-                        <div class="calculator-actions">
-                            <div class="calculator-security-badge">
-                                <i class="la la-lock" aria-hidden="true"></i> 
-                                Secure & Private
-                            </div>
-                            
-                            <button id="khums-checkout-btn" 
-                                class="btn-primary calculator-checkout-button snipcart-add-item"
-                                data-item-id="{{ page.header.donation_snipcart_id|default('religious-dues') }}"
-                                data-item-name="Religious Dues (Khums + Sadaqah)"
-                                data-item-price="0"
-                                data-item-url="{{ page.url(true) }}"
-                                data-item-custom1-name="Khums Split"
-                                data-item-custom1-options="Full Amount|Split 50/50"
-                                data-item-custom2-name="Khums Amount"
-                                data-item-custom2-type="readonly"
-                                data-item-custom2-value="0"
-                                data-item-custom3-name="Sadaqah Amount"
-                                data-item-custom3-type="readonly"
-                                data-item-custom3-value="0">
-                                <i class="la la-heart" aria-hidden="true"></i> Pay Total
-                            </button>
-                        </div>
-                    </div>
-                </div>
+						{# Khums Split Toggle #}
+						<div class="calculator-toggle-wrapper">
+							<label class="calculator-toggle-label">
+								<span class="calculator-toggle-text">Split Khums 50/50</span>
+								<input type="checkbox" id="khums-split-toggle" class="sr-only">
+								<div class="calculator-toggle-switch"></div>
+							</label>
+							<p class="calculator-toggle-hint">Automatically divides your Khums equally between Sehme Imam and Sehme Sadaat.</p>
+						</div>
 
-            </div>
-        </div>
-    </div>
+						<div class="calculator-actions">
+							<div class="calculator-security-badge">
+								<i class="la la-lock" aria-hidden="true"></i>
+								Secure & Private
+							</div>
+
+							<button id="khums-checkout-btn" class="btn-primary calculator-checkout-button snipcart-add-item" data-item-id="{{ page.header.donation_snipcart_id|default('religious-dues') }}" data-item-name="Religious Dues (Khums + Sadaqah)" data-item-price="0" data-item-url="{{ page.url(true) }}" data-item-custom1-name="Khums Split" data-item-custom1-options="Full Amount|Split 50/50" data-item-custom2-name="Khums Amount" data-item-custom2-type="readonly" data-item-custom2-value="0" data-item-custom3-name="Sadaqah Amount" data-item-custom3-type="readonly" data-item-custom3-value="0">
+								<i class="la la-heart" aria-hidden="true"></i>
+								Pay Total
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </section>

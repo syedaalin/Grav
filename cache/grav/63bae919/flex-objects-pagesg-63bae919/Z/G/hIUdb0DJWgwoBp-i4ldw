@@ -1,0 +1,7 @@
+1768243885
+02.services__SLASH__04.expiation__SLASH__03.promises-vows-oaths
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:38:"services/expiation/promises-vows-oaths";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:22:"Promises, Vows & Oaths";s:4:"menu";s:16:"Promises & Oaths";s:7:"visible";b:1;}s:11:"frontmatter";s:66:"title: Promises, Vows & Oaths
+menu: Promises & Oaths
+visible: true";s:8:"markdown";s:113:"# Expiation for Promises, Vows & Oaths
+Information about Kaffarah for breaking promises, vows (Nadhr), or oaths.
+";}s:7:"storage";a:6:{s:3:"key";s:38:"services/expiation/promises-vows-oaths";s:11:"storage_key";s:47:"02.services/04.expiation/03.promises-vows-oaths";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768149506;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768149506;}}s:8:"checksum";s:32:"60234b77887012069e31864d576c22f7";}}

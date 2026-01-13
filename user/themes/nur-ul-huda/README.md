@@ -58,6 +58,32 @@
   * Text Modular view template `text.md`
   * Note: Gallery Modular view template `gallery.md` only works in concert with premium plugin [Lightbox Gallery](https://getgrav.org/premium/lightbox-gallery/docs)
 
+# Development
+
+This theme uses a **Modern Vanilla CSS** architecture powered by **LightningCSS**.
+
+### Prerequisites
+- Node.js & npm
+- PHP 8.2+
+
+### Quick Start
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start development server (watches for changes):
+   ```bash
+   npm run watch
+   ```
+
+3. Build for production (minified):
+   ```bash
+   npm run build
+   ```
+
+The CSS entry point is `css/modern-vanilla.css`, which imports layers from `css/layers/`. The build process bundles these into `css/nur-ul-huda.css` for Grav to use.
+
 # Installation
 
 Installing the Nur-ul-Huda theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file. 

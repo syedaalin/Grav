@@ -8,7 +8,7 @@ use Grav\Common\Grav;
 use Grav\Common\Config\Config;
 use Grav\Theme\NurUlHuda\Utils\SecurityLogger;
 
-class JazzCashHandler
+readonly class JazzCashHandler
 {
     protected Grav $grav;
     protected SnipcartHandler $snipcart;
@@ -92,7 +92,7 @@ class JazzCashHandler
             }
         }
 
-        $expected_hash = \strtoupper(\hash_hmac('sha256', $hash_string, $salt));
+        $expected_hash = \hash_hmac('sha256', $hash_string, $salt) |> \strtoupper(...);
         return \hash_equals($expected_hash, $response_hash);
     }
 

@@ -64,76 +64,75 @@ class __TwigTemplate_29c6cdc348a36fe574672a332062ecf1 extends Template
         // line 42
         yield "\t<script type=\"application/ld+json\">
 \t\t{
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        \"@context\": \"https://schema.org\",
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        \"@type\": \"Organization\",
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        \"name\": \"";
+\t\t            \"@context\": \"https://schema.org\",
+\t\t            \"@type\": \"Organization\",
+\t\t            \"name\": \"";
         // line 46
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "orgName", [], "any", false, false, false, 46), "js"), "html", null, true);
         yield "\",
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        \"url\": \"";
+\t\t            \"url\": \"";
         // line 47
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("", [], true), "html", null, true);
         yield "\",
 \t\t";
         // line 48
         if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 49
-            yield "\t\t\t\"logo\": \"";
+            yield "\"logo\": \"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo"), [], true), "html", null, true);
             yield "\",
 \t\t";
         }
-        // line 51
+        // line 50
         yield "\t\t";
-        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 51) || CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 51))) {
-            // line 52
+        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 50) || CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 50))) {
+            // line 51
             yield "\t\t\t\"contactPoint\": {
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t            \"@type\": \"ContactPoint\",
+\t\t\t                    \"@type\": \"ContactPoint\",
 \t\t\t";
-            // line 54
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 54)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 53
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 53)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                 yield "\"telephone\": \"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 54), "js"), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "phone", [], "any", false, false, false, 53), "js"), "html", null, true);
                 yield "\",
 \t\t\t";
             }
-            // line 56
+            // line 55
             yield "\t\t\t";
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 56)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 55)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                 yield "\"email\": \"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 56), "js"), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "email", [], "any", false, false, false, 55), "js"), "html", null, true);
                 yield "\",
 \t\t\t";
             }
-            // line 58
+            // line 57
             yield "\t\t\t\"contactType\": \"customer service\"
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        },
+\t\t\t                },
 \t\t";
         }
-        // line 61
+        // line 60
         yield "\t\t";
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "address", [], "any", false, false, false, 61)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 62
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "address", [], "any", false, false, false, 60)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 61
             yield "\t\t\t\"address\": {
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t            \"@type\": \"PostalAddress\",
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t            \"streetAddress\": \"";
-            // line 64
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "address", [], "any", false, false, false, 64), "js"), "html", null, true);
+\t\t\t                    \"@type\": \"PostalAddress\",
+\t\t\t                    \"streetAddress\": \"";
+            // line 63
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "address", [], "any", false, false, false, 63), "js"), "html", null, true);
             yield "\"
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t        },
+\t\t\t                },
 \t\t";
         }
-        // line 67
+        // line 66
         yield "\t\t\"sameAs\":
 \t\t";
-        // line 68
-        yield json_encode(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "socials", [], "any", false, false, false, 68));
+        // line 67
+        yield json_encode(CoreExtension::getAttribute($this->env, $this->source, ($context["schema_data"] ?? null), "socials", [], "any", false, false, false, 67));
         yield "
 \t\t}
 \t</script>
 
 \t";
-        // line 73
+        // line 72
         yield "\t<div class=\"bottom-banner-pattern\" aria-hidden=\"true\">
 \t\t<svg xmlns=\"http://www.w3.org/2000/svg\">
 \t\t\t<defs>
@@ -146,366 +145,280 @@ class __TwigTemplate_29c6cdc348a36fe574672a332062ecf1 extends Template
 \t</div>
 
 \t";
+        // line 84
+        yield "\t";
+        $context["widgets"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_widgets_order"), ["brand", "social", "nav", "newsletter", "copyright"]);
         // line 85
-        yield "\t<div class=\"bottom-banner-header\">
-\t\t<div class=\"bottom-banner-brand-column\">
-\t\t\t<div class=\"bottom-banner-brand-header\">
-\t\t\t\t";
-        // line 88
-        $context["logo_var"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo");
-        // line 89
-        yield "\t\t\t\t";
-        $context["logo_url"] = ($context["logo_var"] ?? null);
-        // line 90
-        yield "\t\t\t\t";
-        if (is_iterable(($context["logo_var"] ?? null))) {
-            // line 91
-            yield "\t\t\t\t\t";
-            // line 92
-            yield "\t\t\t\t\t";
-            $context["logo_obj"] = Twig\Extension\CoreExtension::first($this->env->getCharset(), ($context["logo_var"] ?? null));
-            // line 93
-            yield "\t\t\t\t\t";
-            $context["logo_url"] = ((CoreExtension::getAttribute($this->env, $this->source, ($context["logo_obj"] ?? null), "path", [], "any", true, true, false, 93)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, ($context["logo_obj"] ?? null), "path", [], "any", false, false, false, 93), Twig\Extension\CoreExtension::first($this->env->getCharset(), Twig\Extension\CoreExtension::keys(($context["logo_var"] ?? null))))) : (Twig\Extension\CoreExtension::first($this->env->getCharset(), Twig\Extension\CoreExtension::keys(($context["logo_var"] ?? null)))));
-            // line 94
-            yield "\t\t\t\t";
-        }
-        // line 95
         yield "
-\t\t\t\t";
-        // line 96
-        if ((($tmp = ($context["logo_url"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 97
-            yield "\t\t\t\t\t<a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["home_url"] ?? null), "html", null, true);
-            yield "\" class=\"bottom-banner-logo-link\">
-\t\t\t\t\t\t<img src=\"";
-            // line 98
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc(($context["logo_url"] ?? null)), "html", null, true);
-            yield "\" alt=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
-            yield "\" class=\"bottom-banner-logo\" width=\"80\" height=\"auto\" loading=\"lazy\">
-\t\t\t\t\t</a>
-\t\t\t\t";
-        }
-        // line 101
-        yield "\t\t\t\t<h2 class=\"bottom-banner-brand-title\">";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
-        yield "</h2>
-\t\t\t\t";
-        // line 102
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "site_tagline")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 103
-            yield "\t\t\t\t\t<p class=\"bottom-banner-brand-tagline\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "site_tagline"), "html", null, true);
-            yield "</p>
-\t\t\t\t";
-        }
-        // line 105
-        yield "\t\t\t</div>
-\t\t</div>
-\t</div>
-
-\t";
-        // line 110
-        yield "\t<div
-\t\tclass=\"bottom-banner-body\">
+\t<div class=\"bottom-banner-layout-stack\">
 \t\t";
-        // line 113
-        yield "\t\t";
-        if ((((((((((((((($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_facebook") || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_twitter")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_instagram")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_linkedin")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_tiktok")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_pinterest")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_snapchat")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_spotify")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_discord")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_youtube")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_telegram")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_google_maps")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_whatsapp")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_phone")) || $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_email"))) {
-            // line 114
-            yield "\t\t\t<section class=\"bottom-banner-social-section\" aria-labelledby=\"bottom-banner-social-heading\">
-\t\t\t\t<h2 id=\"bottom-banner-social-heading\" class=\"bottom-banner-social-heading\">
-\t\t\t\t\tConnect With Us
-\t\t\t\t</h2>
-\t\t\t\t<div class=\"bottom-banner-social-grid\">
-\t\t\t\t\t";
-            // line 119
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_facebook")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 120
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 120, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_facebook"), "facebook", "Visit our Facebook page"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 122
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_twitter")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 123
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 123, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_twitter"), "twitter", "Follow us on Twitter"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 125
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_instagram")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 126
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 126, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_instagram"), "instagram", "Follow us on Instagram"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 128
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_youtube")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 129
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 129, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_youtube"), "youtube", "Subscribe to our YouTube channel"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 131
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_telegram")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 132
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 132, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_telegram"), "telegram", "Join our Telegram group"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 134
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_linkedin")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 135
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 135, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_linkedin"), "linkedin", "Connect on LinkedIn"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 137
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_tiktok")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 138
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 138, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_tiktok"), "tiktok", "Follow us on TikTok"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 140
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_pinterest")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 141
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 141, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_pinterest"), "pinterest", "Follow us on Pinterest"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 143
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_snapchat")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 144
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 144, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_snapchat"), "snapchat", "Add us on Snapchat"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 146
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_spotify")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 147
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 147, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_spotify"), "spotify", "Listen on Spotify"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 149
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_discord")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 150
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 150, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_discord"), "discord", "Join our Discord"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 152
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_google_maps")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 153
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 153, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_google_maps"), "maps", "Find us on Google Maps"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 155
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_whatsapp")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 156
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 156, $this->getSourceContext())->macro_social_icon(...[$this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_whatsapp"), "whatsapp", "Contact us on WhatsApp"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 158
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_phone")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 159
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 159, $this->getSourceContext())->macro_social_icon(...[("tel:" . Twig\Extension\CoreExtension::replace($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_phone"), [" " => "", "(" => "", ")" => "", "-" => ""])), "phone", "Call us"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 161
-            yield "\t\t\t\t\t";
-            if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_email")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 162
-                yield "\t\t\t\t\t\t";
-                yield $this->getTemplateForMacro("macro_social_icon", $context, 162, $this->getSourceContext())->macro_social_icon(...[("mailto:" . $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "social_email")), "email", "Email us"]);
-                yield "
-\t\t\t\t\t";
-            }
-            // line 164
-            yield "\t\t\t\t</div>
-\t\t\t</section>
-\t\t";
+        // line 87
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(($context["widgets"] ?? null));
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
         }
-        // line 167
-        yield "
-\t\t";
-        // line 169
-        yield "\t\t<div
-\t\t\tclass=\"bottom-banner-grid\">
-\t\t\t";
-        // line 172
-        yield "\t\t\t";
-        $context["bottom_banner_columns"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_columns");
-        // line 173
-        yield "\t\t\t";
-        if ((($tmp = ($context["bottom_banner_columns"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 174
-            yield "\t\t\t\t";
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(($context["bottom_banner_columns"] ?? null));
-            $context['loop'] = [
-              'parent' => $context['_parent'],
-              'index0' => 0,
-              'index'  => 1,
-              'first'  => true,
-            ];
-            if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-                $length = count($context['_seq']);
-                $context['loop']['revindex0'] = $length - 1;
-                $context['loop']['revindex'] = $length;
-                $context['loop']['length'] = $length;
-                $context['loop']['last'] = 1 === $length;
-            }
-            foreach ($context['_seq'] as $context["_key"] => $context["column"]) {
-                // line 175
-                yield "\t\t\t\t\t<nav class=\"bottom-banner-nav-column\" aria-labelledby=\"bottom-banner-nav-";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 175), "html", null, true);
-                yield "\" data-accordion=\"mobile\">
-\t\t\t\t\t\t<button type=\"button\" class=\"bottom-banner-nav-toggle\" aria-expanded=\"false\" aria-controls=\"bottom-banner-nav-content-";
-                // line 176
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 176), "html", null, true);
-                yield "\" data-bottom-banner-toggle>
-\t\t\t\t\t\t\t<h3 id=\"bottom-banner-nav-";
-                // line 177
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 177), "html", null, true);
-                yield "\" class=\"bottom-banner-nav-title\">
-\t\t\t\t\t\t\t\t";
-                // line 178
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["column"], "title", [], "any", false, false, false, 178), "html", null, true);
-                yield "
-\t\t\t\t\t\t\t</h3>
-\t\t\t\t\t\t\t<i class=\"bottom-banner-nav-icon\" aria-hidden=\"true\"></i>
-\t\t\t\t\t\t</button>
-
-\t\t\t\t\t\t<div id=\"bottom-banner-nav-content-";
-                // line 183
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 183), "html", null, true);
-                yield "\" class=\"bottom-banner-nav-content\" aria-hidden=\"true\">
+        foreach ($context['_seq'] as $context["_key"] => $context["widget"]) {
+            // line 88
+            yield "\t\t\t";
+            if (($context["widget"] == "brand")) {
+                // line 89
+                yield "\t\t\t\t";
+                // line 90
+                yield "\t\t\t\t<div class=\"bottom-banner-header\">
+\t\t\t\t\t<div class=\"bottom-banner-brand-column\">
+\t\t\t\t\t\t<div class=\"bottom-banner-brand-header\">
 \t\t\t\t\t\t\t";
-                // line 184
-                if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["column"], "links", [], "any", false, false, false, 184)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    // line 185
-                    yield "\t\t\t\t\t\t\t\t<ul class=\"bottom-banner-nav-list\" role=\"list\">
-\t\t\t\t\t\t\t\t\t";
-                    // line 186
+                // line 93
+                $context["logo_var"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo");
+                // line 94
+                yield "\t\t\t\t\t\t\t";
+                if ((($context["logo_var"] ?? null) && $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_show_logo"))) {
+                    // line 95
+                    yield "\t\t\t\t\t\t\t\t<a href=\"";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["home_url"] ?? null), "html", null, true);
+                    yield "\" class=\"bottom-banner-logo-link\">
+\t\t\t\t\t\t\t\t\t<img src=\"";
+                    // line 96
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc(($context["logo_var"] ?? null)), "html", null, true);
+                    yield "\" alt=\"";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
+                    yield "\" class=\"bottom-banner-logo\" width=\"80\" height=\"auto\" loading=\"lazy\">
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t";
+                }
+                // line 99
+                yield "
+\t\t\t\t\t\t\t";
+                // line 100
+                if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_show_site_name")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                    // line 101
+                    yield "\t\t\t\t\t\t\t\t<h2 class=\"bottom-banner-brand-title\">";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
+                    yield "</h2>
+\t\t\t\t\t\t\t";
+                }
+                // line 103
+                yield "
+\t\t\t\t\t\t\t";
+                // line 104
+                if (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "site_tagline") && $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_show_tagline"))) {
+                    // line 105
+                    yield "\t\t\t\t\t\t\t\t<p class=\"bottom-banner-brand-tagline\">";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "site_tagline"), "html", null, true);
+                    yield "</p>
+\t\t\t\t\t\t\t";
+                }
+                // line 107
+                yield "\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t";
+            } elseif ((            // line 111
+$context["widget"] == "newsletter")) {
+                // line 112
+                yield "\t\t\t\t";
+                // line 113
+                yield "\t\t\t\t";
+                yield from $this->load("partials/bottom-banner-newsletter.html.twig", 113)->unwrap()->yield($context);
+                // line 114
+                yield "
+\t\t\t";
+            } elseif ((            // line 115
+$context["widget"] == "social")) {
+                // line 116
+                yield "\t\t\t\t";
+                // line 117
+                yield "\t\t\t\t<div class=\"bottom-banner-social-strip\">
+\t\t\t\t\t<div class=\"bottom-banner-body\">
+\t\t\t\t\t\t<section class=\"bottom-banner-social-section\" aria-labelledby=\"bottom-banner-social-heading\">
+\t\t\t\t\t\t\t<h2 id=\"bottom-banner-social-heading\" class=\"bottom-banner-social-heading\">Connect With Us</h2>
+\t\t\t\t\t\t\t";
+                // line 121
+                yield from $this->load("partials/social-icons.html.twig", 121)->unwrap()->yield(CoreExtension::merge($context, ["context" => "bottom_banner"]));
+                // line 122
+                yield "\t\t\t\t\t\t</section>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t";
+            } elseif ((            // line 126
+$context["widget"] == "nav")) {
+                // line 127
+                yield "\t\t\t\t";
+                // line 128
+                yield "\t\t\t\t<div class=\"bottom-banner-nav-strip\">
+\t\t\t\t\t<div class=\"bottom-banner-body\">
+\t\t\t\t\t\t<div class=\"bottom-banner-grid\">
+\t\t\t\t\t\t\t";
+                // line 131
+                $context["bottom_banner_columns"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "bottom_banner_columns");
+                // line 132
+                yield "\t\t\t\t\t\t\t";
+                if ((($tmp = ($context["bottom_banner_columns"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                    // line 133
+                    yield "\t\t\t\t\t\t\t\t";
                     $context['_parent'] = $context;
-                    $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["column"], "links", [], "any", false, false, false, 186));
-                    foreach ($context['_seq'] as $context["_key"] => $context["link"]) {
-                        // line 187
-                        yield "\t\t\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                        // line 188
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "url", [], "any", false, false, false, 188), "html", null, true);
-                        yield "\" class=\"bottom-banner-nav-link\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"bottom-banner-nav-link-icon la la-angle-";
-                        // line 189
-                        yield (((($context["direction"] ?? null) == "rtl")) ? ("left") : ("right"));
-                        yield "\" aria-hidden=\"true\"></i>
-\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"bottom-banner-nav-link-text\">";
-                        // line 190
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "text", [], "any", false, false, false, 190), "html", null, true);
-                        yield "</span>
-\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t\t\t";
+                    $context['_seq'] = CoreExtension::ensureTraversable(($context["bottom_banner_columns"] ?? null));
+                    $context['loop'] = [
+                      'parent' => $context['_parent'],
+                      'index0' => 0,
+                      'index'  => 1,
+                      'first'  => true,
+                    ];
+                    if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                        $length = count($context['_seq']);
+                        $context['loop']['revindex0'] = $length - 1;
+                        $context['loop']['revindex'] = $length;
+                        $context['loop']['length'] = $length;
+                        $context['loop']['last'] = 1 === $length;
+                    }
+                    foreach ($context['_seq'] as $context["_key"] => $context["column"]) {
+                        // line 134
+                        yield "\t\t\t\t\t\t\t\t\t<nav class=\"bottom-banner-nav-column\" aria-labelledby=\"bottom-banner-nav-";
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 134), "html", null, true);
+                        yield "\" data-accordion=\"mobile\">
+\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"bottom-banner-nav-toggle\" aria-expanded=\"false\" aria-controls=\"bottom-banner-nav-content-";
+                        // line 135
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 135), "html", null, true);
+                        yield "\" data-bottom-banner-toggle>
+\t\t\t\t\t\t\t\t\t\t\t<h3 id=\"bottom-banner-nav-";
+                        // line 136
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 136), "html", null, true);
+                        yield "\" class=\"bottom-banner-nav-title\">";
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["column"], "title", [], "any", false, false, false, 136), "html", null, true);
+                        yield "</h3>
+\t\t\t\t\t\t\t\t\t\t\t<i class=\"bottom-banner-nav-icon\" aria-hidden=\"true\"></i>
+\t\t\t\t\t\t\t\t\t\t</button>
+\t\t\t\t\t\t\t\t\t\t<div id=\"bottom-banner-nav-content-";
+                        // line 139
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 139), "html", null, true);
+                        yield "\" class=\"bottom-banner-nav-content\" aria-hidden=\"true\">
+\t\t\t\t\t\t\t\t\t\t\t";
+                        // line 140
+                        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["column"], "links", [], "any", false, false, false, 140)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                            // line 141
+                            yield "\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"bottom-banner-nav-list\" role=\"list\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                            // line 142
+                            $context['_parent'] = $context;
+                            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["column"], "links", [], "any", false, false, false, 142));
+                            foreach ($context['_seq'] as $context["_key"] => $context["link"]) {
+                                // line 143
+                                yield "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
+                                // line 144
+                                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "url", [], "any", false, false, false, 144), "html", null, true);
+                                yield "\" class=\"bottom-banner-nav-link\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"bottom-banner-nav-link-icon la la-angle-";
+                                // line 145
+                                yield (((($context["direction"] ?? null) == "rtl")) ? ("left") : ("right"));
+                                yield "\" aria-hidden=\"true\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"bottom-banner-nav-link-text\">";
+                                // line 146
+                                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "text", [], "any", false, false, false, 146), "html", null, true);
+                                yield "</span>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                            }
+                            $_parent = $context['_parent'];
+                            unset($context['_seq'], $context['_key'], $context['link'], $context['_parent']);
+                            $context = array_intersect_key($context, $_parent) + $_parent;
+                            // line 150
+                            yield "\t\t\t\t\t\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t\t\t\t\t\t";
+                        }
+                        // line 152
+                        yield "\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t</nav>
+\t\t\t\t\t\t\t\t";
+                        ++$context['loop']['index0'];
+                        ++$context['loop']['index'];
+                        $context['loop']['first'] = false;
+                        if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                            --$context['loop']['revindex0'];
+                            --$context['loop']['revindex'];
+                            $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                        }
                     }
                     $_parent = $context['_parent'];
-                    unset($context['_seq'], $context['_key'], $context['link'], $context['_parent']);
+                    unset($context['_seq'], $context['_key'], $context['column'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 194
-                    yield "\t\t\t\t\t\t\t\t</ul>
+                    // line 155
+                    yield "\t\t\t\t\t\t\t";
+                }
+                // line 156
+                yield "\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t";
+            } elseif ((            // line 160
+$context["widget"] == "copyright")) {
+                // line 161
+                yield "\t\t\t\t";
+                // line 162
+                yield "\t\t\t\t<div class=\"bottom-banner-footer\">
+\t\t\t\t\t<div class=\"bottom-banner-footer-content\">
+\t\t\t\t\t\t<div class=\"bottom-banner-copyright\">
+\t\t\t\t\t\t\t";
+                // line 165
+                if ((($tmp = ($context["copyright"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                    // line 166
+                    yield "\t\t\t\t\t\t\t\t";
+                    yield Twig\Extension\CoreExtension::replace(($context["copyright"] ?? null), ["{year}" => $this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "[year]" => $this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y")]);
+                    yield "
+\t\t\t\t\t\t\t";
+                } else {
+                    // line 168
+                    yield "\t\t\t\t\t\t\t\t<p>&copy;
+\t\t\t\t\t\t\t\t\t";
+                    // line 169
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
+                    yield "
+\t\t\t\t\t\t\t\t\t";
+                    // line 170
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
+                    yield ". All rights reserved.</p>
 \t\t\t\t\t\t\t";
                 }
-                // line 196
+                // line 172
                 yield "\t\t\t\t\t\t</div>
-\t\t\t\t\t</nav>
-\t\t\t\t";
-                ++$context['loop']['index0'];
-                ++$context['loop']['index'];
-                $context['loop']['first'] = false;
-                if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
-                    --$context['loop']['revindex0'];
-                    --$context['loop']['revindex'];
-                    $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-                }
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t";
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['column'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 199
-            yield "\t\t\t";
+            // line 176
+            yield "\t\t";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
-        // line 200
-        yield "\t\t</div>
-\t</div>
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['widget'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 177
+        yield "\t</div>
 
 \t";
-        // line 204
-        yield "\t<div class=\"bottom-banner-footer\">
-\t\t<div class=\"bottom-banner-footer-content\">
-\t\t\t<div class=\"bottom-banner-copyright\">
-\t\t\t\t";
-        // line 207
-        if ((($tmp = ($context["copyright"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 208
-            yield "\t\t\t\t\t";
-            yield Twig\Extension\CoreExtension::replace(($context["copyright"] ?? null), ["{year}" => $this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "[year]" => $this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y")]);
-            yield "
-\t\t\t\t";
-        } else {
-            // line 210
-            yield "\t\t\t\t\t<p>&copy;
-\t\t\t\t\t\t";
-            // line 211
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
-            yield "
-\t\t\t\t\t\t";
-            // line 212
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["site_name"] ?? null), "html", null, true);
-            yield ". All rights reserved.</p>
-\t\t\t\t";
-        }
-        // line 214
-        yield "\t\t\t</div>
-\t\t</div>
-\t</div>
-
-\t";
-        // line 219
+        // line 180
         yield "\t<a href=\"#top\" class=\"back-to-top\" aria-label=\"Back to top\" data-back-to-top>
 \t\t<i class=\"la la-angle-up icon-lg\" aria-hidden=\"true\"></i>
 \t</a>
@@ -589,7 +502,7 @@ class __TwigTemplate_29c6cdc348a36fe574672a332062ecf1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  565 => 36,  559 => 34,  557 => 33,  552 => 31,  541 => 30,  538 => 13,  535 => 12,  532 => 11,  518 => 10,  509 => 219,  503 => 214,  498 => 212,  494 => 211,  491 => 210,  485 => 208,  483 => 207,  478 => 204,  473 => 200,  470 => 199,  454 => 196,  450 => 194,  440 => 190,  436 => 189,  432 => 188,  429 => 187,  425 => 186,  422 => 185,  420 => 184,  416 => 183,  408 => 178,  404 => 177,  400 => 176,  395 => 175,  377 => 174,  374 => 173,  371 => 172,  367 => 169,  364 => 167,  359 => 164,  353 => 162,  350 => 161,  344 => 159,  341 => 158,  335 => 156,  332 => 155,  326 => 153,  323 => 152,  317 => 150,  314 => 149,  308 => 147,  305 => 146,  299 => 144,  296 => 143,  290 => 141,  287 => 140,  281 => 138,  278 => 137,  272 => 135,  269 => 134,  263 => 132,  260 => 131,  254 => 129,  251 => 128,  245 => 126,  242 => 125,  236 => 123,  233 => 122,  227 => 120,  225 => 119,  218 => 114,  215 => 113,  211 => 110,  205 => 105,  199 => 103,  197 => 102,  192 => 101,  184 => 98,  179 => 97,  177 => 96,  174 => 95,  171 => 94,  168 => 93,  165 => 92,  163 => 91,  160 => 90,  157 => 89,  155 => 88,  150 => 85,  137 => 73,  130 => 68,  127 => 67,  121 => 64,  117 => 62,  114 => 61,  109 => 58,  101 => 56,  94 => 54,  90 => 52,  87 => 51,  81 => 49,  79 => 48,  75 => 47,  71 => 46,  65 => 42,  61 => 40,  57 => 38,  55 => 10,  52 => 7,  50 => 6,  48 => 5,  46 => 4,  44 => 3,  42 => 2,);
+        return array (  478 => 36,  472 => 34,  470 => 33,  465 => 31,  454 => 30,  451 => 13,  448 => 12,  445 => 11,  431 => 10,  422 => 180,  418 => 177,  404 => 176,  398 => 172,  393 => 170,  389 => 169,  386 => 168,  380 => 166,  378 => 165,  373 => 162,  371 => 161,  369 => 160,  363 => 156,  360 => 155,  344 => 152,  340 => 150,  330 => 146,  326 => 145,  322 => 144,  319 => 143,  315 => 142,  312 => 141,  310 => 140,  306 => 139,  298 => 136,  294 => 135,  289 => 134,  271 => 133,  268 => 132,  266 => 131,  261 => 128,  259 => 127,  257 => 126,  251 => 122,  249 => 121,  243 => 117,  241 => 116,  239 => 115,  236 => 114,  233 => 113,  231 => 112,  229 => 111,  223 => 107,  217 => 105,  215 => 104,  212 => 103,  206 => 101,  204 => 100,  201 => 99,  193 => 96,  188 => 95,  185 => 94,  183 => 93,  178 => 90,  176 => 89,  173 => 88,  156 => 87,  152 => 85,  149 => 84,  136 => 72,  129 => 67,  126 => 66,  120 => 63,  116 => 61,  113 => 60,  108 => 57,  100 => 55,  93 => 53,  89 => 51,  86 => 50,  79 => 48,  75 => 47,  71 => 46,  65 => 42,  61 => 40,  57 => 38,  55 => 10,  52 => 7,  50 => 6,  48 => 5,  46 => 4,  44 => 3,  42 => 2,);
     }
 
     public function getSourceContext(): Source

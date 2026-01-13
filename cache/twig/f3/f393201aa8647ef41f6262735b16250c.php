@@ -86,7 +86,7 @@ class __TwigTemplate_ab1af30917de035da470a926a3308967 extends Template
             yield "
     ";
             // line 14
-            yield from $this->load("forms/fields/section/section.html.twig", 14, 975064895)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 14), "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "fields", [], "any", false, false, false, 14)]));
+            yield from $this->load("forms/fields/section/section.html.twig", 14, 960040288)->unwrap()->yield(CoreExtension::merge($context, ["name" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "name", [], "any", false, false, false, 14), "fields" => CoreExtension::getAttribute($this->env, $this->source, ($context["field"] ?? null), "fields", [], "any", false, false, false, 14)]));
             // line 22
             yield "
 ";
@@ -126,7 +126,7 @@ class __TwigTemplate_ab1af30917de035da470a926a3308967 extends Template
 
 
 /* forms/fields/section/section.html.twig */
-class __TwigTemplate_ab1af30917de035da470a926a3308967___975064895 extends Template
+class __TwigTemplate_ab1af30917de035da470a926a3308967___960040288 extends Template
 {
     private Source $source;
     /**

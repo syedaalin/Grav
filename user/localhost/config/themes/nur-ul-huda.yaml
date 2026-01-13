@@ -2,6 +2,12 @@ enabled: true
 production-mode: true
 grid-size: grid-xl
 debug_glass: false
+direction: ltr
+language: en
+number_format: western
+date_calendar: both
+primary_spirit_color: '#2ecc71'
+accent_color: '#f1c40f'
 font_heading: sans-serif
 font_body: "'Outfit-VariableFont_wght', sans-serif"
 custom_fonts:
@@ -40,14 +46,63 @@ custom_fonts:
     path: user/themes/nur-ul-huda/fonts/custom/NotoNastaliqUrdu-VariableFont_wght.ttf
     type: application/octet-stream
     size: 690304
-glass_blur: 2
+glass_bg_color: '#000000'
 glass_opacity: 10
+glass_blur: 0
+glass_border_opacity: 100
+glass_highlight: 38
 glass_noise: true
-bottom_banner_show_social_labels: true
 header-fixed: true
 header-animated: true
 header-dark: false
 header-transparent: false
+header_padding: 1rem
+top_banner_enabled: true
+top_banner_announcement_enabled: false
+top_banner_announcement_bg_color: '#b91c1c'
+top_banner_announcement_text_color: '#ffffff'
+top_banner_bg_color: '#111827'
+top_banner_text_color: '#f1c40f'
+top_banner_show_dates: false
+top_banner_show_prayer_ticker: true
+top_banner_show_contact: false
+top_banner_show_social: false
+prayer_method: karachi
+hijri_offset: 0
+default_location: Karachi
+hero_enabled: true
+hero_default_style: hero-large
+services_enabled: true
+services_default_columns: '3'
+features_enabled: true
+features_default_layout: standard
+gallery_enabled: true
+istafta_enabled: true
+khums_enabled: true
+timeline_enabled: true
+trust_signals_enabled: true
+courses_enabled: true
+bottom_banner_show_social_labels: true
+color_error: 'oklch(0.55 0.22 25)'
+color_success: 'oklch(0.6 0.15 145)'
+color_surface: 'oklch(0.98 0.01 260)'
+color_surface_subtle: 'oklch(0.95 0.01 260)'
+color_dark: 'oklch(0.15 0.02 260)'
+color_text: 'oklch(0.2 0.02 260)'
+color_text_muted: 'oklch(0.5 0.02 260)'
+color_subtle: 'oklch(0.4 0.02 260)'
+color_border: 'oklch(0.85 0.01 260)'
+color_border_subtle: 'oklch(0.9 0.01 260)'
+glass_thickness: 1
+glass_shadow_intensity: 0.1
+font_family_base: font-sans
+font_size_base: 16
+line_height_base: 1.6
+container_max_width: max-w-7xl
+section_spacing: normal
+enable_animations: true
+animation_speed: normal
+custom_css_variables: ''
 sticky-footer: '1'
 blog-page: /blog
 spectre:
@@ -69,12 +124,6 @@ custom_logo_mobile:
     path: 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
 site_name: aabtaab
 site_tagline: 'Guiding is light of faith'
-direction: ltr
-language: en
-number_format: western
-date_calendar: both
-primary_spirit_color: '#2ecc71'
-accent_color: '#f1c40f'
 blur_strength: 12
 typography: roboto_mono
 social_facebook: 'https://www.facebook.com/aabtaab/'
@@ -86,27 +135,12 @@ social_whatsapp: 'https://api.whatsapp.com/send/?phone=923022452000&text=Hi%20th
 social_email: edu.aabtaab@gmail.com
 contact_phone: '+92 302 245 2000'
 contact_address: 'R-591 , Near Amroha Ground , F.B. Area Block 20 (incholi) Karach Pakistan'
-prayer_method: karachi
-hijri_offset: 0
-default_location: Karachi
 bottom_banner_copyright: null
 bottom_banner_show_social: true
-hero_enabled: true
-hero_default_style: hero-large
-services_enabled: true
-services_default_columns: '3'
-features_enabled: true
-features_default_layout: standard
-gallery_enabled: true
-istafta_enabled: true
-khums_enabled: true
-timeline_enabled: true
-trust_signals_enabled: true
-courses_enabled: true
 footer_copyright: ''
 footer_show_social: '1'
 moodle_url: null
-moodle_token: Pa$$w0rd
+moodle_token: null
 snipcart_key: null
 jazzcash_merchant: ahmed
 jazzcash_salt: null
@@ -125,21 +159,8 @@ minaret_show_contact: true
 minaret_show_social: true
 glass_opacity_initial: 0.05
 glass_opacity_scrolled: 0.2
-glass_border_opacity: 50
-glass_thickness: 1
-glass_shadow_intensity: 0.1
-top_banner_enabled: true
-top_banner_announcement_enabled: false
 top_banner_announcement_text: null
 top_banner_announcement_expires: null
-top_banner_announcement_bg_color: '#b91c1c'
-top_banner_announcement_text_color: '#ffffff'
-top_banner_bg_color: '#111827'
-top_banner_text_color: '#f1c40f'
-top_banner_show_dates: true
-top_banner_show_prayer_ticker: true
-top_banner_show_contact: true
-top_banner_show_social: true
 header_site_name: Aabtaab
 header:
   glass_bg_color: '#050000'
@@ -149,8 +170,6 @@ header:
 dropdown:
   enabled: true
 favicon: {  }
-glass_bg_color: '#000000'
-glass_highlight: 100
 social_google_maps: 'https://maps.app.goo.gl/jC5WoemexvgKoA8F6'
 social_phone: '+923022452000'
 bottom_banner_show_logo: true
@@ -158,3 +177,35 @@ bottom_banner_show_site_name: true
 bottom_banner_show_tagline: true
 bottom_banner_show_social_labels_mobile: false
 bottom_banner_show_social_labels_desktop: true
+social_facebook_enabled: true
+social_twitter_enabled: true
+social_instagram_enabled: true
+social_youtube_enabled: true
+social_telegram_enabled: true
+social_linkedin: null
+social_linkedin_enabled: true
+social_tiktok: null
+social_tiktok_enabled: true
+social_pinterest: null
+social_pinterest_enabled: true
+social_snapchat: null
+social_snapchat_enabled: true
+social_spotify: null
+social_spotify_enabled: true
+social_discord: null
+social_discord_enabled: true
+social_google_maps_enabled: true
+social_whatsapp_enabled: true
+social_phone_enabled: true
+social_email_enabled: true
+top_banner_ticker_enabled: '0'
+top_banner_ticker_speed: 8
+top_banner_widgets_order: 'date,prayer,hijri'
+bottom_banner_newsletter_enabled: '1'
+bottom_banner_newsletter_title: 'Stay Connected'
+bottom_banner_newsletter_text: 'Join our spiritual journey for weekly insights.'
+bottom_banner_widgets_order: 'brand,social,nav,newsletter,copyright'
+top_banner_quotes:
+  -
+    text: null
+    source: null

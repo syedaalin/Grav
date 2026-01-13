@@ -1,0 +1,45 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/languages/pl.yaml',
+    'modified' => 1768243064,
+    'size' => 572,
+    'data' => [
+        'THEME_NUR_UL_HUDA' => [
+            'ADMIN' => [
+                'GRID_SIZE' => 'Rozmiar siatki'
+            ],
+            'BLOG' => [
+                'ITEM' => [
+                    'CONTINUE_READING' => 'Kontynuuj czytanie...',
+                    'NEXT_POST' => 'Następny wpis',
+                    'PREV_POST' => 'Poprzedni wpis'
+                ]
+            ],
+            'SIDEBAR' => [
+                'SIMPLE_SEARCH' => [
+                    'HEADLINE' => 'Szukaj'
+                ],
+                'RELATED_POSTS' => [
+                    'HEADLINE' => 'Powiązane wpisy'
+                ],
+                'RANDOM_ARTICLE' => [
+                    'HEADLINE' => 'Losowy artykuł',
+                    'FEELING_LUCKY' => 'Mam szczęście!'
+                ],
+                'SOME_TEXT_WIDGET' => [
+                    'HEADLINE' => 'Jakiś widżet tekstowy'
+                ],
+                'POPULAR_TAGS' => [
+                    'HEADLINE' => 'Popularne tagi'
+                ],
+                'ARCHIVES' => [
+                    'HEADLINE' => 'Archiwa'
+                ],
+                'SYNDICATE' => [
+                    'HEADLINE' => 'Syndykacja'
+                ]
+            ]
+        ]
+    ]
+];

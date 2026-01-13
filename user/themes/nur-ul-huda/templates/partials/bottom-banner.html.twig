@@ -38,31 +38,30 @@
 
 <footer
 	id="bottom-banner" class="bottom-banner-main" style="background-color: {{ bottom_banner_bg_style }};" role="contentinfo" aria-label="Site bottom banner">
-	{# Schema.org JSON-LD #}
+	{# Schema.org JSON-LD (Kept intact for SEO) #}
 	<script type="application/ld+json">
 		{
-																																																										        "@context": "https://schema.org",
-																																																										        "@type": "Organization",
-																																																										        "name": "{{ schema_data.orgName|e('js') }}",
-																																																										        "url": "{{ url('', [], true) }}",
-		{% if theme_var('custom_logo') %}
-			"logo": "{{ url(theme_var('custom_logo'), [], true) }}",
+		            "@context": "https://schema.org",
+		            "@type": "Organization",
+		            "name": "{{ schema_data.orgName|e('js') }}",
+		            "url": "{{ url('', [], true) }}",
+		{% if theme_var('custom_logo') %}"logo": "{{ url(theme_var('custom_logo'), [], true) }}",
 		{% endif %}
 		{% if schema_data.email or schema_data.phone %}
 			"contactPoint": {
-																																																																																							            "@type": "ContactPoint",
+			                    "@type": "ContactPoint",
 			{% if schema_data.phone %}"telephone": "{{ schema_data.phone|e('js') }}",
 			{% endif %}
 			{% if schema_data.email %}"email": "{{ schema_data.email|e('js') }}",
 			{% endif %}
 			"contactType": "customer service"
-																																																																																							        },
+			                },
 		{% endif %}
 		{% if schema_data.address %}
 			"address": {
-																																																																																							            "@type": "PostalAddress",
-																																																																																							            "streetAddress": "{{ schema_data.address|e('js') }}"
-																																																																																							        },
+			                    "@type": "PostalAddress",
+			                    "streetAddress": "{{ schema_data.address|e('js') }}"
+			                },
 		{% endif %}
 		"sameAs":
 		{{ schema_data.socials|json_encode|raw }}
@@ -81,138 +80,100 @@
 		</svg>
 	</div>
 
-	{# === Strip 1: Header (Brand) === #}
-	<div class="bottom-banner-header">
-		<div class="bottom-banner-brand-column">
-			<div class="bottom-banner-brand-header">
-				{% set logo_var = theme_var('custom_logo') %}
-				{% set logo_url = logo_var %}
-				{% if logo_var is iterable %}
-					{# Handle Grav File field array structure: {'path': {metadata}} #}
-					{% set logo_obj = logo_var|first %}
-					{% set logo_url = logo_obj.path|default(logo_var|keys|first) %}
-				{% endif %}
+	{# Dynamic Widget Loop #}
+	{% set widgets = theme_var('bottom_banner_widgets_order')|default(['brand', 'social', 'nav', 'newsletter', 'copyright']) %}
 
-				{% if logo_url %}
-					<a href="{{ home_url }}" class="bottom-banner-logo-link">
-						<img src="{{ url(logo_url) }}" alt="{{ site_name }}" class="bottom-banner-logo" width="80" height="auto" loading="lazy">
-					</a>
-				{% endif %}
-				<h2 class="bottom-banner-brand-title">{{ site_name }}</h2>
-				{% if theme_var('site_tagline') %}
-					<p class="bottom-banner-brand-tagline">{{ theme_var('site_tagline') }}</p>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+	<div class="bottom-banner-layout-stack">
+		{% for widget in widgets %}
+			{% if widget == 'brand' %}
+				{# Strip 1: Brand #}
+				<div class="bottom-banner-header">
+					<div class="bottom-banner-brand-column">
+						<div class="bottom-banner-brand-header">
+							{% set logo_var = theme_var('custom_logo') %}
+							{% if logo_var and theme_var('bottom_banner_show_logo') %}
+								<a href="{{ home_url }}" class="bottom-banner-logo-link">
+									<img src="{{ url(logo_var) }}" alt="{{ site_name }}" class="bottom-banner-logo" width="80" height="auto" loading="lazy">
+								</a>
+							{% endif %}
 
-	{# === Strip 2: Body (Social & Nav) === #}
-	<div
-		class="bottom-banner-body">
-		{# Social Media Section #}
-		{% if theme_var('social_facebook') or theme_var('social_twitter') or theme_var('social_instagram') or theme_var('social_linkedin') or theme_var('social_tiktok') or theme_var('social_pinterest') or theme_var('social_snapchat') or theme_var('social_spotify') or theme_var('social_discord') or theme_var('social_youtube') or theme_var('social_telegram') or theme_var('social_google_maps') or theme_var('social_whatsapp') or theme_var('social_phone') or theme_var('social_email') %}
-			<section class="bottom-banner-social-section" aria-labelledby="bottom-banner-social-heading">
-				<h2 id="bottom-banner-social-heading" class="bottom-banner-social-heading">
-					Connect With Us
-				</h2>
-				<div class="bottom-banner-social-grid">
-					{% if theme_var('social_facebook') %}
-						{{ _self.social_icon(theme_var('social_facebook'), 'facebook', 'Visit our Facebook page') }}
-					{% endif %}
-					{% if theme_var('social_twitter') %}
-						{{ _self.social_icon(theme_var('social_twitter'), 'twitter', 'Follow us on Twitter') }}
-					{% endif %}
-					{% if theme_var('social_instagram') %}
-						{{ _self.social_icon(theme_var('social_instagram'), 'instagram', 'Follow us on Instagram') }}
-					{% endif %}
-					{% if theme_var('social_youtube') %}
-						{{ _self.social_icon(theme_var('social_youtube'), 'youtube', 'Subscribe to our YouTube channel') }}
-					{% endif %}
-					{% if theme_var('social_telegram') %}
-						{{ _self.social_icon(theme_var('social_telegram'), 'telegram', 'Join our Telegram group') }}
-					{% endif %}
-					{% if theme_var('social_linkedin') %}
-						{{ _self.social_icon(theme_var('social_linkedin'), 'linkedin', 'Connect on LinkedIn') }}
-					{% endif %}
-					{% if theme_var('social_tiktok') %}
-						{{ _self.social_icon(theme_var('social_tiktok'), 'tiktok', 'Follow us on TikTok') }}
-					{% endif %}
-					{% if theme_var('social_pinterest') %}
-						{{ _self.social_icon(theme_var('social_pinterest'), 'pinterest', 'Follow us on Pinterest') }}
-					{% endif %}
-					{% if theme_var('social_snapchat') %}
-						{{ _self.social_icon(theme_var('social_snapchat'), 'snapchat', 'Add us on Snapchat') }}
-					{% endif %}
-					{% if theme_var('social_spotify') %}
-						{{ _self.social_icon(theme_var('social_spotify'), 'spotify', 'Listen on Spotify') }}
-					{% endif %}
-					{% if theme_var('social_discord') %}
-						{{ _self.social_icon(theme_var('social_discord'), 'discord', 'Join our Discord') }}
-					{% endif %}
-					{% if theme_var('social_google_maps') %}
-						{{ _self.social_icon(theme_var('social_google_maps'), 'maps', 'Find us on Google Maps') }}
-					{% endif %}
-					{% if theme_var('social_whatsapp') %}
-						{{ _self.social_icon(theme_var('social_whatsapp'), 'whatsapp', 'Contact us on WhatsApp') }}
-					{% endif %}
-					{% if theme_var('social_phone') %}
-						{{ _self.social_icon('tel:' ~ theme_var('social_phone')|replace({' ': '', '(': '', ')': '', '-': ''}), 'phone', 'Call us') }}
-					{% endif %}
-					{% if theme_var('social_email') %}
-						{{ _self.social_icon('mailto:' ~ theme_var('social_email'), 'email', 'Email us') }}
-					{% endif %}
-				</div>
-			</section>
-		{% endif %}
+							{% if theme_var('bottom_banner_show_site_name') %}
+								<h2 class="bottom-banner-brand-title">{{ site_name }}</h2>
+							{% endif %}
 
-		{# Main Grid #}
-		<div
-			class="bottom-banner-grid">
-			{# Bottom Banner Navigation Columns #}
-			{% set bottom_banner_columns = theme_var('bottom_banner_columns') %}
-			{% if bottom_banner_columns %}
-				{% for column in bottom_banner_columns %}
-					<nav class="bottom-banner-nav-column" aria-labelledby="bottom-banner-nav-{{ loop.index }}" data-accordion="mobile">
-						<button type="button" class="bottom-banner-nav-toggle" aria-expanded="false" aria-controls="bottom-banner-nav-content-{{ loop.index }}" data-bottom-banner-toggle>
-							<h3 id="bottom-banner-nav-{{ loop.index }}" class="bottom-banner-nav-title">
-								{{ column.title }}
-							</h3>
-							<i class="bottom-banner-nav-icon" aria-hidden="true"></i>
-						</button>
-
-						<div id="bottom-banner-nav-content-{{ loop.index }}" class="bottom-banner-nav-content" aria-hidden="true">
-							{% if column.links %}
-								<ul class="bottom-banner-nav-list" role="list">
-									{% for link in column.links %}
-										<li>
-											<a href="{{ link.url }}" class="bottom-banner-nav-link">
-												<i class="bottom-banner-nav-link-icon la la-angle-{{ direction == 'rtl' ? 'left' : 'right' }}" aria-hidden="true"></i>
-												<span class="bottom-banner-nav-link-text">{{ link.text }}</span>
-											</a>
-										</li>
-									{% endfor %}
-								</ul>
+							{% if theme_var('site_tagline') and theme_var('bottom_banner_show_tagline') %}
+								<p class="bottom-banner-brand-tagline">{{ theme_var('site_tagline') }}</p>
 							{% endif %}
 						</div>
-					</nav>
-				{% endfor %}
-			{% endif %}
-		</div>
-	</div>
+					</div>
+				</div>
 
-	{# === Strip 3: Footer (Copyright) === #}
-	<div class="bottom-banner-footer">
-		<div class="bottom-banner-footer-content">
-			<div class="bottom-banner-copyright">
-				{% if copyright %}
-					{{ copyright|replace({'{year}': "now"|date("Y"), '[year]': "now"|date("Y")})|raw }}
-				{% else %}
-					<p>&copy;
-						{{ "now"|date("Y") }}
-						{{ site_name }}. All rights reserved.</p>
-				{% endif %}
-			</div>
-		</div>
+			{% elseif widget == 'newsletter' %}
+				{# Newsletter Strip #}
+				{% include 'partials/bottom-banner-newsletter.html.twig' %}
+
+			{% elseif widget == 'social' %}
+				{# Social Strip #}
+				<div class="bottom-banner-social-strip">
+					<div class="bottom-banner-body">
+						<section class="bottom-banner-social-section" aria-labelledby="bottom-banner-social-heading">
+							<h2 id="bottom-banner-social-heading" class="bottom-banner-social-heading">Connect With Us</h2>
+							{% include 'partials/social-icons.html.twig' with {'context': 'bottom_banner'} %}
+						</section>
+					</div>
+				</div>
+
+			{% elseif widget == 'nav' %}
+				{# Navigation Grid #}
+				<div class="bottom-banner-nav-strip">
+					<div class="bottom-banner-body">
+						<div class="bottom-banner-grid">
+							{% set bottom_banner_columns = theme_var('bottom_banner_columns') %}
+							{% if bottom_banner_columns %}
+								{% for column in bottom_banner_columns %}
+									<nav class="bottom-banner-nav-column" aria-labelledby="bottom-banner-nav-{{ loop.index }}" data-accordion="mobile">
+										<button type="button" class="bottom-banner-nav-toggle" aria-expanded="false" aria-controls="bottom-banner-nav-content-{{ loop.index }}" data-bottom-banner-toggle>
+											<h3 id="bottom-banner-nav-{{ loop.index }}" class="bottom-banner-nav-title">{{ column.title }}</h3>
+											<i class="bottom-banner-nav-icon" aria-hidden="true"></i>
+										</button>
+										<div id="bottom-banner-nav-content-{{ loop.index }}" class="bottom-banner-nav-content" aria-hidden="true">
+											{% if column.links %}
+												<ul class="bottom-banner-nav-list" role="list">
+													{% for link in column.links %}
+														<li>
+															<a href="{{ link.url }}" class="bottom-banner-nav-link">
+																<i class="bottom-banner-nav-link-icon la la-angle-{{ direction == 'rtl' ? 'left' : 'right' }}" aria-hidden="true"></i>
+																<span class="bottom-banner-nav-link-text">{{ link.text }}</span>
+															</a>
+														</li>
+													{% endfor %}
+												</ul>
+											{% endif %}
+										</div>
+									</nav>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+			{% elseif widget == 'copyright' %}
+				{# Strip 3: Footer (Copyright) #}
+				<div class="bottom-banner-footer">
+					<div class="bottom-banner-footer-content">
+						<div class="bottom-banner-copyright">
+							{% if copyright %}
+								{{ copyright|replace({'{year}': "now"|date("Y"), '[year]': "now"|date("Y")})|raw }}
+							{% else %}
+								<p>&copy;
+									{{ "now"|date("Y") }}
+									{{ site_name }}. All rights reserved.</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
 	</div>
 
 	{# Back to Top Button #}

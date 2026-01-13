@@ -6,14 +6,11 @@ namespace Grav\Theme\NurUlHuda\Services;
 
 use Grav\Common\Grav;
 
-class MoodleService
+readonly class MoodleService
 {
-    protected Grav $grav;
-
-    public function __construct()
-    {
-        $this->grav = Grav::instance();
-    }
+    public function __construct(
+        protected Grav $grav = Grav::instance()
+    ) {}
 
     /**
      * Fetch featured courses from Moodle

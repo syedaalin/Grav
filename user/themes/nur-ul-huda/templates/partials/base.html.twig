@@ -90,19 +90,20 @@ console.log('SW registration failed:', error);
 			{{ assets.js()|raw }}
 		{% endblock %}
 	</head>
-	<body id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}">
+	<body
+		id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}">
+		{# ROOT DIAGNOSTIC - BASE TEMPLATE ENTRY #}
+		<div id="root-debug-base" style="position: fixed; top: 40px; right: 0; background: orange; color: black; padding: 10px; z-index: 1000000; font-family: monospace; font-size: 14px; border: 2px solid black; font-weight: bold; pointer-events: none;">
+			ROOT_BASE_LOADED | FILE: partials/base.html.twig
+		</div>
 		<div
 			id="page-wrapper">
 			{# Skip Link for Accessibility #}
 			<a href="#start" class="skip-link">Skip to main content</a>
 
 			{% block header %}
-				{% set _top_banner_enabled = theme_var('top_banner_enabled') %}
-				{% set top_banner_active = _top_banner_enabled is null ? true : _top_banner_enabled %}
-				{% set top_banner_color = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
-
-				{# Top Banner (Always Sticky, Z-40) #}
-				<div class="header-top-sticky">
+				{# Top Banner (FORCED INCLUSION FOR DEBUG) #}
+				<div class="header-top-sticky" style="display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; min-height: 2.75rem !important;">
 					{% include 'partials/top-banner.html.twig' %}
 				</div>
 

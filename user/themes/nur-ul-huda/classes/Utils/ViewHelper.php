@@ -7,7 +7,7 @@ namespace Grav\Theme\NurUlHuda\Utils;
 use Grav\Common\Grav;
 use Grav\Common\Config\Config;
 
-class ViewHelper
+readonly class ViewHelper
 {
     /**
      * @return array<string, string>
@@ -106,27 +106,29 @@ class ViewHelper
         }
 
         // Blur is an exception where we likely always want a value, defaulting to 12 if missing
-        $blurValue = $config['blur_strength'] ?? 12;
-        $styles[] = "--blur-strength: {$blurValue}px";
+        // Consolidated to use glass_blur (default 16) instead of duplicate blur_strength
+        $styles[] = ($config['glass_blur'] ?? 16)
+        |> (fn($v) => is_numeric($v) ? "{$v}px" : $v)(...)
+        |> (fn($v) => "--blur-strength: {$v}")(...);
 
         // Glassmorphism (2026 Dynamic Configuration)
         $glassBg = $config['glass_bg_color'] ?? '#ffffff';
 
         // Opacity (0-100 -> 0.0-1.0)
-        $rawOp = $config['glass_opacity'] ?? 65;
-        $glassOpacity = ($rawOp <= 1) ? $rawOp : $rawOp / 100;
+        $glassOpacity = ($config['glass_opacity'] ?? 65)
+        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
 
         // Blur (px)
-        $rawBlur = $config['glass_blur'] ?? '16px';
-        $glassBlur = is_numeric($rawBlur) ? "{$rawBlur}px" : $rawBlur;
+        $glassBlur = ($config['glass_blur'] ?? 16)
+        |> (fn($v) => is_numeric($v) ? "{$v}px" : $v)(...);
 
         // Border Opacity
-        $rawBorderOp = $config['glass_border_opacity'] ?? 15;
-        $glassBorderOp = ($rawBorderOp <= 1) ? $rawBorderOp : $rawBorderOp / 100;
+        $glassBorderOp = ($config['glass_border_opacity'] ?? 15)
+        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
 
         // Highlight Opacity
-        $rawHighlight = $config['glass_highlight'] ?? 40;
-        $glassHighlightOp = ($rawHighlight <= 1) ? $rawHighlight : $rawHighlight / 100;
+        $glassHighlightOp = ($config['glass_highlight'] ?? 40)
+        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
 
         // Noise Texture
         $enableNoise = $config['glass_noise'] ?? true;
@@ -145,7 +147,9 @@ class ViewHelper
         // Regenerate Surface Gradient dynamically
         $styles[] = "--glass-surface: linear-gradient(135deg, oklch(from {$glassBg} l c h / {$glassOpacity}), oklch(from {$glassBg} l c h / " . ($glassOpacity * 0.7) . "))";
 
-
+        // Dynamic Header Styling
+        $headerPadding = $config['header_padding'] ?? '1rem';
+        $styles[] = "--header-padding: {$headerPadding}";
 
         return $styles;
     }

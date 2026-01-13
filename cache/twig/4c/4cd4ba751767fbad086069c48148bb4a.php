@@ -39,157 +39,164 @@ class __TwigTemplate_6b8c6e30bd7c8d82f1b08e683da16f04 extends Template
     {
         $macros = $this->macros;
         // line 1
-        yield "
-";
-        // line 2
         $context["_top_banner_enabled"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_enabled");
         // line 3
-        if ((($tmp = (((null === ($context["_top_banner_enabled"] ?? null))) ? (true) : (($context["_top_banner_enabled"] ?? null)))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 4
-            yield "    ";
-            // line 5
-            yield "    ";
-            $context["announcement_text"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_text");
+        $context["top_banner_active"] = ((((null === ($context["_top_banner_enabled"] ?? null)) || (($context["_top_banner_enabled"] ?? null) == 1)) || (($context["_top_banner_enabled"] ?? null) == "1")) || (($context["_top_banner_enabled"] ?? null) == true));
+        // line 4
+        yield "
+";
+        // line 5
+        if ((($tmp = ($context["top_banner_active"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 6
-            yield "    ";
-            $context["announcement_expires"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_expires");
-            // line 7
-            yield "    ";
-            $context["show_announcement"] = (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_enabled") && ($context["announcement_text"] ?? null)) && ( !($context["announcement_expires"] ?? null) || ($this->extensions['Twig\Extension\CoreExtension']->convertDate(($context["announcement_expires"] ?? null)) > $this->extensions['Twig\Extension\CoreExtension']->convertDate("now"))));
+            yield "
+\t";
             // line 8
-            yield "    ";
-            $context["text_dir"] = ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 8), "getDirection", [], "method", false, false, false, 8)) ? (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 8), "getDirection", [], "method", false, false, false, 8)) : ("ltr"));
+            yield "\t";
+            $context["announcement_text"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_text");
             // line 9
-            yield "    
-    ";
+            yield "\t";
+            $context["announcement_expires"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_expires");
+            // line 10
+            yield "\t";
+            $context["show_announcement"] = (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_enabled") && ($context["announcement_text"] ?? null)) && ( !($context["announcement_expires"] ?? null) || ($this->extensions['Twig\Extension\CoreExtension']->convertDate(($context["announcement_expires"] ?? null)) > $this->extensions['Twig\Extension\CoreExtension']->convertDate("now"))));
             // line 11
-            yield "    ";
-            $context["default_bg"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color"), "oklch(0.2 0.02 260)");
+            yield "\t";
+            $context["text_dir"] = ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 11), "getDirection", [], "method", false, false, false, 11)) ? (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "language", [], "any", false, false, false, 11), "getDirection", [], "method", false, false, false, 11)) : ("ltr"));
             // line 12
-            yield "    ";
-            $context["default_text"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_text_color"), "oklch(0.85 0.15 85)");
-            // line 13
-            yield "    ";
-            $context["announce_bg"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_bg_color"), "oklch(0.5 0.25 25)");
+            yield "
+\t";
             // line 14
-            yield "    ";
-            $context["announce_text"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_text_color"), "oklch(0.98 0.01 260)");
+            yield "\t";
+            $context["current_bg"] = (((($tmp = ($context["show_announcement"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_bg_color"), "#bf616a")) : (Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color"), "#1a1c23")));
             // line 15
-            yield "
-    ";
+            yield "\t";
+            $context["current_text"] = (((($tmp = ($context["show_announcement"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_text_color"), "#ffffff")) : (Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_text_color"), "#d4af37")));
             // line 16
-            $context["current_bg"] = (((($tmp = ($context["show_announcement"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (($context["announce_bg"] ?? null)) : (($context["default_bg"] ?? null)));
-            // line 17
-            yield "    ";
-            $context["current_text"] = (((($tmp = ($context["show_announcement"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (($context["announce_text"] ?? null)) : (($context["default_text"] ?? null)));
-            // line 18
-            yield "    
-    ";
-            // line 20
-            yield "    ";
-            $context["current_bg_style"] = (((CoreExtension::matches("/^var\\(/i", ($context["current_bg"] ?? null)) || CoreExtension::matches("/^oklch/i", ($context["current_bg"] ?? null)))) ? (($context["current_bg"] ?? null)) : ((("oklch(from " . ($context["current_bg"] ?? null)) . " L C H)")));
-            // line 21
-            yield "    ";
-            $context["current_text_style"] = (((CoreExtension::matches("/^var\\(/i", ($context["current_text"] ?? null)) || CoreExtension::matches("/^oklch/i", ($context["current_text"] ?? null)))) ? (($context["current_text"] ?? null)) : ((("oklch(from " . ($context["current_text"] ?? null)) . " L C H)")));
-            // line 22
             yield "
-<div id=\"top-banner-utility-bar\" 
-     class=\"top-banner\" 
-     style=\"background-color: ";
-            // line 25
+\t";
+            // line 18
+            yield "\t";
+            $context["current_bg_style"] = (((CoreExtension::matches("/^var\\(/i", ($context["current_bg"] ?? null)) || CoreExtension::matches("/^oklch/i", ($context["current_bg"] ?? null)))) ? (($context["current_bg"] ?? null)) : (($context["current_bg"] ?? null)));
+            // line 19
+            yield "\t";
+            $context["current_text_style"] = (((CoreExtension::matches("/^var\\(/i", ($context["current_text"] ?? null)) || CoreExtension::matches("/^oklch/i", ($context["current_text"] ?? null)))) ? (($context["current_text"] ?? null)) : (($context["current_text"] ?? null)));
+            // line 20
+            yield "
+\t<div id=\"top-banner-utility-bar\" class=\"top-banner\" style=\"background: ";
+            // line 21
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["current_bg_style"] ?? null), "html", null, true);
-            yield "; color: ";
+            yield " !important; color: ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["current_text_style"] ?? null), "html", null, true);
-            yield "; box-shadow: 0 4px 24px -2px oklch(from ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["current_bg_style"] ?? null), "html", null, true);
-            yield " L C H / 0.5);\" 
-     dir=\"";
-            // line 26
+            yield " !important; z-index: 10000 !important; position: relative !important; display: flex !important;\" dir=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["text_dir"] ?? null), "html", null, true);
-            yield "\"
-     role=\"complementary\"
-     aria-label=\"Utility Bar\">
-    
-    <div class=\"top-banner-inner\">
-        
-        ";
-            // line 32
+            yield "\" role=\"complementary\" aria-label=\"Utility Bar\">
+
+\t\t<div class=\"top-banner-inner\">
+
+\t\t\t";
+            // line 25
             if ((($tmp = ($context["show_announcement"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 33
-                yield "            ";
-                // line 34
-                yield "            <div class=\"top-banner-announcement\" role=\"alert\" aria-live=\"assertive\">
-                <div class=\"announcement-marquee-container\">
-                    <div class=\"announcement-marquee\">
-                        ";
-                // line 37
+                // line 26
+                yield "\t\t\t\t";
+                // line 27
+                yield "\t\t\t\t<div class=\"top-banner-announcement\" role=\"alert\" aria-live=\"assertive\">
+\t\t\t\t\t<div class=\"announcement-marquee-container\">
+\t\t\t\t\t\t<div class=\"announcement-marquee\">
+\t\t\t\t\t\t\t";
+                // line 30
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["announcement_text"] ?? null), "html", null, true);
                 yield "
-                    </div>
-                </div>
-            </div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
 
-        ";
+\t\t\t";
             } else {
+                // line 36
+                yield "\t\t\t\t";
+                // line 37
+                yield "\t\t\t\t<div
+\t\t\t\t\tclass=\"top-banner-layout\">
+
+
+\t\t\t\t\t";
+                // line 42
+                yield "\t\t\t\t\t<div class=\"top-banner-widgets\">
+\t\t\t\t\t\t";
                 // line 43
-                yield "            ";
+                $context["widgets_order"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_widgets_order"), ["date", "prayer", "hijri"]);
                 // line 44
-                yield "            <div class=\"top-banner-widgets\">
-                
-                ";
-                // line 47
-                yield "                ";
-                if ((($tmp = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_show_dates"), true)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    // line 48
-                    yield "                    <div class=\"banner-widget\">
-                        <time id=\"gregorian-date\" class=\"banner-date\" datetime=\"";
-                    // line 49
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y-m-d"), "html", null, true);
-                    yield "\">
-                            ";
-                    // line 50
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "D, M j"), "html", null, true);
-                    yield "<span class=\"year-responsive\">";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", ", Y"), "html", null, true);
-                    yield "</span>
-                        </time>
-                    </div>
-                ";
-                }
-                // line 54
                 yield "
-                ";
-                // line 56
-                yield "                ";
-                if ((($tmp = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_show_prayer_ticker"), true)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    // line 57
-                    yield "                    <div class=\"banner-widget\" role=\"timer\" aria-live=\"polite\">
-                        <span class=\"banner-prayer-name\" id=\"next-prayer-name\">Maghrib</span>
-                        <time class=\"banner-countdown\" id=\"prayer-countdown\">00:00</time>
-                    </div>
-                ";
+\t\t\t\t\t\t";
+                // line 45
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable(($context["widgets_order"] ?? null));
+                foreach ($context['_seq'] as $context["_key"] => $context["widget"]) {
+                    // line 46
+                    yield "\t\t\t\t\t\t\t";
+                    if (($context["widget"] == "date")) {
+                        // line 47
+                        yield "\t\t\t\t\t\t\t\t<div class=\"banner-pill widget-gregorian\" aria-label=\"Current Date\">
+\t\t\t\t\t\t\t\t\t<svg class=\"pill-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">
+\t\t\t\t\t\t\t\t\t\t<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect>
+\t\t\t\t\t\t\t\t\t\t<line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line>
+\t\t\t\t\t\t\t\t\t\t<line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line>
+\t\t\t\t\t\t\t\t\t\t<line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line>
+\t\t\t\t\t\t\t\t\t</svg>
+\t\t\t\t\t\t\t\t\t<time id=\"gregorian-date\" class=\"banner-date\" datetime=\"";
+                        // line 54
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y-m-d"), "html", null, true);
+                        yield "\">
+\t\t\t\t\t\t\t\t\t\t";
+                        // line 55
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "D, M j"), "html", null, true);
+                        yield "<span class=\"year-responsive\">";
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", ", Y"), "html", null, true);
+                        yield "</span>
+\t\t\t\t\t\t\t\t\t</time>
+\t\t\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t\t";
+                    } elseif ((                    // line 59
+$context["widget"] == "prayer")) {
+                        // line 60
+                        yield "\t\t\t\t\t\t\t\t<div class=\"banner-pill widget-prayer\" role=\"timer\" aria-live=\"polite\" aria-label=\"Next Prayer Timing\">
+\t\t\t\t\t\t\t\t\t<svg class=\"pill-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">
+\t\t\t\t\t\t\t\t\t\t<circle cx=\"12\" cy=\"12\" r=\"10\"></circle>
+\t\t\t\t\t\t\t\t\t\t<polyline points=\"12 6 12 12 16 14\"></polyline>
+\t\t\t\t\t\t\t\t\t</svg>
+\t\t\t\t\t\t\t\t\t<span class=\"banner-prayer-name\" id=\"next-prayer-name\">--</span>
+\t\t\t\t\t\t\t\t\t<time class=\"banner-countdown\" id=\"prayer-countdown\">--:--</time>
+\t\t\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t\t";
+                    } elseif ((                    // line 69
+$context["widget"] == "hijri")) {
+                        // line 70
+                        yield "\t\t\t\t\t\t\t\t<div class=\"banner-pill widget-hijri\" aria-label=\"Hijri Date\">
+\t\t\t\t\t\t\t\t\t<svg class=\"pill-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">
+\t\t\t\t\t\t\t\t\t\t<path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path>
+\t\t\t\t\t\t\t\t\t</svg>
+\t\t\t\t\t\t\t\t\t<span id=\"hijri-date\" class=\"banner-date\" aria-live=\"polite\">Loading...</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t";
+                    }
+                    // line 77
+                    yield "\t\t\t\t\t\t";
                 }
-                // line 62
-                yield "
-                ";
-                // line 64
-                yield "                ";
-                if ((($tmp = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_show_dates"), true)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    // line 65
-                    yield "                    <div class=\"banner-widget\">
-                        <span id=\"hijri-date\" class=\"banner-date\" aria-live=\"polite\">Loading...</span>
-                    </div>
-                ";
-                }
-                // line 69
-                yield "            </div>
-            
-        ";
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_key'], $context['widget'], $context['_parent']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 78
+                yield "\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t";
             }
-            // line 72
+            // line 82
             yield "
-    </div>
-</div>
+\t\t</div>
+\t</div>
 ";
         }
         yield from [];
@@ -216,7 +223,7 @@ class __TwigTemplate_6b8c6e30bd7c8d82f1b08e683da16f04 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  190 => 72,  185 => 69,  179 => 65,  176 => 64,  173 => 62,  166 => 57,  163 => 56,  160 => 54,  151 => 50,  147 => 49,  144 => 48,  141 => 47,  137 => 44,  135 => 43,  126 => 37,  121 => 34,  119 => 33,  117 => 32,  108 => 26,  100 => 25,  95 => 22,  92 => 21,  89 => 20,  86 => 18,  83 => 17,  81 => 16,  78 => 15,  75 => 14,  72 => 13,  69 => 12,  66 => 11,  63 => 9,  60 => 8,  57 => 7,  54 => 6,  51 => 5,  49 => 4,  47 => 3,  45 => 2,  42 => 1,);
+        return array (  197 => 82,  191 => 78,  185 => 77,  176 => 70,  174 => 69,  163 => 60,  161 => 59,  152 => 55,  148 => 54,  139 => 47,  136 => 46,  132 => 45,  129 => 44,  127 => 43,  124 => 42,  118 => 37,  116 => 36,  107 => 30,  102 => 27,  100 => 26,  98 => 25,  87 => 21,  84 => 20,  81 => 19,  78 => 18,  75 => 16,  72 => 15,  69 => 14,  66 => 12,  63 => 11,  60 => 10,  57 => 9,  54 => 8,  51 => 6,  49 => 5,  46 => 4,  44 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source

@@ -1,0 +1,22 @@
+1768248575
+01.home__SLASH___05project-timeline
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:24:"home/_05project-timeline";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:2:{s:5:"title";s:23:"Transparency & Progress";s:8:"projects";a:3:{i:0;a:4:{s:5:"title";s:24:"Zainabiya Medical Center";s:6:"status";s:30:"Phase 2: Equipment Procurement";s:8:"progress";i:85;s:3:"url";s:24:"/projects/medical-center";}i:1;a:4:{s:5:"title";s:27:"Safe Water: 100 Solar Wells";s:6:"status";s:24:"Installation in Progress";s:8:"progress";i:60;s:3:"url";s:21:"/projects/solar-wells";}i:2;a:4:{s:5:"title";s:31:"Orphan Sponsorship Program 2026";s:6:"status";s:19:"Annual Drive Active";s:8:"progress";i:40;s:3:"url";s:17:"/projects/orphans";}}}s:11:"frontmatter";s:499:"title: 'Transparency & Progress'
+projects:
+    -
+        title: 'Zainabiya Medical Center'
+        status: 'Phase 2: Equipment Procurement'
+        progress: 85
+        url: '/projects/medical-center'
+    -
+        title: 'Safe Water: 100 Solar Wells'
+        status: 'Installation in Progress'
+        progress: 60
+        url: '/projects/solar-wells'
+    -
+        title: 'Orphan Sponsorship Program 2026'
+        status: 'Annual Drive Active'
+        progress: 40
+        url: '/projects/orphans'";s:8:"markdown";s:159:"# Driving Change Together
+## Our Ongoing Global Projects
+Stay updated with our progress as we work to uplift communities worldwide with your generous support.
+";}s:7:"storage";a:6:{s:3:"key";s:24:"home/_05project-timeline";s:11:"storage_key";s:27:"01.home/_05project-timeline";s:8:"template";s:16:"project-timeline";s:17:"storage_timestamp";i:1767947421;s:8:"markdown";a:1:{s:0:"";a:1:{s:16:"project-timeline";i:1767947421;}}s:8:"checksum";s:32:"3b2ceaefc51b9075cbbf010889f04108";}}

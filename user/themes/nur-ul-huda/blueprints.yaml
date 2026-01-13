@@ -15,13 +15,14 @@ bugs: https://github.com/syedaalin/grav-theme-nur-ul-huda/issues
 license: MIT
 
 dependencies:
-  - { name: grav, version: ">=1.6.0" }
+  - { name: grav, version: ">=1.7.0" }
+  - { name: php, version: ">=8.2" }
 
 form:
   validation: loose
 
   fields:
-    tabs:
+    tabs_primary:
       type: tabs
       active: 1
 
@@ -118,17 +119,6 @@ form:
               default: "oklch(0.85 0.15 85)"
               help: The accent color (Gold)
 
-            blur_strength:
-              type: range
-              label: Glass Blur Strength
-              style: vertical
-              width: 33%
-              default: 12
-              validate:
-                min: 0
-                max: 30
-              help: Controls the blur strength of Glassmorphism elements (0-30px)
-
             font_section:
               type: section
               title: Typography Settings
@@ -165,82 +155,6 @@ form:
               default: "'Outfit-VariableFont_wght', sans-serif"
               data-options@: '\Grav\Theme\NurUlHuda::getFontOptions'
               help: "Select the primary font for body text"
-        glass_tab:
-          type: tab
-          title: Glassmorphism
-          fields:
-            glass_section:
-              type: section
-              title: Adjustable Glassmorphism Scales
-              underline: true
-              text: "Configure the 2026 Glassmorphism properties."
-
-            glass_bg_color:
-              type: colorpicker
-              label: Base Color
-              style: vertical
-              width: 33%
-              default: "#ffffff"
-              help: "Base color of the glass surface"
-
-            glass_opacity:
-              type: range
-              label: Opacity %
-              style: vertical
-              width: 33%
-              validate:
-                min: 10
-                max: 90
-              default: 65
-              help: "Translucency percentage"
-
-            glass_blur:
-              type: range
-              label: Blur Radius (px)
-              style: vertical
-              width: 33%
-              validate:
-                min: 0
-                max: 50
-              default: 16
-              help: "Background blur intensity"
-
-            glass_border_opacity:
-              type: range
-              label: Border Opacity %
-              style: vertical
-              width: 33%
-              validate:
-                min: 0
-                max: 100
-              default: 15
-              help: "Sensitivity of the glass edge"
-
-            glass_highlight:
-              type: range
-              label: Specular Highlight %
-              style: vertical
-              width: 33%
-              validate:
-                min: 0
-                max: 100
-              default: 40
-              help: "Intensity of the inner reflective edge"
-
-            glass_noise:
-              type: toggle
-              label: Noise Texture
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-              help: "Enable subtle noise for premium frosted texture"
-
         header_tab:
           type: tab
           title: Header
@@ -348,16 +262,22 @@ form:
               validate:
                 type: bool
 
+            header_styling_section:
+              type: section
+              title: Header Styling
+              underline: true
+
+            header_padding:
+              type: text
+              label: Vertical Padding
+              default: "1rem"
+              width: 100%
+              help: "e.g. 1rem, 16px"
+
         top_banner_tab:
           type: tab
           title: Top Banner
           fields:
-            top_banner_section:
-              type: section
-              title: Utility Bar Settings
-              underline: true
-              text: Configure the top bar (Top Banner) that appears above the main header.
-
             top_banner_enabled:
               type: toggle
               label: Enable Top Banner
@@ -441,442 +361,23 @@ form:
               default: "oklch(0.85 0.15 85)"
               help: Customize text color. Default is Yellow (Active Accent).
 
-            top_banner_show_dates:
-              type: toggle
-              label: Show Date Ticker
-              style: vertical
-              width: 33%
-              help: Display Gregorian and Hijri dates
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            top_banner_show_prayer_ticker:
-              type: toggle
-              label: Show Prayer Countdown
-              style: vertical
-              width: 33%
-              help: Display next prayer name and countdown timer
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            top_banner_show_contact:
-              type: toggle
-              label: Show Contact Info
-              style: vertical
-              width: 33%
-              help: Display Phone and Email (configured in Footer tab)
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            top_banner_show_social:
-              type: toggle
-              label: Show Social Icons
-              style: vertical
-              width: 33%
-              help: Display Social Media icons (configured in Footer tab)
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-        islamic_features_tab:
-          type: tab
-          title: Religious Utilities
-          fields:
-            prayer_section:
+            top_banner_widgets_section:
               type: section
-              title: Prayers & Calendar
+              title: Widget Arrangement
               underline: true
 
-            prayer_method:
-              type: select
-              label: Prayer Calculation Standard
-              style: vertical
-              width: 33%
-              default: tehran
+            top_banner_widgets_order:
+              type: selectize
+              label: Widget Order
+              default: [date, prayer, hijri]
               options:
-                tehran: University of Tehran
-                karachi: University of Islamic Sciences, Karachi
-                isna: ISNA
-                leva: Leva Institute, Qom
-
-            hijri_offset:
-              type: number
-              label: Hijri Calibration
-              style: vertical
-              width: 33%
-              default: 0
-              help: Adjust Hijri date manually (+/- days)
-
-            adhan_media:
-              type: file
-              label: Adhan Media
-              style: vertical
-              width: 33%
-              destination: "theme://media"
-              multiple: false
-              accept:
-                - .mp3
-
-            default_location:
-              type: text
-              label: Geo-Location Default
-              style: vertical
-              width: 33%
-              default: Karachi
-              help: Fallback city for prayer times
-
-        integrations_advanced_tab:
-          type: tab
-          title: Integrations & Advanced
-          fields:
-            moodle_section:
-              type: section
-              title: Moodle LMS
-              underline: true
-
-            moodle_url:
-              type: text
-              label: Moodle URL
-              style: vertical
-              width: 33%
-              placeholder: https://moodle.yoursite.com
-
-            moodle_token:
-              type: password
-              label: Web Service API Token
-              style: vertical
-              width: 33%
-
-            commerce_section:
-              type: section
-              title: Headless Commerce
-              underline: true
-
-            snipcart_key:
-              type: text
-              label: Snipcart Public API Key
-              style: vertical
-              width: 33%
-
-            payment_section:
-              type: section
-              title: Payment Gateways
-              underline: true
-
-            jazzcash_merchant:
-              type: text
-              label: JazzCash Merchant ID
-              style: vertical
-              width: 33%
-
-            jazzcash_salt:
-              type: password
-              label: JazzCash Integrity Salt
-              style: vertical
-              width: 33%
-
-        components_tab:
-          type: tab
-          title: Components
-          fields:
-            components_intro:
-              type: section
-              title: Components
-              text: Enable or disable theme components
-              underline: true
-
-            hero_section:
-              type: section
-              title: Hero Section
-              underline: true
-
-            hero_enabled:
-              type: toggle
-              label: Enable Hero
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hero_default_style:
-              type: select
-              label: Default Hero Style
-              style: vertical
-              width: 33%
-              default: hero-large
-              options:
-                hero-fullscreen: Full Screen
-                hero-large: Large
-                hero-medium: Medium
-                hero-small: Small
-                hero-tiny: Tiny
-
-            services_section:
-              type: section
-              title: Services Section
-              underline: true
-
-            services_enabled:
-              type: toggle
-              label: Enable Services
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            services_default_columns:
-              type: select
-              label: Default Columns
-              style: vertical
-              width: 33%
-              default: 3
-              options:
-                2: 2 Columns
-                3: 3 Columns
-                4: 4 Columns
-
-            features_section:
-              type: section
-              title: Features Section
-              underline: true
-
-            features_enabled:
-              type: toggle
-              label: Enable Features
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            features_default_layout:
-              type: select
-              label: Default Layout
-              style: vertical
-              width: 33%
-              default: standard
-              options:
-                small: Small
-                standard: Standard
-
-            gallery_section:
-              type: section
-              title: Gallery Section
-              underline: true
-
-            gallery_enabled:
-              type: toggle
-              label: Enable Gallery
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            istafta_section:
-              type: section
-              title: Istafta Section
-              underline: true
-
-            istafta_enabled:
-              type: toggle
-              label: Enable Istafta
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            khums_section:
-              type: section
-              title: Khums Calculator
-              underline: true
-
-            khums_enabled:
-              type: toggle
-              label: Enable Khums
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            timeline_section:
-              type: section
-              title: Timeline Section
-              underline: true
-
-            timeline_enabled:
-              type: toggle
-              label: Enable Timeline
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            trust_signals_section:
-              type: section
-              title: Trust Signals
-              underline: true
-
-            trust_signals_enabled:
-              type: toggle
-              label: Enable Trust Signals
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            courses_section:
-              type: section
-              title: Courses Section
-              underline: true
-
-            courses_enabled:
-              type: toggle
-              label: Enable Courses
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
+                date: Gregorian Date
+                prayer: Prayer Times
+                hijri: Hijri Date
+              help: "Reorder the three core components: Gregorian Date, Prayer Times, and Hijri Date."
 
         theme_colors_tab:
           import@: tabs/theme-colors
-
-        advanced_tab:
-          type: tab
-          title: Advanced Settings
-          fields:
-            custom_logo_section:
-              type: section
-              title: Logo Settings
-              underline: true
-
-            custom_logo:
-              type: file
-              label: Desktop Logo
-              style: vertical
-              width: 33%
-              destination: "theme://images/logo"
-              multiple: false
-              accept:
-                - image/*
-
-            custom_logo_mobile:
-              type: file
-              label: Mobile Logo
-              style: vertical
-              width: 33%
-              destination: "theme://images/logo"
-              multiple: false
-              accept:
-                - image/*
-
-            favicon:
-              type: file
-              label: Favicon
-              style: vertical
-              width: 33%
-              destination: "theme://images"
-              multiple: false
-              accept:
-                - image/*
-
-            dropdown.enabled:
-              type: toggle
-              label: Enable Dropdown Menus
-              style: vertical
-              width: 33%
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            grid-size:
-              type: select
-              label: Grid Size
-              style: vertical
-              width: 33%
-              help: Choose grid overlay size for debugging
-              default: ""
-              options:
-                "": None
-                grid-xl: Extra Large
-                grid-lg: Large
-                grid-md: Medium
-
-            blog_section:
-              type: section
-              title: Blog Settings
-              underline: true
-
-            blog-page:
-              type: text
-              label: Blog Page Path
-              style: vertical
-              width: 33%
-              help: Path to your blog page
-              size: medium
-              default: "/blog"
 
         bottom_banner_tab:
           type: tab
@@ -934,6 +435,51 @@ form:
               help: Custom copyright text
               rows: 3
               placeholder: "© 2026 Your Organization. All rights reserved."
+
+            bottom_banner_newsletter_section:
+              type: section
+              title: Newsletter Strip
+              underline: true
+
+            bottom_banner_newsletter_enabled:
+              type: toggle
+              label: Enable Newsletter
+              style: vertical
+              width: 33%
+              default: 1
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+
+            bottom_banner_newsletter_title:
+              type: text
+              label: Newsletter Title
+              width: 33%
+              default: "Stay Connected"
+
+            bottom_banner_newsletter_text:
+              type: text
+              label: Newsletter Description
+              width: 33%
+              default: "Join our spiritual journey for weekly insights."
+
+            bottom_banner_widgets_section:
+              type: section
+              title: Banner Arrangement
+              underline: true
+
+            bottom_banner_widgets_order:
+              type: selectize
+              label: Section Order
+              default: [brand, social, nav, newsletter, copyright]
+              options:
+                brand: Brand & Tagline
+                social: Social Connectivity
+                nav: Footer Navigation
+                newsletter: Newsletter Signup
+                copyright: Copyright Strip
+              help: "Reorder major sections of the bottom banner."
 
             bottom_banner_social_section:
               type: section
@@ -1464,6 +1010,469 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
+
+    tabs_secondary:
+      type: tabs
+      active: 1
+
+      fields:
+        glass_tab:
+          type: tab
+          title: Glassmorphism
+          fields:
+            glass_section:
+              type: section
+              title: Adjustable Glassmorphism Scales
+              underline: true
+              text: "Configure the 2026 Glassmorphism properties."
+
+            glass_bg_color:
+              type: colorpicker
+              label: Base Color
+              style: vertical
+              width: 33%
+              default: "#ffffff"
+              help: "Base color of the glass surface"
+
+            glass_opacity:
+              type: range
+              label: Opacity %
+              style: vertical
+              width: 33%
+              validate:
+                min: 10
+                max: 90
+              default: 65
+              help: "Translucency percentage"
+
+            glass_blur:
+              type: range
+              label: Blur Radius (px)
+              style: vertical
+              width: 33%
+              validate:
+                min: 0
+                max: 50
+              default: 16
+              help: "Background blur intensity"
+
+            glass_border_opacity:
+              type: range
+              label: Border Opacity %
+              style: vertical
+              width: 33%
+              validate:
+                min: 0
+                max: 100
+              default: 15
+              help: "Sensitivity of the glass edge"
+
+            glass_highlight:
+              type: range
+              label: Specular Highlight %
+              style: vertical
+              width: 33%
+              validate:
+                min: 0
+                max: 100
+              default: 40
+              help: "Intensity of the inner reflective edge"
+
+            glass_noise:
+              type: toggle
+              label: Noise Texture
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: "Enable subtle noise for premium frosted texture"
+
+        islamic_features_tab:
+          type: tab
+          title: Religious Utilities
+          fields:
+            prayer_section:
+              type: section
+              title: Prayers & Calendar
+              underline: true
+
+            prayer_method:
+              type: select
+              label: Prayer Calculation Standard
+              style: vertical
+              width: 33%
+              default: tehran
+              options:
+                tehran: University of Tehran
+                karachi: University of Islamic Sciences, Karachi
+                isna: ISNA
+                leva: Leva Institute, Qom
+
+            hijri_offset:
+              type: number
+              label: Hijri Calibration
+              style: vertical
+              width: 33%
+              default: 0
+              help: Adjust Hijri date manually (+/- days)
+
+            adhan_media:
+              type: file
+              label: Adhan Media
+              style: vertical
+              width: 33%
+              destination: "theme://media"
+              multiple: false
+              accept:
+                - .mp3
+
+            default_location:
+              type: text
+              label: Geo-Location Default
+              style: vertical
+              width: 33%
+              default: Karachi
+              help: Fallback city for prayer times
+
+        integrations_advanced_tab:
+          type: tab
+          title: Integrations & Advanced
+          fields:
+            moodle_section:
+              type: section
+              title: Moodle LMS
+              underline: true
+
+            moodle_url:
+              type: text
+              label: Moodle URL
+              style: vertical
+              width: 33%
+              placeholder: https://moodle.yoursite.com
+
+            moodle_token:
+              type: password
+              label: Web Service API Token
+              style: vertical
+              width: 33%
+
+            commerce_section:
+              type: section
+              title: Headless Commerce
+              underline: true
+
+            snipcart_key:
+              type: text
+              label: Snipcart Public API Key
+              style: vertical
+              width: 33%
+
+            payment_section:
+              type: section
+              title: Payment Gateways
+              underline: true
+
+            jazzcash_merchant:
+              type: text
+              label: JazzCash Merchant ID
+              style: vertical
+              width: 33%
+
+            jazzcash_salt:
+              type: password
+              label: JazzCash Integrity Salt
+              style: vertical
+              width: 33%
+
+        components_tab:
+          type: tab
+          title: Components
+          fields:
+            components_intro:
+              type: section
+              title: Components
+              text: Enable or disable theme components
+              underline: true
+
+            hero_section:
+              type: section
+              title: Hero Section
+              underline: true
+
+            hero_enabled:
+              type: toggle
+              label: Enable Hero
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            hero_default_style:
+              type: select
+              label: Default Hero Style
+              style: vertical
+              width: 33%
+              default: hero-large
+              options:
+                hero-fullscreen: Full Screen
+                hero-large: Large
+                hero-medium: Medium
+                hero-small: Small
+                hero-tiny: Tiny
+
+            services_section:
+              type: section
+              title: Services Section
+              underline: true
+
+            services_enabled:
+              type: toggle
+              label: Enable Services
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            services_default_columns:
+              type: select
+              label: Default Columns
+              style: vertical
+              width: 33%
+              default: 3
+              options:
+                2: 2 Columns
+                3: 3 Columns
+                4: 4 Columns
+
+            features_section:
+              type: section
+              title: Features Section
+              underline: true
+
+            features_enabled:
+              type: toggle
+              label: Enable Features
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            features_default_layout:
+              type: select
+              label: Default Layout
+              style: vertical
+              width: 33%
+              default: standard
+              options:
+                small: Small
+                standard: Standard
+
+            gallery_section:
+              type: section
+              title: Gallery Section
+              underline: true
+
+            gallery_enabled:
+              type: toggle
+              label: Enable Gallery
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            istafta_section:
+              type: section
+              title: Istafta Section
+              underline: true
+
+            istafta_enabled:
+              type: toggle
+              label: Enable Istafta
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            khums_section:
+              type: section
+              title: Khums Calculator
+              underline: true
+
+            khums_enabled:
+              type: toggle
+              label: Enable Khums
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            timeline_section:
+              type: section
+              title: Timeline Section
+              underline: true
+
+            timeline_enabled:
+              type: toggle
+              label: Enable Timeline
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            trust_signals_section:
+              type: section
+              title: Trust Signals
+              underline: true
+
+            trust_signals_enabled:
+              type: toggle
+              label: Enable Trust Signals
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            courses_section:
+              type: section
+              title: Courses Section
+              underline: true
+
+            courses_enabled:
+              type: toggle
+              label: Enable Courses
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+        advanced_tab:
+          type: tab
+          title: Advanced Settings
+          fields:
+            custom_logo_section:
+              type: section
+              title: Logo Settings
+              underline: true
+
+            custom_logo:
+              type: file
+              label: Desktop Logo
+              style: vertical
+              width: 33%
+              destination: "theme://images/logo"
+              multiple: false
+              accept:
+                - image/*
+
+            custom_logo_mobile:
+              type: file
+              label: Mobile Logo
+              style: vertical
+              width: 33%
+              destination: "theme://images/logo"
+              multiple: false
+              accept:
+                - image/*
+
+            favicon:
+              type: file
+              label: Favicon
+              style: vertical
+              width: 33%
+              destination: "theme://images"
+              multiple: false
+              accept:
+                - image/*
+
+            dropdown.enabled:
+              type: toggle
+              label: Enable Dropdown Menus
+              style: vertical
+              width: 33%
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            grid-size:
+              type: select
+              label: Grid Size
+              style: vertical
+              width: 33%
+              help: Choose grid overlay size for debugging
+              default: ""
+              options:
+                "": None
+                grid-xl: Extra Large
+                grid-lg: Large
+                grid-md: Medium
+
+            blog_section:
+              type: section
+              title: Blog Settings
+              underline: true
+
+            blog-page:
+              type: text
+              label: Blog Page Path
+              style: vertical
+              width: 33%
+              help: Path to your blog page
+              size: medium
+              default: "/blog"
 
         nur-ul-huda_legacy:
           type: tab

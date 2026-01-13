@@ -1,0 +1,7 @@
+1768248530
+02.services__SLASH__04.expiation__SLASH__02.hajj-umrah
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:29:"services/expiation/hajj-umrah";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:23:"Hajj & Umrah (Kaffarah)";s:4:"menu";s:12:"Hajj & Umrah";s:7:"visible";b:1;}s:11:"frontmatter";s:63:"title: Hajj & Umrah (Kaffarah)
+menu: Hajj & Umrah
+visible: true";s:8:"markdown";s:94:"# Expiation for Hajj & Umrah
+Information about Kaffarah related to Hajj and Umrah violations.
+";}s:7:"storage";a:6:{s:3:"key";s:29:"services/expiation/hajj-umrah";s:11:"storage_key";s:38:"02.services/04.expiation/02.hajj-umrah";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768149504;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768149504;}}s:8:"checksum";s:32:"e7802dfafdfdf046c736a128c9c31648";}}

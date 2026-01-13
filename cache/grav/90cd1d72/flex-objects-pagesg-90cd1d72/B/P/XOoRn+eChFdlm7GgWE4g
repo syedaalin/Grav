@@ -1,0 +1,42 @@
+1768248057
+01.home__SLASH___03services
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:16:"home/_03services";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:2:{s:5:"title";s:20:"Empowering the Ummah";s:8:"services";a:5:{i:0;a:6:{s:5:"title";s:16:"Online Istikhara";s:4:"text";s:82:"Seek divine guidance for your life decisions with our certified scholarly network.";s:4:"icon";s:7:"fa-pray";s:5:"width";s:7:"feature";s:5:"color";s:7:"#2ecc71";s:3:"url";s:19:"/services/istikhara";}i:1;a:6:{s:5:"title";s:15:"Digital Library";s:4:"text";s:78:"Access thousands of authentic Shia texts, e-books, and historical manuscripts.";s:4:"icon";s:12:"fa-book-open";s:5:"width";s:4:"wide";s:5:"color";s:7:"#3498db";s:3:"url";s:8:"/library";}i:2;a:6:{s:5:"title";s:20:"Religious Counseling";s:4:"text";s:60:"Private sessions for family, spiritual, and personal growth.";s:4:"icon";s:8:"fa-heart";s:5:"width";s:8:"standard";s:5:"color";s:7:"#e74c3c";s:3:"url";s:20:"/services/counseling";}i:3;a:6:{s:5:"title";s:16:"Ziyarat Packages";s:4:"text";s:62:"Bespoke spiritual journeys to the holy sites in Iraq and Iran.";s:4:"icon";s:8:"fa-kaaba";s:5:"width";s:8:"standard";s:5:"color";s:7:"#9b59b6";s:3:"url";s:17:"/services/ziyarat";}i:4;a:6:{s:5:"title";s:14:"Nikah Services";s:4:"text";s:57:"Authentic Islamic marriage facilitation and registration.";s:4:"icon";s:7:"fa-ring";s:5:"width";s:4:"wide";s:5:"color";s:7:"#f1c40f";s:3:"url";s:15:"/services/nikah";}}}s:11:"frontmatter";s:1176:"title: 'Empowering the Ummah'
+services:
+    -
+        title: 'Online Istikhara'
+        text: 'Seek divine guidance for your life decisions with our certified scholarly network.'
+        icon: fa-pray
+        width: feature
+        color: '#2ecc71'
+        url: '/services/istikhara'
+    -
+        title: 'Digital Library'
+        text: 'Access thousands of authentic Shia texts, e-books, and historical manuscripts.'
+        icon: fa-book-open
+        width: wide
+        color: '#3498db'
+        url: '/library'
+    -
+        title: 'Religious Counseling'
+        text: 'Private sessions for family, spiritual, and personal growth.'
+        icon: fa-heart
+        width: standard
+        color: '#e74c3c'
+        url: '/services/counseling'
+    -
+        title: 'Ziyarat Packages'
+        text: 'Bespoke spiritual journeys to the holy sites in Iraq and Iran.'
+        icon: fa-kaaba
+        width: standard
+        color: '#9b59b6'
+        url: '/services/ziyarat'
+    -
+        title: 'Nikah Services'
+        text: 'Authentic Islamic marriage facilitation and registration.'
+        icon: fa-ring
+        width: wide
+        color: '#f1c40f'
+        url: '/services/nikah'";s:8:"markdown";s:162:"# Our Digital Services
+## Bridging Tradition with Technology
+Explore our comprehensive range of spiritual and communal services designed to support your journey.
+";}s:7:"storage";a:6:{s:3:"key";s:16:"home/_03services";s:11:"storage_key";s:19:"01.home/_03services";s:8:"template";s:8:"services";s:17:"storage_timestamp";i:1767947411;s:8:"markdown";a:1:{s:0:"";a:1:{s:8:"services";i:1767947411;}}s:8:"checksum";s:32:"77f2c2e9d789ec13db42bb61672cd42d";}}

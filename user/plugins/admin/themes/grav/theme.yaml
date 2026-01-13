@@ -1,9 +1,24 @@
+name: Grav Admin
+version: 1.10.0
+description: "The default theme for the Grav Admin plugin"
+icon: empire
+author:
+  name: Trilby Media, LLC
+  email: team@trilby.media
+  url: https://trilby.media
+homepage: https://github.com/getgrav/grav-admin
+keywords: grav, admin, theme, plugin
+bugs: https://github.com/getgrav/grav-admin/issues
+readme: https://github.com/getgrav/grav-admin/blob/develop/README.md
+license: MIT
+
 streams:
   schemes:
     theme:
       type: ReadOnlyStream
       prefixes:
         "":
+          # Override the default theme path to point to this plugin's theme directory
           - user/themes/grav
           - user/plugins/admin/themes/grav
 

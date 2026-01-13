@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Grav\Theme\NurUlHuda\Services;
 
-class FormPrivacyGuard
+readonly class FormPrivacyGuard
 {
     /**
      * @param mixed $form

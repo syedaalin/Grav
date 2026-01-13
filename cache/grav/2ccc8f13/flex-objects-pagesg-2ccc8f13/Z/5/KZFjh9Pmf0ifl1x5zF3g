@@ -1,0 +1,8 @@
+1768248575
+03.khums-calculator__SLASH___calculator
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:28:"khums-calculator/_calculator";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:6:{s:5:"title";s:25:"Religious Dues Calculator";s:10:"calc_title";s:16:"Khums Calculator";s:16:"calc_description";s:60:"Calculate your religious dues (Khums) with complete privacy.";s:10:"khums_rate";i:20;s:15:"currency_symbol";s:2:"£";s:20:"donation_snipcart_id";s:19:"religious-dues-2026";}s:11:"frontmatter";s:227:"title: 'Religious Dues Calculator'
+calc_title: 'Khums Calculator'
+calc_description: 'Calculate your religious dues (Khums) with complete privacy.'
+khums_rate: 20
+currency_symbol: '£'
+donation_snipcart_id: 'religious-dues-2026'";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:28:"khums-calculator/_calculator";s:11:"storage_key";s:31:"03.khums-calculator/_calculator";s:8:"template";s:16:"khums-calculator";s:17:"storage_timestamp";i:1768152561;s:8:"markdown";a:1:{s:0:"";a:1:{s:16:"khums-calculator";i:1768152561;}}s:8:"checksum";s:32:"ac8be1650c3bf6630c581dc86023d400";}}

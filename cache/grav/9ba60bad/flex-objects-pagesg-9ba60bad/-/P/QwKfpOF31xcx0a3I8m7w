@@ -1,0 +1,7 @@
+1768278261
+02.services__SLASH__05.niyabat-ziarat__SLASH__02.iraq__SLASH__04.kazmain
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:36:"services/niyabat-ziarat/iraq/kazmain";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:14:"Kazmain Ziarat";s:4:"menu";s:7:"Kazmain";s:7:"visible";b:1;}s:11:"frontmatter";s:49:"title: Kazmain Ziarat
+menu: Kazmain
+visible: true";s:8:"markdown";s:107:"# Ziarat in Kazmain
+Proxy Ziarat services for Imam Musa Kazim (AS) and Imam Muhammad Taqi (AS) in Kazmain.
+";}s:7:"storage";a:6:{s:3:"key";s:36:"services/niyabat-ziarat/iraq/kazmain";s:11:"storage_key";s:48:"02.services/05.niyabat-ziarat/02.iraq/04.kazmain";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768149764;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768149764;}}s:8:"checksum";s:32:"8c797a8ee1bfef09c427e581aac7d3c9";}}

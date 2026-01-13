@@ -3,6 +3,16 @@ production-mode: true
 grid-size: 1280px
 debug_glass: false
 
+# General Settings
+direction: ltr
+language: en
+number_format: western
+date_calendar: gregorian
+
+# Design Tokens
+primary_spirit_color: "oklch(0.55 0.18 165)"
+accent_color: "oklch(0.85 0.15 85)"
+
 # Typography Defaults (Dynamic)
 font_heading: "'PlusJakartaSans-VariableFont_wght', sans-serif"
 font_body: "'Outfit-VariableFont_wght', sans-serif"
@@ -45,8 +55,90 @@ custom_fonts:
     type: "application/octet-stream"
     size: 690304
 
+# Glassmorphism
+glass_bg_color: "#ffffff"
+glass_opacity: 65
 glass_blur: 16
-glass_opacity: 0.7
+glass_border_opacity: 15
+glass_highlight: 40
 glass_noise: true
 
+# Header Options
+header-fixed: true
+header-animated: true
+header-dark: false
+header-transparent: false
+header_padding: "1rem"
+
+# Top Banner
+top_banner_enabled: true
+top_banner_announcement_enabled: false
+top_banner_announcement_bg_color: "oklch(0.55 0.25 25)"
+top_banner_announcement_text_color: "oklch(0.98 0 0)"
+top_banner_bg_color: "oklch(0.2 0.02 260)"
+top_banner_text_color: "oklch(0.85 0.15 85)"
+top_banner_show_dates: true
+top_banner_show_prayer_ticker: true
+top_banner_show_contact: true
+top_banner_show_social: true
+
+# Religious Utilities
+prayer_method: tehran
+hijri_offset: 0
+default_location: Karachi
+
+# Components Enable/Disable
+hero_enabled: true
+hero_default_style: hero-large
+services_enabled: true
+services_default_columns: 3
+features_enabled: true
+features_default_layout: standard
+gallery_enabled: true
+istafta_enabled: true
+khums_enabled: true
+timeline_enabled: true
+trust_signals_enabled: true
+courses_enabled: true
+
+# Footer Social Labels Display
 bottom_banner_show_social_labels: true
+
+# Extended Theme Colors
+# Primary Brand Colors defined above (primary_spirit_color, accent_color)
+color_error: "oklch(0.55 0.22 25)"
+color_success: "oklch(0.6 0.15 145)"
+
+# Backgrounds
+color_surface: "oklch(0.98 0.01 260)"
+color_surface_subtle: "oklch(0.95 0.01 260)"
+color_dark: "oklch(0.15 0.02 260)"
+
+# Text Colors
+color_text: "oklch(0.2 0.02 260)"
+color_text_muted: "oklch(0.5 0.02 260)"
+color_subtle: "oklch(0.4 0.02 260)"
+
+# Border Colors
+color_border: "oklch(0.85 0.01 260)"
+color_border_subtle: "oklch(0.9 0.01 260)"
+
+# Extended Glass Effects
+glass_thickness: 1
+glass_shadow_intensity: 0.1
+
+# Extended Typography
+font_family_base: "font-sans"
+font_size_base: 16
+line_height_base: 1.6
+
+# Layout Settings
+container_max_width: "max-w-7xl"
+section_spacing: "normal"
+
+# Animation Settings
+enable_animations: true
+animation_speed: "normal"
+
+# Advanced
+custom_css_variables: ""

@@ -1,0 +1,8 @@
+1768275107
+02.services__SLASH__03.ijara
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:14:"services/ijara";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:4:{s:5:"title";s:5:"Ijara";s:4:"menu";s:5:"Ijara";s:8:"template";s:15:"services_parent";s:7:"visible";b:1;}s:11:"frontmatter";s:64:"title: Ijara
+menu: Ijara
+template: services_parent
+visible: true";s:8:"markdown";s:51:"# Ijara Services
+Information about Ijara services.
+";}s:7:"storage";a:7:{s:3:"key";s:14:"services/ijara";s:11:"storage_key";s:20:"02.services/03.ijara";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768150068;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768150068;}}s:8:"children";a:2:{s:10:"01.fasting";b:0;s:8:"02.namaz";b:0;}s:8:"checksum";s:32:"8ce6305498fb7339294726261bc86d9d";}}

@@ -1,63 +1,65 @@
 {% extends 'partials/base.html.twig' %}
 
+
 {% set show_onpage_menu = header.onpage_menu == true or header.onpage_menu is null %}
 
 {% block javascripts %}
-    {% if show_onpage_menu %}
-        {% do assets.addJs('theme://js/lib/singlepagenav.min.js', { 'priority': 100, 'group': 'bottom' }) %}
-        {% do assets.addJs('theme://js/modules/one-page-nav.js', { 'priority': 99, 'group': 'bottom' }) %}
-    {% endif %}
-    {{ parent() }}
+	{% if show_onpage_menu %}
+		{% do assets.addJs('theme://js/lib/singlepagenav.min.js', { 'priority': 100, 'group': 'bottom' }) %}
+		{% do assets.addJs('theme://js/modules/one-page-nav.js', { 'priority': 99, 'group': 'bottom' }) %}
+	{% endif %}
+	{{ parent() }}
 {% endblock %}
 
 {% block header_navigation %}
-    {% if show_onpage_menu %}
-        <ul class="modular-nav">
-        {# 1. Standard Global Pages (Home, Donate, Ask, etc.) #}
-        {% import 'macros/macros.html.twig' as macros %}
-        {{ macros.nav_loop(pages) }}
+	{% if show_onpage_menu %}
+		<ul
+			class="modular-nav">
+			{# 1. Standard Global Pages (Home, Donate, Ask, etc.) #}
+			{% import 'macros/macros.html.twig' as macros %}
+			{{ macros.nav_loop(pages) }}
 
-        {# 2. Modular Sections (Jump links for current page) #}
-        {% for module in page.collection() if module.header.visible is not same as(false) %}
-            {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
-            <li>
-                <a href="#{{ module.menu|hyphenize }}" 
-                   class="nav-link {{ current_module == 'active' ? 'nav-link-active' : '' }}">
-                    {{ module.menu }}
-                </a>
-            </li>
-        {% endfor %}
-        
-        {# 3. Manual Site Menu Items #}
-        {% for mitem in site.menu %}
-            <li>
-                <a href="{{ mitem.url }}" 
-                   class="nav-link {{ mitem.class }}">
-                    {% if mitem.icon %}<i class="la la-{{ mitem.icon }} nav-icon" aria-hidden="true"></i>{% endif %}
-                    {{ mitem.text }}
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        {{ parent() }}
-    {% endif %}
+			{# 2. Modular Sections (Jump links for current page) #}
+			{% for module in page.collection() if module.header.visible is not same as(false) %}
+				{% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
+				<li>
+					<a href="#{{ module.menu|hyphenize }}" class="nav-link {{ current_module == 'active' ? 'nav-link-active' : '' }}">
+						{{ module.menu }}
+					</a>
+				</li>
+			{% endfor %}
+
+			{# 3. Manual Site Menu Items #}
+			{% for mitem in site.menu %}
+				<li>
+					<a href="{{ mitem.url }}" class="nav-link {{ mitem.class }}">
+						{% if mitem.icon %}
+							<i class="la la-{{ mitem.icon }} nav-icon" aria-hidden="true"></i>
+						{% endif %}
+						{{ mitem.text }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		{{ parent() }}
+	{% endif %}
 {% endblock %}
 
 {% block hero %}
-    {% for module in page.collection() if module.template == 'modular/hero' %}
-        <div id="{{ module.menu|hyphenize }}" class="modular-section-anchor">
-            {{ module.content|raw }}
-        </div>
-    {% endfor %}
+	{% for module in page.collection() if module.template == 'modular/hero' %}
+		<div id="{{ module.menu|hyphenize }}" class="modular-section-anchor">
+			{{ module.content|raw }}
+		</div>
+	{% endfor %}
 {% endblock %}
 
 {% block body %}
-    <div class="modular-body-wrapper">
-        {% for module in page.collection() if module.template != 'modular/hero' %}
-            <div id="{{ module.menu|hyphenize }}" class="modular-section-anchor section-py">
-                {{ module.content|raw }}
-            </div>
-        {% endfor %}
-    </div>
+	<div class="modular-body-wrapper">
+		{% for module in page.collection() if module.template != 'modular/hero' %}
+			<div id="{{ module.menu|hyphenize }}" class="modular-section-anchor section-py">
+				{{ module.content|raw }}
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
