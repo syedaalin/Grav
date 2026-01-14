@@ -48,7 +48,6 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
                 'javascripts' => [$this, 'block_javascripts'],
                 'assets' => [$this, 'block_assets'],
                 'header' => [$this, 'block_header'],
-                'header_navigation' => [$this, 'block_header_navigation'],
                 'hero' => [$this, 'block_hero'],
                 'body' => [$this, 'block_body'],
                 'messages' => [$this, 'block_messages'],
@@ -115,15 +114,15 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         // line 21
         yield "\t\t";
         yield from $this->unwrap()->yieldBlock('head', $context, $blocks);
-        // line 65
+        // line 55
         yield "
 \t\t";
-        // line 66
+        // line 56
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 70
+        // line 60
         yield "
 \t\t";
-        // line 71
+        // line 61
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
         // line 87
         yield "
@@ -139,68 +138,48 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield " ";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(($context["dynamic_body_classes"] ?? null), " "), "html", null, true);
         yield "\">
-\t\t";
-        // line 96
-        yield "\t\t<div id=\"root-debug-base\" style=\"position: fixed; top: 40px; right: 0; background: orange; color: black; padding: 10px; z-index: 1000000; font-family: monospace; font-size: 14px; border: 2px solid black; font-weight: bold; pointer-events: none;\">
-\t\t\tROOT_BASE_LOADED | FILE: partials/base.html.twig
-\t\t</div>
+
 \t\t<div
 \t\t\tid=\"page-wrapper\">
 \t\t\t";
-        // line 102
+        // line 99
         yield "\t\t\t<a href=\"#start\" class=\"skip-link\">Skip to main content</a>
 
-\t\t\t";
-        // line 104
+
+\t\t\t\t";
+        // line 106
+        yield "\t\t\t\t";
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 217
+        // line 110
         yield "
 
 \t\t\t";
-        // line 219
+        // line 112
         yield from $this->unwrap()->yieldBlock('hero', $context, $blocks);
-        // line 220
+        // line 113
         yield "
 \t\t\t<section id=\"start\">
 \t\t\t\t";
-        // line 222
+        // line 115
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 234
+        // line 127
         yield "\t\t\t</section>
 
 \t\t\t";
-        // line 236
+        // line 129
         yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
-        // line 239
+        // line 132
         yield "
 \t\t\t";
-        // line 241
-        yield "\t\t\t<div id=\"search-overlay\" class=\"search-overlay\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Search\">
-
-\t\t\t\t<button id=\"search-close\" class=\"search-close-button\">
-\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-xl\">
-\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18L18 6M6 6l12 12\"/>
-\t\t\t\t\t</svg>
-\t\t\t\t\t<span class=\"sr-only\">Close search</span>
-\t\t\t\t</button>
-
-\t\t\t\t<div class=\"search-container\" id=\"search-container\">
-\t\t\t\t\t<h2 class=\"search-title desktop-only\">Search Resources</h2>
-\t\t\t\t\t";
-        // line 252
-        yield from $this->load("partials/tntsearch.html.twig", 252)->unwrap()->yield($context);
-        // line 253
-        yield "\t\t\t\t\t<p class=\"desktop-only search-hint\">Press
-\t\t\t\t\t\t<kbd class=\"kbd\">ESC</kbd>
-\t\t\t\t\t\tto close</p>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</div>
+        // line 133
+        yield from $this->load("partials/search-overlay.html.twig", 133)->unwrap()->yield($context);
+        // line 134
+        yield "\t\t</div>
 
 \t\t";
-        // line 260
+        // line 136
         yield from $this->unwrap()->yieldBlock('bottom', $context, $blocks);
-        // line 269
+        // line 145
         yield "\t</body>
 </html>
 ";
@@ -296,20 +275,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
 
 \t\t\t";
         // line 51
-        yield "\t\t\t<script>
-\t\t\t\tif ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('";
-        // line 54
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["theme_url"] ?? null), "html", null, true);
-        yield "/sw.js').then((registration) => {
-console.log('SW registered:', registration);
-}).catch((error) => {
-console.log('SW registration failed:', error);
-});
-});
-}
-\t\t\t</script>
+        yield "
 
 
 \t\t";
@@ -317,73 +283,83 @@ console.log('SW registration failed:', error);
         yield from [];
     }
 
-    // line 66
+    // line 56
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 67
+        // line 57
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/modern-vanilla.css"], "method", false, false, false, 67);
-        // line 68
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/modern-vanilla.css"], "method", false, false, false, 57);
+        // line 58
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 68);
-        // line 69
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 58);
+        // line 59
         yield "\t\t";
         yield from [];
     }
 
-    // line 71
+    // line 61
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
+        // line 62
+        yield "\t\t\t";
+        // line 63
+        yield "\t\t\t";
+        // line 64
+        yield "\t\t\t
+\t\t\t";
+        // line 66
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/khums-calculator.js", ["priority" => 100, "group" => "bottom", "type" => "module"]], "method", false, false, false, 66);
+        // line 67
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/ui.js", ["priority" => 95, "group" => "bottom", "type" => "module"]], "method", false, false, false, 67);
+        // line 68
+        yield "\t\t\t
+\t\t\t";
+        // line 70
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/performance-monitor.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 70);
+        // line 71
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/pull-refresh.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 71);
         // line 72
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["jquery", 101], "method", false, false, false, 72);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", ["priority" => 93, "group" => "bottom", "type" => "module"]], "method", false, false, false, 72);
         // line 73
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/khums-calculator.js", ["priority" => 100, "group" => "bottom", "type" => "module"]], "method", false, false, false, 73);
-        // line 74
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/ui.js", ["priority" => 95, "group" => "bottom", "type" => "module"]], "method", false, false, false, 74);
+        yield "\t\t\t
+\t\t\t";
         // line 75
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/utils.js", 95], "method", false, false, false, 75);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/high-contrast.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 75);
         // line 76
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/performance-monitor.js", 94], "method", false, false, false, 76);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/font-scaler.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 76);
         // line 77
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/pull-refresh.js", 94], "method", false, false, false, 77);
-        // line 78
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", 93], "method", false, false, false, 78);
+        yield "\t\t\t
+\t\t\t";
         // line 79
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/high-contrast.js", 89], "method", false, false, false, 79);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/bottom-banner.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 79);
         // line 80
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/font-scaler.js", 89], "method", false, false, false, 80);
-        // line 81
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/bottom-banner.js", 89], "method", false, false, false, 81);
+        yield "\t\t\t
+\t\t\t";
         // line 82
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/prayer-times.js", 89], "method", false, false, false, 82);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/spiritual.js", ["priority" => 88, "group" => "bottom", "type" => "module"]], "method", false, false, false, 82);
         // line 83
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/hijri-date.js", 89], "method", false, false, false, 83);
-        // line 84
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/adhan-player.js", 89], "method", false, false, false, 84);
+        yield "\t\t\t
+\t\t\t";
         // line 85
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/spiritual.js", 88], "method", false, false, false, 85);
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/service-worker.js", ["priority" => 87, "group" => "bottom", "type" => "module"]], "method", false, false, false, 85);
         // line 86
         yield "\t\t";
         yield from [];
@@ -419,211 +395,25 @@ console.log('SW registration failed:', error);
         yield from [];
     }
 
-    // line 104
+    // line 106
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_header(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 105
-        yield "\t\t\t\t";
-        // line 106
-        yield "\t\t\t\t<div class=\"header-top-sticky\" style=\"display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; min-height: 2.75rem !important;\">
-\t\t\t\t\t";
         // line 107
-        yield from $this->load("partials/top-banner.html.twig", 107)->unwrap()->yield($context);
+        yield "\t\t\t\t\t";
+        yield from $this->load("partials/header-wrapper.html.twig", 107)->unwrap()->yield($context);
         // line 108
-        yield "\t\t\t\t</div>
-
-\t\t\t\t";
-        // line 111
-        yield "\t\t\t\t<header id=\"header\" class=\"header-main-sticky\" role=\"banner\">
-
-\t\t\t\t\t<div class=\"container container-px header-spacing\">
-\t\t\t\t\t\t<nav
-\t\t\t\t\t\t\tclass=\"header-nav\" aria-label=\"Main navigation\">
-
-\t\t\t\t\t\t\t";
-        // line 118
-        yield "\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\tclass=\"header-zone-a\">
-\t\t\t\t\t\t\t\t";
-        // line 121
-        yield "\t\t\t\t\t\t\t\t<button id=\"mobile-toggle\" class=\"mobile-toggle\" aria-label=\"Open navigation menu\" aria-controls=\"mobile-overlay\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
-\t\t\t\t\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\"/>
-\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t</button>
-
-\t\t\t\t\t\t\t\t";
-        // line 128
-        yield "\t\t\t\t\t\t\t\t<div class=\"desktop-only logo-hover\">
-\t\t\t\t\t\t\t\t\t";
-        // line 129
-        yield from $this->load("partials/logo.html.twig", 129)->unwrap()->yield($context);
-        // line 130
-        yield "\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t";
-        // line 134
-        yield "\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\tclass=\"header-zone-b\">
-\t\t\t\t\t\t\t\t";
-        // line 137
-        yield "\t\t\t\t\t\t\t\t<div class=\"mobile-only logo-hover\">
-\t\t\t\t\t\t\t\t\t";
-        // line 138
-        yield from $this->load("partials/logo.html.twig", 138)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 139
-        yield "\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t\t";
-        // line 142
-        yield "\t\t\t\t\t\t\t\t<nav id=\"desktop-nav\" class=\"desktop-nav\">
-\t\t\t\t\t\t\t\t\t";
-        // line 143
-        yield from $this->unwrap()->yieldBlock('header_navigation', $context, $blocks);
-        // line 146
-        yield "\t\t\t\t\t\t\t\t</nav>
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t";
-        // line 150
-        yield "\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\tclass=\"header-zone-c\">
-
-\t\t\t\t\t\t\t\t";
-        // line 154
-        yield "\t\t\t\t\t\t\t\t<button id=\"search-trigger\" class=\"icon-button desktop-only\" aria-label=\"Open search\">
-\t\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
-\t\t\t\t\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\"/>
-\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t</button>
-
-
-\t\t\t\t\t\t\t\t";
-        // line 162
-        yield "\t\t\t\t\t\t\t\t";
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "plugins", [], "any", false, false, false, 162), "login", [], "any", false, false, false, 162), "enabled", [], "any", false, false, false, 162) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "user", [], "any", false, false, false, 162), "username", [], "any", false, false, false, 162))) {
-            // line 163
-            yield "\t\t\t\t\t\t\t\t\t<a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://dashboard"), "html", null, true);
-            yield "\" class=\"btn-dashboard desktop-only\" aria-label=\"Go to Dashboard\">
-\t\t\t\t\t\t\t\t\t\t<span>Dashboard</span>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t";
-        } else {
-            // line 167
-            yield "\t\t\t\t\t\t\t\t\t";
-            $context["login_url"] = (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url") . "/login")) : ($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://login")));
-            // line 168
-            yield "\t\t\t\t\t\t\t\t\t<a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["login_url"] ?? null), "html", null, true);
-            yield "\" class=\"btn-login desktop-only\" aria-label=\"Log in to your account\">
-\t\t\t\t\t\t\t\t\t\tLogin
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t";
-        }
-        // line 172
-        yield "\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</nav>
-\t\t\t\t\t</div>
-\t\t\t\t</header>
-
-\t\t\t\t";
-        // line 178
+        yield "\t\t\t\t\t";
+        yield from $this->load("partials/mobile-menu.html.twig", 108)->unwrap()->yield($context);
+        // line 109
         yield "\t\t\t\t";
-        // line 179
-        yield "\t\t\t\t<div
-\t\t\t\t\tid=\"mobile-menu-wrapper\" class=\"mobile-menu-overlay\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Mobile Navigation\">
-
-\t\t\t\t\t";
-        // line 183
-        yield "\t\t\t\t\t<div id=\"mobile-backdrop\" class=\"mobile-menu-backdrop\"></div>
-
-\t\t\t\t\t";
-        // line 186
-        yield "\t\t\t\t\t<div id=\"mobile-sidebar\" class=\"mobile-sidebar\">
-
-\t\t\t\t\t\t<div
-\t\t\t\t\t\t\tclass=\"mobile-sidebar-inner\">
-\t\t\t\t\t\t\t";
-        // line 191
-        yield "\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\tclass=\"mobile-sidebar-content\">
-\t\t\t\t\t\t\t\t";
-        // line 194
-        yield "\t\t\t\t\t\t\t\t<nav class=\"mobile-nav stack-s animate-fade-in-up delay-100\">
-\t\t\t\t\t\t\t\t\t";
-        // line 195
-        yield from $this->load("partials/navigation.html.twig", 195)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 196
-        yield "\t\t\t\t\t\t\t\t</nav>
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t";
-        // line 200
-        yield "\t\t\t\t\t\t\t<div class=\"mobile-sidebar-footer animate-fade-in-up delay-200\">
-\t\t\t\t\t\t\t\t<h4 class=\"mobile-footer-title\">Follow Our Journey</h4>
-\t\t\t\t\t\t\t\t<div class=\"social-icons-grid\">
-\t\t\t\t\t\t\t\t\t";
-        // line 203
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(["facebook", "twitter", "instagram", "youtube"]);
-        foreach ($context['_seq'] as $context["_key"] => $context["platform"]) {
-            // line 204
-            yield "\t\t\t\t\t\t\t\t\t\t";
-            $context["social_url"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, ("social_" . $context["platform"]));
-            // line 205
-            yield "\t\t\t\t\t\t\t\t\t\t";
-            if ((($tmp = ($context["social_url"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 206
-                yield "\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["social_url"] ?? null), "html", null, true);
-                yield "\" target=\"_blank\" class=\"social-icon\" aria-label=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::capitalize($this->env->getCharset(), $context["platform"]), "html", null, true);
-                yield "\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"lab la-";
-                // line 207
-                yield ((($context["platform"] == "facebook")) ? ("facebook-f") : ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["platform"], "html", null, true)));
-                yield "\"></i>
-\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t";
-            }
-            // line 210
-            yield "\t\t\t\t\t\t\t\t\t";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['platform'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 211
-        yield "\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t";
         yield from [];
     }
 
-    // line 143
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_header_navigation(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        // line 144
-        yield "\t\t\t\t\t\t\t\t\t\t";
-        yield from $this->load("partials/navigation.html.twig", 144)->unwrap()->yield($context);
-        // line 145
-        yield "\t\t\t\t\t\t\t\t\t";
-        yield from [];
-    }
-
-    // line 219
+    // line 112
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -633,22 +423,22 @@ console.log('SW registration failed:', error);
         yield from [];
     }
 
-    // line 222
+    // line 115
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 223
+        // line 116
         yield "\t\t\t\t\t<section id=\"body-wrapper\" class=\"section-py container-px\">
 \t\t\t\t\t\t";
-        // line 224
+        // line 117
         yield from $this->unwrap()->yieldBlock('messages', $context, $blocks);
-        // line 229
+        // line 122
         yield "\t\t\t\t\t\t<div class=\"container\">
 \t\t\t\t\t\t\t";
-        // line 230
+        // line 123
         yield from         $this->unwrap()->yieldBlock("content_surround", $context, $blocks);
         yield "
 \t\t\t\t\t\t</div>
@@ -657,19 +447,19 @@ console.log('SW registration failed:', error);
         yield from [];
     }
 
-    // line 224
+    // line 117
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_messages(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 225
+        // line 118
         yield "\t\t\t\t\t\t\t<div class=\"container message-spacer\">
 \t\t\t\t\t\t\t\t";
-        // line 226
+        // line 119
         try {
-            $_v3 = $this->load("partials/messages.html.twig", 226);
+            $_v3 = $this->load("partials/messages.html.twig", 119);
         } catch (LoaderError $e) {
             // ignore missing template
             $_v3 = null;
@@ -677,50 +467,50 @@ console.log('SW registration failed:', error);
         if ($_v3) {
             yield from $_v3->unwrap()->yield($context);
         }
-        // line 227
+        // line 120
         yield "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t";
         yield from [];
     }
 
-    // line 236
+    // line 129
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_footer(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 237
+        // line 130
         yield "\t\t\t\t";
-        yield from $this->load("partials/bottom-banner.html.twig", 237)->unwrap()->yield($context);
-        // line 238
+        yield from $this->load("partials/bottom-banner/main.html.twig", 130)->unwrap()->yield($context);
+        // line 131
         yield "\t\t\t";
         yield from [];
     }
 
-    // line 260
+    // line 136
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_bottom(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 261
+        // line 137
         yield "\t\t\t";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 261);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 137);
         yield "
 \t\t\t";
-        // line 262
-        yield from $this->load("partials/snipcart.html.twig", 262)->unwrap()->yield($context);
-        // line 263
+        // line 138
+        yield from $this->load("partials/snipcart.html.twig", 138)->unwrap()->yield($context);
+        // line 139
         yield "
 \t\t\t";
-        // line 265
-        yield "\t\t\t<script id=\"theme-config\" type=\"application/json\">
-\t\t\t\t";
-        // line 266
-        yield json_encode(($context["theme_js_config"] ?? null));
-        yield "
+        // line 141
+        yield "\t\t\t<script>
+\t\t\t\twindow.GravConfig = ";
+        // line 142
+        yield json_encode(Twig\Extension\CoreExtension::merge(((array_key_exists("theme_js_config", $context)) ? (Twig\Extension\CoreExtension::default(($context["theme_js_config"] ?? null), [])) : ([])), ["theme_url" => ($context["theme_url"] ?? null)]));
+        yield ";
 \t\t\t</script>
 \t\t";
         yield from [];
@@ -747,7 +537,7 @@ console.log('SW registration failed:', error);
      */
     public function getDebugInfo(): array
     {
-        return array (  722 => 266,  719 => 265,  716 => 263,  714 => 262,  709 => 261,  702 => 260,  697 => 238,  694 => 237,  687 => 236,  681 => 227,  671 => 226,  668 => 225,  661 => 224,  652 => 230,  649 => 229,  647 => 224,  644 => 223,  637 => 222,  627 => 219,  622 => 145,  619 => 144,  612 => 143,  602 => 211,  596 => 210,  590 => 207,  583 => 206,  580 => 205,  577 => 204,  573 => 203,  568 => 200,  563 => 196,  561 => 195,  558 => 194,  554 => 191,  548 => 186,  544 => 183,  539 => 179,  537 => 178,  530 => 172,  522 => 168,  519 => 167,  511 => 163,  508 => 162,  499 => 154,  494 => 150,  489 => 146,  487 => 143,  484 => 142,  480 => 139,  478 => 138,  475 => 137,  471 => 134,  466 => 130,  464 => 129,  461 => 128,  453 => 121,  449 => 118,  441 => 111,  437 => 108,  435 => 107,  432 => 106,  430 => 105,  423 => 104,  415 => 90,  410 => 89,  393 => 88,  388 => 86,  385 => 85,  382 => 84,  379 => 83,  376 => 82,  373 => 81,  370 => 80,  367 => 79,  364 => 78,  361 => 77,  358 => 76,  355 => 75,  352 => 74,  349 => 73,  346 => 72,  339 => 71,  334 => 69,  331 => 68,  328 => 67,  321 => 66,  304 => 54,  299 => 51,  294 => 48,  285 => 42,  280 => 40,  275 => 39,  272 => 38,  270 => 37,  267 => 36,  256 => 35,  252 => 33,  250 => 32,  242 => 28,  235 => 25,  233 => 24,  229 => 22,  212 => 21,  204 => 269,  202 => 260,  193 => 253,  191 => 252,  178 => 241,  175 => 239,  173 => 236,  169 => 234,  167 => 222,  163 => 220,  161 => 219,  157 => 217,  155 => 104,  151 => 102,  144 => 96,  138 => 94,  134 => 92,  132 => 88,  129 => 87,  127 => 71,  124 => 70,  122 => 66,  119 => 65,  116 => 21,  114 => 20,  109 => 18,  106 => 17,  104 => 16,  89 => 14,  86 => 13,  83 => 11,  80 => 8,  78 => 7,  76 => 6,  74 => 5,  72 => 4,  70 => 3,  68 => 2,  66 => 1,  35 => 12,);
+        return array (  512 => 142,  509 => 141,  506 => 139,  504 => 138,  499 => 137,  492 => 136,  487 => 131,  484 => 130,  477 => 129,  471 => 120,  461 => 119,  458 => 118,  451 => 117,  442 => 123,  439 => 122,  437 => 117,  434 => 116,  427 => 115,  417 => 112,  412 => 109,  409 => 108,  406 => 107,  399 => 106,  391 => 90,  386 => 89,  369 => 88,  364 => 86,  361 => 85,  358 => 83,  355 => 82,  352 => 80,  349 => 79,  346 => 77,  343 => 76,  340 => 75,  337 => 73,  334 => 72,  331 => 71,  328 => 70,  325 => 68,  322 => 67,  319 => 66,  316 => 64,  314 => 63,  312 => 62,  305 => 61,  300 => 59,  297 => 58,  294 => 57,  287 => 56,  278 => 51,  273 => 48,  264 => 42,  259 => 40,  254 => 39,  251 => 38,  249 => 37,  246 => 36,  235 => 35,  231 => 33,  229 => 32,  221 => 28,  214 => 25,  212 => 24,  208 => 22,  191 => 21,  183 => 145,  181 => 136,  177 => 134,  175 => 133,  172 => 132,  170 => 129,  166 => 127,  164 => 115,  160 => 113,  158 => 112,  154 => 110,  151 => 106,  146 => 99,  137 => 94,  133 => 92,  131 => 88,  128 => 87,  126 => 61,  123 => 60,  121 => 56,  118 => 55,  115 => 21,  113 => 20,  108 => 18,  105 => 17,  103 => 16,  88 => 14,  85 => 13,  82 => 11,  79 => 8,  77 => 7,  75 => 6,  73 => 5,  71 => 4,  69 => 3,  67 => 2,  65 => 1,  35 => 12,);
     }
 
     public function getSourceContext(): Source

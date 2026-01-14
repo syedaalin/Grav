@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/themes/nur-ul-huda.yaml',
-    'modified' => 1767663949,
-    'size' => 660,
+    'modified' => 1768333021,
+    'size' => 874,
     'data' => [
         'enabled' => true,
         'production-mode' => true,
@@ -35,6 +35,14 @@ return [
                 'size' => 56746,
                 'path' => 'user/themes/quark/images/logo/aabtaab-logo.webp'
             ]
-        ]
+        ],
+        'top_banner_enabled' => true,
+        'top_banner_widgets_order' => [
+            0 => 'date',
+            1 => 'prayer',
+            2 => 'hijri'
+        ],
+        'top_banner_bg_color' => 'oklch(0.2 0.02 260)',
+        'top_banner_text_color' => 'oklch(0.85 0.15 85)'
     ]
 ];

@@ -2,11 +2,11 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/system.yaml',
-    'modified' => 1767952435,
-    'size' => 4781,
+    'modified' => 1768310650,
+    'size' => 4778,
     'data' => [
         'absolute_urls' => false,
-        'timezone' => 'UTC',
+        'timezone' => 'Asia/Karachi',
         'default_locale' => 'en',
         'param_sep' => ':',
         'wrapped_site' => false,
@@ -33,9 +33,6 @@ return [
             'session_store_active' => false,
             'http_accept_language' => false,
             'override_locale' => false,
-            'content_fallback' => [
-                
-            ],
             'pages_fallback_only' => false,
             'debug' => false
         ],
@@ -57,7 +54,7 @@ return [
                 'count' => 20
             ],
             'dateformat' => [
-                'default' => NULL,
+                'default' => 'd-m-Y H:i',
                 'short' => 'jS M Y',
                 'long' => 'F jS \\a\\t g:ia'
             ],

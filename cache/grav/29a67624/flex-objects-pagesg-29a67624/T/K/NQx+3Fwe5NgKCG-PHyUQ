@@ -1,0 +1,24 @@
+1768347388
+01.home__SLASH___02trust-signals
+O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:21:"home/_02trust-signals";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:2:{s:5:"title";s:13:"Global Impact";s:7:"signals";a:4:{i:0;a:4:{s:5:"title";s:4:"10k+";s:4:"text";s:19:"Registered Students";s:4:"icon";s:16:"fa-user-graduate";s:5:"color";s:7:"#2ecc71";}i:1;a:4:{s:5:"title";s:3:"50+";s:4:"text";s:18:"Certified Scholars";s:4:"icon";s:9:"fa-mosque";s:5:"color";s:7:"#f1c40f";}i:2;a:4:{s:5:"title";s:4:"120k";s:4:"text";s:19:"Baskets Distributed";s:4:"icon";s:21:"fa-hand-holding-heart";s:5:"color";s:7:"#e67e22";}i:3;a:4:{s:5:"title";s:4:"24/7";s:4:"text";s:17:"Scholarly Support";s:4:"icon";s:18:"fa-comments-dollar";s:5:"color";s:7:"#9b59b6";}}}s:11:"frontmatter";s:499:"title: 'Global Impact'
+signals:
+    -
+        title: 10k+
+        text: 'Registered Students'
+        icon: fa-user-graduate
+        color: '#2ecc71'
+    -
+        title: 50+
+        text: 'Certified Scholars'
+        icon: fa-mosque
+        color: '#f1c40f'
+    -
+        title: 120k
+        text: 'Baskets Distributed'
+        icon: fa-hand-holding-heart
+        color: '#e67e22'
+    -
+        title: 24/7
+        text: 'Scholarly Support'
+        icon: fa-comments-dollar
+        color: '#9b59b6'";s:8:"markdown";s:0:"";}s:7:"storage";a:6:{s:3:"key";s:21:"home/_02trust-signals";s:11:"storage_key";s:24:"01.home/_02trust-signals";s:8:"template";s:13:"trust-signals";s:17:"storage_timestamp";i:1767947400;s:8:"markdown";a:1:{s:0:"";a:1:{s:13:"trust-signals";i:1767947400;}}s:8:"checksum";s:32:"9c0f78c3d5c8722cff536903c7d548ec";}}

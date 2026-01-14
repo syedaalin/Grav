@@ -40,7 +40,7 @@ class __TwigTemplate_f6a0690e347b51ff78f42f8b4ddb9a17 extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 1
+        // line 6
         yield from $this->unwrap()->yieldBlock('content_surround', $context, $blocks);
         yield from [];
     }
@@ -51,7 +51,7 @@ class __TwigTemplate_f6a0690e347b51ff78f42f8b4ddb9a17 extends Template
     public function block_content_surround(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 2
+        // line 7
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
         yield from [];
     }
@@ -78,7 +78,7 @@ class __TwigTemplate_f6a0690e347b51ff78f42f8b4ddb9a17 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  55 => 2,  44 => 1,);
+        return array (  55 => 7,  44 => 6,);
     }
 
     public function getSourceContext(): Source

@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml',
-    'modified' => 1768275297,
-    'size' => 45795,
+    'modified' => 1768344512,
+    'size' => 38268,
     'data' => [
         'name' => 'Nur-ul-Huda',
         'slug' => 'nur-ul-huda',
@@ -177,140 +177,17 @@ return [
                             ]
                         ],
                         'header_tab' => [
-                            'type' => 'tab',
-                            'title' => 'Header',
-                            'fields' => [
-                                'header_intro' => [
-                                    'type' => 'display',
-                                    'content' => 'Configure your site header and navigation',
-                                    'markdown' => true
-                                ],
-                                'logos_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Link & Assets',
-                                    'underline' => true
-                                ],
-                                'custom_logo' => [
-                                    'type' => 'file',
-                                    'label' => 'Logo',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'size' => 'large',
-                                    'destination' => 'theme://images/logo',
-                                    'multiple' => false,
-                                    'markdown' => true,
-                                    'description' => 'Your site logo',
-                                    'help' => 'Upload your site logo',
-                                    'accept' => [
-                                        0 => 'image/*'
-                                    ],
-                                    'validate' => [
-                                        'method' => 'Grav\\Theme\\NurUlHuda::validateLogo'
-                                    ]
-                                ],
-                                'site_name' => [
-                                    'type' => 'text',
-                                    'label' => 'Site Name',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Global Site Name (displayed in Header & Footer)',
-                                    'placeholder' => 'Nur-ul-Huda'
-                                ],
-                                'site_tagline' => [
-                                    'type' => 'text',
-                                    'label' => 'Site Tagline',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Short description of your site (displayed in Footer & Title)',
-                                    'placeholder' => 'Guiding Light of Faith'
-                                ],
-                                'behavior_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Header Options',
-                                    'underline' => true
-                                ],
-                                'header-fixed' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Fixed Header',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Keep header visible when scrolling',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'header-animated' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Animated Header',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Animate header on scroll',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'header-dark' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Dark Header',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Use dark header style',
-                                    'highlight' => 0,
-                                    'default' => 0,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'header-transparent' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Transparent Header',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Make header transparent',
-                                    'highlight' => 0,
-                                    'default' => 0,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'header_styling_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Header Styling',
-                                    'underline' => true
-                                ],
-                                'header_padding' => [
-                                    'type' => 'text',
-                                    'label' => 'Vertical Padding',
-                                    'default' => '1rem',
-                                    'width' => '100%',
-                                    'help' => 'e.g. 1rem, 16px'
-                                ]
-                            ]
+                            'import@' => 'tabs/header'
                         ],
                         'top_banner_tab' => [
                             'type' => 'tab',
                             'title' => 'Top Banner',
                             'fields' => [
+                                'top_banner_intro' => [
+                                    'type' => 'display',
+                                    'content' => 'Configure the top banner widgets and ticker.',
+                                    'markdown' => true
+                                ],
                                 'top_banner_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Top Banner',
@@ -326,16 +203,81 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'top_banner_announcement_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Announcement Ticker',
-                                    'underline' => true
+                                'top_banner_bg_color' => [
+                                    'type' => 'colorpicker',
+                                    'label' => 'Banner Background Color',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.2 0.02 260)',
+                                    'help' => 'Default color for the Radiant Trio strip.'
+                                ],
+                                'top_banner_text_color' => [
+                                    'type' => 'colorpicker',
+                                    'label' => 'Banner Text Color',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'oklch(0.85 0.15 85)',
+                                    'help' => 'Default text color for the Radiant Trio.'
+                                ],
+                                'top_banner_glass' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Glassmorphism Effect',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'highlight' => 1,
+                                    'default' => 0,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'help' => 'Apply a blurred, frosted glass effect. Best with semi-transparent background colors.'
+                                ],
+                                'top_banner_border' => [
+                                    'type' => 'select',
+                                    'label' => 'Border Style',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 'bottom',
+                                    'options' => [
+                                        'none' => 'None',
+                                        'solid' => 'Solid (Full)',
+                                        'bottom' => 'Bottom Only'
+                                    ],
+                                    'help' => 'Choose how the banner border is displayed.'
+                                ],
+                                'top_banner_widgets_order' => [
+                                    'type' => 'selectize',
+                                    'label' => 'Widget Order',
+                                    'default' => [
+                                        0 => 'date',
+                                        1 => 'prayer',
+                                        2 => 'hijri'
+                                    ],
+                                    'options' => [
+                                        'date' => 'Gregorian Date',
+                                        'prayer' => 'Upcoming Namaz Timing',
+                                        'hijri' => 'Hijri Date'
+                                    ],
+                                    'help' => 'Drag and drop to reorder elements.'
+                                ],
+                                'top_banner_mobile_hide' => [
+                                    'type' => 'selectize',
+                                    'label' => 'Hide on Mobile',
+                                    'default' => [
+                                        
+                                    ],
+                                    'options' => [
+                                        'date' => 'Gregorian Date',
+                                        'prayer' => 'Upcoming Namaz Timing',
+                                        'hijri' => 'Hijri Date'
+                                    ],
+                                    'help' => 'Select elements to hide on mobile screens (below 768px).'
                                 ],
                                 'top_banner_announcement_enabled' => [
                                     'type' => 'toggle',
-                                    'label' => 'Enable Announcement',
+                                    'label' => 'Enable Ticker',
                                     'style' => 'vertical',
-                                    'width' => '33%',
+                                    'width' => '25%',
                                     'highlight' => 1,
                                     'default' => 0,
                                     'options' => [
@@ -348,75 +290,62 @@ return [
                                 ],
                                 'top_banner_announcement_text' => [
                                     'type' => 'text',
-                                    'label' => 'Announcement Text',
+                                    'label' => 'Ticker Message',
                                     'style' => 'vertical',
-                                    'width' => '33%',
-                                    'placeholder' => 'Important update: Eid prayer will be at 8:00 AM.',
-                                    'help' => 'Text to scroll in the Top Banner.'
+                                    'width' => '50%',
+                                    'placeholder' => 'e.g. Eid prayer will be at 8:00 AM.'
+                                ],
+                                'top_banner_announcement_starts' => [
+                                    'type' => 'datetime',
+                                    'label' => 'Ticker Start (Start Date/Time)',
+                                    'style' => 'vertical',
+                                    'width' => '25%',
+                                    'help' => 'The ticker will appear automatically after this time.'
                                 ],
                                 'top_banner_announcement_expires' => [
                                     'type' => 'datetime',
-                                    'label' => 'Expiration Date & Time',
+                                    'label' => 'Ticker Expiration (End Date/Time)',
                                     'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'The announcement will automatically hide after this time.'
+                                    'width' => '25%',
+                                    'help' => 'The ticker will disappear automatically after this time.'
+                                ],
+                                'top_banner_announcement_speed' => [
+                                    'type' => 'range',
+                                    'label' => 'Scrolling Speed',
+                                    'style' => 'vertical',
+                                    'width' => '50%',
+                                    'default' => 20,
+                                    'min' => 5,
+                                    'max' => 60,
+                                    'step' => 1,
+                                    'help' => 'Set duration in seconds (smaller = faster, larger = slower). Default is 20s.'
                                 ],
                                 'top_banner_announcement_bg_color' => [
                                     'type' => 'colorpicker',
-                                    'label' => 'Announcement Background',
+                                    'label' => 'Ticker Strip Color',
                                     'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.55 0.25 25)',
-                                    'help' => 'Background color when announcement is active (default Red).'
+                                    'width' => '50%',
+                                    'default' => 'oklch(0.55 0.25 25)'
                                 ],
                                 'top_banner_announcement_text_color' => [
                                     'type' => 'colorpicker',
-                                    'label' => 'Announcement Text Color',
+                                    'label' => 'Ticker Text Color',
                                     'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.98 0 0)',
-                                    'help' => 'Text color for the announcement.'
+                                    'width' => '50%',
+                                    'default' => 'oklch(0.98 0 0)'
                                 ],
-                                'top_banner_appearance_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Appearance & Content',
-                                    'underline' => true
-                                ],
-                                'top_banner_bg_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Background Color',
+                                'top_banner_announcement_pause' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Pause on Hover',
                                     'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.2 0.02 260)',
-                                    'help' => 'Customize the background color. Default is Deep Navy.'
-                                ],
-                                'top_banner_text_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Text Color',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.85 0.15 85)',
-                                    'help' => 'Customize text color. Default is Yellow (Active Accent).'
-                                ],
-                                'top_banner_widgets_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Widget Arrangement',
-                                    'underline' => true
-                                ],
-                                'top_banner_widgets_order' => [
-                                    'type' => 'selectize',
-                                    'label' => 'Widget Order',
-                                    'default' => [
-                                        0 => 'date',
-                                        1 => 'prayer',
-                                        2 => 'hijri'
-                                    ],
+                                    'width' => '50%',
+                                    'highlight' => 1,
+                                    'default' => 1,
                                     'options' => [
-                                        'date' => 'Gregorian Date',
-                                        'prayer' => 'Prayer Times',
-                                        'hijri' => 'Hijri Date'
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
                                     ],
-                                    'help' => 'Reorder the three core components: Gregorian Date, Prayer Times, and Hijri Date.'
+                                    'help' => 'Stop the scrolling animation when a user hovers over the ticker.'
                                 ]
                             ]
                         ],
@@ -429,7 +358,7 @@ return [
                             'fields' => [
                                 'bottom_banner_header_section' => [
                                     'type' => 'section',
-                                    'title' => 'Header',
+                                    'title' => 'Header & Site Identity',
                                     'underline' => true
                                 ],
                                 'bottom_banner_show_logo' => [
@@ -486,40 +415,6 @@ return [
                                     'rows' => 3,
                                     'placeholder' => '© 2026 Your Organization. All rights reserved.'
                                 ],
-                                'bottom_banner_newsletter_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Newsletter Strip',
-                                    'underline' => true
-                                ],
-                                'bottom_banner_newsletter_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Newsletter',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 1,
-                                    'highlight' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ]
-                                ],
-                                'bottom_banner_newsletter_title' => [
-                                    'type' => 'text',
-                                    'label' => 'Newsletter Title',
-                                    'width' => '33%',
-                                    'default' => 'Stay Connected'
-                                ],
-                                'bottom_banner_newsletter_text' => [
-                                    'type' => 'text',
-                                    'label' => 'Newsletter Description',
-                                    'width' => '33%',
-                                    'default' => 'Join our spiritual journey for weekly insights.'
-                                ],
-                                'bottom_banner_widgets_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Banner Arrangement',
-                                    'underline' => true
-                                ],
                                 'bottom_banner_widgets_order' => [
                                     'type' => 'selectize',
                                     'label' => 'Section Order',
@@ -539,9 +434,39 @@ return [
                                     ],
                                     'help' => 'Reorder major sections of the bottom banner.'
                                 ],
+                                'bottom_banner_newsletter_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Newsletter Strip',
+                                    'underline' => true
+                                ],
+                                'newsletter_enabled' => [
+                                    'type' => 'toggle',
+                                    'label' => 'Enable Newsletter',
+                                    'style' => 'vertical',
+                                    'width' => '33%',
+                                    'default' => 1,
+                                    'highlight' => 1,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ]
+                                ],
+                                'newsletter_title' => [
+                                    'type' => 'text',
+                                    'label' => 'Newsletter Title',
+                                    'width' => '33%',
+                                    'default' => 'Stay Connected'
+                                ],
+                                'newsletter_text' => [
+                                    'type' => 'text',
+                                    'label' => 'Newsletter Description',
+                                    'width' => '33%',
+                                    'default' => 'Join our spiritual journey for weekly insights.'
+                                ],
                                 'bottom_banner_social_section' => [
                                     'type' => 'section',
-                                    'title' => 'Body',
+                                    'title' => 'Social Connectivity & Icons',
+                                    'text' => 'Blueprint: [social-icons.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/social-icons.blueprint.md)',
                                     'underline' => true
                                 ],
                                 'social_facebook_group' => [
@@ -1191,12 +1116,12 @@ return [
                                         ]
                                     ]
                                 ],
-                                'bottom_banner_show_social_labels_mobile' => [
+                                'social_show_labels_mobile' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Names on Mobile',
                                     'help' => 'Show platform name on small screens',
                                     'style' => 'vertical',
-                                    'width' => '33%',
+                                    'width' => '50%',
                                     'highlight' => 1,
                                     'default' => 0,
                                     'options' => [
@@ -1207,12 +1132,12 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'bottom_banner_show_social_labels_desktop' => [
+                                'social_show_labels_desktop' => [
                                     'type' => 'toggle',
                                     'label' => 'Show Names on Desktop',
                                     'help' => 'Show platform name on large screens',
                                     'style' => 'vertical',
-                                    'width' => '33%',
+                                    'width' => '50%',
                                     'highlight' => 1,
                                     'default' => 0,
                                     'options' => [
@@ -1224,6 +1149,9 @@ return [
                                     ]
                                 ]
                             ]
+                        ],
+                        'sidebar_tab' => [
+                            'import@' => 'tabs/sidebar'
                         ]
                     ]
                 ],
@@ -1318,6 +1246,7 @@ return [
                         'islamic_features_tab' => [
                             'type' => 'tab',
                             'title' => 'Religious Utilities',
+                            'text' => 'Blueprint: [islamic-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/islamic-utilities.blueprint.md)',
                             'fields' => [
                                 'prayer_section' => [
                                     'type' => 'section',
@@ -1369,6 +1298,7 @@ return [
                         'integrations_advanced_tab' => [
                             'type' => 'tab',
                             'title' => 'Integrations & Advanced',
+                            'text' => 'Blueprint: [integrations.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/integrations.blueprint.md)',
                             'fields' => [
                                 'moodle_section' => [
                                     'type' => 'section',
@@ -1419,233 +1349,7 @@ return [
                             ]
                         ],
                         'components_tab' => [
-                            'type' => 'tab',
-                            'title' => 'Components',
-                            'fields' => [
-                                'components_intro' => [
-                                    'type' => 'section',
-                                    'title' => 'Components',
-                                    'text' => 'Enable or disable theme components',
-                                    'underline' => true
-                                ],
-                                'hero_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Hero Section',
-                                    'underline' => true
-                                ],
-                                'hero_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Hero',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'hero_default_style' => [
-                                    'type' => 'select',
-                                    'label' => 'Default Hero Style',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'hero-large',
-                                    'options' => [
-                                        'hero-fullscreen' => 'Full Screen',
-                                        'hero-large' => 'Large',
-                                        'hero-medium' => 'Medium',
-                                        'hero-small' => 'Small',
-                                        'hero-tiny' => 'Tiny'
-                                    ]
-                                ],
-                                'services_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Services Section',
-                                    'underline' => true
-                                ],
-                                'services_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Services',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'services_default_columns' => [
-                                    'type' => 'select',
-                                    'label' => 'Default Columns',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 3,
-                                    'options' => [
-                                        2 => '2 Columns',
-                                        3 => '3 Columns',
-                                        4 => '4 Columns'
-                                    ]
-                                ],
-                                'features_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Features Section',
-                                    'underline' => true
-                                ],
-                                'features_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Features',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'features_default_layout' => [
-                                    'type' => 'select',
-                                    'label' => 'Default Layout',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'standard',
-                                    'options' => [
-                                        'small' => 'Small',
-                                        'standard' => 'Standard'
-                                    ]
-                                ],
-                                'gallery_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Gallery Section',
-                                    'underline' => true
-                                ],
-                                'gallery_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Gallery',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'istafta_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Istafta Section',
-                                    'underline' => true
-                                ],
-                                'istafta_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Istafta',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'khums_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Khums Calculator',
-                                    'underline' => true
-                                ],
-                                'khums_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Khums',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'timeline_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Timeline Section',
-                                    'underline' => true
-                                ],
-                                'timeline_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Timeline',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'trust_signals_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Trust Signals',
-                                    'underline' => true
-                                ],
-                                'trust_signals_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Trust Signals',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'courses_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Courses Section',
-                                    'underline' => true
-                                ],
-                                'courses_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Courses',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ]
-                            ]
+                            'import@' => 'tabs/components'
                         ],
                         'advanced_tab' => [
                             'type' => 'tab',
@@ -1711,40 +1415,6 @@ return [
                                     'width' => '33%',
                                     'help' => 'Choose grid overlay size for debugging',
                                     'default' => '',
-                                    'options' => [
-                                        '' => 'None',
-                                        'grid-xl' => 'Extra Large',
-                                        'grid-lg' => 'Large',
-                                        'grid-md' => 'Medium'
-                                    ]
-                                ],
-                                'blog_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Blog Settings',
-                                    'underline' => true
-                                ],
-                                'blog-page' => [
-                                    'type' => 'text',
-                                    'label' => 'Blog Page Path',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Path to your blog page',
-                                    'size' => 'medium',
-                                    'default' => '/blog'
-                                ]
-                            ]
-                        ],
-                        'nur-ul-huda_legacy' => [
-                            'type' => 'tab',
-                            'title' => 'Options',
-                            'fields' => [
-                                'grid-size' => [
-                                    'type' => 'select',
-                                    'label' => 'Grid Size',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'help' => 'Choose grid overlay size for debugging',
-                                    'size' => 'small',
                                     'options' => [
                                         '' => 'None',
                                         'grid-xl' => 'Extra Large',

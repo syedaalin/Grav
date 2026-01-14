@@ -3,9 +3,8 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'blueprints',
     'environment' => 'localhost',
-    'timestamp' => 1768275385,
+    'timestamp' => 1768344561,
     'directories' => [
-        '/Users/syedaalin/Documents/Grav/user/plugins/admin/blueprints/config' => 1767663061,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config' => 1767934750,
         '/Users/syedaalin/Documents/Grav/user/plugins' => 1768107130,
         '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
@@ -27,10 +26,9 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592,
         '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist' => 1767942424,
         '/Users/syedaalin/Documents/Grav/user/themes' => 1767950053,
-        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda' => 1768247430
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda' => 1768344413
     ],
     'file_mtimes' => [
-        '/Users/syedaalin/Documents/Grav/user/plugins/admin/blueprints/config/media.yaml' => 1766978626,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/backups.yaml' => 1767934750,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/media.yaml' => 1767934750,
         '/Users/syedaalin/Documents/Grav/system/blueprints/config/scheduler.yaml' => 1767934750,
@@ -56,15 +54,9 @@ return [
         '/Users/syedaalin/Documents/Grav/user/plugins/login/blueprints.yaml' => 1762876912,
         '/Users/syedaalin/Documents/Grav/user/plugins/email/blueprints.yaml' => 1765351098,
         '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist/blueprints.yaml' => 1736125930,
-        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml' => 1768275297
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml' => 1768344512
     ],
     'files' => [
-        'user/plugins/admin/blueprints/config' => [
-            'media' => [
-                'file' => 'user/plugins/admin/blueprints/config/media.yaml',
-                'modified' => 1766978626
-            ]
-        ],
         'system/blueprints/config' => [
             'backups' => [
                 'file' => 'system/blueprints/config/backups.yaml',
@@ -172,7 +164,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
-                'modified' => 1768275297
+                'modified' => 1768344512
             ]
         ]
     ]

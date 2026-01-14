@@ -2,11 +2,11 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml',
-    'modified' => 1768277661,
-    'size' => 6837,
+    'modified' => 1768346788,
+    'size' => 7248,
     'data' => [
         'enabled' => true,
-        'production-mode' => true,
+        'production-mode' => false,
         'grid-size' => 'grid-xl',
         'debug_glass' => false,
         'direction' => 'ltr',
@@ -62,8 +62,8 @@ return [
             ]
         ],
         'glass_bg_color' => '#000000',
-        'glass_opacity' => 10,
-        'glass_blur' => 0,
+        'glass_opacity' => 20,
+        'glass_blur' => 9,
         'glass_border_opacity' => 100,
         'glass_highlight' => 38,
         'glass_noise' => true,
@@ -73,15 +73,12 @@ return [
         'header-transparent' => false,
         'header_padding' => '1rem',
         'top_banner_enabled' => true,
-        'top_banner_announcement_enabled' => false,
+        'top_banner_widgets_order' => 'date,prayer,hijri',
+        'top_banner_announcement_enabled' => true,
         'top_banner_announcement_bg_color' => '#b91c1c',
         'top_banner_announcement_text_color' => '#ffffff',
         'top_banner_bg_color' => '#111827',
         'top_banner_text_color' => '#f1c40f',
-        'top_banner_show_dates' => false,
-        'top_banner_show_prayer_ticker' => true,
-        'top_banner_show_contact' => false,
-        'top_banner_show_social' => false,
         'prayer_method' => 'karachi',
         'hijri_offset' => 0,
         'default_location' => 'Karachi',
@@ -142,6 +139,10 @@ return [
                 'path' => 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
             ]
         ],
+        'top_banner_show_dates' => false,
+        'top_banner_show_prayer_ticker' => true,
+        'top_banner_show_contact' => false,
+        'top_banner_show_social' => false,
         'site_name' => 'aabtaab',
         'site_tagline' => 'Guiding is light of faith',
         'blur_strength' => 12,
@@ -181,8 +182,8 @@ return [
         'minaret_show_social' => true,
         'glass_opacity_initial' => 0.05,
         'glass_opacity_scrolled' => 0.2,
-        'top_banner_announcement_text' => NULL,
-        'top_banner_announcement_expires' => NULL,
+        'top_banner_announcement_text' => 'Ya Hussain',
+        'top_banner_announcement_expires' => '13-01-2026 19:50',
         'header_site_name' => 'Aabtaab',
         'header' => [
             'glass_bg_color' => '#050000',
@@ -226,7 +227,6 @@ return [
         'social_email_enabled' => true,
         'top_banner_ticker_enabled' => '0',
         'top_banner_ticker_speed' => 8,
-        'top_banner_widgets_order' => 'date,prayer,hijri',
         'bottom_banner_newsletter_enabled' => '1',
         'bottom_banner_newsletter_title' => 'Stay Connected',
         'bottom_banner_newsletter_text' => 'Join our spiritual journey for weekly insights.',
@@ -236,6 +236,17 @@ return [
                 'text' => NULL,
                 'source' => NULL
             ]
-        ]
+        ],
+        'top_banner_announcement_starts' => '13-01-2026 18:29',
+        'top_banner_announcement_speed' => 20,
+        'top_banner_glass' => '0',
+        'top_banner_border' => 'solid',
+        'top_banner_mobile_hide' => NULL,
+        'top_banner_announcement_pause' => '1',
+        'newsletter_enabled' => '1',
+        'newsletter_title' => 'Stay Connected',
+        'newsletter_text' => 'Join our spiritual journey for weekly insights.',
+        'social_show_labels_mobile' => false,
+        'social_show_labels_desktop' => false
     ]
 ];

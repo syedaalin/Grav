@@ -2,13 +2,14 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/config/system.yaml',
-    'modified' => 1768243274,
-    'size' => 461,
+    'modified' => 1768342344,
+    'size' => 484,
     'data' => [
         'home' => [
             'alias' => '/home',
             'hide_in_urls' => true
         ],
+        'timezone' => 'Asia/Karachi',
         'pages' => [
             'theme' => 'nur-ul-huda'
         ],

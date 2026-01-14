@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1768277661,
-    'checksum' => '1d0d0c7d4ab16989d2686da6c2bfb6c1',
+    'timestamp' => 1768346788,
+    'checksum' => '6d1241aa841ec4682cd43709dd1c8928',
     'files' => [
         'user/localhost/config' => [
             'security' => [
@@ -11,7 +11,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/localhost/config/system.yaml',
-                'modified' => 1767952435
+                'modified' => 1768310650
             ],
             'themes/my-quark' => [
                 'file' => 'user/localhost/config/themes/my-quark.yaml',
@@ -27,7 +27,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/localhost/config/themes/nur-ul-huda.yaml',
-                'modified' => 1768277661
+                'modified' => 1768346788
             ],
             'themes/quark' => [
                 'file' => 'user/localhost/config/themes/quark.yaml',
@@ -65,7 +65,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1768243274
+                'modified' => 1768342344
             ],
             'themes/agency' => [
                 'file' => 'user/config/themes/agency.yaml',
@@ -85,7 +85,7 @@ return [
             ],
             'themes/nur-ul-huda' => [
                 'file' => 'user/config/themes/nur-ul-huda.yaml',
-                'modified' => 1767663949
+                'modified' => 1768333021
             ],
             'themes/purity' => [
                 'file' => 'user/config/themes/purity.yaml',
@@ -207,7 +207,7 @@ return [
         'user/themes' => [
             'themes/nur-ul-huda' => [
                 'file' => 'user/themes/nur-ul-huda/nur-ul-huda.yaml',
-                'modified' => 1768248983
+                'modified' => 1768344401
             ]
         ]
     ],
@@ -215,7 +215,7 @@ return [
         'themes' => [
             'nur-ul-huda' => [
                 'enabled' => true,
-                'production-mode' => true,
+                'production-mode' => false,
                 'grid-size' => 'grid-xl',
                 'debug_glass' => false,
                 'direction' => 'ltr',
@@ -271,8 +271,8 @@ return [
                     ]
                 ],
                 'glass_bg_color' => '#000000',
-                'glass_opacity' => 10,
-                'glass_blur' => 0,
+                'glass_opacity' => 20,
+                'glass_blur' => 9,
                 'glass_border_opacity' => 100,
                 'glass_highlight' => 38,
                 'glass_noise' => true,
@@ -282,15 +282,12 @@ return [
                 'header-transparent' => false,
                 'header_padding' => '1rem',
                 'top_banner_enabled' => true,
-                'top_banner_announcement_enabled' => false,
+                'top_banner_widgets_order' => 'date,prayer,hijri',
+                'top_banner_announcement_enabled' => true,
                 'top_banner_announcement_bg_color' => '#b91c1c',
                 'top_banner_announcement_text_color' => '#ffffff',
                 'top_banner_bg_color' => '#111827',
                 'top_banner_text_color' => '#f1c40f',
-                'top_banner_show_dates' => false,
-                'top_banner_show_prayer_ticker' => true,
-                'top_banner_show_contact' => false,
-                'top_banner_show_social' => false,
                 'prayer_method' => 'karachi',
                 'hijri_offset' => 0,
                 'default_location' => 'Karachi',
@@ -351,6 +348,10 @@ return [
                         'path' => 'user/themes/nur-ul-huda/images/logo/aabtaab-logo (1).svg'
                     ]
                 ],
+                'top_banner_show_dates' => false,
+                'top_banner_show_prayer_ticker' => true,
+                'top_banner_show_contact' => false,
+                'top_banner_show_social' => false,
                 'site_name' => 'aabtaab',
                 'site_tagline' => 'Guiding is light of faith',
                 'blur_strength' => 12,
@@ -390,8 +391,8 @@ return [
                 'minaret_show_social' => true,
                 'glass_opacity_initial' => 0.05,
                 'glass_opacity_scrolled' => 0.2,
-                'top_banner_announcement_text' => NULL,
-                'top_banner_announcement_expires' => NULL,
+                'top_banner_announcement_text' => 'Ya Hussain',
+                'top_banner_announcement_expires' => '13-01-2026 19:50',
                 'header_site_name' => 'Aabtaab',
                 'header' => [
                     'glass_bg_color' => '#050000',
@@ -435,7 +436,6 @@ return [
                 'social_email_enabled' => true,
                 'top_banner_ticker_enabled' => '0',
                 'top_banner_ticker_speed' => 8,
-                'top_banner_widgets_order' => 'date,prayer,hijri',
                 'bottom_banner_newsletter_enabled' => '1',
                 'bottom_banner_newsletter_title' => 'Stay Connected',
                 'bottom_banner_newsletter_text' => 'Join our spiritual journey for weekly insights.',
@@ -445,7 +445,18 @@ return [
                         'text' => NULL,
                         'source' => NULL
                     ]
-                ]
+                ],
+                'top_banner_announcement_starts' => '13-01-2026 18:29',
+                'top_banner_announcement_speed' => 20,
+                'top_banner_glass' => '0',
+                'top_banner_border' => 'solid',
+                'top_banner_mobile_hide' => NULL,
+                'top_banner_announcement_pause' => '1',
+                'newsletter_enabled' => '1',
+                'newsletter_title' => 'Stay Connected',
+                'newsletter_text' => 'Join our spiritual journey for weekly insights.',
+                'social_show_labels_mobile' => false,
+                'social_show_labels_desktop' => false
             ],
             'agency' => [
                 'enabled' => true,
@@ -5620,7 +5631,7 @@ node_modules'
         ],
         'system' => [
             'absolute_urls' => false,
-            'timezone' => 'UTC',
+            'timezone' => 'Asia/Karachi',
             'default_locale' => 'en',
             'param_sep' => ':',
             'wrapped_site' => false,
@@ -5671,7 +5682,7 @@ node_modules'
                     'count' => 20
                 ],
                 'dateformat' => [
-                    'default' => NULL,
+                    'default' => 'd-m-Y H:i',
                     'short' => 'jS M Y',
                     'long' => 'F jS \\a\\t g:ia'
                 ],

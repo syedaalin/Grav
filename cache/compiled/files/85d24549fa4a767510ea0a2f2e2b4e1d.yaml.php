@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => 'themes://nur-ul-huda/nur-ul-huda.yaml',
-    'modified' => 1768248983,
-    'size' => 4016,
+    'modified' => 1768344401,
+    'size' => 3954,
     'data' => [
         'enabled' => true,
         'production-mode' => true,
@@ -73,15 +73,16 @@ return [
         'header-transparent' => false,
         'header_padding' => '1rem',
         'top_banner_enabled' => true,
+        'top_banner_widgets_order' => [
+            0 => 'date',
+            1 => 'prayer',
+            2 => 'hijri'
+        ],
         'top_banner_announcement_enabled' => false,
         'top_banner_announcement_bg_color' => 'oklch(0.55 0.25 25)',
         'top_banner_announcement_text_color' => 'oklch(0.98 0 0)',
         'top_banner_bg_color' => 'oklch(0.2 0.02 260)',
         'top_banner_text_color' => 'oklch(0.85 0.15 85)',
-        'top_banner_show_dates' => true,
-        'top_banner_show_prayer_ticker' => true,
-        'top_banner_show_contact' => true,
-        'top_banner_show_social' => true,
         'prayer_method' => 'tehran',
         'hijri_offset' => 0,
         'default_location' => 'Karachi',

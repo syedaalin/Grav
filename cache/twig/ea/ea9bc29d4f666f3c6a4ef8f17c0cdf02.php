@@ -38,13 +38,15 @@ class __TwigTemplate_e494b3ba7044fadd801da322371faa3e extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 2
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 3
+        // line 7
+        $context["snipcart_key"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key");
+        // line 8
+        if ((($tmp = ($context["snipcart_key"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 9
             yield "    <script async src=\"https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js\"></script>
     <div hidden id=\"snipcart\" data-api-key=\"";
-            // line 4
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "snipcart_key"), "html", null, true);
+            // line 10
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["snipcart_key"] ?? null), "html", null, true);
             yield "\" data-config-modal-style=\"side\"></div>
 ";
         }
@@ -72,7 +74,7 @@ class __TwigTemplate_e494b3ba7044fadd801da322371faa3e extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  47 => 4,  44 => 3,  42 => 2,);
+        return array (  49 => 10,  46 => 9,  44 => 8,  42 => 7,);
     }
 
     public function getSourceContext(): Source

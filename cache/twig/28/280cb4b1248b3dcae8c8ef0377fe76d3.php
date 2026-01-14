@@ -36,56 +36,56 @@ class __TwigTemplate_7e2557bb6bc4cbe83d763a3a0870f171 extends Template
 
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
-        // line 1
+        // line 6
         return "partials/base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        $this->parent = $this->load("partials/base.html.twig", 1);
+        $this->parent = $this->load("partials/base.html.twig", 6);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
+    // line 8
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 4
+        // line 9
         yield "    <section id=\"error\" class=\"error-page-section\" style=\"container-type: inline-size;\">
         ";
-        // line 6
+        // line 11
         yield "        <div class=\"error-page-glow\" aria-hidden=\"true\"></div>
 
         <div class=\"error-page-content\">
             <div class=\"error-card\">
                 <div class=\"error-code-badge\">
                     <span class=\"error-code\">";
-        // line 11
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 11), "http_response_code", [], "any", false, false, false, 11), "html", null, true);
+        // line 16
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 16), "http_response_code", [], "any", false, false, false, 16), "html", null, true);
         yield "</span>
                 </div>
                 
                 <h1 class=\"section-title error-title\">
                     ";
-        // line 15
+        // line 20
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->translate($this->env, "PLUGIN_ERROR.ERROR"), "html", null, true);
         yield "
                 </h1>
                 
                 <div class=\"prose-custom error-message\">
                     ";
-        // line 19
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 19);
+        // line 24
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 24);
         yield "
                 </div>
 
                 <div class=\"error-actions\">
                     <a href=\"";
-        // line 23
+        // line 28
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["home_url"] ?? null), "html", null, true);
         yield "\" class=\"btn-primary error-home-button\">
                         <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"error-icon\">
@@ -103,8 +103,8 @@ class __TwigTemplate_7e2557bb6bc4cbe83d763a3a0870f171 extends Template
             
             <p class=\"error-code-footer\">
                 Error Code: ";
-        // line 38
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 38), "http_response_code", [], "any", false, false, false, 38), "html", null, true);
+        // line 43
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 43), "http_response_code", [], "any", false, false, false, 43), "html", null, true);
         yield "
             </p>
         </div>
@@ -134,7 +134,7 @@ class __TwigTemplate_7e2557bb6bc4cbe83d763a3a0870f171 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  107 => 38,  89 => 23,  82 => 19,  75 => 15,  68 => 11,  61 => 6,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  107 => 43,  89 => 28,  82 => 24,  75 => 20,  68 => 16,  61 => 11,  58 => 9,  51 => 8,  40 => 6,);
     }
 
     public function getSourceContext(): Source

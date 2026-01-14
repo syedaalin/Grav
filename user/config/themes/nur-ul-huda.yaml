@@ -24,3 +24,9 @@ custom_logo_mobile:
     type: image/webp
     size: 56746
     path: user/themes/quark/images/logo/aabtaab-logo.webp
+
+# Top Banner Configuration (Explicitly consistency)
+top_banner_enabled: true
+top_banner_widgets_order: [date, prayer, hijri]
+top_banner_bg_color: "oklch(0.2 0.02 260)"
+top_banner_text_color: "oklch(0.85 0.15 85)"

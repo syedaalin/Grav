@@ -1,8 +1,0 @@
-1768247423
-02.services
-O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:8:"services";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:4:{s:5:"title";s:8:"Services";s:4:"menu";s:8:"Services";s:8:"template";s:15:"services_parent";s:7:"visible";b:1;}s:11:"frontmatter";s:70:"title: Services
-menu: Services
-template: services_parent
-visible: true";s:8:"markdown";s:72:"# Our Services
-We offer a range of religious services to the community.
-";}s:7:"storage";a:7:{s:3:"key";s:8:"services";s:11:"storage_key";s:11:"02.services";s:8:"template";s:15:"services_parent";s:17:"storage_timestamp";i:1768171022;s:8:"markdown";a:1:{s:0:"";a:1:{s:15:"services_parent";i:1768150063;}}s:8:"children";a:6:{s:8:"01.zakat";b:0;s:8:"02.khums";b:0;s:8:"03.ijara";b:0;s:12:"04.expiation";b:0;s:17:"05.niyabat-ziarat";b:0;s:12:"06.sacrifice";b:0;}s:8:"checksum";s:32:"e01d773d69a950c054434bb495b32429";}}

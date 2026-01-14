@@ -1,6 +1,7 @@
 home:
   alias: "/home"
   hide_in_urls: true
+timezone: Asia/Karachi
 
 pages:
   theme: nur-ul-huda

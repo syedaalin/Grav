@@ -1,7 +1,0 @@
-1768274830
-02.services__SLASH__06.sacrifice__SLASH__01.sadqah
-O:39:"Grav\Common\Flex\Types\Pages\PageObject":4:{s:4:"type";s:5:"pages";s:3:"key";s:25:"services/sacrifice/sadqah";s:8:"elements";a:4:{s:4:"root";b:0;s:6:"header";a:3:{s:5:"title";s:16:"Sadqah Sacrifice";s:4:"menu";s:6:"Sadqah";s:7:"visible";b:1;}s:11:"frontmatter";s:50:"title: Sadqah Sacrifice
-menu: Sadqah
-visible: true";s:8:"markdown";s:76:"# Sadqah Sacrifice
-Information about voluntary charity (Sadqah) sacrifices.
-";}s:7:"storage";a:6:{s:3:"key";s:25:"services/sacrifice/sadqah";s:11:"storage_key";s:34:"02.services/06.sacrifice/01.sadqah";s:8:"template";s:7:"default";s:17:"storage_timestamp";i:1768150740;s:8:"markdown";a:1:{s:0:"";a:1:{s:7:"default";i:1768150740;}}s:8:"checksum";s:32:"94a599c5f6366cf83ae8c23af4d0a997";}}

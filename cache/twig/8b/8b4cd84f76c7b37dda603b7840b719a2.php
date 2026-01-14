@@ -38,42 +38,13 @@ class __TwigTemplate_5ad27396b6b5e121b6e4005a54b613a8 extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 1
-        yield "{
-  \"name\": \"";
-        // line 2
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "site", [], "any", false, false, false, 2), "title", [], "any", false, false, false, 2), "html", null, true);
-        yield "\",
-  \"short_name\": \"";
-        // line 3
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "site", [], "any", false, false, false, 3), "title", [], "any", false, false, false, 3), 0, 12), "html", null, true);
-        yield "\",
-  \"start_url\": \"";
-        // line 4
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["base_url"] ?? null), "html", null, true);
-        yield "/\",
-  \"display\": \"standalone\",
-  \"background_color\": \"#ffffff\",
-  \"theme_color\": \"#0d1117\",
-  \"icons\": [
-    {
-      \"src\": \"";
-        // line 10
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "html", null, true);
-        yield "\",
-      \"sizes\": \"192x192\",
-      \"type\": \"image/svg+xml\"
-    },
-    {
-      \"src\": \"";
-        // line 15
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "html", null, true);
-        yield "\",
-      \"sizes\": \"512x512\",
-      \"type\": \"image/svg+xml\"
-    }
-  ]
-}
+        // line 6
+        yield json_encode(["name" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source,         // line 7
+($context["config"] ?? null), "site", [], "any", false, false, false, 7), "title", [], "any", false, false, false, 7), "short_name" => Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source,         // line 8
+($context["config"] ?? null), "site", [], "any", false, false, false, 8), "title", [], "any", false, false, false, 8), 0, 12), "start_url" => (        // line 9
+($context["base_url"] ?? null) . "/"), "display" => "standalone", "background_color" => "#ffffff", "theme_color" => "#0d1117", "icons" => [["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "192x192", "type" => "image/svg+xml"], ["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "512x512", "type" => "image/svg+xml"]]]);
+        // line 25
+        yield "
 ";
         yield from [];
     }
@@ -99,7 +70,7 @@ class __TwigTemplate_5ad27396b6b5e121b6e4005a54b613a8 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  70 => 15,  62 => 10,  53 => 4,  49 => 3,  45 => 2,  42 => 1,);
+        return array (  47 => 25,  45 => 9,  44 => 8,  43 => 7,  42 => 6,);
     }
 
     public function getSourceContext(): Source

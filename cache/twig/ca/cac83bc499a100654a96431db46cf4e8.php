@@ -38,14 +38,14 @@ class __TwigTemplate_22a92eed6b94d2263db81f969134bbe3 extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 1
-        $macros["͜macros"] = $this->macros["͜macros"] = $this->load("macros/macros.html.twig", 1)->unwrap();
-        // line 2
+        // line 6
+        $macros["͜macros"] = $this->macros["͜macros"] = $this->load("macros/macros.html.twig", 6)->unwrap();
+        // line 7
         yield "
 <ul class=\"nav-list\">
     ";
-        // line 4
-        yield $macros["͜macros"]->getTemplateForMacro("macro_nav_loop", $context, 4, $this->getSourceContext())->macro_nav_loop(...[($context["pages"] ?? null), ((array_key_exists("mobile", $context)) ? (Twig\Extension\CoreExtension::default(($context["mobile"] ?? null), false)) : (false))]);
+        // line 9
+        yield $macros["͜macros"]->getTemplateForMacro("macro_nav_loop", $context, 9, $this->getSourceContext())->macro_nav_loop(...[($context["pages"] ?? null), ((array_key_exists("mobile", $context)) ? (Twig\Extension\CoreExtension::default(($context["mobile"] ?? null), false)) : (false))]);
         yield "
 </ul>
 ";
@@ -73,7 +73,7 @@ class __TwigTemplate_22a92eed6b94d2263db81f969134bbe3 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  48 => 4,  44 => 2,  42 => 1,);
+        return array (  48 => 9,  44 => 7,  42 => 6,);
     }
 
     public function getSourceContext(): Source
