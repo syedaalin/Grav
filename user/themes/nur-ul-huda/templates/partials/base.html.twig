@@ -6,8 +6,6 @@
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
 {% set top_banner_color = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
 
-{# Dynamic Theme Colors Manager - DEPRECATED/MOVED TO PHP #}
-{# Usage: dynamic_styles is passed from nur-ul-huda.php #}
 
 {% use 'blocks/base.html.twig' %}
 <!DOCTYPE html>
@@ -54,14 +52,11 @@
 		{% endblock head %}
 
 		{% block stylesheets %}
-			{% do assets.addCss('theme://css/modern-vanilla.css') %}
+			{% do assets.addCss('theme://css/nur-ul-huda.css') %}
 			{% do assets.addCss('theme://css/line-awesome.min.css') %}
 		{% endblock %}
 
 		{% block javascripts %}
-			{# jQuery removed - Modern Vanilla Transition #}
-			{# {% do assets.addJs('jquery', 101) %} #}
-			
 			{# Core ES Modules #}
 			{% do assets.addJs('theme://js/modules/khums-calculator.js', {'priority': 100, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/ui.js', {'priority': 95, 'group': 'bottom', 'type': 'module'}) %}
