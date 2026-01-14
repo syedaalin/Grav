@@ -1,0 +1,63 @@
+@layer components {
+  /* ========================================
+     Search Overlay (2026 Enhanced)
+     ======================================== */
+  
+  .search-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-modal);
+      background-color: oklch(0 0 0 / 0.85);
+      backdrop-filter: blur(var(--glass-blur));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl);
+      
+      /* Hidden state by default */
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: all var(--transition-standard);
+      
+      &.is-visible {
+          opacity: 1;
+          pointer-events: auto;
+          visibility: visible;
+      }
+  }
+
+  .search-container {
+      inline-size: 100%;
+      max-inline-size: 32rem;
+      text-align: center;
+  }
+
+  .search-title {
+      font-size: var(--font-size-2xl);
+      margin-block-end: var(--space-xl);
+      color: oklch(1 0 0);
+  }
+
+  .search-hint {
+      margin-block-start: var(--space-m);
+      color: oklch(1 0 0);
+      font-size: var(--font-size-sm);
+  }
+
+  .search-close-button {
+      position: absolute;
+      inset-block-start: var(--space-xl);
+      inset-inline-end: var(--space-xl);
+      color: oklch(1 0 0);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-s);
+      transition: transform var(--transition-standard);
+
+      &:hover {
+          transform: rotate(90deg);
+      }
+  }
+}

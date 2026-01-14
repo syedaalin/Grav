@@ -1,20 +1,36 @@
-// Enhanced Footer JavaScript - Performance Optimized
-(function() {
-    'use strict';
-    
-    // Cache DOM elements
-    const bottomBanner = document.getElementById('bottom-banner');
-    if (!bottomBanner) return;
-    
-    const backToTop = bottomBanner.querySelector('[data-back-to-top]');
-    const accordionToggles = bottomBanner.querySelectorAll('[data-bottom-banner-toggle]');
-    
-    // Accordion Functionality with Event Delegation (Mobile Only)
-    if (accordionToggles.length > 0) {
+/**
+ * Enhanced Footer JavaScript - Performance Optimized
+ * NUR-UL-HUDA FRONTEND LOGIC - ES2025+
+ * Blueprint: [frontend-logic.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/frontend-logic.blueprint.md)
+ */
+
+export class BottomBanner {
+    #bottomBanner = null;
+    #backToTop = null;
+    #accordionToggles = [];
+
+    constructor() {
+        this.#bottomBanner = document.getElementById('bottom-banner');
+        if (!this.#bottomBanner) return;
+
+        this.#backToTop = this.#bottomBanner.querySelector('[data-back-to-top]');
+        this.#accordionToggles = this.#bottomBanner.querySelectorAll('[data-bottom-banner-toggle]');
+        
+        this.init();
+    }
+
+    init() {
+        this.#initAccordions();
+        this.#initBackToTop();
+    }
+
+    #initAccordions() {
+        if (this.#accordionToggles.length === 0) return;
+
         const isMobile = () => window.innerWidth < 768;
         
         // Single event listener for all toggles (event delegation pattern)
-        bottomBanner.addEventListener('click', function(e) {
+        this.#bottomBanner.addEventListener('click', (e) => {
             const toggle = e.target.closest('[data-bottom-banner-toggle]');
             if (!toggle || !isMobile()) return;
             
@@ -23,53 +39,77 @@
             
             // Toggle accordion
             toggle.setAttribute('aria-expanded', !isExpanded);
-            content.setAttribute('aria-hidden', isExpanded);
-            content.classList.toggle('active');
+            if (content) {
+                content.setAttribute('aria-hidden', isExpanded);
+                content.classList.toggle('active');
+            }
         });
         
         // Reset accordions on resize (debounced)
         let resizeTimeout;
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
+            resizeTimeout = setTimeout(() => {
                 if (!isMobile()) {
-                    accordionToggles.forEach(toggle => {
+                    this.#accordionToggles.forEach(toggle => {
                         toggle.setAttribute('aria-expanded', 'false');
                         const content = toggle.nextElementSibling;
-                        content.setAttribute('aria-hidden', 'false');
-                        content.classList.remove('active');
+                        if (content) {
+                            content.setAttribute('aria-hidden', 'false');
+                            content.classList.remove('active');
+                        }
                     });
                 }
             }, 150);
         }, { passive: true });
     }
-    
-    // Back to Top Button with IntersectionObserver (More Efficient)
-    if (backToTop) {
-        // Fallback to scroll listener if IntersectionObserver not supported
-        if ('IntersectionObserver' in window) {
-            // Create a sentinel element at 300px from top
-            const sentinel = document.createElement('div');
-            sentinel.style.cssText = 'position:absolute;top:300px;height:1px;width:1px;pointer-events:none;';
-            document.body.prepend(sentinel);
+
+    #initBackToTop() {
+        if (!this.#backToTop) return;
+
+        const circle = this.#backToTop.querySelector('.progress-ring-circle');
+        if (!circle) return;
+
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        
+        // Setup initial circle state
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        const updateProgress = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    backToTop.classList.toggle('visible', !entry.isIntersecting);
-                },
-                { threshold: 0 }
-            );
-            
-            observer.observe(sentinel);
-        } else {
-            // Fallback: scroll listener with debouncing
-            let scrollTimeout;
-            window.addEventListener('scroll', function() {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(function() {
-                    backToTop.classList.toggle('visible', window.scrollY > 300);
-                }, 100);
-            }, { passive: true });
-        }
+            // Toggle visibility
+            this.#backToTop.classList.toggle('visible', scrollTop > 300);
+
+            // Calculate progress
+            if (docHeight > 0) {
+                const scrollPercent = scrollTop / docHeight;
+                const offset = circumference - (scrollPercent * circumference);
+                circle.style.strokeDashoffset = offset;
+            }
+        };
+
+        // Throttled scroll listener
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        // Initial check
+        updateProgress();
     }
-})();
+}
+
+// Auto-initialize
+new BottomBanner();
+export default BottomBanner;
+

@@ -1,3 +1,8 @@
+{# 
+    NUR-UL-HUDA TNT SEARCH
+    ----------------------
+    Blueprint: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
+#}
 {% set url = url|default(base_url|rtrim('/') ~ '/' ~ config.get('plugins.tntsearch.query_route', 's')|trim('/')) %}
 {% set limit = limit|default(config.get('plugins.tntsearch.limit', 20)) %}
 {% set snippet = snippet|default(config.get('plugins.tntsearch.snippet', 300)) %}

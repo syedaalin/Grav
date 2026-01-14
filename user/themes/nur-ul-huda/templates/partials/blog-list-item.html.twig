@@ -1,9 +1,14 @@
+{# 
+    NUR-UL-HUDA BLOG LIST ITEM
+    --------------------------
+    Blueprint: [blog-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/blog-components.blueprint.md)
+#}
 <article class="blog-list-card" aria-labelledby="post-title-{{ page.slug }}">
-    {% set image = page.media.images|first %}
-    {% if image %}
+    {% set primary_image = page.media.images|first %}
+    {% if primary_image %}
     <div class="blog-list-image">
         <a href="{{ page.url }}" class="blog-list-image-link" aria-hidden="true" tabindex="-1">
-            {{ image.cropZoom(800,450).html('','','blog-list-img')|raw }}
+            {{ primary_image.cropZoom(800,450).html('','','blog-list-img')|raw }}
             <div class="blog-list-overlay"></div>
         </a>
         <div class="blog-list-date">

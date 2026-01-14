@@ -1,6 +1,10 @@
-var AdminUtils = (function() {
+/**
+ * Nur-ul-Huda Admin Utilities - ES2025+ Module
+ * Handles admin-specific interactions like the Glassmorphism reset.
+ */
+export default class AdminUtils {
     // Defaults
-    const DEFAULTS = {
+    #DEFAULTS = {
         'glass_blur': 25,
         'glass_opacity': 0.12,
         'glass_border_opacity': 0.15,
@@ -8,20 +12,34 @@ var AdminUtils = (function() {
         'glass_shadow_intensity': 0.10
     };
 
-    function initGlassReset() {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Run on DOMContentLoaded and load to ensure elements exist
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.#initGlassReset());
+        } else {
+            this.#initGlassReset();
+        }
+        window.addEventListener('load', () => this.#initGlassReset());
+    }
+
+    #initGlassReset() {
         const btn = document.getElementById('btn-reset-glass');
         if (!btn) return;
 
         const inputs = {};
-        Object.keys(DEFAULTS).forEach(key => {
+        Object.keys(this.#DEFAULTS).forEach(key => {
             inputs[key] = document.querySelector(`input[name="data[${key}]"]`);
         });
 
         const checkState = () => {
             let isDefault = true;
-            Object.keys(DEFAULTS).forEach(key => {
+            Object.keys(this.#DEFAULTS).forEach(key => {
                 const input = inputs[key];
-                if (input && parseFloat(input.value) !== DEFAULTS[key]) {
+                if (input && parseFloat(input.value) !== this.#DEFAULTS[key]) {
                     isDefault = false;
                 }
             });
@@ -52,9 +70,13 @@ var AdminUtils = (function() {
         // Initial check
         checkState();
 
-        btn.addEventListener('click', function(e) {
+        // Remove existing listeners to prevent duplicates if called multiple times (though constructor guarrds this usually)
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+
+        newBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (btn.hasAttribute('disabled')) return;
+            if (newBtn.hasAttribute('disabled')) return;
             
             // Helper to set value and trigger change
             const setVal = (name, val) => {
@@ -68,20 +90,13 @@ var AdminUtils = (function() {
             };
 
             // Set Premium Defaults
-            Object.entries(DEFAULTS).forEach(([key, val]) => setVal(key, val));
+            Object.entries(this.#DEFAULTS).forEach(([key, val]) => setVal(key, val));
             
             // Re-check state immediately
             checkState();
         });
     }
+}
 
-    return {
-        init: function() {
-            document.addEventListener('DOMContentLoaded', initGlassReset);
-            // Also run on window load in case DOMContentLoaded fired early
-            window.addEventListener('load', initGlassReset);
-        }
-    };
-})();
-
-AdminUtils.init();
+// Auto-initialize
+new AdminUtils();

@@ -1,0 +1,61 @@
+# Documentation: [sidebar.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/sidebar.blueprint.md)
+fields:
+  sidebar_enabled:
+    type: toggle
+    label: Enable Sidebar
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+
+  sidebar_widgets_order:
+    type: selectize
+    label: Widget Order
+    default: [search, related, random, taxonomy, archives, feed]
+    options:
+      search: Search Box
+      related: Related Pages
+      random: Random Articles
+      taxonomy: Popular Tags
+      archives: Monthly Archives
+      feed: Syndicate/Feeds
+    help: "Drag and drop to reorder sidebar widgets."
+
+  sidebar_search_enabled:
+    type: toggle
+    label: Show Search
+    width: 33%
+    default: 1
+
+  sidebar_related_enabled:
+    type: toggle
+    label: Show Related Pages
+    width: 33%
+    default: 1
+
+  sidebar_random_enabled:
+    type: toggle
+    label: Show Random Articles
+    width: 33%
+    default: 1
+
+  sidebar_taxonomy_enabled:
+    type: toggle
+    label: Show Taxonomy (Tags)
+    width: 33%
+    default: 1
+
+  sidebar_archives_enabled:
+    type: toggle
+    label: Show Archives
+    width: 33%
+    default: 1
+
+  sidebar_feed_enabled:
+    type: toggle
+    label: Show RSS/Feed
+    width: 33%
+    default: 1

@@ -1,0 +1,119 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+type: tab
+title: Header
+text: "Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)"
+fields:
+  header_intro:
+    type: display
+    content: Configure your site header and navigation
+    markdown: true
+
+  logos_section:
+    type: section
+    title: Link & Assets
+    underline: true
+
+  custom_logo:
+    type: file
+    label: Logo
+    style: vertical
+    width: 33%
+    size: large
+    destination: "theme://images/logo"
+    multiple: false
+    markdown: true
+    description: Your site logo
+    help: Upload your site logo
+    accept:
+      - image/*
+    validate:
+      method: 'Grav\Theme\NurUlHuda::validateLogo'
+
+  site_name:
+    type: text
+    label: Site Name
+    style: vertical
+    width: 33%
+    help: "Global Site Name (displayed in Header & Footer)"
+    placeholder: "Nur-ul-Huda"
+
+  site_tagline:
+    type: text
+    label: Site Tagline
+    style: vertical
+    width: 33%
+    help: "Short description of your site (displayed in Footer & Title)"
+    placeholder: "Guiding Light of Faith"
+
+  behavior_section:
+    type: section
+    title: Header Options
+    underline: true
+
+  header-fixed:
+    type: toggle
+    label: Fixed Header
+    style: vertical
+    width: 33%
+    help: Keep header visible when scrolling
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-animated:
+    type: toggle
+    label: Animated Header
+    style: vertical
+    width: 33%
+    help: Animate header on scroll
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-dark:
+    type: toggle
+    label: Dark Header
+    style: vertical
+    width: 33%
+    help: Use dark header style
+    highlight: 0
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header-transparent:
+    type: toggle
+    label: Transparent Header
+    style: vertical
+    width: 33%
+    help: Make header transparent
+    highlight: 0
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  header_styling_section:
+    type: section
+    title: Header Styling
+    underline: true
+
+  header_padding:
+    type: text
+    label: Vertical Padding
+    default: "1rem"
+    width: 100%
+    help: "e.g. 1rem, 16px"

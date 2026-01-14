@@ -13,6 +13,7 @@ export interface ThemeConfig {
     moodleUrl: string;
     location: string;
     adhanMedia?: string;
+    theme_url?: string;
 }
 
 export declare class ThemeUtils {
@@ -30,6 +31,7 @@ export declare const themeUtils: ThemeUtils;
 // Global window extensions
 declare global {
     interface Window {
+        GravConfig: ThemeConfig;
         themeUtils: ThemeUtils;
         PrayerTimesModule: any;
         HijriDateModule: any;

@@ -1,0 +1,28 @@
+# Documentation: [navigation.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/navigation.blueprint.md)
+title: Navigation Settings
+form:
+  fields:
+    dropdown.enabled:
+      type: toggle
+      label: Enable Dropdown Menus
+      style: vertical
+      width: 50%
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+      help: Enable or disable multi-level dropdown menus in the main navigation.
+
+    navigation_mobile_direction:
+      type: select
+      label: Mobile Menu Direction
+      style: vertical
+      width: 50%
+      default: left
+      options:
+        left: From Left
+        right: From Right
+      help: Choose which side the mobile menu slides in from.

@@ -1,3 +1,8 @@
+{# 
+    NUR-UL-HUDA MODULAR MASTER TEMPLATE
+    -----------------------------------
+    Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+#}
 {% extends 'partials/base.html.twig' %}
 
 
@@ -6,7 +11,7 @@
 {% block javascripts %}
 	{% if show_onpage_menu %}
 		{% do assets.addJs('theme://js/lib/singlepagenav.min.js', { 'priority': 100, 'group': 'bottom' }) %}
-		{% do assets.addJs('theme://js/modules/one-page-nav.js', { 'priority': 99, 'group': 'bottom' }) %}
+		{% do assets.addJs('theme://js/modules/one-page-nav.js', { 'priority': 99, 'group': 'bottom', 'type': 'module' }) %}
 	{% endif %}
 	{{ parent() }}
 {% endblock %}
@@ -20,7 +25,7 @@
 			{{ macros.nav_loop(pages) }}
 
 			{# 2. Modular Sections (Jump links for current page) #}
-			{% for module in page.collection() if module.header.visible is not same as(false) %}
+			{% for module in page.collection()|filter(m => m.header.visible is not same as(false)) %}
 				{% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
 				<li>
 					<a href="#{{ module.menu|hyphenize }}" class="nav-link {{ current_module == 'active' ? 'nav-link-active' : '' }}">
@@ -47,7 +52,7 @@
 {% endblock %}
 
 {% block hero %}
-	{% for module in page.collection() if module.template == 'modular/hero' %}
+	{% for module in page.collection()|filter(m => m.template == 'modular/hero') %}
 		<div id="{{ module.menu|hyphenize }}" class="modular-section-anchor">
 			{{ module.content|raw }}
 		</div>
@@ -56,7 +61,7 @@
 
 {% block body %}
 	<div class="modular-body-wrapper">
-		{% for module in page.collection() if module.template != 'modular/hero' %}
+		{% for module in page.collection()|filter(m => m.template != 'modular/hero') %}
 			<div id="{{ module.menu|hyphenize }}" class="modular-section-anchor section-py">
 				{{ module.content|raw }}
 			</div>

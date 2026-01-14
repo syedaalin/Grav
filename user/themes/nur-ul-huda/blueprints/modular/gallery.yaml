@@ -1,0 +1,44 @@
+# Documentation: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+title: Gallery
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            header.gallery.thumb.width:
+              type: number
+              label: Thumbnail Width
+              default: 800
+            header.gallery.thumb.height:
+              type: number
+              label: Thumbnail Height
+              default: 600
+
+            header.gallery.items:
+              type: list
+              label: Gallery Items
+              fields:
+                .image:
+                  type: filepicker
+                  folder: "self@"
+                  label: Image
+                  preview_images: true
+                  accept:
+                    - image/*
+                .title:
+                  type: text
+                  label: Title/Caption
+                .desc:
+                  type: textarea
+                  label: Description (Markdown)

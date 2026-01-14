@@ -1,0 +1,47 @@
+# Documentation: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
+title: Istafta (Q&A)
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            content:
+              type: markdown
+              validate:
+                type: textarea
+
+            header.form_title:
+              type: text
+              label: Sidebar Form Title
+              default: "Ask a Scholar"
+
+            header.anonymous_toggle:
+              type: toggle
+              label: Show Anonymous Badge
+              highlight: 1
+              default: 1
+              options:
+                1: Enabled
+                0: Disabled
+
+            header.questions:
+              type: list
+              label: Questions & Answers
+              fields:
+                .question:
+                  type: text
+                  label: Question
+                .answer:
+                  type: textarea
+                  label: Answer (Markdown)

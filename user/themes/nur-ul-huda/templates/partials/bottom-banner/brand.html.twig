@@ -1,0 +1,20 @@
+{# Strip 1: Brand #}
+<div class="bottom-banner-header">
+    <div class="bottom-banner-brand-column">
+        <hgroup class="bottom-banner-brand-header">
+            {% if bottom_banner.logo and bottom_banner.show_logo %}
+                <a href="{{ home_url }}" class="bottom-banner-logo-link" aria-label="{{ bottom_banner.site_name }}">
+                    <img src="{{ url(bottom_banner.logo) }}" alt="{{ bottom_banner.site_name }}" class="bottom-banner-logo" width="80" height="auto" loading="lazy">
+                </a>
+            {% endif %}
+
+            {% if bottom_banner.show_site_name %}
+                <h2 class="bottom-banner-brand-title">{{ bottom_banner.site_name }}</h2>
+            {% endif %}
+
+            {% if bottom_banner.site_tagline and bottom_banner.show_tagline %}
+                <p class="bottom-banner-brand-tagline">{{ bottom_banner.site_tagline }}</p>
+            {% endif %}
+        </hgroup>
+    </div>
+</div>

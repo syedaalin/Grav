@@ -1,0 +1,31 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+type: tab
+title: Bottom Banner
+text: "Blueprint: [bottom-banner.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/bottom-banner.blueprint.md)"
+fields:
+  bottom_banner_header_section:
+    type: section
+    title: Header & Site Identity
+    underline: true
+
+  import@: partials/bottom-banner
+
+  bottom_banner_newsletter_section:
+    type: section
+    title: Newsletter Strip
+    underline: true
+
+  import@: partials/newsletter
+
+  bottom_banner_widgets_section:
+    type: section
+    title: Banner Arrangement
+    underline: true
+
+  bottom_banner_social_section:
+    type: section
+    title: Social Connectivity & Icons
+    text: "Blueprint: [social-icons.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/social-icons.blueprint.md)"
+    underline: true
+
+  import@: partials/social-icons

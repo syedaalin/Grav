@@ -1,3 +1,8 @@
+{# 
+    NUR-UL-HUDA TAXONOMY LIST
+    -------------------------
+    Blueprint: [discovery.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/discovery.blueprint.md)
+#}
 {% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page, children_only) : taxonomylist.get() %}
 
 {% if taxlist %}

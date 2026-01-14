@@ -1,0 +1,185 @@
+type: tab
+title: Components
+fields:
+  components_intro:
+    type: section
+    title: Components
+    text: "General Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md) | Interactive: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)"
+    underline: true
+
+  hero_section:
+    type: section
+    title: Hero Section
+    text: "Blueprint: [hero.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/hero.blueprint.md)"
+    underline: true
+
+  import@: partials/hero
+
+  services_section:
+    type: section
+    title: Services Section
+    text: "Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)"
+    underline: true
+
+  services_enabled:
+    type: toggle
+    label: Enable Services
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  services_default_columns:
+    type: select
+    label: Default Columns
+    style: vertical
+    width: 33%
+    default: 3
+    options:
+      2: 2 Columns
+      3: 3 Columns
+      4: 4 Columns
+
+  features_section:
+    type: section
+    title: Features Section
+    text: "Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)"
+    underline: true
+
+  features_enabled:
+    type: toggle
+    label: Enable Features
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  features_default_layout:
+    type: select
+    label: Default Layout
+    style: vertical
+    width: 33%
+    default: standard
+    options:
+      small: Small
+      standard: Standard
+
+  gallery_section:
+    type: section
+    title: Gallery Section
+    underline: true
+
+  gallery_enabled:
+    type: toggle
+    label: Enable Gallery
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  istafta_section:
+    type: section
+    title: Istafta Section
+    underline: true
+
+  istafta_enabled:
+    type: toggle
+    label: Enable Istafta
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  khums_section:
+    type: section
+    title: Khums Calculator
+    text: "Interactive Blueprint: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)"
+    underline: true
+
+  khums_enabled:
+    type: toggle
+    label: Enable Khums
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  timeline_section:
+    type: section
+    title: Timeline Section
+    text: "Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)"
+    underline: true
+
+  timeline_enabled:
+    type: toggle
+    label: Enable Timeline
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  trust_signals_section:
+    type: section
+    title: Trust Signals
+    underline: true
+
+  trust_signals_enabled:
+    type: toggle
+    label: Enable Trust Signals
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  courses_section:
+    type: section
+    title: Courses Section
+    underline: true
+
+  courses_enabled:
+    type: toggle
+    label: Enable Courses
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool

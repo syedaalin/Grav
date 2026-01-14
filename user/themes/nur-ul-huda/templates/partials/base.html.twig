@@ -48,17 +48,7 @@
 			name="apple-mobile-web-app-title" content="{{ site.title }}">
 
 			{# Service Worker Registration #}
-			<script>
-				if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('{{ theme_url }}/sw.js').then((registration) => {
-console.log('SW registered:', registration);
-}).catch((error) => {
-console.log('SW registration failed:', error);
-});
-});
-}
-			</script>
+
 
 
 		{% endblock head %}
@@ -69,20 +59,30 @@ console.log('SW registration failed:', error);
 		{% endblock %}
 
 		{% block javascripts %}
-			{% do assets.addJs('jquery', 101) %}
+			{# jQuery removed - Modern Vanilla Transition #}
+			{# {% do assets.addJs('jquery', 101) %} #}
+			
+			{# Core ES Modules #}
 			{% do assets.addJs('theme://js/modules/khums-calculator.js', {'priority': 100, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/ui.js', {'priority': 95, 'group': 'bottom', 'type': 'module'}) %}
-			{% do assets.addJs('theme://js/modules/utils.js', 95) %}
-			{% do assets.addJs('theme://js/modules/performance-monitor.js', 94) %}
-			{% do assets.addJs('theme://js/modules/pull-refresh.js', 94) %}
-			{% do assets.addJs('theme://js/modules/gallery.js', 93) %}
-			{% do assets.addJs('theme://js/modules/high-contrast.js', 89) %}
-			{% do assets.addJs('theme://js/modules/font-scaler.js', 89) %}
-			{% do assets.addJs('theme://js/modules/bottom-banner.js', 89) %}
-			{% do assets.addJs('theme://js/modules/prayer-times.js', 89) %}
-			{% do assets.addJs('theme://js/modules/hijri-date.js', 89) %}
-			{% do assets.addJs('theme://js/modules/adhan-player.js', 89) %}
-			{% do assets.addJs('theme://js/modules/spiritual.js', 88) %}
+			
+			{# Performance & Features #}
+			{% do assets.addJs('theme://js/modules/performance-monitor.js', {'priority': 94, 'group': 'bottom', 'type': 'module'}) %}
+			{% do assets.addJs('theme://js/modules/pull-refresh.js', {'priority': 94, 'group': 'bottom', 'type': 'module'}) %}
+			{% do assets.addJs('theme://js/modules/gallery.js', {'priority': 93, 'group': 'bottom', 'type': 'module'}) %}
+			
+			{# Accessibility #}
+			{% do assets.addJs('theme://js/modules/high-contrast.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
+			{% do assets.addJs('theme://js/modules/font-scaler.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
+			
+			{# Layout Logic #}
+			{% do assets.addJs('theme://js/modules/bottom-banner.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
+			
+			{# Spiritual Logic (Orchestrator imports its own dependencies) #}
+			{% do assets.addJs('theme://js/modules/spiritual.js', {'priority': 88, 'group': 'bottom', 'type': 'module'}) %}
+			
+			{# Service Worker #}
+			{% do assets.addJs('theme://js/modules/service-worker.js', {'priority': 87, 'group': 'bottom', 'type': 'module'}) %}
 		{% endblock %}
 
 		{% block assets deferred %}
@@ -92,128 +92,21 @@ console.log('SW registration failed:', error);
 	</head>
 	<body
 		id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}">
-		{# ROOT DIAGNOSTIC - BASE TEMPLATE ENTRY #}
-		<div id="root-debug-base" style="position: fixed; top: 40px; right: 0; background: orange; color: black; padding: 10px; z-index: 1000000; font-family: monospace; font-size: 14px; border: 2px solid black; font-weight: bold; pointer-events: none;">
-			ROOT_BASE_LOADED | FILE: partials/base.html.twig
-		</div>
+
 		<div
 			id="page-wrapper">
 			{# Skip Link for Accessibility #}
 			<a href="#start" class="skip-link">Skip to main content</a>
 
-			{% block header %}
-				{# Top Banner (FORCED INCLUSION FOR DEBUG) #}
-				<div class="header-top-sticky" style="display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; min-height: 2.75rem !important;">
-					{% include 'partials/top-banner.html.twig' %}
-				</div>
 
-				{# Main Header (Smart Sticky, Z-50) #}
-				<header id="header" class="header-main-sticky" role="banner">
-
-					<div class="container container-px header-spacing">
-						<nav
-							class="header-nav" aria-label="Main navigation">
-
-							{# ZONE A: Mobile Toggle / Desktop Logo #}
-							<div
-								class="header-zone-a">
-								{# Mobile Toggle #}
-								<button id="mobile-toggle" class="mobile-toggle" aria-label="Open navigation menu" aria-controls="mobile-overlay" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-									</svg>
-								</button>
-
-								{# Desktop Logo #}
-								<div class="desktop-only logo-hover">
-									{% include 'partials/logo.html.twig' %}
-								</div>
-							</div>
-
-							{# ZONE B: Mobile Logo / Desktop Navigation #}
-							<div
-								class="header-zone-b">
-								{# Mobile Logo (Centered) #}
-								<div class="mobile-only logo-hover">
-									{% include 'partials/logo.html.twig' with {mobile: true} %}
-								</div>
-
-								{# Desktop Navigation #}
-								<nav id="desktop-nav" class="desktop-nav">
-									{% block header_navigation %}
-										{% include 'partials/navigation.html.twig' %}
-									{% endblock %}
-								</nav>
-							</div>
-
-							{# ZONE C: User Actions #}
-							<div
-								class="header-zone-c">
-
-								{# Search Trigger #}
-								<button id="search-trigger" class="icon-button desktop-only" aria-label="Open search">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-									</svg>
-								</button>
-
-
-								{# User Account #}
-								{% if config.plugins.login.enabled and grav.user.username %}
-									<a href="{{ url('theme://dashboard') }}" class="btn-dashboard desktop-only" aria-label="Go to Dashboard">
-										<span>Dashboard</span>
-									</a>
-								{% else %}
-									{% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
-									<a href="{{ login_url }}" class="btn-login desktop-only" aria-label="Log in to your account">
-										Login
-									</a>
-								{% endif %}
-							</div>
-						</nav>
-					</div>
-				</header>
-
-				{# Mobile Off-Canvas Menu #}
-				{# Mobile Off-Canvas Menu #}
-				<div
-					id="mobile-menu-wrapper" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-
-					{# Backdrop #}
-					<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
-
-					{# Sidebar #}
-					<div id="mobile-sidebar" class="mobile-sidebar">
-
-						<div
-							class="mobile-sidebar-inner">
-							{# Overlay Content #}
-							<div
-								class="mobile-sidebar-content">
-								{# Mobile Nav #}
-								<nav class="mobile-nav stack-s animate-fade-in-up delay-100">
-									{% include 'partials/navigation.html.twig' with {mobile: true} %}
-								</nav>
-							</div>
-
-							{# Overlay Footer #}
-							<div class="mobile-sidebar-footer animate-fade-in-up delay-200">
-								<h4 class="mobile-footer-title">Follow Our Journey</h4>
-								<div class="social-icons-grid">
-									{% for platform in ['facebook', 'twitter', 'instagram', 'youtube'] %}
-										{% set social_url = theme_var('social_' ~ platform) %}
-										{% if social_url %}
-											<a href="{{ social_url }}" target="_blank" class="social-icon" aria-label="{{ platform|capitalize }}">
-												<i class="lab la-{{ platform == 'facebook' ? 'facebook-f' : platform }}"></i>
-											</a>
-										{% endif %}
-									{% endfor %}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			{% endblock %}
+				{# 
+                   --- HEADER SECTION START --- 
+                   Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+                #}
+				{% block header %}
+					{% include 'partials/header-wrapper.html.twig' %}
+					{% include 'partials/mobile-menu.html.twig' %}
+				{% endblock %}
 
 
 			{% block hero %}{% endblock %}
@@ -234,27 +127,10 @@ console.log('SW registration failed:', error);
 			</section>
 
 			{% block footer %}
-				{% include 'partials/bottom-banner.html.twig' %}
+				{% include 'partials/bottom-banner/main.html.twig' %}
 			{% endblock %}
 
-			{# Search Overlay #}
-			<div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Search">
-
-				<button id="search-close" class="search-close-button">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-xl">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-					</svg>
-					<span class="sr-only">Close search</span>
-				</button>
-
-				<div class="search-container" id="search-container">
-					<h2 class="search-title desktop-only">Search Resources</h2>
-					{% include 'partials/tntsearch.html.twig' %}
-					<p class="desktop-only search-hint">Press
-						<kbd class="kbd">ESC</kbd>
-						to close</p>
-				</div>
-			</div>
+			{% include 'partials/search-overlay.html.twig' %}
 		</div>
 
 		{% block bottom %}
@@ -262,8 +138,8 @@ console.log('SW registration failed:', error);
 			{% include 'partials/snipcart.html.twig' %}
 
 			{# Pass theme config to JavaScript #}
-			<script id="theme-config" type="application/json">
-				{{ theme_js_config|json_encode|raw }}
+			<script>
+				window.GravConfig = {{ theme_js_config|default({})|merge({'theme_url': theme_url})|json_encode|raw }};
 			</script>
 		{% endblock %}
 	</body>

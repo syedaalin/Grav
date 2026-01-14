@@ -1,0 +1,50 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+type: tab
+title: Integrations & Advanced
+text: "Blueprint: [integrations.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/integrations.blueprint.md)"
+fields:
+  moodle_section:
+    type: section
+    title: Moodle LMS
+    underline: true
+
+  moodle_url:
+    type: text
+    label: Moodle URL
+    style: vertical
+    width: 33%
+    placeholder: https://moodle.yoursite.com
+
+  moodle_token:
+    type: password
+    label: Web Service API Token
+    style: vertical
+    width: 33%
+
+  commerce_section:
+    type: section
+    title: Headless Commerce
+    underline: true
+
+  snipcart_key:
+    type: text
+    label: Snipcart Public API Key
+    style: vertical
+    width: 33%
+
+  payment_section:
+    type: section
+    title: Payment Gateways
+    underline: true
+
+  jazzcash_merchant:
+    type: text
+    label: JazzCash Merchant ID
+    style: vertical
+    width: 33%
+
+  jazzcash_salt:
+    type: password
+    label: JazzCash Integrity Salt
+    style: vertical
+    width: 33%

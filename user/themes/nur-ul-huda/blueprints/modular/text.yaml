@@ -1,0 +1,39 @@
+# Documentation: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+title: Text Block
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            header.class:
+              type: text
+              label: Custom CSS Class
+
+            header.image_align:
+              type: select
+              label: Image Alignment
+              options:
+                align-right: Image Right
+                align-left: Image Left
+              default: align-right
+
+            content:
+              type: markdown
+              validate:
+                type: textarea
+
+            header.media_order:
+              type: pagemedia
+              label: Featured Image
+              description: Upload an image here to display it alongside the text.

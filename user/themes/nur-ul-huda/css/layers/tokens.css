@@ -133,10 +133,10 @@
     /* ========================================
        Icon Sizes
        ======================================== */
-    --icon-sm: 1rem;
-    --icon-md: 1.25rem;
-    --icon-lg: 1.75rem;
-    --icon-xl: 2rem;
+    --icon-sm: 0.75rem;
+    --icon-md: 1rem;
+    --icon-lg: 1.25rem;
+    --icon-xl: 1.5rem;
     
     /* ========================================
        Border Radius Tokens

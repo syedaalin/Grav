@@ -1,0 +1,202 @@
+@layer components {
+  /* ========================================
+     Card Components
+     ======================================== */
+  
+  @scope (.glass-card) {
+    :scope {
+      background-image: var(--glass-surface), var(--glass-noise);
+      background-blend-mode: overlay, normal;
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      transition: all var(--transition-smooth);
+      
+      /* Specular Highlight on Hover */
+      &:hover {
+        background-image: 
+          linear-gradient(135deg, oklch(1 0 0 / 0.7), oklch(1 0 0 / 0.5)),
+          var(--glass-noise);
+        box-shadow: 
+          0 20px 25px -5px oklch(0 0 0 / 0.1), 
+          0 10px 10px -5px oklch(0 0 0 / 0.04),
+          inset 0 1px 0 0 oklch(1 0 0 / 0.6);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  @scope (.card-gradient) {
+    :scope {
+      background: linear-gradient(135deg, oklch(1 0 0 / 0.8), oklch(1 0 0 / 0.4));
+      border: 1px solid oklch(1 0 0);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-2xl);
+    }
+  }
+
+  @scope (.child-list-grid) {
+      :scope {
+          display: grid;
+          gap: var(--space-2xl);
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      }
+  }
+  
+  @scope (.child-card) {
+      :scope {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          background: var(--color-surface, oklch(1 0 0));
+          border: 1px solid var(--color-border-subtle);
+          transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+          text-decoration: none;
+          color: inherit;
+          
+          &:hover {
+              transform: translateY(-5px);
+              box-shadow: var(--shadow-xl);
+          }
+      }
+      
+      .child-card-bg {
+          aspect-ratio: 16/9;
+          overflow: hidden;
+          
+          img {
+              inline-size: 100%;
+              block-size: 100%;
+              object-fit: cover;
+              transition: transform 500ms var(--transition-smooth);
+          }
+      }
+      
+      &:hover .child-card-bg img {
+          transform: scale(1.05);
+      }
+      
+      .child-card-content {
+          padding: var(--space-2xl);
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-m);
+          flex: 1;
+      }
+      
+      .child-card-icon {
+          font-size: var(--font-size-xl);
+          color: var(--color-primary);
+      }
+      
+      .child-card-title {
+          font-size: var(--font-size-xl);
+          font-weight: 800;
+          line-height: 1.2;
+          margin: 0;
+      }
+      
+      .child-card-label {
+          margin-block-start: auto;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--color-primary);
+          display: flex;
+          align-items: center;
+          gap: var(--space-s);
+          font-size: var(--font-size-sm);
+      }
+  }
+  
+  @scope (.child-card-glow) {
+    :scope {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 100%, oklch(from var(--color-primary) l c h / 0.1), transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  /* ========================================
+     Lightbox Fallback
+     ======================================== */
+  
+  @scope (.lightbox-fallback) {
+    :scope {
+      position: relative;
+      background-color: var(--color-surface-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border-subtle);
+      transition: all var(--transition-smooth);
+      cursor: pointer;
+    }
+    
+    :scope:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-xl);
+    }
+    
+    img {
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+        transition: transform 500ms var(--transition-smooth);
+    }
+    
+    :scope:hover img {
+        transform: scale(1.05);
+    }
+    
+    .fallback-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        -webkit-backdrop-filter: blur(0);
+        backdrop-filter: blur(0);
+        transition: all 500ms;
+        
+        .lightbox-fallback:hover & {
+             background-color: oklch(from var(--color-primary) l c h / 0.4);
+             -webkit-backdrop-filter: blur(4px);
+             backdrop-filter: blur(4px);
+        }
+    }
+    
+    .fallback-icon {
+        inline-size: 3.5rem;
+        block-size: 3.5rem;
+        border-radius: var(--radius-full);
+        background-color: oklch(1 0 0 / 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 500ms 100ms;
+        box-shadow: var(--shadow-xl);
+        
+        .lightbox-fallback:hover & {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        i {
+            font-size: var(--font-size-xl);
+            color: var(--color-primary);
+        }
+    }
+  }
+}

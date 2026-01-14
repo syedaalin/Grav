@@ -1,5 +1,11 @@
 {# Snipcart Integration Partial #}
-{% if theme_var('snipcart_key') %}
+{# 
+    NUR-UL-HUDA SNIPCART
+    --------------------
+    Blueprint: [integrations.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/integrations.blueprint.md)
+#}
+{% set snipcart_key = theme_var('snipcart_key') %}
+{% if snipcart_key %}
     <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="{{ theme_var('snipcart_key') }}" data-config-modal-style="side"></div>
+    <div hidden id="snipcart" data-api-key="{{ snipcart_key }}" data-config-modal-style="side"></div>
 {% endif %}

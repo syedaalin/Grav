@@ -1,0 +1,34 @@
+# Documentation: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+title: Trust Signals
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            header.signals:
+              type: list
+              label: Trust Signals
+              fields:
+                .title:
+                  type: text
+                  label: Statistic Value (e.g. 500+)
+                .text:
+                  type: text
+                  label: Label (e.g. Students)
+                .icon:
+                  type: text
+                  label: Icon Class (LineAwesome)
+                .color:
+                  type: colorpicker
+                  label: Icon/Bg Color

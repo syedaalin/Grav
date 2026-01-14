@@ -77,22 +77,25 @@ readonly class JazzCashHandler
 
     protected function verifyHash(array $post, string $salt): bool
     {
-        if (!isset($post['pp_SecureHash'])) {
+        $response_hash = (string)($post['pp_SecureHash'] ?? '');
+        if (empty($response_hash)) {
             return false;
         }
 
-        $response_hash = (string)$post['pp_SecureHash'];
         unset($post['pp_SecureHash']);
         \ksort($post);
 
         $hash_string = $salt;
         foreach ($post as $key => $value) {
-            if ($value != '') {
-                $hash_string .= '&' . $value;
+            $val = (string)$value;
+            if ($val !== '') {
+                $hash_string .= '&' . $val;
             }
         }
 
-        $expected_hash = \hash_hmac('sha256', $hash_string, $salt) |> \strtoupper(...);
+        $expected_hash = \hash_hmac('sha256', $hash_string, $salt);
+        $expected_hash = \strtoupper($expected_hash);
+
         return \hash_equals($expected_hash, $response_hash);
     }
 

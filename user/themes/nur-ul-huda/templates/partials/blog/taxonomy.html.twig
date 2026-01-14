@@ -1,3 +1,8 @@
+{# 
+    NUR-UL-HUDA BLOG TAXONOMY
+    -------------------------
+    Blueprint: [blog-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/blog-components.blueprint.md)
+#}
 {% if page.taxonomy.tag %}
 <div class="blog-tags {{ classes|default('') }}">
     {% for tag in page.taxonomy.tag %}
@@ -8,4 +13,3 @@
     {% endfor %}
 </div>
 {% endif %}
-

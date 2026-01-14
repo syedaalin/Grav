@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Grav\Theme\NurUlHuda\Services;
 
+use Grav\Common\Grav;
+
 readonly class MoodleApiClient
 {
     /**
@@ -28,14 +30,17 @@ readonly class MoodleApiClient
             |> (static fn($u) => $u . '/webservice/rest/server.php')(...)
             |> (static fn($u) => $u . '?' . \http_build_query($params))(...);
 
-            $response = @\file_get_contents($full_url);
+            // Use Grav's Guzzle client for better reliability
+            $client = Grav::instance()['httpClient'];
+            $response = $client->get($full_url);
 
-            if ($response === false) {
+            if ($response->getStatusCode() !== 200) {
                 return null;
             }
 
-            return (array)\json_decode($response, true);
+            return (array)\json_decode((string)$response->getBody(), true);
         } catch (\Exception $e) {
+            Grav::instance()['log']->error('Moodle API Error: ' . $e->getMessage());
             return null;
         }
     }

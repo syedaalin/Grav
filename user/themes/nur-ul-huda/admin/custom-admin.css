@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Nur-ul-Huda Custom Admin Styles
+   ========================================================================== */
+
+/* 
+   This file is loaded in the Grav Admin panel to style theme-specific fields
+   or override default admin styles. 
+*/
+
+/* Example: Style the tab headers */
+.tab-bar li.active span {
+    border-bottom: 2px solid var(--color-primary, #3b82f6);
+}

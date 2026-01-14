@@ -1,0 +1,52 @@
+# Documentation: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
+title: Featured Courses
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            content:
+              type: markdown
+              validate:
+                type: textarea
+
+            header.course_source:
+              type: select
+              label: Course Source
+              options:
+                manual: Manual Input
+                moodle: Moodle Integration
+              default: manual
+
+            header.courses:
+              type: list
+              label: Featured Courses
+              style: vertical
+              fields:
+                .title:
+                  type: text
+                  label: Course Title
+                .instructor:
+                  type: text
+                  label: Instructor Name
+                .thumbnail:
+                  type: filepicker
+                  folder: "self@"
+                  label: Thumbnail Image
+                  preview_images: true
+                  accept:
+                    - image/*
+                .url:
+                  type: text
+                  label: Course URL

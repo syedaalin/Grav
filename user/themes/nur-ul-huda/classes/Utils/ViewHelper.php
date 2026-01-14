@@ -5,175 +5,61 @@ declare(strict_types=1);
 namespace Grav\Theme\NurUlHuda\Utils;
 
 use Grav\Common\Grav;
-use Grav\Common\Config\Config;
+use Grav\Common\Theme;
+use Grav\Theme\NurUlHuda;
 
+/**
+ * SRP: Responsibility for preparing and injecting variables into the Twig environment.
+ * Acts as a bridge between the Theme class and the template layer.
+ */
 readonly class ViewHelper
 {
-    /**
-     * @return array<string, string>
-     */
-    public static function getFormClasses(): array
+    public static function prepareTwigVariables(Grav $grav, NurUlHuda $theme): void
     {
-        $csrfTokenName = '';
-        $csrfTokenValue = '';
-
-        // Only generate CSRF token if Grav is initialized and session is available
-        try {
-            $grav = Grav::instance();
-            if ($grav && isset($grav['session']) && $grav['session']->isStarted()) {
-                $csrf = new \Grav\Theme\NurUlHuda\Utils\CsrfTokenManager();
-                $tokenData = $csrf->getTokenData();
-                $csrfTokenName = $tokenData['name'];
-                $csrfTokenValue = $tokenData['value'];
-            }
-        } catch (\Exception $e) {
-            // Silently fail if CSRF token generation fails
-        }
-
-        return [
-            'form_button_outer_classes' => 'form-actions',
-            'form_button_classes' => 'btn-primary',
-            'form_errors_classes' => 'form-error',
-            'form_field_outer_classes' => 'form-field-outer',
-            'form_field_outer_label_classes' => 'form-label',
-            'form_field_label_classes' => 'form-label-inner',
-            'form_field_input_classes' => 'form-input',
-            'form_field_textarea_classes' => 'form-textarea',
-            'form_field_select_classes' => 'form-select',
-            'form_field_radio_classes' => 'form-radio',
-            'form_field_checkbox_classes' => 'form-checkbox',
-            'csrf_token_name' => $csrfTokenName,
-            'csrf_token_value' => $csrfTokenValue
-        ];
-    }
-
-
-    /**
-     * @param Config|array $gravConfig
-     * @param array $extra
-     * @return array
-     */
-    public static function getThemeConfig(mixed $gravConfig, array $extra = []): array
-    {
-        $header = $gravConfig ?: [];
-
-        return array_merge([
-            'numberFormat' => $header['number_format'] ?? 'western',
-            'dateCalendar' => $header['date_calendar'] ?? 'gregorian',
-            'direction' => $header['direction'] ?? 'ltr',
-            'language' => 'en',
-            'prayerMethod' => $header['prayer_method'] ?? 'tehran',
-            'hijriOffset' => $header['hijri_offset'] ?? 0,
-            'snipcartKey' => $header['snipcart_key'] ?? '',
-            'moodleUrl' => $header['moodle_url'] ?? '',
-            'location' => $header['default_location'] ?? 'Karachi',
-        ], $extra);
-    }
-
-    public static function getAdhanUrl(Grav $grav, mixed $config): string
-    {
-        if (empty($config['adhan_media'])) {
-            return '';
-        }
-
-        $media = \reset($config['adhan_media']); // Get first media item
-        if (!$media) {
-            return '';
-        }
-
-        // Use Twig to generate the URL reliably as it handles base_url and rewrite logic best
         /** @var \Grav\Common\Twig\Twig $twig */
         $twig = $grav['twig'];
-        return (string) $twig->processString("{{ url('theme://media/" . $media->name . "') }}");
-    }
+        $config = $theme->config();
 
-    /**
-     * @param array|Config $config
-     * @return array<string>
-     */
-    public static function getDynamicStyles(mixed $config): array
-    {
-        $styles = [];
-
-        // If these variables are not set in the admin, we allow the CSS @theme defaults to take over
-        // However, if they ARE set, we inject them into the style tag overrides.
-        if (!empty($config['primary_spirit_color'])) {
-            $styles[] = "--color-primary: {$config['primary_spirit_color']}";
+        // 1. Service Data (Moodle)
+        if (!empty($config['moodle_url']) && !empty($config['moodle_token'])) {
+            $courses = $theme->moodle->fetchCourses((string)$config['moodle_url'], (string)$config['moodle_token']);
+            $twig->twig_vars['moodle_courses'] = $courses;
         }
 
-        if (!empty($config['accent_color'])) {
-            $styles[] = "--color-accent: {$config['accent_color']}";
-        }
-
-        // Blur is an exception where we likely always want a value, defaulting to 12 if missing
-        // Consolidated to use glass_blur (default 16) instead of duplicate blur_strength
-        $styles[] = ($config['glass_blur'] ?? 16)
-        |> (fn($v) => is_numeric($v) ? "{$v}px" : $v)(...)
-        |> (fn($v) => "--blur-strength: {$v}")(...);
-
-        // Glassmorphism (2026 Dynamic Configuration)
-        $glassBg = $config['glass_bg_color'] ?? '#ffffff';
-
-        // Opacity (0-100 -> 0.0-1.0)
-        $glassOpacity = ($config['glass_opacity'] ?? 65)
-        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
-
-        // Blur (px)
-        $glassBlur = ($config['glass_blur'] ?? 16)
-        |> (fn($v) => is_numeric($v) ? "{$v}px" : $v)(...);
-
-        // Border Opacity
-        $glassBorderOp = ($config['glass_border_opacity'] ?? 15)
-        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
-
-        // Highlight Opacity
-        $glassHighlightOp = ($config['glass_highlight'] ?? 40)
-        |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
-
-        // Noise Texture
-        $enableNoise = $config['glass_noise'] ?? true;
-        // SVG Data URI for Noise
-        $noiseUrl = 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.05\'/%3E%3C/svg%3E")';
-
-        $glassNoise = $enableNoise ? $noiseUrl : 'none';
-
-        $styles[] = "--glass-bg: {$glassBg}";
-        $styles[] = "--glass-opacity: {$glassOpacity}"; // Updated variable name to match token
-        $styles[] = "--glass-blur: {$glassBlur}";
-        $styles[] = "--glass-border: 1px solid oklch(1 0 0 / {$glassBorderOp})";
-        $styles[] = "--glass-highlight: oklch(1 0 0 / {$glassHighlightOp})";
-        $styles[] = "--glass-noise: {$glassNoise}";
-
-        // Regenerate Surface Gradient dynamically
-        $styles[] = "--glass-surface: linear-gradient(135deg, oklch(from {$glassBg} l c h / {$glassOpacity}), oklch(from {$glassBg} l c h / " . ($glassOpacity * 0.7) . "))";
-
-        // Dynamic Header Styling
-        $headerPadding = $config['header_padding'] ?? '1rem';
-        $styles[] = "--header-padding: {$headerPadding}";
-
-        return $styles;
-    }
-
-    /**
-     * @param array|Config $config
-     * @param array $staticData
-     * @return array
-     */
-    public static function getSchemaUtils(mixed $config, array $staticData): array
-    {
-        $socials = [];
-        foreach (['facebook', 'twitter', 'instagram', 'youtube', 'telegram', 'whatsapp'] as $platform) {
-            if (!empty($config["social_{$platform}"])) {
-                $socials[] = $config["social_{$platform}"];
-            }
-        }
-
-        return [
-            'orgName' => $staticData['site_name'],
-            'phone' => $config['contact_phone'] ?? null,
-            'email' => $config['social_email'] ?? null,
-            'address' => isset($config['contact_address']) ? \str_replace("\n", ", ", (string)$config['contact_address']) : null,
-            'socials' => $socials
+        // 2. Global JS/Theme Config
+        $extraConfig = [
+            'language' => $grav['language']->getActive() ?: 'en',
+            'adhanMedia' => ThemeHelper::getAdhanUrl($grav, $config),
+            'fonts' => [
+                'heading' => $config['font_heading'] ?? "'Outfit', sans-serif",
+                'body' => $config['font_body'] ?? "'Inter', sans-serif",
+                'custom_css' => FontHelper::getCustomFontsCss($config)
+            ]
         ];
+
+        $twig->twig_vars['theme_js_config'] = ThemeHelper::getThemeConfig($config, $extraConfig);
+        $twig->twig_vars['theme_fonts'] = $extraConfig['fonts'];
+
+        // 3. Dynamic CSS Styles
+        $twig->twig_vars['dynamic_styles'] = implode('; ', StyleHelper::getDynamicStyles($config));
+
+        // 4. Component & Layout Data
+        $siteName = $grav['config']->get('site.title');
+        if (!empty($config['site_name'])) {
+            $siteName = $config['site_name'];
+        }
+
+        $twig->twig_vars['schema_data'] = SchemaHelper::getSchemaData($config, ['site_name' => $siteName]);
+        $twig->twig_vars['top_banner'] = TopBannerHelper::getData($config);
+        $twig->twig_vars['bottom_banner'] = BottomBannerHelper::getData($config);
+        $twig->twig_vars['social_icons'] = SocialHelper::getSocialData($config);
+        $twig->twig_vars['sidebar'] = LayoutHelper::getSidebarData($config);
+        $twig->twig_vars['logo'] = MediaHelper::getLogoData($config, $grav['pages']->dispatch('/')->media());
+
+        // 5. Page-Specific Data (Hero)
+        $page = $grav['page'];
+        if ($page && (isset($page->header()->hero_image) || isset($page->header()->hero_video))) {
+            $twig->twig_vars['hero'] = MediaHelper::getHeroData((array)$page->header(), $page->media());
+        }
     }
 }

@@ -1,0 +1,128 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+type: tab
+title: General Settings
+fields:
+  global_section:
+    type: section
+    title: Global Settings
+    underline: true
+
+  direction:
+    type: toggle
+    label: Text Direction
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: ltr
+    options:
+      ltr: LTR
+      rtl: RTL
+    help: Controls text direction for the entire site
+
+  language:
+    type: select
+    label: Primary Language
+    style: vertical
+    width: 33%
+    default: en
+    options:
+      en: English
+      ar: Arabic (العربية)
+      ur: Urdu (اردو)
+      fa: Persian (فارسی)
+    help: Sets the lang attribute for accessibility and SEO
+
+  number_format:
+    type: select
+    label: Number Format
+    style: vertical
+    width: 33%
+    default: western
+    options:
+      western: Western (0-9)
+      arabic_indic: Arabic-Indic (٠-٩)
+      persian: Persian (۰-۹)
+    help: Choose numeral system for displaying numbers
+
+  date_calendar:
+    type: select
+    label: Date Calendar
+    style: vertical
+    width: 33%
+    default: gregorian
+    options:
+      gregorian: Gregorian Only
+      both: Gregorian + Hijri
+      hijri_primary: Hijri + Gregorian
+    help: Choose which calendar system to display
+
+  production-mode:
+    type: toggle
+    label: Production Mode
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  styling_section:
+    type: section
+    title: Design Tokens
+    underline: true
+
+  primary_spirit_color:
+    type: colorpicker
+    label: Primary Spirit Color
+    style: vertical
+    width: 33%
+    default: "oklch(0.55 0.18 165)"
+    help: The main spiritual color of the theme (Emerald Green)
+
+  accent_color:
+    type: colorpicker
+    label: Accent Color
+    style: vertical
+    width: 33%
+    default: "oklch(0.85 0.15 85)"
+    help: The accent color (Gold)
+
+  font_section:
+    type: section
+    title: Typography Settings
+    underline: true
+    text: "Configure dynamic fonts. Select from local 2025 favorites or custom import."
+
+  custom_fonts:
+    type: file
+    label: Custom Fonts Library
+    style: vertical
+    width: 33%
+    help: "Drag and drop your font files here. They will be auto-named by filename."
+    destination: "theme://fonts/custom"
+    multiple: true
+    accept:
+      - .ttf
+      - .woff
+      - .woff2
+
+  font_heading:
+    type: select
+    label: Heading Font Family
+    style: vertical
+    width: 33%
+    default: "'PlusJakartaSans-VariableFont_wght', sans-serif"
+    data-options@: '\Grav\Theme\NurUlHuda::getFontOptions'
+    help: "Select the primary font for headings"
+
+  font_body:
+    type: select
+    label: Body Font Family
+    style: vertical
+    width: 33%
+    default: "'Outfit-VariableFont_wght', sans-serif"
+    data-options@: '\Grav\Theme\NurUlHuda::getFontOptions'
+    help: "Select the primary font for body text"

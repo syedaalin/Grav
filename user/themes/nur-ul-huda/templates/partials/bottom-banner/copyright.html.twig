@@ -1,0 +1,21 @@
+{# Strip 3: Footer (Copyright) #}
+<div class="bottom-banner-footer">
+    <div class="bottom-banner-footer-content">
+        <div class="bottom-banner-copyright">
+            <small>
+                {% if bottom_banner.copyright %}
+                    {{ bottom_banner.copyright|replace({'{year}': "now"|date("Y"), '[year]': "now"|date("Y")})|raw }}
+                {% else %}
+                    &copy; {{ "now"|date("Y") }} {{ bottom_banner.site_name }}. All rights reserved.
+                {% endif %}
+            </small>
+        </div>
+
+        {# Legal Links (Placeholders until configurable) #}
+        <nav class="bottom-banner-legal-links" aria-label="Legal">
+            <a href="{{ base_url }}/privacy-policy">Privacy Policy</a>
+            <span class="separator" aria-hidden="true">•</span>
+            <a href="{{ base_url }}/terms">Terms of Service</a>
+        </nav>
+    </div>
+</div>

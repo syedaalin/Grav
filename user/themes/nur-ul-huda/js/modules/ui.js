@@ -1,3 +1,8 @@
+/**
+ * NUR-UL-HUDA FRONTEND LOGIC
+ * -------------------------
+ * Blueprint: [frontend-logic.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/frontend-logic.blueprint.md)
+ */
 import MobileMenu from './mobile-menu.js';
 
 export default class UIController {

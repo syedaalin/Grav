@@ -1,0 +1,28 @@
+{# Schema.org JSON-LD (Kept intact for SEO) #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ schema_data.orgName|e('js') }}",
+    "url": "{{ url('', [], true) }}",
+    {% if bottom_banner.logo %}"logo": "{{ url(bottom_banner.logo, [], true) }}",
+    {% endif %}
+    {% if schema_data.email or schema_data.phone %}
+    "contactPoint": {
+        "@type": "ContactPoint",
+        {% if schema_data.phone %}"telephone": "{{ schema_data.phone|e('js') }}",
+        {% endif %}
+        {% if schema_data.email %}"email": "{{ schema_data.email|e('js') }}",
+        {% endif %}
+        "contactType": "customer service"
+    },
+    {% endif %}
+    {% if schema_data.address %}
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ schema_data.address|e('js') }}"
+    },
+    {% endif %}
+    "sameAs": {{ schema_data.socials|json_encode|raw }}
+}
+</script>

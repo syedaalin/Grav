@@ -1,0 +1,24 @@
+# Documentation: [newsletter.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/newsletter.blueprint.md)
+fields:
+  newsletter_enabled:
+    type: toggle
+    label: Enable Newsletter
+    style: vertical
+    width: 33%
+    default: 1
+    highlight: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+
+  newsletter_title:
+    type: text
+    label: Newsletter Title
+    width: 33%
+    default: "Stay Connected"
+
+  newsletter_text:
+    type: text
+    label: Newsletter Description
+    width: 33%
+    default: "Join our spiritual journey for weekly insights."

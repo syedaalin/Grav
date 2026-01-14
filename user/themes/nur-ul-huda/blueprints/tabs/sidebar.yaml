@@ -1,0 +1,10 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+type: tab
+title: Sidebar
+fields:
+  sidebar_settings_section:
+    type: section
+    title: Sidebar & Widgets
+    underline: true
+
+  import@: partials/sidebar

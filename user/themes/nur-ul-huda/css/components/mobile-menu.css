@@ -1,0 +1,113 @@
+@layer components {
+  /* ========================================
+     Mobile Menu Utilities (2026 Enhanced)
+     ======================================== */
+  
+  /* 
+     REFACTORED: Removed @scope for maximum compatibility 
+  */
+  .mobile-menu-overlay {
+      position: fixed;
+      inset-block-start: var(--header-total-height, 0px);
+      inset-inline: 0;
+      inset-block-end: 0;
+      z-index: var(--z-modal);
+      pointer-events: none;
+      visibility: hidden; /* Default hidden */
+      transition: visibility 0s linear 0.3s; /* Delay visibility change to after opacity */
+  }
+
+  /* State: Open */
+  .mobile-menu-overlay[data-open="true"] {
+      pointer-events: auto;
+      visibility: visible;
+      transition-delay: 0s;
+  }
+  
+  /* Utility Override if needed */
+  .mobile-menu-overlay.invisible {
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+  }
+
+    .mobile-menu-backdrop {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5); /* Component fallback */
+      background-color: oklch(0 0 0 / 0.5); /* Semi-transparent dim */
+      opacity: 0;
+      transition: opacity var(--transition-standard);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Open State */
+    .mobile-menu-overlay[data-open="true"] .mobile-menu-backdrop {
+      opacity: 1;
+    }
+  
+    .mobile-sidebar {
+      position: absolute;
+      inset-block: 0;
+      inline-size: 85vw; /* Start with mobile-friendly width */
+      max-inline-size: 400px;
+      
+      /* Unified Dynamic Glassmorphism */
+      background-image: var(--glass-surface), var(--glass-noise);
+      background-blend-mode: overlay, normal;
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
+      box-shadow: var(--glass-shadow);
+      
+      transition: transform var(--transition-smooth);
+      
+      /* Logical direction handling */
+      --menu-off-canvas-x: -100%;
+      
+      /* Default (Start/Physical Left usually) */
+      inset-inline-start: 0;
+      inset-inline-end: auto;
+      border-inline-end: var(--glass-border);
+      
+      transform: translateX(var(--menu-off-canvas-x));
+      
+      /* Ensure it's above backdrop */
+      z-index: var(--z-modal);
+      display: flex;
+      flex-direction: column;
+
+      /* RTL Logic for default (left) direction */
+      [dir="rtl"] & {
+         --menu-off-canvas-x: 100%;
+      }
+    }
+
+    /* Right Direction - Anchor Right (Physical) */
+    .mobile-menu-overlay[data-direction="right"] .mobile-sidebar {
+      inset-inline-start: auto;
+      inset-inline-end: 0;
+      --menu-off-canvas-x: 100%;
+      border-inline-end: none;
+      border-inline-start: var(--glass-border);
+
+      [dir="rtl"] & {
+         --menu-off-canvas-x: -100%;
+      }
+    }
+
+    /* Open State - Reset Transform DIRECTLY */
+    .mobile-menu-overlay[data-open="true"] .mobile-sidebar {
+       --menu-off-canvas-x: 0; /* Keep for ref */
+       transform: translateX(0) !important; /* Force reset */
+    }
+  
+    .mobile-sidebar-inner {
+      inline-size: 100%;
+      block-size: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: var(--space-l);
+    }
+}

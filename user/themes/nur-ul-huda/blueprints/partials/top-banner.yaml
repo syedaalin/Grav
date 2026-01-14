@@ -1,0 +1,145 @@
+# Documentation: [top-banner.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/top-banner.blueprint.md)
+fields:
+  top_banner_enabled:
+    type: toggle
+    label: Enable Top Banner
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  top_banner_bg_color:
+    type: colorpicker
+    label: Banner Background Color
+    style: vertical
+    width: 33%
+    default: "oklch(0.2 0.02 260)"
+    help: Default color for the Radiant Trio strip.
+
+  top_banner_text_color:
+    type: colorpicker
+    label: Banner Text Color
+    style: vertical
+    width: 33%
+    default: "oklch(0.85 0.15 85)"
+    help: Default text color for the Radiant Trio.
+
+  top_banner_glass:
+    type: toggle
+    label: Glassmorphism Effect
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    help: Apply a blurred, frosted glass effect. Best with semi-transparent background colors.
+
+  top_banner_border:
+    type: select
+    label: Border Style
+    style: vertical
+    width: 33%
+    default: bottom
+    options:
+      none: None
+      solid: Solid (Full)
+      bottom: Bottom Only
+    help: Choose how the banner border is displayed.
+
+  top_banner_widgets_order:
+    type: selectize
+    label: Widget Order
+    default: [date, prayer, hijri]
+    options:
+      date: Gregorian Date
+      prayer: Upcoming Namaz Timing
+      hijri: Hijri Date
+    help: "Drag and drop to reorder elements."
+
+  top_banner_mobile_hide:
+    type: selectize
+    label: Hide on Mobile
+    default: []
+    options:
+      date: Gregorian Date
+      prayer: Upcoming Namaz Timing
+      hijri: Hijri Date
+    help: "Select elements to hide on mobile screens (below 768px)."
+
+  top_banner_announcement_enabled:
+    type: toggle
+    label: Enable Ticker
+    style: vertical
+    width: 25%
+    highlight: 1
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  top_banner_announcement_text:
+    type: text
+    label: Ticker Message
+    style: vertical
+    width: 50%
+    placeholder: "e.g. Eid prayer will be at 8:00 AM."
+
+  top_banner_announcement_starts:
+    type: datetime
+    label: Ticker Start (Start Date/Time)
+    style: vertical
+    width: 25%
+    help: The ticker will appear automatically after this time.
+
+  top_banner_announcement_expires:
+    type: datetime
+    label: Ticker Expiration (End Date/Time)
+    style: vertical
+    width: 25%
+    help: The ticker will disappear automatically after this time.
+
+  top_banner_announcement_speed:
+    type: range
+    label: Scrolling Speed
+    style: vertical
+    width: 50%
+    default: 20
+    min: 5
+    max: 60
+    step: 1
+    help: "Set duration in seconds (smaller = faster, larger = slower). Default is 20s."
+
+  top_banner_announcement_bg_color:
+    type: colorpicker
+    label: Ticker Strip Color
+    style: vertical
+    width: 50%
+    default: "oklch(0.55 0.25 25)"
+
+  top_banner_announcement_text_color:
+    type: colorpicker
+    label: Ticker Text Color
+    style: vertical
+    width: 50%
+    default: "oklch(0.98 0 0)"
+
+  top_banner_announcement_pause:
+    type: toggle
+    label: Pause on Hover
+    style: vertical
+    width: 50%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    help: Stop the scrolling animation when a user hovers over the ticker.

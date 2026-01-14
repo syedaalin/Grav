@@ -3,7 +3,12 @@
   {% set thumb_width = data.thumb.width|default(800) %}
   {% set thumb_height = data.thumb.height|default(600) %}
 
-  <div class="modular-section modular-gallery">
+  {# 
+    NUR-UL-HUDA MODULAR GALLERY
+    ---------------------------
+    Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+#}
+  <section class="modular-section modular-gallery">
     <div class="gallery-grid">
       {% set gallery = md5(page.url) %}
       {% for item in data.items %}

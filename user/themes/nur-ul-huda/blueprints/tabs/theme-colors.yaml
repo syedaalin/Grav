@@ -1,5 +1,7 @@
+# Documentation: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
 type: tab
 title: Colors & Style
+text: "Blueprint: [global-settings.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/global-settings.blueprint.md)"
 fields:
   theme_colors_section:
     type: section

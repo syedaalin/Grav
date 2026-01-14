@@ -1,17 +1,22 @@
-{% set custom_logo_file = theme_var('custom_logo') %}
-{% set logo_image = custom_logo_file ? media['theme://images/logo/' ~ (custom_logo_file|first).name] : null %}
-{% set site_name = theme_var('site_name') %}
+{# 
+    NUR-UL-HUDA LOGO
+    ----------------
+    Blueprint: [logo.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/logo.blueprint.md)
+    SRP Refactored: Media and naming logic moved to MediaHelper::getLogoData
+#}
 
-<a
-	href="{{ home_url }}" class="logo-link" title="{{ site.title|e('html') }}" aria-label="{{ site.title|default('Home') }}">
+<a href="{{ home_url }}" class="logo-link" title="{{ logo.site_title|e('html') }}" aria-label="{{ logo.site_title|default('Home') }}">
 
 	{# 1. Logo Image #}
-	{% if logo_image %}
-		{% set logo_resized = mobile ? logo_image.resize(80, 80) : logo_image.resize(160, 160) %}
-		<img src="{{ logo_resized.url }}" width="{{ logo_resized.width }}" height="{{ logo_resized.height }}" alt="{{ site_name|default(site.title)|default('Site Logo') }}" class="logo-image" fetchpriority="high" decoding="async"/>
+	{% if logo.image %}
+		{% if mobile %}
+			<img src="{{ logo.image_mobile }}" width="{{ logo.width_mobile }}" height="{{ logo.height_mobile }}" alt="{{ logo.site_name|default('Site Logo') }}" class="logo-image" fetchpriority="high" decoding="async"/>
+		{% else %}
+			<img src="{{ logo.image_desktop }}" width="{{ logo.width_desktop }}" height="{{ logo.height_desktop }}" alt="{{ logo.site_name|default('Site Logo') }}" class="logo-image" fetchpriority="high" decoding="async"/>
+		{% endif %}
 	{% else %}
 		{# Fallback: Grav Logo only if NO site name and NO logo #}
-		{% if not site_name %}
+		{% if not logo.site_name %}
 			<div class="logo-fallback">
 				{% include('@images/grav-logo.svg') ignore missing %}
 			</div>
@@ -19,7 +24,7 @@
 	{% endif %}
 
 	{# 2. Site Name Text (Hidden on Mobile) #}
-	{% if site_name %}
-		<span class="logo-text desktop-only">{{ site_name }}</span>
+	{% if logo.site_name %}
+		<span class="logo-text desktop-only">{{ logo.site_name }}</span>
 	{% endif %}
 </a>

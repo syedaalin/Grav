@@ -1,0 +1,43 @@
+# Documentation: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
+title: Khums Calculator
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            header.calc_title:
+              type: text
+              label: Calculator Title
+              default: "Khums & Sadaqah Calculator"
+
+            header.calc_description:
+              type: textarea
+              label: Description
+
+            header.currency_symbol:
+              type: text
+              label: Currency Symbol
+              default: "$"
+              size: x-small
+
+            header.khums_rate:
+              type: number
+              label: Khums Rate (%)
+              default: 20
+              size: x-small
+
+            header.donation_snipcart_id:
+              type: text
+              label: Snipcart Product ID
+              default: "religious-dues"

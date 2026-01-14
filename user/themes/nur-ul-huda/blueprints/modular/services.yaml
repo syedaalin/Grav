@@ -1,0 +1,51 @@
+# Documentation: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+title: Services
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            content:
+              type: markdown
+              validate:
+                type: textarea
+
+            header.services:
+              type: list
+              label: Services
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .icon:
+                  type: text
+                  label: Icon Class (LineAwesome)
+                  placeholder: "la-star"
+                .text:
+                  type: textarea
+                  label: Description
+                .width:
+                  type: select
+                  label: Card Width
+                  options:
+                    normal: Normal (1/3)
+                    feature: Feature (2/3)
+                    wide: Full Width
+                  default: normal
+                .color:
+                  type: colorpicker
+                  label: Brand Color
+                .url:
+                  type: text
+                  label: Link URL

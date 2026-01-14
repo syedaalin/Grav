@@ -1,0 +1,16 @@
+{# Search Overlay #}
+<div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Search">
+
+    <button id="search-close" class="search-close-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-xl">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+        <span class="sr-only">Close search</span>
+    </button>
+
+    <div class="search-container" id="search-container">
+        <h2 class="search-title desktop-only">Search Resources</h2>
+        {% include 'partials/tntsearch.html.twig' %}
+        <p class="desktop-only search-hint">Press <kbd class="kbd">ESC</kbd> to close</p>
+    </div>
+</div>

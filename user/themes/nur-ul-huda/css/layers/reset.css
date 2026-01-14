@@ -57,6 +57,15 @@
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      transition-duration: 0.01ms;
+      scroll-behavior: auto;
+    }
+  }
+
   /* Accessibility: Skip Link */
   .skip-link {
     position: absolute;
@@ -65,8 +74,8 @@
     width: 1px;
     height: 1px;
     overflow: hidden;
-    color: white;
-    background-color: black;
+    color: oklch(1 0 0);
+    background-color: oklch(0 0 0);
     padding: 0.5rem 1rem;
     z-index: 1000;
     text-decoration: none;
@@ -80,6 +89,6 @@
     width: auto;
     height: auto;
     overflow: visible;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+    box-shadow: 0 0 0 2px oklch(1 0 0), 0 0 0 4px oklch(0 0 0);
   }
 }

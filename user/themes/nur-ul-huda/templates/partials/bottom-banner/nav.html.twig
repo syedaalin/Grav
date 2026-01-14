@@ -1,0 +1,37 @@
+{# Navigation Grid #}
+{% if bottom_banner.columns %}
+    <div class="bottom-banner-nav-strip">
+        <div class="bottom-banner-body">
+            <div class="bottom-banner-grid">
+                {% for column in bottom_banner.columns %}
+                    <nav class="bottom-banner-nav-column" aria-labelledby="bottom-banner-nav-{{ loop.index }}">
+                        
+                        {# Desktop Title (Hidden on Mobile) #}
+                        <h3 id="bottom-banner-nav-{{ loop.index }}" class="bottom-banner-nav-title -desktop">{{ column.title }}</h3>
+                        
+                        {# Mobile Toggle Button (Hidden on Desktop) #}
+                        <button type="button" class="bottom-banner-nav-toggle -mobile" aria-expanded="false" aria-controls="bottom-banner-nav-content-{{ loop.index }}" data-bottom-banner-toggle>
+                            <span class="bottom-banner-nav-title">{{ column.title }}</span>
+                            <i class="bottom-banner-nav-icon" aria-hidden="true"></i>
+                        </button>
+
+                        <div id="bottom-banner-nav-content-{{ loop.index }}" class="bottom-banner-nav-content" aria-hidden="true">
+                            {% if column.links %}
+                                <ul class="bottom-banner-nav-list" role="list">
+                                    {% for link in column.links %}
+                                        <li>
+                                            <a href="{{ link.url }}" class="bottom-banner-nav-link">
+                                                <i class="bottom-banner-nav-link-icon la la-angle-{{ bottom_banner.direction == 'rtl' ? 'left' : 'right' }}" aria-hidden="true"></i>
+                                                <span class="bottom-banner-nav-link-text">{{ link.text }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </nav>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -4,6 +4,11 @@
  * Pure Vanilla JS (ES Modules)
  */
 
+/**
+ * NUR-UL-HUDA FRONTEND LOGIC
+ * -------------------------
+ * Blueprint: [frontend-logic.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/frontend-logic.blueprint.md)
+ */
 export default class MobileMenu {
     constructor() {
         this.toggle = document.getElementById('mobile-toggle');
@@ -16,11 +21,21 @@ export default class MobileMenu {
     }
 
     init() {
+        console.log('MobileMenu: Init called', { 
+            toggle: this.toggle, 
+            overlay: this.overlay,
+            closeBtn: this.closeBtn 
+        });
+
         if (this.toggle) {
+            console.log('MobileMenu: Toggle listener attached');
             this.toggle.addEventListener('click', (e) => {
+                console.log('MobileMenu: Toggle clicked');
                 e.stopPropagation();
                 this.toggleMenu();
             });
+        } else {
+            console.error('MobileMenu: Toggle button #mobile-toggle not found!');
         }
 
         if (this.closeBtn) {
@@ -58,9 +73,13 @@ export default class MobileMenu {
     }
 
     toggleMenu() {
-        if (!this.overlay) return;
+        if (!this.overlay) {
+             console.error('MobileMenu: Overlay missing, cannot toggle');
+             return;
+        }
         
         const isOpen = this.isOpen();
+        console.log(`MobileMenu: Toggle called. Currently Open: ${isOpen}`);
         
         if (!isOpen) {
             this.open();
@@ -70,8 +89,8 @@ export default class MobileMenu {
     }
 
     open() {
+        console.log('MobileMenu: OPENING');
         // Calculate Top Offset
-
 
         // Determine Direction based on button position
         const rect = this.toggle ? this.toggle.getBoundingClientRect() : { left: 0 };
@@ -92,9 +111,11 @@ export default class MobileMenu {
         this.body.style.overflow = 'hidden';
         
         if (this.toggle) this.toggle.setAttribute('aria-expanded', 'true');
+        console.log('MobileMenu: Opened. Classes:', this.overlay.className);
     }
 
     close() {
+        console.log('MobileMenu: CLOSING');
         this.overlay.dataset.open = 'false';
         this.overlay.classList.remove('open');
         this.overlay.classList.add('invisible', 'pointer-events-none');

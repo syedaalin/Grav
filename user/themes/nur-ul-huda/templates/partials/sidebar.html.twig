@@ -1,91 +1,92 @@
-{# Sidebar Section - Enhanced with Pure Custom CSS (Modern Vanilla) #}
+{# 
+    NUR-UL-HUDA SIDEBAR
+    -------------------
+    Blueprint: [sidebar.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/sidebar.blueprint.md)
+    Enhanced with Pure Custom CSS (Modern Vanilla) 
+    SRP Refactored: Dynamic widget rendering based on PHP logic
+#}
 {% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
 {% set new_base_url = blog.url == '/' ? '' : blog.url %}
 
-<aside
-	class="sidebar-wrapper" role="complementary">
+{% if sidebar.active %}
+<aside class="sidebar-wrapper" role="complementary">
+    {% for widget in sidebar.widgets %}
+        
+        {# Search Widget #}
+        {% if widget == 'search' and config.plugins.simplesearch.enabled %}
+            <section class="sidebar-widget" aria-labelledby="sidebar-search-label">
+                <h4 id="sidebar-search-label" class="sr-only">Search</h4>
+                {% include 'partials/simplesearch_searchbox.html.twig' %}
+            </section>
+        {% endif %}
 
-	{# Search Widget #}
-	{% if config.plugins.simplesearch.enabled %}
-		<section class="sidebar-widget" aria-labelledby="sidebar-search-label">
-			<h4 id="sidebar-search-label" class="sr-only">Search</h4>
-			{% include 'partials/simplesearch_searchbox.html.twig' %}
-		</section>
-	{% endif %}
+        {# Related Posts Widget #}
+        {% if widget == 'related' and config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+            <section class="sidebar-widget glass-card" aria-labelledby="related-posts-heading">
+                <h4 id="related-posts-heading" class="sidebar-heading">
+                    <span class="sidebar-heading-dot"></span>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RELATED_POSTS.HEADLINE'|t }}
+                </h4>
+                {% include 'partials/relatedpages.html.twig' %}
+            </section>
+        {% endif %}
 
-	{# Related Posts Widget #}
-	{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
-		<section class="sidebar-widget glass-card" aria-labelledby="related-posts-heading">
-			<h4 id="related-posts-heading" class="sidebar-heading">
-				<span class="sidebar-heading-dot"></span>
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.RELATED_POSTS.HEADLINE'|t }}
-			</h4>
-			{% include 'partials/relatedpages.html.twig' %}
-		</section>
-	{% endif %}
+        {# Random Article Widget #}
+        {% if widget == 'random' and config.plugins.random.enabled %}
+            <section class="sidebar-widget glass-card" aria-labelledby="random-heading">
+                <h4 id="random-heading" class="sidebar-heading">
+                    <span class="sidebar-heading-dot"></span>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.HEADLINE'|t }}
+                </h4>
+                <a class="btn-primary btn-block" href="{{ base_url }}/random">
+                    <i class="la la-random"></i>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.FEELING_LUCKY'|t }}
+                </a>
+            </section>
+        {% endif %}
 
-	{# Random Article Widget #}
-	{% if config.plugins.random.enabled %}
-		<section class="sidebar-widget glass-card" aria-labelledby="random-heading">
-			<h4 id="random-heading" class="sidebar-heading">
-				<span class="sidebar-heading-dot"></span>
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.HEADLINE'|t }}
-			</h4>
-			<a class="btn-primary btn-block" href="{{ base_url }}/random">
-				<i class="la la-random"></i>
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.RANDOM_ARTICLE.FEELING_LUCKY'|t }}
-			</a>
-		</section>
-	{% endif %}
+        {# Taxonomy Widget #}
+        {% if widget == 'taxonomy' and config.plugins.taxonomylist.enabled %}
+            <section class="sidebar-widget glass-card" aria-labelledby="tags-heading">
+                <h4 id="tags-heading" class="sidebar-heading">
+                    <span class="sidebar-heading-dot"></span>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.POPULAR_TAGS.HEADLINE'|t }}
+                </h4>
+                {% include 'partials/taxonomylist.html.twig' with {'base_url':new_base_url, 'taxonomy':'tag', 'children_only':true} %}
+            </section>
+        {% endif %}
 
-	{# Dynamic Sidebar Content #}
-	<div class="sidebar-dynamic-content prose-custom">
-		{{ page.find('/modules/sidebar').content|raw }}
-	</div>
+        {# Archives Widget #}
+        {% if widget == 'archives' and config.plugins.archives.enabled %}
+            <section class="sidebar-widget glass-card" aria-labelledby="archives-heading">
+                <h4 id="archives-heading" class="sidebar-heading">
+                    <span class="sidebar-heading-dot"></span>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.ARCHIVES.HEADLINE'|t }}
+                </h4>
+                {% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
+            </section>
+        {% endif %}
 
-	{# Taxonomy Widget #}
-	{% if config.plugins.taxonomylist.enabled %}
-		<section class="sidebar-widget glass-card" aria-labelledby="tags-heading">
-			<h4 id="tags-heading" class="sidebar-heading">
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.POPULAR_TAGS.HEADLINE'|t }}
-			</h4>
-			{% include 'partials/taxonomylist.html.twig' with {'base_url':new_base_url, 'taxonomy':'tag', 'children_only':true} %}
-		</section>
-	{% endif %}
+        {# Feed Widget #}
+        {% if widget == 'feed' and config.plugins.feed.enabled %}
+            <section class="sidebar-widget glass-card" aria-labelledby="feed-heading">
+                <h4 id="feed-heading" class="sidebar-heading">
+                    <span class="sidebar-heading-dot"></span>
+                    {{ 'THEME_NUR_UL_HUDA.SIDEBAR.SYNDICATE.HEADLINE'|t }}
+                </h4>
+                <div class="feed-links">
+                    <a class="feed-link" href="{{ feed_url }}.atom">
+                        <i class="la la-rss-square"></i>
+                        ATOM
+                    </a>
+                    <a class="feed-link" href="{{ feed_url }}.rss">
+                        <i class="la la-rss"></i>
+                        RSS
+                    </a>
+                </div>
+            </section>
+        {% endif %}
 
-	{# Archives Widget #}
-	{% if config.plugins.archives.enabled %}
-		<section class="sidebar-widget glass-card" aria-labelledby="archives-heading">
-			<h4 id="archives-heading" class="sidebar-heading">
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.ARCHIVES.HEADLINE'|t }}
-			</h4>
-			{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
-		</section>
-	{% endif %}
-
-	{# Feed Widget #}
-	{% if config.plugins.feed.enabled %}
-		<section class="sidebar-widget glass-card" aria-labelledby="feed-heading">
-			<h4 id="feed-heading" class="sidebar-heading">
-				{{ 'THEME_NUR_UL_HUDA.SIDEBAR.SYNDICATE.HEADLINE'|t }}
-			</h4>
-			<div class="feed-links">
-				<a class="feed-link" href="{{ feed_url }}.atom">
-					<i class="la la-rss-square"></i>
-					ATOM
-				</a>
-				<a class="feed-link" href="{{ feed_url }}.rss">
-					<i class="la la-rss"></i>
-					RSS
-				</a>
-				{% if config.plugins.feed.enable_json_feed %}
-					<a class="feed-link" href="{{ feed_url }}.json">
-						<i class="la la-code"></i>
-						JSON
-					</a>
-				{% endif %}
-			</div>
-		</section>
-	{% endif %}
-
+    {% endfor %}
 </aside>
+{% endif %}

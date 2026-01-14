@@ -1,0 +1,240 @@
+@layer components {
+  /* ========================================
+     Calculator Components
+     ======================================== */
+
+  @scope (.modular-khums-calculator) {
+    :scope {
+      background-color: var(--color-surface-subtle);
+      padding-block: var(--spacing-section);
+    }
+  }
+
+  @scope (.calculator-wrapper) {
+      :scope {
+          container-type: inline-size;
+      }
+  }
+
+  @scope (.calculator-layout) {
+      :scope {
+          display: grid;
+          gap: var(--space-2xl);
+          margin-block-start: var(--space-xl);
+          
+          @container (width >= 1024px) {
+              grid-template-columns: 1.5fr 1fr;
+          }
+      }
+  }
+
+  @scope (.calculator-inputs) {
+      :scope {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-l);
+      }
+  }
+
+  @scope (.calculator-card) {
+    :scope {
+      background-color: oklch(1 0 0);
+      border-radius: var(--radius-xl);
+      padding: var(--space-l);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid oklch(0 0 0 / 0.05);
+      position: relative;
+      overflow: hidden;
+      
+      &.calculator-card-success {
+        --theme-color: var(--color-success);
+      }
+      &.calculator-card-error {
+        --theme-color: var(--color-error);
+      }
+      &.calculator-card-primary {
+        --theme-color: var(--color-primary);
+      }
+    }
+  }
+  
+  @scope (.calculator-card-bg) {
+    :scope {
+        position: absolute;
+        inset: 0;
+        background-color: oklch(from var(--theme-color) l c h / 0.05);
+        pointer-events: none;
+    }
+  }
+
+  @scope (.calculator-card-title) {
+    :scope {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-block-end: var(--space-l);
+    }
+  }
+  
+  @scope (.calculator-card-icon) {
+    :scope {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border-radius: var(--radius-lg);
+        background-color: oklch(from var(--theme-color) l c h / 0.1);
+        color: var(--theme-color);
+        font-size: var(--font-size-xl);
+    }
+  }
+  
+  @scope (.calculator-fields-grid) {
+    :scope {
+        display: grid;
+        gap: var(--space-m);
+        grid-template-columns: 1fr;
+        @container (width >= 640px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+  }
+
+  @scope (.calculator-label) {
+    :scope {
+        display: block;
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        color: var(--color-text);
+        margin-block-end: var(--space-xs);
+    }
+  }
+
+  @scope (.calculator-input-wrapper) {
+    :scope {
+        position: relative;
+    }
+  }
+
+  @scope (.calculator-currency) {
+    :scope {
+        position: absolute;
+        inset-inline-start: var(--space-m);
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        color: var(--color-subtle);
+        font-weight: 600;
+    }
+  }
+  
+  @scope (.calculator-input) {
+    :scope {
+        inline-size: 100%;
+        padding-block: 0.75rem;
+        padding-inline-start: 2.5rem;
+        padding-inline-end: var(--space-m);
+        border-radius: var(--radius-lg);
+        border: 1px solid oklch(0 0 0 / 0.1);
+        background-color: oklch(1 0 0);
+        transition: all var(--transition-standard);
+        
+        &:focus {
+            outline: none;
+            border-color: var(--theme-color);
+            box-shadow: 0 0 0 4px oklch(from var(--theme-color) l c h / 0.1);
+        }
+    }
+  }
+
+  @scope (.calculator-summary) {
+    :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+        padding-block: var(--space-l);
+        border-block-end: 1px solid oklch(0 0 0 / 0.1);
+    }
+  }
+  
+  @scope (.calculator-summary-row) {
+    :scope {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: var(--font-size-sm);
+    }
+  }
+
+  @scope (.calculator-total) {
+    :scope {
+         position: relative;
+         margin-block-start: var(--space-l);
+         padding: var(--space-l);
+         background-color: var(--color-primary);
+         color: oklch(1 0 0);
+         border-radius: var(--radius-xl);
+         text-align: center;
+         overflow: hidden;
+    }
+  }
+  
+  @scope (.calculator-total-amount) {
+    :scope {
+        font-size: var(--font-size-3xl);
+        font-weight: 900;
+        line-height: 1;
+        margin-block-start: var(--space-s);
+    }
+  }
+  
+  @scope (.calculator-toggle-wrapper) {
+     :scope {
+         margin-block-start: var(--space-l);
+         text-align: center;
+     }
+  }
+  
+  @scope (.calculator-toggle-label) {
+     :scope {
+         display: inline-flex;
+         align-items: center;
+         gap: var(--space-s);
+         cursor: pointer;
+     }
+  }
+  
+  @scope (.calculator-toggle-switch) {
+     :scope {
+         inline-size: 3rem;
+         block-size: 1.75rem;
+         background-color: oklch(0 0 0 / 0.1);
+         border-radius: var(--radius-full);
+         position: relative;
+         transition: background-color var(--transition-standard);
+         
+         &::after {
+             content: '';
+             position: absolute;
+             inset-block-start: 0.25rem;
+             inset-inline-start: 0.25rem;
+             inline-size: 1.25rem;
+             block-size: 1.25rem;
+             background-color: oklch(1 0 0);
+             border-radius: 50%;
+             transition: transform var(--transition-standard);
+             box-shadow: 0 1px 2px oklch(0 0 0 / 0.2);
+         }
+         
+         input:checked + & {
+             background-color: var(--color-primary);
+             &::after {
+                 transform: translateX(1.25rem);
+             }
+         }
+     }
+  }
+}

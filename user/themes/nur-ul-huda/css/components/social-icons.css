@@ -1,0 +1,102 @@
+@layer components {
+  @scope (.social-icons-wrapper) {
+    &.is-top {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+
+      .social-icon {
+          display: flex;
+          align-items: center;
+          background: transparent;
+          inline-size: auto;
+          block-size: auto;
+          backdrop-filter: none;
+          padding: 0;
+          color: inherit;
+          transition: all 300ms var(--transition-standard);
+          
+          &:hover {
+              transform: translateY(-2px);
+              color: var(--color-primary);
+          }
+
+          svg, i {
+              inline-size: 0.5rem;
+              block-size: 0.5rem;
+              font-size: 0.5rem;
+          }
+
+          .social-label {
+              display: none;
+          }
+      }
+    }
+
+    &.is-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+
+      @media (width >= 768px) {
+          justify-content: flex-start;
+          gap: 1rem;
+      }
+
+      .social-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          min-inline-size: 1rem;
+          block-size: 1rem;
+          padding-inline: 0;
+          
+          @media (width >= 768px) {
+            min-inline-size: 1.25rem;
+            block-size: 1.25rem;
+          }
+
+          &:hover {
+              background-color: var(--color-primary);
+              scale: 1.05;
+              box-shadow: 0 5px 10px oklch(from var(--color-primary) l c h / 0.15);
+              color: oklch(1 0 0);
+              border-color: transparent;
+          }
+
+          svg, i {
+              inline-size: 0.6rem;
+              block-size: 0.6rem;
+              font-size: 0.6rem;
+              flex-shrink: 0;
+          }
+
+          .social-label {
+              display: none;
+              font-size: var(--font-size-sm);
+              font-weight: 600;
+              white-space: nowrap;
+          }
+
+          &.show-label-mobile {
+              @media (width < 768px) {
+                  inline-size: auto;
+                  padding-inline-end: 1.5rem;
+                  .social-label { display: block; }
+              }
+          }
+
+          &.show-label-desktop {
+              @media (width >= 768px) {
+                  inline-size: auto;
+                  padding-inline-end: 1.5rem;
+                  .social-label { display: block; }
+              }
+          }
+      }
+    }
+  }
+}

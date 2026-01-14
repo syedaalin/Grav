@@ -1,0 +1,526 @@
+# Documentation: [social-icons.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/social-icons.blueprint.md)
+fields:
+  social_facebook_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_facebook:
+            type: text
+            label: Facebook
+            style: vertical
+            width: 100%
+            placeholder: https://facebook.com/yourpage
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_facebook_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_twitter_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_twitter:
+            type: text
+            label: Twitter
+            style: vertical
+            width: 100%
+            placeholder: https://twitter.com/yourhandle
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_twitter_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_instagram_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_instagram:
+            type: text
+            label: Instagram
+            style: vertical
+            width: 100%
+            placeholder: https://instagram.com/yourhandle
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_instagram_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_youtube_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_youtube:
+            type: text
+            label: YouTube
+            style: vertical
+            width: 100%
+            placeholder: https://youtube.com/@yourchannel
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_youtube_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_telegram_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_telegram:
+            type: text
+            label: Telegram
+            style: vertical
+            width: 100%
+            placeholder: https://t.me/yourgroup
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_telegram_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_linkedin_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_linkedin:
+            type: text
+            label: LinkedIn
+            style: vertical
+            width: 100%
+            placeholder: https://linkedin.com/company/yourorg
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_linkedin_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_tiktok_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_tiktok:
+            type: text
+            label: TikTok
+            style: vertical
+            width: 100%
+            placeholder: https://tiktok.com/@yourhandle
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_tiktok_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_pinterest_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_pinterest:
+            type: text
+            label: Pinterest
+            style: vertical
+            width: 100%
+            placeholder: https://pinterest.com/yourhandle
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_pinterest_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_snapchat_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_snapchat:
+            type: text
+            label: Snapchat
+            style: vertical
+            width: 100%
+            placeholder: https://snapchat.com/add/yourhandle
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_snapchat_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_spotify_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_spotify:
+            type: text
+            label: Spotify
+            style: vertical
+            width: 100%
+            placeholder: https://open.spotify.com/show/yourshow
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_spotify_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_discord_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_discord:
+            type: text
+            label: Discord Invite
+            style: vertical
+            width: 100%
+            placeholder: https://discord.gg/yourinvite
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_discord_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_google_maps_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_google_maps:
+            type: text
+            label: Google Maps
+            style: vertical
+            width: 100%
+            placeholder: https://goo.gl/maps/yourlocation
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_google_maps_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_whatsapp_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_whatsapp:
+            type: text
+            label: WhatsApp
+            style: vertical
+            width: 100%
+            placeholder: https://wa.me/1234567890
+            help: Your WhatsApp number with country code
+            validate:
+              type: URL
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_whatsapp_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_phone_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_phone:
+            type: text
+            label: Phone
+            style: vertical
+            width: 100%
+            placeholder: "+1234567890"
+            help: "Enter phone number for Click-to-Call icon"
+            validate:
+              type: text
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_phone_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_email_group:
+    type: columns
+    width: 33%
+    fields:
+      col_input:
+        type: column
+        width: 75%
+        fields:
+          social_email:
+            type: text
+            label: Email
+            style: vertical
+            width: 100%
+            placeholder: info@yoursite.com
+            validate:
+              type: email
+      col_toggle:
+        type: column
+        width: 25%
+        fields:
+          social_email_enabled:
+            type: toggle
+            label: "&nbsp;"
+            style: vertical
+            width: 100%
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+  social_show_labels_mobile:
+    type: toggle
+    label: Show Names on Mobile
+    help: Show platform name on small screens
+    style: vertical
+    width: 50%
+    highlight: 1
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  social_show_labels_desktop:
+    type: toggle
+    label: Show Names on Desktop
+    help: Show platform name on large screens
+    style: vertical
+    width: 50%
+    highlight: 1
+    default: 0
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool

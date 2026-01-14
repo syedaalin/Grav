@@ -1,85 +1,74 @@
-{% set _top_banner_enabled = theme_var('top_banner_enabled') %}
-{# Ultra-resilient truthiness check - Bypassing complex types #}
-{% set top_banner_active = (_top_banner_enabled is null or _top_banner_enabled == 1 or _top_banner_enabled == '1' or _top_banner_enabled == true) %}
+{# 
+    NUR-UL-HUDA TOP BANNER
+    ----------------------
+    Blueprint: [top-banner.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/top-banner.blueprint.md)
+    Displays the "Radiant Trio": Gregorian Date, Prayer Times, and Hijri Date.
+    Logic handles both individual widgets and an optional exclusive announcement mode.
+    SRP Refactored: Business logic moved to BannerHelper::getTopBannerData
+#}
 
-{% if top_banner_active %}
+{% set text_dir = grav.language.getDirection() ?: 'ltr' %}
 
-	{# Logic Hoisting #}
-	{% set announcement_text = theme_var('top_banner_announcement_text') %}
-	{% set announcement_expires = theme_var('top_banner_announcement_expires') %}
-	{% set show_announcement = theme_var('top_banner_announcement_enabled') and announcement_text and (not announcement_expires or date(announcement_expires) > date('now')) %}
-	{% set text_dir = grav.language.getDirection() ?: 'ltr' %}
 
-	{# Color Logic - Standard fallbacks for robust rendering #}
-	{% set current_bg = show_announcement ? theme_var('top_banner_announcement_bg_color')|default('#bf616a') : theme_var('top_banner_bg_color')|default('#1a1c23') %}
-	{% set current_text = show_announcement ? theme_var('top_banner_announcement_text_color')|default('#ffffff') : theme_var('top_banner_text_color')|default('#d4af37') %}
 
-	{# Standardize color strings - Avoid relative color syntax for base visibility #}
-	{% set current_bg_style = current_bg matches '/^var\\(/i' or current_bg matches '/^oklch/i' ? current_bg : current_bg %}
-	{% set current_text_style = current_text matches '/^var\\(/i' or current_text matches '/^oklch/i' ? current_text : current_text %}
+{% if top_banner.active %}
+	{# 
+       2026 ARCHITECTURE: Component-Local Variables
+       We pass dynamic values as native CSS properties to preserve style encapsulation.
+    #}
+	<div id="top-banner-utility-bar" 
+         class="top-banner" 
+         data-glass="{{ top_banner.use_glass ? 'true' : 'false' }}"
+         data-border="{{ top_banner.border_type }}"
+         data-pause-hover="{{ top_banner.pause_on_hover ? 'true' : 'false' }}"
+         style="--banner-bg: {{ top_banner.bg_color }}; --banner-text: {{ top_banner.text_color }};" 
+         dir="{{ text_dir }}" 
+         role="complementary" 
+         aria-label="Utility Bar">
 
-	<div id="top-banner-utility-bar" class="top-banner" style="background: {{ current_bg_style }} !important; color: {{ current_text_style }} !important; z-index: 10000 !important; position: relative !important; display: flex !important;" dir="{{ text_dir }}" role="complementary" aria-label="Utility Bar">
-
-		<div class="top-banner-inner">
-
-			{% if show_announcement %}
-				{# === EXCLUSIVE ANNOUNCEMENT MODE === #}
-				<div class="top-banner-announcement" role="alert" aria-live="assertive">
-					<div class="announcement-marquee-container">
-						<div class="announcement-marquee">
-							{{ announcement_text }}
-						</div>
+		{% if top_banner.show_announcement %}
+			{# === MODE A: EXCLUSIVE ANNOUNCEMENT (Full Width) === #}
+			<div class="top-banner-announcement" role="alert" aria-live="assertive">
+				<div class="announcement-marquee-container">
+					<div class="announcement-marquee" style="--marquee-speed: {{ top_banner.announcement_speed }}s;">
+						{{ top_banner.announcement_text }}
 					</div>
 				</div>
+			</div>
 
-			{% else %}
-				{# === DYNAMIC MULTI-WIDGET MODE === #}
-				<div
-					class="top-banner-layout">
-
-
-					{# Right: Widgets arranged by user preference #}
+		{% else %}
+			{# === MODE B: RADIANT TRIO WIDGETS (Centered in Inner) === #}
+			<div class="top-banner-inner">
+				<div class="top-banner-layout">
 					<div class="top-banner-widgets">
-						{% set widgets_order = theme_var('top_banner_widgets_order')|default(['date', 'prayer', 'hijri']) %}
-
-						{% for widget in widgets_order %}
+						{% for widget in top_banner.widgets_order %}
+							{% set is_hidden_mobile = widget in top_banner.mobile_hide %}
+							
+							{# WIDGET: GREGORIAN DATE #}
 							{% if widget == 'date' %}
-								<div class="banner-pill widget-gregorian" aria-label="Current Date">
-									<svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-										<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-										<line x1="16" y1="2" x2="16" y2="6"></line>
-										<line x1="8" y1="2" x2="8" y2="6"></line>
-										<line x1="3" y1="10" x2="21" y2="10"></line>
-									</svg>
+								<div class="banner-pill widget-gregorian {{ is_hidden_mobile ? 'hide-mobile' : '' }}" aria-label="Current Date">
 									<time id="gregorian-date" class="banner-date" datetime="{{ 'now'|date('Y-m-d') }}">
 										{{ "now"|date("D, M j") }}<span class="year-responsive">{{ "now"|date(", Y") }}</span>
 									</time>
 								</div>
 
+							{# WIDGET: UPCOMING NAMAZ TIMING #}
 							{% elseif widget == 'prayer' %}
-								<div class="banner-pill widget-prayer" role="timer" aria-live="polite" aria-label="Next Prayer Timing">
-									<svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-										<circle cx="12" cy="12" r="10"></circle>
-										<polyline points="12 6 12 12 16 14"></polyline>
-									</svg>
+								<div class="banner-pill widget-prayer {{ is_hidden_mobile ? 'hide-mobile' : '' }}" role="timer" aria-live="polite" aria-label="Upcoming Namaz Timing">
 									<span class="banner-prayer-name" id="next-prayer-name">--</span>
 									<time class="banner-countdown" id="prayer-countdown">--:--</time>
 								</div>
 
+							{# WIDGET: HIJRI DATE #}
 							{% elseif widget == 'hijri' %}
-								<div class="banner-pill widget-hijri" aria-label="Hijri Date">
-									<svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-										<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-									</svg>
+								<div class="banner-pill widget-hijri {{ is_hidden_mobile ? 'hide-mobile' : '' }}" aria-label="Hijri Date">
 									<span id="hijri-date" class="banner-date" aria-live="polite">Loading...</span>
 								</div>
 							{% endif %}
 						{% endfor %}
 					</div>
 				</div>
-
-			{% endif %}
-
-		</div>
+			</div>
+		{% endif %}
 	</div>
 {% endif %}

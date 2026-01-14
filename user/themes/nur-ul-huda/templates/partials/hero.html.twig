@@ -1,26 +1,29 @@
-{# Hero Component - Pure Custom CSS (Modern Vanilla) #}
-{% set hero_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
-{% set hero_video = page.header.hero_video is iterable ? page.media[page.header.hero_video|first.name] : page.media[page.header.hero_video] %}
-{% set accent_color = page.header.hero_accent|default('oklch(0.65 0.22 260)') %}
+{# 
+    NUR-UL-HUDA HERO
+    ----------------
+    Blueprint: [hero.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/hero.blueprint.md)
+    Pure Custom CSS (Modern Vanilla) 
+    SRP Refactored: Media logic moved to ViewHelper::getHeroData
+#}
 
-<section id="{{ id }}" 
-         class="hero-section modular-hero {{ page.header.hero_classes }}"
+<section id="{{ hero.id|default('hero') }}" 
+         class="hero-section modular-hero {{ hero.classes }}"
          aria-labelledby="hero-title">
     
     {# Background Media #}
     <div class="hero-background">
-        {% if hero_video %}
+        {% if hero.video %}
             <video autoplay loop muted playsinline class="hero-video" fetchpriority="high">
-                <source src="{{ hero_video.url }}" type="video/webm">
+                <source src="{{ hero.video.url }}" type="video/webm">
             </video>
-        {% elseif hero_image %}
-            {{ hero_image.cropZoom(1920, 1080).html('', '', 'hero-image')|raw }}
+        {% elseif hero.image %}
+            {{ hero.image.cropZoom(1920, 1080).html('', '', 'hero-image')|raw }}
         {% endif %}
         <div class="hero-overlay" aria-hidden="true"></div>
     </div>
 
     {# Radial Glow #}
-    <div class="hero-glow" aria-hidden="true" style="--color-primary: {{ accent_color }};"></div>
+    <div class="hero-glow" aria-hidden="true" style="--color-primary: {{ hero.accent_color }};"></div>
 
     <div class="hero-content">
         <div class="hero-content-wrapper">

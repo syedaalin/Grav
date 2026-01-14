@@ -1,13 +1,12 @@
 @layer utilities {
-  
   /* ========================================
      Display Utilities
      ======================================== */
-  
+
   .hidden {
     display: none;
   }
-  
+
   .sr-only {
     position: absolute;
     inline-size: 1px;
@@ -19,122 +18,468 @@
     white-space: nowrap;
     border-width: 0;
   }
-  
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .opacity-0 {
+    opacity: 0;
+  }
+  .opacity-50 {
+    opacity: 0.5;
+  }
+  .opacity-100 {
+    opacity: 1;
+  }
+
   /* ========================================
      Positioning Utilities
      ======================================== */
-  
+
   .sticky {
     position: sticky;
   }
-  
   .fixed {
     position: fixed;
   }
-  
   .relative {
     position: relative;
   }
-  
   .absolute {
     position: absolute;
   }
-  
+
+  .inset-0 {
+    inset: 0;
+  }
+
+  .z-base {
+    z-index: var(--z-base);
+  }
+  .z-10 {
+    z-index: var(--z-dropdown);
+  }
+  .z-20 {
+    z-index: var(--z-sticky);
+  }
+  .z-30 {
+    z-index: var(--z-fixed);
+  }
+  .z-40 {
+    z-index: var(--z-modal-backdrop);
+  }
+  .z-50 {
+    z-index: var(--z-modal);
+  }
+  .z-60 {
+    z-index: var(--z-popover);
+  }
+  .z-70 {
+    z-index: var(--z-tooltip);
+  }
+
+  /* ========================================
+     Layout & Sizing Utilities
+     ======================================== */
+
+  .w-full {
+    inline-size: 100%;
+  }
+  .h-full {
+    block-size: 100%;
+  }
+  .min-h-screen {
+    min-block-size: 100svh;
+  }
+
+  .max-w-sm {
+    max-inline-size: 24rem;
+  }
+  .max-w-3xl {
+    max-inline-size: 48rem;
+  }
+  .max-w-4xl {
+    max-inline-size: 56rem;
+  }
+  .max-w-7xl {
+    max-inline-size: 80rem;
+  }
+  .max-w-none {
+    max-inline-size: none;
+  }
+
+  .mx-auto {
+    margin-inline: auto;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+
+  /* ========================================
+     Flex & Grid Utilities
+     ======================================== */
+
+  .flex {
+    display: flex;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+  .items-stretch {
+    align-items: stretch;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+
+  .gap-1 {
+    gap: var(--space-xs);
+  }
+  .gap-2 {
+    gap: var(--space-s);
+  }
+  .gap-3 {
+    gap: var(--space-m);
+  }
+  .gap-4 {
+    gap: var(--space-l);
+  }
+  .gap-8 {
+    gap: var(--space-3xl);
+  }
+
   /* ========================================
      Spacing Utilities
      ======================================== */
-  
+
+  .p-2 {
+    padding: var(--space-s);
+  }
+  .p-4 {
+    padding: var(--space-m);
+  }
+  .p-5 {
+    padding: var(--space-xl);
+  }
+  .p-8 {
+    padding: var(--space-3xl);
+  }
+
+  .py-1 {
+    padding-block: var(--space-xs);
+  }
+  .py-2 {
+    padding-block: var(--space-s);
+  }
+  .py-3 {
+    padding-block: var(--space-l);
+  }
+  .py-4 {
+    padding-block: var(--space-xl);
+  }
+
+  .px-4 {
+    padding-inline: var(--space-xl);
+  }
+  .px-5 {
+    padding-inline: var(--space-xl);
+  }
+  .px-6 {
+    padding-inline: calc(var(--space-unit) * 1.5);
+  }
+  .px-8 {
+    padding-inline: var(--space-3xl);
+  }
+
+  .mt-2 {
+    margin-block-start: var(--space-s);
+  }
+  .mb-6 {
+    margin-block-end: calc(var(--space-unit) * 1.5);
+  }
+  .mb-8 {
+    margin-block-end: var(--space-2xl);
+  }
+  .my-12 {
+    margin-block: calc(var(--space-unit) * 3);
+  }
+
+  .ml-2 {
+    margin-inline-start: var(--space-s);
+  }
+  .mr-2 {
+    margin-inline-end: var(--space-s);
+  }
+  .mr-3 {
+    margin-inline-end: var(--space-l);
+  }
+  .-ml-2 {
+    margin-inline-start: calc(var(--space-s) * -1);
+  }
+
+  /* ========================================
+     Border & Visual Utilities
+     ======================================== */
+
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .rounded-full {
+    border-radius: var(--radius-full);
+  }
   .rounded-premium {
     border-radius: var(--radius-2xl);
   }
-  
-  /* ========================================
-     Color Utilities
-     ======================================== */
-  
-  .text-dark {
-    color: var(--color-dark);
+
+  .shadow-sm {
+    box-shadow: var(--shadow-sm);
   }
-  
-  .text-muted {
-    color: var(--color-muted);
+  .shadow-md {
+    box-shadow: var(--shadow-md);
   }
-  
-  .text-muted-dark {
-    color: var(--color-muted-dark);
+  .shadow-lg {
+    box-shadow: var(--shadow-lg);
   }
-  
-  .text-light {
-    color: var(--color-light);
+  .shadow-xl {
+    box-shadow: var(--shadow-xl);
   }
-  
-  .text-subtle {
-    color: var(--color-subtle);
+  .shadow-2xl {
+    box-shadow: var(--shadow-2xl);
   }
-  
-  .bg-dark {
-    background-color: oklch(0.1 0 0);
-  }
-  
-  .bg-surface-subtle {
-    background-color: var(--color-surface-subtle);
-  }
-  
-  .border-subtle {
-    border-color: var(--color-border-subtle);
-  }
-  
-  .text-bottom-banner {
-    color: var(--color-bottom-banner-text);
-  }
-  
-  .text-white {
-    color: white;
-  }
-  
-  /* ========================================
-     Shadow Utilities
-     ======================================== */
-  
   .shadow-inner-premium {
     box-shadow: var(--shadow-inner);
   }
-  
+
+  .bg-dark {
+    background-color: oklch(0.1 0 0);
+  }
+  .bg-surface-subtle {
+    background-color: var(--color-surface-subtle);
+  }
+  .bg-primary-subtle {
+    background-color: oklch(from var(--color-primary) l c h / 0.4);
+  }
+  .bg-accent-subtle {
+    background-color: oklch(from var(--color-accent) l c h / 0.4);
+  }
+  .bg-glass-light {
+    background-color: oklch(1 0 0 / 0.05);
+  }
+
+  .border-subtle {
+    border-color: var(--color-border-subtle);
+  }
+  .border-glass-light {
+    border-color: oklch(1 0 0 / 0.1);
+  }
+
   /* ========================================
-     Animation Utilities
+     Typography Utilities
      ======================================== */
-  
+
+  .text-xs {
+    font-size: var(--font-size-xs);
+  }
+  .text-sm {
+    font-size: var(--font-size-sm);
+  }
+  .text-base {
+    font-size: var(--font-size-base);
+  }
+  .text-lg {
+    font-size: var(--font-size-lg);
+  }
+  .text-xl {
+    font-size: var(--font-size-xl);
+  }
+  .text-2xl {
+    font-size: var(--font-size-2xl);
+  }
+  .text-3xl {
+    font-size: var(--font-size-3xl);
+  }
+
+  .text-white {
+    color: oklch(1 0 0);
+  }
+  .text-dark {
+    color: var(--color-dark);
+  }
+  .text-muted {
+    color: var(--color-muted);
+  }
+  .text-muted-dark {
+    color: var(--color-muted-dark);
+  }
+  .text-light {
+    color: var(--color-light);
+  }
+  .text-subtle {
+    color: var(--color-subtle);
+  }
+  .text-bottom-banner {
+    color: var(--color-bottom-banner-text);
+  }
+  .text-glass-muted {
+    color: oklch(1 0 0 / 0.4);
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+  .font-black {
+    font-weight: 900;
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .tracking-wide-xl {
+    letter-spacing: 0.2em;
+  }
+
+  /* ========================================
+     Icon Size Utilities
+     ======================================== */
+
+  .icon-sm {
+    inline-size: var(--icon-sm);
+    block-size: var(--icon-sm);
+    font-size: var(--icon-sm);
+  }
+  .icon-md {
+    inline-size: var(--icon-md);
+    block-size: var(--icon-md);
+    font-size: var(--icon-md);
+  }
+  .icon-lg {
+    inline-size: var(--icon-lg);
+    block-size: var(--icon-lg);
+    font-size: var(--icon-lg);
+  }
+  .icon-xl {
+    inline-size: var(--icon-xl);
+    block-size: var(--icon-xl);
+    font-size: var(--icon-xl);
+  }
+
+  /* ========================================
+     Animation & Transform Utilities
+     ======================================== */
+
   .animate-fade-in-up {
     animation: var(--animate-fade-in-up);
   }
-  
   .animate-pulse-subtle {
     animation: var(--animate-pulse-subtle);
   }
-  
   .animate-float {
     animation: var(--animate-float);
   }
-  
+
   .delay-100 {
     animation-delay: var(--delay-100);
   }
-  
   .delay-200 {
     animation-delay: var(--delay-200);
   }
-  
   .delay-300 {
     animation-delay: var(--delay-300);
   }
-  
+
+  .transition-all {
+    transition: all var(--transition-smooth);
+  }
+  .transition-colors {
+    transition: color var(--transition-standard),
+      background-color var(--transition-standard);
+  }
+  .transition-transform {
+    transition: transform var(--transition-smooth);
+  }
+
+  .scale-95 {
+    scale: 0.95;
+  }
+  .scale-100 {
+    scale: 1;
+  }
+  .scale-105 {
+    scale: 1.05;
+  }
+  .rotate-180 {
+    rotate: 180deg;
+  }
+  .translate-x-full {
+    translate: 100% 0;
+  }
+  .-translate-x-full {
+    translate: -100% 0;
+  }
+  .translate-y-0 {
+    translate: 0 0;
+  }
+  .-translate-y-4 {
+    translate: 0 -1rem;
+  }
+
+  /* ========================================
+     Interaction Utilities
+     ======================================== */
+
+  .pointer-events-none {
+    pointer-events: none;
+  }
+
   /* ========================================
      Responsive Utilities
      ======================================== */
-  
+
   .year-responsive {
     display: none;
-    
     @container (width >= 768px) {
       display: inline;
     }
@@ -143,7 +488,6 @@
   /* Visibility Toggles */
   .desktop-only {
     display: none;
-
     @media (width >= 1024px) {
       display: block;
     }
@@ -151,553 +495,8 @@
 
   .mobile-only {
     display: block;
-
     @media (width >= 1024px) {
       display: none;
     }
-  }
-  
-  /* ========================================
-     Layout Utilities
-     ======================================== */
-  
-  .w-full {
-    inline-size: 100%;
-  }
-  
-  .h-full {
-    block-size: 100%;
-  }
-  
-  .min-h-screen {
-    min-block-size: 100svh;
-  }
-  
-  .max-w-7xl {
-    max-inline-size: 80rem;
-  }
-  
-  .max-w-4xl {
-    max-inline-size: 56rem;
-  }
-  
-  .max-w-3xl {
-    max-inline-size: 48rem;
-  }
-  
-  .max-w-sm {
-    max-inline-size: 24rem;
-  }
-  
-  .mx-auto {
-    margin-inline: auto;
-  }
-  
-  /* ========================================
-     Flex Utilities
-     ======================================== */
-  
-  .flex {
-    display: flex;
-  }
-  
-  .flex-col {
-    flex-direction: column;
-  }
-  
-  .flex-1 {
-    flex: 1;
-  }
-  
-  .items-center {
-    align-items: center;
-  }
-  
-  .items-stretch {
-    align-items: stretch;
-  }
-  
-  .justify-center {
-    justify-content: center;
-  }
-  
-  .justify-between {
-    justify-content: space-between;
-  }
-  
-  .justify-end {
-    justify-content: flex-end;
-  }
-  
-  .gap-1 {
-    gap: 0.25rem;
-  }
-  
-  .gap-2 {
-    gap: 0.5rem;
-  }
-  
-  .gap-3 {
-    gap: 0.75rem;
-  }
-  
-  .gap-4 {
-    gap: 1rem;
-  }
-  
-  .gap-8 {
-    gap: 2rem;
-  }
-  
-  /* ========================================
-     Grid Utilities
-     ======================================== */
-  
-  .grid {
-    display: grid;
-  }
-  
-  /* ========================================
-     Spacing Utilities
-     ======================================== */
-  
-  .p-2 {
-    padding: 0.5rem;
-  }
-  
-  .p-4 {
-    padding: 1rem;
-  }
-  
-  .p-8 {
-    padding: 2rem;
-  }
-  
-  .py-1 {
-    padding-block: 0.25rem;
-  }
-  
-  .py-3 {
-    padding-block: 0.75rem;
-  }
-  
-  .py-4 {
-    padding-block: 1rem;
-  }
-  
-  .px-4 {
-    padding-inline: 1rem;
-  }
-  
-  .px-6 {
-    padding-inline: 1.5rem;
-  }
-  
-  .px-8 {
-    padding-inline: 2rem;
-  }
-  
-  .mt-2 {
-    margin-block-start: 0.5rem;
-  }
-  
-  .mb-8 {
-    margin-block-end: 2rem;
-  }
-  
-  .-ml-2 {
-      margin-inline-start: -0.5rem;
-  }
-  
-  /* ========================================
-     Border Utilities
-     ======================================== */
-  
-  .rounded-xl {
-    border-radius: var(--radius-xl);
-  }
-  
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
-  
-  .rounded-full {
-    border-radius: var(--radius-full);
-  }
-  
-  /* ========================================
-     Typography Utilities
-     ======================================== */
-  
-  .text-xs {
-    font-size: var(--font-size-xs);
-  }
-  
-  .text-sm {
-    font-size: var(--font-size-sm);
-  }
-  
-  .text-base {
-    font-size: var(--font-size-base);
-  }
-  
-  .text-lg {
-    font-size: var(--font-size-lg);
-  }
-  
-  .text-xl {
-    font-size: var(--font-size-xl);
-  }
-  
-  .text-2xl {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .text-3xl {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .font-bold {
-    font-weight: 700;
-  }
-  
-  .font-black {
-    font-weight: 900;
-  }
-  
-  .uppercase {
-    text-transform: uppercase;
-  }
-  
-  .whitespace-nowrap {
-    white-space: nowrap;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  /* ========================================
-     Z-Index Utilities
-     ======================================== */
-  
-  .z-10 {
-    z-index: var(--z-dropdown);
-  }
-  
-  .z-40 {
-    z-index: var(--z-modal-backdrop);
-  }
-  
-  .z-50 {
-    z-index: var(--z-modal);
-  }
-  
-  .z-60 {
-    z-index: var(--z-popover);
-  }
-  
-  /* ========================================
-     Transition Utilities
-     ======================================== */
-  
-  .transition-all {
-    transition: all var(--transition-smooth);
-  }
-  
-  .transition-colors {
-    transition: color var(--transition-standard), background-color var(--transition-standard);
-  }
-  
-  .transition-transform {
-    transition: transform var(--transition-smooth);
-  }
-  
-  /* ========================================
-     Overflow Utilities
-     ======================================== */
-  
-  .overflow-hidden {
-    overflow: hidden;
-  }
-  
-  .overflow-y-auto {
-    overflow-y: auto;
-  }
-  
-  /* ========================================
-     Pointer Events
-     ======================================== */
-  
-  .pointer-events-none {
-    pointer-events: none;
-  }
-  
-  /* ========================================
-     Visibility Utilities
-     ======================================== */
-  
-  .invisible {
-    visibility: hidden;
-  }
-  
-  .opacity-0 {
-    opacity: 0;
-  }
-  
-  /* ========================================
-     Transform Utilities
-     ======================================== */
-  
-  .scale-95 {
-    transform: scale(0.95);
-  }
-  
-  .-translate-y-4 {
-    transform: translateY(-1rem);
-  }
-  
-  /* ========================================
-     Additional Flex/Grid Utilities
-     ======================================== */
-  
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  
-  .justify-between {
-    justify-content: space-between;
-  }
-  
-  .justify-center {
-    justify-content: center;
-  }
-  
-  /* ========================================
-     Additional Spacing Utilities
-     ======================================== */
-  
-  .gap-2 {
-    gap: var(--space-s);
-  }
-  
-  .gap-3 {
-    gap: var(--space-l);
-  }
-  
-  .p-5 {
-    padding: var(--space-xl);
-  }
-  
-  .p-8 {
-    padding: var(--space-3xl);
-  }
-  
-  .px-4 {
-    padding-inline: var(--space-xl);
-  }
-  
-  .px-5 {
-    padding-inline: var(--space-xl);
-  }
-  
-  .py-2 {
-    padding-block: var(--space-s);
-  }
-  
-  .ml-2 {
-    margin-inline-start: var(--space-s);
-  }
-  
-  .mr-2 {
-    margin-inline-end: var(--space-s);
-  }
-  
-  .mr-3 {
-    margin-inline-end: var(--space-l);
-  }
-  
-  .my-12 {
-    margin-block: calc(var(--space-unit) * 3);
-  }
-  
-  .mb-6 {
-    margin-block-end: calc(var(--space-unit) * 1.5);
-  }
-  
-  /* ========================================
-     Additional Size Utilities
-     ======================================== */
-  
-  .w-2 {
-    inline-size: var(--space-s);
-  }
-  
-  .w-11 {
-    inline-size: 2.75rem;
-  }
-  
-  .h-2 {
-    block-size: var(--space-s);
-  }
-  
-  .h-11 {
-    block-size: 2.75rem;
-  }
-  
-  .max-w-4xl {
-    max-width: 56rem;
-  }
-  
-  .max-w-7xl {
-    max-width: 80rem;
-  }
-  
-  .mx-auto {
-    margin-inline: auto;
-  }
-  
-  .max-w-none {
-    max-width: none;
-  }
-  
-  /* ========================================
-     Additional Visual Utilities
-     ======================================== */
-  
-  .opacity-50 {
-    opacity: 0.5;
-  }
-  
-  .scale-105 {
-    transform: scale(1.05);
-  }
-  
-  .shadow-2xl {
-    box-shadow: var(--shadow-2xl);
-  }
-  
-  /* ========================================
-     Color Utilities (OKLCH-based)
-     ======================================== */
-  
-  .bg-primary-subtle {
-    background-color: oklch(from var(--color-primary) l c h / 0.4);
-  }
-  
-  .bg-accent-subtle {
-    background-color: oklch(from var(--color-accent) l c h / 0.4);
-  }
-  
-  .bg-glass-light {
-    background-color: oklch(1 0 0 / 0.05);
-  }
-  
-  .border-glass-light {
-    border-color: oklch(1 0 0 / 0.1);
-  }
-  
-  .text-glass-muted {
-    color: oklch(1 0 0 / 0.4);
-  }
-  
-  /* ========================================
-     Typography Utilities (Additional)
-     ======================================== */
-  
-  /* ========================================
-     Icon Size Utilities
-     ======================================== */
-
-  .icon-sm {
-    width: var(--icon-sm);
-    height: var(--icon-sm);
-  }
-
-  .icon-md {
-    width: var(--icon-md);
-    height: var(--icon-md);
-  }
-
-  .icon-lg {
-    width: var(--icon-lg);
-    height: var(--icon-lg);
-  }
-
-  .icon-xl {
-    width: var(--icon-xl);
-    height: var(--icon-xl);
-  }
-
-  .tracking-wide-xl {
-    letter-spacing: 0.2em;
-  }
-}
-
-/* ============================================================================
-   UTILITIES LAYER - The Patch
-   One-off overrides and helper classes
-   ========================================================================= */
-@layer utilities {
-  .hidden {
-    display: none;
-  }
-
-  .invisible {
-    visibility: hidden;
-  }
-  
-  .sr-only {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  /* Logic Utilities for JS State Management */
-  .pointer-events-none {
-    pointer-events: none;
-  }
-
-  .opacity-0 {
-    opacity: 0;
-  }
-
-  .opacity-100 {
-    opacity: 1;
-  }
-
-  /* Modern Independent Transforms for Composition */
-  .scale-95 {
-    scale: 0.95;
-  }
-
-  .scale-100 {
-    scale: 1;
-  }
-
-  .rotate-180 {
-    rotate: 180deg;
-  }
-
-  .translate-x-full {
-    translate: 100% 0;
-  }
-
-  .-translate-x-full {
-    translate: -100% 0;
-  }
-
-  .translate-y-0 {
-    translate: 0 0;
-  }
-
-  .-translate-y-4 {
-    translate: 0 -1rem;
   }
 }

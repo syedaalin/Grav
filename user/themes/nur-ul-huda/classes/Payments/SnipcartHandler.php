@@ -38,27 +38,24 @@ class SnipcartHandler
         try {
             $api_url = "https://app.snipcart.com/api/orders/{$order_token}";
 
-            $ch = \curl_init($api_url);
-            \curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            \curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-            \curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Accept: application/json',
-                'Content-Type: application/json',
-                'Authorization: Basic ' . \base64_encode($api_key . ':')
+            // Use Grav's Guzzle client
+            $client = $this->grav['httpClient'];
+            $response = $client->put($api_url, [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Basic ' . \base64_encode($api_key . ':')
+                ],
+                'json' => [
+                    'status' => $status,
+                    'paymentStatus' => 'Paid'
+                ]
             ]);
-            \curl_setopt($ch, CURLOPT_POSTFIELDS, \json_encode([
-                'status' => $status,
-                'paymentStatus' => 'Paid'
-            ]));
 
-            $response = \curl_exec($ch);
-            $http_code = \curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            \curl_close($ch);
-
-            if ($http_code === 200) {
+            if ($response->getStatusCode() === 200) {
                 $this->grav['log']->info("Snipcart order {$order_token} updated to {$status}");
             } else {
-                $this->grav['log']->error("Failed to update Snipcart order: HTTP {$http_code}");
+                $this->grav['log']->error("Failed to update Snipcart order: HTTP " . $response->getStatusCode());
             }
         } catch (\Exception $e) {
             $this->grav['log']->error('Snipcart API error: ' . $e->getMessage());

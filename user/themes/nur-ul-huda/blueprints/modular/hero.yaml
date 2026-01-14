@@ -1,0 +1,30 @@
+# Documentation: [hero.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/hero.blueprint.md)
+title: Hero
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            header.hero_image:
+              type: filepicker
+              folder: "self@"
+              label: Hero Image
+              preview_images: true
+              accept:
+                - image/*
+
+            content:
+              type: markdown
+              validate:
+                type: textarea

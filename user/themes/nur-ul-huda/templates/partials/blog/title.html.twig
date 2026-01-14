@@ -1,3 +1,8 @@
+{# 
+    NUR-UL-HUDA BLOG TITLE
+    ----------------------
+    Blueprint: [blog-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/blog-components.blueprint.md)
+#}
 {% set title_level = title_level ?: 'h2' %}
 {% if page.header.link %}
     <{{ title_level }} class="p-name blog-title">
@@ -11,4 +16,3 @@
         <a href="{{ page.url }}" class="u-url">{{ page.title }}</a>
     </{{ title_level }}>
 {% endif %}
-

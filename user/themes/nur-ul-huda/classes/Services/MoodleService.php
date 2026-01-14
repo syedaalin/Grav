@@ -8,9 +8,13 @@ use Grav\Common\Grav;
 
 readonly class MoodleService
 {
+    protected Grav $grav;
+
     public function __construct(
-        protected Grav $grav = Grav::instance()
-    ) {}
+        ?Grav $grav = null
+    ) {
+        $this->grav = $grav ?? Grav::instance();
+    }
 
     /**
      * Fetch featured courses from Moodle

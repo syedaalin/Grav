@@ -1,0 +1,42 @@
+# Documentation: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
+title: Project Timeline
+"@extends":
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            content:
+              type: markdown
+              validate:
+                type: textarea
+
+            header.projects:
+              type: list
+              label: Timeline Projects
+              fields:
+                .title:
+                  type: text
+                  label: Project Title
+                .status:
+                  type: text
+                  label: Status (e.g. In Progress)
+                .progress:
+                  type: range
+                  label: Funding Progress (%)
+                  min: 0
+                  max: 100
+                  default: 0
+                .url:
+                  type: text
+                  label: Contribution URL

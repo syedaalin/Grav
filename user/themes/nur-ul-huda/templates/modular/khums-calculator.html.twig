@@ -1,5 +1,5 @@
 {# Add JS Logic #}
-{% do assets.addJs('theme://js/modules/khums-calculator.js', { 'priority': 90, 'group': 'bottom', 'defer': true }) %}
+{% do assets.addJs('theme://js/modules/khums-calculator.js', { 'priority': 90, 'group': 'bottom', 'defer': true, 'type': 'module' }) %}
 
 {# 
     Khums & Sadaqah Calculator
@@ -13,6 +13,11 @@
     2. JavaScript calculates Net Surplus, Khums (20%), and Total.
     3. Results are reflected in the Summary area.
     4. Clicking 'Pay Total' updates Snipcart item custom fields and initiates checkout.
+#}
+{# 
+    NUR-UL-HUDA MODULAR KHUMS CALCULATOR
+    ------------------------------------
+    Blueprint: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
 #}
 <section class="modular-section modular-khums-calculator">
 	<div class="section-container">

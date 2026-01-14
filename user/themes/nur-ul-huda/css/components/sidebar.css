@@ -1,0 +1,137 @@
+@layer components {
+  /* ========================================
+     Sidebar Components (2026 Enhanced)
+     ======================================== */
+
+  @scope (.sidebar-wrapper) {
+    :scope {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+      block-size: 100%;
+    }
+    
+    .sidebar-widget {
+      transition: transform var(--transition-smooth);
+      
+      &:last-child {
+         position: sticky;
+         inset-block-start: calc(var(--header-top-offset, 80px) + 2rem);
+         z-index: var(--z-sticky);
+      }
+    }
+  }
+
+  @scope (.sidebar-heading) {
+    :scope {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      font-size: var(--font-size-lg);
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-block-end: var(--space-m);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .sidebar-heading-dot {
+      inline-size: 0.5rem;
+      block-size: 0.5rem;
+      border-radius: var(--radius-full);
+      background-color: var(--color-primary);
+      box-shadow: 0 0 0 2px oklch(from var(--color-primary) l c h / 0.2);
+    }
+  }
+  
+  @scope (.feed-links) {
+     :scope {
+       display: flex;
+       flex-wrap: wrap;
+       gap: var(--space-s);
+     }
+     
+     .feed-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs);
+        padding-block: 0.5rem;
+        padding-inline: 0.75rem;
+        background-color: var(--color-surface, oklch(1 0 0));
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-m);
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        color: var(--color-subtle);
+        text-decoration: none;
+        transition: all var(--transition-smooth);
+        
+        &:hover {
+           background-color: oklch(1 0 0);
+           color: var(--color-primary);
+           border-color: var(--color-primary);
+           transform: translateY(-1px);
+           box-shadow: var(--shadow-sm);
+        }
+        
+        i {
+           font-size: 1.25em;
+        }
+     }
+  }
+  
+  @scope (.tags-list) {
+      :scope {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--space-s);
+      }
+  }
+  
+  @scope (.tag-link) {
+      :scope {
+           font-size: var(--font-size-xs);
+           padding-block: 0.5rem;
+           padding-inline: 1.25rem;
+           transition: transform 200ms;
+           
+           &.active {
+               transform: scale(1.05);
+           }
+      }
+  }
+
+  @scope (.widget-list) {
+      :scope {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-s);
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+  }
+  
+  @scope (.widget-link) {
+      :scope {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1.25rem;
+          text-decoration: none;
+      }
+  }
+  
+  @scope (.widget-label) {
+      :scope {
+          font-size: var(--font-size-sm);
+          font-weight: 900;
+          color: var(--color-dark);
+          transition: color var(--transition-standard);
+          
+          .widget-link:hover & {
+              color: var(--color-primary);
+          }
+      }
+  }
+}

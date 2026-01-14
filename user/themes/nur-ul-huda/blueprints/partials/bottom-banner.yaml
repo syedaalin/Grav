@@ -1,0 +1,61 @@
+# Documentation: [bottom-banner.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/bottom-banner.blueprint.md)
+fields:
+  bottom_banner_show_logo:
+    type: toggle
+    label: Site Logo
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  bottom_banner_show_site_name:
+    type: toggle
+    label: Site Name
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  bottom_banner_show_tagline:
+    type: toggle
+    label: Site Tagline
+    style: vertical
+    width: 33%
+    highlight: 1
+    default: 1
+    options:
+      1: PLUGIN_ADMIN.ENABLED
+      0: PLUGIN_ADMIN.DISABLED
+    validate:
+      type: bool
+
+  bottom_banner_copyright:
+    type: textarea
+    label: Copyright Text
+    style: vertical
+    width: 33%
+    help: Custom copyright text
+    rows: 3
+    placeholder: "© 2026 Your Organization. All rights reserved."
+
+  bottom_banner_widgets_order:
+    type: selectize
+    label: Section Order
+    default: [brand, social, nav, newsletter, copyright]
+    options:
+      brand: Brand & Tagline
+      social: Social Connectivity
+      nav: Footer Navigation
+      newsletter: Newsletter Signup
+      copyright: Copyright Strip
+    help: "Reorder major sections of the bottom banner."

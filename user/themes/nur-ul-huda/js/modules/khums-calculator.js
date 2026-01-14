@@ -1,5 +1,6 @@
 /**
  * Khums & Sadaqah Calculator - Full Controller
+ * Blueprint: [interactive-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/interactive-components.blueprint.md)
  * Handles UI interactions, calculations, and checkout integration.
  */
 export default class KhumsCalculator {

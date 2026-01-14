@@ -1,0 +1,57 @@
+@layer components {
+  /* ========================================
+     Breadcrumbs
+     ======================================== */
+  
+  @scope (.breadcrumbs) {
+    :scope {
+      display: flex;
+      margin-block: var(--space-xl);
+      container-type: inline-size;
+      font-size: var(--font-size-xs);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .breadcrumb-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-s);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb-separator {
+       margin-inline: var(--space-s);
+       color: oklch(from var(--color-subtle) l c h / 0.5);
+       font-size: var(--font-size-sm);
+    }
+
+    .breadcrumb-link {
+       color: var(--color-subtle);
+       text-decoration-line: underline;
+       text-decoration-color: transparent;
+       text-decoration-thickness: 2px;
+       text-underline-offset: 4px;
+       transition: all var(--transition-standard);
+       
+       &:hover {
+           color: var(--color-primary);
+           text-decoration-color: oklch(from var(--color-primary) l c h / 0.3);
+       }
+    }
+
+    .breadcrumb-current {
+       color: var(--color-dark);
+       font-weight: 900;
+     }
+  }
+}
