@@ -55,7 +55,7 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
     {
         $macros = $this->macros;
         // line 4
-        yield "\t<section class=\"section section-py animate-fade-in-up\">
+        yield "\t<main class=\"section section-py animate-fade-in-up\">
 \t\t<div class=\"section-container-narrow\">
 \t\t\t<div class=\"prose-custom default-content\">
 \t\t\t\t";
@@ -64,7 +64,7 @@ class __TwigTemplate_34c685cf5f2b14b8ee2c9ac852f6b8e6 extends Template
         yield "
 \t\t\t</div>
 \t\t</div>
-\t</section>
+\t</main>
 ";
         yield from [];
     }

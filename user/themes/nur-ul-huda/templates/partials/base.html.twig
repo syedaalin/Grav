@@ -4,55 +4,33 @@
 {% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', direction, typography]) %}
 {% set grid_size = theme_var('grid-size') %}
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
-{% set top_banner_color = theme_var('top_banner_bg_color')|default('oklch(0.2 0.02 260)') %}
+{% set top_banner_color = theme_var('top_banner_bg_color') %}
 
 
-{% use 'blocks/base.html.twig' %}
+
 <!DOCTYPE html>
-<html lang="{{ language }}" dir="{{ direction }}" style="--top-banner-color: {{ top_banner_color }}; {{ dynamic_styles|raw }}; --font-heading: {{ theme_fonts.heading|raw }}; --font-body: {{ theme_fonts.body|raw }};">
+<html lang="{{ language }}" dir="{{ direction }}" style="{% if top_banner_color %}--top-banner-color: {{ top_banner_color }};{% endif %} {{ dynamic_styles|raw }}; --font-heading: {{ theme_fonts.heading|raw }}; --font-body: {{ theme_fonts.body|raw }};">
 	<head>
 		{% if theme_fonts.custom_css %}
 			<style>
 				{{theme_fonts.custom_css|raw}}</style>
 		{% endif %}
+		{# Critical CSS (Inlined) - Using asset system instead of source() #}
+		{% do assets.addInlineCss(read_file('theme://css/layers/tokens.css'), {'priority': 100}) %}
+		{% do assets.addInlineCss(read_file('theme://css/layers/reset.css'), {'priority': 99}) %}
+		{{ assets.css()|raw }}
+
 		{# Local Fonts #}
 		{% block head deferred %}
-			<meta charset="utf-8"/>
-			<title>
-				{% if page.title %}
-					{{ page.title|e('html') }}
-					|
-				{% endif %}
-				{{ site.title|e('html') }}</title>
-
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-			{% if theme_var('production-mode') %}
-				<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.snipcart.com https://api.aladhan.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.snipcart.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.snipcart.com; connect-src 'self' https://api.aladhan.com https://cdn.snipcart.com; frame-src 'self' https://cdn.snipcart.com;">
-			{% endif %}
-			{% include 'partials/metadata.html.twig' ignore missing %}
-
-			{% set logo_img = theme_var('custom_logo') ? media['theme://images/logo/' ~ (theme_var('custom_logo')|first).name] : null %}
-			{% set favicon = logo_img ? logo_img.cropZoom(32, 32) : media['theme://images/favicon.png'] %}
-			<link rel="icon" type="image/png" href="{{ favicon.url }}"/>
-			<link rel="canonical" href="{{ page.url(true, true) }}"/>
-
-			<link rel="manifest" href="{{ base_url }}/manifest">
-			<meta name="theme-color" content="oklch(0.55 0.18 165)">
-			<meta name="mobile-web-app-capable" content="yes">
-			<meta name="apple-mobile-web-app-capable" content="yes">
-			<meta name="apple-mobile-web-app-status-bar-style" content="default">
-			<meta
-			name="apple-mobile-web-app-title" content="{{ site.title }}">
-
-			{# Service Worker Registration #}
-
-
-
+			{% include 'partials/head.html.twig' %}
 		{% endblock head %}
 
 		{% block stylesheets %}
-			{% do assets.addCss('theme://css/nur-ul-huda.css') %}
+			{% if theme_var('production-mode') %}
+				{% do assets.addCss('theme://css/nur-ul-huda.css') %}
+			{% else %}
+				{% do assets.addCss('theme://css/modern-vanilla.css') %}
+			{% endif %}
 			{% do assets.addCss('theme://css/line-awesome.min.css') %}
 		{% endblock %}
 
@@ -60,64 +38,64 @@
 			{# Core ES Modules #}
 			{% do assets.addJs('theme://js/modules/khums-calculator.js', {'priority': 100, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/ui.js', {'priority': 95, 'group': 'bottom', 'type': 'module'}) %}
-			
+
+
 			{# Performance & Features #}
 			{% do assets.addJs('theme://js/modules/performance-monitor.js', {'priority': 94, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/pull-refresh.js', {'priority': 94, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/gallery.js', {'priority': 93, 'group': 'bottom', 'type': 'module'}) %}
-			
+
 			{# Accessibility #}
 			{% do assets.addJs('theme://js/modules/high-contrast.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
 			{% do assets.addJs('theme://js/modules/font-scaler.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
-			
+
 			{# Layout Logic #}
 			{% do assets.addJs('theme://js/modules/bottom-banner.js', {'priority': 89, 'group': 'bottom', 'type': 'module'}) %}
-			
-			{# Spiritual Logic (Orchestrator imports its own dependencies) #}
-			{% do assets.addJs('theme://js/modules/spiritual.js', {'priority': 88, 'group': 'bottom', 'type': 'module'}) %}
-			
+
+			{# Spiritual Logic REMOVED per user request (Top Banner widgets gone) #}
+
 			{# Service Worker #}
-			{% do assets.addJs('theme://js/modules/service-worker.js', {'priority': 87, 'group': 'bottom', 'type': 'module'}) %}
+		{% do assets.addJs('theme://js/modules/service-worker.js', {'priority': 87, 'group': 'bottom', 'type': 'module'}) %}
 		{% endblock %}
 
-		{% block assets deferred %}
+			{% block assets deferred %}
 			{{ assets.css()|raw }}
-			{{ assets.js()|raw }}
-		{% endblock %}
+		{{ assets.js()|raw }}
+	{% endblock %}
 	</head>
-	<body
-		id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}">
-
-		<div
+		<body id="top" class="{{ body_classes }} {{ dynamic_body_classes|join(' ') }}"> <div
 			id="page-wrapper">
 			{# Skip Link for Accessibility #}
 			<a href="#start" class="skip-link">Skip to main content</a>
 
 
-				{# 
-                   --- HEADER SECTION START --- 
-                   Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
-                #}
-				{% block header %}
-					{% include 'partials/header-wrapper.html.twig' %}
-					{% include 'partials/mobile-menu.html.twig' %}
-				{% endblock %}
+			{# 
+															               --- HEADER SECTION START --- 
+															               Blueprint: [ui-utilities.blueprint.md](blueprints/docs/ui-utilities.blueprint.md)
+															            #}
+			{% block header %}
+				{% include 'partials/header-wrapper.html.twig' %}
+				{# Left Sidebar: Services #}
+				{% include 'partials/sidebar-left.html.twig' %}
+				{# Right Sidebar: Global Navigation #}
+				{% include 'partials/sidebar-right.html.twig' %}
+			{% endblock %}
 
 
 			{% block hero %}{% endblock %}
 
 			<section id="start">
 				{% block body %}
-					<section id="body-wrapper" class="section-py container-px">
+					<main id="body-wrapper" class="section-py container-px">
 						{% block messages %}
 							<div class="container message-spacer">
 								{% include 'partials/messages.html.twig' ignore missing %}
 							</div>
 						{% endblock %}
 						<div class="container">
-							{{ block('content_surround') }}
+							{% block content %}{% endblock %}
 						</div>
-					</section>
+					</main>
 				{% endblock %}
 			</section>
 

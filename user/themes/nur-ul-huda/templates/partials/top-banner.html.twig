@@ -1,74 +1,35 @@
-{# 
-    NUR-UL-HUDA TOP BANNER
-    ----------------------
+{#
+    NUR-UL-HUDA TOP BANNER (Radiant Trio + Ticker)
+    ----------------------------------------------
     Blueprint: [top-banner.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/top-banner.blueprint.md)
-    Displays the "Radiant Trio": Gregorian Date, Prayer Times, and Hijri Date.
-    Logic handles both individual widgets and an optional exclusive announcement mode.
-    SRP Refactored: Business logic moved to BannerHelper::getTopBannerData
 #}
 
-{% set text_dir = grav.language.getDirection() ?: 'ltr' %}
+{# Top Banner Utility Bar REMOVED per user request. Only Ticker remains. #}
 
-
-
-{% if top_banner.active %}
-	{# 
-       2026 ARCHITECTURE: Component-Local Variables
-       We pass dynamic values as native CSS properties to preserve style encapsulation.
-    #}
-	<div id="top-banner-utility-bar" 
-         class="top-banner" 
-         data-glass="{{ top_banner.use_glass ? 'true' : 'false' }}"
-         data-border="{{ top_banner.border_type }}"
-         data-pause-hover="{{ top_banner.pause_on_hover ? 'true' : 'false' }}"
-         style="--banner-bg: {{ top_banner.bg_color }}; --banner-text: {{ top_banner.text_color }};" 
-         dir="{{ text_dir }}" 
-         role="complementary" 
-         aria-label="Utility Bar">
-
-		{% if top_banner.show_announcement %}
-			{# === MODE A: EXCLUSIVE ANNOUNCEMENT (Full Width) === #}
-			<div class="top-banner-announcement" role="alert" aria-live="assertive">
-				<div class="announcement-marquee-container">
-					<div class="announcement-marquee" style="--marquee-speed: {{ top_banner.announcement_speed }}s;">
+{# ANNOUNCEMENT TICKER (Overlay or Separate?) #}
+{# ANNOUNCEMENT TICKER (Uses ViewHelper logic for Time Windows) #}
+{% if top_banner.show_announcement and top_banner.announcement_text %}
+	<div class="ticker-component" style="--ticker-bg: {{ top_banner.bg_color }}; --ticker-text: {{ top_banner.text_color }};">
+		<div class="container ticker-wrapper">
+			{# Speed comes in seconds, CSS var expects duration #}
+			<div class="ticker-marquee" style="--marquee-duration: {{ top_banner.announcement_speed }}s;" data-pause="{{ top_banner.pause_on_hover ? 'true' : 'false' }}">
+				<span class="ticker-content">
+					{% if top_banner.announcement_link %}
+						<a href="{{ top_banner.announcement_link }}" class="ticker-link" {% if top_banner.announcement_new_tab %} target="_blank" {% endif %}>{{ top_banner.announcement_text }}</a>
+					{% else %}
 						{{ top_banner.announcement_text }}
-					</div>
-				</div>
+					{% endif %}
+				</span>
+				
+				{# Duplicate for infinite scroll effect #}
+				<span class="ticker-content" aria-hidden="true">
+					{% if top_banner.announcement_link %}
+						<a href="{{ top_banner.announcement_link }}" class="ticker-link" tabindex="-1" {% if top_banner.announcement_new_tab %} target="_blank" {% endif %}>{{ top_banner.announcement_text }}</a>
+					{% else %}
+						{{ top_banner.announcement_text }}
+					{% endif %}
+				</span>
 			</div>
-
-		{% else %}
-			{# === MODE B: RADIANT TRIO WIDGETS (Centered in Inner) === #}
-			<div class="top-banner-inner">
-				<div class="top-banner-layout">
-					<div class="top-banner-widgets">
-						{% for widget in top_banner.widgets_order %}
-							{% set is_hidden_mobile = widget in top_banner.mobile_hide %}
-							
-							{# WIDGET: GREGORIAN DATE #}
-							{% if widget == 'date' %}
-								<div class="banner-pill widget-gregorian {{ is_hidden_mobile ? 'hide-mobile' : '' }}" aria-label="Current Date">
-									<time id="gregorian-date" class="banner-date" datetime="{{ 'now'|date('Y-m-d') }}">
-										{{ "now"|date("D, M j") }}<span class="year-responsive">{{ "now"|date(", Y") }}</span>
-									</time>
-								</div>
-
-							{# WIDGET: UPCOMING NAMAZ TIMING #}
-							{% elseif widget == 'prayer' %}
-								<div class="banner-pill widget-prayer {{ is_hidden_mobile ? 'hide-mobile' : '' }}" role="timer" aria-live="polite" aria-label="Upcoming Namaz Timing">
-									<span class="banner-prayer-name" id="next-prayer-name">--</span>
-									<time class="banner-countdown" id="prayer-countdown">--:--</time>
-								</div>
-
-							{# WIDGET: HIJRI DATE #}
-							{% elseif widget == 'hijri' %}
-								<div class="banner-pill widget-hijri {{ is_hidden_mobile ? 'hide-mobile' : '' }}" aria-label="Hijri Date">
-									<span id="hijri-date" class="banner-date" aria-live="polite">Loading...</span>
-								</div>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		{% endif %}
+		</div>
 	</div>
 {% endif %}

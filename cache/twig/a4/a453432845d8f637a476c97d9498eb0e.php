@@ -40,21 +40,15 @@ class __TwigTemplate_b1cec81ce16d9e06e21ac78590669fab extends Template
         $macros = $this->macros;
         // line 8
         yield "
-<footer
-\tid=\"bottom-banner\" class=\"bottom-banner-main\" style=\"background-color: ";
-        // line 10
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["bottom_banner"] ?? null), "bg_style", [], "any", false, false, false, 10), "html", null, true);
-        yield "; color: ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["bottom_banner"] ?? null), "text_color", [], "any", false, false, false, 10), "html", null, true);
-        yield ";\" role=\"contentinfo\" aria-label=\"Site bottom banner\">
-\t
-    ";
+<footer id=\"bottom-banner\" class=\"bottom-banner-main\" role=\"contentinfo\" aria-label=\"Site bottom banner\">
+
+\t";
+        // line 11
+        yield from $this->load("partials/bottom-banner/schema.html.twig", 11)->unwrap()->yield($context);
         // line 12
-        yield from $this->load("partials/bottom-banner/schema.html.twig", 12)->unwrap()->yield($context);
-        // line 13
         yield "
 \t";
-        // line 15
+        // line 14
         yield "\t<div class=\"bottom-banner-pattern\" aria-hidden=\"true\">
 \t\t<svg xmlns=\"http://www.w3.org/2000/svg\">
 \t\t\t<defs>
@@ -68,9 +62,9 @@ class __TwigTemplate_b1cec81ce16d9e06e21ac78590669fab extends Template
 
 \t<div class=\"bottom-banner-layout-stack\">
 \t\t";
-        // line 27
+        // line 26
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, ($context["bottom_banner"] ?? null), "widgets", [], "any", false, false, false, 27));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, ($context["bottom_banner"] ?? null), "widgets", [], "any", false, false, false, 26));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -85,59 +79,59 @@ class __TwigTemplate_b1cec81ce16d9e06e21ac78590669fab extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["widget"]) {
-            // line 28
+            // line 27
             yield "\t\t\t";
             if (($context["widget"] == "brand")) {
-                // line 29
+                // line 28
                 yield "\t\t\t\t";
-                yield from $this->load("partials/bottom-banner/brand.html.twig", 29)->unwrap()->yield($context);
-                // line 30
+                yield from $this->load("partials/bottom-banner/brand.html.twig", 28)->unwrap()->yield($context);
+                // line 29
                 yield "
 \t\t\t";
-            } elseif ((            // line 31
+            } elseif ((            // line 30
 $context["widget"] == "newsletter")) {
+                // line 31
+                yield "\t\t\t\t";
                 // line 32
                 yield "\t\t\t\t";
+                yield from $this->load("partials/bottom-banner/newsletter.html.twig", 32)->unwrap()->yield($context);
                 // line 33
-                yield "\t\t\t\t";
-                yield from $this->load("partials/bottom-banner/newsletter.html.twig", 33)->unwrap()->yield($context);
-                // line 34
                 yield "
 \t\t\t";
-            } elseif ((            // line 35
+            } elseif ((            // line 34
 $context["widget"] == "social")) {
-                // line 36
+                // line 35
                 yield "\t\t\t\t";
-                // line 37
+                // line 36
                 yield "\t\t\t\t<div class=\"bottom-banner-social-strip\">
 \t\t\t\t\t<div class=\"bottom-banner-body\">
 \t\t\t\t\t\t<section class=\"bottom-banner-social-section\" aria-label=\"Social Media Links\">
 \t\t\t\t\t\t\t";
+                // line 39
+                yield from $this->load("partials/social-icons.html.twig", 39)->unwrap()->yield(CoreExtension::merge($context, ["context" => "bottom_banner"]));
                 // line 40
-                yield from $this->load("partials/social-icons.html.twig", 40)->unwrap()->yield(CoreExtension::merge($context, ["context" => "bottom_banner"]));
-                // line 41
                 yield "\t\t\t\t\t\t</section>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 
 \t\t\t";
-            } elseif ((            // line 45
+            } elseif ((            // line 44
 $context["widget"] == "nav")) {
-                // line 46
+                // line 45
                 yield "\t\t\t\t";
-                yield from $this->load("partials/bottom-banner/nav.html.twig", 46)->unwrap()->yield($context);
-                // line 47
+                yield from $this->load("partials/bottom-banner/nav.html.twig", 45)->unwrap()->yield($context);
+                // line 46
                 yield "
 \t\t\t";
-            } elseif ((            // line 48
+            } elseif ((            // line 47
 $context["widget"] == "copyright")) {
-                // line 49
+                // line 48
                 yield "\t\t\t\t";
-                yield from $this->load("partials/bottom-banner/copyright.html.twig", 49)->unwrap()->yield($context);
-                // line 50
+                yield from $this->load("partials/bottom-banner/copyright.html.twig", 48)->unwrap()->yield($context);
+                // line 49
                 yield "\t\t\t";
             }
-            // line 51
+            // line 50
             yield "\t\t";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -151,16 +145,16 @@ $context["widget"] == "copyright")) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['widget'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 52
+        // line 51
         yield "\t</div>
 
 \t";
-        // line 55
+        // line 54
         yield "\t";
-        // line 56
+        // line 55
         yield "\t<a href=\"#top\" class=\"back-to-top\" aria-label=\"Back to top\" data-back-to-top>
-\t\t<svg class=\"progress-ring\" width=\"100%\" height=\"100%\" viewBox=\"0 0 100 100\">
-\t\t\t<circle class=\"progress-ring-circle\" cx=\"50\" cy=\"50\" r=\"46\" />
+\t\t<svg class=\"progress-ring\" width=\"100%\" height=\"100%\" viewbox=\"0 0 100 100\">
+\t\t\t<circle class=\"progress-ring-circle\" cx=\"50\" cy=\"50\" r=\"46\"/>
 \t\t</svg>
 \t\t<i class=\"la la-angle-up icon-lg\" aria-hidden=\"true\"></i>
 \t</a>
@@ -190,7 +184,7 @@ $context["widget"] == "copyright")) {
      */
     public function getDebugInfo(): array
     {
-        return array (  161 => 56,  159 => 55,  155 => 52,  141 => 51,  138 => 50,  135 => 49,  133 => 48,  130 => 47,  127 => 46,  125 => 45,  119 => 41,  117 => 40,  112 => 37,  110 => 36,  108 => 35,  105 => 34,  102 => 33,  100 => 32,  98 => 31,  95 => 30,  92 => 29,  89 => 28,  72 => 27,  58 => 15,  55 => 13,  53 => 12,  46 => 10,  42 => 8,);
+        return array (  155 => 55,  153 => 54,  149 => 51,  135 => 50,  132 => 49,  129 => 48,  127 => 47,  124 => 46,  121 => 45,  119 => 44,  113 => 40,  111 => 39,  106 => 36,  104 => 35,  102 => 34,  99 => 33,  96 => 32,  94 => 31,  92 => 30,  89 => 29,  86 => 28,  83 => 27,  66 => 26,  52 => 14,  49 => 12,  47 => 11,  42 => 8,);
     }
 
     public function getSourceContext(): Source

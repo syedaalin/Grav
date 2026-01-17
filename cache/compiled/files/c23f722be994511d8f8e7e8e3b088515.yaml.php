@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml',
-    'modified' => 1768344512,
-    'size' => 38268,
+    'modified' => 1768590812,
+    'size' => 20903,
     'data' => [
         'name' => 'Nur-ul-Huda',
         'slug' => 'nur-ul-huda',
@@ -28,7 +28,7 @@ return [
             ],
             1 => [
                 'name' => 'php',
-                'version' => '>=8.2'
+                'version' => '>=8.4'
             ]
         ],
         'form' => [
@@ -50,7 +50,6 @@ return [
                                 'direction' => [
                                     'type' => 'toggle',
                                     'label' => 'Text Direction',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 'ltr',
@@ -58,12 +57,17 @@ return [
                                         'ltr' => 'LTR',
                                         'rtl' => 'RTL'
                                     ],
-                                    'help' => 'Controls text direction for the entire site'
+                                    'help' => 'Controls text direction for the entire site',
+                                    'validate' => [
+                                        'type' => 'text'
+                                    ]
+                                ],
+                                'top_banner_tab' => [
+                                    'import@' => 'tabs/top-banner'
                                 ],
                                 'language' => [
                                     'type' => 'select',
                                     'label' => 'Primary Language',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'en',
                                     'options' => [
@@ -77,7 +81,6 @@ return [
                                 'number_format' => [
                                     'type' => 'select',
                                     'label' => 'Number Format',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'western',
                                     'options' => [
@@ -90,7 +93,6 @@ return [
                                 'date_calendar' => [
                                     'type' => 'select',
                                     'label' => 'Date Calendar',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'gregorian',
                                     'options' => [
@@ -103,7 +105,6 @@ return [
                                 'production-mode' => [
                                     'type' => 'toggle',
                                     'label' => 'Production Mode',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
@@ -123,7 +124,6 @@ return [
                                 'primary_spirit_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Primary Spirit Color',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'oklch(0.55 0.18 165)',
                                     'help' => 'The main spiritual color of the theme (Emerald Green)'
@@ -131,7 +131,6 @@ return [
                                 'accent_color' => [
                                     'type' => 'colorpicker',
                                     'label' => 'Accent Color',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'oklch(0.85 0.15 85)',
                                     'help' => 'The accent color (Gold)'
@@ -145,7 +144,6 @@ return [
                                 'custom_fonts' => [
                                     'type' => 'file',
                                     'label' => 'Custom Fonts Library',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'help' => 'Drag and drop your font files here. They will be auto-named by filename.',
                                     'destination' => 'theme://fonts/custom',
@@ -159,7 +157,6 @@ return [
                                 'font_heading' => [
                                     'type' => 'select',
                                     'label' => 'Heading Font Family',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => '\'PlusJakartaSans-VariableFont_wght\', sans-serif',
                                     'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
@@ -168,7 +165,6 @@ return [
                                 'font_body' => [
                                     'type' => 'select',
                                     'label' => 'Body Font Family',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => '\'Outfit-VariableFont_wght\', sans-serif',
                                     'data-options@' => '\\Grav\\Theme\\NurUlHuda::getFontOptions',
@@ -179,105 +175,20 @@ return [
                         'header_tab' => [
                             'import@' => 'tabs/header'
                         ],
-                        'top_banner_tab' => [
+                        'ticker_tab' => [
                             'type' => 'tab',
-                            'title' => 'Top Banner',
+                            'title' => 'Dynamic Ticker',
                             'fields' => [
-                                'top_banner_intro' => [
-                                    'type' => 'display',
-                                    'content' => 'Configure the top banner widgets and ticker.',
-                                    'markdown' => true
+                                'ticker_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Announcement Ticker',
+                                    'underline' => true,
+                                    'text' => 'Configure the scrolling marquee to display important announcements.'
                                 ],
-                                'top_banner_enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Enable Top Banner',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'top_banner_bg_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Banner Background Color',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.2 0.02 260)',
-                                    'help' => 'Default color for the Radiant Trio strip.'
-                                ],
-                                'top_banner_text_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Banner Text Color',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'oklch(0.85 0.15 85)',
-                                    'help' => 'Default text color for the Radiant Trio.'
-                                ],
-                                'top_banner_glass' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Glassmorphism Effect',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 0,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'help' => 'Apply a blurred, frosted glass effect. Best with semi-transparent background colors.'
-                                ],
-                                'top_banner_border' => [
-                                    'type' => 'select',
-                                    'label' => 'Border Style',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => 'bottom',
-                                    'options' => [
-                                        'none' => 'None',
-                                        'solid' => 'Solid (Full)',
-                                        'bottom' => 'Bottom Only'
-                                    ],
-                                    'help' => 'Choose how the banner border is displayed.'
-                                ],
-                                'top_banner_widgets_order' => [
-                                    'type' => 'selectize',
-                                    'label' => 'Widget Order',
-                                    'default' => [
-                                        0 => 'date',
-                                        1 => 'prayer',
-                                        2 => 'hijri'
-                                    ],
-                                    'options' => [
-                                        'date' => 'Gregorian Date',
-                                        'prayer' => 'Upcoming Namaz Timing',
-                                        'hijri' => 'Hijri Date'
-                                    ],
-                                    'help' => 'Drag and drop to reorder elements.'
-                                ],
-                                'top_banner_mobile_hide' => [
-                                    'type' => 'selectize',
-                                    'label' => 'Hide on Mobile',
-                                    'default' => [
-                                        
-                                    ],
-                                    'options' => [
-                                        'date' => 'Gregorian Date',
-                                        'prayer' => 'Upcoming Namaz Timing',
-                                        'hijri' => 'Hijri Date'
-                                    ],
-                                    'help' => 'Select elements to hide on mobile screens (below 768px).'
-                                ],
-                                'top_banner_announcement_enabled' => [
+                                'ticker_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Ticker',
-                                    'style' => 'vertical',
-                                    'width' => '25%',
+                                    'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 0,
                                     'options' => [
@@ -288,64 +199,83 @@ return [
                                         'type' => 'bool'
                                     ]
                                 ],
-                                'top_banner_announcement_text' => [
+                                'ticker_text' => [
                                     'type' => 'text',
-                                    'label' => 'Ticker Message',
-                                    'style' => 'vertical',
+                                    'label' => 'Message',
+                                    'width' => '66%',
+                                    'placeholder' => 'e.g. Eid prayer will be at 8:00 AM.',
+                                    'help' => 'The text to display in the scrolling marquee.'
+                                ],
+                                'ticker_starts' => [
+                                    'type' => 'datetime',
+                                    'label' => 'Start Date/Time',
                                     'width' => '50%',
-                                    'placeholder' => 'e.g. Eid prayer will be at 8:00 AM.'
+                                    'help' => 'Automatically show the ticker after this time.'
                                 ],
-                                'top_banner_announcement_starts' => [
+                                'ticker_expires' => [
                                     'type' => 'datetime',
-                                    'label' => 'Ticker Start (Start Date/Time)',
-                                    'style' => 'vertical',
-                                    'width' => '25%',
-                                    'help' => 'The ticker will appear automatically after this time.'
+                                    'label' => 'End Date/Time',
+                                    'width' => '50%',
+                                    'help' => 'Automatically hide the ticker after this time.'
                                 ],
-                                'top_banner_announcement_expires' => [
-                                    'type' => 'datetime',
-                                    'label' => 'Ticker Expiration (End Date/Time)',
-                                    'style' => 'vertical',
-                                    'width' => '25%',
-                                    'help' => 'The ticker will disappear automatically after this time.'
+                                'ticker_link' => [
+                                    'type' => 'text',
+                                    'label' => 'Link URL (Optional)',
+                                    'width' => '75%',
+                                    'placeholder' => 'https://example.com/announcement',
+                                    'help' => 'Make the entire ticker clickable.'
                                 ],
-                                'top_banner_announcement_speed' => [
+                                'ticker_new_tab' => [
+                                    'type' => 'toggle',
+                                    'label' => 'New Tab',
+                                    'width' => '25%',
+                                    'highlight' => 0,
+                                    'default' => 1,
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.YES',
+                                        0 => 'PLUGIN_ADMIN.NO'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
+                                ],
+                                'ticker_speed' => [
                                     'type' => 'range',
                                     'label' => 'Scrolling Speed',
-                                    'style' => 'vertical',
                                     'width' => '50%',
                                     'default' => 20,
                                     'min' => 5,
                                     'max' => 60,
                                     'step' => 1,
-                                    'help' => 'Set duration in seconds (smaller = faster, larger = slower). Default is 20s.'
+                                    'help' => 'Duration in seconds (smaller = faster, larger = slower). Default: 20s'
                                 ],
-                                'top_banner_announcement_bg_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Ticker Strip Color',
-                                    'style' => 'vertical',
-                                    'width' => '50%',
-                                    'default' => 'oklch(0.55 0.25 25)'
-                                ],
-                                'top_banner_announcement_text_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Ticker Text Color',
-                                    'style' => 'vertical',
-                                    'width' => '50%',
-                                    'default' => 'oklch(0.98 0 0)'
-                                ],
-                                'top_banner_announcement_pause' => [
+                                'ticker_pause' => [
                                     'type' => 'toggle',
                                     'label' => 'Pause on Hover',
-                                    'style' => 'vertical',
                                     'width' => '50%',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                         0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'help' => 'Stop the scrolling animation when a user hovers over the ticker.'
+                                    ]
+                                ],
+                                'style_section' => [
+                                    'type' => 'section',
+                                    'title' => 'Ticker Styling',
+                                    'underline' => true
+                                ],
+                                'ticker_bg' => [
+                                    'type' => 'colorpicker',
+                                    'label' => 'Background Color',
+                                    'width' => '50%',
+                                    'default' => 'oklch(0.55 0.25 25)'
+                                ],
+                                'ticker_color' => [
+                                    'type' => 'colorpicker',
+                                    'label' => 'Text Color',
+                                    'width' => '50%',
+                                    'default' => 'oklch(0.98 0 0)'
                                 ]
                             ]
                         ],
@@ -364,7 +294,6 @@ return [
                                 'bottom_banner_show_logo' => [
                                     'type' => 'toggle',
                                     'label' => 'Site Logo',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
@@ -379,7 +308,6 @@ return [
                                 'bottom_banner_show_site_name' => [
                                     'type' => 'toggle',
                                     'label' => 'Site Name',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
@@ -394,7 +322,6 @@ return [
                                 'bottom_banner_show_tagline' => [
                                     'type' => 'toggle',
                                     'label' => 'Site Tagline',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
@@ -409,7 +336,6 @@ return [
                                 'bottom_banner_copyright' => [
                                     'type' => 'textarea',
                                     'label' => 'Copyright Text',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'help' => 'Custom copyright text',
                                     'rows' => 3,
@@ -442,13 +368,15 @@ return [
                                 'newsletter_enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Newsletter',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 1,
                                     'highlight' => 1,
                                     'options' => [
                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                         0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
                                     ]
                                 ],
                                 'newsletter_title' => [
@@ -469,518 +397,46 @@ return [
                                     'text' => 'Blueprint: [social-icons.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/social-icons.blueprint.md)',
                                     'underline' => true
                                 ],
-                                'social_facebook_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
+                                'social_networks' => [
+                                    'type' => 'list',
+                                    'label' => 'Social Networks',
                                     'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_facebook' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Facebook',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://facebook.com/yourpage',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
+                                        '.network' => [
+                                            'type' => 'select',
+                                            'label' => 'Network',
+                                            'options' => [
+                                                'facebook' => 'Facebook',
+                                                'twitter' => 'Twitter',
+                                                'instagram' => 'Instagram',
+                                                'youtube' => 'YouTube',
+                                                'telegram' => 'Telegram',
+                                                'linkedin' => 'LinkedIn',
+                                                'tiktok' => 'TikTok',
+                                                'pinterest' => 'Pinterest',
+                                                'snapchat' => 'Snapchat',
+                                                'spotify' => 'Spotify',
+                                                'discord' => 'Discord',
+                                                'whatsapp' => 'WhatsApp',
+                                                'google_maps' => 'Google Maps',
+                                                'phone' => 'Phone',
+                                                'email' => 'Email'
                                             ]
                                         ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_facebook_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_twitter_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_twitter' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Twitter',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://twitter.com/yourhandle',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
+                                        '.url' => [
+                                            'type' => 'text',
+                                            'label' => 'URL / Value',
+                                            'placeholder' => 'https://... or +123...'
                                         ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_twitter_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_instagram_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_instagram' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Instagram',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://instagram.com/yourhandle',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_instagram_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_youtube_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_youtube' => [
-                                                    'type' => 'text',
-                                                    'label' => 'YouTube',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://youtube.com/@yourchannel',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_youtube_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_telegram_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_telegram' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Telegram',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://t.me/yourgroup',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_telegram_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_linkedin_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_linkedin' => [
-                                                    'type' => 'text',
-                                                    'label' => 'LinkedIn',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://linkedin.com/company/yourorg',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_linkedin_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_tiktok_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_tiktok' => [
-                                                    'type' => 'text',
-                                                    'label' => 'TikTok',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://tiktok.com/@yourhandle',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_tiktok_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_pinterest_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_pinterest' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Pinterest',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://pinterest.com/yourhandle',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_pinterest_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_snapchat_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_snapchat' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Snapchat',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://snapchat.com/add/yourhandle',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_snapchat_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_spotify_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_spotify' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Spotify',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://open.spotify.com/show/yourshow',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_spotify_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_discord_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_discord' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Discord Invite',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://discord.gg/yourinvite',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_discord_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                'social_google_maps_group' => [
-                                    'type' => 'columns',
-                                    'width' => '33%',
-                                    'fields' => [
-                                        'col_input' => [
-                                            'type' => 'column',
-                                            'width' => '75%',
-                                            'fields' => [
-                                                'social_google_maps' => [
-                                                    'type' => 'text',
-                                                    'label' => 'Google Maps',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'placeholder' => 'https://goo.gl/maps/yourlocation',
-                                                    'validate' => [
-                                                        'type' => 'URL'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'col_toggle' => [
-                                            'type' => 'column',
-                                            'width' => '25%',
-                                            'fields' => [
-                                                'social_google_maps_enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => '&nbsp;',
-                                                    'style' => 'vertical',
-                                                    'width' => '100%',
-                                                    'highlight' => 1,
-                                                    'default' => 1,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ]
+                                        '.enabled' => [
+                                            'type' => 'toggle',
+                                            'label' => 'Enabled',
+                                            'default' => 1,
+                                            'options' => [
+                                                1 => 'PLUGIN_ADMIN.ENABLED',
+                                                0 => 'PLUGIN_ADMIN.DISABLED'
+                                            ],
+                                            'validate' => [
+                                                'type' => 'bool'
                                             ]
                                         ]
                                     ]
@@ -996,7 +452,6 @@ return [
                                                 'social_whatsapp' => [
                                                     'type' => 'text',
                                                     'label' => 'WhatsApp',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'placeholder' => 'https://wa.me/1234567890',
                                                     'help' => 'Your WhatsApp number with country code',
@@ -1013,7 +468,6 @@ return [
                                                 'social_whatsapp_enabled' => [
                                                     'type' => 'toggle',
                                                     'label' => '&nbsp;',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'highlight' => 1,
                                                     'default' => 1,
@@ -1040,7 +494,6 @@ return [
                                                 'social_phone' => [
                                                     'type' => 'text',
                                                     'label' => 'Phone',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'placeholder' => '+1234567890',
                                                     'help' => 'Enter phone number for Click-to-Call icon',
@@ -1057,7 +510,6 @@ return [
                                                 'social_phone_enabled' => [
                                                     'type' => 'toggle',
                                                     'label' => '&nbsp;',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'highlight' => 1,
                                                     'default' => 1,
@@ -1084,7 +536,6 @@ return [
                                                 'social_email' => [
                                                     'type' => 'text',
                                                     'label' => 'Email',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'placeholder' => 'info@yoursite.com',
                                                     'validate' => [
@@ -1100,7 +551,6 @@ return [
                                                 'social_email_enabled' => [
                                                     'type' => 'toggle',
                                                     'label' => '&nbsp;',
-                                                    'style' => 'vertical',
                                                     'width' => '100%',
                                                     'highlight' => 1,
                                                     'default' => 1,
@@ -1120,7 +570,6 @@ return [
                                     'type' => 'toggle',
                                     'label' => 'Show Names on Mobile',
                                     'help' => 'Show platform name on small screens',
-                                    'style' => 'vertical',
                                     'width' => '50%',
                                     'highlight' => 1,
                                     'default' => 0,
@@ -1136,7 +585,6 @@ return [
                                     'type' => 'toggle',
                                     'label' => 'Show Names on Desktop',
                                     'help' => 'Show platform name on large screens',
-                                    'style' => 'vertical',
                                     'width' => '50%',
                                     'highlight' => 1,
                                     'default' => 0,
@@ -1152,96 +600,6 @@ return [
                         ],
                         'sidebar_tab' => [
                             'import@' => 'tabs/sidebar'
-                        ]
-                    ]
-                ],
-                'tabs_secondary' => [
-                    'type' => 'tabs',
-                    'active' => 1,
-                    'fields' => [
-                        'glass_tab' => [
-                            'type' => 'tab',
-                            'title' => 'Glassmorphism',
-                            'fields' => [
-                                'glass_section' => [
-                                    'type' => 'section',
-                                    'title' => 'Adjustable Glassmorphism Scales',
-                                    'underline' => true,
-                                    'text' => 'Configure the 2026 Glassmorphism properties.'
-                                ],
-                                'glass_bg_color' => [
-                                    'type' => 'colorpicker',
-                                    'label' => 'Base Color',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'default' => '#ffffff',
-                                    'help' => 'Base color of the glass surface'
-                                ],
-                                'glass_opacity' => [
-                                    'type' => 'range',
-                                    'label' => 'Opacity %',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'validate' => [
-                                        'min' => 10,
-                                        'max' => 90
-                                    ],
-                                    'default' => 65,
-                                    'help' => 'Translucency percentage'
-                                ],
-                                'glass_blur' => [
-                                    'type' => 'range',
-                                    'label' => 'Blur Radius (px)',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'validate' => [
-                                        'min' => 0,
-                                        'max' => 50
-                                    ],
-                                    'default' => 16,
-                                    'help' => 'Background blur intensity'
-                                ],
-                                'glass_border_opacity' => [
-                                    'type' => 'range',
-                                    'label' => 'Border Opacity %',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'validate' => [
-                                        'min' => 0,
-                                        'max' => 100
-                                    ],
-                                    'default' => 15,
-                                    'help' => 'Sensitivity of the glass edge'
-                                ],
-                                'glass_highlight' => [
-                                    'type' => 'range',
-                                    'label' => 'Specular Highlight %',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'validate' => [
-                                        'min' => 0,
-                                        'max' => 100
-                                    ],
-                                    'default' => 40,
-                                    'help' => 'Intensity of the inner reflective edge'
-                                ],
-                                'glass_noise' => [
-                                    'type' => 'toggle',
-                                    'label' => 'Noise Texture',
-                                    'style' => 'vertical',
-                                    'width' => '33%',
-                                    'highlight' => 1,
-                                    'default' => 1,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ],
-                                    'help' => 'Enable subtle noise for premium frosted texture'
-                                ]
-                            ]
                         ],
                         'islamic_features_tab' => [
                             'type' => 'tab',
@@ -1256,7 +614,6 @@ return [
                                 'prayer_method' => [
                                     'type' => 'select',
                                     'label' => 'Prayer Calculation Standard',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'tehran',
                                     'options' => [
@@ -1269,7 +626,6 @@ return [
                                 'hijri_offset' => [
                                     'type' => 'number',
                                     'label' => 'Hijri Calibration',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 0,
                                     'help' => 'Adjust Hijri date manually (+/- days)'
@@ -1277,7 +633,6 @@ return [
                                 'adhan_media' => [
                                     'type' => 'file',
                                     'label' => 'Adhan Media',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'destination' => 'theme://media',
                                     'multiple' => false,
@@ -1288,7 +643,6 @@ return [
                                 'default_location' => [
                                     'type' => 'text',
                                     'label' => 'Geo-Location Default',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'default' => 'Karachi',
                                     'help' => 'Fallback city for prayer times'
@@ -1308,14 +662,12 @@ return [
                                 'moodle_url' => [
                                     'type' => 'text',
                                     'label' => 'Moodle URL',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'placeholder' => 'https://moodle.yoursite.com'
                                 ],
                                 'moodle_token' => [
                                     'type' => 'password',
                                     'label' => 'Web Service API Token',
-                                    'style' => 'vertical',
                                     'width' => '33%'
                                 ],
                                 'commerce_section' => [
@@ -1326,7 +678,6 @@ return [
                                 'snipcart_key' => [
                                     'type' => 'text',
                                     'label' => 'Snipcart Public API Key',
-                                    'style' => 'vertical',
                                     'width' => '33%'
                                 ],
                                 'payment_section' => [
@@ -1337,13 +688,11 @@ return [
                                 'jazzcash_merchant' => [
                                     'type' => 'text',
                                     'label' => 'JazzCash Merchant ID',
-                                    'style' => 'vertical',
                                     'width' => '33%'
                                 ],
                                 'jazzcash_salt' => [
                                     'type' => 'password',
                                     'label' => 'JazzCash Integrity Salt',
-                                    'style' => 'vertical',
                                     'width' => '33%'
                                 ]
                             ]
@@ -1363,7 +712,6 @@ return [
                                 'custom_logo' => [
                                     'type' => 'file',
                                     'label' => 'Desktop Logo',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'destination' => 'theme://images/logo',
                                     'multiple' => false,
@@ -1374,7 +722,6 @@ return [
                                 'custom_logo_mobile' => [
                                     'type' => 'file',
                                     'label' => 'Mobile Logo',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'destination' => 'theme://images/logo',
                                     'multiple' => false,
@@ -1385,7 +732,6 @@ return [
                                 'favicon' => [
                                     'type' => 'file',
                                     'label' => 'Favicon',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'destination' => 'theme://images',
                                     'multiple' => false,
@@ -1396,7 +742,6 @@ return [
                                 'dropdown.enabled' => [
                                     'type' => 'toggle',
                                     'label' => 'Enable Dropdown Menus',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'highlight' => 1,
                                     'default' => 1,
@@ -1411,7 +756,6 @@ return [
                                 'grid-size' => [
                                     'type' => 'select',
                                     'label' => 'Grid Size',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'help' => 'Choose grid overlay size for debugging',
                                     'default' => '',
@@ -1430,7 +774,6 @@ return [
                                 'blog-page' => [
                                     'type' => 'text',
                                     'label' => 'Blog Page Path',
-                                    'style' => 'vertical',
                                     'width' => '33%',
                                     'help' => 'Path to your blog page',
                                     'size' => 'medium',

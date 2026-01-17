@@ -1,101 +1,171 @@
 @layer components {
+  /* 
+     ========================================
+     SOCIAL ICONS COMPONENT
+     Role: Social media links and tooltips
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   @scope (.social-icons-wrapper) {
+    :scope {
+      container-type: inline-size;
+    }
+
+    /* Keyframes for Hover Wiggle */
+    @keyframes social-wiggle {
+      0%,
+      100% {
+        rotate: 0deg;
+      }
+      25% {
+        rotate: -10deg;
+      }
+      75% {
+        rotate: 10deg;
+      }
+    }
+
     &.is-top {
       display: flex;
       gap: 0.75rem;
       align-items: center;
 
       .social-icon {
-          display: flex;
-          align-items: center;
-          background: transparent;
-          inline-size: auto;
-          block-size: auto;
-          backdrop-filter: none;
-          padding: 0;
-          color: inherit;
-          transition: all 300ms var(--transition-standard);
-          
-          &:hover {
-              transform: translateY(-2px);
-              color: var(--color-primary);
-          }
+        display: flex;
+        align-items: center;
+        background: transparent;
+        inline-size: auto;
+        block-size: auto;
+        backdrop-filter: none;
+        padding: 0;
+        color: inherit;
+        transition: all 300ms var(--transition-standard);
 
-          svg, i {
-              inline-size: 0.5rem;
-              block-size: 0.5rem;
-              font-size: 0.5rem;
-          }
+        &:hover {
+          translate: 0 var(--offset-hover-subtle);
+          color: var(--color-primary);
+        }
 
-          .social-label {
-              display: none;
-          }
+        svg,
+        i {
+          inline-size: 0.5rem;
+          block-size: 0.5rem;
+          font-size: 0.5rem;
+        }
+
+        .social-label {
+          display: none;
+        }
       }
     }
 
     &.is-bottom {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      flex-wrap: nowrap; /* Force single line as requested */
+      gap: var(--space-s);
       justify-content: center;
+      align-items: center;
 
-      @media (width >= 768px) {
-          justify-content: flex-start;
-          gap: 1rem;
+      @container (inline-size >= 48rem) {
+        gap: var(--space-m);
       }
 
       .social-icon {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          min-inline-size: 1rem;
-          block-size: 1rem;
-          padding-inline: 0;
-          
-          @media (width >= 768px) {
-            min-inline-size: 1.25rem;
-            block-size: 1.25rem;
-          }
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-inline-size: 2.5rem;
+        min-block-size: 2.5rem;
+        padding: 0;
+        background: var(--glass-bg-dark);
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
+        border: var(--border-thin) solid var(--glass-border-dark);
+        border-radius: var(--radius-full);
+        transition: all var(--transition-bounce);
+        text-decoration: none;
+        background-image: var(--glass-reflection);
+        background-size: 200% 200%;
 
-          &:hover {
-              background-color: var(--color-primary);
-              scale: 1.05;
-              box-shadow: 0 5px 10px oklch(from var(--color-primary) l c h / 0.15);
-              color: oklch(1 0 0);
-              border-color: transparent;
-          }
+        @container (inline-size >= 48rem) {
+          min-inline-size: 2.75rem;
+          min-block-size: 2.75rem;
+        }
 
-          svg, i {
-              inline-size: 0.6rem;
-              block-size: 0.6rem;
-              font-size: 0.6rem;
-              flex-shrink: 0;
-          }
+        &:hover {
+          background-color: var(--color-primary);
+          scale: 1.15;
+          box-shadow: var(--shadow-lg);
+          color: var(--color-white);
+          border-color: transparent;
+          translate: 0 calc(var(--offset-hover-subtle) * 1.5);
 
-          .social-label {
-              display: none;
-              font-size: var(--font-size-sm);
-              font-weight: 600;
-              white-space: nowrap;
+          svg,
+          i {
+            animation: social-wiggle 0.4s ease-in-out;
           }
+        }
 
-          &.show-label-mobile {
-              @media (width < 768px) {
-                  inline-size: auto;
-                  padding-inline-end: 1.5rem;
-                  .social-label { display: block; }
-              }
-          }
+        svg,
+        i {
+          font-size: 1.1rem;
+          flex-shrink: 0;
+          transition: transform var(--transition-standard);
+        }
 
-          &.show-label-desktop {
-              @media (width >= 768px) {
-                  inline-size: auto;
-                  padding-inline-end: 1.5rem;
-                  .social-label { display: block; }
-              }
+        .social-label {
+          display: none;
+          font-size: var(--font-size-sm);
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        /* Pure CSS Tooltip (from bottom-banner) */
+        &::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          inset-block-end: 110%;
+          inset-inline-start: 50%;
+          translate: -50% var(--space-s);
+          background: var(--color-bottom-banner-text);
+          color: var(--color-bottom-banner-bg);
+          padding: var(--space-xs) var(--space-s);
+          font-size: 0.75rem;
+          border-radius: var(--radius-sm);
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: all var(--transition-standard);
+          font-weight: 600;
+          z-index: 10;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          translate: -50% 0;
+        }
+
+        &.show-label-mobile {
+          @container (inline-size < 48rem) {
+            inline-size: auto;
+            padding-inline-end: 1.5rem;
+            .social-label {
+              display: block;
+            }
           }
+        }
+
+        &.show-label-desktop {
+          @container (inline-size >= 48rem) {
+            inline-size: auto;
+            padding-inline-end: 1.5rem;
+            .social-label {
+              display: block;
+            }
+          }
+        }
       }
     }
   }

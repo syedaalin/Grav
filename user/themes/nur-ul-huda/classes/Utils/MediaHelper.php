@@ -7,12 +7,23 @@ namespace Grav\Theme\NurUlHuda\Utils;
 use Grav\Common\Grav;
 use Grav\Common\Config\Config;
 
-readonly class MediaHelper
+readonly final class MediaHelper
 {
     /**
-     * @param array $header
-     * @param \Grav\Common\Page\Media $media
-     * @return array
+     * Extract and prepare hero section data from page header.
+     *
+     * Processes page frontmatter to retrieve hero image/video, falling back
+     * to first available media if no specific hero media is configured.
+     * Handles both simple string references and array-based file objects.
+     *
+     * @param array $header Page header/frontmatter data
+     * @param \Grav\Common\Page\Media $media Page media collection
+     * @return array Hero data structure containing:
+     *               - id: Section identifier (default: 'hero')
+     *               - classes: CSS class string for styling
+     *               - accent_color: OKLCH color for accents
+     *               - image: Hero image media object (null if none)
+     *               - video: Hero video media object (null if none)
      */
     public static function getHeroData(array $header, mixed $media): array
     {
@@ -45,9 +56,21 @@ readonly class MediaHelper
     }
 
     /**
-     * @param array|Config $config
-     * @param \Grav\Common\Page\Media $media
-     * @return array
+     * Extract and prepare logo data from theme configuration.
+     *
+     * Retrieves custom logo from config, processes it into responsive sizes
+     * (mobile: 80×80, desktop: 160×160), and combines with site identity info.
+     * Falls back gracefully if no custom logo is configured.
+     *
+     * @param array|Config $config Theme configuration (array or Config object)
+     * @param \Grav\Common\Page\Media $media Theme media collection for logo assets
+     * @return array Logo data structure containing:
+     *               - image: Logo media object (null if none)
+     *               - image_mobile/image_desktop: Responsive URLs
+     *               - width_mobile/height_mobile: Mobile dimensions (80×80)
+     *               - width_desktop/height_desktop: Desktop dimensions (160×160)
+     *               - site_name: Organization name for alt text
+     *               - site_title: Site title from Grav config
      */
     public static function getLogoData(mixed $config, mixed $media): array
     {

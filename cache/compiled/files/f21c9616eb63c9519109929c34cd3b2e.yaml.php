@@ -2,8 +2,8 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/syedaalin/Documents/Grav/user/localhost/config/themes/nur-ul-huda.yaml',
-    'modified' => 1768346788,
-    'size' => 7248,
+    'modified' => 1768591573,
+    'size' => 7671,
     'data' => [
         'enabled' => true,
         'production-mode' => false,
@@ -61,10 +61,10 @@ return [
                 'size' => 690304
             ]
         ],
-        'glass_bg_color' => '#000000',
+        'glass_bg_color' => '#ffffff',
         'glass_opacity' => 20,
         'glass_blur' => 9,
-        'glass_border_opacity' => 100,
+        'glass_border_opacity' => 12,
         'glass_highlight' => 38,
         'glass_noise' => true,
         'header-fixed' => true,
@@ -151,7 +151,6 @@ return [
         'social_twitter' => 'https://x.com/aabtaabonline',
         'social_instagram' => 'https://www.instagram.com/aabtaab_online/',
         'social_youtube' => 'https://www.youtube.com/c/aabtaab/',
-        'social_telegram' => NULL,
         'social_whatsapp' => 'https://api.whatsapp.com/send/?phone=923022452000&text=Hi%20there!%20I%27m%20visiting%20aabtaab.com%20and%20have%20a%20few%20questions.%20Could%20you%20help%20me%20out?&type=phone_number&app_absent=0',
         'social_email' => 'edu.aabtaab@gmail.com',
         'contact_phone' => '+92 302 245 2000',
@@ -209,17 +208,11 @@ return [
         'social_instagram_enabled' => true,
         'social_youtube_enabled' => true,
         'social_telegram_enabled' => true,
-        'social_linkedin' => NULL,
         'social_linkedin_enabled' => true,
-        'social_tiktok' => NULL,
         'social_tiktok_enabled' => true,
-        'social_pinterest' => NULL,
         'social_pinterest_enabled' => true,
-        'social_snapchat' => NULL,
         'social_snapchat_enabled' => true,
-        'social_spotify' => NULL,
         'social_spotify_enabled' => true,
-        'social_discord' => NULL,
         'social_discord_enabled' => true,
         'social_google_maps_enabled' => true,
         'social_whatsapp_enabled' => true,
@@ -241,12 +234,39 @@ return [
         'top_banner_announcement_speed' => 20,
         'top_banner_glass' => '0',
         'top_banner_border' => 'solid',
-        'top_banner_mobile_hide' => NULL,
         'top_banner_announcement_pause' => '1',
-        'newsletter_enabled' => '1',
+        'newsletter_enabled' => true,
         'newsletter_title' => 'Stay Connected',
         'newsletter_text' => 'Join our spiritual journey for weekly insights.',
         'social_show_labels_mobile' => false,
-        'social_show_labels_desktop' => false
+        'social_show_labels_desktop' => false,
+        'social_networks' => [
+            0 => [
+                'network' => 'twitter',
+                'url' => 'https://x.com/aabtaabonline',
+                'enabled' => true
+            ],
+            1 => [
+                'network' => 'facebook',
+                'url' => 'https://www.facebook.com/aabtaab/',
+                'enabled' => true
+            ]
+        ],
+        'ticker_enabled' => false,
+        'ticker_text' => 'Ya Imam Musa Kazim (A.S.)',
+        'ticker_link' => 'https://en.wikipedia.org/wiki/Musa_al-Kazim',
+        'ticker_speed' => 20,
+        'ticker_pause' => '1',
+        'ticker_bg' => '#000000',
+        'ticker_color' => '#ffcc00',
+        'ticker_new_tab' => true,
+        'ticker_starts' => '14-01-2026 22:41',
+        'ticker_expires' => '14-01-2026 22:45',
+        'glass_defaults_enabled' => false,
+        'liquid_intensity' => 0.7,
+        'flow_speed' => 1,
+        'viscosity' => 0.5,
+        'surface_tension' => 0.3,
+        'glass_blur_value' => 20
     ]
 ];

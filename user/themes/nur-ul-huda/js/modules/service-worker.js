@@ -2,15 +2,29 @@
  * Service Worker Registration Module - ES2025+
  * Handles strict registration of PWA service worker.
  */
-import { themeUtils } from './utils.js';
+import { themeUtils, Logger } from './utils.js';
 
+/**
+ * Service Worker Manager
+ * Handles registration of PWA service worker with theme configuration support.
+ */
 export class ServiceWorkerManager {
+  /**
+   * Initialize Service Worker Manager
+   */
   constructor() {
     this.init();
   }
 
+  /**
+   * Register Service Worker
+   * @private
+   */
   init() {
-    if (!('serviceWorker' in navigator)) return;
+    if (!('serviceWorker' in navigator)) {
+      Logger.info('Service Worker: Not supported in this browser');
+      return;
+    }
 
     window.addEventListener('load', () => {
       const config = themeUtils.getConfig();
@@ -20,10 +34,10 @@ export class ServiceWorkerManager {
 
       navigator.serviceWorker.register(swPath)
         .then((registration) => {
-          console.debug('SW registered:', registration);
+          Logger.info('Service Worker: Registered successfully', registration.scope);
         })
         .catch((error) => {
-          console.error('SW registration failed:', error);
+          Logger.error('Service Worker: Registration failed', error);
         });
     });
   }

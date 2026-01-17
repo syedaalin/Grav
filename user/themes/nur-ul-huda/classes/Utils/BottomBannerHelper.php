@@ -10,11 +10,29 @@ use Grav\Common\Config\Config;
 /**
  * SRP: Responsibility for bottom banner/footer logic.
  */
-readonly class BottomBannerHelper
+readonly final class BottomBannerHelper
 {
     /**
-     * @param array|Config $config
-     * @return array
+     * Get bottom banner/footer configuration data.
+     *
+     * Processes theme configuration to extract all bottom banner settings
+     * including widget ordering, colors, site identity, and newsletter options.
+     * Handles flexible configuration formats (strings vs arrays) and provides
+     * sensible defaults. Follows SRP by focusing solely on data preparation.
+     *
+     * @param array|Config $config Theme configuration (array or Config object)
+     * @return array Comprehensive bottom banner data structure containing:
+     *               - widgets: Ordered array of widget section names
+     *               - bg_style: Processed background color (OKLCH format)
+     *               - text_color: Footer text color
+     *               - site_name: Organization/site name
+     *               - site_tagline: Optional tagline
+     *               - logo: Logo file path
+     *               - direction: Text direction (ltr/rtl)
+     *               - columns: Footer column configurations
+     *               - copyright: Copyright notice text
+     *               - show_logo/show_site_name/show_tagline: Visibility toggles
+     *               - newsletter_*: Newsletter widget settings
      */
     public static function getData(mixed $config): array
     {

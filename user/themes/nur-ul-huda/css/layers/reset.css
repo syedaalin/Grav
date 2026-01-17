@@ -1,11 +1,20 @@
 @layer reset {
+  /* 
+     ========================================
+     RESET LAYER (The Great Reset)
+     Role: Normalize, Box-sizing, Base resets
+     Blueprint: [ui-base.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-base.blueprint.md)
+     ========================================
+  */
   /* Modern CSS Reset */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   html {
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -13,43 +22,52 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  
+
   body {
-    min-height: 100svh;
+    min-block-size: 100svh;
+    scroll-behavior: smooth;
     line-height: 1.5;
   }
-  
-  img, picture, video, canvas, svg {
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
-    max-width: 100%;
-    height: auto;
+    max-inline-size: 100%;
+    block-size: auto;
   }
-  
-  input, button, textarea, select {
+
+  input,
+  button,
+  textarea,
+  select {
     font: inherit;
     color: inherit;
   }
-  
+
   button {
     background: none;
     border: none;
     cursor: pointer;
   }
-  
+
   a {
     text-decoration: none;
     color: inherit;
   }
-  
-  ul, ol {
+
+  ul,
+  ol {
     list-style: none;
   }
-  
+
   /* Remove default focus styles (we'll add custom ones in components) */
   :focus {
     outline: none;
   }
-  
+
   /* Ensure smooth scrolling */
   @media (prefers-reduced-motion: no-preference) {
     html {
@@ -58,7 +76,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
+    *,
+    ::before,
+    ::after {
       animation-duration: 0.01ms;
       animation-iteration-count: 1;
       transition-duration: 0.01ms;
@@ -69,26 +89,27 @@
   /* Accessibility: Skip Link */
   .skip-link {
     position: absolute;
-    inset-block-start: -1000px;
-    inset-inline-start: -1000px;
-    width: 1px;
-    height: 1px;
+    inset-block-start: -62.5rem;
+    inset-inline-start: -62.5rem;
+    inline-size: var(--border-thin);
+    block-size: var(--border-thin);
     overflow: hidden;
-    color: oklch(1 0 0);
-    background-color: oklch(0 0 0);
-    padding: 0.5rem 1rem;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: var(--space-s) var(--space-m);
     z-index: 1000;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 0.25rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
   }
-  
+
   .skip-link:focus {
-    inset-block-start: 1rem;
-    inset-inline-start: 1rem;
-    width: auto;
-    height: auto;
+    inset-block-start: var(--space-m);
+    inset-inline-start: var(--space-m);
+    inline-size: auto;
+    block-size: auto;
     overflow: visible;
-    box-shadow: 0 0 0 2px oklch(1 0 0), 0 0 0 4px oklch(0 0 0);
+    box-shadow: 0 0 0 var(--border-medium) var(--color-white),
+      0 0 0 calc(var(--border-medium) * 2) var(--color-black);
   }
 }

@@ -1,0 +1,54 @@
+@layer components {
+  /* 
+     ========================================
+     ALERTS COMPONENT
+     Role: Visual feedback and user notifications
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
+  /* ========================================
+     Alert Components
+     ======================================== */
+
+  @scope (.alert, .form-alert) {
+    :scope {
+      padding-block: var(--space-m);
+      padding-inline: var(--space-m);
+      border-radius: var(--radius-md);
+      margin-block-end: var(--space-m);
+      border-inline-start: calc(var(--border-medium) * 2) solid transparent;
+      background-color: oklch(from var(--color-surface-subtle) l c h / 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--color-text);
+      font-size: var(--font-size-base);
+      animation: var(--animate-fade-in-up);
+    }
+
+    &.alert-info,
+    &.alert-default {
+      background-color: var(--color-info-subtle);
+      border-inline-start-color: var(--color-info);
+      color: var(--color-info-muted);
+    }
+
+    &.alert-success {
+      background-color: var(--color-success-subtle);
+      border-inline-start-color: var(--color-success);
+      color: var(--color-success-muted);
+    }
+
+    &.alert-warning {
+      background-color: var(--color-warning-subtle);
+      border-inline-start-color: var(--color-warning);
+      color: var(--color-warning-muted);
+    }
+
+    &.alert-danger,
+    &.alert-error {
+      background-color: var(--color-error-subtle);
+      border-inline-start-color: var(--color-error);
+      color: var(--color-error-muted);
+    }
+  }
+}

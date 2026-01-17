@@ -6,7 +6,7 @@
 {% if page.taxonomy.tag %}
 <div class="blog-tags {{ classes|default('') }}">
     {% for tag in page.taxonomy.tag %}
-    <a class="badge-primary" 
+    <a class="badge" 
        href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}#body-wrapper">
         {{ tag }}
     </a>

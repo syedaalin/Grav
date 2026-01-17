@@ -60,11 +60,11 @@
 {% endblock %}
 
 {% block body %}
-	<div class="modular-body-wrapper">
+	<main class="modular-body-wrapper">
 		{% for module in page.collection()|filter(m => m.template != 'modular/hero') %}
 			<div id="{{ module.menu|hyphenize }}" class="modular-section-anchor section-py">
 				{{ module.content|raw }}
 			</div>
 		{% endfor %}
-	</div>
+	</main>
 {% endblock %}

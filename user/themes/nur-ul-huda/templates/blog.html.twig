@@ -12,38 +12,38 @@
 {% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
 
 {% block hero %}
-    {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
+	{% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
 {% endblock %}
 
 {% block body %}
-    <section id="body-wrapper" class="section section-py">
-        <div class="section-container">
+	<main id="body-wrapper" class="section section-py">
+		<div class="section-container">
 
-        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
-            {% include 'partials/breadcrumbs.html.twig' %}
-        {% endif %}
+			{% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+				{% include 'partials/breadcrumbs.html.twig' %}
+			{% endif %}
 
-        {% embed 'partials/layout.html.twig' with {blog: page} %}
-            {% block item %}
-                <div class="blog-listing container-inline">
-                    <div class="blog-grid">
-                    {% for child in collection %}
-                        {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
-                    {% endfor %}
-                    </div>
-                </div>
+			{% embed 'partials/layout.html.twig' with {blog: page} %}
+				{% block item %}
+					<div class="blog-listing container-inline">
+						<div class="blog-grid">
+							{% for child in collection %}
+								{% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+							{% endfor %}
+						</div>
+					</div>
 
-                {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
-                    <div id="listing-footer" class="blog-pagination-wrapper">
-                        {% include 'partials/pagination.html.twig' with {base_url: page.url, pagination: collection.params.pagination} %}
-                    </div>
-                {% endif %}
-            {% endblock %}
+					{% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
+						<div id="listing-footer" class="blog-pagination-wrapper">
+							{% include 'partials/pagination.html.twig' with {base_url: page.url, pagination: collection.params.pagination} %}
+						</div>
+					{% endif %}
+				{% endblock %}
 
-            {% block sidebar %}
-                {% include 'partials/sidebar.html.twig' %}
-            {% endblock %}
-        {% endembed %}
-        </section>
-    </section>
+				{% block sidebar %}
+					{% include 'partials/sidebar.html.twig' %}
+				{% endblock %}
+			{% endembed %}
+		</div>
+	</main>
 {% endblock %}

@@ -1,63 +1,74 @@
 @layer components {
+  /* 
+     ========================================
+     SEARCH OVERLAY COMPONENT
+     Role: Full-screen search interface
+     Blueprint: [ui-layout.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-layout.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Search Overlay (2026 Enhanced)
      ======================================== */
-  
-  .search-overlay {
+
+  @scope (.search-overlay) {
+    :scope {
       position: fixed;
       inset: 0;
       z-index: var(--z-modal);
-      background-color: oklch(0 0 0 / 0.85);
-      backdrop-filter: blur(var(--glass-blur));
+      /* Standard Solid Overlay */
+      background: oklch(from var(--color-white) l c h / 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: var(--space-xl);
-      
+
       /* Hidden state by default */
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
       transition: all var(--transition-standard);
-      
-      &.is-visible {
-          opacity: 1;
-          pointer-events: auto;
-          visibility: visible;
-      }
-  }
 
-  .search-container {
+      &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+      }
+    }
+
+    .search-container {
       inline-size: 100%;
       max-inline-size: 32rem;
       text-align: center;
-  }
+    }
 
-  .search-title {
+    .search-title {
       font-size: var(--font-size-2xl);
       margin-block-end: var(--space-xl);
-      color: oklch(1 0 0);
-  }
+      color: var(--color-dark);
+    }
 
-  .search-hint {
+    .search-hint {
       margin-block-start: var(--space-m);
-      color: oklch(1 0 0);
+      color: var(--color-subtle);
       font-size: var(--font-size-sm);
-  }
+    }
 
-  .search-close-button {
+    .search-close-button {
       position: absolute;
       inset-block-start: var(--space-xl);
       inset-inline-end: var(--space-xl);
-      color: oklch(1 0 0);
+      color: var(--color-dark);
       background: none;
       border: none;
       cursor: pointer;
       padding: var(--space-s);
-      transition: transform var(--transition-standard);
+      transition: rotate var(--transition-standard);
 
       &:hover {
-          transform: rotate(90deg);
+        rotate: 90deg;
       }
+    }
   }
 }

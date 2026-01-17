@@ -12,7 +12,7 @@
 
 			{# Parent Item Container #}
 			{# Logic: khums is always desktop-only. services/ask/donate are hidden on mobile ONLY if called from desktop loop? 
-						               Actually, let's simplify: if it's khums, it's desktop-only. #}
+									               Actually, let's simplify: if it's khums, it's desktop-only. #}
 			{% set is_khums = p.slug == 'khums-calculator' %}
 			{% set hide_on_mobile = is_khums or ((not mobile) and (p.slug in ['services', 'ask', 'donate'])) %}
 				<li class="nav-item {{ hide_on_mobile ? 'desktop-only' : '' }}"> {% if mobile and has_children %}
@@ -22,7 +22,7 @@
 							{{ p.menu }}
 						</a>
 						<button type="button" class="mobile-submenu-toggle {{ active_page }}" aria-expanded="{{ active_page == 'active' ? 'true' : 'false' }}" aria-label="Toggle submenu">
-							<i class="la la-angle-down"></i>
+							<i class="la la-angle-down" aria-hidden="true"></i>
 						</button>
 					</div>
 				{% else %}

@@ -3,6 +3,8 @@
  * Handles resizing root font size for accessibility.
  */
 
+import { Logger } from './utils.js';
+
 export class FontScaler {
   #fontSize = 0;
 
@@ -10,9 +12,13 @@ export class FontScaler {
     this.init();
   }
 
+  /**
+   * Initialize Font Scaler
+   */
   init() {
     this.#fontSize = parseInt(localStorage.getItem('font-size-offset')) || 0;
-    
+    Logger.info(`FontScaler: Initialized with offset ${this.#fontSize}`);
+
     const increaseBtn = document.querySelector('button[title="Larger Text"]');
     const decreaseBtn = document.querySelector('button[title="Smaller Text"]');
 
@@ -33,7 +39,7 @@ export class FontScaler {
         }
       });
     }
-    
+
     // Initial apply
     if (this.#fontSize !== 0) this.#applyFontSize();
 

@@ -3,7 +3,7 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'languages',
     'environment' => 'localhost',
-    'timestamp' => 1768342819,
+    'timestamp' => 1768592860,
     'directories' => [
         '/Users/syedaalin/Documents/Grav/system/languages' => 1767934750,
         '/Users/syedaalin/Documents/Grav/user/plugins' => 1768107130,

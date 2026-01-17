@@ -6,7 +6,7 @@ namespace Grav\Theme\NurUlHuda\Utils;
 
 use Grav\Common\Grav;
 
-class RateLimiter
+final class RateLimiter
 {
     protected Grav $grav;
 
@@ -16,12 +16,18 @@ class RateLimiter
     }
 
     /**
-     * Check rate limiting for sensitive operations
-     * 
-     * @param string $key Unique key for the action
-     * @param int $max_attempts Maximum allowed attempts
-     * @param int $window Time window in seconds
-     * @return bool True if allowed, False if limit exceeded
+     * Check rate limiting using sliding window algorithm.
+     *
+     * Enforces request throttling for sensitive operations (login/form submissions)
+     * using IP-based key generation and Grav's cache as storage backend. Implements
+     * sliding window algorithm: tracks attempts within time window, blocks when limit
+     * exceeded. Auto-expires after window period. Thread-safe through cache atomicity.
+     * Used by SecurityLogger::checkRateLimit() for abstraction.
+     *
+     * @param string $key Unique action identifier (e.g., "login", "form_contact")
+     * @param int $max_attempts Maximum allowed attempts within window (default: 5)
+     * @param int $window Time window in seconds for rate limit tracking (default: 60)
+     * @return bool True if request is allowed, false if limit exceeded
      */
     public function check(string $key, int $max_attempts = 5, int $window = 60): bool
     {

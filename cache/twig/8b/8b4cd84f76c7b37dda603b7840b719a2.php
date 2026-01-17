@@ -42,7 +42,7 @@ class __TwigTemplate_5ad27396b6b5e121b6e4005a54b613a8 extends Template
         yield json_encode(["name" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source,         // line 7
 ($context["config"] ?? null), "site", [], "any", false, false, false, 7), "title", [], "any", false, false, false, 7), "short_name" => Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source,         // line 8
 ($context["config"] ?? null), "site", [], "any", false, false, false, 8), "title", [], "any", false, false, false, 8), 0, 12), "start_url" => (        // line 9
-($context["base_url"] ?? null) . "/"), "display" => "standalone", "background_color" => "#ffffff", "theme_color" => "#0d1117", "icons" => [["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "192x192", "type" => "image/svg+xml"], ["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "512x512", "type" => "image/svg+xml"]]]);
+($context["base_url"] ?? null) . "/"), "display" => "standalone", "background_color" => "#ffffff", "theme_color" => "#3b82f6", "icons" => [["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "192x192", "type" => "image/svg+xml"], ["src" => $this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://images/grav-logo.svg"), "sizes" => "512x512", "type" => "image/svg+xml"]]]);
         // line 25
         yield "
 ";

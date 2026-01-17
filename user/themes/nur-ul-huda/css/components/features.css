@@ -1,0 +1,112 @@
+@layer components {
+  /* 
+     ========================================
+     FEATURES COMPONENT
+     Role: Feature grid and card layouts
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
+  /* ========================================
+     Features Components
+     ======================================== */
+
+  @scope (.modular-features) {
+    :scope {
+      padding-block: var(--spacing-section);
+    }
+  }
+
+  /* 3-Column Grid Layout */
+  @scope (.features-grid-3col) {
+    :scope {
+      display: grid;
+      gap: var(--space-l);
+      grid-template-columns: 1fr;
+
+      @container (inline-size >= 768px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  /* 4-Column Grid Layout */
+  @scope (.features-grid-4col) {
+    :scope {
+      display: grid;
+      gap: var(--space-l);
+      grid-template-columns: 1fr;
+
+      @container (inline-size >= 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @container (inline-size >= 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+
+  /* Feature Card Styles */
+  @scope (.feature-card) {
+    :scope {
+      container-type: inline-size;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+      padding: var(--space-l);
+      background: var(--color-surface, var(--color-white));
+      border: var(--border-thin) solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-smooth);
+      block-size: 100%;
+
+      &:hover {
+        translate: 0 calc(var(--offset-hover-subtle) * 2.5);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-primary);
+        scale: 1.05;
+      }
+    }
+
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      margin-block-end: var(--space-s);
+    }
+
+    .icon {
+      font-size: var(--font-size-3xl);
+      color: var(--color-primary);
+      transition:
+        rotate var(--transition-bounce),
+        scale var(--transition-bounce);
+
+      .feature-card:hover & {
+        scale: 1.1;
+        rotate: 5deg;
+      }
+    }
+
+    .title {
+      font-size: var(--font-size-lg);
+      font-weight: 800;
+      margin: 0;
+      color: var(--color-dark);
+    }
+
+    .text {
+      color: var(--color-text);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover .title {
+        color: var(--color-primary);
+      }
+    }
+  }
+}

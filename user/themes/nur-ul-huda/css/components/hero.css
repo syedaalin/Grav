@@ -1,10 +1,18 @@
 @layer components {
+  /* 
+     ========================================
+     HERO COMPONENT
+     Role: Modular page headers and background media
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Hero Components
      ======================================== */
 
   @scope (.modular-hero) {
     :scope {
+      container-type: inline-size;
       min-block-size: 60svh;
       padding-block: var(--spacing-header);
       justify-content: center;
@@ -12,25 +20,34 @@
       display: flex;
       position: relative;
       overflow: hidden;
-      
-      &.hero-large { min-block-size: var(--spacing-hero-large); }
-      &.hero-fullscreen { min-block-size: 100svh; }
-      
-      &.text-light {
-        --color-dark: oklch(1 0 0);
-        --color-text: oklch(0.94 0 0);
-        color: oklch(1 0 0);
-        h1, h2, h3 { color: oklch(1 0 0); }
+
+      &.hero-large {
+        min-block-size: var(--spacing-hero-large);
       }
-      
+      &.hero-fullscreen {
+        min-block-size: 100svh;
+      }
+
+      &.text-light {
+        --color-dark: var(--color-white);
+        --color-text: oklch(from var(--color-white) l c h / 0.94);
+        color: var(--color-white);
+        h1,
+        h2,
+        h3 {
+          color: var(--color-white);
+        }
+      }
+
       &.text-dark {
         --color-dark: var(--color-dark);
         --color-text: var(--color-text);
         color: var(--color-dark);
       }
-      
+
       &.parallax .hero-background img {
-        transform: translateZ(-1px) scale(2);
+        /* Preserving translateZ as it is a specific 3D engine property, but using logical units if applicable */
+        transform: translateZ(calc(var(--border-thin) * -1)) scale(2);
       }
     }
 
@@ -38,8 +55,9 @@
       z-index: -1;
       position: absolute;
       inset: 0;
-      
-      img, video {
+
+      img,
+      video {
         object-fit: cover;
         block-size: 100%;
         inline-size: 100%;
@@ -49,14 +67,21 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(oklch(0 0 0 / 0.7), oklch(0 0 0 / 0.3) 50%, oklch(0 0 0 / 0.8));
+      background: linear-gradient(
+        to block-end,
+        oklch(from var(--color-black) l c h / 0.7),
+        oklch(from var(--color-black) l c h / 0.3) 50%,
+        oklch(from var(--color-black) l c h / 0.8)
+      );
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     .hero-content {
       z-index: 10;
       inline-size: 100%;
       max-inline-size: 80rem;
-      padding-inline: clamp(1rem, 5vw, 2rem);
+      padding-inline: clamp(var(--space-m), 5cqi, var(--space-xl));
       position: relative;
     }
 
@@ -66,17 +91,21 @@
       block-size: 100%;
       inset-block-start: 50%;
       inset-inline-start: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at center, oklch(from var(--color-primary) l c h / 0.15) 0%, transparent 70%);
+      translate: -50% -50%;
+      background: radial-gradient(
+        circle at center,
+        oklch(from var(--color-primary) l c h / 0.15) 0%,
+        transparent 70%
+      );
       pointer-events: none;
       z-index: 0;
     }
-    
+
     .hero-scroll-indicator {
       position: absolute;
-      inset-block-end: 2rem;
+      inset-block-end: var(--space-xl);
       inset-inline-start: 50%;
-      transform: translateX(-50%);
+      translate: -50% 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -84,19 +113,21 @@
       color: inherit;
       opacity: 0.7;
       transition: opacity var(--transition-standard);
-      
-      &:hover { opacity: 1; }
+
+      &:hover {
+        opacity: 1;
+      }
     }
-    
+
     .hero-scroll-line {
-      inline-size: 2px;
-      block-size: 3rem;
+      inline-size: var(--border-medium);
+      block-size: var(--space-2xl);
       background: currentColor;
       position: relative;
       overflow: hidden;
-      
+
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         inset-block-start: 0;
         inset-inline-start: 0;
@@ -107,9 +138,12 @@
       }
     }
   }
-}
-
-@keyframes scroll-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  @keyframes scroll-line {
+    0% {
+      translate: 0 -100%;
+    }
+    100% {
+      translate: 0 100%;
+    }
+  }
 }

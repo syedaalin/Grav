@@ -6,7 +6,7 @@ namespace Grav\Theme\NurUlHuda\Utils;
 
 use Grav\Common\Grav;
 
-class LogoValidator
+final class LogoValidator
 {
     /**
      * @param mixed $value

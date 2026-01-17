@@ -5,10 +5,11 @@
   "main": "index.php",
   "license": "MIT",
   "scripts": {
-    "dev": "npx lightningcss --bundle --targets '>= 0.25%' ./css/modern-vanilla.css -o ./css/nur-ul-huda.css && echo 'CSS bundled for development'",
-    "build": "npx lightningcss --minify --bundle --targets '>= 0.25%' ./css/modern-vanilla.css -o ./css/nur-ul-huda.css",
+    "dev": "npx lightningcss --bundle ./css/modern-vanilla.css -o ./css/nur-ul-huda.css && echo 'CSS bundled for development'",
+    "build": "npx lightningcss --minify --bundle ./css/modern-vanilla.css -o ./css/nur-ul-huda.css",
     "watch": "npx chokidar 'css/**/*.css' -c 'npm run dev'"
   },
+
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "lightningcss-cli": "^1.21.0"

@@ -1,23 +1,20 @@
-# Top Banner Blueprint Documentation
+# Ticker Component Documentation
 
 ## Identity
-- **System Name**: `top-banner`
-- **Purpose**: A high-utility header strip for dates, prayer times, and announcements.
+- **System Name**: `ticker` (formerly `top-banner`)
+- **Purpose**: A scrolling marquee for site-wide announcements.
 - **Behaviors**: 
-    - Dynamic reordering of widgets (Gregorian, Hijri, Prayer).
-    - Integrated scrolling announcement ticker with scheduling.
-    - Glassmorphism support.
+    - Infinite looping scroll (CSS-based).
+    - Pause on hover.
+    - Optional full-strip link.
 
 ## Admin Settings (Blueprints)
-- **Display**: `top_banner_enabled`, `top_banner_glass`.
-- **Radiant Trio**: `top_banner_widgets_order` (Selectize).
-- **Announcement Ticker**: 
-    - `top_banner_announcement_enabled`
-    - `top_banner_announcement_text`
-    - `top_banner_announcement_starts` / `expires` (Scheduling)
-    - `top_banner_announcement_speed`
-
+- **Display**: `ticker_enabled`, `ticker_pause`.
+- **Content**: `ticker_text`, `ticker_link`.
+- **Styling**: `ticker_bg`, `ticker_color`, `ticker_speed`.
+ 
 ## UX/UI
-- **Classes**: `.top-banner-main`, `.ticker-strip`
+- **Classes**: `.ticker-component`, `.ticker-marquee`
 - **Layers**: `@layer components`
-- **Responsive**: Mobile-hide options per widget for clean handheld experience.
+- **Animation**: `ticker-scroll` (linear, infinite).
+- **RTL Support**: Automatically reverses direction for RTL languages.

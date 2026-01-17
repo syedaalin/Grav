@@ -11,7 +11,7 @@ use Grav\Common\Config\Config;
  * Delegates icon management to IconRegistry.
  */
 
-readonly class SocialHelper
+readonly final class SocialHelper
 {
     private const PLATFORMS = [
         'facebook',
@@ -30,37 +30,45 @@ readonly class SocialHelper
     ];
 
     /**
-     * @param array|Config $config
-     * @return array
+     * Process social media network configuration into template-ready data.
+     *
+     * Transforms raw social network config into structured data with SVG icons,
+     * labels, and properly formatted URLs. Handles special cases for phone
+     * (tel:) and email (mailto:) links. Delegates icon management to IconRegistry
+     * following SRP. Filters out disabled networks automatically.
+     *
+     * @param array|Config $config Theme configuration containing social_networks array
+     * @return array Social data structure containing:
+     *               - items: Array of network objects with name, url, svg, label
+     *               - show_labels_mobile: Boolean for mobile label visibility
+     *               - show_labels_desktop: Boolean for desktop label visibility
      */
     public static function getSocialData(mixed $config): array
     {
         $items = [];
-        foreach (self::PLATFORMS as $platform) {
-            $url = $config["social_{$platform}"] ?? null;
-            $enabled = $config["social_{$platform}_enabled"] ?? (bool)$url;
+        $networks = $config['social_networks'] ?? [];
 
-            if ($url && $enabled) {
-                $items[] = [
-                    'name' => $platform,
-                    'url' => $url,
-                    'svg' => IconRegistry::getSvgPath($platform),
-                    'label' => ucwords(str_replace('_', ' ', $platform))
-                ];
+        foreach ($networks as $network) {
+            if (empty($network['enabled']) || empty($network['url'])) {
+                continue;
             }
-        }
 
-        // Dedicated Phone & Email handling
-        foreach (['phone', 'email'] as $special) {
-            $value = $config["social_{$special}"] ?? null;
-            if ($value && ($config["social_{$special}_enabled"] ?? true)) {
-                $items[] = [
-                    'name' => $special,
-                    'url' => ($special === 'phone' ? 'tel:' . preg_replace('/[^\d+]/', '', (string)$value) : 'mailto:' . $value),
-                    'svg' => IconRegistry::getSvgPath($special),
-                    'label' => ucfirst($special)
-                ];
+            $platform = $network['network'];
+            $url = $network['url'];
+
+            // Handle phone/email special cases
+            if ($platform === 'phone') {
+                $url = 'tel:' . preg_replace('/[^\d+]/', '', (string)$url);
+            } elseif ($platform === 'email') {
+                $url = 'mailto:' . $url;
             }
+
+            $items[] = [
+                'name' => $platform,
+                'url' => $url,
+                'svg' => IconRegistry::getSvgPath($platform),
+                'label' => ucwords(str_replace('_', ' ', $platform))
+            ];
         }
 
         return [

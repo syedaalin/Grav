@@ -6,61 +6,61 @@
     SRP Refactored: Media logic moved to ViewHelper::getHeroData
 #}
 
-<section id="{{ hero.id|default('hero') }}" 
-         class="hero-section modular-hero {{ hero.classes }}"
-         aria-labelledby="hero-title">
-    
-    {# Background Media #}
-    <div class="hero-background">
-        {% if hero.video %}
-            <video autoplay loop muted playsinline class="hero-video" fetchpriority="high">
-                <source src="{{ hero.video.url }}" type="video/webm">
-            </video>
-        {% elseif hero.image %}
-            {{ hero.image.cropZoom(1920, 1080).html('', '', 'hero-image')|raw }}
-        {% endif %}
-        <div class="hero-overlay" aria-hidden="true"></div>
-    </div>
+<section
+	id="{{ hero.id|default('hero') }}" class="hero-section modular-hero {{ hero.classes }}" aria-labelledby="hero-title">
 
-    {# Radial Glow #}
-    <div class="hero-glow" aria-hidden="true" style="--color-primary: {{ hero.accent_color }};"></div>
+	{# Background Media #}
+	<div class="hero-background">
+		{% if hero.video %}
+			<video autoplay loop muted playsinline class="hero-video" fetchpriority="high">
+				<source src="{{ hero.video.url }}" type="video/webm">
+			</video>
+		{% elseif hero.image %}
+			<img src="{{ hero.image.cropZoom(1920, 1080).url }}" width="1920" height="1080" alt="{{ page.title|e('html_attr') }}" class="hero-image" fetchpriority="high" loading="eager" decoding="async">
+		{% endif %}
+		<div class="hero-overlay" aria-hidden="true"></div>
+	</div>
 
-    <div class="hero-content">
-        <div class="hero-content-wrapper">
-            <div class="animate-fade-in-up">
-                {{ page.content|raw }}
-            </div>
-            
-            <div class="hero-actions animate-fade-in-up delay-100">
-                <a href="{{ url('theme://services') }}" class="btn-primary hero-cta">
-                    Our Services
-                    <i class="la la-angle-right hero-cta-icon" aria-hidden="true"></i>
-                </a>
+	{# Radial Glow #}
+	<div class="hero-glow" aria-hidden="true" style="--color-primary: {{ hero.accent_color }};"></div>
 
-                {% if random_inspiration %}
-                <div class="hero-inspiration">
-                    {% if random_inspiration.arabic %}
-                        <p class="hero-inspiration-arabic" dir="rtl">
-                            {{ random_inspiration.arabic }}
-                        </p>
-                    {% endif %}
-                    
-                    <p class="hero-inspiration-translation">
-                        "{{ random_inspiration.translation }}"
-                    </p>
-                    
-                    <div class="hero-inspiration-source">
-                        <span class="hero-inspiration-divider"></span> {{ random_inspiration.source }}
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+	<div class="hero-content">
+		<div class="hero-content-wrapper">
+			<div class="animate-fade-in-up">
+				{{ page.content|raw }}
+			</div>
 
-    {# Scroll Indicator #}
-    <a href="#start" class="hero-scroll-indicator" aria-label="Scroll down">
-        <span class="hero-scroll-text">Discover</span>
-        <div class="hero-scroll-line"></div>
-    </a>
+			<div class="hero-actions animate-fade-in-up delay-100">
+				<a href="{{ hero.cta_link|default(base_url ~ '/services') }}" class="btn-primary hero-cta">
+					{{ hero.cta_text|default('Our Services') }}
+					<i class="la la-angle-right hero-cta-icon" aria-hidden="true"></i>
+				</a>
+
+				{% if random_inspiration %}
+					<div class="hero-inspiration">
+						{% if random_inspiration.arabic %}
+							<p class="hero-inspiration-arabic" dir="rtl">
+								{{ random_inspiration.arabic }}
+							</p>
+						{% endif %}
+
+						<p class="hero-inspiration-translation">
+							"{{ random_inspiration.translation }}"
+						</p>
+
+						<div class="hero-inspiration-source">
+							<span class="hero-inspiration-divider"></span>
+							{{ random_inspiration.source }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{# Scroll Indicator #}
+	<a href="#start" class="hero-scroll-indicator" aria-label="Scroll down">
+		<span class="hero-scroll-text">Discover</span>
+		<div class="hero-scroll-line"></div>
+	</a>
 </section>

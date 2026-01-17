@@ -12,8 +12,25 @@ use Grav\Theme\NurUlHuda;
  * SRP: Responsibility for preparing and injecting variables into the Twig environment.
  * Acts as a bridge between the Theme class and the template layer.
  */
-readonly class ViewHelper
+readonly final class ViewHelper
 {
+    /**
+     * Prepare and inject all Twig template variables.
+     *
+     * Acts as the central orchestrator for preparing all data needed by Twig templates.
+     * Delegates to specialized helpers following SRP, aggregating:
+     * - Service data (Moodle LMS courses)
+     * - JavaScript/theme configuration
+     * - Dynamic CSS variables
+     * - Component data (banners, social, sidebar, logo)
+     * - Page-specific data (hero sections)
+     *
+     * This method is called once per page render from NurUlHuda::onTwigSiteVariables().
+     *
+     * @param Grav $grav The Grav instance providing access to core services
+     * @param NurUlHuda $theme The theme instance for accessing property hooks and config
+     * @return void All data is injected into $twig->twig_vars by reference
+     */
     public static function prepareTwigVariables(Grav $grav, NurUlHuda $theme): void
     {
         /** @var \Grav\Common\Twig\Twig $twig */

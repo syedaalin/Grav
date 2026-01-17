@@ -1,0 +1,171 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
+    'type' => 'blueprints',
+    'environment' => 'cli',
+    'timestamp' => 1768679368,
+    'directories' => [
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/user/plugins' => 1768107130,
+        '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/pagination' => 1767731299,
+        '/Users/syedaalin/Documents/Grav/user/plugins/form' => 1767660593,
+        '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects' => 1767663065,
+        '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages' => 1767636900,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch' => 1768106850,
+        '/Users/syedaalin/Documents/Grav/user/plugins/admin' => 1767663061,
+        '/Users/syedaalin/Documents/Grav/user/plugins/sitemap' => 1767636900,
+        '/Users/syedaalin/Documents/Grav/user/plugins/problems' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/archives' => 1767942426,
+        '/Users/syedaalin/Documents/Grav/user/plugins/feed' => 1767731297,
+        '/Users/syedaalin/Documents/Grav/user/plugins/shortcode-core' => 1767942423,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo' => 1767731295,
+        '/Users/syedaalin/Documents/Grav/user/plugins/error' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs' => 1767731301,
+        '/Users/syedaalin/Documents/Grav/user/plugins/login' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/email' => 1767660592,
+        '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist' => 1767942424,
+        '/Users/syedaalin/Documents/Grav/user/themes' => 1767950053,
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda' => 1768500495
+    ],
+    'file_mtimes' => [
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/backups.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/media.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/scheduler.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/security.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/site.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/streams.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/system/blueprints/config/system.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/user/plugins/markdown-notices/blueprints.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/user/plugins/pagination/blueprints.yaml' => 1707084214,
+        '/Users/syedaalin/Documents/Grav/user/plugins/form/blueprints.yaml' => 1766923054,
+        '/Users/syedaalin/Documents/Grav/user/plugins/flex-objects/blueprints.yaml' => 1764496350,
+        '/Users/syedaalin/Documents/Grav/user/plugins/relatedpages/blueprints.yaml' => 1691710516,
+        '/Users/syedaalin/Documents/Grav/user/plugins/tntsearch/blueprints.yaml' => 1728001206,
+        '/Users/syedaalin/Documents/Grav/user/plugins/admin/blueprints.yaml' => 1766978626,
+        '/Users/syedaalin/Documents/Grav/user/plugins/sitemap/blueprints.yaml' => 1718603524,
+        '/Users/syedaalin/Documents/Grav/user/plugins/problems/blueprints.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/user/plugins/archives/blueprints.yaml' => 1715813008,
+        '/Users/syedaalin/Documents/Grav/user/plugins/feed/blueprints.yaml' => 1695707474,
+        '/Users/syedaalin/Documents/Grav/user/plugins/shortcode-core/blueprints.yaml' => 1766488580,
+        '/Users/syedaalin/Documents/Grav/user/plugins/seo/blueprints.yaml' => 1536888544,
+        '/Users/syedaalin/Documents/Grav/user/plugins/error/blueprints.yaml' => 1767934750,
+        '/Users/syedaalin/Documents/Grav/user/plugins/breadcrumbs/blueprints.yaml' => 1658743204,
+        '/Users/syedaalin/Documents/Grav/user/plugins/login/blueprints.yaml' => 1762876912,
+        '/Users/syedaalin/Documents/Grav/user/plugins/email/blueprints.yaml' => 1765351098,
+        '/Users/syedaalin/Documents/Grav/user/plugins/taxonomylist/blueprints.yaml' => 1736125930,
+        '/Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints.yaml' => 1768590812
+    ],
+    'files' => [
+        'system/blueprints/config' => [
+            'backups' => [
+                'file' => 'system/blueprints/config/backups.yaml',
+                'modified' => 1767934750
+            ],
+            'media' => [
+                'file' => 'system/blueprints/config/media.yaml',
+                'modified' => 1767934750
+            ],
+            'scheduler' => [
+                'file' => 'system/blueprints/config/scheduler.yaml',
+                'modified' => 1767934750
+            ],
+            'security' => [
+                'file' => 'system/blueprints/config/security.yaml',
+                'modified' => 1767934750
+            ],
+            'site' => [
+                'file' => 'system/blueprints/config/site.yaml',
+                'modified' => 1767934750
+            ],
+            'streams' => [
+                'file' => 'system/blueprints/config/streams.yaml',
+                'modified' => 1767934750
+            ],
+            'system' => [
+                'file' => 'system/blueprints/config/system.yaml',
+                'modified' => 1767934750
+            ]
+        ],
+        'user/plugins' => [
+            'plugins/markdown-notices' => [
+                'file' => 'user/plugins/markdown-notices/blueprints.yaml',
+                'modified' => 1767934750
+            ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/blueprints.yaml',
+                'modified' => 1707084214
+            ],
+            'plugins/form' => [
+                'file' => 'user/plugins/form/blueprints.yaml',
+                'modified' => 1766923054
+            ],
+            'plugins/flex-objects' => [
+                'file' => 'user/plugins/flex-objects/blueprints.yaml',
+                'modified' => 1764496350
+            ],
+            'plugins/relatedpages' => [
+                'file' => 'user/plugins/relatedpages/blueprints.yaml',
+                'modified' => 1691710516
+            ],
+            'plugins/tntsearch' => [
+                'file' => 'user/plugins/tntsearch/blueprints.yaml',
+                'modified' => 1728001206
+            ],
+            'plugins/admin' => [
+                'file' => 'user/plugins/admin/blueprints.yaml',
+                'modified' => 1766978626
+            ],
+            'plugins/sitemap' => [
+                'file' => 'user/plugins/sitemap/blueprints.yaml',
+                'modified' => 1718603524
+            ],
+            'plugins/problems' => [
+                'file' => 'user/plugins/problems/blueprints.yaml',
+                'modified' => 1767934750
+            ],
+            'plugins/archives' => [
+                'file' => 'user/plugins/archives/blueprints.yaml',
+                'modified' => 1715813008
+            ],
+            'plugins/feed' => [
+                'file' => 'user/plugins/feed/blueprints.yaml',
+                'modified' => 1695707474
+            ],
+            'plugins/shortcode-core' => [
+                'file' => 'user/plugins/shortcode-core/blueprints.yaml',
+                'modified' => 1766488580
+            ],
+            'plugins/seo' => [
+                'file' => 'user/plugins/seo/blueprints.yaml',
+                'modified' => 1536888544
+            ],
+            'plugins/error' => [
+                'file' => 'user/plugins/error/blueprints.yaml',
+                'modified' => 1767934750
+            ],
+            'plugins/breadcrumbs' => [
+                'file' => 'user/plugins/breadcrumbs/blueprints.yaml',
+                'modified' => 1658743204
+            ],
+            'plugins/login' => [
+                'file' => 'user/plugins/login/blueprints.yaml',
+                'modified' => 1762876912
+            ],
+            'plugins/email' => [
+                'file' => 'user/plugins/email/blueprints.yaml',
+                'modified' => 1765351098
+            ],
+            'plugins/taxonomylist' => [
+                'file' => 'user/plugins/taxonomylist/blueprints.yaml',
+                'modified' => 1736125930
+            ]
+        ],
+        'user/themes' => [
+            'themes/nur-ul-huda' => [
+                'file' => 'user/themes/nur-ul-huda/blueprints.yaml',
+                'modified' => 1768590812
+            ]
+        ]
+    ]
+];

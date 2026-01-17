@@ -108,7 +108,7 @@ class __TwigTemplate_f2dfbc3b08f075cbd6509f5eb23b3213 extends Template
                         yield "\" aria-expanded=\"";
                         yield (((($context["active_page"] ?? null) == "active")) ? ("true") : ("false"));
                         yield "\" aria-label=\"Toggle submenu\">
-\t\t\t\t\t\t\t<i class=\"la la-angle-down\"></i>
+\t\t\t\t\t\t\t<i class=\"la la-angle-down\" aria-hidden=\"true\"></i>
 \t\t\t\t\t\t</button>
 \t\t\t\t\t</div>
 \t\t\t\t";

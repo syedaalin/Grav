@@ -7,5 +7,12 @@
         "psr-4": {
             "Grav\\Theme\\NurUlHuda\\": "classes/"
         }
+    },
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "mockery/mockery": "*"
     }
 }

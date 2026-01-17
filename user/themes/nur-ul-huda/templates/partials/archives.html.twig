@@ -7,12 +7,12 @@
 {% for month, items in archives_data %}
     <li>
         <a href="{{ base_url }}/{{ config.plugins.archives.taxonomy_names.month }}{{ config.system.param_sep }}{{ month|date(config.plugins.archives.taxonomy_values.month)|lower|e('url') }}"
-           class="widget-link card-glass">
+           class="widget-link">
             <span class="widget-label">
                 {{ month|date(config.plugins.archives.date_display_format) }}
             </span>
             {% if archives_show_count %}
-                <span class="badge-primary">
+                <span class="badge badge-primary">
                     {{ items|length }}
                 </span>
             {% endif %}

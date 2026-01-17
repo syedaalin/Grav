@@ -6,40 +6,44 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block body %}
-{% set hero_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
+	{% set hero_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
 
-{# Hero Section #}
-<section class="service-detail-hero">
-    {# Background #}
-    <div class="service-detail-hero-bg">
-        {% if hero_image %}
-            {{ hero_image.cropZoom(1920, 1080).derivative('webp').html('', '', 'service-detail-hero-image')|raw }}
-        {% else %}
-             {# Fallback pattern/gradient if no image #}
-             <div class="service-detail-hero-pattern"></div>
-        {% endif %}
-        <div class="service-detail-hero-overlay"></div>
-    </div>
+	<main
+		id="body-wrapper">
+		{# Hero Section #}
+		<section
+			class="service-detail-hero">
+			{# Background #}
+			<div class="service-detail-hero-bg">
+				{% if hero_image %}
+					{{ hero_image.cropZoom(1920, 1080).derivative('webp').html('', '', 'service-detail-hero-image')|raw }}
+				{% else %}
+					{# Fallback pattern/gradient if no image #}
+					<div class="service-detail-hero-pattern"></div>
+				{% endif %}
+				<div class="service-detail-hero-overlay"></div>
+			</div>
 
-    {# Content #}
-    <div class="service-detail-hero-content">
-        <h1 class="service-detail-title">
-            {{ page.title }}
-        </h1>
-        {% if page.header.subtitle %}
-            <p class="service-detail-subtitle">
-                {{ page.header.subtitle }}
-            </p>
-        {% endif %}
-    </div>
-</section>
+			{# Content #}
+			<div class="service-detail-hero-content">
+				<h1 class="service-detail-title">
+					{{ page.title }}
+				</h1>
+				{% if page.header.subtitle %}
+					<p class="service-detail-subtitle">
+						{{ page.header.subtitle }}
+					</p>
+				{% endif %}
+			</div>
+		</section>
 
-{# Main Content #}
-<section class="service-detail-content">
-    <div class="container container-px max-w-4xl mx-auto">
-        <div class="prose-custom service-detail-prose">
-            {{ page.content|raw }}
-        </div>
-    </div>
-</section>
+		{# Main Content #}
+		<section class="service-detail-content">
+			<div class="container container-px max-w-4xl mx-auto">
+				<div class="prose-custom service-detail-prose">
+					{{ page.content|raw }}
+				</div>
+			</div>
+		</section>
+	</main>
 {% endblock %}

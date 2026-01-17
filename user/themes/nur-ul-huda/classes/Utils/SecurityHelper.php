@@ -10,7 +10,7 @@ use Grav\Common\Config\Config;
  * SecurityHelper handles security-related logic for the Nur-ul-Huda theme.
  * Links to Blueprint documentation: theme_security.md (conceptual)
  */
-readonly class SecurityHelper
+readonly final class SecurityHelper
 {
     /**
      * Add security headers to HTTP response

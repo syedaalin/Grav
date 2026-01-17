@@ -9,10 +9,10 @@
         {% if related %}
             <li class="group">
                 <a href="{{ related.url }}" title="{{ related.title }}" 
-                   class="widget-link card-glass">
+                   class="widget-link">
                     <span class="widget-label line-clamp-1">{{ related.title }}</span>
                     {% if config.plugins.relatedpages.show_score %}
-                        <span class="badge-primary">
+                        <span class="badge badge-primary">
                             {{ score }}
                         </span>
                     {% endif %}

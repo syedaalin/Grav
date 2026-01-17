@@ -13,6 +13,7 @@ export default class ThemeUtils {
 
   constructor() {
     this.#loadConfig();
+    Logger.configure(this.#config.debugger || false);
   }
 
   /**
@@ -114,6 +115,49 @@ export default class ThemeUtils {
    */
   getConfigValue(key, defaultValue = null) {
     return this.#config[key] ?? defaultValue;
+  }
+}
+
+/**
+ * Standardized Logger for Theme
+ * Handles debug/production logging states
+ */
+export class Logger {
+  static #debug = false;
+
+  /**
+   * Configure logger state
+   * @param {boolean} isDebug - Whether debug mode is enabled
+   */
+  static configure(isDebug) {
+    this.#debug = isDebug;
+  }
+
+  /**
+   * Log info message (Debug mode only)
+   * @param {string} msg - Message
+   * @param {...*} args - Additional arguments
+   */
+  static info(msg, ...args) {
+    if (this.#debug) console.log(`[Info] ${msg}`, ...args);
+  }
+
+  /**
+   * Log warning message
+   * @param {string} msg - Message
+   * @param {...*} args - Additional arguments
+   */
+  static warn(msg, ...args) {
+    console.warn(`[Warn] ${msg}`, ...args);
+  }
+
+  /**
+   * Log error message
+   * @param {string} msg - Message
+   * @param {...*} args - Additional arguments
+   */
+  static error(msg, ...args) {
+    console.error(`[Error] ${msg}`, ...args);
   }
 }
 

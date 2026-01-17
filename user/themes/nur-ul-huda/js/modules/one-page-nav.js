@@ -3,19 +3,31 @@
  * Handles smooth scrolling and navigation highlighting for modular pages.
  * Pure Vanilla JS - No jQuery
  */
+import { Logger } from './utils.js';
+
 export default class OnePageNav {
+  static #selectors = {
+    header: '#header',
+    navLinks: 'ul.navigation a[href^="#"]',
+    sections: 'section[id], div[id]'
+  };
+
   constructor() {
-    this.header = document.getElementById('header');
-    this.navLinks = document.querySelectorAll('ul.navigation a[href^="#"]');
-    this.sections = document.querySelectorAll('section[id], div[id]');
+    this.header = document.querySelector(OnePageNav.#selectors.header);
+    this.navLinks = document.querySelectorAll(OnePageNav.#selectors.navLinks);
+    this.sections = document.querySelectorAll(OnePageNav.#selectors.sections);
     this.init();
   }
 
   init() {
-    if (!this.navLinks.length) return;
+    if (!this.navLinks.length) {
+      Logger.info('OnePageNav: No navigation links found');
+      return;
+    }
 
     this.bindClickEvents();
     this.initScrollSpy();
+    Logger.info('OnePageNav: Initialized');
   }
 
   bindClickEvents() {
@@ -26,7 +38,7 @@ export default class OnePageNav {
 
         if (targetSection) {
           e.preventDefault();
-          
+
           const headerHeight = this.header ? this.header.offsetHeight : 0;
           const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight;
 

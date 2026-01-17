@@ -31,30 +31,19 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
 
         $this->parent = false;
 
-        // line 12
-        $_trait_0 = $this->load("blocks/base.html.twig", 12);
-        if (!$_trait_0->unwrap()->isTraitable()) {
-            throw new RuntimeError('Template "'."blocks/base.html.twig".'" cannot be used as a trait.', 12, $this->source);
-        }
-        $_trait_0_blocks = $_trait_0->unwrap()->getBlocks();
-
-        $this->traits = $_trait_0_blocks;
-
-        $this->blocks = array_merge(
-            $this->traits,
-            [
-                'head' => [$this, 'block_head'],
-                'stylesheets' => [$this, 'block_stylesheets'],
-                'javascripts' => [$this, 'block_javascripts'],
-                'assets' => [$this, 'block_assets'],
-                'header' => [$this, 'block_header'],
-                'hero' => [$this, 'block_hero'],
-                'body' => [$this, 'block_body'],
-                'messages' => [$this, 'block_messages'],
-                'footer' => [$this, 'block_footer'],
-                'bottom' => [$this, 'block_bottom'],
-            ]
-        );
+        $this->blocks = [
+            'head' => [$this, 'block_head'],
+            'stylesheets' => [$this, 'block_stylesheets'],
+            'javascripts' => [$this, 'block_javascripts'],
+            'assets' => [$this, 'block_assets'],
+            'header' => [$this, 'block_header'],
+            'hero' => [$this, 'block_hero'],
+            'body' => [$this, 'block_body'],
+            'messages' => [$this, 'block_messages'],
+            'content' => [$this, 'block_content'],
+            'footer' => [$this, 'block_footer'],
+            'bottom' => [$this, 'block_bottom'],
+        ];
         $this->deferred = $this->env->getExtension('Twig\DeferredExtension\DeferredExtension');
     }
 
@@ -74,112 +63,122 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         // line 6
         $context["compress"] = (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "production-mode")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (".min.css") : (".css"));
         // line 7
-        $context["top_banner_color"] = Twig\Extension\CoreExtension::default($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color"), "oklch(0.2 0.02 260)");
+        $context["top_banner_color"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_bg_color");
         // line 8
         yield "
-";
-        // line 11
-        yield "
-";
-        // line 13
-        yield "<!DOCTYPE html>
+
+
+<!DOCTYPE html>
 <html lang=\"";
-        // line 14
+        // line 12
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["language"] ?? null), "html", null, true);
         yield "\" dir=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["direction"] ?? null), "html", null, true);
-        yield "\" style=\"--top-banner-color: ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["top_banner_color"] ?? null), "html", null, true);
-        yield "; ";
+        yield "\" style=\"";
+        if ((($tmp = ($context["top_banner_color"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            yield "--top-banner-color: ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["top_banner_color"] ?? null), "html", null, true);
+            yield ";";
+        }
+        yield " ";
         yield ($context["dynamic_styles"] ?? null);
         yield "; --font-heading: ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "heading", [], "any", false, false, false, 14);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "heading", [], "any", false, false, false, 12);
         yield "; --font-body: ";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "body", [], "any", false, false, false, 14);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "body", [], "any", false, false, false, 12);
         yield ";\">
 \t<head>
 \t\t";
-        // line 16
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "custom_css", [], "any", false, false, false, 16)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 17
+        // line 14
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "custom_css", [], "any", false, false, false, 14)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 15
             yield "\t\t\t<style>
 \t\t\t\t";
-            // line 18
-            yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "custom_css", [], "any", false, false, false, 18);
+            // line 16
+            yield CoreExtension::getAttribute($this->env, $this->source, ($context["theme_fonts"] ?? null), "custom_css", [], "any", false, false, false, 16);
             yield "</style>
 \t\t";
         }
+        // line 18
+        yield "\t\t";
+        // line 19
+        yield "\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addInlineCss", [$this->extensions['Grav\Common\Twig\Extension\GravExtension']->readFileFunc("theme://css/layers/tokens.css"), ["priority" => 100]], "method", false, false, false, 19);
         // line 20
         yield "\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addInlineCss", [$this->extensions['Grav\Common\Twig\Extension\GravExtension']->readFileFunc("theme://css/layers/reset.css"), ["priority" => 99]], "method", false, false, false, 20);
         // line 21
         yield "\t\t";
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "css", [], "method", false, false, false, 21);
+        yield "
+
+\t\t";
+        // line 24
+        yield "\t\t";
         yield from $this->unwrap()->yieldBlock('head', $context, $blocks);
-        // line 55
+        // line 27
         yield "
 \t\t";
-        // line 56
+        // line 28
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
+        // line 36
+        yield "
+\t\t";
+        // line 37
+        yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
         // line 60
         yield "
-\t\t";
+\t\t\t";
         // line 61
-        yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 87
-        yield "
-\t\t";
-        // line 88
         yield from $this->unwrap()->yieldBlock('assets', $context, $blocks);
-        // line 92
+        // line 65
         yield "\t</head>
-\t<body
-\t\tid=\"top\" class=\"";
-        // line 94
+\t\t<body id=\"top\" class=\"";
+        // line 66
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["body_classes"] ?? null), "html", null, true);
         yield " ";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(($context["dynamic_body_classes"] ?? null), " "), "html", null, true);
-        yield "\">
-
-\t\t<div
+        yield "\"> <div
 \t\t\tid=\"page-wrapper\">
 \t\t\t";
-        // line 99
+        // line 69
         yield "\t\t\t<a href=\"#start\" class=\"skip-link\">Skip to main content</a>
 
 
-\t\t\t\t";
-        // line 106
-        yield "\t\t\t\t";
+\t\t\t";
+        // line 76
+        yield "\t\t\t";
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 110
+        // line 83
         yield "
 
 \t\t\t";
-        // line 112
+        // line 85
         yield from $this->unwrap()->yieldBlock('hero', $context, $blocks);
-        // line 113
+        // line 86
         yield "
 \t\t\t<section id=\"start\">
 \t\t\t\t";
-        // line 115
+        // line 88
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 127
+        // line 100
         yield "\t\t\t</section>
 
 \t\t\t";
-        // line 129
+        // line 102
         yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
-        // line 132
+        // line 105
         yield "
 \t\t\t";
-        // line 133
-        yield from $this->load("partials/search-overlay.html.twig", 133)->unwrap()->yield($context);
-        // line 134
+        // line 106
+        yield from $this->load("partials/search-overlay.html.twig", 106)->unwrap()->yield($context);
+        // line 107
         yield "\t\t</div>
 
 \t\t";
-        // line 136
+        // line 109
         yield from $this->unwrap()->yieldBlock('bottom', $context, $blocks);
-        // line 145
+        // line 118
         yield "\t</body>
 </html>
 ";
@@ -187,7 +186,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 21
+    // line 24
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -204,168 +203,103 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
     public function block_head_deferred(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 22
-        yield "\t\t\t<meta charset=\"utf-8\"/>
-\t\t\t<title>
-\t\t\t\t";
-        // line 24
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "title", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 25
-            yield "\t\t\t\t\t";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "title", [], "any", false, false, false, 25), "html");
-            yield "
-\t\t\t\t\t|
-\t\t\t\t";
-        }
-        // line 28
-        yield "\t\t\t\t";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 28), "html");
-        yield "</title>
-
-\t\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\">
-\t\t\t";
-        // line 32
-        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "production-mode")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 33
-            yield "\t\t\t\t<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.snipcart.com https://api.aladhan.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.snipcart.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.snipcart.com; connect-src 'self' https://api.aladhan.com https://cdn.snipcart.com; frame-src 'self' https://cdn.snipcart.com;\">
-\t\t\t";
-        }
-        // line 35
+        // line 25
         yield "\t\t\t";
-        try {
-            $_v0 = $this->load("partials/metadata.html.twig", 35);
-        } catch (LoaderError $e) {
-            // ignore missing template
-            $_v0 = null;
-        }
-        if ($_v0) {
-            yield from $_v0->unwrap()->yield($context);
-        }
-        // line 36
-        yield "
-\t\t\t";
-        // line 37
-        $context["logo_img"] = (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ((($_v1 = ($context["media"] ?? null)) && is_array($_v1) || $_v1 instanceof ArrayAccess ? ($_v1[("theme://images/logo/" . CoreExtension::getAttribute($this->env, $this->source, Twig\Extension\CoreExtension::first($this->env->getCharset(), $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "custom_logo")), "name", [], "any", false, false, false, 37))] ?? null) : null)) : (null));
-        // line 38
-        yield "\t\t\t";
-        $context["favicon"] = (((($tmp = ($context["logo_img"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (CoreExtension::getAttribute($this->env, $this->source, ($context["logo_img"] ?? null), "cropZoom", [32, 32], "method", false, false, false, 38)) : ((($_v2 = ($context["media"] ?? null)) && is_array($_v2) || $_v2 instanceof ArrayAccess ? ($_v2["theme://images/favicon.png"] ?? null) : null)));
-        // line 39
-        yield "\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["favicon"] ?? null), "url", [], "any", false, false, false, 39), "html", null, true);
-        yield "\"/>
-\t\t\t<link rel=\"canonical\" href=\"";
-        // line 40
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "url", [true, true], "method", false, false, false, 40), "html", null, true);
-        yield "\"/>
-
-\t\t\t<link rel=\"manifest\" href=\"";
-        // line 42
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["base_url"] ?? null), "html", null, true);
-        yield "/manifest\">
-\t\t\t<meta name=\"theme-color\" content=\"oklch(0.55 0.18 165)\">
-\t\t\t<meta name=\"mobile-web-app-capable\" content=\"yes\">
-\t\t\t<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">
-\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">
-\t\t\t<meta
-\t\t\tname=\"apple-mobile-web-app-title\" content=\"";
-        // line 48
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["site"] ?? null), "title", [], "any", false, false, false, 48), "html", null, true);
-        yield "\">
-
-\t\t\t";
-        // line 51
-        yield "
-
-
-\t\t";
+        yield from $this->load("partials/head.html.twig", 25)->unwrap()->yield($context);
+        // line 26
+        yield "\t\t";
         $this->deferred->resolve($this, $context, $blocks);
         yield from [];
     }
 
-    // line 56
+    // line 28
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 57
+        // line 29
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/modern-vanilla.css"], "method", false, false, false, 57);
-        // line 58
+        if ((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "production-mode")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 30
+            yield "\t\t\t\t";
+            CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/nur-ul-huda.css"], "method", false, false, false, 30);
+            // line 31
+            yield "\t\t\t";
+        } else {
+            // line 32
+            yield "\t\t\t\t";
+            CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/modern-vanilla.css"], "method", false, false, false, 32);
+            // line 33
+            yield "\t\t\t";
+        }
+        // line 34
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 58);
-        // line 59
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addCss", ["theme://css/line-awesome.min.css"], "method", false, false, false, 34);
+        // line 35
         yield "\t\t";
         yield from [];
     }
 
-    // line 61
+    // line 37
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 62
+        // line 38
         yield "\t\t\t";
-        // line 63
+        // line 39
         yield "\t\t\t";
-        // line 64
-        yield "\t\t\t
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/khums-calculator.js", ["priority" => 100, "group" => "bottom", "type" => "module"]], "method", false, false, false, 39);
+        // line 40
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/ui.js", ["priority" => 95, "group" => "bottom", "type" => "module"]], "method", false, false, false, 40);
+        // line 41
+        yield "
+
 \t\t\t";
-        // line 66
+        // line 44
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/khums-calculator.js", ["priority" => 100, "group" => "bottom", "type" => "module"]], "method", false, false, false, 66);
-        // line 67
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/performance-monitor.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 44);
+        // line 45
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/ui.js", ["priority" => 95, "group" => "bottom", "type" => "module"]], "method", false, false, false, 67);
-        // line 68
-        yield "\t\t\t
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/pull-refresh.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 45);
+        // line 46
+        yield "\t\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", ["priority" => 93, "group" => "bottom", "type" => "module"]], "method", false, false, false, 46);
+        // line 47
+        yield "
 \t\t\t";
-        // line 70
+        // line 49
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/performance-monitor.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 70);
-        // line 71
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/high-contrast.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 49);
+        // line 50
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/pull-refresh.js", ["priority" => 94, "group" => "bottom", "type" => "module"]], "method", false, false, false, 71);
-        // line 72
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/gallery.js", ["priority" => 93, "group" => "bottom", "type" => "module"]], "method", false, false, false, 72);
-        // line 73
-        yield "\t\t\t
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/font-scaler.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 50);
+        // line 51
+        yield "
 \t\t\t";
-        // line 75
+        // line 53
         yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/high-contrast.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 75);
-        // line 76
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/font-scaler.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 76);
-        // line 77
-        yield "\t\t\t
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/bottom-banner.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 53);
+        // line 54
+        yield "
 \t\t\t";
-        // line 79
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/bottom-banner.js", ["priority" => 89, "group" => "bottom", "type" => "module"]], "method", false, false, false, 79);
-        // line 80
-        yield "\t\t\t
+        // line 56
+        yield "
 \t\t\t";
-        // line 82
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/spiritual.js", ["priority" => 88, "group" => "bottom", "type" => "module"]], "method", false, false, false, 82);
-        // line 83
-        yield "\t\t\t
-\t\t\t";
-        // line 85
-        yield "\t\t\t";
-        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/service-worker.js", ["priority" => 87, "group" => "bottom", "type" => "module"]], "method", false, false, false, 85);
-        // line 86
+        // line 58
+        yield "\t\t";
+        CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "addJs", ["theme://js/modules/service-worker.js", ["priority" => 87, "group" => "bottom", "type" => "module"]], "method", false, false, false, 58);
+        // line 59
         yield "\t\t";
         yield from [];
     }
 
-    // line 88
+    // line 61
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -382,38 +316,45 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
     public function block_assets_deferred(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 89
+        // line 62
         yield "\t\t\t";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "css", [], "method", false, false, false, 89);
-        yield "
-\t\t\t";
-        // line 90
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", [], "method", false, false, false, 90);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "css", [], "method", false, false, false, 62);
         yield "
 \t\t";
+        // line 63
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", [], "method", false, false, false, 63);
+        yield "
+\t";
         $this->deferred->resolve($this, $context, $blocks);
         yield from [];
     }
 
-    // line 106
+    // line 76
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_header(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 107
-        yield "\t\t\t\t\t";
-        yield from $this->load("partials/header-wrapper.html.twig", 107)->unwrap()->yield($context);
-        // line 108
-        yield "\t\t\t\t\t";
-        yield from $this->load("partials/mobile-menu.html.twig", 108)->unwrap()->yield($context);
-        // line 109
+        // line 77
         yield "\t\t\t\t";
+        yield from $this->load("partials/header-wrapper.html.twig", 77)->unwrap()->yield($context);
+        // line 78
+        yield "\t\t\t\t";
+        // line 79
+        yield "\t\t\t\t";
+        yield from $this->load("partials/sidebar-left.html.twig", 79)->unwrap()->yield($context);
+        // line 80
+        yield "\t\t\t\t";
+        // line 81
+        yield "\t\t\t\t";
+        yield from $this->load("partials/sidebar-right.html.twig", 81)->unwrap()->yield($context);
+        // line 82
+        yield "\t\t\t";
         yield from [];
     }
 
-    // line 112
+    // line 85
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -423,92 +364,102 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
         yield from [];
     }
 
-    // line 115
+    // line 88
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 116
-        yield "\t\t\t\t\t<section id=\"body-wrapper\" class=\"section-py container-px\">
+        // line 89
+        yield "\t\t\t\t\t<main id=\"body-wrapper\" class=\"section-py container-px\">
 \t\t\t\t\t\t";
-        // line 117
+        // line 90
         yield from $this->unwrap()->yieldBlock('messages', $context, $blocks);
-        // line 122
+        // line 95
         yield "\t\t\t\t\t\t<div class=\"container\">
 \t\t\t\t\t\t\t";
-        // line 123
-        yield from         $this->unwrap()->yieldBlock("content_surround", $context, $blocks);
-        yield "
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</section>
+        // line 96
+        yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
+        // line 97
+        yield "\t\t\t\t\t\t</div>
+\t\t\t\t\t</main>
 \t\t\t\t";
         yield from [];
     }
 
-    // line 117
+    // line 90
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_messages(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 118
+        // line 91
         yield "\t\t\t\t\t\t\t<div class=\"container message-spacer\">
 \t\t\t\t\t\t\t\t";
-        // line 119
+        // line 92
         try {
-            $_v3 = $this->load("partials/messages.html.twig", 119);
+            $_v0 = $this->load("partials/messages.html.twig", 92);
         } catch (LoaderError $e) {
             // ignore missing template
-            $_v3 = null;
+            $_v0 = null;
         }
-        if ($_v3) {
-            yield from $_v3->unwrap()->yield($context);
+        if ($_v0) {
+            yield from $_v0->unwrap()->yield($context);
         }
-        // line 120
+        // line 93
         yield "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t";
         yield from [];
     }
 
-    // line 129
+    // line 96
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_content(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        yield from [];
+    }
+
+    // line 102
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_footer(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 130
+        // line 103
         yield "\t\t\t\t";
-        yield from $this->load("partials/bottom-banner/main.html.twig", 130)->unwrap()->yield($context);
-        // line 131
+        yield from $this->load("partials/bottom-banner/main.html.twig", 103)->unwrap()->yield($context);
+        // line 104
         yield "\t\t\t";
         yield from [];
     }
 
-    // line 136
+    // line 109
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_bottom(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 137
+        // line 110
         yield "\t\t\t";
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 137);
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["assets"] ?? null), "js", ["bottom"], "method", false, false, false, 110);
         yield "
 \t\t\t";
-        // line 138
-        yield from $this->load("partials/snipcart.html.twig", 138)->unwrap()->yield($context);
-        // line 139
+        // line 111
+        yield from $this->load("partials/snipcart.html.twig", 111)->unwrap()->yield($context);
+        // line 112
         yield "
 \t\t\t";
-        // line 141
+        // line 114
         yield "\t\t\t<script>
 \t\t\t\twindow.GravConfig = ";
-        // line 142
+        // line 115
         yield json_encode(Twig\Extension\CoreExtension::merge(((array_key_exists("theme_js_config", $context)) ? (Twig\Extension\CoreExtension::default(($context["theme_js_config"] ?? null), [])) : ([])), ["theme_url" => ($context["theme_url"] ?? null)]));
         yield ";
 \t\t\t</script>
@@ -537,7 +488,7 @@ class __TwigTemplate_5d4123dc4519b027947d0628eb6cc604 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  512 => 142,  509 => 141,  506 => 139,  504 => 138,  499 => 137,  492 => 136,  487 => 131,  484 => 130,  477 => 129,  471 => 120,  461 => 119,  458 => 118,  451 => 117,  442 => 123,  439 => 122,  437 => 117,  434 => 116,  427 => 115,  417 => 112,  412 => 109,  409 => 108,  406 => 107,  399 => 106,  391 => 90,  386 => 89,  369 => 88,  364 => 86,  361 => 85,  358 => 83,  355 => 82,  352 => 80,  349 => 79,  346 => 77,  343 => 76,  340 => 75,  337 => 73,  334 => 72,  331 => 71,  328 => 70,  325 => 68,  322 => 67,  319 => 66,  316 => 64,  314 => 63,  312 => 62,  305 => 61,  300 => 59,  297 => 58,  294 => 57,  287 => 56,  278 => 51,  273 => 48,  264 => 42,  259 => 40,  254 => 39,  251 => 38,  249 => 37,  246 => 36,  235 => 35,  231 => 33,  229 => 32,  221 => 28,  214 => 25,  212 => 24,  208 => 22,  191 => 21,  183 => 145,  181 => 136,  177 => 134,  175 => 133,  172 => 132,  170 => 129,  166 => 127,  164 => 115,  160 => 113,  158 => 112,  154 => 110,  151 => 106,  146 => 99,  137 => 94,  133 => 92,  131 => 88,  128 => 87,  126 => 61,  123 => 60,  121 => 56,  118 => 55,  115 => 21,  113 => 20,  108 => 18,  105 => 17,  103 => 16,  88 => 14,  85 => 13,  82 => 11,  79 => 8,  77 => 7,  75 => 6,  73 => 5,  71 => 4,  69 => 3,  67 => 2,  65 => 1,  35 => 12,);
+        return array (  463 => 115,  460 => 114,  457 => 112,  455 => 111,  450 => 110,  443 => 109,  438 => 104,  435 => 103,  428 => 102,  418 => 96,  412 => 93,  402 => 92,  399 => 91,  392 => 90,  385 => 97,  383 => 96,  380 => 95,  378 => 90,  375 => 89,  368 => 88,  358 => 85,  353 => 82,  350 => 81,  348 => 80,  345 => 79,  343 => 78,  340 => 77,  333 => 76,  325 => 63,  320 => 62,  303 => 61,  298 => 59,  295 => 58,  292 => 56,  289 => 54,  286 => 53,  283 => 51,  280 => 50,  277 => 49,  274 => 47,  271 => 46,  268 => 45,  265 => 44,  261 => 41,  258 => 40,  255 => 39,  253 => 38,  246 => 37,  241 => 35,  238 => 34,  235 => 33,  232 => 32,  229 => 31,  226 => 30,  223 => 29,  216 => 28,  210 => 26,  207 => 25,  190 => 24,  182 => 118,  180 => 109,  176 => 107,  174 => 106,  171 => 105,  169 => 102,  165 => 100,  163 => 88,  159 => 86,  157 => 85,  153 => 83,  150 => 76,  145 => 69,  138 => 66,  135 => 65,  133 => 61,  130 => 60,  128 => 37,  125 => 36,  123 => 28,  120 => 27,  117 => 24,  111 => 21,  108 => 20,  105 => 19,  103 => 18,  98 => 16,  95 => 15,  93 => 14,  74 => 12,  68 => 8,  66 => 7,  64 => 6,  62 => 5,  60 => 4,  58 => 3,  56 => 2,  54 => 1,);
     }
 
     public function getSourceContext(): Source

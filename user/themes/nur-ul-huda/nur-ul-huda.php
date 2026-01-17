@@ -85,6 +85,11 @@ class NurUlHuda extends Theme
         if ($uri->path() === '/payment/jazzcash/callback') {
             $this->jazzCash->handleCallback();
         }
+
+        // Listen for Payment Signing Request (Ajax)
+        if ($uri->path() === '/payment/sign-request') {
+            $this->jazzCash->handleSignRequest();
+        }
     }
 
     /**

@@ -9,7 +9,7 @@ use Grav\Common\Grav;
 /**
  * SRP: Responsibility for font-related logic (Blueprints options, Custom CSS).
  */
-readonly class FontHelper
+readonly final class FontHelper
 {
     /**
      * Get font options for Blueprints dropdown.
@@ -31,7 +31,7 @@ readonly class FontHelper
                     $name = pathinfo($fileName, PATHINFO_FILENAME);
 
                     // Sanitize Name for CSS
-                    if (strpos($name, "'") === false) {
+                    if (!str_contains($name, "'")) {
                         $safeKey = "'{$name}', sans-serif";
                     } else {
                         $safeKey = "{$name}, sans-serif";

@@ -4,43 +4,43 @@
     Blueprint: [blog-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/blog-components.blueprint.md)
 #}
 <article class="blog-list-card" aria-labelledby="post-title-{{ page.slug }}">
-    {% set primary_image = page.media.images|first %}
-    {% if primary_image %}
-    <div class="blog-list-image">
-        <a href="{{ page.url }}" class="blog-list-image-link" aria-hidden="true" tabindex="-1">
-            {{ primary_image.cropZoom(800,450).html('','','blog-list-img')|raw }}
-            <div class="blog-list-overlay"></div>
-        </a>
-        <div class="blog-list-date">
-             {% include 'partials/blog/date.html.twig' with {classes: 'badge-primary blog-list-date-badge'} %}
-        </div>
-    </div>
-    {% endif %}
-    
-    <div class="blog-list-content">
-        <div class="blog-list-tags">
-            {% include 'partials/blog/taxonomy.html.twig' with {classes: 'blog-list-taxonomy'} %}
-        </div>
-        
-        <h2 id="post-title-{{ page.slug }}" class="blog-list-title">
-             <a href="{{ page.url }}" class="blog-list-title-link">
-                {{ page.title }}
-            </a>
-        </h2>
-        
-        <div class="blog-list-excerpt">
-            {% if page.summary != page.content %}
-                {{ page.summary|striptags }}
-            {% else %}
-                {{ page.content|striptags|truncate(200) }}
-            {% endif %}
-        </div>
+	{% set primary_image = page.media.images|first %}
+	{% if primary_image %}
+		<div class="blog-list-image">
+			<a href="{{ page.url }}" class="blog-list-image-link" aria-hidden="true" tabindex="-1">
+				<img src="{{ primary_image.cropZoom(800,450).url }}" width="800" height="450" alt="{{ page.title|e('html_attr') }}" class="blog-list-img" loading="lazy" decoding="async">
+				<div class="blog-list-overlay"></div>
+			</a>
+			<div class="blog-list-date">
+				{% include 'partials/blog/date.html.twig' with {classes: 'badge-primary blog-list-date-badge'} %}
+			</div>
+		</div>
+	{% endif %}
 
-        <div class="blog-list-footer">
-            <a href="{{ page.url }}" class="blog-list-read-more">
-                Read More
-                <i class="la la-arrow-right" aria-hidden="true"></i>
-            </a>
-        </div>
-    </div>
+	<div class="blog-list-content">
+		<div class="blog-list-tags">
+			{% include 'partials/blog/taxonomy.html.twig' with {classes: 'blog-list-taxonomy'} %}
+		</div>
+
+		<h2 id="post-title-{{ page.slug }}" class="blog-list-title">
+			<a href="{{ page.url }}" class="blog-list-title-link">
+				{{ page.title }}
+			</a>
+		</h2>
+
+		<div class="blog-list-excerpt">
+			{% if page.summary != page.content %}
+				{{ page.summary|striptags }}
+			{% else %}
+				{{ page.content|striptags|truncate(200) }}
+			{% endif %}
+		</div>
+
+		<div class="blog-list-footer">
+			<a href="{{ page.url }}" class="blog-list-read-more">
+				Read More
+				<i class="la la-arrow-right" aria-hidden="true"></i>
+			</a>
+		</div>
+	</div>
 </article>

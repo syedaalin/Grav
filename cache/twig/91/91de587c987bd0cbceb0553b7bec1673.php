@@ -65,59 +65,47 @@ class __TwigTemplate_d8b2f8358a443fe70eaf863f2d011ee5 extends Template
         // line 17
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["nojs_action"] ?? null), "html", null, true);
         yield "\" method=\"get\">
-    <div id=\"tntsearch-wrapper\" style=\"position: relative;\">
-        <label for=\"tntsearch-field\" class=\"sr-only\">";
+\t<div id=\"tntsearch-wrapper\" style=\"position: relative;\">
+\t\t<label for=\"tntsearch-field\" class=\"sr-only\">";
         // line 19
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["placeholder"] ?? null), "html", null, true);
         yield "</label>
-        <input 
-            type=\"text\" 
-            name=\"q\" 
-            id=\"tntsearch-field\"
-            class=\"tntsearch-input tntsearch-field";
-        // line 24
+\t\t<input type=\"text\" name=\"q\" id=\"tntsearch-field\" class=\"tntsearch-input tntsearch-field";
+        // line 20
         yield (((($tmp = ($context["in_page"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (" tntsearch-field-inpage") : (""));
-        yield "\" 
-            data-tntsearch=\"";
-        // line 25
+        yield "\" data-tntsearch=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(json_encode(($context["options"] ?? null)), "html_attr");
-        yield "\" 
-            placeholder=\"";
-        // line 26
+        yield "\" placeholder=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["placeholder"] ?? null), "html", null, true);
-        yield "\" 
-            value=\"";
-        // line 27
+        yield "\" value=\"";
         yield (((($tmp =  !($context["dropdown"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["query"] ?? null))) : (""));
-        yield "\"
-            autocomplete=\"off\"
-        >
-        <div class=\"tntsearch-icon-wrapper\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\">
-                <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\" />
-            </svg>
-        </div>
-        <span class=\"tntsearch-clear\" ";
-        // line 35
+        yield "\" autocomplete=\"off\">
+\t\t<div class=\"tntsearch-icon-wrapper\">
+\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">
+\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\"/>
+\t\t\t</svg>
+\t\t</div>
+\t\t<span class=\"tntsearch-clear\" ";
+        // line 26
         yield ((( !($context["query"] ?? null) || ($context["dropdown"] ?? null))) ? ("style=\"display: none;\"") : (""));
         yield ">&times;</span>
-    </div>
-    
-    <div class=\"tntsearch-results";
-        // line 38
+\t</div>
+
+\t<div class=\"tntsearch-results";
+        // line 29
         yield (((($tmp = ($context["in_page"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (" tntsearch-results-inpage") : (""));
         yield "\">
-        ";
-        // line 39
+\t\t";
+        // line 30
         if (((array_key_exists("tntsearch_results", $context) &&  !Twig\Extension\CoreExtension::testEmpty(($context["tntsearch_results"] ?? null))) && ($context["in_page"] ?? null))) {
-            // line 40
-            yield "            ";
-            yield from $this->load("tntquery-ajax.html.twig", 40)->unwrap()->yield($context);
-            // line 41
-            yield "        ";
+            // line 31
+            yield "\t\t\t";
+            yield from $this->load("tntquery-ajax.html.twig", 31)->unwrap()->yield($context);
+            // line 32
+            yield "\t\t";
         }
-        // line 42
-        yield "    </div>
+        // line 33
+        yield "\t</div>
 </form>
 ";
         yield from [];
@@ -144,7 +132,7 @@ class __TwigTemplate_d8b2f8358a443fe70eaf863f2d011ee5 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  120 => 42,  117 => 41,  114 => 40,  112 => 39,  108 => 38,  102 => 35,  91 => 27,  87 => 26,  83 => 25,  79 => 24,  71 => 19,  66 => 17,  63 => 16,  61 => 15,  58 => 14,  56 => 13,  54 => 12,  52 => 11,  50 => 10,  48 => 9,  46 => 8,  44 => 7,  42 => 6,);
+        return array (  108 => 33,  105 => 32,  102 => 31,  100 => 30,  96 => 29,  90 => 26,  75 => 20,  71 => 19,  66 => 17,  63 => 16,  61 => 15,  58 => 14,  56 => 13,  54 => 12,  52 => 11,  50 => 10,  48 => 9,  46 => 8,  44 => 7,  42 => 6,);
     }
 
     public function getSourceContext(): Source

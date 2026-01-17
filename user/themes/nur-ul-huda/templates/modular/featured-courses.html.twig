@@ -6,80 +6,75 @@
     Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
 #}
 <section class="modular-section modular-featured-courses">
-    <div class="section-container">
-        <div class="courses-header">
-            <div class="courses-intro animate-fade-in-up">
-                {% if page.content %}
-                    <div class="prose-custom max-w-none">
-                        {{ page.content|raw }}
-                    </div>
-                {% else %}
-                    <h2 class="section-title">Featured Courses</h2>
-                    <p class="courses-description">Deepen your knowledge with our premium selection of certified courses.</p>
-                {% endif %}
-            </div>
-            <a href="{{ url('theme://courses') }}" class="courses-view-all">
-                View All Courses
-                <i class="la la-angle-right courses-view-icon" aria-hidden="true"></i>
-            </a>
-        </div>
+	<div class="section-container">
+		<div class="courses-header">
+			<div class="courses-intro animate-fade-in-up">
+				{% if page.content %}
+					<div class="prose-custom max-w-none">
+						{{ page.content|raw }}
+					</div>
+				{% else %}
+					<h2 class="section-title">Featured Courses</h2>
+					<p class="courses-description">Deepen your knowledge with our premium selection of certified courses.</p>
+				{% endif %}
+			</div>
+			<a href="{{ url('theme://courses') }}" class="courses-view-all">
+				View All Courses
+				<i class="la la-angle-right courses-view-icon" aria-hidden="true"></i>
+			</a>
+		</div>
 
-        {% set courses = page.header.course_source == 'moodle' and moodle_courses ? moodle_courses : page.header.courses %}
+		{% set courses = page.header.course_source == 'moodle' and moodle_courses ? moodle_courses : page.header.courses %}
 
-        {% if courses and courses|length > 0 %}
-        <div class="courses-grid">
-        {% for course in courses %}
-            <article class="course-card">
-                <div class="course-thumbnail">
-                    {% if page.header.course_source == 'moodle' %}
-                        {# Moodle course mapping #}
-                        <img src="{{ course.overviewfiles[0].fileurl ~ '?token=' ~ theme_var('moodle_token') }}" 
-                             class="course-image" 
-                             alt="{{ course.fullname }}"
-                             loading="lazy" />
-                    {% else %}
-                        {# Static course thumbnails #}
-                        {% set course_img = course.thumbnail ? page.media[course.thumbnail] : null %}
-                        {% if course_img %}
-                            {{ course_img.cropZoom(600, 400).html('', course.title, 'course-image')|raw }}
-                        {% else %}
-                            <div class="course-placeholder">
-                                <i class="la la-graduation-cap" aria-hidden="true"></i>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                    <div class="course-badge">
-                        Enroll Now
-                    </div>
-                </div>
-                
-                <div class="course-content">
-                    <span class="course-instructor">{{ course.instructor|default('Certified Scholar') }}</span>
-                    <h3 class="course-title">{{ course.fullname|default(course.title) }}</h3>
-                    <div class="course-action">
-                         <a href="{{ course.viewurl|default(course.url)|default('#') }}" 
-                            class="btn-primary course-button"
-                            aria-label="Start learning {{ course.fullname|default(course.title) }}">
-                            Start Learning
-                        </a>
-                    </div>
-                </div>
-            </article>
-        {% endfor %}
-        </div>
-        {% else %}
-        {# Error/Empty State #}
-        <div class="courses-empty">
-            <i class="la la-exclamation-circle courses-empty-icon" aria-hidden="true"></i>
-            <h3 class="courses-empty-title">No Courses Available</h3>
-            <p class="courses-empty-text">
-                {% if page.header.course_source == 'moodle' %}
-                    Unable to load courses from Moodle. Please check your connection or contact support.
-                {% else %}
-                    No courses have been configured yet. Please check back later.
-                {% endif %}
-            </p>
-        </div>
-        {% endif %}
-    </div>
+		{% if courses and courses|length > 0 %}
+			<div class="courses-grid">
+				{% for course in courses %}
+					<article class="course-card">
+						<div class="course-thumbnail">
+							{% if page.header.course_source == 'moodle' %}
+								{# Moodle course mapping #}
+								<img src="{{ course.overviewfiles[0].fileurl ~ '?token=' ~ theme_var('moodle_token') }}" class="course-image" alt="{{ course.fullname }}" loading="lazy"/>
+							{% else %}
+								{# Static course thumbnails #}
+								{% set course_img = course.thumbnail ? page.media[course.thumbnail] : null %}
+								{% if course_img %}
+									<img src="{{ course_img.cropZoom(600, 400).url }}" width="600" height="400" alt="{{ course.title|e('html_attr') }}" class="course-image" loading="lazy" decoding="async">
+								{% else %}
+									<div class="course-placeholder">
+										<i class="la la-graduation-cap" aria-hidden="true"></i>
+									</div>
+								{% endif %}
+							{% endif %}
+							<div class="course-badge">
+								Enroll Now
+							</div>
+						</div>
+
+						<div class="course-content">
+							<span class="course-instructor">{{ course.instructor|default('Certified Scholar') }}</span>
+							<h3 class="course-title">{{ course.fullname|default(course.title) }}</h3>
+							<div class="course-action">
+								<a href="{{ course.viewurl|default(course.url)|default('#') }}" class="btn-primary course-button" aria-label="Start learning {{ course.fullname|default(course.title) }}">
+									Start Learning
+								</a>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		{% else %}
+			{# Error/Empty State #}
+			<div class="courses-empty">
+				<i class="la la-exclamation-circle courses-empty-icon" aria-hidden="true"></i>
+				<h3 class="courses-empty-title">No Courses Available</h3>
+				<p class="courses-empty-text">
+					{% if page.header.course_source == 'moodle' %}
+						Unable to load courses from Moodle. Please check your connection or contact support.
+					{% else %}
+						No courses have been configured yet. Please check back later.
+					{% endif %}
+				</p>
+			</div>
+		{% endif %}
+	</div>
 </section>

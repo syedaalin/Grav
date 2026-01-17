@@ -6,18 +6,15 @@
 {% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page, children_only) : taxonomylist.get() %}
 
 {% if taxlist %}
-<div class="tags-list">
-    {% for tax, value in taxlist[taxonomy] %}
-        {% set is_active = uri.param(taxonomy) == tax %}
-        <a href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}"
-           class="badge-primary tag-link {{ is_active ? 'active' : '' }} input-focus"
-           aria-current="{{ is_active ? 'page' : 'false' }}">
-            {{ tax }}
-            {% if config.plugins.taxonomylist.show_count %}
-                <span class="opacity-50 text-xs font-black">({{ value }})</span>
-            {% endif %}
-        </a>
-    {% endfor %}
-</div>
+	<div class="tags-list" aria-label="Tags">
+		{% for tax, value in taxlist[taxonomy] %}
+			{% set is_active = uri.param(taxonomy) == tax %}
+			<a href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}" class="badge badge-primary tag-link {{ is_active ? 'active' : '' }} input-focus" aria-current="{{ is_active ? 'page' : 'false' }}">
+				{{ tax }}
+				{% if config.plugins.taxonomylist.show_count %}
+					<span class="opacity-50 text-xs font-black">({{ value }})</span>
+				{% endif %}
+			</a>
+		{% endfor %}
+	</div>
 {% endif %}
-

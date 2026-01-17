@@ -1,0 +1,117 @@
+@layer components {
+  /* 
+     ========================================
+     BACK-TO-TOP COMPONENT
+     Role: Scroll navigation utility
+     Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+     ========================================
+  */
+  /* 
+     ========================================
+     BACK TO TOP BUTTON
+     ========================================
+  */
+  @scope (.back-to-top) {
+    :scope {
+      position: fixed;
+      inset-block-end: var(--space-l);
+      inset-inline-end: var(--space-l);
+      inline-size: calc(var(--space-2xl) + var(--space-s));
+      block-size: calc(var(--space-2xl) + var(--space-s));
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      z-index: 100;
+
+      /* Initial hidden state */
+      opacity: 0;
+      visibility: hidden;
+      translate: 0 var(--space-l);
+      transition:
+        opacity var(--transition-standard),
+        translate var(--transition-standard),
+        visibility var(--transition-standard),
+        transform var(--transition-bounce);
+
+      /* Liquid Glassmorphism Core */
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+      -webkit-backdrop-filter: blur(var(--glass-blur))
+        saturate(var(--glass-saturate));
+      box-shadow: var(--glass-shadow);
+      border: var(--border-thin) solid var(--glass-border);
+      background-image: var(--glass-reflection);
+      background-size: 200% 200%;
+      animation: glass-liquid 15s linear infinite;
+
+      /* Icon */
+      i {
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        z-index: 2;
+        transition: color var(--transition-standard);
+      }
+
+      /* Progress Ring SVG */
+      .progress-ring {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        transform: rotate(-90deg); /* Start from top */
+        z-index: 1;
+      }
+
+      .progress-ring-circle {
+        fill: transparent;
+        stroke: var(--color-primary);
+        stroke-width: 0.5rem; /* 8px */
+        stroke-dasharray: 18.0625rem; /* 289px: 2 * PI * 46 */
+        stroke-dashoffset: 18.0625rem; /* Start Empty */
+        transition: stroke-dashoffset 0.1s linear;
+        stroke-linecap: round;
+      }
+
+      /* Active State (via JS) */
+      &.visible {
+        opacity: 1;
+        visibility: visible;
+        translate: 0 0;
+      }
+
+      &:hover {
+        translate: 0 calc(var(--offset-hover-subtle) * 2.5);
+        background-color: var(--color-primary);
+        border-color: transparent;
+
+        i {
+          color: white;
+        }
+
+        .progress-ring-circle {
+          stroke: white; /* Ring becomes white on hover */
+        }
+      }
+
+      &:focus-visible {
+        outline: var(--border-medium) solid var(--color-primary);
+        outline-offset: calc(var(--border-medium) * 2);
+      }
+
+      /* Mobile adjust */
+      inset-block-end: clamp(var(--space-m), 5vw, var(--space-l));
+      inset-inline-end: clamp(var(--space-m), 5vw, var(--space-l));
+      inline-size: clamp(
+        var(--space-2xl),
+        10vw,
+        calc(var(--space-2xl) + var(--space-s))
+      );
+      block-size: clamp(
+        var(--space-2xl),
+        10vw,
+        calc(var(--space-2xl) + var(--space-s))
+      );
+    }
+  }
+}

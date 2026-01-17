@@ -24,7 +24,6 @@ fields:
   services_enabled:
     type: toggle
     label: Enable Services
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -37,7 +36,6 @@ fields:
   services_default_columns:
     type: select
     label: Default Columns
-    style: vertical
     width: 33%
     default: 3
     options:
@@ -54,7 +52,6 @@ fields:
   features_enabled:
     type: toggle
     label: Enable Features
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -67,7 +64,6 @@ fields:
   features_default_layout:
     type: select
     label: Default Layout
-    style: vertical
     width: 33%
     default: standard
     options:
@@ -82,7 +78,6 @@ fields:
   gallery_enabled:
     type: toggle
     label: Enable Gallery
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -100,7 +95,6 @@ fields:
   istafta_enabled:
     type: toggle
     label: Enable Istafta
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -119,7 +113,6 @@ fields:
   khums_enabled:
     type: toggle
     label: Enable Khums
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -138,7 +131,6 @@ fields:
   timeline_enabled:
     type: toggle
     label: Enable Timeline
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -156,7 +148,6 @@ fields:
   trust_signals_enabled:
     type: toggle
     label: Enable Trust Signals
-    style: vertical
     width: 33%
     highlight: 1
     default: 1
@@ -174,7 +165,6 @@ fields:
   courses_enabled:
     type: toggle
     label: Enable Courses
-    style: vertical
     width: 33%
     highlight: 1
     default: 1

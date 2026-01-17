@@ -10,7 +10,7 @@ use Grav\Common\Grav;
  * CSRF Token Manager
  * Provides Cross-Site Request Forgery protection for forms
  */
-class CsrfTokenManager
+final class CsrfTokenManager
 {
     protected Grav $grav;
     protected string $tokenName = 'csrf_token';

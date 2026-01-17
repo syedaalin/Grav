@@ -3,12 +3,15 @@
  * NUR-UL-HUDA FRONTEND LOGIC
  */
 
+import { Logger } from './utils.js';
+
 export class PerformanceMonitor {
     #metrics = new Map();
     #observers = [];
 
     constructor() {
         this.#initializeObservers();
+        Logger.info('PerformanceMonitor: Initialized');
     }
 
     /**
@@ -28,7 +31,7 @@ export class PerformanceMonitor {
                 lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
                 this.#observers.push(lcpObserver);
             } catch (e) {
-                console.warn('LCP observer not supported');
+                Logger.warn('PerformanceMonitor: LCP observer not supported');
             }
 
             // First Input Delay (FID) -> Interaction to Next Paint (INP) is modern replacement, but keeping FID for compatibility
@@ -43,7 +46,7 @@ export class PerformanceMonitor {
                 fidObserver.observe({ type: 'first-input', buffered: true });
                 this.#observers.push(fidObserver);
             } catch (e) {
-                console.warn('FID observer not supported');
+                Logger.warn('PerformanceMonitor: FID observer not supported');
             }
 
             // Cumulative Layout Shift (CLS)
@@ -60,7 +63,7 @@ export class PerformanceMonitor {
                 clsObserver.observe({ type: 'layout-shift', buffered: true });
                 this.#observers.push(clsObserver);
             } catch (e) {
-                console.warn('CLS observer not supported');
+                Logger.warn('PerformanceMonitor: CLS observer not supported');
             }
         }
 

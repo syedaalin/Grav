@@ -36,6 +36,8 @@ form:
               label: Khums Rate (%)
               default: 20
               size: x-small
+              validate:
+                type: number
 
             header.donation_snipcart_id:
               type: text

@@ -2,12 +2,6 @@
 {% if bottom_banner.newsletter_enabled %}
 	<section class="bottom-banner-newsletter" aria-label="Newsletter Subscription">
 		<div class="newsletter-container">
-
-			<div class="newsletter-content">
-				<h3 class="newsletter-title">{{ bottom_banner.newsletter_title|default('Subscribe to our Newsletter') }}</h3>
-				<p class="newsletter-description">{{ bottom_banner.newsletter_description|default('Stay updated with the latest prayer times, events, and community news.') }}</p>
-			</div>
-
 			<div class="newsletter-form-wrapper">
 				{# Simple newsletter form - usually handled by Grav Form plugin or custom script #}
 				<form class="newsletter-form" action="{{ base_url }}/newsletter-signup" method="post">
@@ -29,7 +23,7 @@
 								inputmode="email"
 								spellcheck="false"
 							>
-							<label for="newsletter-email" class="newsletter-label">Your email address</label>
+							<label for="newsletter-email" class="newsletter-label">Submit your email for newsletters</label>
 						</div>
 						<button type="submit" class="newsletter-submit" aria-label="Subscribe">
 							<span>Subscribe</span>

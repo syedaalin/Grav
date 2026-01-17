@@ -1,5 +1,5 @@
 /* 
-  Components Layer (Refactored)
+  Components Layer
   
   All styles have been extracted to individual modular files in css/components/*.css
   and imported via css/modern-vanilla.css.
@@ -8,5 +8,12 @@
   if needed by the build system or other imports, but modern-vanilla.css now handles it.
 */
 @layer components {
+  /* 
+     ========================================
+     COMPONENTS LAYER (The Skin)
+     Role: Modular, reusable UI components
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* No styles here to adhere to SRP */
 }

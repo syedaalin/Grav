@@ -1,4 +1,11 @@
 @layer utilities {
+  /* 
+     ========================================
+     UTILITIES LAYER (The Patch)
+     Role: One-off overrides, functional patterns
+     Blueprint: [ui-utilities.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-utilities.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Display Utilities
      ======================================== */
@@ -9,10 +16,10 @@
 
   .sr-only {
     position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
+    inline-size: var(--border-thin);
+    block-size: var(--border-thin);
     padding: 0;
-    margin: -1px;
+    margin: calc(var(--border-thin) * -1);
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -149,7 +156,7 @@
   }
 
   .justify-center {
-    justify-content: center;
+    place-content: center;
   }
   .justify-between {
     justify-content: space-between;
@@ -230,16 +237,16 @@
     margin-block: calc(var(--space-unit) * 3);
   }
 
-  .ml-2 {
+  .mis-2 {
     margin-inline-start: var(--space-s);
   }
-  .mr-2 {
+  .mie-2 {
     margin-inline-end: var(--space-s);
   }
-  .mr-3 {
+  .mie-3 {
     margin-inline-end: var(--space-l);
   }
-  .-ml-2 {
+  .-mis-2 {
     margin-inline-start: calc(var(--space-s) * -1);
   }
 
@@ -289,7 +296,7 @@
   }
 
   .bg-dark {
-    background-color: oklch(0.1 0 0);
+    background-color: var(--color-dark);
   }
   .bg-surface-subtle {
     background-color: var(--color-surface-subtle);
@@ -300,15 +307,15 @@
   .bg-accent-subtle {
     background-color: oklch(from var(--color-accent) l c h / 0.4);
   }
-  .bg-glass-light {
+  .bg-subtle-light {
     background-color: oklch(1 0 0 / 0.05);
   }
 
   .border-subtle {
     border-color: var(--color-border-subtle);
   }
-  .border-glass-light {
-    border-color: oklch(1 0 0 / 0.1);
+  .border-subtle-light {
+    border-color: var(--color-light);
   }
 
   /* ========================================
@@ -338,7 +345,7 @@
   }
 
   .text-white {
-    color: oklch(1 0 0);
+    color: var(--color-white);
   }
   .text-dark {
     color: var(--color-dark);
@@ -358,7 +365,7 @@
   .text-bottom-banner {
     color: var(--color-bottom-banner-text);
   }
-  .text-glass-muted {
+  .text-muted-transparent {
     color: oklch(1 0 0 / 0.4);
   }
 
@@ -434,7 +441,8 @@
     transition: all var(--transition-smooth);
   }
   .transition-colors {
-    transition: color var(--transition-standard),
+    transition:
+      color var(--transition-standard),
       background-color var(--transition-standard);
   }
   .transition-transform {
@@ -463,7 +471,7 @@
     translate: 0 0;
   }
   .-translate-y-4 {
-    translate: 0 -1rem;
+    translate: 0 calc(var(--space-m) * -1);
   }
 
   /* ========================================
@@ -480,22 +488,70 @@
 
   .year-responsive {
     display: none;
-    @container (width >= 768px) {
+    @container (inline-size >= 768px) {
       display: inline;
     }
+  }
+
+  /* Logic-First Layout Patterns */
+  .stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > * + * {
+      margin-block-start: var(--space-m);
+    }
+  }
+
+  .stack-s > * + * {
+    margin-block-start: var(--space-s);
+  }
+  .stack-l > * + * {
+    margin-block-start: var(--space-l);
+  }
+  .stack-xl > * + * {
+    margin-block-start: var(--space-xl);
+  }
+
+  .center {
+    display: grid;
+    place-content: center;
+    text-align: center;
+  }
+
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .cluster-s {
+    gap: var(--space-s);
+  }
+  .cluster-l {
+    gap: var(--space-l);
   }
 
   /* Visibility Toggles */
   .desktop-only {
     display: none;
-    @media (width >= 1024px) {
-      display: block;
+  }
+
+  @media (width >= 1024px) {
+    .desktop-only {
+      display: initial;
     }
   }
 
   .mobile-only {
-    display: block;
-    @media (width >= 1024px) {
+    display: initial;
+  }
+
+  @media (width >= 1024px) {
+    .mobile-only {
       display: none;
     }
   }

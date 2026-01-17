@@ -1,4 +1,11 @@
 @layer components {
+  /* 
+     ========================================
+     ERROR COMPONENT
+     Role: 404/Error page layouts
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Error Page
      ======================================== */
@@ -12,19 +19,23 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .error-page-glow {
       position: absolute;
       inset-block-start: 50%;
       inset-inline-start: 50%;
-      transform: translate(-50%, -50%);
+      translate: -50% -50%;
       inline-size: 100%;
       block-size: 100%;
-      background: radial-gradient(circle at center, oklch(from var(--color-primary) l c h / 0.15) 0%, transparent 70%);
+      background: radial-gradient(
+        circle at center,
+        oklch(from var(--color-primary) l c h / 0.15) 0%,
+        transparent 70%
+      );
       pointer-events: none;
       z-index: 0;
     }
-    
+
     .error-page-content {
       position: relative;
       z-index: 10;
@@ -33,17 +44,19 @@
       padding: var(--space-xl);
       text-align: center;
     }
-    
+
     .error-card {
-      background-color: oklch(1 0 0 / 0.4);
-      -webkit-backdrop-filter: blur(24px);
-      backdrop-filter: blur(24px);
-      border: 1px solid oklch(1 0 0 / 0.6);
+      background: oklch(
+        from var(--color-surface, var(--color-white)) l c h / 0.85
+      );
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: var(--border-thin) solid var(--color-border-subtle);
       border-radius: var(--radius-2xl);
       padding: var(--space-3xl);
       box-shadow: var(--shadow-2xl);
     }
-    
+
     .error-code-badge {
       display: inline-flex;
       align-items: center;
@@ -51,80 +64,85 @@
       padding-block: 0.5rem;
       padding-inline: 1.5rem;
       background-color: oklch(from var(--color-error) l c h / 0.1);
-      border: 1px solid oklch(from var(--color-error) l c h / 0.2);
+      border: var(--border-thin) solid
+        oklch(from var(--color-error) l c h / 0.2);
       border-radius: var(--radius-full);
       margin-block-end: var(--space-xl);
     }
-    
+
     .error-code {
-      font-size: var(--font-size-4xl); 
+      font-size: var(--font-size-4xl);
       font-weight: 900;
       font-family: var(--font-mono);
       color: var(--color-error);
       line-height: 1;
     }
-    
+
     .error-title {
       font-size: clamp(2rem, 5vw, 3rem);
       margin-block-end: var(--space-l);
-      background: linear-gradient(135deg, var(--color-dark), var(--color-primary));
+      background: linear-gradient(
+        135deg,
+        var(--color-dark),
+        var(--color-primary)
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
+
     .error-message {
       font-size: var(--font-size-lg);
       color: var(--color-subtle);
       margin-block-end: var(--space-3xl);
     }
-    
+
     .error-actions {
       display: flex;
       flex-direction: column;
       gap: var(--space-m);
       align-items: center;
       justify-content: center;
-      
-      @container (width >= 640px) {
+
+      @container (inline-size >= 40rem) {
         flex-direction: row;
       }
     }
-    
+
     .error-home-button {
       display: inline-flex;
       gap: var(--space-s);
     }
-    
+
     .error-icon {
       inline-size: 1.25rem;
       block-size: 1.25rem;
     }
-    
+
     .error-back-button {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-s);
-        padding-inline: var(--space-xl);
-        padding-block: 0.75rem;
-        border-radius: var(--radius-lg);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: var(--font-size-xs);
-        color: var(--color-dark);
-        transition: all var(--transition-standard);
-        
-        &:hover {
-            color: var(--color-primary);
-            background-color: oklch(from var(--color-primary) l c h / 0.05);
-        }
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      padding-inline: var(--space-xl);
+      padding-block: 0.75rem;
+      border-radius: var(--radius-lg);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: var(--font-size-xs);
+      color: var(--color-dark);
+      transition: all var(--transition-standard);
+
+      &:hover {
+        color: var(--color-primary);
+        background-color: oklch(from var(--color-primary) l c h / 0.05);
+      }
     }
-    
+
     .error-code-footer {
-        margin-block-start: var(--space-xl);
-        font-family: var(--font-mono);
-        font-size: var(--font-size-sm);
-        color: oklch(from var(--color-subtle) l c h / 0.5);
+      margin-block-start: var(--space-xl);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      color: oklch(from var(--color-subtle) l c h / 0.5);
     }
   }
 }

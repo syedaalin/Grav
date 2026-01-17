@@ -32,7 +32,6 @@ class __TwigTemplate_d041c99c57d1d7060c379f7f55678c4f extends Template
         $this->parent = false;
 
         $this->blocks = [
-            'header_navigation' => [$this, 'block_header_navigation'],
         ];
     }
 
@@ -43,117 +42,79 @@ class __TwigTemplate_d041c99c57d1d7060c379f7f55678c4f extends Template
         yield "
 ";
         // line 6
-        yield "<div class=\"header-top-sticky\">
-    ";
+        $context["ticker_enabled"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "ticker_enabled");
         // line 7
-        yield from $this->load("partials/top-banner.html.twig", 7)->unwrap()->yield($context);
+        $context["announcement_enabled"] = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "top_banner_announcement_enabled");
         // line 8
-        yield "</div>
-
+        $context["show_top_bar"] = (((($context["ticker_enabled"] ?? null) == "1") || (($context["ticker_enabled"] ?? null) == true)) || ((($context["announcement_enabled"] ?? null) == "1") || (($context["announcement_enabled"] ?? null) == true)));
+        // line 9
+        yield "\t";
+        if ((($tmp = ($context["show_top_bar"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 10
+            yield "\t\t<div class=\"header-top-sticky\"> ";
+            yield from $this->load("partials/top-banner.html.twig", 10)->unwrap()->yield($context);
+            // line 11
+            yield "\t</div>
 ";
-        // line 11
-        yield "<header id=\"header\" class=\"header-main-sticky\" role=\"banner\">
-    <div class=\"container container-px header-spacing\">
-        <nav class=\"header-nav\" aria-label=\"Main navigation\">
-
-            ";
-        // line 16
-        yield "            <div class=\"header-zone-a\">
-                ";
-        // line 18
-        yield "                <button id=\"mobile-toggle\" class=\"mobile-toggle\" aria-label=\"Open navigation menu\" aria-controls=\"mobile-menu-wrapper\" aria-expanded=\"false\">
-                    <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
-                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\"/>
-                    </svg>
-                </button>
-
-                ";
-        // line 25
-        yield "                <div class=\"desktop-only logo-hover\">
-                    ";
-        // line 26
-        yield from $this->load("partials/logo.html.twig", 26)->unwrap()->yield($context);
-        // line 27
-        yield "                </div>
-            </div>
-
-            ";
-        // line 31
-        yield "            <div class=\"header-zone-b\">
-                ";
-        // line 33
-        yield "                <div class=\"mobile-only logo-hover\">
-                    ";
-        // line 34
-        yield from $this->load("partials/logo.html.twig", 34)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => true]));
-        // line 35
-        yield "                </div>
-
-                ";
-        // line 38
-        yield "                <nav id=\"desktop-nav\" class=\"desktop-nav\">
-                    ";
-        // line 39
-        yield from $this->unwrap()->yieldBlock('header_navigation', $context, $blocks);
-        // line 42
-        yield "                </nav>
-            </div>
-
-            ";
-        // line 46
-        yield "            <div class=\"header-zone-c\">
-                ";
-        // line 48
-        yield "                <button id=\"search-trigger\" class=\"icon-button desktop-only\" aria-label=\"Open search\">
-                    <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
-                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\"/>
-                    </svg>
-                </button>
-
-                ";
-        // line 55
-        yield "                ";
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "plugins", [], "any", false, false, false, 55), "login", [], "any", false, false, false, 55), "enabled", [], "any", false, false, false, 55) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["grav"] ?? null), "user", [], "any", false, false, false, 55), "username", [], "any", false, false, false, 55))) {
-            // line 56
-            yield "                    <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://dashboard"), "html", null, true);
-            yield "\" class=\"btn-dashboard desktop-only\" aria-label=\"Go to Dashboard\">
-                        <span>Dashboard</span>
-                    </a>
-                ";
-        } else {
-            // line 60
-            yield "                    ";
-            $context["login_url"] = (((($tmp = $this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (($this->extensions['Grav\Common\Twig\Extension\GravExtension']->themeVarFunc($context, "moodle_url") . "/login")) : ($this->extensions['Grav\Common\Twig\Extension\GravExtension']->urlFunc("theme://login")));
-            // line 61
-            yield "                    <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["login_url"] ?? null), "html", null, true);
-            yield "\" class=\"btn-login desktop-only\" aria-label=\"Log in to your account\">
-                        Login
-                    </a>
-                ";
         }
-        // line 65
-        yield "            </div>
-        </nav>
-    </div>
+        // line 13
+        yield "
+";
+        // line 15
+        yield "<header id=\"header\" class=\"header-main-sticky\" role=\"banner\">
+\t<div class=\"container container-px header-spacing\">
+\t\t<nav
+\t\t\tclass=\"header-nav\" aria-label=\"Main navigation\">
+
+\t\t\t";
+        // line 21
+        yield "\t\t\t<div class=\"header-zone-a\">
+\t\t\t\t";
+        // line 23
+        yield "\t\t\t\t<button id=\"mobile-toggle-left\" class=\"mobile-toggle mobile-only\" aria-label=\"Open Left Sidebar\" data-direction=\"left\" aria-controls=\"sidebar-left\" aria-expanded=\"false\">
+\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
+\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\"/>
+\t\t\t\t\t</svg>
+\t\t\t\t</button>
+\t\t\t</div>
+
+\t\t\t";
+        // line 31
+        yield "\t\t\t<div class=\"header-zone-b\">
+\t\t\t\t";
+        // line 33
+        yield "\t\t\t\t<div class=\"logo-hover\">
+\t\t\t\t\t";
+        // line 34
+        yield from $this->load("partials/logo.html.twig", 34)->unwrap()->yield($context);
+        // line 35
+        yield "\t\t\t\t</div>
+
+\t\t\t\t";
+        // line 38
+        yield "\t\t\t\t<div class=\"desktop-only desktop-nav\">
+\t\t\t\t\t";
+        // line 39
+        yield from $this->load("partials/navigation.html.twig", 39)->unwrap()->yield(CoreExtension::merge($context, ["mobile" => false]));
+        // line 40
+        yield "\t\t\t\t</div>
+\t\t\t</div>
+
+\t\t\t";
+        // line 44
+        yield "\t\t\t<div class=\"header-zone-c\">
+\t\t\t\t";
+        // line 46
+        yield "\t\t\t\t<button id=\"mobile-toggle-right\" class=\"mobile-toggle ml-2 mobile-only\" aria-label=\"Open Right Sidebar\" data-direction=\"right\" aria-controls=\"sidebar-right\" aria-expanded=\"false\">
+\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2.5\" stroke=\"currentColor\" class=\"icon-lg\">
+\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\"/>
+\t\t\t\t\t</svg>
+\t\t\t\t</button>
+\t\t\t</div>
+\t\t</nav>
+\t</div>
 </header>
 ";
-        yield from [];
-    }
-
-    // line 39
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_header_navigation(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        // line 40
-        yield "                        ";
-        yield from $this->load("partials/navigation.html.twig", 40)->unwrap()->yield($context);
-        // line 41
-        yield "                    ";
         yield from [];
     }
 
@@ -178,7 +139,7 @@ class __TwigTemplate_d041c99c57d1d7060c379f7f55678c4f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  156 => 41,  153 => 40,  146 => 39,  137 => 65,  129 => 61,  126 => 60,  118 => 56,  115 => 55,  107 => 48,  104 => 46,  99 => 42,  97 => 39,  94 => 38,  90 => 35,  88 => 34,  85 => 33,  82 => 31,  77 => 27,  75 => 26,  72 => 25,  64 => 18,  61 => 16,  55 => 11,  51 => 8,  49 => 7,  46 => 6,  43 => 3,);
+        return array (  108 => 46,  105 => 44,  100 => 40,  98 => 39,  95 => 38,  91 => 35,  89 => 34,  86 => 33,  83 => 31,  74 => 23,  71 => 21,  64 => 15,  61 => 13,  57 => 11,  54 => 10,  51 => 9,  49 => 8,  47 => 7,  45 => 6,  42 => 3,);
     }
 
     public function getSourceContext(): Source

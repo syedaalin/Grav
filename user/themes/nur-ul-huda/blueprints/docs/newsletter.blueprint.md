@@ -9,8 +9,8 @@
 
 ## Admin Settings (Blueprints)
 - **Enable Newsletter**: `newsletter_enabled` (Toggle)
-- **Newsletter Title**: `newsletter_title` (Text)
-- **Newsletter Description**: `newsletter_text` (Text)
+- **Newsletter Title**: `newsletter_title` (Text) - *Note: Hidden in bottom-banner for compact UI*
+- **Newsletter Description**: `newsletter_text` (Text) - *Note: Hidden in bottom-banner for compact UI*
 
 ## UX/UI
 - **Classes**: `.newsletter-container`, `.newsletter-form`

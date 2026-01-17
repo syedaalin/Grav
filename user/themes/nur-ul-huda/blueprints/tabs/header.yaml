@@ -16,7 +16,6 @@ fields:
   custom_logo:
     type: file
     label: Logo
-    style: vertical
     width: 33%
     size: large
     destination: "theme://images/logo"
@@ -32,7 +31,6 @@ fields:
   site_name:
     type: text
     label: Site Name
-    style: vertical
     width: 33%
     help: "Global Site Name (displayed in Header & Footer)"
     placeholder: "Nur-ul-Huda"
@@ -40,7 +38,6 @@ fields:
   site_tagline:
     type: text
     label: Site Tagline
-    style: vertical
     width: 33%
     help: "Short description of your site (displayed in Footer & Title)"
     placeholder: "Guiding Light of Faith"
@@ -53,7 +50,6 @@ fields:
   header-fixed:
     type: toggle
     label: Fixed Header
-    style: vertical
     width: 33%
     help: Keep header visible when scrolling
     highlight: 1
@@ -67,7 +63,6 @@ fields:
   header-animated:
     type: toggle
     label: Animated Header
-    style: vertical
     width: 33%
     help: Animate header on scroll
     highlight: 1
@@ -81,7 +76,6 @@ fields:
   header-dark:
     type: toggle
     label: Dark Header
-    style: vertical
     width: 33%
     help: Use dark header style
     highlight: 0
@@ -95,7 +89,6 @@ fields:
   header-transparent:
     type: toggle
     label: Transparent Header
-    style: vertical
     width: 33%
     help: Make header transparent
     highlight: 0

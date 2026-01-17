@@ -55,60 +55,62 @@ class __TwigTemplate_7e2557bb6bc4cbe83d763a3a0870f171 extends Template
     {
         $macros = $this->macros;
         // line 9
-        yield "    <section id=\"error\" class=\"error-page-section\" style=\"container-type: inline-size;\">
-        ";
-        // line 11
-        yield "        <div class=\"error-page-glow\" aria-hidden=\"true\"></div>
+        yield "\t<main
+\t\tid=\"error\" class=\"error-page-section\" style=\"container-type: inline-size;\">
+\t\t";
+        // line 12
+        yield "\t\t<div class=\"error-page-glow\" aria-hidden=\"true\"></div>
 
-        <div class=\"error-page-content\">
-            <div class=\"error-card\">
-                <div class=\"error-code-badge\">
-                    <span class=\"error-code\">";
-        // line 16
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 16), "http_response_code", [], "any", false, false, false, 16), "html", null, true);
+\t\t<div class=\"error-page-content\">
+\t\t\t<div class=\"error-card\">
+\t\t\t\t<div class=\"error-code-badge\">
+\t\t\t\t\t<span class=\"error-code\">";
+        // line 17
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 17), "http_response_code", [], "any", false, false, false, 17), "html", null, true);
         yield "</span>
-                </div>
-                
-                <h1 class=\"section-title error-title\">
-                    ";
-        // line 20
+\t\t\t\t</div>
+
+\t\t\t\t<h1 class=\"section-title error-title\">
+\t\t\t\t\t";
+        // line 21
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Grav\Common\Twig\Extension\GravExtension']->translate($this->env, "PLUGIN_ERROR.ERROR"), "html", null, true);
         yield "
-                </h1>
-                
-                <div class=\"prose-custom error-message\">
-                    ";
-        // line 24
-        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 24);
-        yield "
-                </div>
+\t\t\t\t</h1>
 
-                <div class=\"error-actions\">
-                    <a href=\"";
-        // line 28
+\t\t\t\t<div class=\"prose-custom error-message\">
+\t\t\t\t\t";
+        // line 25
+        yield CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "content", [], "any", false, false, false, 25);
+        yield "
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"error-actions\">
+\t\t\t\t\t<a href=\"";
+        // line 29
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["home_url"] ?? null), "html", null, true);
         yield "\" class=\"btn-primary error-home-button\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"error-icon\">
-                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25\" />
-                        </svg>
-                        Back to Home
-                    </a>
-                    
-                    <button onclick=\"window.history.back()\" class=\"error-back-button\">
-                        <i class=\"la la-arrow-left error-back-icon\"></i>
-                        Go Back
-                    </button>
-                </div>
-            </div>
-            
-            <p class=\"error-code-footer\">
-                Error Code: ";
-        // line 43
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 43), "http_response_code", [], "any", false, false, false, 43), "html", null, true);
+\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"error-icon\">
+\t\t\t\t\t\t\t<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25\"/>
+\t\t\t\t\t\t</svg>
+\t\t\t\t\t\tBack to Home
+\t\t\t\t\t</a>
+
+\t\t\t\t\t<button onclick=\"window.history.back()\" class=\"error-back-button\">
+\t\t\t\t\t\t<i class=\"la la-arrow-left error-back-icon\"></i>
+\t\t\t\t\t\tGo Back
+\t\t\t\t\t</button>
+\t\t\t\t</div>
+\t\t\t</div>
+
+\t\t\t<p class=\"error-code-footer\">
+\t\t\t\tError Code:
+\t\t\t\t";
+        // line 45
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 45), "http_response_code", [], "any", false, false, false, 45), "html", null, true);
         yield "
-            </p>
-        </div>
-    </section>
+\t\t\t</p>
+\t\t</div>
+\t</main>
 ";
         yield from [];
     }
@@ -134,7 +136,7 @@ class __TwigTemplate_7e2557bb6bc4cbe83d763a3a0870f171 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  107 => 43,  89 => 28,  82 => 24,  75 => 20,  68 => 16,  61 => 11,  58 => 9,  51 => 8,  40 => 6,);
+        return array (  109 => 45,  90 => 29,  83 => 25,  76 => 21,  69 => 17,  62 => 12,  58 => 9,  51 => 8,  40 => 6,);
     }
 
     public function getSourceContext(): Source

@@ -9,24 +9,37 @@ use Grav\Common\Config\Config;
 /**
  * SRP: Responsibility for generating dynamic CSS styles and variables.
  */
-readonly class StyleHelper
+readonly final class StyleHelper
 {
     /**
-     * @param array|Config $config
-     * @return array<string>
+     * Generate dynamic CSS custom properties from theme configuration.
+     *
+     * Combines all dynamic style generators to produce inline CSS variable
+     * declarations. These are injected into the HTML style attribute for
+     * runtime theme customization without rebuilding CSS files. Follows SRP
+     * by delegating to specialized private methods.
+     *
+     * @param array|Config $config Theme configuration
+     * @return array<string> Array of CSS declarations (e.g., "--color-primary: oklch(...)")
      */
     public static function getDynamicStyles(mixed $config): array
     {
         return array_merge(
             self::getColorStyles($config),
-            self::getGlassStyles($config),
+
+            // Glass styles removed as per user request to decommission Liquid Glass
             self::getHeaderStyles($config)
         );
     }
 
     /**
-     * @param array|Config $config
-     * @return array<string>
+     * Generate CSS custom properties for theme colors.
+     *
+     * Extracts primary and accent color configurations and formats them
+     * as CSS variable declarations for runtime theme customization.
+     *
+     * @param array|Config $config Theme configuration
+     * @return array<string> Color CSS declarations
      */
     private static function getColorStyles(mixed $config): array
     {
@@ -40,39 +53,17 @@ readonly class StyleHelper
         return $styles;
     }
 
-    /**
-     * @param array|Config $config
-     * @return array<string>
-     */
-    private static function getGlassStyles(mixed $config): array
-    {
-        $glassBg = $config['glass_bg_color'] ?? '#ffffff';
 
-        // PHP 8.5+ Pipe Operator usage as requested in stack
-        $glassOpacity = ($config['glass_opacity'] ?? 65) |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
-        $glassBlur = ($config['glass_blur'] ?? 16) |> (fn($v) => is_numeric($v) ? "{$v}px" : $v)(...);
-        $glassBorderOp = ($config['glass_border_opacity'] ?? 15) |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
-        $glassHighlightOp = ($config['glass_highlight'] ?? 40) |> (fn($v) => $v <= 1 ? $v : $v / 100)(...);
 
-        $enableNoise = $config['glass_noise'] ?? true;
-        $noiseUrl = 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.05\'/%3E%3C/svg%3E")';
-        $glassNoise = $enableNoise ? $noiseUrl : 'none';
-
-        return [
-            "--glass-bg: {$glassBg}",
-            "--glass-opacity: {$glassOpacity}",
-            "--glass-blur: {$glassBlur}",
-            "--blur-strength: {$glassBlur}", // Legacy mapping
-            "--glass-border: 1px solid oklch(1 0 0 / {$glassBorderOp})",
-            "--glass-highlight: oklch(1 0 0 / {$glassHighlightOp})",
-            "--glass-noise: {$glassNoise}",
-            "--glass-surface: linear-gradient(135deg, oklch(from {$glassBg} l c h / {$glassOpacity}), oklch(from {$glassBg} l c h / " . ($glassOpacity * 0.7) . "))"
-        ];
-    }
 
     /**
-     * @param array|Config $config
-     * @return array<string>
+     * Generate CSS custom properties for header spacing.
+     *
+     * Provides configurable header padding as a CSS variable for
+     * consistent spacing across header components.
+     *
+     * @param array|Config $config Theme configuration
+     * @return array<string> Header CSS declarations
      */
     private static function getHeaderStyles(mixed $config): array
     {

@@ -11,36 +11,36 @@
 {% set hero_image_name = page.header.hero_image %}
 
 {% block hero %}
-    {% if hero_image_name %}
-        {% set hero_image = page.media[hero_image_name] %}
-        {% set content %}
-            <h1>{{ page.title }}</h1>
-            <h2>{{ page.header.subtitle }}</h2>
-            {% include 'partials/blog/date.html.twig' %}
-            {% include 'partials/blog/taxonomy.html.twig' %}
-        {% endset %}
-        {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
+	{% if hero_image_name %}
+		{% set hero_image = page.media[hero_image_name] %}
+		{% set content %}
+		<h1>{{ page.title }}</h1>
+		<h2>{{ page.header.subtitle }}</h2>
+		{% include 'partials/blog/date.html.twig' %}
+		{% include 'partials/blog/taxonomy.html.twig' %}
+		{% endset %}
+		{% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
 
-    {% endif %}
+	{% endif %}
 {% endblock %}
 
 {% block body %}
-<section id="body-wrapper" class="section section-py">
-    <div class="section-container">
+	<main id="body-wrapper" class="section section-py">
+		<div class="section-container">
 
-        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
-            {% include 'partials/breadcrumbs.html.twig' %}
-        {% endif %}
+			{% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+				{% include 'partials/breadcrumbs.html.twig' %}
+			{% endif %}
 
-        {% embed 'partials/layout.html.twig' %}
-            {% block item %}
-                {% include 'partials/blog-item.html.twig' %}
-            {% endblock %}
-            {% block sidebar %}
-                {% include 'partials/sidebar.html.twig' %}
-            {% endblock %}
-        {% endembed %}
+			{% embed 'partials/layout.html.twig' %}
+				{% block item %}
+					{% include 'partials/blog-item.html.twig' %}
+				{% endblock %}
+				{% block sidebar %}
+					{% include 'partials/sidebar.html.twig' %}
+				{% endblock %}
+			{% endembed %}
 
-    </div>
-</section>
+		</div>
+	</main>
 {% endblock %}

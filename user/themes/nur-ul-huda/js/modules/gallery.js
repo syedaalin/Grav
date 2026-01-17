@@ -3,6 +3,8 @@
  * Blueprint: [frontend-logic.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/frontend-logic.blueprint.md)
  */
 
+import { Logger } from './utils.js';
+
 export class GalleryHelper {
   #touchStartX = 0;
   #touchEndX = 0;
@@ -13,11 +15,18 @@ export class GalleryHelper {
     this.init();
   }
 
+  /**
+   * Initialize Gallery Touch Events
+   */
   init() {
     // Only enable on touch devices
-    if (!('ontouchstart' in window)) return;
+    if (!('ontouchstart' in window)) {
+      Logger.info('GalleryHelper: Touch not supported, skipping');
+      return;
+    }
 
     this.#bindEvents();
+    Logger.info('GalleryHelper: Initialized');
   }
 
   #bindEvents() {
@@ -68,7 +77,7 @@ export class GalleryHelper {
 
   #showSwipeIndicator(direction) {
     clearTimeout(this.#swipeIndicatorTimeout);
-    
+
     let indicator = document.querySelector('.swipe-indicator');
     if (!indicator) {
       indicator = document.createElement('div');

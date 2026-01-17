@@ -17,7 +17,7 @@
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "tailwindCSS.experimental.classRegex": [
     ["class:\\s*\"([^\"]*)\"", "([^\"\\s]+)"]

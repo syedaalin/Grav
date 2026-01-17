@@ -1,8 +1,15 @@
 @layer components {
+  /* 
+     ========================================
+     BREADCRUMBS COMPONENT
+     Role: Hierarchical navigation indicators
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Breadcrumbs
      ======================================== */
-  
+
   @scope (.breadcrumbs) {
     :scope {
       display: flex;
@@ -30,28 +37,29 @@
     }
 
     .breadcrumb-separator {
-       margin-inline: var(--space-s);
-       color: oklch(from var(--color-subtle) l c h / 0.5);
-       font-size: var(--font-size-sm);
+      margin-inline: var(--space-s);
+      color: oklch(from var(--color-subtle) l c h / 0.5);
+      font-size: var(--font-size-sm);
     }
 
     .breadcrumb-link {
-       color: var(--color-subtle);
-       text-decoration-line: underline;
-       text-decoration-color: transparent;
-       text-decoration-thickness: 2px;
-       text-underline-offset: 4px;
-       transition: all var(--transition-standard);
-       
-       &:hover {
-           color: var(--color-primary);
-           text-decoration-color: oklch(from var(--color-primary) l c h / 0.3);
-       }
+      color: var(--color-subtle);
+      text-decoration-line: underline;
+      text-decoration-color: transparent;
+      text-decoration-thickness: var(--border-medium);
+      text-underline-offset: calc(var(--border-medium) * 2);
+      transition: all var(--transition-standard);
+
+      &:hover {
+        color: var(--color-primary);
+        text-decoration-color: oklch(from var(--color-primary) l c h / 0.3);
+        scale: 1.02;
+      }
     }
 
     .breadcrumb-current {
-       color: var(--color-dark);
-       font-weight: 900;
-     }
+      color: var(--color-dark);
+      font-weight: 900;
+    }
   }
 }

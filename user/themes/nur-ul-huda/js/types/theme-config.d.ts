@@ -26,6 +26,13 @@ export declare class ThemeUtils {
     getConfigValue(key: string, defaultValue?: any): any;
 }
 
+export declare class Logger {
+    static configure(isDebug: boolean): void;
+    static info(msg: string, ...args: any[]): void;
+    static warn(msg: string, ...args: any[]): void;
+    static error(msg: string, ...args: any[]): void;
+}
+
 export declare const themeUtils: ThemeUtils;
 
 // Global window extensions

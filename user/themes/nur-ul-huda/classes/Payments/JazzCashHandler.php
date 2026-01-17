@@ -69,6 +69,90 @@ readonly class JazzCashHandler
         }
     }
 
+    /**
+     * Handle AJAX request to sign payment data.
+     * Generates the secure hash on the server using the hidden Salt.
+     */
+    public function handleSignRequest(): void
+    {
+        // 1. Verify Request Method
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            \http_response_code(405);
+            echo \json_encode(['error' => 'Method Not Allowed']);
+            exit;
+        }
+
+        // 2. Rate Limiting
+        if (!$this->logger->checkRateLimit('payment_sign')) {
+            \http_response_code(429);
+            echo \json_encode(['error' => 'Too Many Requests']);
+            exit;
+        }
+
+        // 3. Get JSON Payload
+        $input = \json_decode(\file_get_contents('php://input'), true);
+        if (!\is_array($input)) {
+            \http_response_code(400);
+            echo \json_encode(['error' => 'Invalid JSON']);
+            exit;
+        }
+
+        // 4. Validate Required Fields (Whitelist)
+        $allowedFields = [
+            'pp_Amount',
+            'pp_BillReference',
+            'pp_Description',
+            'pp_Language',
+            'pp_MerchantID',
+            'pp_Password',
+            'pp_ReturnURL',
+            'pp_TxnCurrency',
+            'pp_TxnDateTime',
+            'pp_TxnExpiryDateTime',
+            'pp_TxnRefNo',
+            'pp_TxnType',
+            'pp_Version',
+            'ppmpf_1',
+            'ppmpf_2',
+            'ppmpf_3',
+            'ppmpf_4',
+            'ppmpf_5'
+        ];
+
+        $data = \array_intersect_key($input, \array_flip($allowedFields));
+
+        // 5. Generate Hash
+        $salt = (string)($this->config['jazzcash_salt'] ?? '');
+        if (empty($salt)) {
+            $this->logger->log('Payment signing failed: Missing Salt', 'error');
+            \http_response_code(500);
+            echo \json_encode(['error' => 'Configuration Error']);
+            exit;
+        }
+
+        $hash = $this->calculateHash($data, $salt);
+
+        // 6. Return Signature
+        \header('Content-Type: application/json');
+        echo \json_encode(['pp_SecureHash' => $hash]);
+        exit;
+    }
+
+    protected function calculateHash(array $data, string $salt): string
+    {
+        \ksort($data);
+
+        $hash_string = $salt;
+        foreach ($data as $key => $value) {
+            $val = (string)$value;
+            if ($val !== '') {
+                $hash_string .= '&' . $val;
+            }
+        }
+
+        return \strtoupper(\hash_hmac('sha256', $hash_string, $salt));
+    }
+
     protected function redirect(string $path): void
     {
         \header('Location: ' . $this->grav['base_url'] . $path);

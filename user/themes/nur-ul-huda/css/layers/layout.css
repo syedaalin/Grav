@@ -1,14 +1,21 @@
 @layer layout {
+  /* 
+     ========================================
+     LAYOUT LAYER (The Skeleton)
+     Role: High-level grids, containers, structural layout
+     Blueprint: [ui-layout.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-layout.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Container System
      ======================================== */
-  
+
   .container {
     inline-size: 100%;
-    max-inline-size: 80rem; /* 1280px */
+    max-inline-size: 80rem;
     margin-inline: auto;
   }
-  
+
   .section-container {
     inline-size: 100%;
     max-inline-size: 80rem;
@@ -16,81 +23,81 @@
     padding-inline: clamp(1rem, 5vw, 2rem);
     container-type: inline-size;
   }
-  
+
   .section-container-narrow {
     inline-size: 100%;
-    max-inline-size: 56rem; /* 4xl */
+    max-inline-size: 56rem;
     margin-inline: auto;
     padding-inline: clamp(1rem, 5vw, 2rem);
     container-type: inline-size;
   }
-  
+
   .container-px {
     padding-inline: clamp(1rem, 5vw, 2rem);
   }
-  
+
   .section-py {
     padding-block: var(--spacing-section);
   }
-  
+
   /* ========================================
      Grid Systems
      ======================================== */
-  
+
   .grid-bento {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: var(--space-xl);
-    
-    @container (width >= 768px) {
+
+    @container (inline-size >= 768px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    
-    @container (width >= 1280px) {
+
+    @container (inline-size >= 1280px) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
-  
+
   .grid-gallery {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-l);
-    
-    @container (width >= 768px) {
+
+    @container (inline-size >= 768px) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-    
-    @container (width >= 1024px) {
+
+    @container (inline-size >= 1024px) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
-  
+
   /* ========================================
      Stack Pattern (Vertical Spacing)
      ======================================== */
-  
+
   .stack > * + * {
     margin-block-start: var(--space-m);
   }
-  
+
   .stack-s > * + * {
     margin-block-start: var(--space-s);
   }
-  
+
   .stack-l > * + * {
     margin-block-start: var(--space-l);
   }
-  
+
   /* ========================================
      Flex Utilities
      ======================================== */
-  
+
   .flex-center {
     display: flex;
+    place-content: center;
     align-items: center;
-    justify-content: center;
   }
-  
+
   .flex-between {
     display: flex;
     align-items: center;
@@ -106,43 +113,39 @@
       display: grid;
       gap: var(--space-2xl);
       grid-template-columns: 100%;
-      
+
       &.has-sidebar {
-           @container (width >= 1024px) {
-                grid-template-columns: 1fr 20rem; 
-           }
+        @container (inline-size >= 1024px) {
+          grid-template-columns: 1fr 20rem;
+        }
       }
 
       /* Intrinsic Responsive Columns */
-      @container (width >= 1024px) {
+      @container (inline-size >= 1024px) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      @container (width >= 1280px) {
+      @container (inline-size >= 1280px) {
         gap: var(--space-3xl);
       }
     }
   }
-  
-  .layout-sidebar {
-      /* Placeholder for specific sidebar styling if needed */
-  }
-  
+
   .sticky-sidebar {
-      position: sticky;
-      inset-block-start: var(--spacing-header);
-      z-index: var(--z-sticky);
+    position: sticky;
+    inset-block-start: var(--spacing-header);
+    z-index: var(--z-sticky);
   }
 
   /* Scoped Column Spanning */
   @scope (.layout-sidebar-col) {
     :scope {
       grid-column: span 1 / span 1;
-      
+
       .layout-grid:scope > & {
-         @container (width >= 1024px) {
-             grid-column: span 3 / span 3;
-         }
+        @container (inline-size >= 1024px) {
+          grid-column: span 3 / span 3;
+        }
       }
     }
   }
@@ -150,7 +153,6 @@
   .container-inline {
     container-type: inline-size;
   }
-  
 
   .flex-width-full {
     display: flex;

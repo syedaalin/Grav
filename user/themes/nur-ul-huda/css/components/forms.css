@@ -1,95 +1,104 @@
 @layer components {
+  /* 
+     ========================================
+     FORMS COMPONENT
+     Role: User input fields and search forms
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Form & Search Components
      ======================================== */
-  
+
   @scope (.tntsearch-form) {
-      :scope {
-         position: relative;
+    :scope {
+      position: relative;
+    }
+
+    .tntsearch-input {
+      display: block;
+      inline-size: 100%;
+      padding-block: var(--space-s);
+      padding-inline-start: var(--space-2xl);
+      padding-inline-end: var(--space-m);
+      background-color: var(--color-surface);
+      border: var(--border-thin) solid var(--color-highlight-subtle);
+      border-radius: var(--radius-2xl);
+      line-height: 1.25;
+      color: var(--color-dark);
+      transition:
+        border-color var(--transition-smooth),
+        box-shadow var(--transition-smooth),
+        background-color var(--transition-smooth);
+      font-family: inherit;
+      font-size: var(--font-size-base);
+
+      &::placeholder {
+        color: oklch(from var(--color-subtle) l c h / 0.5);
       }
-      
+
+      &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 calc(var(--border-medium) * 2) var(--color-focus-ring);
+        background-color: oklch(from var(--color-white) l c h / 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+    }
+
+    @container (inline-size >= 40rem) {
       .tntsearch-input {
-          display: block;
-          inline-size: 100%;
-          padding-block: 0.75rem;
-          padding-inline-start: 2.5rem;
-          padding-inline-end: 1rem;
-          background-color: oklch(1 0 0 / 0.4);
-          -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
-          border: 1px solid oklch(1 0 0 / 0.6);
-          border-radius: var(--radius-2xl);
-          line-height: 1.25;
-          color: var(--color-dark);
-          transition: all 300ms;
-          font-family: inherit;
-          font-size: 1rem;
-          
-          &::placeholder {
-              color: oklch(from var(--color-subtle) l c h / 0.5);
-          }
-          
-          &:focus {
-              outline: none;
-              border-color: var(--color-primary);
-              box-shadow: 0 0 0 4px oklch(from var(--color-primary) l c h / 0.1);
-              background-color: oklch(1 0 0 / 0.8);
-          }
+        font-size: 0.875rem;
       }
-     
-      @container (width >= 640px) {
-        .tntsearch-input {
-          font-size: 0.875rem;
-        }
+    }
+
+    .tntsearch-icon-wrapper {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      padding-inline-start: var(--space-s);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      color: var(--color-subtle);
+
+      svg {
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
       }
-      
-      .tntsearch-icon-wrapper {
-          position: absolute;
-          inset-block: 0;
-          inset-inline-start: 0;
-          padding-inline-start: 0.875rem;
-          display: flex;
-          align-items: center;
-          pointer-events: none;
-          color: var(--color-subtle);
-          
-          svg {
-              inline-size: 1.25rem;
-              block-size: 1.25rem;
-          }
-      }
-      
-      .tntsearch-input:focus ~ .tntsearch-icon-wrapper {
-          color: var(--color-primary);
-      }
-      
-      .tntsearch-results {
-          position: absolute;
-          inset-block-start: 100%;
-          inset-inline-start: 0;
-          width: 100%;
-          margin-block-start: 0.5rem;
-          background-color: oklch(1 0 0 / 0.95);
-          -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
-          border-radius: var(--radius-2xl);
-          box-shadow: var(--shadow-xl);
-          overflow: hidden;
-          z-index: 50;
-      }
-      
-      .tntsearch-results:empty {
-          display: none;
-      }
-      
-      .tntsearch-clear {
-          position: absolute;
-          inset-inline-end: 0.75rem;
-          inset-block-start: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-          color: var(--color-subtle);
-      }
+    }
+
+    .tntsearch-input:focus ~ .tntsearch-icon-wrapper {
+      color: var(--color-primary);
+    }
+
+    .tntsearch-results {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      margin-block-start: var(--space-s);
+      background-color: var(--color-surface);
+      border: var(--border-thin) solid var(--color-border-subtle);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      z-index: 50;
+    }
+
+    .tntsearch-results:empty {
+      display: none;
+    }
+
+    .tntsearch-clear {
+      position: absolute;
+      inset-inline-end: 0.75rem;
+      inset-block-start: 50%;
+      translate: 0 -50%;
+      cursor: pointer;
+      color: var(--color-subtle);
+    }
   }
 
   @scope (.search-results-container) {
@@ -103,67 +112,72 @@
       scrollbar-width: thin;
       scrollbar-color: var(--color-subtle) transparent;
     }
-    
+
     .search-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-inline: 0.5rem;
-        padding-block-end: 0.5rem;
-        border-block-end: 1px solid oklch(from var(--color-subtle) l c h / 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 0.5rem;
+      padding-block-end: 0.5rem;
+      border-block-end: var(--border-thin) solid
+        oklch(from var(--color-subtle) l c h / 0.1);
     }
-    
+
     .meta-text {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--color-subtle);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-subtle);
     }
-    
+
     .search-result-card {
-        display: block;
-        padding: 1rem;
-        border-radius: var(--radius-xl);
-        border: 1px solid transparent; 
-        transition: all 200ms;
+      display: block;
+      padding: var(--space-m);
+      border-radius: var(--radius-xl);
+      border: var(--border-thin) solid transparent;
+      border: var(--border-thin) solid transparent;
+      transition:
+        background-color var(--transition-standard),
+        border-color var(--transition-standard),
+        transform var(--transition-standard);
     }
-    
+
     .search-result-card:hover {
-        background-color: oklch(from var(--color-surface-subtle) l c h / 0.4);
-        border-color: oklch(from var(--color-primary) l c h / 0.1);
+      background-color: oklch(from var(--color-surface-subtle) l c h / 0.4);
+      border-color: oklch(from var(--color-primary) l c h / 0.1);
     }
-    
+
     .result-card-title {
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: var(--color-primary);
-        margin-block-end: 0.25rem;
-        transition: color 200ms;
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-block-end: var(--space-xs);
+      transition: color var(--transition-standard);
     }
-    
+
     .search-result-card:hover .result-card-title {
-        color: var(--color-primary); 
+      color: var(--color-primary);
     }
-    
+
     .result-card-url {
-        font-size: 0.75rem;
-        color: oklch(from var(--color-subtle) l c h / 0.7);
-        margin-block-end: 0.5rem;
-        font-family: var(--font-mono);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+      font-size: 0.75rem;
+      color: oklch(from var(--color-subtle) l c h / 0.7);
+      margin-block-end: 0.5rem;
+      font-family: var(--font-mono);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
-    
+
     .result-card-excerpt {
-        font-size: 0.875rem;
-        color: var(--color-subtle);
-        line-height: 1.6;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+      font-size: 0.875rem;
+      color: var(--color-subtle);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 
@@ -180,15 +194,15 @@
       border-color: var(--color-primary);
     }
     .checkbox-indicator {
-      border: 2px solid var(--color-border-subtle);
-      border-radius: var(--radius-m);
-      background-color: oklch(1 0 0 / 0.5);
+      border: var(--border-medium) solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      background-color: oklch(from var(--color-white) l c h / 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: all 0.2s;
+      inline-size: var(--space-l);
+      block-size: var(--space-l);
+      transition: all var(--transition-standard);
       position: relative;
     }
     .checkbox-indicator:has(input:checked) {
@@ -196,17 +210,17 @@
       border-color: var(--color-primary);
     }
     .checkbox-indicator:has(input:focus-visible) {
-      box-shadow: 0 0 0 4px oklch(from var(--color-primary) l c h / 0.2);
+      box-shadow: 0 0 0 calc(var(--border-medium) * 2) var(--color-focus-ring);
     }
     .checkbox-mark {
-      color: oklch(1 0 0);
+      color: var(--color-white);
       font-size: var(--font-size-xs);
       font-weight: 900;
-      transition: transform var(--transition-bounce);
-      transform: scale(0);
+      transition: scale var(--transition-bounce);
+      scale: 0;
     }
     .checkbox-indicator:has(input:checked) .checkbox-mark {
-      transform: scale(1);
+      scale: 1;
     }
     .checkbox-text {
       color: var(--color-subtle);
@@ -225,30 +239,31 @@
       user-select: none;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: var(--space-m);
     }
     .switch-track {
       background-color: var(--color-surface-subtle);
       border-radius: var(--radius-full);
-      height: 1.75rem;
-      width: 3.5rem;
+      block-size: 1.75rem;
+      inline-size: 3.5rem;
       transition: all 0.3s;
       position: relative;
-      box-shadow: inset 0 2px 4px oklch(0 0 0 / 0.06);
+      box-shadow: inset 0 0.125rem 0.25rem
+        oklch(from var(--color-black) l c h / 0.06);
     }
     .switch-input:focus-visible + .switch-track {
-      box-shadow: 0 0 0 4px oklch(from var(--color-primary) l c h / 0.1);
-      border: 1px solid var(--color-primary);
+      box-shadow: 0 0 0 calc(var(--border-medium) * 2) var(--color-focus-ring);
+      border: var(--border-thin) solid var(--color-primary);
     }
     .switch-input:checked + .switch-track {
       background-color: var(--color-primary);
     }
     .switch-thumb {
       border-radius: var(--radius-full);
-      background-color: oklch(1 0 0);
+      background-color: var(--color-white);
       block-size: 1.25rem;
       inline-size: 1.25rem;
-      transition: all var(--transition-bounce);
+      transition: translate var(--transition-bounce);
       position: absolute;
       inset-block-start: 0.25rem;
       inset-inline-start: 0.25rem;
@@ -257,7 +272,10 @@
     .switch-input:checked + .switch-track .switch-thumb {
       translate: 1.75rem 0;
     }
-    :scope:where([dir="rtl"]) .switch-input:checked + .switch-track .switch-thumb {
+    :scope:where([dir="rtl"])
+      .switch-input:checked
+      + .switch-track
+      .switch-thumb {
       translate: -1.75rem 0;
     }
     .switch-label-text {
@@ -284,32 +302,41 @@
     }
     .radio-indicator {
       background-color: white;
-      border: 2px solid oklch(0.88 0 0);
-      border-radius: 9999px;
+      border: var(--border-medium) solid var(--color-border-subtle);
+      border-radius: var(--radius-full);
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: all 0.2s;
+      inline-size: 1.5rem;
+      block-size: 1.5rem;
+      transition: all var(--transition-standard);
       position: relative;
     }
     .radio-label:hover .radio-indicator {
       border-color: oklch(from var(--color-primary) l c h / 0.5);
     }
     .radio-input:focus-visible + .radio-indicator {
-      box-shadow: 0 0 0 4px oklch(from var(--color-primary) l c h / 0.1);
+      box-shadow: 0 0 0 calc(var(--border-medium) * 2) var(--color-focus-ring);
+      transition:
+        translate var(--transition-bounce),
+        background-color var(--transition-standard);
+    }
+    .radio-input:checked + .radio-indicator {
+      background-color: var(--color-primary);
+    }
+    .radio-input:checked + .radio-indicator::after {
+      translate: 1.25rem 0;
     }
     .radio-mark {
       background-color: var(--color-primary);
-      border-radius: 9999px;
-      width: 0.75rem;
-      height: 0.75rem;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      transform: scale(0);
+      border-radius: var(--radius-full);
+      inline-size: 0.75rem;
+      block-size: 0.75rem;
+      transition: scale var(--transition-standard) var(--transition-bounce);
+      scale: 0;
     }
     .radio-input:checked + .radio-indicator .radio-mark {
-      transform: scale(1);
+      scale: 1;
     }
     .radio-text {
       text-transform: uppercase;
@@ -323,45 +350,6 @@
     }
   }
 
-  @scope (.form-alert) {
-    :scope {
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-standard);
-      border: 1px solid transparent;
-      margin-block: 2rem;
-      padding: 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 700;
-      line-height: 1.6;
-      animation: 0.6s cubic-bezier(0.16, 1, 0.3, 1) fade-in-up;
-      
-      &:hover {
-        box-shadow: var(--shadow-md);
-      }
-      &.alert-success {
-        background-color: oklch(from var(--color-success) l c h / 0.05);
-        color: var(--color-success);
-        border-color: oklch(from var(--color-success) l c h / 0.2);
-      }
-      &.alert-error {
-        background-color: oklch(from var(--color-error) l c h / 0.05);
-        color: var(--color-error);
-        border-color: oklch(from var(--color-error) l c h / 0.2);
-      }
-      &.alert-warning {
-        background-color: oklch(from var(--color-warning) l c h / 0.05);
-        color: var(--color-warning);
-        border-color: oklch(from var(--color-warning) l c h / 0.2);
-      }
-      &.alert-default {
-        background-color: var(--color-surface-subtle);
-        color: var(--color-subtle);
-        border-color: var(--color-border-subtle);
-      }
-    }
-  }
-  
   @scope (.form-styles) {
     :scope {
       inline-size: 100%;
@@ -372,13 +360,13 @@
       display: flex;
       justify-content: flex-end;
     }
-    
+
     .form-error {
       color: var(--color-error);
       font-size: 0.875rem;
       font-weight: 500;
       margin-block-start: 0.25rem;
-      animation: fade-in-up 0.5s ease-out;
+      animation: var(--animate-fade-in-up);
     }
   }
 
@@ -387,64 +375,65 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin-bottom: var(--space-3xl);
-      animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-block-end: var(--space-3xl);
+      animation: var(--animate-fade-in-up);
     }
-    
+
     .message-item {
-        display: flex;
-        align-items: flex-start;
-        padding: 1.5rem;
-        gap: 1rem;
-        border-radius: var(--radius-2xl);
-        background-color: var(--color-surface-subtle);
-        color: var(--color-subtle);
-        border: 1px solid var(--color-border-subtle);
-        transition: all var(--transition-smooth);
+      display: flex;
+      align-items: flex-start;
+      padding: 1.5rem;
+      gap: 1rem;
+      border-radius: var(--radius-2xl);
+      background-color: var(--color-surface-subtle);
+      color: var(--color-subtle);
+      border: var(--border-thin) solid var(--color-border-subtle);
+      transition: all var(--transition-smooth);
     }
-    
+
     .message-info {
-        background-color: oklch(from var(--color-info) l c h / 0.05);
-        color: var(--color-info);
-        border-color: oklch(from var(--color-info) l c h / 0.2);
+      background-color: var(--color-info-subtle);
+      color: var(--color-info-muted);
+      border-color: var(--color-info-border);
     }
-    
+
     .message-error {
-        background-color: oklch(from var(--color-error) l c h / 0.05);
-        color: var(--color-error);
-        border-color: oklch(from var(--color-error) l c h / 0.2);
+      background-color: var(--color-error-subtle);
+      color: var(--color-error-muted);
+      border-color: var(--color-error-border);
     }
-    
+
     .message-warning {
-        background-color: oklch(from var(--color-warning) l c h / 0.05);
-        color: var(--color-warning);
-        border-color: oklch(from var(--color-warning) l c h / 0.2);
+      background-color: var(--color-warning-subtle);
+      color: var(--color-warning-muted);
+      border-color: var(--color-warning-border);
     }
 
     .message-success {
-        background-color: oklch(from var(--color-success) l c h / 0.05);
-        color: var(--color-success);
-        border-color: oklch(from var(--color-success) l c h / 0.2);
+      background-color: var(--color-success-subtle);
+      color: var(--color-success-muted);
+      border-color: var(--color-success-border);
     }
 
     .message-icon-wrapper {
-        flex-shrink: 0;
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
-        border-radius: 1rem;
-        background-color: oklch(1 0 0 / 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        box-shadow: inset 0 2px 4px 0 oklch(0 0 0 / 0.06);
+      flex-shrink: 0;
+      inline-size: 2.5rem;
+      block-size: 2.5rem;
+      border-radius: 1rem;
+      background-color: oklch(from var(--color-white) l c h / 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: inset 0 0.125rem 0.25rem 0
+        oklch(from var(--color-black) l c h / 0.06);
     }
-    
+
     .message-content {
-        padding-block-start: 0.125rem;
-        font-size: 0.875rem;
-        font-weight: 700;
-        line-height: 1.5;
+      padding-block-start: 0.125rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1.5;
     }
   }
 

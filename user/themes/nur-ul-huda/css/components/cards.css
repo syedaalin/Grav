@@ -1,123 +1,164 @@
 @layer components {
+  /* 
+     ========================================
+     CARDS COMPONENT
+     Role: Content grouping & visual containers
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Card Components
      ======================================== */
-  
-  @scope (.glass-card) {
+
+  @scope (.card-solid) {
     :scope {
-      background-image: var(--glass-surface), var(--glass-noise);
-      background-blend-mode: overlay, normal;
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      backdrop-filter: blur(var(--glass-blur));
-      border: var(--glass-border);
+      background: var(--color-white);
+      border: var(--border-thin) solid var(--color-border-subtle);
       border-radius: var(--radius-xl);
-      box-shadow: var(--glass-shadow);
-      transition: all var(--transition-smooth);
-      
-      /* Specular Highlight on Hover */
+      box-shadow: var(--shadow-sm);
+      transition:
+        background-image var(--transition-smooth),
+        translate var(--transition-smooth),
+        box-shadow var(--transition-smooth);
+
+      /* Highlight on Hover */
       &:hover {
-        background-image: 
-          linear-gradient(135deg, oklch(1 0 0 / 0.7), oklch(1 0 0 / 0.5)),
-          var(--glass-noise);
-        box-shadow: 
-          0 20px 25px -5px oklch(0 0 0 / 0.1), 
-          0 10px 10px -5px oklch(0 0 0 / 0.04),
-          inset 0 1px 0 0 oklch(1 0 0 / 0.6);
-        transform: translateY(-2px);
+        background-image: linear-gradient(
+          135deg,
+          oklch(from var(--color-white) l c h / 0.7),
+          oklch(from var(--color-white) l c h / 0.5)
+        );
+        box-shadow: var(--shadow-xl);
+        translate: 0 var(--offset-float);
+        border-color: var(--color-primary);
+        scale: 1.02;
+      }
+
+      /* Dark Mode Synchronization */
+      body.header-dark & {
+        background: linear-gradient(
+          135deg,
+          oklch(from var(--color-dark) l c h / 0.8),
+          oklch(from var(--color-dark) l c h / 0.6)
+        );
+        border-color: oklch(from var(--color-white) l c h / 0.05);
+        color: var(--color-white);
+
+        &:hover {
+          background: linear-gradient(
+            135deg,
+            oklch(from var(--color-dark) l c h / 0.8),
+            oklch(from var(--color-dark) l c h / 0.6)
+          );
+          box-shadow: 0 1.25rem 1.5625rem -0.3125rem var(--color-overlay-dark);
+        }
       }
     }
   }
-  
+
   @scope (.card-gradient) {
     :scope {
-      background: linear-gradient(135deg, oklch(1 0 0 / 0.8), oklch(1 0 0 / 0.4));
-      border: 1px solid oklch(1 0 0);
+      background: linear-gradient(
+        135deg,
+        oklch(from var(--color-white) l c h / 0.8),
+        oklch(from var(--color-white) l c h / 0.4)
+      );
+      border: var(--border-thin) solid var(--color-white);
       border-radius: var(--radius-2xl);
       box-shadow: var(--shadow-2xl);
     }
   }
 
   @scope (.child-list-grid) {
-      :scope {
-          display: grid;
-          gap: var(--space-2xl);
-          grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      }
+    :scope {
+      gap: var(--space-2xl);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.75rem), 1fr));
+    }
   }
-  
+
   @scope (.child-card) {
-      :scope {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          border-radius: var(--radius-xl);
-          overflow: hidden;
-          background: var(--color-surface, oklch(1 0 0));
-          border: 1px solid var(--color-border-subtle);
-          transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-          text-decoration: none;
-          color: inherit;
-          
-          &:hover {
-              transform: translateY(-5px);
-              box-shadow: var(--shadow-xl);
-          }
+    :scope {
+      container-type: inline-size;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--color-surface, var(--color-white));
+      border: var(--border-thin) solid var(--color-border-subtle);
+      transition:
+        translate var(--transition-smooth),
+        box-shadow var(--transition-smooth);
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        translate: 0 calc(var(--offset-float) * 2.5);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--color-primary);
+        scale: 1.01;
       }
-      
-      .child-card-bg {
-          aspect-ratio: 16/9;
-          overflow: hidden;
-          
-          img {
-              inline-size: 100%;
-              block-size: 100%;
-              object-fit: cover;
-              transition: transform 500ms var(--transition-smooth);
-          }
+    }
+
+    .bg {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+
+      img {
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+        transition: scale var(--transition-smooth-slower, 500ms)
+          var(--transition-smooth);
       }
-      
-      &:hover .child-card-bg img {
-          transform: scale(1.05);
-      }
-      
-      .child-card-content {
-          padding: var(--space-2xl);
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-m);
-          flex: 1;
-      }
-      
-      .child-card-icon {
-          font-size: var(--font-size-xl);
-          color: var(--color-primary);
-      }
-      
-      .child-card-title {
-          font-size: var(--font-size-xl);
-          font-weight: 800;
-          line-height: 1.2;
-          margin: 0;
-      }
-      
-      .child-card-label {
-          margin-block-start: auto;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          color: var(--color-primary);
-          display: flex;
-          align-items: center;
-          gap: var(--space-s);
-          font-size: var(--font-size-sm);
-      }
+    }
+
+    &:hover .bg img {
+      scale: 1.05;
+    }
+
+    .content {
+      padding: var(--space-2xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+      flex: 1;
+    }
+
+    .icon {
+      font-size: var(--font-size-xl);
+      color: var(--color-primary);
+    }
+
+    .title {
+      font-size: clamp(var(--font-size-lg), 8cqi, var(--font-size-xl));
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .label {
+      margin-block-start: auto;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      font-size: var(--font-size-sm);
+    }
   }
-  
+
   @scope (.child-card-glow) {
     :scope {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 100%, oklch(from var(--color-primary) l c h / 0.1), transparent 70%);
+      background: radial-gradient(
+        circle at 50% 100%,
+        oklch(from var(--color-primary) l c h / 0.1),
+        transparent 70%
+      );
       pointer-events: none;
     }
   }
@@ -125,7 +166,7 @@
   /* ========================================
      Lightbox Fallback
      ======================================== */
-  
+
   @scope (.lightbox-fallback) {
     :scope {
       position: relative;
@@ -136,67 +177,68 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--color-border-subtle);
+      border: var(--border-thin) solid var(--color-border-subtle);
       transition: all var(--transition-smooth);
       cursor: pointer;
     }
-    
+
     :scope:hover {
-        border-color: var(--color-primary);
-        box-shadow: var(--shadow-xl);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-xl);
     }
-    
+
     img {
-        inline-size: 100%;
-        block-size: 100%;
-        object-fit: cover;
-        transition: transform 500ms var(--transition-smooth);
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      transition: scale 500ms var(--transition-smooth);
     }
-    
+
     :scope:hover img {
-        transform: scale(1.05);
+      scale: 1.05;
     }
-    
+
     .fallback-overlay {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        -webkit-backdrop-filter: blur(0);
-        backdrop-filter: blur(0);
-        transition: all 500ms;
-        
-        .lightbox-fallback:hover & {
-             background-color: oklch(from var(--color-primary) l c h / 0.4);
-             -webkit-backdrop-filter: blur(4px);
-             backdrop-filter: blur(4px);
-        }
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      backdrop-filter: blur(0);
+      transition: all 500ms;
+
+      .lightbox-fallback:hover & {
+        background-color: oklch(from var(--color-primary) l c h / 0.9);
+      }
     }
-    
+
     .fallback-icon {
-        inline-size: 3.5rem;
-        block-size: 3.5rem;
-        border-radius: var(--radius-full);
-        background-color: oklch(1 0 0 / 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transform: scale(0.5);
-        transition: all 500ms 100ms;
-        box-shadow: var(--shadow-xl);
-        
-        .lightbox-fallback:hover & {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        i {
-            font-size: var(--font-size-xl);
-            color: var(--color-primary);
-        }
+      inline-size: calc(var(--space-2xl) + var(--space-s));
+      block-size: calc(var(--space-2xl) + var(--space-s));
+      border-radius: var(--radius-full);
+      background-color: oklch(from var(--color-white) l c h / 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      scale: 0.5;
+      transition:
+        opacity var(--transition-smooth-slower, 500ms),
+        scale var(--transition-smooth-slower, 500ms),
+        box-shadow var(--transition-smooth-slower, 500ms);
+      transition-delay: 100ms;
+      box-shadow: var(--shadow-xl);
+
+      .lightbox-fallback:hover & {
+        opacity: 1;
+        scale: 1;
+      }
+
+      i {
+        font-size: var(--font-size-xl);
+        color: var(--color-primary);
+      }
     }
   }
 }

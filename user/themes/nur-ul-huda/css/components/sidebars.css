@@ -1,0 +1,101 @@
+@layer components {
+  /* 
+     ========================================
+     MOBILE MENU COMPONENT
+     Role: Off-canvas navigation and overlays
+     Blueprint: [ui-layout.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-layout.blueprint.md)
+     ========================================
+  */
+  @scope (.mobile-menu) {
+    /* ========================================
+     Mobile Menu Utilities (2026 Enhanced)
+     ======================================== */
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset-block-start: var(--header-total-height, 0rem);
+      inset-inline: 0;
+      inset-block-end: 0;
+      z-index: var(--z-modal);
+      pointer-events: none;
+      visibility: hidden; /* Default hidden */
+      transition: visibility 0s linear 0.7s; /* Sync with slower 'door' duration */
+    }
+
+    /* State: Open */
+    .mobile-menu-overlay[data-open="true"] {
+      pointer-events: auto;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    /* Utility Override - Specificity handled by class presence */
+    .mobile-menu-overlay.invisible {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mobile-menu-backdrop {
+      position: absolute;
+      inset: 0;
+      /* Clean: Transparent & Instant */
+      background-color: transparent;
+      opacity: 0;
+    }
+
+    /* Open State */
+    .mobile-menu-overlay[data-open="true"] .mobile-menu-backdrop {
+      opacity: 1;
+    }
+
+    .mobile-sidebar {
+      position: absolute;
+      inset-block: 0;
+      inline-size: var(--mobile-menu-width);
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+      -webkit-backdrop-filter: blur(var(--glass-blur))
+        saturate(var(--glass-saturate));
+      box-shadow: var(--glass-shadow);
+      border-inline: var(--border-thin) solid var(--glass-border);
+      background-image: var(--glass-reflection);
+      background-size: 200% 200%;
+      animation: glass-liquid 15s ease-in-out infinite;
+      transition: translate 700ms cubic-bezier(0.25, 1, 0.5, 1);
+
+      /* Base: Reset anchors */
+      inset-inline-start: auto;
+      inset-inline-end: auto;
+    }
+
+    /* Direction: Left (Default) */
+    .mobile-menu-overlay:not([data-direction="right"]) .mobile-sidebar,
+    .mobile-menu-overlay[data-direction="left"] .mobile-sidebar {
+      inset-inline-start: 0;
+      border-inline-end: var(--border-thin) solid var(--color-border-subtle);
+      translate: -100% 0;
+    }
+
+    /* Direction: Right */
+    .mobile-menu-overlay[data-direction="right"] .mobile-sidebar {
+      inset-inline-end: 0;
+      border-inline-start: var(--border-thin) solid var(--color-border-subtle);
+      translate: 100% 0;
+    }
+
+    /* Open State */
+    .mobile-menu-overlay[data-open="true"] .mobile-sidebar {
+      translate: 0;
+    }
+
+    .mobile-sidebar-inner {
+      inline-size: 100%;
+      block-size: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: var(--space-l);
+    }
+  }
+}

@@ -15,13 +15,11 @@
 
         <div class="services-grid animate-fade-in-up delay-100">
         {% for service in page.header.services %}
-            {% set width_class = '' %}
+            {% set width_class = 'service-card' %}
             {% if service.width == 'feature' %}
-                {% set width_class = 'service-card-feature' %}
+                {% set width_class = 'service-card service-card-feature' %}
             {% elseif service.width == 'wide' %}
-                {% set width_class = 'service-card-wide' %}
-            {% else %}
-                {% set width_class = 'service-card' %}
+                {% set width_class = 'service-card service-card-wide' %}
             {% endif %}
 
             <div class="card-glass {{ width_class }}" 

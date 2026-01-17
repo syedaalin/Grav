@@ -4,27 +4,29 @@
     Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
 #}
 <section class="modular-section modular-text {{ page.header.class}}" style="container-type: inline-size;">
-    <div class="section-container animate-fade-in-up">
-        {# Using text-content-layout scope #}
-        <div class="text-content-layout {{ page.header.image_align|default('align-right') == 'align-right' ? '' : 'text-content-reverse' }}">
-            
-            <div class="text-content-text">
-                <div class="prose-custom prose-fluid">
-                    {{ content|raw }}
-                </div>
-            </div>
+	<div
+		class="section-container animate-fade-in-up">
+		{# Using text-content-layout scope #}
+		<div class="text-content-layout {{ page.header.image_align|default('align-right') == 'align-right' ? '' : 'text-content-reverse' }}">
 
-            {% set image = page.media.images|first %}
-            {% if image %}
-                <div class="text-content-image">
-                    <div class="text-image-wrapper">
-                        {# Decorative Glow #}
-                        <div class="text-image-glow"></div>
-                        
-                        {{ image.html('','','text-image')|raw }}
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </div>
+			<div class="text-content-text">
+				<div class="prose-custom prose-fluid">
+					{{ content|raw }}
+				</div>
+			</div>
+
+			{% set image = page.media.images|first %}
+			{% if image %}
+				<div class="text-content-image">
+					<div
+						class="text-image-wrapper">
+						{# Decorative Glow #}
+						<div class="text-image-glow"></div>
+
+						<img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.meta.alt|default(page.title)|e('html_attr') }}" class="text-image" loading="lazy" decoding="async">
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
 </section>

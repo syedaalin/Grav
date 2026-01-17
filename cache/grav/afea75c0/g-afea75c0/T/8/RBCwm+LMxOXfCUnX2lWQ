@@ -1,0 +1,165 @@
+1769287262
+g-afea75c0%255B33a519ec8a895b561dfbcb8dcba40467%255D%255B1%255D
+a:2:{s:7:"content";s:7281:"
+<section class="modular-section modular-khums-calculator">
+	<div class="section-container">
+		<div class="calculator-wrapper">
+
+			<div class="calculator-header animate-fade-in-up">
+				<h2 class="section-title">Khums Calculator</h2>
+				<p class="calculator-description">Calculate your religious dues (Khums) with complete privacy.</p>
+
+								<div id="khums-currency-config" data-currency="£" hidden aria-hidden="true"></div>
+				<div id="khums-rate-config" data-rate="20" hidden aria-hidden="true"></div>
+			</div>
+
+			<div
+				class="calculator-layout">
+
+								<div
+					class="calculator-inputs">
+										<div class="calculator-card calculator-card-success">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-success">
+								<i class="la la-coins" aria-hidden="true"></i>
+							</div>
+							<span>1. Assets (Surplus)</span>
+						</h3>
+
+						<div class="calculator-fields-grid">
+															<div class="calculator-field">
+									<label for="khums-savings" class="calculator-label calculator-label-success">Savings &amp; Cash</label>
+									<div class="calculator-input-wrapper">
+										<span class="calculator-currency">£</span>
+										<input type="number" id="khums-savings" class="calculator-input calculator-input-success active-assets" value="" placeholder="0.00" min="0">
+									</div>
+								</div>
+															<div class="calculator-field">
+									<label for="khums-gold" class="calculator-label calculator-label-success">Gold &amp; Jewelry</label>
+									<div class="calculator-input-wrapper">
+										<span class="calculator-currency">£</span>
+										<input type="number" id="khums-gold" class="calculator-input calculator-input-success active-assets" value="" placeholder="0.00" min="0">
+									</div>
+								</div>
+															<div class="calculator-field">
+									<label for="khums-business" class="calculator-label calculator-label-success">Business Inventory</label>
+									<div class="calculator-input-wrapper">
+										<span class="calculator-currency">£</span>
+										<input type="number" id="khums-business" class="calculator-input calculator-input-success active-assets" value="" placeholder="0.00" min="0">
+									</div>
+								</div>
+															<div class="calculator-field">
+									<label for="khums-other" class="calculator-label calculator-label-success">Other Surplus</label>
+									<div class="calculator-input-wrapper">
+										<span class="calculator-currency">£</span>
+										<input type="number" id="khums-other" class="calculator-input calculator-input-success active-assets" value="" placeholder="0.00" min="0">
+									</div>
+								</div>
+													</div>
+					</div>
+
+										<div class="calculator-card calculator-card-error">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-error">
+								<i class="la la-file-invoice-dollar" aria-hidden="true"></i>
+							</div>
+							<span>2. Deductions</span>
+						</h3>
+						<div class="calculator-field">
+							<label for="khums-debts" class="calculator-label calculator-label-error">Outstanding Debts & Expenses</label>
+							<div class="calculator-input-wrapper">
+								<span class="calculator-currency">£</span>
+								<input type="number" id="khums-debts" class="calculator-input calculator-input-error active-assets" value="" placeholder="0.00" min="0">
+							</div>
+						</div>
+					</div>
+
+										<div class="calculator-card calculator-card-primary">
+						<div class="calculator-card-bg"></div>
+						<h3 class="calculator-card-title">
+							<div class="calculator-card-icon calculator-icon-primary">
+								<i class="la la-heart" aria-hidden="true"></i>
+							</div>
+							<span>3. Optional Sadaqah</span>
+						</h3>
+						<div class="calculator-field">
+							<label for="sadaqah-amount" class="calculator-label calculator-label-primary">Voluntary Contribution</label>
+							<div class="calculator-input-wrapper">
+								<span class="calculator-currency">£</span>
+								<input type="number" id="sadaqah-amount" class="calculator-input calculator-input-primary active-assets" value="" placeholder="0.00" min="0">
+							</div>
+						</div>
+					</div>
+
+										<div class="calculator-action">
+						<button id="khums-calc-trigger" class="btn-primary-outline calculator-button">
+							<i class="la la-calculator calculator-button-icon"></i>
+							<span>Calculate Amounts</span>
+						</button>
+					</div>
+				</div>
+
+								<div class="calculator-results">
+					<div class="calculator-results-card">
+						<h3 class="calculator-results-title">
+							<i class="la la-calculator"></i>
+							Summary
+						</h3>
+
+						<div class="calculator-summary">
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label">Net Surplus</span>
+								<span id="khums-net-display" class="calculator-summary-value">£
+									0.00</span>
+							</div>
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label calculator-summary-khums">Khums (20%)</span>
+								<span id="khums-calc-display" class="calculator-summary-value calculator-summary-khums">£
+									0.00</span>
+							</div>
+							<div class="calculator-summary-row">
+								<span class="calculator-summary-label calculator-summary-sadaqah">Sadaqah</span>
+								<span id="sadaqah-display" class="calculator-summary-value calculator-summary-sadaqah">£
+									0.00</span>
+							</div>
+						</div>
+
+						<div class="calculator-total">
+							<div class="calculator-total-bg"></div>
+							<div class="calculator-total-content">
+								<div class="calculator-total-label">Total Payable</div>
+								<div id="khums-total-display" class="calculator-total-amount">£
+									0.00</div>
+							</div>
+						</div>
+
+												<div class="calculator-toggle-wrapper">
+							<label class="calculator-toggle-label">
+								<span class="calculator-toggle-text">Split Khums 50/50</span>
+								<input type="checkbox" id="khums-split-toggle" class="sr-only">
+								<div class="calculator-toggle-switch"></div>
+							</label>
+							<p class="calculator-toggle-hint">Automatically divides your Khums equally between Sehme Imam and Sehme Sadaat.</p>
+						</div>
+
+						<div class="calculator-actions">
+							<div class="calculator-security-badge">
+								<i class="la la-lock" aria-hidden="true"></i>
+								Secure & Private
+							</div>
+
+							<button id="khums-checkout-btn" class="btn-primary calculator-checkout-button snipcart-add-item" data-item-id="religious-dues-2026" data-item-name="Religious Dues (Khums + Sadaqah)" data-item-price="0" data-item-url="http://127.0.0.1:8888/khums-calculator/_calculator" data-item-custom1-name="Khums Split" data-item-custom1-options="Full Amount|Split 50/50" data-item-custom2-name="Khums Amount" data-item-custom2-type="readonly" data-item-custom2-value="0" data-item-custom3-name="Sadaqah Amount" data-item-custom3-type="readonly" data-item-custom3-value="0">
+								<i class="la la-heart" aria-hidden="true"></i>
+								Pay Total
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+";s:12:"content_meta";N;}

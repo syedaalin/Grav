@@ -1,4 +1,11 @@
 @layer components {
+  /* 
+     ========================================
+     SIDEBAR COMPONENT
+     Role: Secondary navigation and widgets
+     Blueprint: [ui-layout.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-layout.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Sidebar Components (2026 Enhanced)
      ======================================== */
@@ -9,15 +16,46 @@
       flex-direction: column;
       gap: var(--space-2xl);
       block-size: 100%;
+      container-type: inline-size;
     }
-    
+
     .sidebar-widget {
-      transition: transform var(--transition-smooth);
-      
+      /* Base Glassmorphism */
+      background: var(--glass-bg); /* Force override for unified look */
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+      -webkit-backdrop-filter: blur(var(--glass-blur))
+        saturate(var(--glass-saturate));
+      border: var(--border-thin) solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-l);
+      box-shadow: var(--glass-shadow);
+      background-image: var(--glass-reflection);
+      background-size: 200% 200%;
+      animation: glass-liquid 25s ease-in-out infinite;
+      transition:
+        translate var(--transition-smooth),
+        box-shadow var(--transition-smooth),
+        background var(--transition-smooth);
+
+      /* Special override for card-solid if present */
+      &.card-solid {
+        background: var(--glass-bg);
+        background-image: var(--glass-reflection);
+        border-color: var(--glass-border);
+      }
+
+      &:hover {
+        background: var(--glass-bg-hover);
+        box-shadow: var(--shadow-lg);
+      }
+
       &:last-child {
-         position: sticky;
-         inset-block-start: calc(var(--header-top-offset, 80px) + 2rem);
-         z-index: var(--z-sticky);
+        position: sticky;
+        inset-block-start: calc(
+          var(--header-total-height, var(--header-height, 5rem)) +
+            var(--space-xl)
+        );
+        z-index: var(--z-sticky);
       }
     }
   }
@@ -34,104 +72,105 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    
+
     .sidebar-heading-dot {
       inline-size: 0.5rem;
       block-size: 0.5rem;
       border-radius: var(--radius-full);
       background-color: var(--color-primary);
-      box-shadow: 0 0 0 2px oklch(from var(--color-primary) l c h / 0.2);
+      box-shadow: 0 0 0 var(--border-medium) var(--color-info-subtle); /* Shared subtle highlight */
     }
   }
-  
+
   @scope (.feed-links) {
-     :scope {
-       display: flex;
-       flex-wrap: wrap;
-       gap: var(--space-s);
-     }
-     
-     .feed-link {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-xs);
-        padding-block: 0.5rem;
-        padding-inline: 0.75rem;
-        background-color: var(--color-surface, oklch(1 0 0));
-        border: 1px solid var(--color-border-subtle);
-        border-radius: var(--radius-m);
-        font-size: var(--font-size-xs);
-        font-weight: 700;
-        color: var(--color-subtle);
-        text-decoration: none;
-        transition: all var(--transition-smooth);
-        
-        &:hover {
-           background-color: oklch(1 0 0);
-           color: var(--color-primary);
-           border-color: var(--color-primary);
-           transform: translateY(-1px);
-           box-shadow: var(--shadow-sm);
-        }
-        
-        i {
-           font-size: 1.25em;
-        }
-     }
+    :scope {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+    }
+
+    .feed-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding-block: var(--space-s);
+      padding-inline: 0.75rem;
+      background-color: var(--color-surface, var(--color-white));
+      border: var(--border-thin) solid var(--color-border-subtle);
+      border-radius: var(--radius-m);
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      color: var(--color-subtle);
+      text-decoration: none;
+      transition: all var(--transition-smooth);
+
+      &:hover {
+        background-color: var(--color-white);
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+        translate: 0 var(--offset-hover-subtle);
+        box-shadow: var(--shadow-sm);
+      }
+
+      i {
+        font-size: 1.25em;
+      }
+    }
   }
-  
+
   @scope (.tags-list) {
-      :scope {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--space-s);
-      }
+    :scope {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+    }
   }
-  
+
   @scope (.tag-link) {
-      :scope {
-           font-size: var(--font-size-xs);
-           padding-block: 0.5rem;
-           padding-inline: 1.25rem;
-           transition: transform 200ms;
-           
-           &.active {
-               transform: scale(1.05);
-           }
+    :scope {
+      font-size: var(--font-size-xs);
+      padding-block: var(--space-s);
+      padding-inline: 1.25rem;
+      transition: scale 200ms;
+
+      &.active {
+        scale: 1.05;
       }
+    }
   }
 
   @scope (.widget-list) {
-      :scope {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-s);
-          list-style: none;
-          padding: 0;
-          margin: 0;
-      }
+    :scope {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
   }
-  
+
   @scope (.widget-link) {
-      :scope {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1.25rem;
-          text-decoration: none;
-      }
+    :scope {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 1.25rem;
+      padding-inline: 1.25rem;
+      text-decoration: none;
+    }
   }
-  
+
   @scope (.widget-label) {
-      :scope {
-          font-size: var(--font-size-sm);
-          font-weight: 900;
-          color: var(--color-dark);
-          transition: color var(--transition-standard);
-          
-          .widget-link:hover & {
-              color: var(--color-primary);
-          }
+    :scope {
+      font-size: var(--font-size-sm);
+      font-weight: 900;
+      color: var(--color-dark);
+      transition: color var(--transition-standard);
+
+      .widget-link:hover & {
+        color: var(--color-primary);
       }
+    }
   }
 }

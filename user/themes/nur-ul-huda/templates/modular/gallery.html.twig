@@ -1,54 +1,51 @@
-{% block module_content %}
-  {% set data = page.header.gallery %}
-  {% set thumb_width = data.thumb.width|default(800) %}
-  {% set thumb_height = data.thumb.height|default(600) %}
+{% set data = page.header.gallery %}
+{% set thumb_width = data.thumb.width|default(800) %}
+{% set thumb_height = data.thumb.height|default(600) %}
 
-  {# 
+{# 
     NUR-UL-HUDA MODULAR GALLERY
     ---------------------------
     Blueprint: [modular-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/modular-components.blueprint.md)
 #}
-  <section class="modular-section modular-gallery">
-    <div class="gallery-grid">
-      {% set gallery = md5(page.url) %}
-      {% for item in data.items %}
-        <div class="gallery-item" 
-             role="button" aria-label="View {{ item.title|default('image') }}">
-          {% set item_image = page.media[item.image] %}
-          {% if item.title %}
-            {% set title = item.title %}
-          {% endif %}
-          {% if item.desc %}
-            {% set desc = ".desc-" ~ md5(item.desc) %}
-          {% endif %}
-          
-          <div class="gallery-image-wrapper">
-            {{ item_image.cropZoom(thumb_width, thumb_height).html(title, title, 'gallery-image')|raw }}
-            <div class="gallery-overlay"></div>
-          </div>
+<section class="modular-section modular-gallery">
+	<div class="gallery-grid">
+		{% set gallery = md5(page.url) %}
+		{% for item in data.items %}
+			<div class="gallery-item" role="button" aria-label="View {{ item.title|default('image') }}">
+				{% set item_image = page.media[item.image] %}
+				{% if item.title %}
+					{% set title = item.title %}
+				{% endif %}
+				{% if item.desc %}
+					{% set desc = ".desc-" ~ md5(item.desc) %}
+				{% endif %}
 
-          {% if item.title %}
-            <div class="gallery-caption">
-              <p class="gallery-title">{{ item.title }}</p>
-            </div>
-          {% endif %}
+				<div class="gallery-image-wrapper">
+					<img src="{{ item_image.cropZoom(thumb_width, thumb_height).url }}" width="{{ thumb_width }}" height="{{ thumb_height }}" alt="{{ title|default(item_image.name)|e('html_attr') }}" class="gallery-image" loading="lazy" decoding="async">
+					<div class="gallery-overlay"></div>
+				</div>
 
-          {% set image = item_image.url %}
-          {% include "partials/lightbox.html.twig" %}
-        </div>
-      {% endfor %}
-    </div>
+				{% if item.title %}
+					<div class="gallery-caption">
+						<p class="gallery-title">{{ item.title }}</p>
+					</div>
+				{% endif %}
 
-    <div class="hidden" aria-hidden="true">
-      {% for item in data.items %}
-        {% if item.desc %}
-          <div class="glightbox-desc desc-{{ md5(item.desc) }}">
-            <div class="prose-custom gallery-desc">
-                {{ item.desc|markdown(false) }}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-{% endblock %}
+				{% set image = item_image.url %}
+				{% include "partials/lightbox.html.twig" %}
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="hidden" aria-hidden="true">
+		{% for item in data.items %}
+			{% if item.desc %}
+				<div class="glightbox-desc desc-{{ md5(item.desc) }}">
+					<div class="prose-custom gallery-desc">
+						{{ item.desc|markdown(false) }}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>

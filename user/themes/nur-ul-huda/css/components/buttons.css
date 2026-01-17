@@ -1,89 +1,131 @@
 @layer components {
+  /* 
+     ========================================
+     BUTTONS COMPONENT
+     Role: Global action triggers & button styles
+     Blueprint: [ui-components.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-components.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Button Components
      ======================================== */
 
-  @scope (.btn-primary) {
+  /* Base button styles shared across all variants (DRY) */
+  @scope ([class^="btn-"], [class*=" btn-"]) {
     :scope {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding-block: 0.75rem;
-      padding-inline: 1.5rem;
+      padding-block: var(--space-s);
+      padding-inline: var(--space-l);
       border-radius: var(--radius-lg);
-      background-color: var(--color-primary);
-      font-family: var(--font-heading);
-      color: oklch(1 0 0);
       font-weight: 700;
       text-decoration: none;
-      transition: all var(--transition-smooth);
-      border: none;
+      transition:
+        color var(--transition-standard),
+        background-color var(--transition-standard),
+        border-color var(--transition-standard),
+        translate var(--transition-smooth),
+        scale var(--transition-smooth),
+        box-shadow var(--transition-smooth);
       cursor: pointer;
+    }
+  }
+
+  /* Primary Button */
+  @scope (.btn-primary) {
+    :scope {
+      background-color: var(--color-primary);
+      font-family: var(--font-heading);
+      color: var(--color-white);
+      border: none;
       box-shadow: var(--shadow-md);
-      
+
       &:hover {
-        transform: translateY(-2px);
+        translate: 0 var(--offset-float);
+        scale: 1.05;
         box-shadow: var(--shadow-lg);
         background-color: oklch(from var(--color-primary) l c h / 0.9);
       }
-      
+
       &:active {
-        transform: translateY(0);
+        translate: 0 0;
       }
     }
   }
 
+  /* Secondary Button */
   @scope (.btn-secondary) {
     :scope {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding-block: 0.75rem;
-      padding-inline: 1.5rem;
-      border-radius: var(--radius-lg);
-      background-color: oklch(1 0 0);
+      background-color: var(--color-white);
       color: var(--color-dark);
-      font-weight: 700;
-      text-decoration: none;
-      transition: all var(--transition-smooth);
-      border: 1px solid var(--color-border-subtle);
-      cursor: pointer;
-      
+      border: var(--border-thin) solid var(--color-border-subtle);
+
       &:hover {
         background-color: var(--color-surface-subtle);
         border-color: var(--color-primary);
+        color: var(--color-primary);
+        scale: 1.05;
+      }
+    }
+  }
+
+  /* Primary Outline Button */
+  @scope (.btn-primary-outline) {
+    :scope {
+      background-color: transparent;
+      border: var(--border-thin) solid var(--color-primary);
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+      box-shadow: none;
+
+      &:hover {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        translate: 0 var(--offset-float);
+        box-shadow: var(--shadow-md);
+      }
+
+      &:active {
+        translate: 0 0;
+      }
+    }
+  }
+
+  /* Ghost Button */
+  @scope (.btn-ghost) {
+    :scope {
+      background-color: transparent;
+      color: var(--color-text);
+      border: var(--border-thin) solid transparent;
+
+      &:hover {
+        background-color: var(--color-surface-subtle);
         color: var(--color-primary);
       }
     }
   }
 
-  @scope (.btn-primary-outline) {
+  /* Danger Button */
+  @scope (.btn-danger) {
     :scope {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding-block: 0.75rem;
-      padding-inline: 1.5rem;
-      border-radius: var(--radius-lg);
-      background-color: transparent;
-      border: 1px solid var(--color-primary);
-      color: var(--color-primary);
-      font-family: var(--font-heading);
-      font-weight: 700;
-      text-decoration: none;
-      transition: all var(--transition-smooth);
-      cursor: pointer;
-      box-shadow: none;
-      
+      background-color: var(--color-error);
+      color: var(--color-white);
+      border: none;
+      box-shadow: var(--shadow-md);
+
       &:hover {
-        background-color: var(--color-primary);
-        color: oklch(1 0 0);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
+        translate: 0 var(--offset-float);
+        box-shadow: var(--shadow-lg);
+        filter: brightness(1.1);
+        transition:
+          translate var(--transition-smooth),
+          box-shadow var(--transition-smooth),
+          filter var(--transition-smooth);
       }
-      
+
       &:active {
-        transform: translateY(0);
+        translate: 0 0;
       }
     }
   }

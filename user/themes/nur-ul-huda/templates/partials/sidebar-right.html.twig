@@ -1,0 +1,42 @@
+{# Mobile Off-Canvas Menu #}
+<div class="mobile-menu">
+	<div
+		id="sidebar-right" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Global Navigation" data-direction="right">
+
+		{# Backdrop #}
+		<div id="backdrop-right" class="mobile-menu-backdrop"></div>
+
+		{# Sidebar #}
+		<div id="sidebar-right-panel" class="mobile-sidebar">
+			<div
+				class="mobile-sidebar-inner">
+				{# Overlay Content #}
+				<div class="mobile-sidebar-content">
+					<div class="mobile-header-actions flex justify-end pb-4">
+						<button id="close-right" class="mobile-close-btn mobile-toggle" aria-label="Close Menu" aria-controls="sidebar-right">
+							<i class="las la-times icon-xl"></i>
+						</button>
+					</div>
+
+					{# Mobile Nav #}
+					<nav class="mobile-nav stack-s animate-fade-in-up delay-100">
+						{% include 'partials/navigation.html.twig' with {mobile: true} %}
+					</nav>
+				</div>
+
+				{# Overlay Footer #}
+				<div class="mobile-sidebar-footer animate-fade-in-up delay-200">
+					<h4 class="mobile-footer-title">Follow Our Journey</h4>
+					<div class="social-icons-grid">
+						{% for platform in ['facebook', 'twitter', 'instagram', 'youtube']|filter(p => theme_var('social_' ~ p)) %}
+							{% set social_url = theme_var('social_' ~ platform) %}
+							<a href="{{ social_url }}" target="_blank" class="social-icon" aria-label="{{ platform|capitalize }}">
+								<i class="lab la-{{ platform == 'facebook' ? 'facebook-f' : platform }}"></i>
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

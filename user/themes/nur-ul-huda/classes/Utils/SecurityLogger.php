@@ -6,7 +6,7 @@ namespace Grav\Theme\NurUlHuda\Utils;
 
 use Grav\Common\Grav;
 
-class SecurityLogger
+final class SecurityLogger
 {
     protected Grav $grav;
 
@@ -16,26 +16,35 @@ class SecurityLogger
     }
 
     /**
-     * Check rate limiting for sensitive operations
-     * Proxies to RateLimiter
-     * 
-     * @param string $key
-     * @param int $max_attempts
-     * @param int $window
-     * @return bool
+     * Check rate limiting for sensitive operations.
+     *
+     * Delegates to RateLimiter to enforce request throttling for sensitive
+     * operations (login attempts, form submissions, API calls). Uses sliding
+     * window algorithm for accurate rate limiting. Follows SRP by delegating
+     * to specialized RateLimiter class.
+     *
+     * @param string $key Unique identifier for the rate-limited resource (e.g., "login:192.168.1.1")
+     * @param int $max_attempts Maximum allowed attempts within the time window (default: 5)
+     * @param int $window Time window in seconds for rate limit enforcement (default: 60)
+     * @return bool True if request is allowed, false if rate limit exceeded
      */
-    public function checkRateLimit(string $key, int $max_attempts = 5, int $window = 60): bool
+    public static function checkRateLimit(string $key, int $max_attempts = 5, int $window = 60): bool
     {
         $limiter = new RateLimiter();
         return (bool) $limiter->check($key, $max_attempts, $window);
     }
 
     /**
-     * Enhanced security logging with context
-     * 
-     * @param string $message
-     * @param string $level
-     * @return void
+     * Enhanced security logging with contextual metadata.
+     *
+     * Logs security-related events with IP address, user agent, and timestamp
+     * for forensic analysis and audit trails. Automatically enriches log messages
+     * with context to aid in security incident investigation. Uses match expression
+     * for clean level-based routing to appropriate Grav log channels.
+     *
+     * @param string $message The security event description
+     * @param string $level Log severity level: 'security'/'error', 'warning', or 'info' (default)
+     * @return void Logs are written to Grav's logging system
      */
     public function log(string $message, string $level = 'info'): void
     {

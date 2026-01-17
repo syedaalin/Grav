@@ -1,66 +1,77 @@
 @layer components {
+  /* 
+     ========================================
+     MEDIA COMPONENT
+     Role: Global media handling (images, video)
+     Blueprint: [ui-base.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/ui-base.blueprint.md)
+     ========================================
+  */
   /* ========================================
      Media Components (Text Content, etc)
      ======================================== */
 
   @scope (.text-content-layout) {
-      :scope {
-          display: grid;
-          gap: var(--space-3xl);
-          align-items: center;
-          grid-template-columns: 1fr;
-          
-          @container (width >= 768px) {
-              grid-template-columns: 1fr 1fr;
-          }
+    :scope {
+      display: grid;
+      gap: var(--space-3xl);
+      align-items: center;
+      grid-template-columns: 1fr;
+
+      @container (inline-size >= 768px) {
+        grid-template-columns: 1fr 1fr;
       }
-      
-      &.text-content-reverse {
-          @container (width >= 768px) {
-              direction: rtl; 
-          }
+    }
+
+    &.text-content-reverse {
+      @container (inline-size >= 768px) {
+        direction: rtl;
       }
-      
-      &.text-content-reverse .text-content-text,
-      &.text-content-reverse .text-content-image {
-           direction: ltr; 
+    }
+
+    &.text-content-reverse .text-content-text,
+    &.text-content-reverse .text-content-image {
+      direction: ltr;
+    }
+
+    .text-content-text {
+      position: relative;
+      z-index: 10;
+    }
+
+    .text-content-image {
+      position: relative;
+      z-index: 5;
+    }
+
+    .text-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-2xl);
+      border: var(--border-thin) solid
+        oklch(from var(--color-white) l c h / 0.1);
+      /* Using perspective/rotateY for 3D effect but ensuring logical translate */
+      transform: perspective(62.5rem) rotateY(0deg);
+      transition: transform 500ms var(--transition-bounce),
+        translate 500ms var(--transition-bounce);
+
+      &:hover {
+        transform: perspective(62.5rem) rotateY(2deg);
+        translate: 0 calc(var(--offset-hover-subtle) * 2);
       }
-      
-      .text-content-text {
-          position: relative;
-          z-index: 10;
+
+      img {
+        display: block;
+        inline-size: 100%;
+        block-size: auto;
       }
-      
-      .text-content-image {
-          position: relative;
-          z-index: 5;
-      }
-      
-      .text-image-wrapper {
-          position: relative;
-          border-radius: var(--radius-2xl);
-          overflow: hidden;
-          box-shadow: var(--shadow-2xl);
-          border: 1px solid oklch(1 0 0 / 0.1);
-          transform: perspective(1000px) rotateY(0deg);
-          transition: transform 500ms var(--transition-bounce);
-          
-          &:hover {
-              transform: perspective(1000px) rotateY(2deg) translateY(-4px);
-          }
-          
-          img {
-              display: block;
-              inline-size: 100%;
-              block-size: auto;
-          }
-      }
-      
-      .text-image-glow {
-          position: absolute;
-          inset: 0;
-          mix-blend-mode: overlay;
-          pointer-events: none;
-      }
+    }
+
+    .text-image-glow {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
   }
 }

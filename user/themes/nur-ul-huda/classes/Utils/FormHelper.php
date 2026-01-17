@@ -6,10 +6,21 @@ namespace Grav\Theme\NurUlHuda\Utils;
 
 use Grav\Common\Grav;
 
-readonly class FormHelper
+readonly final class FormHelper
 {
     /**
-     * @return array<string, string>
+     * Get form CSS class mappings and CSRF token data for Twig templates.
+     *
+     * Provides centralized CSS class definitions for all form elements, ensuring
+     * consistent styling across the theme. Generates CSRF tokens when Grav session
+     * is available, gracefully degrading to empty values when session isn't started
+     * (e.g., during CLI operations). This data is injected into Twig variables
+     * via NurUlHuda::onTwigInitialized() for use in form templates.
+     *
+     * @return array<string, string> Associative array containing:
+     *               - form_*_classes: CSS class names for various form elements
+     *               - csrf_token_name: CSRF token field name (empty if session unavailable)
+     *               - csrf_token_value: CSRF token value (empty if session unavailable)
      */
     public static function getFormClasses(): array
     {

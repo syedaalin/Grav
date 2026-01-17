@@ -7,11 +7,24 @@ namespace Grav\Theme\NurUlHuda\Utils;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 
-readonly class BlogHelper
+readonly final class BlogHelper
 {
     /**
-     * @param Page $page
-     * @return array
+     * Extract blog post data from a Grav page.
+     *
+     * Retrieves all essential blog post information including primary image,
+     * metadata, and content. Automatically selects the first image from page
+     * media if available. Follows SRP by focusing solely on data extraction.
+     *
+     * @param Page $page The blog post page object
+     * @return array Post data structure containing:
+     *               - image: Primary image media object (null if none)
+     *               - title: Post title
+     *               - url: Full URL to post
+     *               - slug: URL-friendly slug
+     *               - summary: Post excerpt/summary
+     *               - content: Full post content (HTML)
+     *               - date: Publication date
      */
     public static function getPostData(Page $page): array
     {
@@ -35,8 +48,18 @@ readonly class BlogHelper
     }
 
     /**
-     * @param Page $page
-     * @return array
+     * Get blog post navigation data for prev/next links.
+     *
+     * Determines adjacent posts and boundary states for pagination controls.
+     * Provides data needed to render "Previous Post" and "Next Post" links
+     * with proper disability states for first/last posts.
+     *
+     * @param Page $page The current blog post page
+     * @return array Navigation data structure containing:
+     *               - prev: Previous post data (url, title) or null
+     *               - next: Next post data (url, title) or null
+     *               - is_first: Boolean indicating if this is the first post
+     *               - is_last: Boolean indicating if this is the last post
      */
     public static function getNavigationData(Page $page): array
     {

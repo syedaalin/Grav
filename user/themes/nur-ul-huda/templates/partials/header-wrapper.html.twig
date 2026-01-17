@@ -3,66 +3,52 @@
 
 {# A. TOP STICKY BANNER (Radiant Trio) #}
 {# Forced display:block ensures visibility across different page layouts #}
-<div class="header-top-sticky">
-    {% include 'partials/top-banner.html.twig' %}
-</div>
+{% set ticker_enabled = theme_var('ticker_enabled') %}
+{% set announcement_enabled = theme_var('top_banner_announcement_enabled') %}
+{% set show_top_bar = (ticker_enabled == '1' or ticker_enabled == true) or (announcement_enabled == '1' or announcement_enabled == true) %}
+	{% if show_top_bar %}
+		<div class="header-top-sticky"> {% include 'partials/top-banner.html.twig' %}
+	</div>
+{% endif %}
 
 {# B. MAIN NAVIGATION HEADER (Glassmorphism) #}
 <header id="header" class="header-main-sticky" role="banner">
-    <div class="container container-px header-spacing">
-        <nav class="header-nav" aria-label="Main navigation">
+	<div class="container container-px header-spacing">
+		<nav
+			class="header-nav" aria-label="Main navigation">
 
-            {# ZONE A: Mobile Toggle / Desktop Logo #}
-            <div class="header-zone-a">
-                {# Mobile Toggle #}
-                <button id="mobile-toggle" class="mobile-toggle" aria-label="Open navigation menu" aria-controls="mobile-menu-wrapper" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                    </svg>
-                </button>
+			{# ZONE A: Mobile Toggle / Desktop Logo #}
+			<div class="header-zone-a">
+				{# Mobile Toggle (Left: Services) #}
+				<button id="mobile-toggle-left" class="mobile-toggle mobile-only" aria-label="Open Left Sidebar" data-direction="left" aria-controls="sidebar-left" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+					</svg>
+				</button>
+			</div>
 
-                {# Desktop Logo #}
-                <div class="desktop-only logo-hover">
-                    {% include 'partials/logo.html.twig' %}
-                </div>
-            </div>
+			{# ZONE B: Mobile Logo / Desktop Navigation #}
+			<div class="header-zone-b">
+				{# Center Logo (Unified for Mobile & Desktop) #}
+				<div class="logo-hover">
+					{% include 'partials/logo.html.twig' %}
+				</div>
 
-            {# ZONE B: Mobile Logo / Desktop Navigation #}
-            <div class="header-zone-b">
-                {# Mobile Logo (Centered) #}
-                <div class="mobile-only logo-hover">
-                    {% include 'partials/logo.html.twig' with {mobile: true} %}
-                </div>
+				{# Desktop Navigation #}
+				<div class="desktop-only desktop-nav">
+					{% include 'partials/navigation.html.twig' with {mobile: false} %}
+				</div>
+			</div>
 
-                {# Desktop Navigation #}
-                <nav id="desktop-nav" class="desktop-nav">
-                    {% block header_navigation %}
-                        {% include 'partials/navigation.html.twig' %}
-                    {% endblock %}
-                </nav>
-            </div>
-
-            {# ZONE C: User Actions #}
-            <div class="header-zone-c">
-                {# Search Trigger #}
-                <button id="search-trigger" class="icon-button desktop-only" aria-label="Open search">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                    </svg>
-                </button>
-
-                {# User Account #}
-                {% if config.plugins.login.enabled and grav.user.username %}
-                    <a href="{{ url('theme://dashboard') }}" class="btn-dashboard desktop-only" aria-label="Go to Dashboard">
-                        <span>Dashboard</span>
-                    </a>
-                {% else %}
-                    {% set login_url = theme_var('moodle_url') ? theme_var('moodle_url') ~ '/login' : url('theme://login') %}
-                    <a href="{{ login_url }}" class="btn-login desktop-only" aria-label="Log in to your account">
-                        Login
-                    </a>
-                {% endif %}
-            </div>
-        </nav>
-    </div>
+			{# ZONE C: User Actions #}
+			<div class="header-zone-c">
+				{# Mobile Toggle (Right: Global) #}
+				<button id="mobile-toggle-right" class="mobile-toggle ml-2 mobile-only" aria-label="Open Right Sidebar" data-direction="right" aria-controls="sidebar-right" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="icon-lg">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+					</svg>
+				</button>
+			</div>
+		</nav>
+	</div>
 </header>

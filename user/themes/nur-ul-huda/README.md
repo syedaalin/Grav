@@ -39,12 +39,15 @@
 
 * **Browser Requirements**
   * This theme uses **Modern Vanilla CSS (2026)** features including `@scope`, `@layer`, and `oklch` colors.
-  * **Required Browsers:**
-    * Chrome 118+
-    * Edge 118+
-    * Safari 17.4+
-    * Firefox 128+ (or latest)
-  * Note: IDE warnings about browser support for `@scope` are expected as this is a cutting-edge feature. The theme is designed for modern evergreen browsers.
+  
+  | Browser     | Min Version | Supported Features                                       |
+  | :---------- | :---------- | :------------------------------------------------------- |
+  | **Chrome**  | 118+        | `@scope`, `@layer`, `oklch`, Container Queries           |
+  | **Edge**    | 118+        | `@scope`, `@layer`, `oklch`, Container Queries           |
+  | **Safari**  | 17.4+       | `@scope` (partial), `@layer`, `oklch`, Container Queries |
+  | **Firefox** | 128+        | `@scope`, `@layer`, `oklch`, Container Queries           |
+
+  * **Note:** The theme relies heavily on `@scope` for component isolation. Older browsers will **not** render components correctly. This is a deliberate architectural choice for 2026 standards.
 
 ### Supported Page Templates
 
@@ -58,13 +61,24 @@
   * Text Modular view template `text.md`
   * Note: Gallery Modular view template `gallery.md` only works in concert with premium plugin [Lightbox Gallery](https://getgrav.org/premium/lightbox-gallery/docs)
 
+## Blueprint Documentation
+Detailed documentation for each blueprint is available:
+- [Trust Signals](blueprints/docs/trust-signals.blueprint.md)
+- [Featured Courses](blueprints/docs/featured-courses.blueprint.md)
+- [Hero](blueprints/docs/hero.blueprint.md)
+- [Interactive Components](blueprints/docs/interactive-components.blueprint.md)
+- [Search Overlay](blueprints/docs/search-overlay.blueprint.md)
+- [Ticker](blueprints/docs/ticker.blueprint.md)
+- [Login Status](blueprints/docs/login-status.blueprint.md)
+- *See `blueprints/docs/` for full list.*
+
 # Development
 
 This theme uses a **Modern Vanilla CSS** architecture powered by **LightningCSS**.
 
 ### Prerequisites
 - Node.js & npm
-- PHP 8.2+
+- PHP 8.4+
 
 ### Quick Start
 1. Install dependencies:
@@ -80,6 +94,11 @@ This theme uses a **Modern Vanilla CSS** architecture powered by **LightningCSS*
 3. Build for production (minified):
    ```bash
    npm run build
+   ```
+
+4. Run tests (requires composer dev dependencies):
+   ```bash
+   composer test
    ```
 
 The CSS entry point is `css/modern-vanilla.css`, which imports layers from `css/layers/`. The build process bundles these into `css/nur-ul-huda.css` for Grav to use.

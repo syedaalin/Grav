@@ -4,6 +4,8 @@
  * Blueprint: [frontend-logic.blueprint.md](file:///Users/syedaalin/Documents/Grav/user/themes/nur-ul-huda/blueprints/docs/frontend-logic.blueprint.md)
  */
 
+import { Logger } from './utils.js';
+
 export class PullToRefresh {
   #startY = 0;
   #currentY = 0;
@@ -15,12 +17,19 @@ export class PullToRefresh {
     this.init();
   }
 
+  /**
+   * Initialize Pull to Refresh
+   */
   init() {
     // Only enable on touch devices
-    if (!('ontouchstart' in window)) return;
+    if (!('ontouchstart' in window)) {
+      Logger.info('PullToRefresh: Touch not supported, skipping');
+      return;
+    }
 
     this.#createIndicator();
     this.#bindEvents();
+    Logger.info('PullToRefresh: Initialized');
   }
 
   #createIndicator() {
@@ -48,7 +57,7 @@ export class PullToRefresh {
       if (pullDistance > 0 && pullDistance < this.#threshold * 2) {
         const progress = Math.min(pullDistance / this.#threshold, 1);
         this.#pullIndicator.style.transform = `translateY(${pullDistance - this.#pullIndicator.offsetHeight}px)`;
-        
+
         const label = this.#pullIndicator.querySelector('span');
         if (pullDistance >= this.#threshold) {
           this.#pullIndicator.classList.add('bg-accent', 'text-dark');
@@ -70,7 +79,7 @@ export class PullToRefresh {
         const label = this.#pullIndicator.querySelector('span');
         if (icon) icon.classList.add('la-spin');
         if (label) label.textContent = 'Refreshing...';
-        
+
         setTimeout(() => {
           window.location.reload();
         }, 500);

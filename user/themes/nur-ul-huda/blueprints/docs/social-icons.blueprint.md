@@ -9,7 +9,10 @@
     - Responsive labels for Desktop/Mobile.
 
 ## Admin Settings (Blueprints)
-- **Platform Groups**: Each platform (e.g., `social_facebook_group`) contains a URL field and an enabled toggle.
+- **Social Networks List**: A dynamic list (`social_networks`) allowing unlimited social platforms.
+  - **Network**: Select platform from list.
+  - **URL**: Link to profile.
+  - **Enabled**: Toggle visibility.
 - **Show Names on Mobile**: `social_show_labels_mobile` (Toggle)
 - **Show Names on Desktop**: `social_show_labels_desktop` (Toggle)
 
